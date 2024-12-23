@@ -1,0 +1,30 @@
+{
+    "name": "aazsamir/libphpsky",
+    "autoload": {
+        "psr-4": {
+            "Aazsamir\\Libphpsky\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "AZSamir",
+            "email": "sutikkukun@gmail.com"
+        }
+    ],
+    "require": {
+        "nette/php-generator": "^4.1",
+        "psr/http-client": "^1.0",
+        "guzzlehttp/guzzle": "^7.9"
+    },
+    "minimum-stability": "stable",
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.65",
+        "symfony/var-dumper": "^7.2",
+        "phpstan/phpstan": "^2.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}

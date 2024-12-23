@@ -1,0 +1,31 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\QueryLabels;
+
+/**
+ * Find labels relevant to the provided AT-URI patterns. Public endpoint for moderation services, though may return different or additional results with auth.
+ * query
+ */
+class QueryLabels implements \Aazsamir\Libphpsky\ATProto\Action
+{
+    use \Aazsamir\Libphpsky\ATProto\Generator\Prefab\IsQuery;
+
+    public const NAME = 'main';
+    public const ID = 'com.atproto.label.queryLabels';
+
+    public static function id(): string
+    {
+        return self::ID;
+    }
+
+    /**
+     * @param string[] $uriPatterns
+     * @param string[] $sources
+     */
+    function query(array $uriPatterns, array $sources, int $limit, string $cursor): Output
+    {
+        return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\QueryLabels\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+    }
+}
