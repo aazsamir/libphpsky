@@ -20,7 +20,7 @@ class GetPostThread implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $uri, int $depth, int $parentHeight): Output
+    function query(string $uri, ?int $depth = null, ?int $parentHeight = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\GetPostThread\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

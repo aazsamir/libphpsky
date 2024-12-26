@@ -104,12 +104,22 @@ class Maker
                         $property = $this->unref($property);
                         $parameter = $method->addParameter($propertyName);
                         $parameterType = $this->namespaceAndClassname($property);
+                        $nullable = !\in_array($propertyName, $def->parameters()->required() ?? [], true);
 
                         if ($property instanceof ArrayDef) {
                             $parameter->setType('array');
-                            $method->addComment('@param ' . $parameterType . ' $' . $propertyName);
+                            $method->addComment(
+                                '@param '
+                                . ($nullable ? '?' : '')
+                                . $parameterType
+                                . ' $' . $propertyName
+                            );
                         } else {
                             $parameter->setType($parameterType);
+                        }
+
+                        if ($nullable) {
+                            $parameter->setNullable(true)->setDefaultValue(null);
                         }
                     }
                 }

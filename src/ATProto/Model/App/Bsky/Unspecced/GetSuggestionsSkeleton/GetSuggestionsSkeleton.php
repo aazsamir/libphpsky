@@ -20,8 +20,12 @@ class GetSuggestionsSkeleton implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $viewer, int $limit, string $cursor, string $relativeToDid): Output
-    {
+    function query(
+        ?string $viewer = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+        ?string $relativeToDid = null,
+    ): Output {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\GetSuggestionsSkeleton\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

@@ -20,8 +20,13 @@ class GetAuthorFeed implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $actor, int $limit, string $cursor, string $filter, bool $includePins): Output
-    {
+    function query(
+        string $actor,
+        ?int $limit = null,
+        ?string $cursor = null,
+        ?string $filter = null,
+        ?bool $includePins = null,
+    ): Output {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\GetAuthorFeed\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

@@ -20,7 +20,7 @@ class GetAccountInviteCodes implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(bool $includeUsed, bool $createAvailable): Output
+    function query(?bool $includeUsed = null, ?bool $createAvailable = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\GetAccountInviteCodes\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

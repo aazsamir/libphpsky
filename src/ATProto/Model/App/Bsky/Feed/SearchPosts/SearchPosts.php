@@ -21,21 +21,21 @@ class SearchPosts implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param string[] $tag
+     * @param ?string[] $tag
      */
     function query(
         string $q,
-        string $sort,
-        string $since,
-        string $until,
-        string $mentions,
-        string $author,
-        string $lang,
-        string $domain,
-        string $url,
-        array $tag,
-        int $limit,
-        string $cursor,
+        ?string $sort = null,
+        ?string $since = null,
+        ?string $until = null,
+        ?string $mentions = null,
+        ?string $author = null,
+        ?string $lang = null,
+        ?string $domain = null,
+        ?string $url = null,
+        ?array $tag = null,
+        ?int $limit = null,
+        ?string $cursor = null,
     ): Output {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\SearchPosts\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

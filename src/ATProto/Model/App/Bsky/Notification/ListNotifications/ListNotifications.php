@@ -21,10 +21,15 @@ class ListNotifications implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param string[] $reasons
+     * @param ?string[] $reasons
      */
-    function query(array $reasons, int $limit, bool $priority, string $cursor, string $seenAt): Output
-    {
+    function query(
+        ?array $reasons = null,
+        ?int $limit = null,
+        ?bool $priority = null,
+        ?string $cursor = null,
+        ?string $seenAt = null,
+    ): Output {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Notification\ListNotifications\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

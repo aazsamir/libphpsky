@@ -22,7 +22,7 @@ class GetRecord implements \Aazsamir\Libphpsky\ATProto\Action
 
     function query(
         string $uri,
-        string $cid,
+        ?string $cid = null,
     ): \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RecordViewDetail {
         return \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RecordViewDetail::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

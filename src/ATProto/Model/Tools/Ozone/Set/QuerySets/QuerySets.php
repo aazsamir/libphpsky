@@ -20,8 +20,13 @@ class QuerySets implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(int $limit, string $cursor, string $namePrefix, string $sortBy, string $sortDirection): Output
-    {
+    function query(
+        ?int $limit = null,
+        ?string $cursor = null,
+        ?string $namePrefix = null,
+        ?string $sortBy = null,
+        ?string $sortDirection = null,
+    ): Output {
         return \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Set\QuerySets\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

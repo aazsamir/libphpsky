@@ -20,7 +20,7 @@ class SearchAccounts implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $email, string $cursor, int $limit): Output
+    function query(?string $email = null, ?string $cursor = null, ?int $limit = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\SearchAccounts\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

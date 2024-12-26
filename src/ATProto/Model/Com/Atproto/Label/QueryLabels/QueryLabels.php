@@ -22,9 +22,9 @@ class QueryLabels implements \Aazsamir\Libphpsky\ATProto\Action
 
     /**
      * @param string[] $uriPatterns
-     * @param string[] $sources
+     * @param ?string[] $sources
      */
-    function query(array $uriPatterns, array $sources, int $limit, string $cursor): Output
+    function query(array $uriPatterns, ?array $sources = null, ?int $limit = null, ?string $cursor = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\QueryLabels\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

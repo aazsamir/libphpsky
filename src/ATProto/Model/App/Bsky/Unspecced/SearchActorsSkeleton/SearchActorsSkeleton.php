@@ -20,8 +20,13 @@ class SearchActorsSkeleton implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $q, string $viewer, bool $typeahead, int $limit, string $cursor): Output
-    {
+    function query(
+        string $q,
+        ?string $viewer = null,
+        ?bool $typeahead = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): Output {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\SearchActorsSkeleton\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

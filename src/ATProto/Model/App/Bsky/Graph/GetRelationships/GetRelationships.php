@@ -21,9 +21,9 @@ class GetRelationships implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param string[] $others
+     * @param ?string[] $others
      */
-    function query(string $actor, array $others): Output
+    function query(string $actor, ?array $others = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\GetRelationships\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

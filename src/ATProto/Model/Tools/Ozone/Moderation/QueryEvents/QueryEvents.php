@@ -21,33 +21,33 @@ class QueryEvents implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param string[] $types
-     * @param string[] $collections
-     * @param string[] $addedLabels
-     * @param string[] $removedLabels
-     * @param string[] $addedTags
-     * @param string[] $removedTags
-     * @param string[] $reportTypes
+     * @param ?string[] $types
+     * @param ?string[] $collections
+     * @param ?string[] $addedLabels
+     * @param ?string[] $removedLabels
+     * @param ?string[] $addedTags
+     * @param ?string[] $removedTags
+     * @param ?string[] $reportTypes
      */
     function query(
-        array $types,
-        string $createdBy,
-        string $sortDirection,
-        string $createdAfter,
-        string $createdBefore,
-        string $subject,
-        array $collections,
-        string $subjectType,
-        bool $includeAllUserRecords,
-        int $limit,
-        bool $hasComment,
-        string $comment,
-        array $addedLabels,
-        array $removedLabels,
-        array $addedTags,
-        array $removedTags,
-        array $reportTypes,
-        string $cursor,
+        ?array $types = null,
+        ?string $createdBy = null,
+        ?string $sortDirection = null,
+        ?string $createdAfter = null,
+        ?string $createdBefore = null,
+        ?string $subject = null,
+        ?array $collections = null,
+        ?string $subjectType = null,
+        ?bool $includeAllUserRecords = null,
+        ?int $limit = null,
+        ?bool $hasComment = null,
+        ?string $comment = null,
+        ?array $addedLabels = null,
+        ?array $removedLabels = null,
+        ?array $addedTags = null,
+        ?array $removedTags = null,
+        ?array $reportTypes = null,
+        ?string $cursor = null,
     ): Output {
         return \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\QueryEvents\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

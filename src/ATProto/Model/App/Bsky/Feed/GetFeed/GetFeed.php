@@ -20,7 +20,7 @@ class GetFeed implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $feed, int $limit, string $cursor): Output
+    function query(string $feed, ?int $limit = null, ?string $cursor = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\GetFeed\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

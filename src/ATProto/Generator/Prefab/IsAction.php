@@ -35,7 +35,9 @@ trait IsAction
 
         if ($args) {
             foreach ($args as $key => $value) {
-                $query[$key] = $value;
+                if ($value !== null) {
+                    $query[$key] = $value;
+                }
             }
         }
 

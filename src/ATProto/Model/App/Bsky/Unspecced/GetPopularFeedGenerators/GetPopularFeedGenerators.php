@@ -20,7 +20,7 @@ class GetPopularFeedGenerators implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(int $limit, string $cursor, string $query): Output
+    function query(?int $limit = null, ?string $cursor = null, ?string $query = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\GetPopularFeedGenerators\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

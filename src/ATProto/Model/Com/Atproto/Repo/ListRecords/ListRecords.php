@@ -23,11 +23,11 @@ class ListRecords implements \Aazsamir\Libphpsky\ATProto\Action
     function query(
         string $repo,
         string $collection,
-        int $limit,
-        string $cursor,
-        string $rkeyStart,
-        string $rkeyEnd,
-        bool $reverse,
+        ?int $limit = null,
+        ?string $cursor = null,
+        ?string $rkeyStart = null,
+        ?string $rkeyEnd = null,
+        ?bool $reverse = null,
     ): Output {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\ListRecords\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

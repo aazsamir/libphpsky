@@ -20,7 +20,7 @@ class ListBlobs implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $did, string $since, int $limit, string $cursor): Output
+    function query(string $did, ?string $since = null, ?int $limit = null, ?string $cursor = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Sync\ListBlobs\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

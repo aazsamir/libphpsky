@@ -23,7 +23,7 @@ class SearchAccounts implements \Aazsamir\Libphpsky\ATProto\Action
     /**
      * @param string[] $values
      */
-    function query(array $values, string $cursor, int $limit): Output
+    function query(array $values, ?string $cursor = null, ?int $limit = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Signature\SearchAccounts\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

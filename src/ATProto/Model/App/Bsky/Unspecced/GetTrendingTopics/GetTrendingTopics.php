@@ -20,7 +20,7 @@ class GetTrendingTopics implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $viewer, int $limit): Output
+    function query(?string $viewer = null, ?int $limit = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\GetTrendingTopics\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

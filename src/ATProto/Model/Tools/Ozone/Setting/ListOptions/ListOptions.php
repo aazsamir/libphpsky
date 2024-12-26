@@ -21,10 +21,15 @@ class ListOptions implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param string[] $keys
+     * @param ?string[] $keys
      */
-    function query(int $limit, string $cursor, string $scope, string $prefix, array $keys): Output
-    {
+    function query(
+        ?int $limit = null,
+        ?string $cursor = null,
+        ?string $scope = null,
+        ?string $prefix = null,
+        ?array $keys = null,
+    ): Output {
         return \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Setting\ListOptions\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

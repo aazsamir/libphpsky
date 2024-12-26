@@ -20,7 +20,7 @@ class GetUnreadCount implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(bool $priority, string $seenAt): Output
+    function query(?bool $priority = null, ?string $seenAt = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Notification\GetUnreadCount\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
