@@ -22,6 +22,8 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?array $descriptionFacets = [];
     public ?string $avatar = null;
     public ?bool $acceptsInteractions = null;
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabels */
     public mixed $labels = null;
     public string $createdAt;
 

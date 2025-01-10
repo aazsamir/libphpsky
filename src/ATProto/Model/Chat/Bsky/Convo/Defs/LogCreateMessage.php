@@ -16,6 +16,8 @@ class LogCreateMessage implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public string $rev;
     public string $convoId;
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\DeletedMessageView */
     public mixed $message;
 
     public static function id(): string

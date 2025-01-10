@@ -219,6 +219,16 @@ class Maker
                     if ($property instanceof ArrayDef) {
                         $phpProperty->setType('array');
                         $phpProperty->addComment('@var ' . $phpPropertyType);
+                    } elseif ($property instanceof UnionDef) {
+                        $phpProperty->setType('mixed');
+                        $types = [];
+
+                        foreach ($property->resolvedRefs() as $type) {
+                            $types[] = $this->namespaceAndClassname($type);
+                        }
+
+                        $types = implode('|', $types);
+                        $phpProperty->addComment('@var ' . $types);
                     } else {
                         $phpProperty->setType($phpPropertyType);
                     }
@@ -353,14 +363,13 @@ class Maker
             || $def instanceof TokenDef
             || $def instanceof IntegerDef
             || $def instanceof BooleanDef
-            || $def instanceof UnionDef
             || $def instanceof UnknownDef
         ;
     }
 
     private function skipCreation(Def $def): bool
     {
-        return $this->isPhpPrimitive($def) || $def instanceof ArrayDef;
+        return $this->isPhpPrimitive($def) || $def instanceof ArrayDef || $def instanceof UnionDef;
     }
 
     private function namespaceAndClassname(Def $def): string

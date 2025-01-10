@@ -14,6 +14,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'output';
     public const ID = 'app.bsky.feed.getPostThread';
 
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\ThreadViewPost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\NotFoundPost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\BlockedPost */
     public mixed $thread;
     public ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\ThreadgateView $threadgate = null;
 

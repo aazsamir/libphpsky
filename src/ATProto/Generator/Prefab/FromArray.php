@@ -16,6 +16,10 @@ trait FromArray
         $reflection = new \ReflectionClass($instance);
 
         foreach ($data as $key => $value) {
+            if (\str_starts_with($key, '$')) {
+                continue;
+            }
+
             $property = $reflection->getProperty($key);
             $propertyType = $property->getType();
 
@@ -27,6 +31,33 @@ trait FromArray
 
             if (!$propertyType instanceof \ReflectionNamedType) {
                 throw new \RuntimeException('Union and Intersection types are not supported yet');
+            }
+
+            if (
+                $propertyType->getName() === 'mixed'
+                && $property->getDocComment() !== false
+                && isset($data[$key]['$type'])
+            ) {
+                $docComment = $property->getDocComment();
+                preg_match('/@var\s+([^\s]+)/', $docComment, $matches);
+
+                if (!isset($matches[1])) {
+                    throw new \RuntimeException('Property must have a type hint');
+                }
+
+                $types = explode('|', $matches[1]);
+                
+                foreach ($types as $type) {
+                    $classname = $type::ID . '#' . $type::NAME;
+
+                    if ($classname === $data[$key]['$type']) {
+                        $instance->{$key} = $type::fromArray($value);
+                        
+                        break;
+                    }
+                }
+
+                continue;
             }
 
             if ($propertyType->getName() === 'array') {

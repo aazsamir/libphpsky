@@ -18,6 +18,8 @@ class MessageInput implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] */
     public ?array $facets = [];
+
+    /** @var */
     public mixed $embed = null;
 
     public static function id(): string

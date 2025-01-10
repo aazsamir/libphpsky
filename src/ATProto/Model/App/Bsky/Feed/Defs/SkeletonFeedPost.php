@@ -15,6 +15,8 @@ class SkeletonFeedPost implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const ID = 'app.bsky.feed.defs';
 
     public string $post;
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\SkeletonReasonRepost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\SkeletonReasonPin */
     public mixed $reason = null;
     public ?string $feedContext = null;
 

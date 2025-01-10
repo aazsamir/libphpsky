@@ -18,6 +18,8 @@ class PostView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $cid;
     public ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewBasic $author = null;
     public mixed $record;
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\External\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Record\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\RecordWithMedia\View */
     public mixed $embed = null;
     public ?int $replyCount = null;
     public ?int $repostCount = null;

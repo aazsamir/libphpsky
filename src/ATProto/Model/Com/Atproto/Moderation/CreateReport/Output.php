@@ -17,6 +17,8 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public int $id;
     public string $reasonType;
     public ?string $reason = null;
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Moderation\CreateReport\CreateReport */
     public mixed $subject;
     public string $reportedBy;
     public string $createdAt;

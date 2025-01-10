@@ -15,7 +15,11 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const ID = 'tools.ozone.moderation.defs';
 
     public int $id;
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef */
     public mixed $subject;
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\AccountHosting|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RecordHosting */
     public mixed $hosting = null;
 
     /** @var string[] */

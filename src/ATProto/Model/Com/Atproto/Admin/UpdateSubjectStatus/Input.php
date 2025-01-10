@@ -14,6 +14,7 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.admin.updateSubjectStatus';
 
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\UpdateSubjectStatus\UpdateSubjectStatus|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoBlobRef */
     public mixed $subject;
     public ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\StatusAttr $takedown = null;
     public ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\StatusAttr $deactivated = null;

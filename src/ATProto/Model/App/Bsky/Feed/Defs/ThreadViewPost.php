@@ -15,6 +15,8 @@ class ThreadViewPost implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const ID = 'app.bsky.feed.defs';
 
     public ?PostView $post = null;
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\ThreadViewPost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\NotFoundPost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\BlockedPost */
     public mixed $parent = null;
 
     /** @var mixed[] */

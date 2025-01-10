@@ -15,7 +15,11 @@ class ModEventViewDetail implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const ID = 'tools.ozone.moderation.defs';
 
     public int $id;
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventTakedown|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventReverseTakedown|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventComment|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventReport|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventLabel|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventAcknowledge|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventEscalate|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventMute|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventUnmute|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventMuteReporter|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventUnmuteReporter|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventEmail|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventResolveAppeal|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventDivert|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventTag|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\AccountEvent|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\IdentityEvent|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RecordEvent */
     public mixed $event;
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RepoView|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RepoViewNotFound|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RecordView|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RecordViewNotFound */
     public mixed $subject;
 
     /** @var \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\BlobView[] */

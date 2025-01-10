@@ -15,6 +15,8 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const ID = 'app.bsky.labeler.service';
 
     public ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Labeler\Defs\LabelerPolicies $policies = null;
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabels */
     public mixed $labels = null;
     public string $createdAt;
 

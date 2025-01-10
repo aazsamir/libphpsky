@@ -20,6 +20,8 @@ class MessageView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] */
     public ?array $facets = [];
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Record\View */
     public mixed $embed = null;
     public ?MessageViewSender $sender = null;
     public string $sentAt;

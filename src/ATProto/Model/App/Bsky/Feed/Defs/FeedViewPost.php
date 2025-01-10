@@ -16,6 +16,8 @@ class FeedViewPost implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public ?PostView $post = null;
     public ?ReplyRef $reply = null;
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\ReasonRepost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\ReasonPin */
     public mixed $reason = null;
     public ?string $feedContext = null;
 

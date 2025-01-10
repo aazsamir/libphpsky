@@ -22,10 +22,14 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] */
     public ?array $facets = [];
     public ?ReplyRef $reply = null;
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Post\Post|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Post\Post|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Post\Post|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Post\Post|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Post\Post */
     public mixed $embed = null;
 
     /** @var string[] */
     public ?array $langs = [];
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabels */
     public mixed $labels = null;
 
     /** @var string[] */

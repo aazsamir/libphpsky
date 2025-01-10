@@ -16,6 +16,8 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public string $reasonType;
     public ?string $reason = null;
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Moderation\CreateReport\CreateReport */
     public mixed $subject;
 
     public static function id(): string

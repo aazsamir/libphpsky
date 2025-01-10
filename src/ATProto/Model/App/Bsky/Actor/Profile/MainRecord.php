@@ -18,6 +18,8 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?string $description = null;
     public ?string $avatar = null;
     public ?string $banner = null;
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabels */
     public mixed $labels = null;
     public ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef $joinedViaStarterPack = null;
     public ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef $pinnedPost = null;

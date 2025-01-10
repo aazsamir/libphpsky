@@ -19,6 +19,8 @@ class ConvoView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     /** @var \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Actor\Defs\ProfileViewBasic[] */
     public array $members = [];
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\DeletedMessageView */
     public mixed $lastMessage = null;
     public bool $muted;
     public ?bool $opened = null;

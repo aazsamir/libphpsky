@@ -18,6 +18,8 @@ class BlobView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $mimeType;
     public int $size;
     public string $createdAt;
+
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ImageDetails|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\VideoDetails */
     public mixed $details = null;
     public ?Moderation $moderation = null;
 
