@@ -28,4 +28,28 @@ class ConvoView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Actor\Defs\ProfileViewBasic[] $members
+     */
+    public static function new(
+        string $id,
+        string $rev,
+        array $members,
+        bool $muted,
+        int $unreadCount,
+        mixed $lastMessage = null,
+        ?bool $opened = null,
+    ): self {
+        $instance = new self();
+        $instance->id = $id;
+        $instance->rev = $rev;
+        $instance->members = $members;
+        $instance->muted = $muted;
+        $instance->unreadCount = $unreadCount;
+        $instance->lastMessage = $lastMessage;
+        $instance->opened = $opened;
+
+        return $instance;
+    }
 }

@@ -21,4 +21,15 @@ class MutedWordsPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\MutedWord[] $items
+     */
+    public static function new(array $items): self
+    {
+        $instance = new self();
+        $instance->items = $items;
+
+        return $instance;
+    }
 }

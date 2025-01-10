@@ -22,4 +22,17 @@ class ModEventReport implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        ?string $comment = null,
+        ?bool $isReporterMuted = null,
+        ?string $reportType = null,
+    ): self {
+        $instance = new self();
+        $instance->comment = $comment;
+        $instance->isReporterMuted = $isReporterMuted;
+        $instance->reportType = $reportType;
+
+        return $instance;
+    }
 }

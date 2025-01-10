@@ -21,4 +21,13 @@ class StrongRef implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $uri, string $cid): self
+    {
+        $instance = new self();
+        $instance->uri = $uri;
+        $instance->cid = $cid;
+
+        return $instance;
+    }
 }

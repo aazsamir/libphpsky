@@ -24,4 +24,20 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $values
+     */
+    public static function new(
+        array $values,
+        ?\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Set\Defs\SetView $set = null,
+        ?string $cursor = null,
+    ): self {
+        $instance = new self();
+        $instance->values = $values;
+        $instance->set = $set;
+        $instance->cursor = $cursor;
+
+        return $instance;
+    }
 }

@@ -21,4 +21,13 @@ class ViewDetached implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $uri, bool $detached): self
+    {
+        $instance = new self();
+        $instance->uri = $uri;
+        $instance->detached = $detached;
+
+        return $instance;
+    }
 }

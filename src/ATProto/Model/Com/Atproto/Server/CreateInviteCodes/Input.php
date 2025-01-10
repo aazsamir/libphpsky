@@ -24,4 +24,17 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $forAccounts
+     */
+    public static function new(int $codeCount, int $useCount, ?array $forAccounts = null): self
+    {
+        $instance = new self();
+        $instance->codeCount = $codeCount;
+        $instance->useCount = $useCount;
+        $instance->forAccounts = $forAccounts;
+
+        return $instance;
+    }
 }

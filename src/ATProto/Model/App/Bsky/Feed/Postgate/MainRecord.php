@@ -27,4 +27,23 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $detachedEmbeddingUris
+     * @param mixed[] $embeddingRules
+     */
+    public static function new(
+        string $createdAt,
+        string $post,
+        ?array $detachedEmbeddingUris = null,
+        ?array $embeddingRules = null,
+    ): self {
+        $instance = new self();
+        $instance->createdAt = $createdAt;
+        $instance->post = $post;
+        $instance->detachedEmbeddingUris = $detachedEmbeddingUris;
+        $instance->embeddingRules = $embeddingRules;
+
+        return $instance;
+    }
 }

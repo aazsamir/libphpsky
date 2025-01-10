@@ -26,4 +26,25 @@ class Member implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $did,
+        string $role,
+        ?bool $disabled = null,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewDetailed $profile = null,
+        ?string $createdAt = null,
+        ?string $updatedAt = null,
+        ?string $lastUpdatedBy = null,
+    ): self {
+        $instance = new self();
+        $instance->did = $did;
+        $instance->role = $role;
+        $instance->disabled = $disabled;
+        $instance->profile = $profile;
+        $instance->createdAt = $createdAt;
+        $instance->updatedAt = $updatedAt;
+        $instance->lastUpdatedBy = $lastUpdatedBy;
+
+        return $instance;
+    }
 }

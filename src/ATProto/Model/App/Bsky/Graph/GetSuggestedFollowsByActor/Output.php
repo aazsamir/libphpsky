@@ -22,4 +22,16 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileView[] $suggestions
+     */
+    public static function new(array $suggestions, ?bool $isFallback = null): self
+    {
+        $instance = new self();
+        $instance->suggestions = $suggestions;
+        $instance->isFallback = $isFallback;
+
+        return $instance;
+    }
 }

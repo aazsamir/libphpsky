@@ -20,4 +20,12 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $signingKey): self
+    {
+        $instance = new self();
+        $instance->signingKey = $signingKey;
+
+        return $instance;
+    }
 }

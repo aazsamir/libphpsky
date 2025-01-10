@@ -23,4 +23,19 @@ class RecordHosting implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $status,
+        ?string $updatedAt = null,
+        ?string $createdAt = null,
+        ?string $deletedAt = null,
+    ): self {
+        $instance = new self();
+        $instance->status = $status;
+        $instance->updatedAt = $updatedAt;
+        $instance->createdAt = $createdAt;
+        $instance->deletedAt = $deletedAt;
+
+        return $instance;
+    }
 }

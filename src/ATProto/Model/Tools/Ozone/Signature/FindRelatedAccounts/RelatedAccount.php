@@ -23,4 +23,18 @@ class RelatedAccount implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Signature\Defs\SigDetail[] $similarities
+     */
+    public static function new(
+        ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\AccountView $account = null,
+        ?array $similarities = null,
+    ): self {
+        $instance = new self();
+        $instance->account = $account;
+        $instance->similarities = $similarities;
+
+        return $instance;
+    }
 }

@@ -21,4 +21,13 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $convoId, string $rev): self
+    {
+        $instance = new self();
+        $instance->convoId = $convoId;
+        $instance->rev = $rev;
+
+        return $instance;
+    }
 }

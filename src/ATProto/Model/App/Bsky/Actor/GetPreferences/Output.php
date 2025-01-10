@@ -21,4 +21,15 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param mixed[] $preferences
+     */
+    public static function new(array $preferences): self
+    {
+        $instance = new self();
+        $instance->preferences = $preferences;
+
+        return $instance;
+    }
 }

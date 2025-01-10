@@ -30,4 +30,32 @@ class Notification implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] $labels
+     */
+    public static function new(
+        string $uri,
+        string $cid,
+        string $reason,
+        mixed $record,
+        bool $isRead,
+        string $indexedAt,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileView $author = null,
+        ?string $reasonSubject = null,
+        ?array $labels = null,
+    ): self {
+        $instance = new self();
+        $instance->uri = $uri;
+        $instance->cid = $cid;
+        $instance->reason = $reason;
+        $instance->record = $record;
+        $instance->isRead = $isRead;
+        $instance->indexedAt = $indexedAt;
+        $instance->author = $author;
+        $instance->reasonSubject = $reasonSubject;
+        $instance->labels = $labels;
+
+        return $instance;
+    }
 }

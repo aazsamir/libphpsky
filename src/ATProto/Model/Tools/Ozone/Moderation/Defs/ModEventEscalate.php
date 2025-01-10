@@ -20,4 +20,12 @@ class ModEventEscalate implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(?string $comment = null): self
+    {
+        $instance = new self();
+        $instance->comment = $comment;
+
+        return $instance;
+    }
 }

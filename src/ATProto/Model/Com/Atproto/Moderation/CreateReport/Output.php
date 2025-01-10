@@ -25,4 +25,23 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        int $id,
+        string $reasonType,
+        mixed $subject,
+        string $reportedBy,
+        string $createdAt,
+        ?string $reason = null,
+    ): self {
+        $instance = new self();
+        $instance->id = $id;
+        $instance->reasonType = $reasonType;
+        $instance->subject = $subject;
+        $instance->reportedBy = $reportedBy;
+        $instance->createdAt = $createdAt;
+        $instance->reason = $reason;
+
+        return $instance;
+    }
 }

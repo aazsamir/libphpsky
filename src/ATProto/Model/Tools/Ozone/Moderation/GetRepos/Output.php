@@ -21,4 +21,15 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param mixed[] $repos
+     */
+    public static function new(array $repos): self
+    {
+        $instance = new self();
+        $instance->repos = $repos;
+
+        return $instance;
+    }
 }

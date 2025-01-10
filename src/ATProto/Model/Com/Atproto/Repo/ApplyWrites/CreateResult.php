@@ -22,4 +22,14 @@ class CreateResult implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $uri, string $cid, ?string $validationStatus = null): self
+    {
+        $instance = new self();
+        $instance->uri = $uri;
+        $instance->cid = $cid;
+        $instance->validationStatus = $validationStatus;
+
+        return $instance;
+    }
 }

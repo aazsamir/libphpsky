@@ -23,4 +23,19 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $identifier,
+        string $password,
+        ?string $authFactorToken = null,
+        ?bool $allowTakendown = null,
+    ): self {
+        $instance = new self();
+        $instance->identifier = $identifier;
+        $instance->password = $password;
+        $instance->authFactorToken = $authFactorToken;
+        $instance->allowTakendown = $allowTakendown;
+
+        return $instance;
+    }
 }

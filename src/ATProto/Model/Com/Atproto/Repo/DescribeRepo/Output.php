@@ -26,4 +26,24 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $collections
+     */
+    public static function new(
+        string $handle,
+        string $did,
+        mixed $didDoc,
+        array $collections,
+        bool $handleIsCorrect,
+    ): self {
+        $instance = new self();
+        $instance->handle = $handle;
+        $instance->did = $did;
+        $instance->didDoc = $didDoc;
+        $instance->collections = $collections;
+        $instance->handleIsCorrect = $handleIsCorrect;
+
+        return $instance;
+    }
 }

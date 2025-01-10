@@ -29,4 +29,31 @@ class Option implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $key,
+        string $did,
+        mixed $value,
+        string $scope,
+        string $createdBy,
+        string $lastUpdatedBy,
+        ?string $description = null,
+        ?string $createdAt = null,
+        ?string $updatedAt = null,
+        ?string $managerRole = null,
+    ): self {
+        $instance = new self();
+        $instance->key = $key;
+        $instance->did = $did;
+        $instance->value = $value;
+        $instance->scope = $scope;
+        $instance->createdBy = $createdBy;
+        $instance->lastUpdatedBy = $lastUpdatedBy;
+        $instance->description = $description;
+        $instance->createdAt = $createdAt;
+        $instance->updatedAt = $updatedAt;
+        $instance->managerRole = $managerRole;
+
+        return $instance;
+    }
 }

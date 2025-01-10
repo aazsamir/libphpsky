@@ -21,4 +21,13 @@ class ByteSlice implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(int $byteStart, int $byteEnd): self
+    {
+        $instance = new self();
+        $instance->byteStart = $byteStart;
+        $instance->byteEnd = $byteEnd;
+
+        return $instance;
+    }
 }

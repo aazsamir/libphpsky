@@ -24,4 +24,21 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        bool $canUpload,
+        ?int $remainingDailyVideos = null,
+        ?int $remainingDailyBytes = null,
+        ?string $message = null,
+        ?string $error = null,
+    ): self {
+        $instance = new self();
+        $instance->canUpload = $canUpload;
+        $instance->remainingDailyVideos = $remainingDailyVideos;
+        $instance->remainingDailyBytes = $remainingDailyBytes;
+        $instance->message = $message;
+        $instance->error = $error;
+
+        return $instance;
+    }
 }

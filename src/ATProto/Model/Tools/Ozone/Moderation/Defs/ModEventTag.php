@@ -25,4 +25,18 @@ class ModEventTag implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $add
+     * @param string[] $remove
+     */
+    public static function new(array $add, array $remove, ?string $comment = null): self
+    {
+        $instance = new self();
+        $instance->add = $add;
+        $instance->remove = $remove;
+        $instance->comment = $comment;
+
+        return $instance;
+    }
 }

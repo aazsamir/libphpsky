@@ -26,4 +26,23 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $rotationKeys
+     * @param string[] $alsoKnownAs
+     */
+    public static function new(
+        ?array $rotationKeys = null,
+        ?array $alsoKnownAs = null,
+        mixed $verificationMethods = null,
+        mixed $services = null,
+    ): self {
+        $instance = new self();
+        $instance->rotationKeys = $rotationKeys;
+        $instance->alsoKnownAs = $alsoKnownAs;
+        $instance->verificationMethods = $verificationMethods;
+        $instance->services = $services;
+
+        return $instance;
+    }
 }

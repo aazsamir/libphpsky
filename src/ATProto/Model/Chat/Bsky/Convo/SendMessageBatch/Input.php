@@ -21,4 +21,15 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\SendMessageBatch\BatchItem[] $items
+     */
+    public static function new(array $items): self
+    {
+        $instance = new self();
+        $instance->items = $items;
+
+        return $instance;
+    }
 }

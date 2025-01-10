@@ -21,4 +21,15 @@ class Images implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\Image[] $images
+     */
+    public static function new(array $images): self
+    {
+        $instance = new self();
+        $instance->images = $images;
+
+        return $instance;
+    }
 }

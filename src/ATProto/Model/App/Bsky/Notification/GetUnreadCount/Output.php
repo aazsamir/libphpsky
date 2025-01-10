@@ -20,4 +20,12 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(int $count): self
+    {
+        $instance = new self();
+        $instance->count = $count;
+
+        return $instance;
+    }
 }

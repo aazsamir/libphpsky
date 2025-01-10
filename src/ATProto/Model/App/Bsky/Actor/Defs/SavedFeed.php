@@ -23,4 +23,15 @@ class SavedFeed implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $id, string $type, string $value, bool $pinned): self
+    {
+        $instance = new self();
+        $instance->id = $id;
+        $instance->type = $type;
+        $instance->value = $value;
+        $instance->pinned = $pinned;
+
+        return $instance;
+    }
 }

@@ -21,4 +21,13 @@ class CommitMeta implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $cid, string $rev): self
+    {
+        $instance = new self();
+        $instance->cid = $cid;
+        $instance->rev = $rev;
+
+        return $instance;
+    }
 }

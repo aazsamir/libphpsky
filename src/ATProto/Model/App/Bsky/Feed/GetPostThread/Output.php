@@ -21,4 +21,15 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        mixed $thread,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\ThreadgateView $threadgate = null,
+    ): self {
+        $instance = new self();
+        $instance->thread = $thread;
+        $instance->threadgate = $threadgate;
+
+        return $instance;
+    }
 }

@@ -25,4 +25,18 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $subjectBlobCids
+     */
+    public static function new(mixed $event, mixed $subject, string $createdBy, ?array $subjectBlobCids = null): self
+    {
+        $instance = new self();
+        $instance->event = $event;
+        $instance->subject = $subject;
+        $instance->createdBy = $createdBy;
+        $instance->subjectBlobCids = $subjectBlobCids;
+
+        return $instance;
+    }
 }

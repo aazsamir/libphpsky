@@ -20,4 +20,12 @@ class ModEventUnmuteReporter implements \Aazsamir\Libphpsky\ATProto\ATProtoObjec
     {
         return self::ID;
     }
+
+    public static function new(?string $comment = null): self
+    {
+        $instance = new self();
+        $instance->comment = $comment;
+
+        return $instance;
+    }
 }

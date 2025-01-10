@@ -28,4 +28,28 @@ class LabelerView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] $labels
+     */
+    public static function new(
+        string $uri,
+        string $cid,
+        string $indexedAt,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileView $creator = null,
+        ?int $likeCount = null,
+        ?LabelerViewerState $viewer = null,
+        ?array $labels = null,
+    ): self {
+        $instance = new self();
+        $instance->uri = $uri;
+        $instance->cid = $cid;
+        $instance->indexedAt = $indexedAt;
+        $instance->creator = $creator;
+        $instance->likeCount = $likeCount;
+        $instance->viewer = $viewer;
+        $instance->labels = $labels;
+
+        return $instance;
+    }
 }

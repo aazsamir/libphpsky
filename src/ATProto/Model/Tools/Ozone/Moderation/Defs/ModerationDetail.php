@@ -20,4 +20,12 @@ class ModerationDetail implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(?SubjectStatusView $subjectStatus = null): self
+    {
+        $instance = new self();
+        $instance->subjectStatus = $subjectStatus;
+
+        return $instance;
+    }
 }

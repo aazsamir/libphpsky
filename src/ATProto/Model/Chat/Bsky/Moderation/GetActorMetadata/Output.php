@@ -22,4 +22,14 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(?Metadata $day = null, ?Metadata $month = null, ?Metadata $all = null): self
+    {
+        $instance = new self();
+        $instance->day = $day;
+        $instance->month = $month;
+        $instance->all = $all;
+
+        return $instance;
+    }
 }

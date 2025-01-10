@@ -25,4 +25,23 @@ class AccountHosting implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $status,
+        ?string $updatedAt = null,
+        ?string $createdAt = null,
+        ?string $deletedAt = null,
+        ?string $deactivatedAt = null,
+        ?string $reactivatedAt = null,
+    ): self {
+        $instance = new self();
+        $instance->status = $status;
+        $instance->updatedAt = $updatedAt;
+        $instance->createdAt = $createdAt;
+        $instance->deletedAt = $deletedAt;
+        $instance->deactivatedAt = $deactivatedAt;
+        $instance->reactivatedAt = $reactivatedAt;
+
+        return $instance;
+    }
 }

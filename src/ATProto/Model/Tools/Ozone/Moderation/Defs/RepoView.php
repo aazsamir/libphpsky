@@ -34,4 +34,37 @@ class RepoView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param mixed[] $relatedRecords
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\ThreatSignature[] $threatSignatures
+     */
+    public static function new(
+        string $did,
+        string $handle,
+        array $relatedRecords,
+        string $indexedAt,
+        Moderation $moderation,
+        ?string $email = null,
+        ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCode $invitedBy = null,
+        ?bool $invitesDisabled = null,
+        ?string $inviteNote = null,
+        ?string $deactivatedAt = null,
+        ?array $threatSignatures = null,
+    ): self {
+        $instance = new self();
+        $instance->did = $did;
+        $instance->handle = $handle;
+        $instance->relatedRecords = $relatedRecords;
+        $instance->indexedAt = $indexedAt;
+        $instance->moderation = $moderation;
+        $instance->email = $email;
+        $instance->invitedBy = $invitedBy;
+        $instance->invitesDisabled = $invitesDisabled;
+        $instance->inviteNote = $inviteNote;
+        $instance->deactivatedAt = $deactivatedAt;
+        $instance->threatSignatures = $threatSignatures;
+
+        return $instance;
+    }
 }

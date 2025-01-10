@@ -21,4 +21,15 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCode[] $codes
+     */
+    public static function new(array $codes): self
+    {
+        $instance = new self();
+        $instance->codes = $codes;
+
+        return $instance;
+    }
 }

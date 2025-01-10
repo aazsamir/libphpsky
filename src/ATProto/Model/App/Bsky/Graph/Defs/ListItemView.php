@@ -21,4 +21,15 @@ class ListItemView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $uri,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileView $subject = null,
+    ): self {
+        $instance = new self();
+        $instance->uri = $uri;
+        $instance->subject = $subject;
+
+        return $instance;
+    }
 }

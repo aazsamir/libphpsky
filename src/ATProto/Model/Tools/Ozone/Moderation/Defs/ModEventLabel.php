@@ -26,4 +26,18 @@ class ModEventLabel implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $createLabelVals
+     * @param string[] $negateLabelVals
+     */
+    public static function new(array $createLabelVals, array $negateLabelVals, ?string $comment = null): self
+    {
+        $instance = new self();
+        $instance->createLabelVals = $createLabelVals;
+        $instance->negateLabelVals = $negateLabelVals;
+        $instance->comment = $comment;
+
+        return $instance;
+    }
 }

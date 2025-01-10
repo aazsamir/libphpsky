@@ -21,4 +21,13 @@ class SigDetail implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $property, string $value): self
+    {
+        $instance = new self();
+        $instance->property = $property;
+        $instance->value = $value;
+
+        return $instance;
+    }
 }

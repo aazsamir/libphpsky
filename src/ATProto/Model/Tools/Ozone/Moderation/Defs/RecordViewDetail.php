@@ -31,4 +31,31 @@ class RecordViewDetail implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\BlobView[] $blobs
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] $labels
+     */
+    public static function new(
+        string $uri,
+        string $cid,
+        mixed $value,
+        array $blobs,
+        string $indexedAt,
+        ?array $labels = null,
+        ?ModerationDetail $moderation = null,
+        ?RepoView $repo = null,
+    ): self {
+        $instance = new self();
+        $instance->uri = $uri;
+        $instance->cid = $cid;
+        $instance->value = $value;
+        $instance->blobs = $blobs;
+        $instance->indexedAt = $indexedAt;
+        $instance->labels = $labels;
+        $instance->moderation = $moderation;
+        $instance->repo = $repo;
+
+        return $instance;
+    }
 }

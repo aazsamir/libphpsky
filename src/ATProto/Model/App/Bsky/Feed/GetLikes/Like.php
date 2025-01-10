@@ -22,4 +22,17 @@ class Like implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $indexedAt,
+        string $createdAt,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileView $actor = null,
+    ): self {
+        $instance = new self();
+        $instance->indexedAt = $indexedAt;
+        $instance->createdAt = $createdAt;
+        $instance->actor = $actor;
+
+        return $instance;
+    }
 }

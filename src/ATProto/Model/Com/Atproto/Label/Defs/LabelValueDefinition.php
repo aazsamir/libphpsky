@@ -27,4 +27,26 @@ class LabelValueDefinition implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\LabelValueDefinitionStrings[] $locales
+     */
+    public static function new(
+        string $identifier,
+        string $severity,
+        string $blurs,
+        array $locales,
+        ?string $defaultSetting = null,
+        ?bool $adultOnly = null,
+    ): self {
+        $instance = new self();
+        $instance->identifier = $identifier;
+        $instance->severity = $severity;
+        $instance->blurs = $blurs;
+        $instance->locales = $locales;
+        $instance->defaultSetting = $defaultSetting;
+        $instance->adultOnly = $adultOnly;
+
+        return $instance;
+    }
 }

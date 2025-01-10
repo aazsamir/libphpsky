@@ -20,4 +20,12 @@ class View implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(?ViewExternal $external = null): self
+    {
+        $instance = new self();
+        $instance->external = $external;
+
+        return $instance;
+    }
 }

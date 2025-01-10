@@ -23,4 +23,15 @@ class Nux implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $id, bool $completed, ?string $data = null, ?string $expiresAt = null): self
+    {
+        $instance = new self();
+        $instance->id = $id;
+        $instance->completed = $completed;
+        $instance->data = $data;
+        $instance->expiresAt = $expiresAt;
+
+        return $instance;
+    }
 }

@@ -22,4 +22,17 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        bool $isOnline,
+        bool $isValid,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\GeneratorView $view = null,
+    ): self {
+        $instance = new self();
+        $instance->isOnline = $isOnline;
+        $instance->isValid = $isValid;
+        $instance->view = $view;
+
+        return $instance;
+    }
 }

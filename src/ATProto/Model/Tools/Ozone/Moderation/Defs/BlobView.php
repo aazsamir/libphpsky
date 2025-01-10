@@ -25,4 +25,23 @@ class BlobView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $cid,
+        string $mimeType,
+        int $size,
+        string $createdAt,
+        mixed $details = null,
+        ?Moderation $moderation = null,
+    ): self {
+        $instance = new self();
+        $instance->cid = $cid;
+        $instance->mimeType = $mimeType;
+        $instance->size = $size;
+        $instance->createdAt = $createdAt;
+        $instance->details = $details;
+        $instance->moderation = $moderation;
+
+        return $instance;
+    }
 }

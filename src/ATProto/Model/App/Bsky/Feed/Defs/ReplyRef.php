@@ -22,4 +22,17 @@ class ReplyRef implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        mixed $root,
+        mixed $parent,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewBasic $grandparentAuthor = null,
+    ): self {
+        $instance = new self();
+        $instance->root = $root;
+        $instance->parent = $parent;
+        $instance->grandparentAuthor = $grandparentAuthor;
+
+        return $instance;
+    }
 }

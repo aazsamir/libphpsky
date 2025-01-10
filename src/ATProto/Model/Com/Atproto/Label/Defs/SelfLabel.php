@@ -20,4 +20,12 @@ class SelfLabel implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $val): self
+    {
+        $instance = new self();
+        $instance->val = $val;
+
+        return $instance;
+    }
 }

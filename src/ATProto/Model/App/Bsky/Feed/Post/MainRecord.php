@@ -36,4 +36,35 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Post\Entity[] $entities
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] $facets
+     * @param string[] $langs
+     * @param string[] $tags
+     */
+    public static function new(
+        string $text,
+        string $createdAt,
+        ?array $entities = null,
+        ?array $facets = null,
+        ?ReplyRef $reply = null,
+        mixed $embed = null,
+        ?array $langs = null,
+        mixed $labels = null,
+        ?array $tags = null,
+    ): self {
+        $instance = new self();
+        $instance->text = $text;
+        $instance->createdAt = $createdAt;
+        $instance->entities = $entities;
+        $instance->facets = $facets;
+        $instance->reply = $reply;
+        $instance->embed = $embed;
+        $instance->langs = $langs;
+        $instance->labels = $labels;
+        $instance->tags = $tags;
+
+        return $instance;
+    }
 }

@@ -20,4 +20,13 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\StarterPackView $starterPack = null,
+    ): self {
+        $instance = new self();
+        $instance->starterPack = $starterPack;
+
+        return $instance;
+    }
 }

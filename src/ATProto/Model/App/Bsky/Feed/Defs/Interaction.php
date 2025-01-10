@@ -22,4 +22,14 @@ class Interaction implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(?string $item = null, ?string $event = null, ?string $feedContext = null): self
+    {
+        $instance = new self();
+        $instance->item = $item;
+        $instance->event = $event;
+        $instance->feedContext = $feedContext;
+
+        return $instance;
+    }
 }

@@ -23,4 +23,19 @@ class ViewImage implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $thumb,
+        string $fullsize,
+        string $alt,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Defs\AspectRatio $aspectRatio = null,
+    ): self {
+        $instance = new self();
+        $instance->thumb = $thumb;
+        $instance->fullsize = $fullsize;
+        $instance->alt = $alt;
+        $instance->aspectRatio = $aspectRatio;
+
+        return $instance;
+    }
 }

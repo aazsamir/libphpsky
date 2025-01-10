@@ -23,4 +23,16 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Signature\FindRelatedAccounts\RelatedAccount[] $accounts
+     */
+    public static function new(array $accounts, ?string $cursor = null): self
+    {
+        $instance = new self();
+        $instance->accounts = $accounts;
+        $instance->cursor = $cursor;
+
+        return $instance;
+    }
 }

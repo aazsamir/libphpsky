@@ -20,4 +20,12 @@ class PersonalDetailsPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(?string $birthDate = null): self
+    {
+        $instance = new self();
+        $instance->birthDate = $birthDate;
+
+        return $instance;
+    }
 }

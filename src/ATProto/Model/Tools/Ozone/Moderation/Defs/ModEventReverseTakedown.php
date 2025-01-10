@@ -20,4 +20,12 @@ class ModEventReverseTakedown implements \Aazsamir\Libphpsky\ATProto\ATProtoObje
     {
         return self::ID;
     }
+
+    public static function new(?string $comment = null): self
+    {
+        $instance = new self();
+        $instance->comment = $comment;
+
+        return $instance;
+    }
 }

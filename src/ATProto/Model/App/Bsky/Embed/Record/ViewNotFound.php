@@ -21,4 +21,13 @@ class ViewNotFound implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $uri, bool $notFound): self
+    {
+        $instance = new self();
+        $instance->uri = $uri;
+        $instance->notFound = $notFound;
+
+        return $instance;
+    }
 }

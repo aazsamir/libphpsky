@@ -20,4 +20,12 @@ class LabelerViewerState implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(?string $like = null): self
+    {
+        $instance = new self();
+        $instance->like = $like;
+
+        return $instance;
+    }
 }

@@ -27,4 +27,27 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        ?string $displayName = null,
+        ?string $description = null,
+        ?string $avatar = null,
+        ?string $banner = null,
+        mixed $labels = null,
+        ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef $joinedViaStarterPack = null,
+        ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef $pinnedPost = null,
+        ?string $createdAt = null,
+    ): self {
+        $instance = new self();
+        $instance->displayName = $displayName;
+        $instance->description = $description;
+        $instance->avatar = $avatar;
+        $instance->banner = $banner;
+        $instance->labels = $labels;
+        $instance->joinedViaStarterPack = $joinedViaStarterPack;
+        $instance->pinnedPost = $pinnedPost;
+        $instance->createdAt = $createdAt;
+
+        return $instance;
+    }
 }

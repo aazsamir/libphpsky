@@ -21,4 +21,15 @@ class LabelersPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\LabelerPrefItem[] $labelers
+     */
+    public static function new(array $labelers): self
+    {
+        $instance = new self();
+        $instance->labelers = $labelers;
+
+        return $instance;
+    }
 }

@@ -26,4 +26,24 @@ class MutedWord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $targets
+     */
+    public static function new(
+        string $value,
+        array $targets,
+        ?string $id = null,
+        ?string $actorTarget = null,
+        ?string $expiresAt = null,
+    ): self {
+        $instance = new self();
+        $instance->value = $value;
+        $instance->targets = $targets;
+        $instance->id = $id;
+        $instance->actorTarget = $actorTarget;
+        $instance->expiresAt = $expiresAt;
+
+        return $instance;
+    }
 }

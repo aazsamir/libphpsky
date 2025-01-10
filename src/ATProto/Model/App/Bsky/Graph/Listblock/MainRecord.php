@@ -21,4 +21,13 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $subject, string $createdAt): self
+    {
+        $instance = new self();
+        $instance->subject = $subject;
+        $instance->createdAt = $createdAt;
+
+        return $instance;
+    }
 }

@@ -28,4 +28,29 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        bool $activated,
+        bool $validDid,
+        string $repoCommit,
+        string $repoRev,
+        int $repoBlocks,
+        int $indexedRecords,
+        int $privateStateValues,
+        int $expectedBlobs,
+        int $importedBlobs,
+    ): self {
+        $instance = new self();
+        $instance->activated = $activated;
+        $instance->validDid = $validDid;
+        $instance->repoCommit = $repoCommit;
+        $instance->repoRev = $repoRev;
+        $instance->repoBlocks = $repoBlocks;
+        $instance->indexedRecords = $indexedRecords;
+        $instance->privateStateValues = $privateStateValues;
+        $instance->expectedBlobs = $expectedBlobs;
+        $instance->importedBlobs = $importedBlobs;
+
+        return $instance;
+    }
 }

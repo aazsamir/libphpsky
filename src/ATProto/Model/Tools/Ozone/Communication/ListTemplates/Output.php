@@ -21,4 +21,15 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Communication\Defs\TemplateView[] $communicationTemplates
+     */
+    public static function new(array $communicationTemplates): self
+    {
+        $instance = new self();
+        $instance->communicationTemplates = $communicationTemplates;
+
+        return $instance;
+    }
 }

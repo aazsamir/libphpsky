@@ -23,4 +23,15 @@ class Migrate implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(int $seq, string $did, string $migrateTo, string $time): self
+    {
+        $instance = new self();
+        $instance->seq = $seq;
+        $instance->did = $did;
+        $instance->migrateTo = $migrateTo;
+        $instance->time = $time;
+
+        return $instance;
+    }
 }

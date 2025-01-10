@@ -20,4 +20,12 @@ class AdultContentPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(bool $enabled): self
+    {
+        $instance = new self();
+        $instance->enabled = $enabled;
+
+        return $instance;
+    }
 }

@@ -27,4 +27,26 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $availableUserDomains
+     */
+    public static function new(
+        array $availableUserDomains,
+        string $did,
+        ?bool $inviteCodeRequired = null,
+        ?bool $phoneVerificationRequired = null,
+        ?Links $links = null,
+        ?Contact $contact = null,
+    ): self {
+        $instance = new self();
+        $instance->availableUserDomains = $availableUserDomains;
+        $instance->did = $did;
+        $instance->inviteCodeRequired = $inviteCodeRequired;
+        $instance->phoneVerificationRequired = $phoneVerificationRequired;
+        $instance->links = $links;
+        $instance->contact = $contact;
+
+        return $instance;
+    }
 }

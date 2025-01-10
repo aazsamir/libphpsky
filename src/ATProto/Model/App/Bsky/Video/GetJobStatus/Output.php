@@ -20,4 +20,12 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Video\Defs\JobStatus $jobStatus): self
+    {
+        $instance = new self();
+        $instance->jobStatus = $jobStatus;
+
+        return $instance;
+    }
 }

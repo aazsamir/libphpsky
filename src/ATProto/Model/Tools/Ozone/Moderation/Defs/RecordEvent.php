@@ -23,4 +23,15 @@ class RecordEvent implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $op, string $timestamp, ?string $comment = null, ?string $cid = null): self
+    {
+        $instance = new self();
+        $instance->op = $op;
+        $instance->timestamp = $timestamp;
+        $instance->comment = $comment;
+        $instance->cid = $cid;
+
+        return $instance;
+    }
 }

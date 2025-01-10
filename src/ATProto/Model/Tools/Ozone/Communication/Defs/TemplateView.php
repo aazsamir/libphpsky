@@ -28,4 +28,29 @@ class TemplateView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $id,
+        string $name,
+        string $contentMarkdown,
+        bool $disabled,
+        string $lastUpdatedBy,
+        string $createdAt,
+        string $updatedAt,
+        ?string $subject = null,
+        ?string $lang = null,
+    ): self {
+        $instance = new self();
+        $instance->id = $id;
+        $instance->name = $name;
+        $instance->contentMarkdown = $contentMarkdown;
+        $instance->disabled = $disabled;
+        $instance->lastUpdatedBy = $lastUpdatedBy;
+        $instance->createdAt = $createdAt;
+        $instance->updatedAt = $updatedAt;
+        $instance->subject = $subject;
+        $instance->lang = $lang;
+
+        return $instance;
+    }
 }

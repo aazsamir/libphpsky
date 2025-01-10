@@ -25,4 +25,18 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\GetLikes\Like[] $likes
+     */
+    public static function new(string $uri, array $likes, ?string $cid = null, ?string $cursor = null): self
+    {
+        $instance = new self();
+        $instance->uri = $uri;
+        $instance->likes = $likes;
+        $instance->cid = $cid;
+        $instance->cursor = $cursor;
+
+        return $instance;
+    }
 }

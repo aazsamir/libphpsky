@@ -21,4 +21,15 @@ class ReasonRepost implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $indexedAt,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewBasic $by = null,
+    ): self {
+        $instance = new self();
+        $instance->indexedAt = $indexedAt;
+        $instance->by = $by;
+
+        return $instance;
+    }
 }

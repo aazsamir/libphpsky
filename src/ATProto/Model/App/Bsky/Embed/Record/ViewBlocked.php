@@ -22,4 +22,17 @@ class ViewBlocked implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $uri,
+        bool $blocked,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\BlockedAuthor $author = null,
+    ): self {
+        $instance = new self();
+        $instance->uri = $uri;
+        $instance->blocked = $blocked;
+        $instance->author = $author;
+
+        return $instance;
+    }
 }

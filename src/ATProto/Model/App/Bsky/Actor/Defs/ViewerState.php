@@ -27,4 +27,27 @@ class ViewerState implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        ?bool $muted = null,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\ListViewBasic $mutedByList = null,
+        ?bool $blockedBy = null,
+        ?string $blocking = null,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\ListViewBasic $blockingByList = null,
+        ?string $following = null,
+        ?string $followedBy = null,
+        ?KnownFollowers $knownFollowers = null,
+    ): self {
+        $instance = new self();
+        $instance->muted = $muted;
+        $instance->mutedByList = $mutedByList;
+        $instance->blockedBy = $blockedBy;
+        $instance->blocking = $blocking;
+        $instance->blockingByList = $blockingByList;
+        $instance->following = $following;
+        $instance->followedBy = $followedBy;
+        $instance->knownFollowers = $knownFollowers;
+
+        return $instance;
+    }
 }

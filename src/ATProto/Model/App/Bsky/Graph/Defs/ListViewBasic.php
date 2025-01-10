@@ -30,4 +30,32 @@ class ListViewBasic implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] $labels
+     */
+    public static function new(
+        string $uri,
+        string $cid,
+        string $name,
+        ?string $purpose = null,
+        ?string $avatar = null,
+        ?int $listItemCount = null,
+        ?array $labels = null,
+        ?ListViewerState $viewer = null,
+        ?string $indexedAt = null,
+    ): self {
+        $instance = new self();
+        $instance->uri = $uri;
+        $instance->cid = $cid;
+        $instance->name = $name;
+        $instance->purpose = $purpose;
+        $instance->avatar = $avatar;
+        $instance->listItemCount = $listItemCount;
+        $instance->labels = $labels;
+        $instance->viewer = $viewer;
+        $instance->indexedAt = $indexedAt;
+
+        return $instance;
+    }
 }

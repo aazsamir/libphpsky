@@ -22,4 +22,14 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(bool $activated, ?int $placeInQueue = null, ?int $estimatedTimeMs = null): self
+    {
+        $instance = new self();
+        $instance->activated = $activated;
+        $instance->placeInQueue = $placeInQueue;
+        $instance->estimatedTimeMs = $estimatedTimeMs;
+
+        return $instance;
+    }
 }

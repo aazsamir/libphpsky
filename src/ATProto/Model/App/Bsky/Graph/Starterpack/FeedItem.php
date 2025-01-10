@@ -20,4 +20,12 @@ class FeedItem implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $uri): self
+    {
+        $instance = new self();
+        $instance->uri = $uri;
+
+        return $instance;
+    }
 }

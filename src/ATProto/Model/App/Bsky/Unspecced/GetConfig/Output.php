@@ -20,4 +20,12 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(?bool $checkEmailConfirmed = null): self
+    {
+        $instance = new self();
+        $instance->checkEmailConfirmed = $checkEmailConfirmed;
+
+        return $instance;
+    }
 }

@@ -21,4 +21,15 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param mixed[] $messages
+     */
+    public static function new(array $messages): self
+    {
+        $instance = new self();
+        $instance->messages = $messages;
+
+        return $instance;
+    }
 }

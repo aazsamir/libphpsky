@@ -22,4 +22,14 @@ class SkeletonFeedPost implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $post, mixed $reason = null, ?string $feedContext = null): self
+    {
+        $instance = new self();
+        $instance->post = $post;
+        $instance->reason = $reason;
+        $instance->feedContext = $feedContext;
+
+        return $instance;
+    }
 }

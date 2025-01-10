@@ -21,4 +21,15 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewBasic[] $actors
+     */
+    public static function new(array $actors): self
+    {
+        $instance = new self();
+        $instance->actors = $actors;
+
+        return $instance;
+    }
 }

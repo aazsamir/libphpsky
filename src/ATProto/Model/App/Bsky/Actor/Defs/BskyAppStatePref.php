@@ -26,4 +26,21 @@ class BskyAppStatePref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $queuedNudges
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\Nux[] $nuxs
+     */
+    public static function new(
+        ?BskyAppProgressGuide $activeProgressGuide = null,
+        ?array $queuedNudges = null,
+        ?array $nuxs = null,
+    ): self {
+        $instance = new self();
+        $instance->activeProgressGuide = $activeProgressGuide;
+        $instance->queuedNudges = $queuedNudges;
+        $instance->nuxs = $nuxs;
+
+        return $instance;
+    }
 }

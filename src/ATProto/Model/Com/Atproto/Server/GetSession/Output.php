@@ -27,4 +27,27 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $handle,
+        string $did,
+        ?string $email = null,
+        ?bool $emailConfirmed = null,
+        ?bool $emailAuthFactor = null,
+        mixed $didDoc = null,
+        ?bool $active = null,
+        ?string $status = null,
+    ): self {
+        $instance = new self();
+        $instance->handle = $handle;
+        $instance->did = $did;
+        $instance->email = $email;
+        $instance->emailConfirmed = $emailConfirmed;
+        $instance->emailAuthFactor = $emailAuthFactor;
+        $instance->didDoc = $didDoc;
+        $instance->active = $active;
+        $instance->status = $status;
+
+        return $instance;
+    }
 }

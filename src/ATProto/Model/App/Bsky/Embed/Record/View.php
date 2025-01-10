@@ -20,4 +20,12 @@ class View implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(mixed $record): self
+    {
+        $instance = new self();
+        $instance->record = $record;
+
+        return $instance;
+    }
 }

@@ -21,4 +21,15 @@ class InterestsPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $tags
+     */
+    public static function new(array $tags): self
+    {
+        $instance = new self();
+        $instance->tags = $tags;
+
+        return $instance;
+    }
 }

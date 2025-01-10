@@ -21,4 +21,15 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $convoId,
+        ?\Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\MessageInput $message = null,
+    ): self {
+        $instance = new self();
+        $instance->convoId = $convoId;
+        $instance->message = $message;
+
+        return $instance;
+    }
 }

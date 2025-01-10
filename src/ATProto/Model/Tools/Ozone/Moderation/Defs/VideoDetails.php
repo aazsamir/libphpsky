@@ -22,4 +22,14 @@ class VideoDetails implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(int $width, int $height, int $length): self
+    {
+        $instance = new self();
+        $instance->width = $width;
+        $instance->height = $height;
+        $instance->length = $length;
+
+        return $instance;
+    }
 }

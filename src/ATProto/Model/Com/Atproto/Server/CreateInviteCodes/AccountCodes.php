@@ -23,4 +23,16 @@ class AccountCodes implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $codes
+     */
+    public static function new(string $account, array $codes): self
+    {
+        $instance = new self();
+        $instance->account = $account;
+        $instance->codes = $codes;
+
+        return $instance;
+    }
 }

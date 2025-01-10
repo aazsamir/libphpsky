@@ -20,4 +20,12 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $allowIncoming): self
+    {
+        $instance = new self();
+        $instance->allowIncoming = $allowIncoming;
+
+        return $instance;
+    }
 }

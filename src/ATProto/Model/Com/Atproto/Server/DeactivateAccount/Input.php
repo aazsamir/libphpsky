@@ -20,4 +20,12 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(?string $deleteAfter = null): self
+    {
+        $instance = new self();
+        $instance->deleteAfter = $deleteAfter;
+
+        return $instance;
+    }
 }

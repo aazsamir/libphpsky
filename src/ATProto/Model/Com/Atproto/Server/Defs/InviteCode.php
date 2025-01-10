@@ -28,4 +28,28 @@ class InviteCode implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCodeUse[] $uses
+     */
+    public static function new(
+        string $code,
+        int $available,
+        bool $disabled,
+        string $forAccount,
+        string $createdBy,
+        string $createdAt,
+        array $uses,
+    ): self {
+        $instance = new self();
+        $instance->code = $code;
+        $instance->available = $available;
+        $instance->disabled = $disabled;
+        $instance->forAccount = $forAccount;
+        $instance->createdBy = $createdBy;
+        $instance->createdAt = $createdAt;
+        $instance->uses = $uses;
+
+        return $instance;
+    }
 }

@@ -22,4 +22,14 @@ class ContentLabelPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $label, string $visibility, ?string $labelerDid = null): self
+    {
+        $instance = new self();
+        $instance->label = $label;
+        $instance->visibility = $visibility;
+        $instance->labelerDid = $labelerDid;
+
+        return $instance;
+    }
 }

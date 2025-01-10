@@ -23,4 +23,15 @@ class AccountEvent implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(bool $active, string $timestamp, ?string $comment = null, ?string $status = null): self
+    {
+        $instance = new self();
+        $instance->active = $active;
+        $instance->timestamp = $timestamp;
+        $instance->comment = $comment;
+        $instance->status = $status;
+
+        return $instance;
+    }
 }

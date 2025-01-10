@@ -21,4 +21,15 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\GetTaggedSuggestions\Suggestion[] $suggestions
+     */
+    public static function new(array $suggestions): self
+    {
+        $instance = new self();
+        $instance->suggestions = $suggestions;
+
+        return $instance;
+    }
 }

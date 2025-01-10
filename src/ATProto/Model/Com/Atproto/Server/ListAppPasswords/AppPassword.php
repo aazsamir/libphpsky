@@ -22,4 +22,14 @@ class AppPassword implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $name, string $createdAt, ?bool $privileged = null): self
+    {
+        $instance = new self();
+        $instance->name = $name;
+        $instance->createdAt = $createdAt;
+        $instance->privileged = $privileged;
+
+        return $instance;
+    }
 }

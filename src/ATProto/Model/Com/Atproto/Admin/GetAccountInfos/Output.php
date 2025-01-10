@@ -21,4 +21,15 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\AccountView[] $infos
+     */
+    public static function new(array $infos): self
+    {
+        $instance = new self();
+        $instance->infos = $infos;
+
+        return $instance;
+    }
 }

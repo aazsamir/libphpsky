@@ -24,4 +24,21 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        ?ServiceConfig $appview = null,
+        ?ServiceConfig $pds = null,
+        ?ServiceConfig $blobDivert = null,
+        ?ServiceConfig $chat = null,
+        ?ViewerConfig $viewer = null,
+    ): self {
+        $instance = new self();
+        $instance->appview = $appview;
+        $instance->pds = $pds;
+        $instance->blobDivert = $blobDivert;
+        $instance->chat = $chat;
+        $instance->viewer = $viewer;
+
+        return $instance;
+    }
 }

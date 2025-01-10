@@ -21,4 +21,13 @@ class RecordBlob implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $cid, string $recordUri): self
+    {
+        $instance = new self();
+        $instance->cid = $cid;
+        $instance->recordUri = $recordUri;
+
+        return $instance;
+    }
 }

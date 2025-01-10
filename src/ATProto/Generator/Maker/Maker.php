@@ -208,6 +208,7 @@ class Maker
             case $def instanceof ObjectDef:
                 $class->addTrait('\Aazsamir\Libphpsky\ATProto\Generator\Prefab\FromArray');
                 $class->addImplement(ATProtoObject::class);
+                $constructorTypes = [];
 
                 foreach ($def->properties()->toArray() as $property) {
                     $propertyName = $property->name();
@@ -233,7 +234,47 @@ class Maker
                     if ($property instanceof ArrayDef) {
                         $phpProperty->setValue([]);
                     }
+
+                    if ($property instanceof ArrayDef) {
+                        $constructorTypes[] = [
+                            'name' => $propertyName,
+                            'type' => 'array',
+                            'nullable' => $nullable,
+                            'comment' => '@param ' . $phpPropertyType . ' $' . $propertyName,
+                        ];
+                    } else {
+                        $constructorTypes[] = [
+                            'name' => $propertyName,
+                            'type' => $phpPropertyType,
+                            'nullable' => $nullable,
+                            'comment' => null,
+                        ];
+                    }
                 }
+
+                // nullable last
+                usort($constructorTypes, static fn ($a, $b) => $a['nullable'] <=> $b['nullable']);
+                $constructor = $class->addMethod('new')->setStatic()->setReturnType('self');
+                $constructor->addBody('$instance = new self();');
+
+                foreach ($constructorTypes as $type) {
+                    $parameter = $constructor->addParameter($type['name']);
+                    $parameter->setType($type['type']);
+                    $parameter->setNullable($type['nullable']);
+
+                    if ($type['comment']) {
+                        $constructor->addComment($type['comment']);
+                    }
+
+                    if ($type['nullable']) {
+                        $parameter->setDefaultValue(null);
+                    }
+
+                    $constructor->addBody('$instance->' . $type['name'] . ' = $' . $type['name'] . ';');
+                }
+
+                $constructor->addBody('');
+                $constructor->addBody('return $instance;');
 
                 $this->saveClass($class, $phpNamespace);
 

@@ -36,4 +36,41 @@ class GeneratorView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] $descriptionFacets
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] $labels
+     */
+    public static function new(
+        string $uri,
+        string $cid,
+        string $did,
+        string $displayName,
+        string $indexedAt,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileView $creator = null,
+        ?string $description = null,
+        ?array $descriptionFacets = null,
+        ?string $avatar = null,
+        ?int $likeCount = null,
+        ?bool $acceptsInteractions = null,
+        ?array $labels = null,
+        ?GeneratorViewerState $viewer = null,
+    ): self {
+        $instance = new self();
+        $instance->uri = $uri;
+        $instance->cid = $cid;
+        $instance->did = $did;
+        $instance->displayName = $displayName;
+        $instance->indexedAt = $indexedAt;
+        $instance->creator = $creator;
+        $instance->description = $description;
+        $instance->descriptionFacets = $descriptionFacets;
+        $instance->avatar = $avatar;
+        $instance->likeCount = $likeCount;
+        $instance->acceptsInteractions = $acceptsInteractions;
+        $instance->labels = $labels;
+        $instance->viewer = $viewer;
+
+        return $instance;
+    }
 }

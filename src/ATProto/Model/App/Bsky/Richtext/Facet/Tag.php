@@ -20,4 +20,12 @@ class Tag implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $tag): self
+    {
+        $instance = new self();
+        $instance->tag = $tag;
+
+        return $instance;
+    }
 }

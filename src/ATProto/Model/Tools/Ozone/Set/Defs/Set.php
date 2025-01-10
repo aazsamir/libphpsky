@@ -21,4 +21,13 @@ class Set implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $name, ?string $description = null): self
+    {
+        $instance = new self();
+        $instance->name = $name;
+        $instance->description = $description;
+
+        return $instance;
+    }
 }

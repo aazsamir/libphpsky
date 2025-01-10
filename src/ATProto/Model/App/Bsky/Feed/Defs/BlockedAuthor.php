@@ -21,4 +21,15 @@ class BlockedAuthor implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $did,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ViewerState $viewer = null,
+    ): self {
+        $instance = new self();
+        $instance->did = $did;
+        $instance->viewer = $viewer;
+
+        return $instance;
+    }
 }

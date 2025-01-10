@@ -22,4 +22,14 @@ class Record implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $uri, string $cid, mixed $value): self
+    {
+        $instance = new self();
+        $instance->uri = $uri;
+        $instance->cid = $cid;
+        $instance->value = $value;
+
+        return $instance;
+    }
 }

@@ -24,4 +24,17 @@ class MessageInput implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] $facets
+     */
+    public static function new(string $text, ?array $facets = null, mixed $embed = null): self
+    {
+        $instance = new self();
+        $instance->text = $text;
+        $instance->facets = $facets;
+        $instance->embed = $embed;
+
+        return $instance;
+    }
 }

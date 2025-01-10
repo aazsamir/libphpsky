@@ -22,4 +22,17 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $createdAt,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Labeler\Defs\LabelerPolicies $policies = null,
+        mixed $labels = null,
+    ): self {
+        $instance = new self();
+        $instance->createdAt = $createdAt;
+        $instance->policies = $policies;
+        $instance->labels = $labels;
+
+        return $instance;
+    }
 }

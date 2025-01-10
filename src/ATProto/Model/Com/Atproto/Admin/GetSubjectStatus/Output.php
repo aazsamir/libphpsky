@@ -22,4 +22,17 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        mixed $subject,
+        ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\StatusAttr $takedown = null,
+        ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\StatusAttr $deactivated = null,
+    ): self {
+        $instance = new self();
+        $instance->subject = $subject;
+        $instance->takedown = $takedown;
+        $instance->deactivated = $deactivated;
+
+        return $instance;
+    }
 }

@@ -22,4 +22,14 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $did, ?bool $disabled = null, ?string $role = null): self
+    {
+        $instance = new self();
+        $instance->did = $did;
+        $instance->disabled = $disabled;
+        $instance->role = $role;
+
+        return $instance;
+    }
 }

@@ -21,4 +21,15 @@ class SelfLabels implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabel[] $values
+     */
+    public static function new(array $values): self
+    {
+        $instance = new self();
+        $instance->values = $values;
+
+        return $instance;
+    }
 }

@@ -22,4 +22,17 @@ class Image implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $image,
+        string $alt,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Defs\AspectRatio $aspectRatio = null,
+    ): self {
+        $instance = new self();
+        $instance->image = $image;
+        $instance->alt = $alt;
+        $instance->aspectRatio = $aspectRatio;
+
+        return $instance;
+    }
 }

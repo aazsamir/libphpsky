@@ -20,4 +20,12 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(mixed $operation): self
+    {
+        $instance = new self();
+        $instance->operation = $operation;
+
+        return $instance;
+    }
 }

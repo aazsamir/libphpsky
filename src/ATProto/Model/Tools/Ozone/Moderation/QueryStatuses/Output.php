@@ -23,4 +23,16 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\SubjectStatusView[] $subjectStatuses
+     */
+    public static function new(array $subjectStatuses, ?string $cursor = null): self
+    {
+        $instance = new self();
+        $instance->subjectStatuses = $subjectStatuses;
+        $instance->cursor = $cursor;
+
+        return $instance;
+    }
 }

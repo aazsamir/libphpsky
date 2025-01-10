@@ -22,4 +22,17 @@ class ModEventTakedown implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        ?string $comment = null,
+        ?int $durationInHours = null,
+        ?bool $acknowledgeAccountSubjects = null,
+    ): self {
+        $instance = new self();
+        $instance->comment = $comment;
+        $instance->durationInHours = $durationInHours;
+        $instance->acknowledgeAccountSubjects = $acknowledgeAccountSubjects;
+
+        return $instance;
+    }
 }

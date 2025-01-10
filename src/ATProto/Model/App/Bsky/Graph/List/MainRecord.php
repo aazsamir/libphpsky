@@ -28,4 +28,28 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] $descriptionFacets
+     */
+    public static function new(
+        string $name,
+        string $createdAt,
+        ?string $purpose = null,
+        ?string $description = null,
+        ?array $descriptionFacets = null,
+        ?string $avatar = null,
+        mixed $labels = null,
+    ): self {
+        $instance = new self();
+        $instance->name = $name;
+        $instance->createdAt = $createdAt;
+        $instance->purpose = $purpose;
+        $instance->description = $description;
+        $instance->descriptionFacets = $descriptionFacets;
+        $instance->avatar = $avatar;
+        $instance->labels = $labels;
+
+        return $instance;
+    }
 }

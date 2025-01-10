@@ -20,4 +20,12 @@ class LabelerPrefItem implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $did): self
+    {
+        $instance = new self();
+        $instance->did = $did;
+
+        return $instance;
+    }
 }

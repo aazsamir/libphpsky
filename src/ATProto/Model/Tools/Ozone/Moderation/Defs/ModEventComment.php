@@ -21,4 +21,13 @@ class ModEventComment implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $comment, ?bool $sticky = null): self
+    {
+        $instance = new self();
+        $instance->comment = $comment;
+        $instance->sticky = $sticky;
+
+        return $instance;
+    }
 }

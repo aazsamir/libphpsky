@@ -23,4 +23,16 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileView[] $mutes
+     */
+    public static function new(array $mutes, ?string $cursor = null): self
+    {
+        $instance = new self();
+        $instance->mutes = $mutes;
+        $instance->cursor = $cursor;
+
+        return $instance;
+    }
 }

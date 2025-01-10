@@ -27,4 +27,26 @@ class ModEventViewDetail implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\BlobView[] $subjectBlobs
+     */
+    public static function new(
+        int $id,
+        mixed $event,
+        mixed $subject,
+        array $subjectBlobs,
+        string $createdBy,
+        string $createdAt,
+    ): self {
+        $instance = new self();
+        $instance->id = $id;
+        $instance->event = $event;
+        $instance->subject = $subject;
+        $instance->subjectBlobs = $subjectBlobs;
+        $instance->createdBy = $createdBy;
+        $instance->createdAt = $createdAt;
+
+        return $instance;
+    }
 }

@@ -22,4 +22,14 @@ class Relationship implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $did, ?string $following = null, ?string $followedBy = null): self
+    {
+        $instance = new self();
+        $instance->did = $did;
+        $instance->following = $following;
+        $instance->followedBy = $followedBy;
+
+        return $instance;
+    }
 }

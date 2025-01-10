@@ -22,4 +22,14 @@ class RepoBlobRef implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $did, string $cid, ?string $recordUri = null): self
+    {
+        $instance = new self();
+        $instance->did = $did;
+        $instance->cid = $cid;
+        $instance->recordUri = $recordUri;
+
+        return $instance;
+    }
 }

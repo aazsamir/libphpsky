@@ -20,4 +20,12 @@ class SkeletonReasonRepost implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $repost): self
+    {
+        $instance = new self();
+        $instance->repost = $repost;
+
+        return $instance;
+    }
 }

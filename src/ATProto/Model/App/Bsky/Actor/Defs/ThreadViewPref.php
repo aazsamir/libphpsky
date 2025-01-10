@@ -21,4 +21,13 @@ class ThreadViewPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(?string $sort = null, ?bool $prioritizeFollowedUsers = null): self
+    {
+        $instance = new self();
+        $instance->sort = $sort;
+        $instance->prioritizeFollowedUsers = $prioritizeFollowedUsers;
+
+        return $instance;
+    }
 }

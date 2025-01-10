@@ -23,4 +23,16 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Setting\Defs\Option[] $options
+     */
+    public static function new(array $options, ?string $cursor = null): self
+    {
+        $instance = new self();
+        $instance->options = $options;
+        $instance->cursor = $cursor;
+
+        return $instance;
+    }
 }

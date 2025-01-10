@@ -22,4 +22,14 @@ class Create implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $collection, mixed $value, ?string $rkey = null): self
+    {
+        $instance = new self();
+        $instance->collection = $collection;
+        $instance->value = $value;
+        $instance->rkey = $rkey;
+
+        return $instance;
+    }
 }

@@ -24,4 +24,17 @@ class ThreadViewPost implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param mixed[] $replies
+     */
+    public static function new(?PostView $post = null, mixed $parent = null, ?array $replies = null): self
+    {
+        $instance = new self();
+        $instance->post = $post;
+        $instance->parent = $parent;
+        $instance->replies = $replies;
+
+        return $instance;
+    }
 }

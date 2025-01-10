@@ -21,4 +21,15 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\ListAppPasswords\AppPassword[] $passwords
+     */
+    public static function new(array $passwords): self
+    {
+        $instance = new self();
+        $instance->passwords = $passwords;
+
+        return $instance;
+    }
 }

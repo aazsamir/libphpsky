@@ -21,4 +21,13 @@ class ListViewerState implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(?bool $muted = null, ?string $blocked = null): self
+    {
+        $instance = new self();
+        $instance->muted = $muted;
+        $instance->blocked = $blocked;
+
+        return $instance;
+    }
 }

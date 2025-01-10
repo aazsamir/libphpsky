@@ -24,4 +24,17 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\Defs\SkeletonSearchPost[] $posts
+     */
+    public static function new(array $posts, ?string $cursor = null, ?int $hitsTotal = null): self
+    {
+        $instance = new self();
+        $instance->posts = $posts;
+        $instance->cursor = $cursor;
+        $instance->hitsTotal = $hitsTotal;
+
+        return $instance;
+    }
 }

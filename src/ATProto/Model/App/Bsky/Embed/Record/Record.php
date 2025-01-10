@@ -20,4 +20,13 @@ class Record implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef $record = null,
+    ): self {
+        $instance = new self();
+        $instance->record = $record;
+
+        return $instance;
+    }
 }

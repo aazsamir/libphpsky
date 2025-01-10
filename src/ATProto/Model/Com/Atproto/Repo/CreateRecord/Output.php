@@ -23,4 +23,19 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $uri,
+        string $cid,
+        ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\Defs\CommitMeta $commit = null,
+        ?string $validationStatus = null,
+    ): self {
+        $instance = new self();
+        $instance->uri = $uri;
+        $instance->cid = $cid;
+        $instance->commit = $commit;
+        $instance->validationStatus = $validationStatus;
+
+        return $instance;
+    }
 }

@@ -23,4 +23,16 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\SkeletonFeedPost[] $feed
+     */
+    public static function new(array $feed, ?string $cursor = null): self
+    {
+        $instance = new self();
+        $instance->feed = $feed;
+        $instance->cursor = $cursor;
+
+        return $instance;
+    }
 }

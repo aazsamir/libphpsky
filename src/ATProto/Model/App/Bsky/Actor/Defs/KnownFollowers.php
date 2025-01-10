@@ -23,4 +23,16 @@ class KnownFollowers implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewBasic[] $followers
+     */
+    public static function new(int $count, array $followers): self
+    {
+        $instance = new self();
+        $instance->count = $count;
+        $instance->followers = $followers;
+
+        return $instance;
+    }
 }

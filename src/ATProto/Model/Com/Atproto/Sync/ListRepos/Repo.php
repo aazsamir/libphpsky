@@ -24,4 +24,21 @@ class Repo implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $did,
+        string $head,
+        string $rev,
+        ?bool $active = null,
+        ?string $status = null,
+    ): self {
+        $instance = new self();
+        $instance->did = $did;
+        $instance->head = $head;
+        $instance->rev = $rev;
+        $instance->active = $active;
+        $instance->status = $status;
+
+        return $instance;
+    }
 }

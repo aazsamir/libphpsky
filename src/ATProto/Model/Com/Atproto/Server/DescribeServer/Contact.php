@@ -20,4 +20,12 @@ class Contact implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(?string $email = null): self
+    {
+        $instance = new self();
+        $instance->email = $email;
+
+        return $instance;
+    }
 }

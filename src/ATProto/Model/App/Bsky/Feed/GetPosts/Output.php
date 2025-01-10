@@ -21,4 +21,15 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\PostView[] $posts
+     */
+    public static function new(array $posts): self
+    {
+        $instance = new self();
+        $instance->posts = $posts;
+
+        return $instance;
+    }
 }

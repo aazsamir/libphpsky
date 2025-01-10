@@ -21,4 +21,13 @@ class NotFoundActor implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $actor, bool $notFound): self
+    {
+        $instance = new self();
+        $instance->actor = $actor;
+        $instance->notFound = $notFound;
+
+        return $instance;
+    }
 }

@@ -23,4 +23,16 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RepoView[] $repos
+     */
+    public static function new(array $repos, ?string $cursor = null): self
+    {
+        $instance = new self();
+        $instance->repos = $repos;
+        $instance->cursor = $cursor;
+
+        return $instance;
+    }
 }

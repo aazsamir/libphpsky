@@ -23,4 +23,15 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $did, bool $active, ?string $status = null, ?string $rev = null): self
+    {
+        $instance = new self();
+        $instance->did = $did;
+        $instance->active = $active;
+        $instance->status = $status;
+        $instance->rev = $rev;
+
+        return $instance;
+    }
 }

@@ -24,4 +24,21 @@ class SetView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $name,
+        int $setSize,
+        string $createdAt,
+        string $updatedAt,
+        ?string $description = null,
+    ): self {
+        $instance = new self();
+        $instance->name = $name;
+        $instance->setSize = $setSize;
+        $instance->createdAt = $createdAt;
+        $instance->updatedAt = $updatedAt;
+        $instance->description = $description;
+
+        return $instance;
+    }
 }

@@ -41,4 +41,45 @@ class RepoViewDetail implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param mixed[] $relatedRecords
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] $labels
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCode[] $invites
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\ThreatSignature[] $threatSignatures
+     */
+    public static function new(
+        string $did,
+        string $handle,
+        array $relatedRecords,
+        string $indexedAt,
+        ?string $email = null,
+        ?ModerationDetail $moderation = null,
+        ?array $labels = null,
+        ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCode $invitedBy = null,
+        ?array $invites = null,
+        ?bool $invitesDisabled = null,
+        ?string $inviteNote = null,
+        ?string $emailConfirmedAt = null,
+        ?string $deactivatedAt = null,
+        ?array $threatSignatures = null,
+    ): self {
+        $instance = new self();
+        $instance->did = $did;
+        $instance->handle = $handle;
+        $instance->relatedRecords = $relatedRecords;
+        $instance->indexedAt = $indexedAt;
+        $instance->email = $email;
+        $instance->moderation = $moderation;
+        $instance->labels = $labels;
+        $instance->invitedBy = $invitedBy;
+        $instance->invites = $invites;
+        $instance->invitesDisabled = $invitesDisabled;
+        $instance->inviteNote = $inviteNote;
+        $instance->emailConfirmedAt = $emailConfirmedAt;
+        $instance->deactivatedAt = $deactivatedAt;
+        $instance->threatSignatures = $threatSignatures;
+
+        return $instance;
+    }
 }

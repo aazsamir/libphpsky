@@ -20,4 +20,12 @@ class SkeletonSearchStarterPack implements \Aazsamir\Libphpsky\ATProto\ATProtoOb
     {
         return self::ID;
     }
+
+    public static function new(string $uri): self
+    {
+        $instance = new self();
+        $instance->uri = $uri;
+
+        return $instance;
+    }
 }

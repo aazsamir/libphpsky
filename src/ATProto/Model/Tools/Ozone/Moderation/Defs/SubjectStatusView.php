@@ -42,4 +42,53 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $subjectBlobCids
+     * @param string[] $tags
+     */
+    public static function new(
+        int $id,
+        mixed $subject,
+        string $updatedAt,
+        string $createdAt,
+        mixed $hosting = null,
+        ?array $subjectBlobCids = null,
+        ?string $subjectRepoHandle = null,
+        ?string $reviewState = null,
+        ?string $comment = null,
+        ?string $muteUntil = null,
+        ?string $muteReportingUntil = null,
+        ?string $lastReviewedBy = null,
+        ?string $lastReviewedAt = null,
+        ?string $lastReportedAt = null,
+        ?string $lastAppealedAt = null,
+        ?bool $takendown = null,
+        ?bool $appealed = null,
+        ?string $suspendUntil = null,
+        ?array $tags = null,
+    ): self {
+        $instance = new self();
+        $instance->id = $id;
+        $instance->subject = $subject;
+        $instance->updatedAt = $updatedAt;
+        $instance->createdAt = $createdAt;
+        $instance->hosting = $hosting;
+        $instance->subjectBlobCids = $subjectBlobCids;
+        $instance->subjectRepoHandle = $subjectRepoHandle;
+        $instance->reviewState = $reviewState;
+        $instance->comment = $comment;
+        $instance->muteUntil = $muteUntil;
+        $instance->muteReportingUntil = $muteReportingUntil;
+        $instance->lastReviewedBy = $lastReviewedBy;
+        $instance->lastReviewedAt = $lastReviewedAt;
+        $instance->lastReportedAt = $lastReportedAt;
+        $instance->lastAppealedAt = $lastAppealedAt;
+        $instance->takendown = $takendown;
+        $instance->appealed = $appealed;
+        $instance->suspendUntil = $suspendUntil;
+        $instance->tags = $tags;
+
+        return $instance;
+    }
 }

@@ -24,4 +24,21 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $recipientDid,
+        string $content,
+        string $senderDid,
+        ?string $subject = null,
+        ?string $comment = null,
+    ): self {
+        $instance = new self();
+        $instance->recipientDid = $recipientDid;
+        $instance->content = $content;
+        $instance->senderDid = $senderDid;
+        $instance->subject = $subject;
+        $instance->comment = $comment;
+
+        return $instance;
+    }
 }

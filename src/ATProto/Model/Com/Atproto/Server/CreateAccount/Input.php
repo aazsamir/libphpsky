@@ -28,4 +28,29 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $handle,
+        ?string $email = null,
+        ?string $did = null,
+        ?string $inviteCode = null,
+        ?string $verificationCode = null,
+        ?string $verificationPhone = null,
+        ?string $password = null,
+        ?string $recoveryKey = null,
+        mixed $plcOp = null,
+    ): self {
+        $instance = new self();
+        $instance->handle = $handle;
+        $instance->email = $email;
+        $instance->did = $did;
+        $instance->inviteCode = $inviteCode;
+        $instance->verificationCode = $verificationCode;
+        $instance->verificationPhone = $verificationPhone;
+        $instance->password = $password;
+        $instance->recoveryKey = $recoveryKey;
+        $instance->plcOp = $plcOp;
+
+        return $instance;
+    }
 }

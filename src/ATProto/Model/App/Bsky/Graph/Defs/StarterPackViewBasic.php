@@ -30,4 +30,32 @@ class StarterPackViewBasic implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] $labels
+     */
+    public static function new(
+        string $uri,
+        string $cid,
+        mixed $record,
+        string $indexedAt,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewBasic $creator = null,
+        ?int $listItemCount = null,
+        ?int $joinedWeekCount = null,
+        ?int $joinedAllTimeCount = null,
+        ?array $labels = null,
+    ): self {
+        $instance = new self();
+        $instance->uri = $uri;
+        $instance->cid = $cid;
+        $instance->record = $record;
+        $instance->indexedAt = $indexedAt;
+        $instance->creator = $creator;
+        $instance->listItemCount = $listItemCount;
+        $instance->joinedWeekCount = $joinedWeekCount;
+        $instance->joinedAllTimeCount = $joinedAllTimeCount;
+        $instance->labels = $labels;
+
+        return $instance;
+    }
 }

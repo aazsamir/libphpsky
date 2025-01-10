@@ -21,4 +21,13 @@ class Caption implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $lang, string $file): self
+    {
+        $instance = new self();
+        $instance->lang = $lang;
+        $instance->file = $file;
+
+        return $instance;
+    }
 }

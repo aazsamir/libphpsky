@@ -23,4 +23,16 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $cids
+     */
+    public static function new(array $cids, ?string $cursor = null): self
+    {
+        $instance = new self();
+        $instance->cids = $cids;
+        $instance->cursor = $cursor;
+
+        return $instance;
+    }
 }

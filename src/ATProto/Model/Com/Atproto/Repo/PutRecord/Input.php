@@ -26,4 +26,25 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $repo,
+        string $collection,
+        string $rkey,
+        mixed $record,
+        ?bool $validate = null,
+        ?string $swapRecord = null,
+        ?string $swapCommit = null,
+    ): self {
+        $instance = new self();
+        $instance->repo = $repo;
+        $instance->collection = $collection;
+        $instance->rkey = $rkey;
+        $instance->record = $record;
+        $instance->validate = $validate;
+        $instance->swapRecord = $swapRecord;
+        $instance->swapCommit = $swapCommit;
+
+        return $instance;
+    }
 }

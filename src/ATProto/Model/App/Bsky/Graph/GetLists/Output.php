@@ -23,4 +23,16 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\ListView[] $lists
+     */
+    public static function new(array $lists, ?string $cursor = null): self
+    {
+        $instance = new self();
+        $instance->lists = $lists;
+        $instance->cursor = $cursor;
+
+        return $instance;
+    }
 }

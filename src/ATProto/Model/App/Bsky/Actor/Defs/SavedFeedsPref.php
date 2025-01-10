@@ -25,4 +25,18 @@ class SavedFeedsPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $pinned
+     * @param string[] $saved
+     */
+    public static function new(array $pinned, array $saved, ?int $timelineIndex = null): self
+    {
+        $instance = new self();
+        $instance->pinned = $pinned;
+        $instance->saved = $saved;
+        $instance->timelineIndex = $timelineIndex;
+
+        return $instance;
+    }
 }

@@ -22,4 +22,14 @@ class Suggestion implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $tag, string $subjectType, string $subject): self
+    {
+        $instance = new self();
+        $instance->tag = $tag;
+        $instance->subjectType = $subjectType;
+        $instance->subject = $subject;
+
+        return $instance;
+    }
 }

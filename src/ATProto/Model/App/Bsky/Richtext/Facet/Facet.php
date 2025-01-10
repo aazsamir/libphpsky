@@ -23,4 +23,16 @@ class Facet implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param mixed[] $features
+     */
+    public static function new(array $features, ?ByteSlice $index = null): self
+    {
+        $instance = new self();
+        $instance->features = $features;
+        $instance->index = $index;
+
+        return $instance;
+    }
 }

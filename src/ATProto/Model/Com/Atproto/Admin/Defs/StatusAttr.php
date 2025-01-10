@@ -21,4 +21,13 @@ class StatusAttr implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(bool $applied, ?string $ref = null): self
+    {
+        $instance = new self();
+        $instance->applied = $applied;
+        $instance->ref = $ref;
+
+        return $instance;
+    }
 }

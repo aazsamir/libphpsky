@@ -23,4 +23,19 @@ class TrendingTopic implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $topic,
+        string $link,
+        ?string $displayName = null,
+        ?string $description = null,
+    ): self {
+        $instance = new self();
+        $instance->topic = $topic;
+        $instance->link = $link;
+        $instance->displayName = $displayName;
+        $instance->description = $description;
+
+        return $instance;
+    }
 }

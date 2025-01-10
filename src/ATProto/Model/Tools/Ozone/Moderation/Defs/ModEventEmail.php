@@ -22,4 +22,14 @@ class ModEventEmail implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $subjectLine, ?string $content = null, ?string $comment = null): self
+    {
+        $instance = new self();
+        $instance->subjectLine = $subjectLine;
+        $instance->content = $content;
+        $instance->comment = $comment;
+
+        return $instance;
+    }
 }

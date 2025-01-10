@@ -21,4 +21,13 @@ class AspectRatio implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(int $width, int $height): self
+    {
+        $instance = new self();
+        $instance->width = $width;
+        $instance->height = $height;
+
+        return $instance;
+    }
 }

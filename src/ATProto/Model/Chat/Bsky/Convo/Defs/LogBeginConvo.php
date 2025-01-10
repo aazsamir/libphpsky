@@ -21,4 +21,13 @@ class LogBeginConvo implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $rev, string $convoId): self
+    {
+        $instance = new self();
+        $instance->rev = $rev;
+        $instance->convoId = $convoId;
+
+        return $instance;
+    }
 }

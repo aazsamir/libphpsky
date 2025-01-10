@@ -24,4 +24,17 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\Defs\TrendingTopic[] $topics
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\Defs\TrendingTopic[] $suggested
+     */
+    public static function new(array $topics, array $suggested): self
+    {
+        $instance = new self();
+        $instance->topics = $topics;
+        $instance->suggested = $suggested;
+
+        return $instance;
+    }
 }

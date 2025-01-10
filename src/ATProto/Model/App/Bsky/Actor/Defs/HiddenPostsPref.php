@@ -21,4 +21,15 @@ class HiddenPostsPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $items
+     */
+    public static function new(array $items): self
+    {
+        $instance = new self();
+        $instance->items = $items;
+
+        return $instance;
+    }
 }

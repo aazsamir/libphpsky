@@ -23,4 +23,18 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param mixed[] $results
+     */
+    public static function new(
+        ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\Defs\CommitMeta $commit = null,
+        ?array $results = null,
+    ): self {
+        $instance = new self();
+        $instance->commit = $commit;
+        $instance->results = $results;
+
+        return $instance;
+    }
 }

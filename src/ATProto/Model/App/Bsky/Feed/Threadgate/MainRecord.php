@@ -27,4 +27,23 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param mixed[] $allow
+     * @param string[] $hiddenReplies
+     */
+    public static function new(
+        string $post,
+        string $createdAt,
+        ?array $allow = null,
+        ?array $hiddenReplies = null,
+    ): self {
+        $instance = new self();
+        $instance->post = $post;
+        $instance->createdAt = $createdAt;
+        $instance->allow = $allow;
+        $instance->hiddenReplies = $hiddenReplies;
+
+        return $instance;
+    }
 }

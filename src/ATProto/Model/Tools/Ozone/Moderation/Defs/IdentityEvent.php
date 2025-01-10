@@ -24,4 +24,21 @@ class IdentityEvent implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $timestamp,
+        ?string $comment = null,
+        ?string $handle = null,
+        ?string $pdsHost = null,
+        ?bool $tombstone = null,
+    ): self {
+        $instance = new self();
+        $instance->timestamp = $timestamp;
+        $instance->comment = $comment;
+        $instance->handle = $handle;
+        $instance->pdsHost = $pdsHost;
+        $instance->tombstone = $tombstone;
+
+        return $instance;
+    }
 }

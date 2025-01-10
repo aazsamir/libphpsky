@@ -28,4 +28,29 @@ class Label implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $src,
+        string $uri,
+        string $val,
+        string $cts,
+        ?int $ver = null,
+        ?string $cid = null,
+        ?bool $neg = null,
+        ?string $exp = null,
+        ?string $sig = null,
+    ): self {
+        $instance = new self();
+        $instance->src = $src;
+        $instance->uri = $uri;
+        $instance->val = $val;
+        $instance->cts = $cts;
+        $instance->ver = $ver;
+        $instance->cid = $cid;
+        $instance->neg = $neg;
+        $instance->exp = $exp;
+        $instance->sig = $sig;
+
+        return $instance;
+    }
 }

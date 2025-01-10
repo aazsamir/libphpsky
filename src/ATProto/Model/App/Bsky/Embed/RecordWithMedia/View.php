@@ -21,4 +21,15 @@ class View implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        mixed $media,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Record\View $record = null,
+    ): self {
+        $instance = new self();
+        $instance->media = $media;
+        $instance->record = $record;
+
+        return $instance;
+    }
 }

@@ -20,4 +20,12 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $seenAt): self
+    {
+        $instance = new self();
+        $instance->seenAt = $seenAt;
+
+        return $instance;
+    }
 }

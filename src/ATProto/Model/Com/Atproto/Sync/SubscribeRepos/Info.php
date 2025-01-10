@@ -21,4 +21,13 @@ class Info implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $name, ?string $message = null): self
+    {
+        $instance = new self();
+        $instance->name = $name;
+        $instance->message = $message;
+
+        return $instance;
+    }
 }

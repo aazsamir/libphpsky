@@ -21,4 +21,15 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\Interaction[] $interactions
+     */
+    public static function new(array $interactions): self
+    {
+        $instance = new self();
+        $instance->interactions = $interactions;
+
+        return $instance;
+    }
 }

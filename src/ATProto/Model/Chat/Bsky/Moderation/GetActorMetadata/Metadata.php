@@ -23,4 +23,15 @@ class Metadata implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(int $messagesSent, int $messagesReceived, int $convos, int $convosStarted): self
+    {
+        $instance = new self();
+        $instance->messagesSent = $messagesSent;
+        $instance->messagesReceived = $messagesReceived;
+        $instance->convos = $convos;
+        $instance->convosStarted = $convosStarted;
+
+        return $instance;
+    }
 }

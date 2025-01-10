@@ -22,4 +22,14 @@ class MessageRef implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $did, string $convoId, string $messageId): self
+    {
+        $instance = new self();
+        $instance->did = $did;
+        $instance->convoId = $convoId;
+        $instance->messageId = $messageId;
+
+        return $instance;
+    }
 }

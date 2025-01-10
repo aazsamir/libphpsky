@@ -25,4 +25,23 @@ class FeedViewPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $feed,
+        ?bool $hideReplies = null,
+        ?bool $hideRepliesByUnfollowed = null,
+        ?int $hideRepliesByLikeCount = null,
+        ?bool $hideReposts = null,
+        ?bool $hideQuotePosts = null,
+    ): self {
+        $instance = new self();
+        $instance->feed = $feed;
+        $instance->hideReplies = $hideReplies;
+        $instance->hideRepliesByUnfollowed = $hideRepliesByUnfollowed;
+        $instance->hideRepliesByLikeCount = $hideRepliesByLikeCount;
+        $instance->hideReposts = $hideReposts;
+        $instance->hideQuotePosts = $hideQuotePosts;
+
+        return $instance;
+    }
 }

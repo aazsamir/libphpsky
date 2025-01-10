@@ -22,4 +22,14 @@ class RepoOp implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $action, string $path, string $cid): self
+    {
+        $instance = new self();
+        $instance->action = $action;
+        $instance->path = $path;
+        $instance->cid = $cid;
+
+        return $instance;
+    }
 }

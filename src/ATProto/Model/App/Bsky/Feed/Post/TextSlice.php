@@ -21,4 +21,13 @@ class TextSlice implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(int $start, int $end): self
+    {
+        $instance = new self();
+        $instance->start = $start;
+        $instance->end = $end;
+
+        return $instance;
+    }
 }

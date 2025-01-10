@@ -22,4 +22,14 @@ class Entity implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(string $type, string $value, ?TextSlice $index = null): self
+    {
+        $instance = new self();
+        $instance->type = $type;
+        $instance->value = $value;
+        $instance->index = $index;
+
+        return $instance;
+    }
 }

@@ -24,4 +24,21 @@ class ProfileAssociated implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        ?int $lists = null,
+        ?int $feedgens = null,
+        ?int $starterPacks = null,
+        ?bool $labeler = null,
+        ?ProfileAssociatedChat $chat = null,
+    ): self {
+        $instance = new self();
+        $instance->lists = $lists;
+        $instance->feedgens = $feedgens;
+        $instance->starterPacks = $starterPacks;
+        $instance->labeler = $labeler;
+        $instance->chat = $chat;
+
+        return $instance;
+    }
 }

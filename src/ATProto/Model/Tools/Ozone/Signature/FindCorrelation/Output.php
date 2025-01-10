@@ -21,4 +21,15 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Signature\Defs\SigDetail[] $details
+     */
+    public static function new(array $details): self
+    {
+        $instance = new self();
+        $instance->details = $details;
+
+        return $instance;
+    }
 }

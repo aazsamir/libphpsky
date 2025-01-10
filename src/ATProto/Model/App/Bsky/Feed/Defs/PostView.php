@@ -34,4 +34,40 @@ class PostView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] $labels
+     */
+    public static function new(
+        string $uri,
+        string $cid,
+        mixed $record,
+        string $indexedAt,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewBasic $author = null,
+        mixed $embed = null,
+        ?int $replyCount = null,
+        ?int $repostCount = null,
+        ?int $likeCount = null,
+        ?int $quoteCount = null,
+        ?ViewerState $viewer = null,
+        ?array $labels = null,
+        ?ThreadgateView $threadgate = null,
+    ): self {
+        $instance = new self();
+        $instance->uri = $uri;
+        $instance->cid = $cid;
+        $instance->record = $record;
+        $instance->indexedAt = $indexedAt;
+        $instance->author = $author;
+        $instance->embed = $embed;
+        $instance->replyCount = $replyCount;
+        $instance->repostCount = $repostCount;
+        $instance->likeCount = $likeCount;
+        $instance->quoteCount = $quoteCount;
+        $instance->viewer = $viewer;
+        $instance->labels = $labels;
+        $instance->threadgate = $threadgate;
+
+        return $instance;
+    }
 }

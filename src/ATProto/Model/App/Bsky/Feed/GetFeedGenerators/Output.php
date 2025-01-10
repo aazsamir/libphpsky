@@ -21,4 +21,15 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\GeneratorView[] $feeds
+     */
+    public static function new(array $feeds): self
+    {
+        $instance = new self();
+        $instance->feeds = $feeds;
+
+        return $instance;
+    }
 }

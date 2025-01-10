@@ -28,4 +28,28 @@ class MessageView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] $facets
+     */
+    public static function new(
+        string $id,
+        string $rev,
+        string $text,
+        string $sentAt,
+        ?array $facets = null,
+        mixed $embed = null,
+        ?MessageViewSender $sender = null,
+    ): self {
+        $instance = new self();
+        $instance->id = $id;
+        $instance->rev = $rev;
+        $instance->text = $text;
+        $instance->sentAt = $sentAt;
+        $instance->facets = $facets;
+        $instance->embed = $embed;
+        $instance->sender = $sender;
+
+        return $instance;
+    }
 }

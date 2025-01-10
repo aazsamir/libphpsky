@@ -24,4 +24,17 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\Defs\SkeletonSearchStarterPack[] $starterPacks
+     */
+    public static function new(array $starterPacks, ?string $cursor = null, ?int $hitsTotal = null): self
+    {
+        $instance = new self();
+        $instance->starterPacks = $starterPacks;
+        $instance->cursor = $cursor;
+        $instance->hitsTotal = $hitsTotal;
+
+        return $instance;
+    }
 }

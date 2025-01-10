@@ -23,4 +23,16 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param string[] $values
+     */
+    public static function new(string $name, array $values): self
+    {
+        $instance = new self();
+        $instance->name = $name;
+        $instance->values = $values;
+
+        return $instance;
+    }
 }

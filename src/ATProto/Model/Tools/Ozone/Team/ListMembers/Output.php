@@ -23,4 +23,16 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Team\Defs\Member[] $members
+     */
+    public static function new(array $members, ?string $cursor = null): self
+    {
+        $instance = new self();
+        $instance->members = $members;
+        $instance->cursor = $cursor;
+
+        return $instance;
+    }
 }

@@ -23,4 +23,16 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\ConvoView[] $convos
+     */
+    public static function new(array $convos, ?string $cursor = null): self
+    {
+        $instance = new self();
+        $instance->convos = $convos;
+        $instance->cursor = $cursor;
+
+        return $instance;
+    }
 }

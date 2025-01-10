@@ -26,4 +26,25 @@ class JobStatus implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        string $jobId,
+        string $did,
+        string $state,
+        ?int $progress = null,
+        ?string $blob = null,
+        ?string $error = null,
+        ?string $message = null,
+    ): self {
+        $instance = new self();
+        $instance->jobId = $jobId;
+        $instance->did = $did;
+        $instance->state = $state;
+        $instance->progress = $progress;
+        $instance->blob = $blob;
+        $instance->error = $error;
+        $instance->message = $message;
+
+        return $instance;
+    }
 }

@@ -20,4 +20,12 @@ class ViewerConfig implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(?string $role = null): self
+    {
+        $instance = new self();
+        $instance->role = $role;
+
+        return $instance;
+    }
 }

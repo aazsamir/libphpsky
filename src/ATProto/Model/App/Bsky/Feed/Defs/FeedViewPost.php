@@ -23,4 +23,19 @@ class FeedViewPost implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    public static function new(
+        ?PostView $post = null,
+        ?ReplyRef $reply = null,
+        mixed $reason = null,
+        ?string $feedContext = null,
+    ): self {
+        $instance = new self();
+        $instance->post = $post;
+        $instance->reply = $reply;
+        $instance->reason = $reason;
+        $instance->feedContext = $feedContext;
+
+        return $instance;
+    }
 }

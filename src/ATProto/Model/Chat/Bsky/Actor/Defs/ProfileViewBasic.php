@@ -29,4 +29,30 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     {
         return self::ID;
     }
+
+    /**
+     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] $labels
+     */
+    public static function new(
+        string $did,
+        string $handle,
+        ?string $displayName = null,
+        ?string $avatar = null,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileAssociated $associated = null,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ViewerState $viewer = null,
+        ?array $labels = null,
+        ?bool $chatDisabled = null,
+    ): self {
+        $instance = new self();
+        $instance->did = $did;
+        $instance->handle = $handle;
+        $instance->displayName = $displayName;
+        $instance->avatar = $avatar;
+        $instance->associated = $associated;
+        $instance->viewer = $viewer;
+        $instance->labels = $labels;
+        $instance->chatDisabled = $chatDisabled;
+
+        return $instance;
+    }
 }
