@@ -33,6 +33,7 @@ trait FromArray
                 throw new \RuntimeException('Union and Intersection types are not supported yet');
             }
 
+            // union defs
             if (
                 $propertyType->getName() === 'mixed'
                 && $property->getDocComment() !== false
@@ -47,8 +48,15 @@ trait FromArray
                 }
 
                 $types = explode('|', $matches[1]);
+                $nullable = false;
                 
                 foreach ($types as $type) {
+                    if ($type === 'null') {
+                        $nullable = true;
+
+                        continue;
+                    }
+
                     // @phpstan-ignore-next-line
                     $classname = $type::ID . '#' . $type::NAME;
 
@@ -59,9 +67,14 @@ trait FromArray
                     }
                 }
 
+                if ($nullable && $value === null) {
+                    $instance->{$key} = null;
+                }
+
                 continue;
             }
 
+            // array defs
             if ($propertyType->getName() === 'array') {
                 // get phpdoc type
                 $docComment = $property->getDocComment();
@@ -79,6 +92,8 @@ trait FromArray
                 $type = $matches[1];
                 $type = str_replace('array<', '', $type);
                 $type = str_replace('>', '', $type);
+                $nullable = \str_contains($type, '|null');
+                $type = str_replace('|null', '', $type);
                 // if is builtin type
                 if (\in_array($type, ['int', 'float', 'string', 'bool', 'mixed', 'array'], true)) {
                     $instance->{$key} = $value;
@@ -86,12 +101,39 @@ trait FromArray
                     continue;
                 }
 
-                if (\is_array($value)) {
-                    if (class_exists($type)) {
-                        $instance->{$key} = array_map(static fn ($item) => $type::fromArray($item), $value);
-                    } else {
-                        $instance->{$key} = $value;
+                if (\str_contains('|', $type)) {
+                    $types = explode('|', $type);
+                } else {
+                    $types = [$type];
+                }
+
+                foreach ($types as $type) {
+                    if (\is_array($value)) {
+                        if (class_exists($type)) {
+                            $instance->{$key} = array_map(static fn ($item) => $type::fromArray($item), $value);
+    
+                            break;
+                        }
                     }
+                }
+
+                if (!isset($instance->{$key})) {
+                    $instance->{$key} = $value;
+                }
+
+                continue;
+            }
+
+            // unknown defs
+            if (
+                $propertyType->getName() === 'mixed'
+                && is_array($data[$key])
+                && isset($data[$key]['$type'])
+            ) {
+                $type = TypeResolver::resolve($data[$key]['$type'], $key);
+
+                if ($type) {
+                    $instance->{$key} = $type::fromArray($value);
                 }
 
                 continue;
