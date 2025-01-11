@@ -20,6 +20,10 @@ trait FromArray
                 continue;
             }
 
+            if (!$reflection->hasProperty($key)) {
+                continue;
+            }
+
             $property = $reflection->getProperty($key);
             $propertyType = $property->getType();
 
