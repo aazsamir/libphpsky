@@ -24,7 +24,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     public static function new(
-        mixed $thread,
+        \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\ThreadViewPost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\NotFoundPost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\BlockedPost $thread,
         ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\ThreadgateView $threadgate = null,
     ): self {
         $instance = new self();

@@ -16,7 +16,7 @@ class RelatedAccount implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\AccountView $account = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Signature\Defs\SigDetail[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Signature\Defs\SigDetail>|null */
     public ?array $similarities = [];
 
     public static function id(): string
@@ -25,7 +25,7 @@ class RelatedAccount implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Signature\Defs\SigDetail[] $similarities
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Signature\Defs\SigDetail> $similarities
      */
     public static function new(
         ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\AccountView $account = null,

@@ -18,19 +18,19 @@ class AccountView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $handle;
     public ?string $email = null;
 
-    /** @var mixed[] */
+    /** @var array<mixed>|null */
     public ?array $relatedRecords = [];
     public string $indexedAt;
     public ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCode $invitedBy = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCode[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCode>|null */
     public ?array $invites = [];
     public ?bool $invitesDisabled = null;
     public ?string $emailConfirmedAt = null;
     public ?string $inviteNote = null;
     public ?string $deactivatedAt = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\ThreatSignature[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\ThreatSignature>|null */
     public ?array $threatSignatures = [];
 
     public static function id(): string
@@ -39,9 +39,9 @@ class AccountView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param mixed[] $relatedRecords
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCode[] $invites
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\ThreatSignature[] $threatSignatures
+     * @param array<mixed> $relatedRecords
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCode> $invites
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\ThreatSignature> $threatSignatures
      */
     public static function new(
         string $did,

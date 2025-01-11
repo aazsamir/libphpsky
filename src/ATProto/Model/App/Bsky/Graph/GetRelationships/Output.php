@@ -16,7 +16,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public ?string $actor = null;
 
-    /** @var mixed[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\Relationship|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\NotFoundActor> */
     public array $relationships = [];
 
     public static function id(): string
@@ -25,7 +25,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param mixed[] $relationships
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\Relationship|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\NotFoundActor> $relationships
      */
     public static function new(array $relationships, ?string $actor = null): self
     {

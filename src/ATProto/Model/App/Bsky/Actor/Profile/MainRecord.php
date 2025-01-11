@@ -19,7 +19,7 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?string $avatar = null;
     public ?string $banner = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabels */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabels|null */
     public mixed $labels = null;
     public ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef $joinedViaStarterPack = null;
     public ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef $pinnedPost = null;
@@ -35,7 +35,7 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
         ?string $description = null,
         ?string $avatar = null,
         ?string $banner = null,
-        mixed $labels = null,
+        ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabels $labels = null,
         ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef $joinedViaStarterPack = null,
         ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef $pinnedPost = null,
         ?string $createdAt = null,

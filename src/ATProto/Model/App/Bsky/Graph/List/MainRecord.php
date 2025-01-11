@@ -18,11 +18,11 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $name;
     public ?string $description = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet>|null */
     public ?array $descriptionFacets = [];
     public ?string $avatar = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabels */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabels|null */
     public mixed $labels = null;
     public string $createdAt;
 
@@ -32,7 +32,7 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] $descriptionFacets
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet> $descriptionFacets
      */
     public static function new(
         string $name,
@@ -41,7 +41,7 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
         ?string $description = null,
         ?array $descriptionFacets = null,
         ?string $avatar = null,
-        mixed $labels = null,
+        ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabels $labels = null,
     ): self {
         $instance = new self();
         $instance->name = $name;

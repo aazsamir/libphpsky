@@ -14,7 +14,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'output';
     public const ID = 'com.atproto.server.listAppPasswords';
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\ListAppPasswords\AppPassword[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\ListAppPasswords\AppPassword> */
     public array $passwords = [];
 
     public static function id(): string
@@ -23,7 +23,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\ListAppPasswords\AppPassword[] $passwords
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\ListAppPasswords\AppPassword> $passwords
      */
     public static function new(array $passwords): self
     {

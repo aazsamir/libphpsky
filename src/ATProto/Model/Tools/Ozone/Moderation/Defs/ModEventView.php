@@ -19,10 +19,10 @@ class ModEventView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     /** @var \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventTakedown|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventReverseTakedown|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventComment|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventReport|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventLabel|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventAcknowledge|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventEscalate|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventMute|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventUnmute|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventMuteReporter|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventUnmuteReporter|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventEmail|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventResolveAppeal|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventDivert|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventTag|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\AccountEvent|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\IdentityEvent|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RecordEvent */
     public mixed $event;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\MessageRef */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef|\Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\MessageRef */
     public mixed $subject;
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $subjectBlobCids = [];
     public string $createdBy;
     public string $createdAt;
@@ -35,12 +35,12 @@ class ModEventView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $subjectBlobCids
+     * @param array<string> $subjectBlobCids
      */
     public static function new(
         int $id,
-        mixed $event,
-        mixed $subject,
+        ModEventTakedown|ModEventReverseTakedown|ModEventComment|ModEventReport|ModEventLabel|ModEventAcknowledge|ModEventEscalate|ModEventMute|ModEventUnmute|ModEventMuteReporter|ModEventUnmuteReporter|ModEventEmail|ModEventResolveAppeal|ModEventDivert|ModEventTag|AccountEvent|IdentityEvent|RecordEvent $event,
+        \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef|\Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\MessageRef $subject,
         array $subjectBlobCids,
         string $createdBy,
         string $createdAt,

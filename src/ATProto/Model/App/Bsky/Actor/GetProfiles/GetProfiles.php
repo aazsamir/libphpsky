@@ -21,7 +21,7 @@ class GetProfiles implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param string[] $actors
+     * @param array<string> $actors
      */
     function query(array $actors): Output
     {

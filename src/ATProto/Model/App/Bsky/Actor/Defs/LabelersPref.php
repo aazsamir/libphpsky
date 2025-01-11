@@ -14,7 +14,7 @@ class LabelersPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'labelersPref';
     public const ID = 'app.bsky.actor.defs';
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\LabelerPrefItem[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\LabelerPrefItem> */
     public array $labelers = [];
 
     public static function id(): string
@@ -23,7 +23,7 @@ class LabelersPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\LabelerPrefItem[] $labelers
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\LabelerPrefItem> $labelers
      */
     public static function new(array $labelers): self
     {

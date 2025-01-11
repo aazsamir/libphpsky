@@ -18,7 +18,7 @@ class RepoView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $handle;
     public ?string $email = null;
 
-    /** @var mixed[] */
+    /** @var array<mixed> */
     public array $relatedRecords = [];
     public string $indexedAt;
     public Moderation $moderation;
@@ -27,7 +27,7 @@ class RepoView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?string $inviteNote = null;
     public ?string $deactivatedAt = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\ThreatSignature[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\ThreatSignature>|null */
     public ?array $threatSignatures = [];
 
     public static function id(): string
@@ -36,8 +36,8 @@ class RepoView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param mixed[] $relatedRecords
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\ThreatSignature[] $threatSignatures
+     * @param array<mixed> $relatedRecords
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\ThreatSignature> $threatSignatures
      */
     public static function new(
         string $did,

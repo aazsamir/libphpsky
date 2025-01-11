@@ -20,15 +20,15 @@ class StarterPackView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewBasic $creator = null;
     public ?ListViewBasic $list = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\ListItemView[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\ListItemView>|null */
     public ?array $listItemsSample = [];
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\GeneratorView[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\GeneratorView>|null */
     public ?array $feeds = [];
     public ?int $joinedWeekCount = null;
     public ?int $joinedAllTimeCount = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
     public string $indexedAt;
 
@@ -38,9 +38,9 @@ class StarterPackView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\ListItemView[] $listItemsSample
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\GeneratorView[] $feeds
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] $labels
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\ListItemView> $listItemsSample
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\GeneratorView> $feeds
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label> $labels
      */
     public static function new(
         string $uri,

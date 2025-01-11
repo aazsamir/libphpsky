@@ -24,10 +24,10 @@ class Commit implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $since;
     public string $blocks;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Sync\SubscribeRepos\RepoOp[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Sync\SubscribeRepos\RepoOp> */
     public array $ops = [];
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $blobs = [];
     public string $time;
 
@@ -37,8 +37,8 @@ class Commit implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Sync\SubscribeRepos\RepoOp[] $ops
-     * @param string[] $blobs
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Sync\SubscribeRepos\RepoOp> $ops
+     * @param array<string> $blobs
      */
     public static function new(
         int $seq,

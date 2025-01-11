@@ -18,10 +18,10 @@ class MessageView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $rev;
     public string $text;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet>|null */
     public ?array $facets = [];
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Record\View */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Record\View|null */
     public mixed $embed = null;
     public ?MessageViewSender $sender = null;
     public string $sentAt;
@@ -32,7 +32,7 @@ class MessageView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] $facets
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet> $facets
      */
     public static function new(
         string $id,
@@ -40,7 +40,7 @@ class MessageView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
         string $text,
         string $sentAt,
         ?array $facets = null,
-        mixed $embed = null,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Record\View $embed = null,
         ?MessageViewSender $sender = null,
     ): self {
         $instance = new self();

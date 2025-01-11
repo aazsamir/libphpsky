@@ -21,7 +21,7 @@ class GetAccountInfos implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param string[] $dids
+     * @param array<string> $dids
      */
     function query(array $dids): Output
     {

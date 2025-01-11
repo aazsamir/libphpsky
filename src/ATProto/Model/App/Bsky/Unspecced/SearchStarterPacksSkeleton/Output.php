@@ -17,7 +17,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?string $cursor = null;
     public ?int $hitsTotal = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\Defs\SkeletonSearchStarterPack[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\Defs\SkeletonSearchStarterPack> */
     public array $starterPacks = [];
 
     public static function id(): string
@@ -26,7 +26,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\Defs\SkeletonSearchStarterPack[] $starterPacks
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\Defs\SkeletonSearchStarterPack> $starterPacks
      */
     public static function new(array $starterPacks, ?string $cursor = null, ?int $hitsTotal = null): self
     {

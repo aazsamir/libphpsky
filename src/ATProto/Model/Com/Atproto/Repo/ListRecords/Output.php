@@ -16,7 +16,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public ?string $cursor = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\ListRecords\Record[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\ListRecords\Record> */
     public array $records = [];
 
     public static function id(): string
@@ -25,7 +25,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\ListRecords\Record[] $records
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\ListRecords\Record> $records
      */
     public static function new(array $records, ?string $cursor = null): self
     {

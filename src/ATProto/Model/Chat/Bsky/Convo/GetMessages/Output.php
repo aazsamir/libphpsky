@@ -16,7 +16,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public ?string $cursor = null;
 
-    /** @var mixed[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\DeletedMessageView> */
     public array $messages = [];
 
     public static function id(): string
@@ -25,7 +25,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param mixed[] $messages
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\DeletedMessageView> $messages
      */
     public static function new(array $messages, ?string $cursor = null): self
     {

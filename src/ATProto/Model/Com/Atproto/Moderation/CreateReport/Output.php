@@ -18,7 +18,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $reasonType;
     public ?string $reason = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Moderation\CreateReport\CreateReport */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef */
     public mixed $subject;
     public string $reportedBy;
     public string $createdAt;
@@ -31,7 +31,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public static function new(
         int $id,
         string $reasonType,
-        mixed $subject,
+        \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef $subject,
         string $reportedBy,
         string $createdAt,
         ?string $reason = null,

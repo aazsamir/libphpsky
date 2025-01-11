@@ -21,8 +21,8 @@ class QueryLabels implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param string[] $uriPatterns
-     * @param ?string[] $sources
+     * @param array<string> $uriPatterns
+     * @param ?array<string> $sources
      */
     function query(array $uriPatterns, ?array $sources = null, ?int $limit = null, ?string $cursor = null): Output
     {

@@ -21,11 +21,11 @@ class QueryStatuses implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param ?string[] $hostingStatuses
-     * @param ?string[] $ignoreSubjects
-     * @param ?string[] $tags
-     * @param ?string[] $excludeTags
-     * @param ?string[] $collections
+     * @param ?array<string> $hostingStatuses
+     * @param ?array<string> $ignoreSubjects
+     * @param ?array<string> $tags
+     * @param ?array<string> $excludeTags
+     * @param ?array<string> $collections
      */
     function query(
         ?int $queueCount = null,

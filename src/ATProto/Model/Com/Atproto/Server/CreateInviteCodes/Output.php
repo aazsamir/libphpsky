@@ -14,7 +14,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'output';
     public const ID = 'com.atproto.server.createInviteCodes';
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\CreateInviteCodes\AccountCodes[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\CreateInviteCodes\AccountCodes> */
     public array $codes = [];
 
     public static function id(): string
@@ -23,7 +23,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\CreateInviteCodes\AccountCodes[] $codes
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\CreateInviteCodes\AccountCodes> $codes
      */
     public static function new(array $codes): self
     {

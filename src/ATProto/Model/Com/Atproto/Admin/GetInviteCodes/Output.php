@@ -16,7 +16,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public ?string $cursor = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCode[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCode> */
     public array $codes = [];
 
     public static function id(): string
@@ -25,7 +25,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCode[] $codes
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCode> $codes
      */
     public static function new(array $codes, ?string $cursor = null): self
     {

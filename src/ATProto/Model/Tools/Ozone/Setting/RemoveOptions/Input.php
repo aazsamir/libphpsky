@@ -14,7 +14,7 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'input';
     public const ID = 'tools.ozone.setting.removeOptions';
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $keys = [];
     public string $scope;
 
@@ -24,7 +24,7 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $keys
+     * @param array<string> $keys
      */
     public static function new(array $keys, string $scope): self
     {

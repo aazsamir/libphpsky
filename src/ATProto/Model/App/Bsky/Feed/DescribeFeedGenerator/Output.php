@@ -16,7 +16,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public string $did;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\DescribeFeedGenerator\Feed[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\DescribeFeedGenerator\Feed> */
     public array $feeds = [];
     public ?Links $links = null;
 
@@ -26,7 +26,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\DescribeFeedGenerator\Feed[] $feeds
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\DescribeFeedGenerator\Feed> $feeds
      */
     public static function new(string $did, array $feeds, ?Links $links = null): self
     {

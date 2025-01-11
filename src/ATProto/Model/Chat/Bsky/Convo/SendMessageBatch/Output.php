@@ -14,7 +14,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'output';
     public const ID = 'chat.bsky.convo.sendMessageBatch';
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\MessageView[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\MessageView> */
     public array $items = [];
 
     public static function id(): string
@@ -23,7 +23,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\MessageView[] $items
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\MessageView> $items
      */
     public static function new(array $items): self
     {

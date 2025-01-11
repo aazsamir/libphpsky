@@ -14,7 +14,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'output';
     public const ID = 'tools.ozone.moderation.getRepos';
 
-    /** @var mixed[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RepoViewDetail|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RepoViewNotFound> */
     public array $repos = [];
 
     public static function id(): string
@@ -23,7 +23,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param mixed[] $repos
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RepoViewDetail|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RepoViewNotFound> $repos
      */
     public static function new(array $repos): self
     {

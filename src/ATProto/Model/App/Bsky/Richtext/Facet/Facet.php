@@ -16,7 +16,7 @@ class Facet implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public ?ByteSlice $index = null;
 
-    /** @var mixed[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Mention|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Link|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Tag> */
     public array $features = [];
 
     public static function id(): string
@@ -25,7 +25,7 @@ class Facet implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param mixed[] $features
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Mention|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Link|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Tag> $features
      */
     public static function new(array $features, ?ByteSlice $index = null): self
     {

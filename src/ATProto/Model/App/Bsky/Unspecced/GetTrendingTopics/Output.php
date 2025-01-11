@@ -14,10 +14,10 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'output';
     public const ID = 'app.bsky.unspecced.getTrendingTopics';
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\Defs\TrendingTopic[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\Defs\TrendingTopic> */
     public array $topics = [];
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\Defs\TrendingTopic[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\Defs\TrendingTopic> */
     public array $suggested = [];
 
     public static function id(): string
@@ -26,8 +26,8 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\Defs\TrendingTopic[] $topics
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\Defs\TrendingTopic[] $suggested
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\Defs\TrendingTopic> $topics
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Unspecced\Defs\TrendingTopic> $suggested
      */
     public static function new(array $topics, array $suggested): self
     {

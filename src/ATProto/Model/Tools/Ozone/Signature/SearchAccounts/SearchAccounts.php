@@ -21,7 +21,7 @@ class SearchAccounts implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param string[] $values
+     * @param array<string> $values
      */
     function query(array $values, ?string $cursor = null, ?int $limit = null): Output
     {

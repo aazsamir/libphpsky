@@ -21,7 +21,7 @@ class ListViewBasic implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?string $avatar = null;
     public ?int $listItemCount = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
     public ?ListViewerState $viewer = null;
     public ?string $indexedAt = null;
@@ -32,7 +32,7 @@ class ListViewBasic implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] $labels
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label> $labels
      */
     public static function new(
         string $uri,

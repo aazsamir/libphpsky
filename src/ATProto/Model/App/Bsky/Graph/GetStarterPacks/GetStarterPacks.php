@@ -21,7 +21,7 @@ class GetStarterPacks implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param string[] $uris
+     * @param array<string> $uris
      */
     function query(array $uris): Output
     {

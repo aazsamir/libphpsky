@@ -16,7 +16,7 @@ class AccountCodes implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public string $account;
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $codes = [];
 
     public static function id(): string
@@ -25,7 +25,7 @@ class AccountCodes implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $codes
+     * @param array<string> $codes
      */
     public static function new(string $account, array $codes): self
     {

@@ -14,7 +14,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'output';
     public const ID = 'tools.ozone.set.querySets';
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Set\Defs\SetView[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Set\Defs\SetView> */
     public array $sets = [];
     public ?string $cursor = null;
 
@@ -24,7 +24,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Set\Defs\SetView[] $sets
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Set\Defs\SetView> $sets
      */
     public static function new(array $sets, ?string $cursor = null): self
     {

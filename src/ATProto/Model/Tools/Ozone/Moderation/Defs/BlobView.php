@@ -19,7 +19,7 @@ class BlobView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public int $size;
     public string $createdAt;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ImageDetails|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\VideoDetails */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ImageDetails|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\VideoDetails|null */
     public mixed $details = null;
     public ?Moderation $moderation = null;
 
@@ -33,7 +33,7 @@ class BlobView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
         string $mimeType,
         int $size,
         string $createdAt,
-        mixed $details = null,
+        ImageDetails|VideoDetails|null $details = null,
         ?Moderation $moderation = null,
     ): self {
         $instance = new self();

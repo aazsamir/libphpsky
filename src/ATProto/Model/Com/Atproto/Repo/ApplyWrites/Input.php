@@ -17,7 +17,7 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $repo;
     public ?bool $validate = null;
 
-    /** @var mixed[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\ApplyWrites\Create|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\ApplyWrites\Update|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\ApplyWrites\Delete> */
     public array $writes = [];
     public ?string $swapCommit = null;
 
@@ -27,7 +27,7 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param mixed[] $writes
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\ApplyWrites\Create|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\ApplyWrites\Update|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\ApplyWrites\Delete> $writes
      */
     public static function new(string $repo, array $writes, ?bool $validate = null, ?string $swapCommit = null): self
     {

@@ -16,10 +16,10 @@ class BskyAppStatePref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public ?BskyAppProgressGuide $activeProgressGuide = null;
 
-    /** @var string[] */
+    /** @var array<string>|null */
     public ?array $queuedNudges = [];
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\Nux[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\Nux>|null */
     public ?array $nuxs = [];
 
     public static function id(): string
@@ -28,8 +28,8 @@ class BskyAppStatePref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $queuedNudges
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\Nux[] $nuxs
+     * @param array<string> $queuedNudges
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\Nux> $nuxs
      */
     public static function new(
         ?BskyAppProgressGuide $activeProgressGuide = null,

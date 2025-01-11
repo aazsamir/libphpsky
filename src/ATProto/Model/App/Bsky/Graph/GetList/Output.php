@@ -17,7 +17,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?string $cursor = null;
     public ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\ListView $list = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\ListItemView[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\ListItemView> */
     public array $items = [];
 
     public static function id(): string
@@ -26,7 +26,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\ListItemView[] $items
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\ListItemView> $items
      */
     public static function new(
         array $items,

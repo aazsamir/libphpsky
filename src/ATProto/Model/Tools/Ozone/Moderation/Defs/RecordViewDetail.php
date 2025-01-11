@@ -18,10 +18,10 @@ class RecordViewDetail implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $cid;
     public mixed $value;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\BlobView[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\BlobView> */
     public array $blobs = [];
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
     public string $indexedAt;
     public ?ModerationDetail $moderation = null;
@@ -33,8 +33,8 @@ class RecordViewDetail implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\BlobView[] $blobs
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] $labels
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\BlobView> $blobs
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label> $labels
      */
     public static function new(
         string $uri,

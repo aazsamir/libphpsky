@@ -16,10 +16,10 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public ?string $token = null;
 
-    /** @var string[] */
+    /** @var array<string>|null */
     public ?array $rotationKeys = [];
 
-    /** @var string[] */
+    /** @var array<string>|null */
     public ?array $alsoKnownAs = [];
     public mixed $verificationMethods = null;
     public mixed $services = null;
@@ -30,8 +30,8 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $rotationKeys
-     * @param string[] $alsoKnownAs
+     * @param array<string> $rotationKeys
+     * @param array<string> $alsoKnownAs
      */
     public static function new(
         ?string $token = null,

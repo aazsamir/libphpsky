@@ -20,7 +20,7 @@ class GetConvoForMembers implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param string[] $members
+     * @param array<string> $members
      */
     function query(array $members): Output
     {

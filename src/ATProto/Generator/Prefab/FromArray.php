@@ -36,6 +36,7 @@ trait FromArray
             if (
                 $propertyType->getName() === 'mixed'
                 && $property->getDocComment() !== false
+                && is_array($data[$key])
                 && isset($data[$key]['$type'])
             ) {
                 $docComment = $property->getDocComment();
@@ -48,6 +49,7 @@ trait FromArray
                 $types = explode('|', $matches[1]);
                 
                 foreach ($types as $type) {
+                    // @phpstan-ignore-next-line
                     $classname = $type::ID . '#' . $type::NAME;
 
                     if ($classname === $data[$key]['$type']) {
@@ -75,7 +77,8 @@ trait FromArray
                 }
 
                 $type = $matches[1];
-                $type = str_replace('[]', '', $type);
+                $type = str_replace('array<', '', $type);
+                $type = str_replace('>', '', $type);
                 // if is builtin type
                 if (\in_array($type, ['int', 'float', 'string', 'bool', 'mixed', 'array'], true)) {
                     $instance->{$key} = $value;
@@ -84,7 +87,11 @@ trait FromArray
                 }
 
                 if (\is_array($value)) {
-                    $instance->{$key} = array_map(static fn ($item) => $type::fromArray($item), $value);
+                    if (class_exists($type)) {
+                        $instance->{$key} = array_map(static fn ($item) => $type::fromArray($item), $value);
+                    } else {
+                        $instance->{$key} = $value;
+                    }
                 }
 
                 continue;

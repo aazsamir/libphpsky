@@ -16,10 +16,10 @@ class ModEventLabel implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public ?string $comment = null;
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $createLabelVals = [];
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $negateLabelVals = [];
 
     public static function id(): string
@@ -28,8 +28,8 @@ class ModEventLabel implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $createLabelVals
-     * @param string[] $negateLabelVals
+     * @param array<string> $createLabelVals
+     * @param array<string> $negateLabelVals
      */
     public static function new(array $createLabelVals, array $negateLabelVals, ?string $comment = null): self
     {

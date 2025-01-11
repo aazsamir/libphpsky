@@ -30,6 +30,7 @@ use Nette\PhpGenerator\Method;
 use Nette\PhpGenerator\PhpFile;
 use Nette\PhpGenerator\PhpNamespace;
 use Nette\PhpGenerator\PsrPrinter;
+use Nette\PhpGenerator\Type;
 
 class Maker
 {
@@ -215,10 +216,21 @@ class Maker
                     $property = $this->unref($property);
                     $phpProperty = $class->addProperty($propertyName);
                     $phpPropertyType = $this->namespaceAndClassname($property);
+                    $nullable = empty($def->required())
+                        || !\in_array($property->name(), $def->required(), true);
+
+                    if ($nullable) {
+                        $phpProperty->setNullable($nullable);
+                        $phpProperty->setValue(null);
+                    }
 
                     if ($property instanceof ArrayDef) {
                         $phpProperty->setType('array');
-                        $phpProperty->addComment('@var ' . $phpPropertyType);
+                        if ($nullable) {
+                            $phpProperty->addComment('@var ' . $phpPropertyType . '|null');
+                        } else {
+                            $phpProperty->addComment('@var ' . $phpPropertyType);
+                        }
                     } elseif ($property instanceof UnionDef) {
                         $phpProperty->setType('mixed');
                         $types = [];
@@ -227,18 +239,17 @@ class Maker
                             $types[] = $this->namespaceAndClassname($type);
                         }
 
-                        $types = implode('|', $types);
-                        $phpProperty->addComment('@var ' . $types);
+                        if ($types) {
+                            if ($nullable) {
+                                $types[] = 'null';
+                            }
+
+                            $types = Type::union(...$types);
+
+                            $phpProperty->addComment('@var ' . $types);    
+                        }
                     } else {
                         $phpProperty->setType($phpPropertyType);
-                    }
-
-                    $nullable = empty($def->required())
-                        || !\in_array($property->name(), $def->required(), true);
-
-                    if ($nullable) {
-                        $phpProperty->setNullable($nullable);
-                        $phpProperty->setValue(null);
                     }
 
                     if ($property instanceof ArrayDef) {
@@ -329,8 +340,19 @@ class Maker
             case $def instanceof ArrayDef:
                 $item = $this->unref($def->items());
 
-                return $this->defToClassName($item) . '[]';
+                return 'array<'.$this->defToClassName($item) .'>';
             case $def instanceof UnionDef:
+                $types = [];
+
+                foreach ($def->resolvedRefs() as $type) {
+                    $types[] = $this->namespaceAndClassname($type);
+                }
+
+                if (empty($types)) {
+                    return 'mixed';
+                }
+
+                return implode('|', $types);
             case $def instanceof UnknownDef:
                 return 'mixed';
         }
@@ -381,14 +403,21 @@ class Maker
         }
 
         $nonArrayClassname = $classname;
-        $nonArrayClassname = str_replace('[]', '', $nonArrayClassname);
+        $nonArrayClassname = str_replace('array<', '', $nonArrayClassname);
+        $nonArrayClassname = str_replace('>', '', $nonArrayClassname);
 
         if (\in_array($nonArrayClassname, ['int', 'bool', 'string', 'mixed', 'array'], true)) {
             return $classname;
         }
 
+        if ($def instanceof UnionDef) {
+            return $classname;
+        }
+
         if ($def instanceof ArrayDef) {
             $def = $this->unref($def->items());
+
+            return 'array<' . $this->namespaceAndClassname($def) . '>';
         }
 
         $namespace = $this->lexiconToNamespace($this->config, $def->lexicon());

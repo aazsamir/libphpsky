@@ -14,7 +14,7 @@ class SelfLabels implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'selfLabels';
     public const ID = 'com.atproto.label.defs';
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabel[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabel> */
     public array $values = [];
 
     public static function id(): string
@@ -23,7 +23,7 @@ class SelfLabels implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabel[] $values
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabel> $values
      */
     public static function new(array $values): self
     {

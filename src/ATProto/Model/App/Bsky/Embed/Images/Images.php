@@ -14,7 +14,7 @@ class Images implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'main';
     public const ID = 'app.bsky.embed.images';
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\Image[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\Image> */
     public array $images = [];
 
     public static function id(): string
@@ -23,7 +23,7 @@ class Images implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\Image[] $images
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\Image> $images
      */
     public static function new(array $images): self
     {

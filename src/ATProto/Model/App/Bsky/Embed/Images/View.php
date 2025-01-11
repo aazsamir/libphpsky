@@ -14,7 +14,7 @@ class View implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'view';
     public const ID = 'app.bsky.embed.images';
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\ViewImage[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\ViewImage> */
     public array $images = [];
 
     public static function id(): string
@@ -23,7 +23,7 @@ class View implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\ViewImage[] $images
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\ViewImage> $images
      */
     public static function new(array $images): self
     {

@@ -16,7 +16,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public ?\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Set\Defs\SetView $set = null;
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $values = [];
     public ?string $cursor = null;
 
@@ -26,7 +26,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $values
+     * @param array<string> $values
      */
     public static function new(
         array $values,

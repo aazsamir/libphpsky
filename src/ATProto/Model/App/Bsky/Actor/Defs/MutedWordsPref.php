@@ -14,7 +14,7 @@ class MutedWordsPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'mutedWordsPref';
     public const ID = 'app.bsky.actor.defs';
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\MutedWord[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\MutedWord> */
     public array $items = [];
 
     public static function id(): string
@@ -23,7 +23,7 @@ class MutedWordsPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\MutedWord[] $items
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\MutedWord> $items
      */
     public static function new(array $items): self
     {

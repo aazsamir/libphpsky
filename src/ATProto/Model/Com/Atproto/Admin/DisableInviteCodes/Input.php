@@ -14,10 +14,10 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.admin.disableInviteCodes';
 
-    /** @var string[] */
+    /** @var array<string>|null */
     public ?array $codes = [];
 
-    /** @var string[] */
+    /** @var array<string>|null */
     public ?array $accounts = [];
 
     public static function id(): string
@@ -26,8 +26,8 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $codes
-     * @param string[] $accounts
+     * @param array<string> $codes
+     * @param array<string> $accounts
      */
     public static function new(?array $codes = null, ?array $accounts = null): self
     {

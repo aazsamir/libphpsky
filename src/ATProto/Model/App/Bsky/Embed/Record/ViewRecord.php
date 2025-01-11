@@ -19,14 +19,14 @@ class ViewRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewBasic $author = null;
     public mixed $value;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
     public ?int $replyCount = null;
     public ?int $repostCount = null;
     public ?int $likeCount = null;
     public ?int $quoteCount = null;
 
-    /** @var mixed[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\External\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Record\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\RecordWithMedia\View>|null */
     public ?array $embeds = [];
     public string $indexedAt;
 
@@ -36,8 +36,8 @@ class ViewRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] $labels
-     * @param mixed[] $embeds
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label> $labels
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\External\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Record\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\RecordWithMedia\View> $embeds
      */
     public static function new(
         string $uri,

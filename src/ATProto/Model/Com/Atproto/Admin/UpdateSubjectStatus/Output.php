@@ -14,7 +14,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'output';
     public const ID = 'com.atproto.admin.updateSubjectStatus';
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\UpdateSubjectStatus\UpdateSubjectStatus|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoBlobRef */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoBlobRef */
     public mixed $subject;
     public ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\StatusAttr $takedown = null;
 
@@ -24,7 +24,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     public static function new(
-        mixed $subject,
+        \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoBlobRef $subject,
         ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\StatusAttr $takedown = null,
     ): self {
         $instance = new self();

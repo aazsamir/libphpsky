@@ -16,7 +16,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public ?string $cursor = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\ListMissingBlobs\RecordBlob[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\ListMissingBlobs\RecordBlob> */
     public array $blobs = [];
 
     public static function id(): string
@@ -25,7 +25,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\ListMissingBlobs\RecordBlob[] $blobs
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\ListMissingBlobs\RecordBlob> $blobs
      */
     public static function new(array $blobs, ?string $cursor = null): self
     {

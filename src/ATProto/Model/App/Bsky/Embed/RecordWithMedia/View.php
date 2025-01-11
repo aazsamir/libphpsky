@@ -25,7 +25,7 @@ class View implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     public static function new(
-        mixed $media,
+        \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\External\View $media,
         ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Record\View $record = null,
     ): self {
         $instance = new self();

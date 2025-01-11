@@ -16,7 +16,7 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Labeler\Defs\LabelerPolicies $policies = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabels */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabels|null */
     public mixed $labels = null;
     public string $createdAt;
 
@@ -28,7 +28,7 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public static function new(
         string $createdAt,
         ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Labeler\Defs\LabelerPolicies $policies = null,
-        mixed $labels = null,
+        ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabels $labels = null,
     ): self {
         $instance = new self();
         $instance->createdAt = $createdAt;

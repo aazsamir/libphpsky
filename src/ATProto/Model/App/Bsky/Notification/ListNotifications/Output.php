@@ -16,7 +16,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public ?string $cursor = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Notification\ListNotifications\Notification[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Notification\ListNotifications\Notification> */
     public array $notifications = [];
     public ?bool $priority = null;
     public ?string $seenAt = null;
@@ -27,7 +27,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Notification\ListNotifications\Notification[] $notifications
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Notification\ListNotifications\Notification> $notifications
      */
     public static function new(
         array $notifications,

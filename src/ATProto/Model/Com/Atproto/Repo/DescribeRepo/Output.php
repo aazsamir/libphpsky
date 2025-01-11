@@ -18,7 +18,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $did;
     public mixed $didDoc;
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $collections = [];
     public bool $handleIsCorrect;
 
@@ -28,7 +28,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $collections
+     * @param array<string> $collections
      */
     public static function new(
         string $handle,

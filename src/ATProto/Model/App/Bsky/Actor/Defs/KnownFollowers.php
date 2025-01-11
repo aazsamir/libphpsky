@@ -16,7 +16,7 @@ class KnownFollowers implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public int $count;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewBasic[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewBasic> */
     public array $followers = [];
 
     public static function id(): string
@@ -25,7 +25,7 @@ class KnownFollowers implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewBasic[] $followers
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewBasic> $followers
      */
     public static function new(int $count, array $followers): self
     {

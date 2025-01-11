@@ -14,10 +14,10 @@ class LabelerPolicies implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'labelerPolicies';
     public const ID = 'app.bsky.labeler.defs';
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $labelValues = [];
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\LabelValueDefinition[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\LabelValueDefinition>|null */
     public ?array $labelValueDefinitions = [];
 
     public static function id(): string
@@ -26,8 +26,8 @@ class LabelerPolicies implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $labelValues
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\LabelValueDefinition[] $labelValueDefinitions
+     * @param array<string> $labelValues
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\LabelValueDefinition> $labelValueDefinitions
      */
     public static function new(array $labelValues, ?array $labelValueDefinitions = null): self
     {

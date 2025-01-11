@@ -21,7 +21,7 @@ class InviteCode implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $createdBy;
     public string $createdAt;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCodeUse[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCodeUse> */
     public array $uses = [];
 
     public static function id(): string
@@ -30,7 +30,7 @@ class InviteCode implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCodeUse[] $uses
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\Defs\InviteCodeUse> $uses
      */
     public static function new(
         string $code,

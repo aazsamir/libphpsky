@@ -18,7 +18,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?string $cid = null;
     public ?string $cursor = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\PostView[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\PostView> */
     public array $posts = [];
 
     public static function id(): string
@@ -27,7 +27,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\PostView[] $posts
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\PostView> $posts
      */
     public static function new(string $uri, array $posts, ?string $cid = null, ?string $cursor = null): self
     {

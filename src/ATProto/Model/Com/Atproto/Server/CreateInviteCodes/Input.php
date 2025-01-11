@@ -17,7 +17,7 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public int $codeCount;
     public int $useCount;
 
-    /** @var string[] */
+    /** @var array<string>|null */
     public ?array $forAccounts = [];
 
     public static function id(): string
@@ -26,7 +26,7 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $forAccounts
+     * @param array<string> $forAccounts
      */
     public static function new(int $codeCount, int $useCount, ?array $forAccounts = null): self
     {

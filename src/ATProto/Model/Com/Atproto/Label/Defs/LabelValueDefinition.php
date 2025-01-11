@@ -20,7 +20,7 @@ class LabelValueDefinition implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?string $defaultSetting = null;
     public ?bool $adultOnly = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\LabelValueDefinitionStrings[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\LabelValueDefinitionStrings> */
     public array $locales = [];
 
     public static function id(): string
@@ -29,7 +29,7 @@ class LabelValueDefinition implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\LabelValueDefinitionStrings[] $locales
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\LabelValueDefinitionStrings> $locales
      */
     public static function new(
         string $identifier,

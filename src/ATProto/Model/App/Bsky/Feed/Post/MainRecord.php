@@ -16,23 +16,23 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public string $text;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Post\Entity[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Post\Entity>|null */
     public ?array $entities = [];
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet>|null */
     public ?array $facets = [];
     public ?ReplyRef $reply = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Post\Post|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Post\Post|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Post\Post|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Post\Post|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Post\Post */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\Images|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Video\Video|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\External\External|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Record\Record|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\RecordWithMedia\RecordWithMedia|null */
     public mixed $embed = null;
 
-    /** @var string[] */
+    /** @var array<string>|null */
     public ?array $langs = [];
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabels */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabels|null */
     public mixed $labels = null;
 
-    /** @var string[] */
+    /** @var array<string>|null */
     public ?array $tags = [];
     public string $createdAt;
 
@@ -42,10 +42,10 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Post\Entity[] $entities
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] $facets
-     * @param string[] $langs
-     * @param string[] $tags
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Post\Entity> $entities
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet> $facets
+     * @param array<string> $langs
+     * @param array<string> $tags
      */
     public static function new(
         string $text,
@@ -53,9 +53,9 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
         ?array $entities = null,
         ?array $facets = null,
         ?ReplyRef $reply = null,
-        mixed $embed = null,
+        \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\Images|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Video\Video|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\External\External|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Record\Record|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\RecordWithMedia\RecordWithMedia|null $embed = null,
         ?array $langs = null,
-        mixed $labels = null,
+        ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\SelfLabels $labels = null,
         ?array $tags = null,
     ): self {
         $instance = new self();

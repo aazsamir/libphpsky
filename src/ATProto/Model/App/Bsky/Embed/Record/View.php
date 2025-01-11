@@ -22,8 +22,9 @@ class View implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
         return self::ID;
     }
 
-    public static function new(mixed $record): self
-    {
+    public static function new(
+        ViewRecord|ViewNotFound|ViewBlocked|ViewDetached|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\GeneratorView|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\ListView|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Labeler\Defs\LabelerView|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\StarterPackViewBasic $record,
+    ): self {
         $instance = new self();
         $instance->record = $record;
 

@@ -52,8 +52,10 @@ class Lexicon
     public function findDefByRef(string $ref, ?string $lexicon): ?Def
     {
         // if there is no # in the ref, it means we are looking for a `main` def
+        // and given ref is the lexicon id
         if (!str_contains($ref, '#')) {
             $name = 'main';
+            $lexicon = $ref;
         } else {
             // otherwise, it is member of lexicon
             $exploded = explode('#', $ref);

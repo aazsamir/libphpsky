@@ -14,7 +14,7 @@ class SavedFeedsPrefV2 implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'savedFeedsPrefV2';
     public const ID = 'app.bsky.actor.defs';
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\SavedFeed[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\SavedFeed> */
     public array $items = [];
 
     public static function id(): string
@@ -23,7 +23,7 @@ class SavedFeedsPrefV2 implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\SavedFeed[] $items
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\SavedFeed> $items
      */
     public static function new(array $items): self
     {

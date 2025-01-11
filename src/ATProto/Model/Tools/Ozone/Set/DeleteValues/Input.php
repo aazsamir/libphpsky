@@ -16,7 +16,7 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public string $name;
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $values = [];
 
     public static function id(): string
@@ -25,7 +25,7 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $values
+     * @param array<string> $values
      */
     public static function new(string $name, array $values): self
     {

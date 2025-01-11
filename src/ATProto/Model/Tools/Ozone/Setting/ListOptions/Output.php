@@ -16,7 +16,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public ?string $cursor = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Setting\Defs\Option[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Setting\Defs\Option> */
     public array $options = [];
 
     public static function id(): string
@@ -25,7 +25,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Setting\Defs\Option[] $options
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Setting\Defs\Option> $options
      */
     public static function new(array $options, ?string $cursor = null): self
     {

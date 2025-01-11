@@ -14,7 +14,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'output';
     public const ID = 'app.bsky.feed.getFeedGenerators';
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\GeneratorView[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\GeneratorView> */
     public array $feeds = [];
 
     public static function id(): string
@@ -23,7 +23,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\GeneratorView[] $feeds
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\GeneratorView> $feeds
      */
     public static function new(array $feeds): self
     {

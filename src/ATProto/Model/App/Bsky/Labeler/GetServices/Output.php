@@ -14,7 +14,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'output';
     public const ID = 'app.bsky.labeler.getServices';
 
-    /** @var mixed[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Labeler\Defs\LabelerView|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Labeler\Defs\LabelerViewDetailed> */
     public array $views = [];
 
     public static function id(): string
@@ -23,7 +23,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param mixed[] $views
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Labeler\Defs\LabelerView|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Labeler\Defs\LabelerViewDetailed> $views
      */
     public static function new(array $views): self
     {

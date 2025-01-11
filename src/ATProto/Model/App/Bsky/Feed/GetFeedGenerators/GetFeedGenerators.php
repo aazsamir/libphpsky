@@ -21,7 +21,7 @@ class GetFeedGenerators implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param string[] $feeds
+     * @param array<string> $feeds
      */
     function query(array $feeds): Output
     {

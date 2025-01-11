@@ -14,7 +14,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'output';
     public const ID = 'tools.ozone.communication.listTemplates';
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Communication\Defs\TemplateView[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Communication\Defs\TemplateView> */
     public array $communicationTemplates = [];
 
     public static function id(): string
@@ -23,7 +23,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Communication\Defs\TemplateView[] $communicationTemplates
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Communication\Defs\TemplateView> $communicationTemplates
      */
     public static function new(array $communicationTemplates): self
     {

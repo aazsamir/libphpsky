@@ -14,7 +14,7 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'input';
     public const ID = 'app.bsky.feed.sendInteractions';
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\Interaction[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\Interaction> */
     public array $interactions = [];
 
     public static function id(): string
@@ -23,7 +23,7 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\Interaction[] $interactions
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\Interaction> $interactions
      */
     public static function new(array $interactions): self
     {

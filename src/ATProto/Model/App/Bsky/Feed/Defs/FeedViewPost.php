@@ -17,7 +17,7 @@ class FeedViewPost implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?PostView $post = null;
     public ?ReplyRef $reply = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\ReasonRepost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\ReasonPin */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\ReasonRepost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\ReasonPin|null */
     public mixed $reason = null;
     public ?string $feedContext = null;
 
@@ -29,7 +29,7 @@ class FeedViewPost implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public static function new(
         ?PostView $post = null,
         ?ReplyRef $reply = null,
-        mixed $reason = null,
+        ReasonRepost|ReasonPin|null $reason = null,
         ?string $feedContext = null,
     ): self {
         $instance = new self();

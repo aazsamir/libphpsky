@@ -21,7 +21,7 @@ class GetRelationships implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param ?string[] $others
+     * @param ?array<string> $others
      */
     function query(string $actor, ?array $others = null): Output
     {

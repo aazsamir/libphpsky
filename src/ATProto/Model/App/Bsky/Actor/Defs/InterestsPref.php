@@ -14,7 +14,7 @@ class InterestsPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'interestsPref';
     public const ID = 'app.bsky.actor.defs';
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $tags = [];
 
     public static function id(): string
@@ -23,7 +23,7 @@ class InterestsPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $tags
+     * @param array<string> $tags
      */
     public static function new(array $tags): self
     {

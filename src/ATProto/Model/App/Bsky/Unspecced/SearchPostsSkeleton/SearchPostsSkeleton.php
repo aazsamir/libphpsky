@@ -21,7 +21,7 @@ class SearchPostsSkeleton implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param ?string[] $tag
+     * @param ?array<string> $tag
      */
     function query(
         string $q,

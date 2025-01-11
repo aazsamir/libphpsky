@@ -14,7 +14,7 @@ class HiddenPostsPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'hiddenPostsPref';
     public const ID = 'app.bsky.actor.defs';
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $items = [];
 
     public static function id(): string
@@ -23,7 +23,7 @@ class HiddenPostsPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $items
+     * @param array<string> $items
      */
     public static function new(array $items): self
     {

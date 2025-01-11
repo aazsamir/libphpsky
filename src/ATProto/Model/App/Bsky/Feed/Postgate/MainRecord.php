@@ -17,10 +17,10 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $createdAt;
     public string $post;
 
-    /** @var string[] */
+    /** @var array<string>|null */
     public ?array $detachedEmbeddingUris = [];
 
-    /** @var mixed[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Postgate\DisableRule>|null */
     public ?array $embeddingRules = [];
 
     public static function id(): string
@@ -29,8 +29,8 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $detachedEmbeddingUris
-     * @param mixed[] $embeddingRules
+     * @param array<string> $detachedEmbeddingUris
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Postgate\DisableRule> $embeddingRules
      */
     public static function new(
         string $createdAt,

@@ -16,7 +16,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public ?string $cursor = null;
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $cids = [];
 
     public static function id(): string
@@ -25,7 +25,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $cids
+     * @param array<string> $cids
      */
     public static function new(array $cids, ?string $cursor = null): self
     {

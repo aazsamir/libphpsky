@@ -17,7 +17,7 @@ class MutedWord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?string $id = null;
     public string $value;
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $targets = [];
     public ?string $actorTarget = null;
     public ?string $expiresAt = null;
@@ -28,7 +28,7 @@ class MutedWord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $targets
+     * @param array<string> $targets
      */
     public static function new(
         string $value,

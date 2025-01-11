@@ -16,10 +16,10 @@ class ThreadViewPost implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public ?PostView $post = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\ThreadViewPost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\NotFoundPost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\BlockedPost */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\ThreadViewPost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\NotFoundPost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\BlockedPost|null */
     public mixed $parent = null;
 
-    /** @var mixed[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\ThreadViewPost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\NotFoundPost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\BlockedPost>|null */
     public ?array $replies = [];
 
     public static function id(): string
@@ -28,10 +28,13 @@ class ThreadViewPost implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param mixed[] $replies
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\ThreadViewPost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\NotFoundPost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\BlockedPost> $replies
      */
-    public static function new(?PostView $post = null, mixed $parent = null, ?array $replies = null): self
-    {
+    public static function new(
+        ?PostView $post = null,
+        ThreadViewPost|NotFoundPost|BlockedPost|null $parent = null,
+        ?array $replies = null,
+    ): self {
         $instance = new self();
         $instance->post = $post;
         $instance->parent = $parent;

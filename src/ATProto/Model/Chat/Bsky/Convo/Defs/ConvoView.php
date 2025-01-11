@@ -17,10 +17,10 @@ class ConvoView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $id;
     public string $rev;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Actor\Defs\ProfileViewBasic[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Actor\Defs\ProfileViewBasic> */
     public array $members = [];
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\DeletedMessageView */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\DeletedMessageView|null */
     public mixed $lastMessage = null;
     public bool $muted;
     public ?bool $opened = null;
@@ -32,7 +32,7 @@ class ConvoView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Actor\Defs\ProfileViewBasic[] $members
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Actor\Defs\ProfileViewBasic> $members
      */
     public static function new(
         string $id,
@@ -40,7 +40,7 @@ class ConvoView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
         array $members,
         bool $muted,
         int $unreadCount,
-        mixed $lastMessage = null,
+        MessageView|DeletedMessageView|null $lastMessage = null,
         ?bool $opened = null,
     ): self {
         $instance = new self();

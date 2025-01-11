@@ -14,10 +14,10 @@ class ModEventTag implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'modEventTag';
     public const ID = 'tools.ozone.moderation.defs';
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $add = [];
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $remove = [];
     public ?string $comment = null;
 
@@ -27,8 +27,8 @@ class ModEventTag implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $add
-     * @param string[] $remove
+     * @param array<string> $add
+     * @param array<string> $remove
      */
     public static function new(array $add, array $remove, ?string $comment = null): self
     {

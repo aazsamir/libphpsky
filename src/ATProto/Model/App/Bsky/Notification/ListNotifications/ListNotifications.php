@@ -21,7 +21,7 @@ class ListNotifications implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param ?string[] $reasons
+     * @param ?array<string> $reasons
      */
     function query(
         ?array $reasons = null,

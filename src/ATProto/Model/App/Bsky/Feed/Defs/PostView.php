@@ -19,7 +19,7 @@ class PostView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewBasic $author = null;
     public mixed $record;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\External\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Record\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\RecordWithMedia\View */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\External\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Record\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\RecordWithMedia\View|null */
     public mixed $embed = null;
     public ?int $replyCount = null;
     public ?int $repostCount = null;
@@ -28,7 +28,7 @@ class PostView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $indexedAt;
     public ?ViewerState $viewer = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
     public ?ThreadgateView $threadgate = null;
 
@@ -38,7 +38,7 @@ class PostView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label[] $labels
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Label\Defs\Label> $labels
      */
     public static function new(
         string $uri,
@@ -46,7 +46,7 @@ class PostView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
         mixed $record,
         string $indexedAt,
         ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewBasic $author = null,
-        mixed $embed = null,
+        \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\External\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Record\View|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\RecordWithMedia\View|null $embed = null,
         ?int $replyCount = null,
         ?int $repostCount = null,
         ?int $likeCount = null,

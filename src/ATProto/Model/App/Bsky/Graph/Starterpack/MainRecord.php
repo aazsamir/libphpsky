@@ -17,11 +17,11 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $name;
     public ?string $description = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet>|null */
     public ?array $descriptionFacets = [];
     public string $list;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Starterpack\FeedItem[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Starterpack\FeedItem>|null */
     public ?array $feeds = [];
     public string $createdAt;
 
@@ -31,8 +31,8 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] $descriptionFacets
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Starterpack\FeedItem[] $feeds
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet> $descriptionFacets
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Starterpack\FeedItem> $feeds
      */
     public static function new(
         string $name,

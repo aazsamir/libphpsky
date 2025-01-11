@@ -17,7 +17,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?bool $inviteCodeRequired = null;
     public ?bool $phoneVerificationRequired = null;
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $availableUserDomains = [];
     public ?Links $links = null;
     public ?Contact $contact = null;
@@ -29,7 +29,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $availableUserDomains
+     * @param array<string> $availableUserDomains
      */
     public static function new(
         array $availableUserDomains,

@@ -21,13 +21,13 @@ class QueryEvents implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param ?string[] $types
-     * @param ?string[] $collections
-     * @param ?string[] $addedLabels
-     * @param ?string[] $removedLabels
-     * @param ?string[] $addedTags
-     * @param ?string[] $removedTags
-     * @param ?string[] $reportTypes
+     * @param ?array<string> $types
+     * @param ?array<string> $collections
+     * @param ?array<string> $addedLabels
+     * @param ?array<string> $removedLabels
+     * @param ?array<string> $addedTags
+     * @param ?array<string> $removedTags
+     * @param ?array<string> $reportTypes
      */
     function query(
         ?array $types = null,

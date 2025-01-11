@@ -16,7 +16,7 @@ class SkeletonFeedPost implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public string $post;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\SkeletonReasonRepost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\SkeletonReasonPin */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\SkeletonReasonRepost|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Defs\SkeletonReasonPin|null */
     public mixed $reason = null;
     public ?string $feedContext = null;
 
@@ -25,8 +25,11 @@ class SkeletonFeedPost implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
         return self::ID;
     }
 
-    public static function new(string $post, mixed $reason = null, ?string $feedContext = null): self
-    {
+    public static function new(
+        string $post,
+        SkeletonReasonRepost|SkeletonReasonPin|null $reason = null,
+        ?string $feedContext = null,
+    ): self {
         $instance = new self();
         $instance->post = $post;
         $instance->reason = $reason;

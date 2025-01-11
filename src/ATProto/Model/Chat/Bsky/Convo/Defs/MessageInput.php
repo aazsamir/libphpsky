@@ -16,10 +16,10 @@ class MessageInput implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public string $text;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet>|null */
     public ?array $facets = [];
 
-    /** @var */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Record\Record|null */
     public mixed $embed = null;
 
     public static function id(): string
@@ -28,10 +28,13 @@ class MessageInput implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet[] $facets
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Richtext\Facet\Facet> $facets
      */
-    public static function new(string $text, ?array $facets = null, mixed $embed = null): self
-    {
+    public static function new(
+        string $text,
+        ?array $facets = null,
+        ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Embed\Record\Record $embed = null,
+    ): self {
         $instance = new self();
         $instance->text = $text;
         $instance->facets = $facets;

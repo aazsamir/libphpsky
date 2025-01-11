@@ -22,7 +22,7 @@ class ModEventViewDetail implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     /** @var \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RepoView|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RepoViewNotFound|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RecordView|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RecordViewNotFound */
     public mixed $subject;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\BlobView[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\BlobView> */
     public array $subjectBlobs = [];
     public string $createdBy;
     public string $createdAt;
@@ -33,12 +33,12 @@ class ModEventViewDetail implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\BlobView[] $subjectBlobs
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\BlobView> $subjectBlobs
      */
     public static function new(
         int $id,
-        mixed $event,
-        mixed $subject,
+        ModEventTakedown|ModEventReverseTakedown|ModEventComment|ModEventReport|ModEventLabel|ModEventAcknowledge|ModEventEscalate|ModEventMute|ModEventUnmute|ModEventMuteReporter|ModEventUnmuteReporter|ModEventEmail|ModEventResolveAppeal|ModEventDivert|ModEventTag|AccountEvent|IdentityEvent|RecordEvent $event,
+        RepoView|RepoViewNotFound|RecordView|RecordViewNotFound $subject,
         array $subjectBlobs,
         string $createdBy,
         string $createdAt,

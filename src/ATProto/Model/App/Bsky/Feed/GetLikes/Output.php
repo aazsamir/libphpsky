@@ -18,7 +18,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?string $cid = null;
     public ?string $cursor = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\GetLikes\Like[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\GetLikes\Like> */
     public array $likes = [];
 
     public static function id(): string
@@ -27,7 +27,7 @@ class Output implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\GetLikes\Like[] $likes
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\GetLikes\Like> $likes
      */
     public static function new(string $uri, array $likes, ?string $cid = null, ?string $cursor = null): self
     {

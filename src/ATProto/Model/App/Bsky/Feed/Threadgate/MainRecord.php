@@ -16,11 +16,11 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public string $post;
 
-    /** @var mixed[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Threadgate\MentionRule|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Threadgate\FollowingRule|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Threadgate\ListRule>|null */
     public ?array $allow = [];
     public string $createdAt;
 
-    /** @var string[] */
+    /** @var array<string>|null */
     public ?array $hiddenReplies = [];
 
     public static function id(): string
@@ -29,8 +29,8 @@ class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param mixed[] $allow
-     * @param string[] $hiddenReplies
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Threadgate\MentionRule|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Threadgate\FollowingRule|\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Threadgate\ListRule> $allow
+     * @param array<string> $hiddenReplies
      */
     public static function new(
         string $post,

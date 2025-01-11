@@ -16,13 +16,13 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 
     public int $id;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef */
     public mixed $subject;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\AccountHosting|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RecordHosting */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\AccountHosting|\Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RecordHosting|null */
     public mixed $hosting = null;
 
-    /** @var string[] */
+    /** @var array<string>|null */
     public ?array $subjectBlobCids = [];
     public ?string $subjectRepoHandle = null;
     public string $updatedAt;
@@ -39,7 +39,7 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?bool $appealed = null;
     public ?string $suspendUntil = null;
 
-    /** @var string[] */
+    /** @var array<string>|null */
     public ?array $tags = [];
 
     public static function id(): string
@@ -48,15 +48,15 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $subjectBlobCids
-     * @param string[] $tags
+     * @param array<string> $subjectBlobCids
+     * @param array<string> $tags
      */
     public static function new(
         int $id,
-        mixed $subject,
+        \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef $subject,
         string $updatedAt,
         string $createdAt,
-        mixed $hosting = null,
+        AccountHosting|RecordHosting|null $hosting = null,
         ?array $subjectBlobCids = null,
         ?string $subjectRepoHandle = null,
         ?string $reviewState = null,

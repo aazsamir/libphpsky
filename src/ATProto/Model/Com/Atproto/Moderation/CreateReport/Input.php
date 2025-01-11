@@ -17,7 +17,7 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $reasonType;
     public ?string $reason = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Moderation\CreateReport\CreateReport */
+    /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef */
     public mixed $subject;
 
     public static function id(): string
@@ -25,8 +25,11 @@ class Input implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
         return self::ID;
     }
 
-    public static function new(string $reasonType, mixed $subject, ?string $reason = null): self
-    {
+    public static function new(
+        string $reasonType,
+        \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef $subject,
+        ?string $reason = null,
+    ): self {
         $instance = new self();
         $instance->reasonType = $reasonType;
         $instance->subject = $subject;

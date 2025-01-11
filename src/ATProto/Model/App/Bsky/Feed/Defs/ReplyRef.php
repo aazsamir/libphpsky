@@ -27,8 +27,8 @@ class ReplyRef implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     public static function new(
-        mixed $root,
-        mixed $parent,
+        PostView|NotFoundPost|BlockedPost $root,
+        PostView|NotFoundPost|BlockedPost $parent,
         ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewBasic $grandparentAuthor = null,
     ): self {
         $instance = new self();

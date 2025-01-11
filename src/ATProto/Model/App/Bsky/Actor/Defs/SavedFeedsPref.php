@@ -14,10 +14,10 @@ class SavedFeedsPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public const NAME = 'savedFeedsPref';
     public const ID = 'app.bsky.actor.defs';
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $pinned = [];
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $saved = [];
     public ?int $timelineIndex = null;
 
@@ -27,8 +27,8 @@ class SavedFeedsPref implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $pinned
-     * @param string[] $saved
+     * @param array<string> $pinned
+     * @param array<string> $saved
      */
     public static function new(array $pinned, array $saved, ?int $timelineIndex = null): self
     {

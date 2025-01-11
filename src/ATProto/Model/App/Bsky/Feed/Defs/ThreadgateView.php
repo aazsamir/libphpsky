@@ -18,7 +18,7 @@ class ThreadgateView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public ?string $cid = null;
     public mixed $record = null;
 
-    /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\ListViewBasic[] */
+    /** @var array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\ListViewBasic>|null */
     public ?array $lists = [];
 
     public static function id(): string
@@ -27,7 +27,7 @@ class ThreadgateView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\ListViewBasic[] $lists
+     * @param array<\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Defs\ListViewBasic> $lists
      */
     public static function new(
         ?string $uri = null,

@@ -21,7 +21,7 @@ class GetBlocks implements \Aazsamir\Libphpsky\ATProto\Action
     }
 
     /**
-     * @param string[] $cids
+     * @param array<string> $cids
      */
     function query(string $did, array $cids): mixed
     {

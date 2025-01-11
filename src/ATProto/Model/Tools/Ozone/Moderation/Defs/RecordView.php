@@ -18,7 +18,7 @@ class RecordView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     public string $cid;
     public mixed $value;
 
-    /** @var string[] */
+    /** @var array<string> */
     public array $blobCids = [];
     public string $indexedAt;
     public Moderation $moderation;
@@ -30,7 +30,7 @@ class RecordView implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
     }
 
     /**
-     * @param string[] $blobCids
+     * @param array<string> $blobCids
      */
     public static function new(
         string $uri,

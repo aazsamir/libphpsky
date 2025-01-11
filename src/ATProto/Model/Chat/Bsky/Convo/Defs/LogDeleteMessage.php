@@ -25,7 +25,7 @@ class LogDeleteMessage implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
         return self::ID;
     }
 
-    public static function new(string $rev, string $convoId, mixed $message): self
+    public static function new(string $rev, string $convoId, MessageView|DeletedMessageView $message): self
     {
         $instance = new self();
         $instance->rev = $rev;
