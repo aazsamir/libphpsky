@@ -6,6 +6,4 @@ namespace Aazsamir\Libphpsky\ATProto\Client;
 
 use Psr\Http\Client\ClientInterface;
 
-interface ATProtoClientInterface extends ClientInterface
-{
-}
+interface ATProtoClientInterface extends ClientInterface {}

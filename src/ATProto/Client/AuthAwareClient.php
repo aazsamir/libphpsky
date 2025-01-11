@@ -23,10 +23,10 @@ class AuthAwareClient implements ATProtoClientInterface
     public function sendRequest(RequestInterface $request): ResponseInterface
     {
         $uri = (string) $request->getUri()->getPath();
-        $uri = \strtolower($uri);
+        $uri = strtolower($uri);
 
         // ugly, but to prevent infinite loop
-        if (\str_contains($uri, 'session')) {
+        if (str_contains($uri, 'session')) {
             return $this->decorated->sendRequest($request);
         }
 
@@ -47,6 +47,10 @@ class AuthAwareClient implements ATProtoClientInterface
     {
         $session = $this->sessionStore->retrieve($this->authConfig);
 
+        if ($this->authConfig->login() === null || $this->authConfig->password() === null) {
+            throw new AuthException('ClientError', 'Login and password must be set');
+        }
+
         if ($session === null) {
             $createSession = CreateSession::default();
             $input = \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\CreateSession\Input::new(
@@ -55,7 +59,7 @@ class AuthAwareClient implements ATProtoClientInterface
                 authFactorToken: $this->authConfig->authFactorToken(),
                 allowTakendown: $this->authConfig->allowTakendown(),
             );
-    
+
             $session = $createSession->procedure($input);
             $session = new Session($session->accessJwt, $session->refreshJwt);
 

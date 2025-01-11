@@ -37,7 +37,11 @@ class ATProtoException extends \Exception
         ?string $endpoint = null,
         ?string $query = null,
     ): string {
-        $formattedMessage = $error . ': ' . $message .'[' . $this->code . ']';
+        $formattedMessage = $error . ': ' . $message;
+
+        if ($this->code && \is_int($this->code)) {
+            $formattedMessage .= '[' . $this->code . ']';
+        }
 
         if ($endpoint !== null || $query !== null) {
             $formattedMessage .= ' (';
@@ -45,7 +49,7 @@ class ATProtoException extends \Exception
             if ($endpoint !== null) {
                 $formattedMessage .= 'Endpoint: ' . $endpoint;
             }
-    
+
             if ($query !== null) {
                 $formattedMessage .= ' Query: ' . $query;
             }

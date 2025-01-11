@@ -16,7 +16,6 @@ class ATProtoClient implements ATProtoClientInterface
 
     public function sendRequest(RequestInterface $request): ResponseInterface
     {
-        dump((string) $request->getUri());
         return $this->client->sendRequest($request);
     }
 }

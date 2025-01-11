@@ -8,6 +8,9 @@ use Aazsamir\Libphpsky\ATProto\Client\AuthConfig;
 
 class MemorySessionStore implements SessionStore
 {
+    /**
+     * @var array<string, Session>
+     */
     private array $sessions = [];
 
     public function store(AuthConfig $authConfig, Session $session): void

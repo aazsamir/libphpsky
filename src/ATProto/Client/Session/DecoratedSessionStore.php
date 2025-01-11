@@ -28,7 +28,7 @@ class DecoratedSessionStore implements SessionStore
         }
 
         $actual = $this->actual->retrieve($authConfig);
-        
+
         if ($actual === null) {
             return null;
         }

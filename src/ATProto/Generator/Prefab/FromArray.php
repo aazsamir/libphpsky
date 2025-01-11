@@ -16,7 +16,7 @@ trait FromArray
         $reflection = new \ReflectionClass($instance);
 
         foreach ($data as $key => $value) {
-            if (\str_starts_with($key, '$')) {
+            if (str_starts_with($key, '$')) {
                 continue;
             }
 
@@ -41,7 +41,7 @@ trait FromArray
             if (
                 $propertyType->getName() === 'mixed'
                 && $property->getDocComment() !== false
-                && is_array($data[$key])
+                && \is_array($data[$key])
                 && isset($data[$key]['$type'])
             ) {
                 $docComment = $property->getDocComment();
@@ -53,7 +53,7 @@ trait FromArray
 
                 $types = explode('|', $matches[1]);
                 $nullable = false;
-                
+
                 foreach ($types as $type) {
                     if ($type === 'null') {
                         $nullable = true;
@@ -61,12 +61,12 @@ trait FromArray
                         continue;
                     }
 
-                    // @phpstan-ignore-next-line
+                    /** @phpstan-ignore-next-line */
                     $classname = $type::ID . '#' . $type::NAME;
 
                     if ($classname === $data[$key]['$type']) {
                         $instance->{$key} = $type::fromArray($value);
-                        
+
                         break;
                     }
                 }
@@ -96,7 +96,7 @@ trait FromArray
                 $type = $matches[1];
                 $type = str_replace('array<', '', $type);
                 $type = str_replace('>', '', $type);
-                $nullable = \str_contains($type, '|null');
+                $nullable = str_contains($type, '|null');
                 $type = str_replace('|null', '', $type);
                 // if is builtin type
                 if (\in_array($type, ['int', 'float', 'string', 'bool', 'mixed', 'array'], true)) {
@@ -105,7 +105,7 @@ trait FromArray
                     continue;
                 }
 
-                if (\str_contains('|', $type)) {
+                if (str_contains('|', $type)) {
                     $types = explode('|', $type);
                 } else {
                     $types = [$type];
@@ -115,7 +115,7 @@ trait FromArray
                     if (\is_array($value)) {
                         if (class_exists($type)) {
                             $instance->{$key} = array_map(static fn ($item) => $type::fromArray($item), $value);
-    
+
                             break;
                         }
                     }
@@ -131,8 +131,9 @@ trait FromArray
             // unknown defs
             if (
                 $propertyType->getName() === 'mixed'
-                && is_array($data[$key])
+                && \is_array($data[$key])
                 && isset($data[$key]['$type'])
+                && \is_string($data[$key]['$type'])
             ) {
                 $type = TypeResolver::resolve($data[$key]['$type'], $key);
 

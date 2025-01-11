@@ -26,7 +26,8 @@ class PsrCacheSessionStore implements SessionStore
         $this->cache->save($cacheItem);
     }
 
-    public function retrieve(AuthConfig $authConfig): ?Session {
+    public function retrieve(AuthConfig $authConfig): ?Session
+    {
         $cacheItem = $this->cache->getItem($this->key($authConfig));
 
         if (!$cacheItem->isHit()) {
@@ -34,6 +35,15 @@ class PsrCacheSessionStore implements SessionStore
         }
 
         $data = $cacheItem->get();
+
+        if (
+            !\is_array($data)
+            || !isset($data['access'], $data['refresh'])
+            || !\is_string($data['access'])
+            || !\is_string($data['refresh'])
+        ) {
+            return null;
+        }
 
         return new Session($data['access'], $data['refresh']);
     }

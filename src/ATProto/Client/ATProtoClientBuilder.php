@@ -41,8 +41,17 @@ class ATProtoClientBuilder
 
     public function defaultAuthConfig(): AuthConfig
     {
-        $login = isset($_ENV['ATPROTO_LOGIN']) ? $_ENV['ATPROTO_LOGIN'] : null;
-        $password = isset($_ENV['ATPROTO_PASSWORD']) ? $_ENV['ATPROTO_PASSWORD'] : null;
+        $login = $_ENV['ATPROTO_LOGIN'] ?? null;
+        $password = $_ENV['ATPROTO_PASSWORD'] ?? null;
+
+        if ($login !== null && !\is_string($login)) {
+            throw new \RuntimeException('ATPROTO_LOGIN must be a string');
+        }
+
+        if ($password !== null && !\is_string($password)) {
+            throw new \RuntimeException('ATPROTO_PASSWORD must be a string');
+        }
+
         $authConfig = new AuthConfig(
             login: $login,
             password: $password,
@@ -53,21 +62,17 @@ class ATProtoClientBuilder
 
     public function defaultSessionStore(): SessionStore
     {
-        $sessionStore = new DecoratedSessionStore(
+        return new DecoratedSessionStore(
             decorated: new MemorySessionStore(),
             actual: new PsrCacheSessionStore(
                 cache: $this->cache,
             ),
         );
-
-        return $sessionStore;
     }
 
     public function defaultCache(): CacheItemPoolInterface
     {
-        $cache = new FilesystemAdapter();
-
-        return $cache;
+        return new FilesystemAdapter();
     }
 
     public function authConfig(AuthConfig $authConfig): self
@@ -111,14 +116,12 @@ class ATProtoClientBuilder
             );
         }
 
-        $client = new AuthAwareClient(
+        return new AuthAwareClient(
             decorated: new ErrorAwareClient(
                 decorated: $client,
             ),
             authConfig: $this->authConfig,
             sessionStore: $this->sessionStore,
         );
-
-        return $client;
     }
 }

@@ -24,11 +24,11 @@ class TypeResolver
         }
 
         $namespace = explode('.', $namespace);
-        $namespace = array_map(fn($part) => ucfirst($part), $namespace);
+        $namespace = array_map(static fn ($part) => ucfirst($part), $namespace);
         $namespace = implode('\\', $namespace);
         $class = ucfirst($class);
-        $class = '\\Aazsamir\\Libphpsky\\ATProto\\Model\\' . $namespace . '\\' . $class;
-        
+        $class = '\Aazsamir\Libphpsky\ATProto\Model\\' . $namespace . '\\' . $class;
+
         if (!class_exists($class)) {
             return null;
         }

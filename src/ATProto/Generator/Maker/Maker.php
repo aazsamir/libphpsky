@@ -101,7 +101,13 @@ class Maker
                 $method->setPublic();
 
                 if ($def->parameters()) {
-                    foreach ($def->parameters()->properties()->toArray() as $property) {
+                    $properties = $def->parameters()->properties()->toArray();
+
+                    // sort by nullability
+                    $required = $def->parameters()->required() ?? [];
+                    usort($properties, static fn ($a, $b) => !\in_array($a->name(), $required, true) <=> !\in_array($b->name(), $required, true));
+
+                    foreach ($properties as $property) {
                         $propertyName = $property->name();
                         $property = $this->unref($property);
                         $parameter = $method->addParameter($propertyName);
@@ -248,7 +254,7 @@ class Maker
 
                             $types = Type::union(...$types);
 
-                            $phpProperty->addComment('@var ' . $types);    
+                            $phpProperty->addComment('@var ' . $types);
                         }
                     } else {
                         $phpProperty->setType($phpPropertyType);
@@ -342,7 +348,7 @@ class Maker
             case $def instanceof ArrayDef:
                 $item = $this->unref($def->items());
 
-                return 'array<'.$this->defToClassName($item) .'>';
+                return 'array<' . $this->defToClassName($item) . '>';
             case $def instanceof UnionDef:
                 $types = [];
 

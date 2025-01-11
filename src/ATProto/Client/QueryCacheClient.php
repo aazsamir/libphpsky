@@ -27,7 +27,7 @@ class QueryCacheClient implements ATProtoClientInterface
         $key = $this->key($request);
         $item = $this->cache->getItem($key);
 
-        if ($item->isHit()) {
+        if ($item->isHit() && \is_string($item->get())) {
             return $this->unserializeResponse($item->get());
         }
 
@@ -49,7 +49,7 @@ class QueryCacheClient implements ATProtoClientInterface
 
     private function serializeResponse(ResponseInterface $response): string
     {
-        return \serialize([
+        return serialize([
             'status' => $response->getStatusCode(),
             'headers' => $response->getHeaders(),
             'body' => (string) $response->getBody(),
@@ -59,7 +59,10 @@ class QueryCacheClient implements ATProtoClientInterface
 
     private function unserializeResponse(string $string): ResponseInterface
     {
-        $data = \unserialize($string);
+        /**
+         * @var array{status: int, headers: array<string, array<string>>, body: string, reason: string} $data
+         */
+        $data = unserialize($string);
 
         return new Response(
             status: $data['status'],
@@ -72,11 +75,11 @@ class QueryCacheClient implements ATProtoClientInterface
     private function key(RequestInterface $request): string
     {
         $uri = (string) $request->getUri();
-        $uri = \strtolower($uri);
+        $uri = strtolower($uri);
         $auth = $request->getHeader('Authorization');
         $auth = implode('', $auth);
         $uri .= $auth;
 
-        return $this->prefix . \md5($uri);
+        return $this->prefix . md5($uri);
     }
 }
