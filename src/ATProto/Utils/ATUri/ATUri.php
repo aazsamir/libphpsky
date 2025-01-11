@@ -25,7 +25,6 @@ class ATUri implements UriInterface
         $path = $uri[1] ?? '';
 
         return new self(
-            'at',
             $host,
             $path,
         );

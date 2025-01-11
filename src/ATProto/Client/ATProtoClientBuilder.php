@@ -8,6 +8,8 @@ use Aazsamir\Libphpsky\ATProto\Client\Session\DecoratedSessionStore;
 use Aazsamir\Libphpsky\ATProto\Client\Session\MemorySessionStore;
 use Aazsamir\Libphpsky\ATProto\Client\Session\PsrCacheSessionStore;
 use Aazsamir\Libphpsky\ATProto\Client\Session\SessionStore;
+use Amp\Http\Client\HttpClient;
+use Amp\Http\Client\HttpClientBuilder;
 use GuzzleHttp\Client;
 use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
@@ -19,6 +21,8 @@ class ATProtoClientBuilder
     private static ATProtoClientInterface $default;
     private CacheItemPoolInterface $cache;
     private bool $useQueryCache = true;
+    private bool $useAsync = false;
+    private HttpClient $amphpClient;
 
     public static function getDefault(): ATProtoClientInterface
     {
@@ -75,6 +79,11 @@ class ATProtoClientBuilder
         return new FilesystemAdapter();
     }
 
+    public function defaultAmphpClient(): HttpClient
+    {
+        return HttpClientBuilder::buildDefault();
+    }
+
     public function authConfig(AuthConfig $authConfig): self
     {
         $this->authConfig = $authConfig;
@@ -103,11 +112,36 @@ class ATProtoClientBuilder
         return $this;
     }
 
+    public function useAsync(bool $useAsync): self
+    {
+        $this->useAsync = $useAsync;
+
+        return $this;
+    }
+
+    public function amphpClient(HttpClient $amphpClient): self
+    {
+        $this->amphpClient = $amphpClient;
+        $this->useAsync(true);
+
+        return $this;
+    }
+
     public function build(): ATProtoClientInterface
     {
-        $client = new ATProtoClient(
-            new Client(),
-        );
+        if ($this->useAsync === false) {
+            $client = new ATProtoClient(
+                new Client(),
+            );
+        } else {
+            if (!isset($this->amphpClient)) {
+                $this->amphpClient($this->defaultAmphpClient());
+            }
+
+            $client = new AmphpClientAdapter(
+                $this->amphpClient,
+            );
+        }
 
         if ($this->useQueryCache) {
             $client = new QueryCacheClient(

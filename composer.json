@@ -16,7 +16,9 @@
         "psr/http-client": "^1.0",
         "guzzlehttp/guzzle": "^7.9",
         "psr/cache": "^3.0",
-        "symfony/cache": "^7.2"
+        "symfony/cache": "^7.2",
+        "amphp/amp": "^3.0",
+        "amphp/http-client": "^5.2"
     },
     "minimum-stability": "stable",
     "require-dev": {
