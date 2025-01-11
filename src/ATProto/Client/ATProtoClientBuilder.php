@@ -100,12 +100,8 @@ class ATProtoClientBuilder
 
     public function build(): ATProtoClientInterface
     {
-        $client = new AuthAwareClient(
-            decorated: new ErrorAwareClient(
-                decorated: new Client(),
-            ),
-            authConfig: $this->authConfig,
-            sessionStore: $this->sessionStore,
+        $client = new ATProtoClient(
+            new Client(),
         );
 
         if ($this->useQueryCache) {
@@ -114,6 +110,14 @@ class ATProtoClientBuilder
                 cache: $this->cache,
             );
         }
+
+        $client = new AuthAwareClient(
+            decorated: new ErrorAwareClient(
+                decorated: $client,
+            ),
+            authConfig: $this->authConfig,
+            sessionStore: $this->sessionStore,
+        );
 
         return $client;
     }

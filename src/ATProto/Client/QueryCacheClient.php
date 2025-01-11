@@ -14,7 +14,7 @@ class QueryCacheClient implements ATProtoClientInterface
     public function __construct(
         private ATProtoClientInterface $decorated,
         private CacheItemPoolInterface $cache,
-        private int $ttl = 600,
+        private int $ttl = 3600,
         private string $prefix = 'atproto_query_cache_',
     ) {}
 
@@ -32,6 +32,12 @@ class QueryCacheClient implements ATProtoClientInterface
         }
 
         $response = $this->decorated->sendRequest($request);
+
+        // cache 200 as their are successful responses, and 400 as they are client errors
+        if ($response->getStatusCode() !== 200 && $response->getStatusCode() !== 400) {
+            return $response;
+        }
+
         $item->set(
             $this->serializeResponse($response),
         );

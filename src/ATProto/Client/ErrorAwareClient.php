@@ -40,13 +40,31 @@ class ErrorAwareClient implements ATProtoClientInterface
             }
 
             if ($response->getStatusCode() === 401) {
-                throw new AuthException($error, $message, $response->getStatusCode());
+                throw new AuthException(
+                    error: $error,
+                    message: $message,
+                    code: $response->getStatusCode(),
+                    endpoint: $request->getUri()->getPath() ?: null,
+                    query: $request->getUri()->getQuery() ?: null,
+                );
             }
 
             if ($query) {
-                throw new QueryException($error, $message, $response->getStatusCode());
+                throw new QueryException(
+                    error: $error,
+                    message: $message,
+                    code: $response->getStatusCode(),
+                    endpoint: $request->getUri()->getPath() ?: null,
+                    query: $request->getUri()->getQuery() ?: null,
+                );
             } else {
-                throw new ProcedureException($error, $message, $response->getStatusCode());
+                throw new ProcedureException(
+                    error: $error,
+                    message: $message,
+                    code: $response->getStatusCode(),
+                    endpoint: $request->getUri()->getPath() ?: null,
+                    query: $request->getUri()->getQuery() ?: null,
+                );
             }
         }
 

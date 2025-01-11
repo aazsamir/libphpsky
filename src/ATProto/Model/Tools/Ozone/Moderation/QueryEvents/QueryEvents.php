@@ -28,6 +28,7 @@ class QueryEvents implements \Aazsamir\Libphpsky\ATProto\Action
      * @param ?array<string> $addedTags
      * @param ?array<string> $removedTags
      * @param ?array<string> $reportTypes
+     * @param ?array<string> $policies
      */
     public function query(
         ?array $types = null,
@@ -47,6 +48,7 @@ class QueryEvents implements \Aazsamir\Libphpsky\ATProto\Action
         ?array $addedTags = null,
         ?array $removedTags = null,
         ?array $reportTypes = null,
+        ?array $policies = null,
         ?string $cursor = null,
     ): Output {
         return \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\QueryEvents\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
