@@ -67,6 +67,9 @@ class QueryCacheClient implements ATProtoClientInterface
     {
         $uri = (string) $request->getUri()->getPath();
         $uri = \strtolower($uri);
+        $auth = $request->getHeader('Authorization');
+        $auth = implode('', $auth);
+        $uri .= $auth;
 
         return $this->prefix . \md5($uri);
     }
