@@ -62,7 +62,7 @@ trait IsAction
         }
 
         $response = $this->client()->sendRequest($request);
-        $body = json_decode($response->getBody()->getContents(), true);
+        $body = json_decode((string) $response->getBody(), true);
 
         if ($body === null) {
             return (string) $response->getBody();

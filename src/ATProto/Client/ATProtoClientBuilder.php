@@ -9,6 +9,7 @@ use Aazsamir\Libphpsky\ATProto\Client\Session\MemorySessionStore;
 use Aazsamir\Libphpsky\ATProto\Client\Session\PsrCacheSessionStore;
 use Aazsamir\Libphpsky\ATProto\Client\Session\SessionStore;
 use GuzzleHttp\Client;
+use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 class ATProtoClientBuilder
@@ -16,6 +17,8 @@ class ATProtoClientBuilder
     private AuthConfig $authConfig;
     private SessionStore $sessionStore;
     private static ATProtoClientInterface $default;
+    private CacheItemPoolInterface $cache;
+    private bool $useQueryCache = true;
 
     public static function getDefault(): ATProtoClientInterface
     {
@@ -30,6 +33,7 @@ class ATProtoClientBuilder
     {
         $self = new self();
         $self->authConfig($self->defaultAuthConfig());
+        $self->cache($self->defaultCache());
         $self->sessionStore($self->defaultSessionStore());
 
         return $self;
@@ -52,11 +56,18 @@ class ATProtoClientBuilder
         $sessionStore = new DecoratedSessionStore(
             decorated: new MemorySessionStore(),
             actual: new PsrCacheSessionStore(
-                cache: new FilesystemAdapter(),
+                cache: $this->cache,
             ),
         );
 
         return $sessionStore;
+    }
+
+    public function defaultCache(): CacheItemPoolInterface
+    {
+        $cache = new FilesystemAdapter();
+
+        return $cache;
     }
 
     public function authConfig(AuthConfig $authConfig): self
@@ -73,6 +84,20 @@ class ATProtoClientBuilder
         return $this;
     }
 
+    public function cache(CacheItemPoolInterface $cache): self
+    {
+        $this->cache = $cache;
+
+        return $this;
+    }
+
+    public function useQueryCache(bool $useQueryCache): self
+    {
+        $this->useQueryCache = $useQueryCache;
+
+        return $this;
+    }
+
     public function build(): ATProtoClientInterface
     {
         $client = new AuthAwareClient(
@@ -82,6 +107,13 @@ class ATProtoClientBuilder
             authConfig: $this->authConfig,
             sessionStore: $this->sessionStore,
         );
+
+        if ($this->useQueryCache) {
+            $client = new QueryCacheClient(
+                decorated: $client,
+                cache: $this->cache,
+            );
+        }
 
         return $client;
     }
