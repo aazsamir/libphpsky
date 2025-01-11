@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Aazsamir\Libphpsky\ATProto\Client;
+namespace Aazsamir\Libphpsky\ATProto\Client\Session;
 
+use Aazsamir\Libphpsky\ATProto\Client\AuthConfig;
 use Psr\Cache\CacheItemPoolInterface;
 
 class PsrCacheSessionStore implements SessionStore

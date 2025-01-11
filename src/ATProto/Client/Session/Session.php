@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Aazsamir\Libphpsky\ATProto\Client;
+namespace Aazsamir\Libphpsky\ATProto\Client\Session;
 
 class Session
 {

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\ATProto\Client;
 
+use Aazsamir\Libphpsky\ATProto\Client\Session\Session;
+use Aazsamir\Libphpsky\ATProto\Client\Session\SessionStore;
 use Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\CreateSession\CreateSession;
 use Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\RefreshSession\RefreshSession;
 use Psr\Http\Client\ClientInterface;

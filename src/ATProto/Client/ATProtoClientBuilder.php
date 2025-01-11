@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\ATProto\Client;
 
+use Aazsamir\Libphpsky\ATProto\Client\Session\DecoratedSessionStore;
+use Aazsamir\Libphpsky\ATProto\Client\Session\MemorySessionStore;
+use Aazsamir\Libphpsky\ATProto\Client\Session\PsrCacheSessionStore;
+use Aazsamir\Libphpsky\ATProto\Client\Session\SessionStore;
 use GuzzleHttp\Client;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
