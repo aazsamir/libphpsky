@@ -17,7 +17,7 @@ trait IsAction
     /**
      * @param array<string, mixed> $args
      */
-    private function performRequest(?array $args, string $function, string $method): mixed
+    private function performRequest(?array $args, string $method): mixed
     {
         $body = null;
 

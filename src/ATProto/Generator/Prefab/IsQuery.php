@@ -27,7 +27,7 @@ trait IsQuery
      */
     public function request(?array $args): mixed
     {
-        return $this->performRequest($args, 'query', 'GET');
+        return $this->performRequest($args, 'GET');
     }
 
     /**

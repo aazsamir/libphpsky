@@ -27,7 +27,7 @@ trait IsProcedure
      */
     public function request(?array $args): mixed
     {
-        return $this->performRequest($args, 'procedure', 'POST');
+        return $this->performRequest($args, 'POST');
     }
 
     /**
