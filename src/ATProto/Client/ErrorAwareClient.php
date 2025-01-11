@@ -40,7 +40,7 @@ class ErrorAwareClient implements ATProtoClientInterface
             }
 
             if ($response->getStatusCode() === 401) {
-                return new AuthException($error, $message, $response->getStatusCode());
+                throw new AuthException($error, $message, $response->getStatusCode());
             }
 
             if ($query) {
