@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Example\Phpsky;
 
-use Aazsamir\Libphpsky\ATProto\Generator\Prefab\ProcedureException;
-use Aazsamir\Libphpsky\ATProto\Generator\Prefab\QueryException;
+use Aazsamir\Libphpsky\ATProto\Client\ProcedureException;
+use Aazsamir\Libphpsky\ATProto\Client\QueryException;
 use Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\GetProfile\GetProfile;
 use Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Identity\ResolveHandle\ResolveHandle;
 use Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\CreateSession\CreateSession;
@@ -72,11 +72,13 @@ class Phpsky
 
     private function login(string $username, string $password): void
     {
-        $createSession = new CreateSession();
-        $createSessionInput = new Input();
-        $createSessionInput->identifier = $username;
-        $createSessionInput->password = $password;
-        $createSessionInput->authFactorToken = 'testing-purpose';
+        $createSession = CreateSession::default();
+        $createSessionInput = Input::new(
+            identifier: $username,
+            password: $password,
+            authFactorToken: 'testing',
+            allowTakendown: false,
+        );
 
         try {
             $response = $createSession->procedure($createSessionInput);
@@ -125,10 +127,10 @@ class Phpsky
         }
 
         try {
-            $resolveHandle = new ResolveHandle();
+            $resolveHandle = ResolveHandle::default();
             $resolved = $resolveHandle->query($this->user['handle']);
 
-            $getProfile = new GetProfile();
+            $getProfile = GetProfile::default();
             $profile = $getProfile->withAuth($this->user['access'])->query($resolved->did);
         } catch (QueryException $e) {
             $_SESSION['user'] = null;

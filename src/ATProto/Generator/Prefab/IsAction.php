@@ -64,22 +64,6 @@ trait IsAction
         $response = $this->client()->sendRequest($request);
         $body = json_decode($response->getBody()->getContents(), true);
 
-        if ($response->getStatusCode() >= 400) {
-            $error = 'undefined';
-            $message = $response->getReasonPhrase();
-
-            if (\is_array($body)) {
-                if (isset($body['error']) && \is_string($body['error'])) {
-                    $error = $body['error'];
-                }
-                if (isset($body['message']) && \is_string($body['message'])) {
-                    $message = $body['message'];
-                }
-            }
-
-            throw new QueryException($error, $message, $response->getStatusCode());
-        }
-
         if ($body === null) {
             return (string) $response->getBody();
         }

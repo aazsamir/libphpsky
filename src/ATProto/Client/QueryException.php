@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Aazsamir\Libphpsky\ATProto\Generator\Prefab;
+namespace Aazsamir\Libphpsky\ATProto\Client;
 
 class QueryException extends \Exception
 {
