@@ -7,11 +7,11 @@ namespace Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Generator;
 /**
  * object
  */
-class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
+class Generator implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 {
     use \Aazsamir\Libphpsky\ATProto\Generator\Prefab\FromArray;
 
-    public const NAME = 'mainRecord';
+    public const NAME = 'main';
     public const ID = 'app.bsky.feed.generator';
 
     public string $did;

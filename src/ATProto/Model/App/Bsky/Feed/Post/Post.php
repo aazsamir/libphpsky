@@ -7,11 +7,11 @@ namespace Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Post;
 /**
  * object
  */
-class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
+class Post implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 {
     use \Aazsamir\Libphpsky\ATProto\Generator\Prefab\FromArray;
 
-    public const NAME = 'mainRecord';
+    public const NAME = 'main';
     public const ID = 'app.bsky.feed.post';
 
     public string $text;

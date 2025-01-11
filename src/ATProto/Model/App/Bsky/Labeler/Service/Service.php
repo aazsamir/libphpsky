@@ -7,11 +7,11 @@ namespace Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Labeler\Service;
 /**
  * object
  */
-class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
+class Service implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 {
     use \Aazsamir\Libphpsky\ATProto\Generator\Prefab\FromArray;
 
-    public const NAME = 'mainRecord';
+    public const NAME = 'main';
     public const ID = 'app.bsky.labeler.service';
 
     public ?\Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Labeler\Defs\LabelerPolicies $policies = null;

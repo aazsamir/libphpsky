@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Block;
+namespace Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\Listblock;
 
 /**
  * object
  */
-class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
+class Listblock implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 {
     use \Aazsamir\Libphpsky\ATProto\Generator\Prefab\FromArray;
 
-    public const NAME = 'mainRecord';
-    public const ID = 'app.bsky.graph.block';
+    public const NAME = 'main';
+    public const ID = 'app.bsky.graph.listblock';
 
     public string $subject;
     public string $createdAt;

@@ -7,11 +7,11 @@ namespace Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Repost;
 /**
  * object
  */
-class MainRecord implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
+class Repost implements \Aazsamir\Libphpsky\ATProto\ATProtoObject
 {
     use \Aazsamir\Libphpsky\ATProto\Generator\Prefab\FromArray;
 
-    public const NAME = 'mainRecord';
+    public const NAME = 'main';
     public const ID = 'app.bsky.feed.repost';
 
     public ?\Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\StrongRef\StrongRef $subject = null;

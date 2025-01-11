@@ -12,11 +12,9 @@ class TypeResolver
     public static function resolve(string $type, ?string $key = null): ?string
     {
         if (!str_contains($type, '#')) {
-            if ($key === 'record') {
-                $type .= '#mainRecord';
-            } else {
-                $type .= '#main';
-            }
+            $class = explode('.', $type);
+            $class = array_pop($class);
+            $type = $type . '#' . $class;
         }
 
         [$namespace, $class] = explode('#', $type);

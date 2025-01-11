@@ -506,10 +506,10 @@ class Loader
         }
 
         return new RecordDef(
-            name: $name,
+            name: $name . 'Record',
             lexicon: $lexicon,
             key: $key,
-            record: $this->makeObjectDef($name . 'Record', $record, $lexicon),
+            record: $this->makeObjectDef($name, $record, $lexicon),
             description: $description,
         );
     }
