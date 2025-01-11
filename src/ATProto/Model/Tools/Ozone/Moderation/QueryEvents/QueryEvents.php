@@ -29,7 +29,7 @@ class QueryEvents implements \Aazsamir\Libphpsky\ATProto\Action
      * @param ?array<string> $removedTags
      * @param ?array<string> $reportTypes
      */
-    function query(
+    public function query(
         ?array $types = null,
         ?string $createdBy = null,
         ?string $sortDirection = null,

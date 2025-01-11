@@ -20,7 +20,7 @@ class GetRepo implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $did): \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RepoViewDetail
+    public function query(string $did): \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RepoViewDetail
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RepoViewDetail::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

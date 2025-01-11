@@ -19,7 +19,7 @@ class DeleteMessageForSelf implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function procedure(Input $input): \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\DeletedMessageView
+    public function procedure(Input $input): \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\DeletedMessageView
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\Defs\DeletedMessageView::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

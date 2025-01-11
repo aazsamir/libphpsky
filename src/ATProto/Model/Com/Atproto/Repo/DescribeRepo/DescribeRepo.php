@@ -20,7 +20,7 @@ class DescribeRepo implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $repo): Output
+    public function query(string $repo): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\DescribeRepo\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

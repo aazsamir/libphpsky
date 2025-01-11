@@ -20,7 +20,7 @@ class ResolveHandle implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $handle): Output
+    public function query(string $handle): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Identity\ResolveHandle\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

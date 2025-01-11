@@ -20,7 +20,7 @@ class GetRepoStatus implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $did): Output
+    public function query(string $did): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Sync\GetRepoStatus\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

@@ -23,7 +23,7 @@ class GetServices implements \Aazsamir\Libphpsky\ATProto\Action
     /**
      * @param array<string> $dids
      */
-    function query(array $dids, ?bool $detailed = null): Output
+    public function query(array $dids, ?bool $detailed = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Labeler\GetServices\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

@@ -20,7 +20,7 @@ class UploadBlob implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function procedure(): Output
+    public function procedure(): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\UploadBlob\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

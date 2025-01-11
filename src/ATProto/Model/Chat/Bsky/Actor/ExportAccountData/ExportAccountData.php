@@ -19,7 +19,7 @@ class ExportAccountData implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(): mixed
+    public function query(): mixed
     {
         return $this->request($this->argsWithKeys(func_get_args()));
     }

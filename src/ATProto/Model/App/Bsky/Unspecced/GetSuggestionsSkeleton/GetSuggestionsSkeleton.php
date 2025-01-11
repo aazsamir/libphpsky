@@ -20,7 +20,7 @@ class GetSuggestionsSkeleton implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(
+    public function query(
         ?string $viewer = null,
         ?int $limit = null,
         ?string $cursor = null,

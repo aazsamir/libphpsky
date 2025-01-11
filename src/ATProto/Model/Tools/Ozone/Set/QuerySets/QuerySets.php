@@ -20,7 +20,7 @@ class QuerySets implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(
+    public function query(
         ?int $limit = null,
         ?string $cursor = null,
         ?string $namePrefix = null,

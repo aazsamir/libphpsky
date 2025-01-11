@@ -20,7 +20,7 @@ class SendInteractions implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function procedure(Input $input): Output
+    public function procedure(Input $input): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\SendInteractions\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

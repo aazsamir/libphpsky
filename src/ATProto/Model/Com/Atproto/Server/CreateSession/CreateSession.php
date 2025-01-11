@@ -20,7 +20,7 @@ class CreateSession implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function procedure(Input $input): Output
+    public function procedure(Input $input): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\CreateSession\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

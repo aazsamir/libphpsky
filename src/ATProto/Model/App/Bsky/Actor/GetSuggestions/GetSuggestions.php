@@ -20,7 +20,7 @@ class GetSuggestions implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(?int $limit = null, ?string $cursor = null): Output
+    public function query(?int $limit = null, ?string $cursor = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\GetSuggestions\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

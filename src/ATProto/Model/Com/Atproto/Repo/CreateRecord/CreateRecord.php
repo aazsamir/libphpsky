@@ -20,7 +20,7 @@ class CreateRecord implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function procedure(Input $input): Output
+    public function procedure(Input $input): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\CreateRecord\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

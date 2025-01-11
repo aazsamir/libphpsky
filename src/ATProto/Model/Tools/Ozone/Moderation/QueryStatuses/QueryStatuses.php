@@ -27,7 +27,7 @@ class QueryStatuses implements \Aazsamir\Libphpsky\ATProto\Action
      * @param ?array<string> $excludeTags
      * @param ?array<string> $collections
      */
-    function query(
+    public function query(
         ?int $queueCount = null,
         ?int $queueIndex = null,
         ?string $queueSeed = null,

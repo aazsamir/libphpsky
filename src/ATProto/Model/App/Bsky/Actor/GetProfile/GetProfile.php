@@ -20,7 +20,7 @@ class GetProfile implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $actor): \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewDetailed
+    public function query(string $actor): \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewDetailed
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewDetailed::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

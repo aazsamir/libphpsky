@@ -20,8 +20,9 @@ class EmitEvent implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function procedure(Input $input): \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventView
-    {
+    public function procedure(
+        Input $input,
+    ): \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventView {
         return \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventView::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

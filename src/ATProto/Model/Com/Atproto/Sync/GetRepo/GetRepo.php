@@ -20,7 +20,7 @@ class GetRepo implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $did, ?string $since = null): mixed
+    public function query(string $did, ?string $since = null): mixed
     {
         return $this->request($this->argsWithKeys(func_get_args()));
     }

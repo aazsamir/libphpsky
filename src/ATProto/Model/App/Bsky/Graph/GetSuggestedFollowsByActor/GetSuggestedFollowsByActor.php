@@ -20,7 +20,7 @@ class GetSuggestedFollowsByActor implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $actor): Output
+    public function query(string $actor): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\GetSuggestedFollowsByActor\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

@@ -23,7 +23,7 @@ class GetBlocks implements \Aazsamir\Libphpsky\ATProto\Action
     /**
      * @param array<string> $cids
      */
-    function query(string $did, array $cids): mixed
+    public function query(string $did, array $cids): mixed
     {
         return $this->request($this->argsWithKeys(func_get_args()));
     }

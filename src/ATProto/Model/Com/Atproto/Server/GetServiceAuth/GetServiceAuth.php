@@ -20,7 +20,7 @@ class GetServiceAuth implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $aud, ?int $exp = null, ?string $lxm = null): Output
+    public function query(string $aud, ?int $exp = null, ?string $lxm = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\GetServiceAuth\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

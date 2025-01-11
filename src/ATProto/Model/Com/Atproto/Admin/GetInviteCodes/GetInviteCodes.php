@@ -20,7 +20,7 @@ class GetInviteCodes implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(?string $sort = null, ?int $limit = null, ?string $cursor = null): Output
+    public function query(?string $sort = null, ?int $limit = null, ?string $cursor = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\GetInviteCodes\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

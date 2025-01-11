@@ -20,7 +20,7 @@ class GetRecord implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(
+    public function query(
         string $uri,
         ?string $cid = null,
     ): \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\RecordViewDetail {

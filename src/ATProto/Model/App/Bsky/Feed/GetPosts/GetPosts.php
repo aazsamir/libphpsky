@@ -23,7 +23,7 @@ class GetPosts implements \Aazsamir\Libphpsky\ATProto\Action
     /**
      * @param array<string> $uris
      */
-    function query(array $uris): Output
+    public function query(array $uris): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\GetPosts\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

@@ -19,7 +19,7 @@ class GetConvo implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $convoId): Output
+    public function query(string $convoId): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\GetConvo\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

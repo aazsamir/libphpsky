@@ -20,7 +20,7 @@ class SearchStarterPacks implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $q, ?int $limit = null, ?string $cursor = null): Output
+    public function query(string $q, ?int $limit = null, ?string $cursor = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\SearchStarterPacks\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

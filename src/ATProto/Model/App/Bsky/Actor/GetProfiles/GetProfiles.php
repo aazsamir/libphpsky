@@ -23,7 +23,7 @@ class GetProfiles implements \Aazsamir\Libphpsky\ATProto\Action
     /**
      * @param array<string> $actors
      */
-    function query(array $actors): Output
+    public function query(array $actors): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\GetProfiles\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

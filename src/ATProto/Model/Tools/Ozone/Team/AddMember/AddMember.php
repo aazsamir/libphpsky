@@ -20,7 +20,7 @@ class AddMember implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function procedure(Input $input): \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Team\Defs\Member
+    public function procedure(Input $input): \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Team\Defs\Member
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Team\Defs\Member::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

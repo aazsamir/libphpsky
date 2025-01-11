@@ -20,7 +20,7 @@ class GetJobStatus implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $jobId): Output
+    public function query(string $jobId): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Video\GetJobStatus\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

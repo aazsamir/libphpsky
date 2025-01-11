@@ -20,7 +20,7 @@ class SearchActorsTypeahead implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(?string $term = null, ?string $q = null, ?int $limit = null): Output
+    public function query(?string $term = null, ?string $q = null, ?int $limit = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\SearchActorsTypeahead\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

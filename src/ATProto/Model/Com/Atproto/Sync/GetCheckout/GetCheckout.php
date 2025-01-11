@@ -20,7 +20,7 @@ class GetCheckout implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $did): mixed
+    public function query(string $did): mixed
     {
         return $this->request($this->argsWithKeys(func_get_args()));
     }

@@ -20,7 +20,7 @@ class RequestEmailUpdate implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function procedure(): Output
+    public function procedure(): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\RequestEmailUpdate\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

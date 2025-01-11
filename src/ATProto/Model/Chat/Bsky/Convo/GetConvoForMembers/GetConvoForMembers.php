@@ -22,7 +22,7 @@ class GetConvoForMembers implements \Aazsamir\Libphpsky\ATProto\Action
     /**
      * @param array<string> $members
      */
-    function query(array $members): Output
+    public function query(array $members): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\GetConvoForMembers\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

@@ -20,7 +20,7 @@ class DescribeFeedGenerator implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(): Output
+    public function query(): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\DescribeFeedGenerator\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

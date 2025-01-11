@@ -23,7 +23,7 @@ class SearchPosts implements \Aazsamir\Libphpsky\ATProto\Action
     /**
      * @param ?array<string> $tag
      */
-    function query(
+    public function query(
         string $q,
         ?string $sort = null,
         ?string $since = null,

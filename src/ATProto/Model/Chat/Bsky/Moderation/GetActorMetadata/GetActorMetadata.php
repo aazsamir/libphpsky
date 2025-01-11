@@ -19,7 +19,7 @@ class GetActorMetadata implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $actor): Output
+    public function query(string $actor): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Moderation\GetActorMetadata\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

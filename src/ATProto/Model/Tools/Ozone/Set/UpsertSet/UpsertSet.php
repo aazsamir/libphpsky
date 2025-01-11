@@ -20,7 +20,7 @@ class UpsertSet implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function procedure(
+    public function procedure(
         \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Set\Defs\Set $input,
     ): \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Set\Defs\SetView {
         return \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Set\Defs\SetView::fromArray($this->request($this->argsWithKeys(func_get_args())));

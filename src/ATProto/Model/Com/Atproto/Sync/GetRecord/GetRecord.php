@@ -20,7 +20,7 @@ class GetRecord implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $did, string $collection, string $rkey, ?string $commit = null): mixed
+    public function query(string $did, string $collection, string $rkey, ?string $commit = null): mixed
     {
         return $this->request($this->argsWithKeys(func_get_args()));
     }

@@ -20,7 +20,7 @@ class GetAccountInfo implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $did): \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\AccountView
+    public function query(string $did): \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\AccountView
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\Defs\AccountView::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

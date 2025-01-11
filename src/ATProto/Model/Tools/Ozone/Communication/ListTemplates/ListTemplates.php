@@ -20,7 +20,7 @@ class ListTemplates implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(): Output
+    public function query(): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Communication\ListTemplates\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

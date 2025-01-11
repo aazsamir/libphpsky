@@ -20,7 +20,7 @@ class RequestAccountDelete implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function procedure(): void
+    public function procedure(): void
     {
         $this->request($this->argsWithKeys(func_get_args()));
     }

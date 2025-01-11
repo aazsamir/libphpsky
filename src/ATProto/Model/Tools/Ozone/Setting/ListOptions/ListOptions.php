@@ -23,7 +23,7 @@ class ListOptions implements \Aazsamir\Libphpsky\ATProto\Action
     /**
      * @param ?array<string> $keys
      */
-    function query(
+    public function query(
         ?int $limit = null,
         ?string $cursor = null,
         ?string $scope = null,

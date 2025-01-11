@@ -19,7 +19,7 @@ class SendMessageBatch implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function procedure(Input $input): Output
+    public function procedure(Input $input): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Chat\Bsky\Convo\SendMessageBatch\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

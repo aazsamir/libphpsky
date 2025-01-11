@@ -98,6 +98,7 @@ class Maker
                 $class->addTrait('\Aazsamir\Libphpsky\ATProto\Generator\Prefab\IsQuery');
                 $class->addImplement(Action::class);
                 $method = new Method('query');
+                $method->setPublic();
 
                 if ($def->parameters()) {
                     foreach ($def->parameters()->properties()->toArray() as $property) {
@@ -153,6 +154,7 @@ class Maker
                 $class->addTrait('\Aazsamir\Libphpsky\ATProto\Generator\Prefab\IsProcedure');
                 $class->addImplement(Action::class);
                 $method = new Method('procedure');
+                $method->setPublic();
 
                 if ($def->parameters()) {
                     foreach ($def->parameters()->properties()->toArray() as $property) {

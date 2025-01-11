@@ -20,7 +20,7 @@ class GetAuthorFeed implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(
+    public function query(
         string $actor,
         ?int $limit = null,
         ?string $cursor = null,

@@ -20,7 +20,7 @@ class RequestPhoneVerification implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function procedure(Input $input): void
+    public function procedure(Input $input): void
     {
         $this->request($this->argsWithKeys(func_get_args()));
     }

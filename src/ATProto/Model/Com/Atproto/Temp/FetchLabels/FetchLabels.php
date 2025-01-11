@@ -20,7 +20,7 @@ class FetchLabels implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(?int $since = null, ?int $limit = null): Output
+    public function query(?int $since = null, ?int $limit = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Temp\FetchLabels\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

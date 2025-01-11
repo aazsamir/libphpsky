@@ -20,7 +20,7 @@ class GetEvent implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(int $id): \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventViewDetail
+    public function query(int $id): \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventViewDetail
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Tools\Ozone\Moderation\Defs\ModEventViewDetail::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

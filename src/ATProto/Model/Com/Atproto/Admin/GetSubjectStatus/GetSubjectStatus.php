@@ -20,7 +20,7 @@ class GetSubjectStatus implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(?string $did = null, ?string $uri = null, ?string $blob = null): Output
+    public function query(?string $did = null, ?string $uri = null, ?string $blob = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\GetSubjectStatus\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

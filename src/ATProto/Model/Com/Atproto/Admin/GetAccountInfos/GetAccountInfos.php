@@ -23,7 +23,7 @@ class GetAccountInfos implements \Aazsamir\Libphpsky\ATProto\Action
     /**
      * @param array<string> $dids
      */
-    function query(array $dids): Output
+    public function query(array $dids): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Admin\GetAccountInfos\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

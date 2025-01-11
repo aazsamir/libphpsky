@@ -20,7 +20,7 @@ class GetKnownFollowers implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $actor, ?int $limit = null, ?string $cursor = null): Output
+    public function query(string $actor, ?int $limit = null, ?string $cursor = null): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\GetKnownFollowers\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

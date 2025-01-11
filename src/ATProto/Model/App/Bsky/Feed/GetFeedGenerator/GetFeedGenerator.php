@@ -20,7 +20,7 @@ class GetFeedGenerator implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $feed): Output
+    public function query(string $feed): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\GetFeedGenerator\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

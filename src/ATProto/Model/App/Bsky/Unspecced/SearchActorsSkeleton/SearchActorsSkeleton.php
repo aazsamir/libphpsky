@@ -20,7 +20,7 @@ class SearchActorsSkeleton implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(
+    public function query(
         string $q,
         ?string $viewer = null,
         ?bool $typeahead = null,

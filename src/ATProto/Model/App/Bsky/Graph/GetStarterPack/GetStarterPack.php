@@ -20,7 +20,7 @@ class GetStarterPack implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $starterPack): Output
+    public function query(string $starterPack): Output
     {
         return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Graph\GetStarterPack\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

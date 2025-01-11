@@ -20,7 +20,7 @@ class GetBlob implements \Aazsamir\Libphpsky\ATProto\Action
         return self::ID;
     }
 
-    function query(string $did, string $cid): mixed
+    public function query(string $did, string $cid): mixed
     {
         return $this->request($this->argsWithKeys(func_get_args()));
     }

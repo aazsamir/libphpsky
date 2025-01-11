@@ -23,7 +23,7 @@ class ListNotifications implements \Aazsamir\Libphpsky\ATProto\Action
     /**
      * @param ?array<string> $reasons
      */
-    function query(
+    public function query(
         ?array $reasons = null,
         ?int $limit = null,
         ?bool $priority = null,
