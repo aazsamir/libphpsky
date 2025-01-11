@@ -41,12 +41,42 @@ $getProfile = new GetProfile();
 $response = $getProfile->withAuth($accessJwt)->query($did);
 ```
 
+Although, it seems a bit verbose. Libphpsky provides a client.
+
+Default implementation handles authorization out of the box, by providing `ATPROTO_LOGIN` and `ATPROTO_PASSWORD` environment variables.
+Also, if session is stale, it will automatically refresh it.
+
+```php
+$resolveHandle = ResolveHandle::default();
+$did = $resolveHandle->query('bsky.app')->did;
+
+$getProfile = GetProfile::default();
+$response = $getProfile->query($did);
+```
+
+You can override default client, by providing your own implementation.
+
+```php
+$client = new ATProtoClient(new \GuzzleHttp\Client());
+$resolveHandle = ResolveHandle::default()->withClient($client)->query('bsky.app');
+// or
+$resolveHandle = (new ResolveHandle($client))->query('bsky.app');
+```
+
+This can be also tipehinted and injected by DI container of your choice.
+
+```php
+public function __construct(private ResolveHandle $resolveHandle) {}
+```
+
 ## Features
 
 -   All types generated from the Bluesky protocol schema
 -   Queries
 -   Procedures
 -   Authorization
+-   Automatic session refresh
+-   Query caching
 
 ## Contributing
 

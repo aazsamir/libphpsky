@@ -28,5 +28,6 @@
         "allow-plugins": {
             "php-http/discovery": true
         }
-    }
+    },
+    "license": "MIT"
 }
