@@ -10,6 +10,7 @@ use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\RefDef;
 use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\UnionDef;
 use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Lexicons;
+use Aazsamir\Libphpsky\ATProto\Generator\Loader\FileLexiconProvider;
 use Aazsamir\Libphpsky\ATProto\Generator\Loader\Loader;
 use Aazsamir\Libphpsky\ATProto\Generator\Maker\MakeConfig;
 use Aazsamir\Libphpsky\ATProto\Generator\Maker\Maker;
@@ -19,8 +20,10 @@ class Generator
     public function generate(): Lexicons
     {
         $path = __DIR__ . '/../../../atproto/lexicons';
-        $loader = new Loader();
-        $lexicons = $loader->load($path);
+        $loader = new Loader(
+            lexiconProvider: new FileLexiconProvider($path),
+        );
+        $lexicons = $loader->load();
         $this->resolveRefs($lexicons);
 
         $config = new MakeConfig(

@@ -2,7 +2,8 @@
     "name": "aazsamir/libphpsky",
     "autoload": {
         "psr-4": {
-            "Aazsamir\\Libphpsky\\": "src/"
+            "Aazsamir\\Libphpsky\\": "src/",
+            "Tests\\": "tests/"
         }
     },
     "authors": [
@@ -24,7 +25,8 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.65",
         "symfony/var-dumper": "^7.2",
-        "phpstan/phpstan": "^2.0"
+        "phpstan/phpstan": "^2.0",
+        "phpunit/phpunit": "^11.5"
     },
     "config": {
         "allow-plugins": {

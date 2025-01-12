@@ -1,3 +1,5 @@
 /vendor/
 .php-cs-fixer.cache
 graph.dot
+tests-coverage
+.phpunit.cache

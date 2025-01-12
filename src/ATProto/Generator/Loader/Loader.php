@@ -31,19 +31,16 @@ use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\LexiconType;
 
 class Loader
 {
-    public function load(string $path): Lexicons
+    public function __construct(
+        private LexiconProvider $lexiconProvider
+    ) {}
+
+    public function load(): Lexicons
     {
-        $path = realpath($path);
-
-        if ($path === false) {
-            throw new \Exception(\sprintf('Path %s is not a directory', $path));
-        }
-
-        $files = $this->lexiconsInPath($path);
         $lexicons = [];
 
-        foreach ($files as $file) {
-            $lexicon = $this->makeLexicon($file);
+        foreach ($this->lexiconProvider->provide() as $lexicon) {
+            $lexicon = $this->makeLexicon($lexicon);
             $lexicons[] = $lexicon;
         }
 
@@ -51,60 +48,16 @@ class Loader
     }
 
     /**
-     * @return string[]
+     * @param array{
+     *  lexicon: int,
+     *  id: string,
+     *  revision?: int,
+     *  description?: ?string,
+     *  defs: array<string, array<string, mixed>>
+     * } $data
      */
-    private function lexiconsInPath(string $path): array
+    private function makeLexicon(array $data): Lexicon
     {
-        $it = new \RecursiveDirectoryIterator($path);
-        $it = new \RecursiveIteratorIterator($it);
-
-        $files = [];
-
-        foreach ($it as $file) {
-            /** @var \SplFileInfo $file */
-            if ($file->getExtension() === 'json') {
-                $files[] = $file->getPathname();
-            }
-        }
-
-        return $files;
-    }
-
-    private function makeLexicon(string $file): Lexicon
-    {
-        $filecontent = file_get_contents($file);
-
-        if ($filecontent === false) {
-            throw new \Exception(\sprintf('Error while reading %s', $file));
-        }
-
-        /**
-         * @var array{
-         *  lexicon: ?int,
-         *  id: ?string,
-         *  revision?: int,
-         *  description?: ?string,
-         *  defs: ?array<string, array<string, mixed>>
-         * }|null
-         */
-        $data = json_decode($filecontent, true);
-
-        if (!\is_array($data)) {
-            throw new \Exception(\sprintf('Error while decoding %s', $file));
-        }
-
-        if (!\is_int($data['lexicon'])) {
-            throw new \Exception(\sprintf('Lexicon name must be a string in %s', $file));
-        }
-
-        if (!\is_string($data['id'])) {
-            throw new \Exception(\sprintf('Lexicon id must be a string in %s', $file));
-        }
-
-        if (!\is_array($data['defs'])) {
-            throw new \Exception(\sprintf('Defs must be an array in %s', $file));
-        }
-
         $lexicon = new Lexicon(
             lexicon: $data['lexicon'],
             id: $data['id'],
@@ -209,9 +162,11 @@ class Loader
             throw new \Exception(\sprintf('Maximum must be an integer for def %s', $name));
         }
         if ($enum !== null) {
-            $this->assertArrayMap($enum);
+            $this->assertStrings($enum);
 
-            throw new \Exception(\sprintf('Enum must be an array for def %s', $name));
+            if (!\is_array($enum)) {
+                throw new \Exception(\sprintf('Enum must be an array for def %s', $name));
+            }
         }
         if ($default !== null && !\is_int($default)) {
             throw new \Exception(\sprintf('Default must be an integer for def %s', $name));
