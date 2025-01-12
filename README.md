@@ -1,8 +1,7 @@
 # Libphpsky
 
 Libphpsky is a PHP library designed to interact with the Bluesky decentralized social media protocol.
-
-It was created in a few days, at the moment it's more like a proof of concept and you probably shouldn't use it. But it looks like it works, so give it some time to put it into better shape.
+All types are generated from the Bluesky protocol schema, along with queries and procedures, and everything is statically typed.
 
 This is not an official library and is not affiliated with Bluesky.
 
@@ -24,12 +23,16 @@ composer require aazsamir/libphpsky
 
 ## Usage
 
+Using plain bluesky types, you can interact with the protocol like this
+
 ```php
 $createSession = new CreateSession();
-$input = new Input();
-$input->identifier = $username;
-$input->password = $password;
-$input->authFactorToken = 'testing-purpose';
+$input = Input::new(
+    identifier: $username,
+    password: $password,
+    authFactorToken: 'testing-purpose',
+    allowTakendown: false,
+);
 $response = $createSession->procedure($input);
 $accessJwt = $response->accessJwt;
 
@@ -63,11 +66,22 @@ $resolveHandle = ResolveHandle::default()->withClient($client)->query('bsky.app'
 $resolveHandle = (new ResolveHandle($client))->query('bsky.app');
 ```
 
-This can be also tipehinted and injected by DI container of your choice.
+This can be also typehinted and injected by DI container of your choice.
 
 ```php
 public function __construct(private ResolveHandle $resolveHandle) {}
 ```
+
+On top of that, there is a meta client, which can be used to handle all possible endpoints.
+
+```php
+$client = new ATProtoMetaClient();
+$resolved = $client->comAtprotoIdentityResolveHandle('bsky.app');
+```
+
+### Examples
+
+Check `src/Example` directory for more examples.
 
 ## Features
 
@@ -80,7 +94,8 @@ public function __construct(private ResolveHandle $resolveHandle) {}
 
 ## Contributing
 
-As you can see, it's poorly written, have no tests, and phpstan is not complaining only because of runtime validation. So, big refactor is needed. If you still aren't scared, feel free to contribute.
+It was created in a few days, so give it some time to put it into better shape.
+As you can see, it's poorly written, have no tests, and phpstan is not complaining only because of runtime validation. So, some refactor is needed. If you still aren't scared, feel free to contribute.
 
 ## License
 
