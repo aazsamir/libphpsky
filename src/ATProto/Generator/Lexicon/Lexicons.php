@@ -26,11 +26,6 @@ class Lexicons
 
     public function findDefByRef(string $ref): ?Def
     {
-        return $this->findByRef($ref);
-    }
-
-    public function findByRef(string $ref): ?Def
-    {
         foreach ($this->lexicons as $lex) {
             $found = $lex->findDefByRef($ref, null);
 
