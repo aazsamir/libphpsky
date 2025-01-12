@@ -79,6 +79,21 @@ $client = new ATProtoMetaClient();
 $resolved = $client->comAtprotoIdentityResolveHandle('bsky.app');
 ```
 
+Libphpsky also supports `\Amp\Http\Client\HttpClient` from [`amphp/http-client`](https://github.com/amphp/http-client) package out of the box.
+
+```php
+$client = ATProtoClientBuilder::default()->useAsync(true)->build();
+$getProfile = new GetProfile($client);
+$actors = ['bsky.app', 'steampowered.com'];
+$futures = [];
+
+foreach ($actors as $actor) {
+    $futures[] = \Amp\async(fn() => $this->getProfile->query($actor));
+}
+
+[$errors, $profiles] = \Amp\Future\awaitAll($futures);
+```
+
 ### Examples
 
 Check `src/Example` directory for more examples.
@@ -91,6 +106,7 @@ Check `src/Example` directory for more examples.
 -   Authorization
 -   Automatic session refresh
 -   Query caching
+-   Amphp client support
 
 ## Contributing
 
