@@ -31,17 +31,20 @@ use Tests\Unit\Generator\Loader\Stub\LexiconProviderStub;
 use Tests\Unit\TestCase;
 
 // @todo: assert invalid code paths, better check for the def output
-class LoaderTest extends TestCase
+/**
+ * @internal
+ */
+final class LoaderTest extends TestCase
 {
     public function testLexicon(): void
     {
         $loader = $this->fileloader('lexicon');
         $lexicons = $loader->load();
 
-        $this->assertCount(9, $lexicons->toArray());
+        self::assertCount(9, $lexicons->toArray());
         $defs = $lexicons->defs();
-        $defs = \iterator_to_array($defs);
-        $this->assertCount(1, $defs);
+        $defs = iterator_to_array($defs);
+        self::assertCount(1, $defs);
     }
 
     public function testMakeBoolean(): void
@@ -53,27 +56,27 @@ class LoaderTest extends TestCase
         $lexicons = $loader->load();
         $lexicon = $this->getFirstLexicon($lexicons);
         $def = $this->getFirstDef($lexicons);
-        
-        $this->assertSame('main', $def->name());
-        $this->assertSame($lexicon, $def->lexicon());
-        $this->assertInstanceOf(BooleanDef::class, $def);
+
+        self::assertSame('main', $def->name());
+        self::assertSame($lexicon, $def->lexicon());
+        self::assertInstanceOf(BooleanDef::class, $def);
     }
-    
+
     public function testMakeInteger(): void
     {
         $loader = $this->memoryloader([
             'type' => 'integer',
             'minimum' => 0,
             'maximum' => 10,
-            'enum' => ["1", "2", "3"],
+            'enum' => ['1', '2', '3'],
             'default' => 1,
             'const' => 1,
         ]);
 
         $lexicons = $loader->load();
         $def = $this->getFirstDef($lexicons);
-        
-        $this->assertInstanceOf(IntegerDef::class, $def);
+
+        self::assertInstanceOf(IntegerDef::class, $def);
     }
 
     public function testMakeStringDef(): void
@@ -84,16 +87,16 @@ class LoaderTest extends TestCase
             'minLength' => 1,
             'maxGraphemes' => 10,
             'minGraphemes' => 1,
-            'knownValues' => ["1", "2", "3"],
-            'enum' => ["1", "2", "3"],
-            'default' => "1",
-            'const' => "1",
+            'knownValues' => ['1', '2', '3'],
+            'enum' => ['1', '2', '3'],
+            'default' => '1',
+            'const' => '1',
         ]);
 
         $lexicons = $loader->load();
         $def = $this->getFirstDef($lexicons);
 
-        $this->assertInstanceOf(StringDef::class, $def);
+        self::assertInstanceOf(StringDef::class, $def);
     }
 
     public function testMakeBytesDef(): void
@@ -107,7 +110,7 @@ class LoaderTest extends TestCase
         $lexicons = $loader->load();
         $def = $this->getFirstDef($lexicons);
 
-        $this->assertInstanceOf(BytesDef::class, $def);
+        self::assertInstanceOf(BytesDef::class, $def);
     }
 
     public function testMakeCidLinkDef(): void
@@ -119,7 +122,7 @@ class LoaderTest extends TestCase
         $lexicons = $loader->load();
         $def = $this->getFirstDef($lexicons);
 
-        $this->assertInstanceOf(CidLinkDef::class, $def);
+        self::assertInstanceOf(CidLinkDef::class, $def);
     }
 
     public function testMakeBlobDef(): void
@@ -133,7 +136,7 @@ class LoaderTest extends TestCase
         $lexicons = $loader->load();
         $def = $this->getFirstDef($lexicons);
 
-        $this->assertInstanceOf(BlobDef::class, $def);
+        self::assertInstanceOf(BlobDef::class, $def);
     }
 
     public function testMakeArrayDef(): void
@@ -150,9 +153,9 @@ class LoaderTest extends TestCase
         $lexicons = $loader->load();
         $def = $this->getFirstDef($lexicons);
 
-        $this->assertInstanceOf(ArrayDef::class, $def);
+        self::assertInstanceOf(ArrayDef::class, $def);
         /** @var ArrayDef $def */
-        $this->assertInstanceOf(BooleanDef::class, $def->items());
+        self::assertInstanceOf(BooleanDef::class, $def->items());
     }
 
     public function testMakeObjectDef(): void
@@ -171,9 +174,9 @@ class LoaderTest extends TestCase
         $lexicons = $loader->load();
         $def = $this->getFirstDef($lexicons);
 
-        $this->assertInstanceOf(ObjectDef::class, $def);
+        self::assertInstanceOf(ObjectDef::class, $def);
         /** @var ObjectDef $def */
-        $this->assertInstanceOf(StringDef::class, $def->properties()->toArray()[0]);
+        self::assertInstanceOf(StringDef::class, $def->properties()->toArray()[0]);
     }
 
     public function testMakeParamsDef(): void
@@ -191,9 +194,9 @@ class LoaderTest extends TestCase
         $lexicons = $loader->load();
         $def = $this->getFirstDef($lexicons);
 
-        $this->assertInstanceOf(ParamsDef::class, $def);
+        self::assertInstanceOf(ParamsDef::class, $def);
         /** @var ObjectDef $def */
-        $this->assertInstanceOf(StringDef::class, $def->properties()->toArray()[0]);
+        self::assertInstanceOf(StringDef::class, $def->properties()->toArray()[0]);
     }
 
     public function testMakeTokenDef(): void
@@ -205,7 +208,7 @@ class LoaderTest extends TestCase
         $lexicons = $loader->load();
         $def = $this->getFirstDef($lexicons);
 
-        $this->assertInstanceOf(TokenDef::class, $def);
+        self::assertInstanceOf(TokenDef::class, $def);
     }
 
     public function testMakeRefDef(): void
@@ -218,7 +221,7 @@ class LoaderTest extends TestCase
         $lexicons = $loader->load();
         $def = $this->getFirstDef($lexicons);
 
-        $this->assertInstanceOf(RefDef::class, $def);
+        self::assertInstanceOf(RefDef::class, $def);
     }
 
     public function testMakeUnionDef(): void
@@ -232,7 +235,7 @@ class LoaderTest extends TestCase
         $lexicons = $loader->load();
         $def = $this->getFirstDef($lexicons);
 
-        $this->assertInstanceOf(UnionDef::class, $def);
+        self::assertInstanceOf(UnionDef::class, $def);
     }
 
     public function testMakeRecordDef(): void
@@ -254,9 +257,9 @@ class LoaderTest extends TestCase
         $lexicons = $loader->load();
         $def = $this->getFirstDef($lexicons);
 
-        $this->assertInstanceOf(RecordDef::class, $def);
+        self::assertInstanceOf(RecordDef::class, $def);
         /** @var RecordDef $def */
-        $this->assertInstanceOf(ObjectDef::class, $def->record());
+        self::assertInstanceOf(ObjectDef::class, $def->record());
     }
 
     public function testMakeQueryDef(): void
@@ -284,10 +287,10 @@ class LoaderTest extends TestCase
         $lexicons = $loader->load();
         $def = $this->getFirstDef($lexicons);
 
-        $this->assertInstanceOf(QueryDef::class, $def);
+        self::assertInstanceOf(QueryDef::class, $def);
         /** @var QueryDef $def */
-        $this->assertInstanceOf(StringDef::class, $def->parameters()->properties()->toArray()[0]);
-        $this->assertInstanceOf(RefDef::class, $def->output()->schema());
+        self::assertInstanceOf(StringDef::class, $def->parameters()->properties()->toArray()[0]);
+        self::assertInstanceOf(RefDef::class, $def->output()->schema());
     }
 
     public function testMakeProcedureDef(): void
@@ -322,11 +325,11 @@ class LoaderTest extends TestCase
         $lexicons = $loader->load();
         $def = $this->getFirstDef($lexicons);
 
-        $this->assertInstanceOf(ProcedureDef::class, $def);
+        self::assertInstanceOf(ProcedureDef::class, $def);
         /** @var ProcedureDef $def */
-        $this->assertInstanceOf(StringDef::class, $def->parameters()->properties()->toArray()[0]);
-        $this->assertInstanceOf(RefDef::class, $def->input()->schema());
-        $this->assertInstanceOf(RefDef::class, $def->output()->schema());
+        self::assertInstanceOf(StringDef::class, $def->parameters()->properties()->toArray()[0]);
+        self::assertInstanceOf(RefDef::class, $def->input()->schema());
+        self::assertInstanceOf(RefDef::class, $def->output()->schema());
     }
 
     public function testMakeSubscriptionDef(): void
@@ -353,10 +356,10 @@ class LoaderTest extends TestCase
         $lexicons = $loader->load();
         $def = $this->getFirstDef($lexicons);
 
-        $this->assertInstanceOf(SubscriptionDef::class, $def);
+        self::assertInstanceOf(SubscriptionDef::class, $def);
         /** @var SubscriptionDef $def */
-        $this->assertInstanceOf(UnionDef::class, $def->message()->schema());
-        $this->assertInstanceOf(StringDef::class, $def->parameters()->properties()->toArray()[0]);
+        self::assertInstanceOf(UnionDef::class, $def->message()->schema());
+        self::assertInstanceOf(StringDef::class, $def->parameters()->properties()->toArray()[0]);
     }
 
     public function testMakeUnknownDef(): void
@@ -368,7 +371,7 @@ class LoaderTest extends TestCase
         $lexicons = $loader->load();
         $def = $this->getFirstDef($lexicons);
 
-        $this->assertInstanceOf(UnknownDef::class, $def);
+        self::assertInstanceOf(UnknownDef::class, $def);
     }
 
     private function memoryloader(array $data): Loader
@@ -391,7 +394,7 @@ class LoaderTest extends TestCase
     private function getFirstDef(Lexicons $lexicons): Def
     {
         $defs = $lexicons->defs();
-        $defs = \iterator_to_array($defs);
+        $defs = iterator_to_array($defs);
 
         return $defs[0];
     }

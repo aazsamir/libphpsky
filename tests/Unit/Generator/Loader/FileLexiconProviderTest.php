@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace Tests\Unit\Generator\Loader;
 
 use Aazsamir\Libphpsky\ATProto\Generator\Loader\FileLexiconProvider;
-use Aazsamir\Libphpsky\ATProto\Generator\Loader\Loader;
 use Tests\Unit\TestCase;
 
-class FileLexiconProviderTest extends TestCase
+/**
+ * @internal
+ */
+final class FileLexiconProviderTest extends TestCase
 {
     public function testLoad(): void
     {
@@ -17,7 +19,7 @@ class FileLexiconProviderTest extends TestCase
         $lexicons = $loader->provide();
         $lexicons = iterator_to_array($lexicons);
 
-        $this->assertCount(1, $lexicons);
+        self::assertCount(1, $lexicons);
     }
 
     public function testInvalidPath(): void

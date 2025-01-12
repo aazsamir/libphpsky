@@ -4,6 +4,7 @@ $finder = Symfony\Component\Finder\Finder::create()
     ->in([
         __DIR__ . '/src',
         __DIR__ . '/examples',
+        __DIR__ . '/tests',
     ])
     ->exclude([
         'ATProto/Model',
@@ -52,5 +53,7 @@ return (new PhpCsFixer\Config())
         'phpdoc_align' => false,
         'single_line_empty_body' => true,
         'phpdoc_to_comment' => false,
+        'class_definition' => false,
+        'php_unit_test_class_requires_covers' => false,
     ])
     ->setFinder($finder);
