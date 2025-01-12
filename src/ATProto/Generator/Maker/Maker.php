@@ -6,6 +6,9 @@ namespace Aazsamir\Libphpsky\ATProto\Generator\Maker;
 
 use Aazsamir\Libphpsky\ATProto\Action;
 use Aazsamir\Libphpsky\ATProto\ATProtoObject;
+use Aazsamir\Libphpsky\ATProto\Client\ATProtoClient;
+use Aazsamir\Libphpsky\ATProto\Client\ATProtoClientBuilder;
+use Aazsamir\Libphpsky\ATProto\Client\ATProtoClientInterface;
 use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\ArrayDef;
 use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\BlobDef;
 use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\BooleanDef;
@@ -29,6 +32,7 @@ use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\Method;
 use Nette\PhpGenerator\PhpFile;
 use Nette\PhpGenerator\PhpNamespace;
+use Nette\PhpGenerator\Property;
 use Nette\PhpGenerator\PsrPrinter;
 use Nette\PhpGenerator\Type;
 
@@ -49,6 +53,8 @@ class Maker
                 $this->makeDef($config, $def);
             }
         }
+
+        $this->makeMetaClient($lexicons);
     }
 
     private function makeDef(MakeConfig $config, Def $def): void
@@ -96,55 +102,8 @@ class Maker
                 $method = new Method('query');
                 $method->setPublic();
 
-                if ($def->parameters()) {
-                    $properties = $def->parameters()->properties()->toArray();
-
-                    // sort by nullability
-                    $required = $def->parameters()->required() ?? [];
-                    usort($properties, static fn ($a, $b) => !\in_array($a->name(), $required, true) <=> !\in_array($b->name(), $required, true));
-
-                    foreach ($properties as $property) {
-                        $propertyName = $property->name();
-                        $property = $this->unref($property);
-                        $parameter = $method->addParameter($propertyName);
-                        $parameterType = $this->namespaceAndClassname($property);
-                        $nullable = !\in_array($propertyName, $def->parameters()->required() ?? [], true);
-
-                        if ($property instanceof ArrayDef) {
-                            $parameter->setType('array');
-                            $method->addComment(
-                                '@param '
-                                . ($nullable ? '?' : '')
-                                . $parameterType
-                                . ' $' . $propertyName
-                            );
-                        } else {
-                            $parameter->setType($parameterType);
-                        }
-
-                        if ($nullable) {
-                            $parameter->setNullable(true)->setDefaultValue(null);
-                        }
-                    }
-                }
-
-                if ($def->output() && $def->output()->schema()) {
-                    $return = $this->unref($def->output()->schema());
-
-                    if ($return instanceof ArrayDef) {
-                        $method->setReturnType('array');
-                        $method->addComment('@return ' . $this->namespaceAndClassname($return));
-                    } else {
-                        $returnType = $this->namespaceAndClassname($return);
-                        $method->setReturnType($returnType);
-                        $body = \sprintf('return %s::fromArray($this->request($this->argsWithKeys(func_get_args())));', $returnType);
-                        $method->addBody($body);
-                    }
-                } else {
-                    $method->setReturnType('mixed');
-                    $body = 'return $this->request($this->argsWithKeys(func_get_args()));';
-                    $method->addBody($body);
-                }
+                $this->addQueryParameters($method, $def);
+                $this->addQueryReturnType($method, $def);
 
                 $class->addMember($method);
 
@@ -158,51 +117,8 @@ class Maker
                 $method = new Method('procedure');
                 $method->setPublic();
 
-                if ($def->parameters()) {
-                    foreach ($def->parameters()->properties()->toArray() as $property) {
-                        $propertyName = $property->name();
-                        $property = $this->unref($property);
-                        $parameter = $method->addParameter($propertyName);
-                        $parameterType = $this->namespaceAndClassname($property);
-
-                        if ($property instanceof ArrayDef) {
-                            $parameter->setType('array');
-                            $method->addComment('@param ' . $parameterType . ' $' . $propertyName);
-                        } else {
-                            $parameter->setType($parameterType);
-                        }
-                    }
-                }
-
-                if ($def->input() && $def->input()->schema()) {
-                    $input = $this->unref($def->input()->schema());
-                    $inputType = $this->namespaceAndClassname($input);
-
-                    if ($input instanceof ArrayDef) {
-                        $method->addParameter('input')->setType('array');
-                        $method->addComment('@param ' . $inputType . ' $input');
-                    } else {
-                        $method->addParameter('input')->setType($inputType);
-                    }
-                }
-
-                if ($def->output() && $def->output()->schema()) {
-                    $return = $this->unref($def->output()->schema());
-                    $returnType = $this->namespaceAndClassname($return);
-
-                    if ($return instanceof ArrayDef) {
-                        $method->setReturnType('array');
-                        $method->addComment('@return ' . $returnType);
-                    } else {
-                        $method->setReturnType($returnType);
-                        $body = \sprintf('return %s::fromArray($this->request($this->argsWithKeys(func_get_args())));', $returnType);
-                        $method->addBody($body);
-                    }
-                } else {
-                    $method->setReturnType('void');
-                    $body = '$this->request($this->argsWithKeys(func_get_args()));';
-                    $method->addBody($body);
-                }
+                $this->addProcedureParameters($method, $def);
+                $this->addProcedureReturnType($method, $def);
 
                 $class->addMember($method);
 
@@ -311,6 +227,118 @@ class Maker
                 $this->makeDef($config, $subdef);
             }
         }
+    }
+
+    private function addQueryParameters(Method $method, QueryDef $def): void
+    {
+        if ($def->parameters()) {
+            $properties = $def->parameters()->properties()->toArray();
+
+            // sort by nullability
+            $required = $def->parameters()->required() ?? [];
+            usort($properties, static fn ($a, $b) => !\in_array($a->name(), $required, true) <=> !\in_array($b->name(), $required, true));
+
+            foreach ($properties as $property) {
+                $propertyName = $property->name();
+                $property = $this->unref($property);
+                $parameter = $method->addParameter($propertyName);
+                $parameterType = $this->namespaceAndClassname($property);
+                $nullable = !\in_array($propertyName, $def->parameters()->required() ?? [], true);
+
+                if ($property instanceof ArrayDef) {
+                    $parameter->setType('array');
+                    $method->addComment(
+                        '@param '
+                        . ($nullable ? '?' : '')
+                        . $parameterType
+                        . ' $' . $propertyName
+                    );
+                } else {
+                    $parameter->setType($parameterType);
+                }
+
+                if ($nullable) {
+                    $parameter->setNullable(true)->setDefaultValue(null);
+                }
+            }
+        }
+    }
+
+    private function addQueryReturnType(Method $method, QueryDef $def): void
+    {
+        if ($def->output() && $def->output()->schema()) {
+            $return = $this->unref($def->output()->schema());
+
+            if ($return instanceof ArrayDef) {
+                $method->setReturnType('array');
+                $method->addComment('@return ' . $this->namespaceAndClassname($return));
+            } else {
+                $returnType = $this->namespaceAndClassname($return);
+                $method->setReturnType($returnType);
+                $body = \sprintf('return %s::fromArray($this->request($this->argsWithKeys(func_get_args())));', $returnType);
+                $method->addBody($body);
+            }
+        } else {
+            $method->setReturnType('mixed');
+            $body = 'return $this->request($this->argsWithKeys(func_get_args()));';
+            $method->addBody($body);
+        }
+    }
+
+    private function addProcedureParameters(Method $method, ProcedureDef $def): void
+    {
+        if ($def->parameters()) {
+            foreach ($def->parameters()->properties()->toArray() as $property) {
+                $propertyName = $property->name();
+                $property = $this->unref($property);
+                $parameter = $method->addParameter($propertyName);
+                $parameterType = $this->namespaceAndClassname($property);
+
+                if ($property instanceof ArrayDef) {
+                    $parameter->setType('array');
+                    $method->addComment('@param ' . $parameterType . ' $' . $propertyName);
+                } else {
+                    $parameter->setType($parameterType);
+                }
+            }
+        }
+
+        if ($def->input() && $def->input()->schema()) {
+            $input = $this->unref($def->input()->schema());
+            $inputType = $this->namespaceAndClassname($input);
+
+            if ($input instanceof ArrayDef) {
+                $method->addParameter('input')->setType('array');
+                $method->addComment('@param ' . $inputType . ' $input');
+            } else {
+                $method->addParameter('input')->setType($inputType);
+            }
+        }
+    }
+
+    private function addProcedureReturnType(Method $method, ProcedureDef $def): bool
+    {
+        if ($def->output() && $def->output()->schema()) {
+            $return = $this->unref($def->output()->schema());
+            $returnType = $this->namespaceAndClassname($return);
+
+            if ($return instanceof ArrayDef) {
+                $method->setReturnType('array');
+                $method->addComment('@return ' . $returnType);
+            } else {
+                $method->setReturnType($returnType);
+                $body = \sprintf('return %s::fromArray($this->request($this->argsWithKeys(func_get_args())));', $returnType);
+                $method->addBody($body);
+            }
+
+            return true;
+        }
+
+        $method->setReturnType('void');
+        $body = '$this->request($this->argsWithKeys(func_get_args()));';
+        $method->addBody($body);
+
+        return false;
     }
 
     private function lexiconToNamespace(MakeConfig $config, Lexicon $lexicon): string
@@ -460,5 +488,69 @@ class Maker
         $printer->setTypeResolving(true);
 
         file_put_contents($filepath, $printer->printFile($phpFile));
+    }
+
+    private function makeMetaClient(Lexicons $lexicons): void
+    {
+        $config = new MakeConfig(
+            path: $this->config->path . '/Meta',
+            namespace: $this->config->namespace . '\Meta',
+        );
+        $namespace = new PhpNamespace($config->namespace);
+        $metaClient = new ClassType('ATProtoMetaClient');
+        $metaClient->addMember((new Property('client'))->setPrivate()->setType(ATProtoClientInterface::class));
+        $metaClient->addMember((new Property('token'))->setPrivate()->setType('string')->setNullable());
+        $constructor = $metaClient->addMethod('__construct');
+        $constructor->addParameter('client')->setType(ATProtoClient::class)->setNullable()->setDefaultValue(null);
+        $constructor->addParameter('token')->setType('string')->setNullable()->setDefaultValue(null);
+        $constructor->addBody('if ($client === null) {');
+        $constructor->addBody(\sprintf('    $client = \%s::getDefault();', ATProtoClientBuilder::class));
+        $constructor->addBody('}');
+        $constructor->addBody('$this->client = $client;');
+        $constructor->addBody('$this->token = $token;');
+
+        foreach ($lexicons->toArray() as $lexicon) {
+            foreach ($lexicon->defs()->toArray() as $def) {
+                if (!($def instanceof QueryDef || $def instanceof ProcedureDef)) {
+                    continue;
+                }
+
+                $methodname = $def->lexicon()->id();
+                $methodname = explode('.', $methodname);
+                $methodname = array_map(static fn ($part) => ucfirst($part), $methodname);
+                $methodname = implode('', $methodname);
+                $methodname = lcfirst($methodname);
+
+                $method = $metaClient->addMethod($methodname);
+                $method->setPublic();
+
+                if ($def->description()) {
+                    $method->addComment($def->description());
+                }
+
+                if ($def instanceof QueryDef) {
+                    $this->addQueryParameters($method, $def);
+                    $this->addQueryReturnType($method, $def);
+                    $body = \sprintf('$action = new %s($this->client, $this->token);', $this->namespaceAndClassname($def));
+                    $method->setBody($body);
+                    $method->addBody('');
+                    $method->addBody('return $action->query(...func_get_args());');
+                } elseif ($def instanceof ProcedureDef) {
+                    $this->addProcedureParameters($method, $def);
+                    $returns = $this->addProcedureReturnType($method, $def);
+                    $body = \sprintf('$action = new %s($this->client, $this->token);', $this->namespaceAndClassname($def));
+                    $method->setBody($body);
+                    $method->addBody('');
+
+                    if ($returns) {
+                        $method->addBody('return $action->procedure(...func_get_args());');
+                    } else {
+                        $method->addBody('$action->procedure(...func_get_args());');
+                    }
+                }
+            }
+        }
+
+        $this->saveClass($metaClient, $namespace);
     }
 }

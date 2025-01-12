@@ -26,7 +26,6 @@ class Generator
         $config = new MakeConfig(
             path: __DIR__ . '/../Model',
             namespace: 'Aazsamir\Libphpsky\ATProto\Model',
-            mainClass: 'ATProtoModel',
         );
         $maker = new Maker();
         $maker->make($config, $lexicons);

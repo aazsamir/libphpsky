@@ -9,6 +9,5 @@ readonly class MakeConfig
     public function __construct(
         public string $path,
         public string $namespace,
-        public string $mainClass,
     ) {}
 }
