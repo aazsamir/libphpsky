@@ -44,14 +44,10 @@ class Maker
     {
         $this->config = $config;
 
-        try {
-            foreach ($lexicons->toArray() as $lexicon) {
-                foreach ($lexicon->defs()->toArray() as $def) {
-                    $this->makeDef($config, $def);
-                }
+        foreach ($lexicons->toArray() as $lexicon) {
+            foreach ($lexicon->defs()->toArray() as $def) {
+                $this->makeDef($config, $def);
             }
-        } catch (\Throwable $e) {
-            throw $e;
         }
     }
 
