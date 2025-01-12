@@ -32,7 +32,7 @@ use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\LexiconType;
 class Loader
 {
     public function __construct(
-        private LexiconProvider $lexiconProvider
+        private LexiconProvider $lexiconProvider,
     ) {}
 
     public function load(): Lexicons

@@ -17,5 +17,5 @@ interface LexiconProvider
      *  defs: array<string, array<string, mixed>>
      * }>
      */
-    public function provide(): Generator;
+    public function provide(): \Generator;
 }

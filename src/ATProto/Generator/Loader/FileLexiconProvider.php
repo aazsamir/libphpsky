@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\ATProto\Generator\Loader;
 
-use Generator;
-
 class FileLexiconProvider implements LexiconProvider
 {
     private string $path;
 
     public function __construct(
-        string $path
+        string $path,
     ) {
-        $path = \realpath($path);
+        $path = realpath($path);
 
         if ($path === false) {
             throw new \RuntimeException('Path not found: ' . $path);
@@ -22,7 +20,7 @@ class FileLexiconProvider implements LexiconProvider
         $this->path = $path;
     }
 
-    public function provide(): Generator
+    public function provide(): \Generator
     {
         $it = new \RecursiveDirectoryIterator($this->path);
         $it = new \RecursiveIteratorIterator($it);
