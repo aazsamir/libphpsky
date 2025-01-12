@@ -135,7 +135,7 @@ trait FromArray
                 && isset($data[$key]['$type'])
                 && \is_string($data[$key]['$type'])
             ) {
-                $type = TypeResolver::resolve($data[$key]['$type'], $key);
+                $type = TypeResolver::resolve($data[$key]['$type']);
 
                 if ($type) {
                     $instance->{$key} = $type::fromArray($value);

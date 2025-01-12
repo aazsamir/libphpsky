@@ -9,7 +9,7 @@ class TypeResolver
     /**
      * @param string $type in form of `app.bsky.feed.defs#postView`
      */
-    public static function resolve(string $type, ?string $key = null): ?string
+    public static function resolve(string $type): ?string
     {
         if (!str_contains($type, '#')) {
             $class = explode('.', $type);
