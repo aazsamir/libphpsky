@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-require dirname(__DIR__, 3) . '/vendor/autoload.php';
+require dirname(__DIR__, 2) . '/vendor/autoload.php';
 
-$graph = new Aazsamir\Libphpsky\Example\Bluegraph\GraphGenerate();
+$graph = new Examples\Bluegraph\GraphGenerate();
 
 if (
     !isset($_SERVER['argv'])

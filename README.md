@@ -96,7 +96,7 @@ foreach ($actors as $actor) {
 
 ### Examples
 
-Check `src/Example` directory for more examples.
+Check `examples` directory for more examples.
 
 ## Features
 

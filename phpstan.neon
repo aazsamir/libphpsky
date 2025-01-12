@@ -2,5 +2,6 @@ parameters:
     level: max
     paths:
         - src
+        - examples
     excludePaths:
         - src/ATProto/Model/Meta

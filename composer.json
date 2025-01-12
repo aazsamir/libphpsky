@@ -3,7 +3,8 @@
     "autoload": {
         "psr-4": {
             "Aazsamir\\Libphpsky\\": "src/",
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "Examples\\": "examples/"
         }
     },
     "authors": [

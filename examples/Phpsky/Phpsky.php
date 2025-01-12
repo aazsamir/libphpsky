@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Aazsamir\Libphpsky\Example\Phpsky;
+namespace Examples\Phpsky;
 
 use Aazsamir\Libphpsky\ATProto\Client\ProcedureException;
 use Aazsamir\Libphpsky\ATProto\Client\QueryException;

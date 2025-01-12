@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Aazsamir\Libphpsky\Example\Bluegraph;
+namespace Examples\Bluegraph;
 
 class Graph
 {
