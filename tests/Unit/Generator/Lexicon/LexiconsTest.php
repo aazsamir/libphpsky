@@ -10,6 +10,9 @@ use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Lexicons;
 use Tests\Unit\TestCase;
 
+/**
+ * @internal
+ */
 final class LexiconsTest extends TestCase
 {
     public function testLexicons(): void

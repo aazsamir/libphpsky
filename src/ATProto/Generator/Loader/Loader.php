@@ -163,10 +163,6 @@ class Loader
         }
         if ($enum !== null) {
             $this->assertStrings($enum);
-
-            if (!\is_array($enum)) {
-                throw new \Exception(\sprintf('Enum must be an array for def %s', $name));
-            }
         }
         if ($default !== null && !\is_int($default)) {
             throw new \Exception(\sprintf('Default must be an integer for def %s', $name));

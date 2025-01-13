@@ -6,12 +6,14 @@ namespace Tests\Unit\Generator\Lexicon;
 
 use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\ArrayDef;
 use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\Defs;
-use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\RecordDef;
 use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\StringDef;
 use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Lexicon;
 use Tests\Unit\TestCase;
 
-class LexiconTest extends TestCase
+/**
+ * @internal
+ */
+final class LexiconTest extends TestCase
 {
     public function testCreation(): void
     {
