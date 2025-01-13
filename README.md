@@ -110,8 +110,8 @@ Check `examples` directory for more examples.
 
 ## Contributing
 
-It was created in a few days, so give it some time to put it into better shape.
-As you can see, it's poorly written, have no tests, and phpstan is not complaining only because of runtime validation. So, some refactor is needed. If you still aren't scared, feel free to contribute.
+Pull requests are welcome :)
+Just make sure that phpstan, php-cs-fixer and phpunit pass.
 
 ## License
 
