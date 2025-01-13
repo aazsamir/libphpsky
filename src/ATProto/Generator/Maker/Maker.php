@@ -129,93 +129,9 @@ class Maker
             case $def instanceof ObjectDef:
                 $class->addTrait('\Aazsamir\Libphpsky\ATProto\Generator\Prefab\FromArray');
                 $class->addImplement(ATProtoObject::class);
-                $constructorTypes = [];
 
-                foreach ($def->properties()->toArray() as $property) {
-                    $propertyName = $property->name();
-                    $property = $this->unref($property);
-                    $phpProperty = $class->addProperty($propertyName);
-                    $phpPropertyType = $this->namespaceAndClassname($property);
-                    $nullable = empty($def->required())
-                        || !\in_array($property->name(), $def->required(), true);
-
-                    if ($nullable) {
-                        $phpProperty->setNullable($nullable);
-                        $phpProperty->setValue(null);
-                    }
-
-                    if ($property instanceof ArrayDef) {
-                        $phpProperty->setType('array');
-                        if ($nullable) {
-                            $phpProperty->addComment('@var ' . $phpPropertyType . '|null');
-                        } else {
-                            $phpProperty->addComment('@var ' . $phpPropertyType);
-                        }
-                    } elseif ($property instanceof UnionDef) {
-                        $phpProperty->setType('mixed');
-                        $types = [];
-
-                        foreach ($property->resolvedRefs() as $type) {
-                            $types[] = $this->namespaceAndClassname($type);
-                        }
-
-                        if ($types) {
-                            if ($nullable) {
-                                $types[] = 'null';
-                            }
-
-                            $types = Type::union(...$types);
-
-                            $phpProperty->addComment('@var ' . $types);
-                        }
-                    } else {
-                        $phpProperty->setType($phpPropertyType);
-                    }
-
-                    if ($property instanceof ArrayDef) {
-                        $phpProperty->setValue([]);
-                    }
-
-                    if ($property instanceof ArrayDef) {
-                        $constructorTypes[] = [
-                            'name' => $propertyName,
-                            'type' => 'array',
-                            'nullable' => $nullable,
-                            'comment' => '@param ' . $phpPropertyType . ' $' . $propertyName,
-                        ];
-                    } else {
-                        $constructorTypes[] = [
-                            'name' => $propertyName,
-                            'type' => $phpPropertyType,
-                            'nullable' => $nullable,
-                            'comment' => null,
-                        ];
-                    }
-                }
-
-                // nullable last
-                usort($constructorTypes, static fn ($a, $b) => $a['nullable'] <=> $b['nullable']);
-                $constructor = $class->addMethod('new')->setStatic()->setReturnType('self');
-                $constructor->addBody('$instance = new self();');
-
-                foreach ($constructorTypes as $type) {
-                    $parameter = $constructor->addParameter($type['name']);
-                    $parameter->setType($type['type']);
-                    $parameter->setNullable($type['nullable']);
-
-                    if ($type['comment']) {
-                        $constructor->addComment($type['comment']);
-                    }
-
-                    if ($type['nullable']) {
-                        $parameter->setDefaultValue(null);
-                    }
-
-                    $constructor->addBody('$instance->' . $type['name'] . ' = $' . $type['name'] . ';');
-                }
-
-                $constructor->addBody('');
-                $constructor->addBody('return $instance;');
+                $constructorTypes = $this->addObjectParameters($class, $def);
+                $this->addObjectConstructor($class, $def, $constructorTypes);
 
                 $this->saveClass($class, $phpNamespace);
 
@@ -339,6 +255,105 @@ class Maker
         $method->addBody($body);
 
         return false;
+    }
+
+    /**
+     * @return array<array{name: string, type: string, nullable: bool, comment: string|null}>
+     */
+    private function addObjectParameters(ClassType $class, ObjectDef $def): array
+    {
+        $constructorTypes = [];
+
+        foreach ($def->properties()->toArray() as $property) {
+            $propertyName = $property->name();
+            $property = $this->unref($property);
+            $phpProperty = $class->addProperty($propertyName);
+            $phpPropertyType = $this->namespaceAndClassname($property);
+            $nullable = empty($def->required())
+                || !\in_array($property->name(), $def->required(), true);
+
+            if ($nullable) {
+                $phpProperty->setNullable($nullable);
+                $phpProperty->setValue(null);
+            }
+
+            if ($property instanceof ArrayDef) {
+                $phpProperty->setType('array');
+                if ($nullable) {
+                    $phpProperty->addComment('@var ' . $phpPropertyType . '|null');
+                } else {
+                    $phpProperty->addComment('@var ' . $phpPropertyType);
+                }
+            } elseif ($property instanceof UnionDef) {
+                $phpProperty->setType('mixed');
+                $types = [];
+
+                foreach ($property->resolvedRefs() as $type) {
+                    $types[] = $this->namespaceAndClassname($type);
+                }
+
+                if ($types) {
+                    if ($nullable) {
+                        $types[] = 'null';
+                    }
+
+                    $types = Type::union(...$types);
+
+                    $phpProperty->addComment('@var ' . $types);
+                }
+            } else {
+                $phpProperty->setType($phpPropertyType);
+            }
+
+            if ($property instanceof ArrayDef) {
+                $phpProperty->setValue([]);
+                $constructorTypes[] = [
+                    'name' => $propertyName,
+                    'type' => 'array',
+                    'nullable' => $nullable,
+                    'comment' => '@param ' . $phpPropertyType . ' $' . $propertyName,
+                ];
+            } else {
+                $constructorTypes[] = [
+                    'name' => $propertyName,
+                    'type' => $phpPropertyType,
+                    'nullable' => $nullable,
+                    'comment' => null,
+                ];
+            }
+        }
+
+        return $constructorTypes;
+    }
+
+    /**
+     * @param array<array{name: string, type: string, nullable: bool, comment: string|null}> $constructorTypes
+     */
+    private function addObjectConstructor(ClassType $class, ObjectDef $def, array $constructorTypes): void
+    {
+        // nullable last
+        usort($constructorTypes, static fn ($a, $b) => $a['nullable'] <=> $b['nullable']);
+        $constructor = $class->addMethod('new')->setStatic()->setReturnType('self');
+        $constructor->addBody('$instance = new self();');
+
+        foreach ($constructorTypes as $type) {
+            $parameter = $constructor->addParameter($type['name']);
+            $parameter->setType($type['type']);
+            $parameter->setNullable($type['nullable']);
+
+            if ($type['comment']) {
+                $constructor->addComment($type['comment']);
+            }
+
+            if ($type['nullable']) {
+                $parameter->setDefaultValue(null);
+            }
+
+            $constructor->addBody('$instance->' . $type['name'] . ' = $' . $type['name'] . ';');
+        }
+
+        $constructor->addBody('');
+        $constructor->addBody('return $instance;');
     }
 
     private function lexiconToNamespace(Lexicon $lexicon): string

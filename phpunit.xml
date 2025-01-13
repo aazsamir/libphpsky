@@ -23,6 +23,9 @@
         <include>
             <directory>src</directory>
         </include>
+        <exclude>
+            <directory>src/ATProto/Model</directory>
+        </exclude>
     </source>
 
     <coverage pathCoverage="false">

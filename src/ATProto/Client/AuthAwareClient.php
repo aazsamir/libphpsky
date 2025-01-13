@@ -18,6 +18,8 @@ class AuthAwareClient implements ATProtoClientInterface
         private ClientInterface $decorated,
         private AuthConfig $authConfig,
         private SessionStore $sessionStore,
+        private ?CreateSession $createSession = null,
+        private ?RefreshSession $refreshSession = null,
     ) {}
 
     public function sendRequest(RequestInterface $request): ResponseInterface
@@ -52,7 +54,6 @@ class AuthAwareClient implements ATProtoClientInterface
         }
 
         if ($session === null) {
-            $createSession = CreateSession::default();
             $input = \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\CreateSession\Input::new(
                 identifier: $this->authConfig->login(),
                 password: $this->authConfig->password(),
@@ -60,7 +61,7 @@ class AuthAwareClient implements ATProtoClientInterface
                 allowTakendown: $this->authConfig->allowTakendown(),
             );
 
-            $session = $createSession->procedure($input);
+            $session = $this->createSession()->procedure($input);
             $session = new Session($session->accessJwt, $session->refreshJwt);
 
             $this->sessionStore->store($this->authConfig, $session);
@@ -81,8 +82,7 @@ class AuthAwareClient implements ATProtoClientInterface
                 throw new AuthException('Unauthorized', 'Unauthorized', 401);
             }
         } catch (AuthException $e) {
-            $refreshSession = RefreshSession::default();
-            $response = $refreshSession->withAuth($session->getRefreshToken())->procedure();
+            $response = $this->refreshSession()->withAuth($session->getRefreshToken())->procedure();
 
             $session = new Session($response->accessJwt, $response->refreshJwt);
             $this->sessionStore->store($this->authConfig, $session);
@@ -96,6 +96,24 @@ class AuthAwareClient implements ATProtoClientInterface
         }
 
         return $response;
+    }
+
+    private function createSession(): CreateSession
+    {
+        if ($this->createSession === null) {
+            $this->createSession = CreateSession::default();
+        }
+
+        return $this->createSession;
+    }
+
+    private function refreshSession(): RefreshSession
+    {
+        if ($this->refreshSession === null) {
+            $this->refreshSession = RefreshSession::default();
+        }
+
+        return $this->refreshSession;
     }
 
     private function withSession(RequestInterface $request, Session $session): RequestInterface

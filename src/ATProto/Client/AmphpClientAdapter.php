@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\ATProto\Client;
 
-use Amp\Http\Client\HttpClient;
+use Amp\Http\Client\DelegateHttpClient;
 use Amp\Http\Client\Request;
+use Amp\NullCancellation;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 class AmphpClientAdapter implements ATProtoClientInterface
 {
-    public function __construct(private HttpClient $client) {}
+    public function __construct(private DelegateHttpClient $client) {}
 
     public function sendRequest(RequestInterface $request): ResponseInterface
     {
@@ -31,7 +32,7 @@ class AmphpClientAdapter implements ATProtoClientInterface
             $amRequest->addHeader($name, $values);
         }
 
-        $amResponse = $this->client->request($amRequest);
+        $amResponse = $this->client->request($amRequest, new NullCancellation());
 
         return new Response(
             status: $amResponse->getStatus(),

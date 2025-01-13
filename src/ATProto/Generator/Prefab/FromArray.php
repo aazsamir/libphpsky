@@ -105,14 +105,36 @@ trait FromArray
                     continue;
                 }
 
-                if (str_contains('|', $type)) {
-                    $types = explode('|', $type);
-                } else {
-                    $types = [$type];
-                }
+                if (\is_array($value)) {
+                    if (str_contains($type, '|')) {
+                        $types = explode('|', $type);
+                        $resolved = [];
 
-                foreach ($types as $type) {
-                    if (\is_array($value)) {
+                        foreach ($value as $v) {
+                            foreach ($types as $type) {
+                                if (!class_exists($type)) {
+                                    continue;
+                                }
+
+                                if (!is_array($v)) {
+                                    continue;
+                                }
+
+                                if (!isset($v['$type'])) {
+                                    continue;
+                                }
+
+                                /** @phpstan-ignore-next-line */
+                                $classname = $type::ID . '#' . $type::NAME;
+
+                                if ($classname === $v['$type']) {
+                                    $resolved[] = $type::fromArray($v);
+                                }
+                            }
+                        }
+
+                        $instance->{$key} = $resolved;
+                    } else {
                         if (class_exists($type)) {
                             $instance->{$key} = array_map(static fn ($item) => $type::fromArray($item), $value);
 

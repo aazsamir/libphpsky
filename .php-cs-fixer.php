@@ -55,5 +55,7 @@ return (new PhpCsFixer\Config())
         'phpdoc_to_comment' => false,
         'class_definition' => false,
         'php_unit_test_class_requires_covers' => false,
+        'fully_qualified_strict_types' => false,
+        'php_unit_strict' => false,
     ])
     ->setFinder($finder);
