@@ -12,6 +12,7 @@ use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Lexicons;
 use Aazsamir\Libphpsky\ATProto\Generator\Loader\FileLexiconProvider;
 use Aazsamir\Libphpsky\ATProto\Generator\Loader\Loader;
+use Aazsamir\Libphpsky\ATProto\Generator\Maker\FileSaveClass;
 use Aazsamir\Libphpsky\ATProto\Generator\Maker\MakeConfig;
 use Aazsamir\Libphpsky\ATProto\Generator\Maker\Maker;
 
@@ -30,8 +31,12 @@ class Generator
             path: __DIR__ . '/../Model',
             namespace: 'Aazsamir\Libphpsky\ATProto\Model',
         );
-        $maker = new Maker();
-        $maker->make($config, $lexicons);
+        $saver = new FileSaveClass($config);
+        $maker = new Maker(
+            $config,
+            $saver,
+        );
+        $maker->make($lexicons);
 
         return $lexicons;
     }

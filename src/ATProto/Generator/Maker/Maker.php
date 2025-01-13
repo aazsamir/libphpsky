@@ -30,34 +30,34 @@ use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Lexicons;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\Method;
-use Nette\PhpGenerator\PhpFile;
 use Nette\PhpGenerator\PhpNamespace;
 use Nette\PhpGenerator\Property;
-use Nette\PhpGenerator\PsrPrinter;
 use Nette\PhpGenerator\Type;
 
 class Maker
 {
-    private MakeConfig $config;
     /**
      * @var array<string, bool>
      */
     private array $resolved = [];
 
-    public function make(MakeConfig $config, Lexicons $lexicons): void
-    {
-        $this->config = $config;
+    public function __construct(
+        private MakeConfig $config,
+        private SaveClass $saveClass,
+    ) {}
 
+    public function make(Lexicons $lexicons): void
+    {
         foreach ($lexicons->toArray() as $lexicon) {
             foreach ($lexicon->defs()->toArray() as $def) {
-                $this->makeDef($config, $def);
+                $this->makeDef($def);
             }
         }
 
         $this->makeMetaClient($lexicons);
     }
 
-    private function makeDef(MakeConfig $config, Def $def): void
+    private function makeDef(Def $def): void
     {
         $def = $this->unref($def);
         $defname = $def->lexicon()->id() . '#' . $def->name();
@@ -72,7 +72,7 @@ class Maker
             return;
         }
 
-        $namespace = $this->lexiconToNamespace($config, $def->lexicon());
+        $namespace = $this->lexiconToNamespace($def->lexicon());
         $classname = $this->defToClassName($def);
 
         $phpNamespace = new PhpNamespace($namespace);
@@ -224,7 +224,7 @@ class Maker
 
         if ($def instanceof DefContainer) {
             foreach ($def->defs()->toArray() as $subdef) {
-                $this->makeDef($config, $subdef);
+                $this->makeDef($subdef);
             }
         }
     }
@@ -249,9 +249,9 @@ class Maker
                     $parameter->setType('array');
                     $method->addComment(
                         '@param '
-                        . ($nullable ? '?' : '')
-                        . $parameterType
-                        . ' $' . $propertyName
+                            . ($nullable ? '?' : '')
+                            . $parameterType
+                            . ' $' . $propertyName
                     );
                 } else {
                     $parameter->setType($parameterType);
@@ -341,11 +341,11 @@ class Maker
         return false;
     }
 
-    private function lexiconToNamespace(MakeConfig $config, Lexicon $lexicon): string
+    private function lexiconToNamespace(Lexicon $lexicon): string
     {
         $id = $lexicon->id();
         $id = explode('.', $id);
-        $namespace = $config->namespace;
+        $namespace = $this->config->namespace;
         $namespace = rtrim($namespace, '\\');
 
         foreach ($id as $idElement) {
@@ -389,7 +389,7 @@ class Maker
                 return 'mixed';
         }
 
-        $namespace = $this->lexiconToNamespace($this->config, $def->lexicon());
+        $namespace = $this->lexiconToNamespace($def->lexicon());
         // last element of the namespace
         $last = explode('\\', $namespace);
         $last = end($last);
@@ -417,8 +417,7 @@ class Maker
             || $def instanceof TokenDef
             || $def instanceof IntegerDef
             || $def instanceof BooleanDef
-            || $def instanceof UnknownDef
-        ;
+            || $def instanceof UnknownDef;
     }
 
     private function skipCreation(Def $def): bool
@@ -452,7 +451,7 @@ class Maker
             return 'array<' . $this->namespaceAndClassname($def) . '>';
         }
 
-        $namespace = $this->lexiconToNamespace($this->config, $def->lexicon());
+        $namespace = $this->lexiconToNamespace($def->lexicon());
 
         return '\\' . $namespace . '\\' . $classname;
     }
@@ -468,26 +467,7 @@ class Maker
 
     private function saveClass(ClassType $class, PhpNamespace $namespace): void
     {
-        $namespace = $namespace->getName();
-
-        $relativeNamespace = str_replace($this->config->namespace, '', $namespace);
-        $path = rtrim($this->config->path, '/') . str_replace('\\', '/', $relativeNamespace);
-
-        if (!is_dir($path)) {
-            mkdir($path, 0777, true);
-        }
-
-        $filepath = $class->getName();
-        $filepath = $path . '/' . $filepath . '.php';
-
-        $phpFile = new PhpFile();
-        $phpFile->addNamespace($namespace)->add($class);
-        $phpFile->setStrictTypes(true);
-
-        $printer = new PsrPrinter();
-        $printer->setTypeResolving(true);
-
-        file_put_contents($filepath, $printer->printFile($phpFile));
+        $this->saveClass->save($class, $namespace);
     }
 
     private function makeMetaClient(Lexicons $lexicons): void
