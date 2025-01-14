@@ -1,5 +1,6 @@
 {
     "name": "aazsamir/libphpsky",
+    "description": "PHP library for interacting with ATProto protocol",
     "autoload": {
         "psr-4": {
             "Aazsamir\\Libphpsky\\": "src/",
