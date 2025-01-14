@@ -116,7 +116,7 @@ trait FromArray
                                     continue;
                                 }
 
-                                if (!is_array($v)) {
+                                if (!\is_array($v)) {
                                     continue;
                                 }
 

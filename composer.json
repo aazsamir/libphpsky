@@ -34,5 +34,15 @@
             "php-http/discovery": true
         }
     },
-    "license": "MIT"
+    "license": "MIT",
+    "scripts": {
+        "qa": [
+            "@phpcsfixer",
+            "@phpstan",
+            "@phpunit"
+        ],
+        "phpcsfixer": "php-cs-fixer fix --diff --dry-run --verbose --allow-risky=yes",
+        "phpstan": "phpstan analyse",
+        "phpunit": "phpunit"
+    }
 }
