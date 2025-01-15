@@ -42,7 +42,6 @@ class GraphGenerate
     public function generate(string $handle): void
     {
         $self = $this->getMyself($handle);
-        dd($self);
         $myLikers = $this->getMyLikers($self);
         $otherLiked = $this->getOtherLiked($myLikers);
 
