@@ -140,6 +140,9 @@ class Phpsky
             return;
         }
 
+        $indexedAt = $profile->indexedAt?->format('Y-m-d H:i:s');
+        $createdAt = $profile->createdAt?->format('Y-m-d H:i:s');
+
         echo <<<HTML
             <h1>Profile</h1>
             did: $profile->did<br>
@@ -151,8 +154,8 @@ class Phpsky
             followersCount: $profile->followersCount<br>
             followsCount: $profile->followsCount<br>
             postsCount: $profile->postsCount<br>
-            indexedAt: $profile->indexedAt<br>
-            createdAt: $profile->createdAt<br>
+            indexedAt: $indexedAt<br>
+            createdAt: $createdAt<br>
             HTML;
     }
 }
