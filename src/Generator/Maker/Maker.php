@@ -380,19 +380,11 @@ class Maker
             case $def instanceof TokenDef:
                 return 'string';
             case $def instanceof StringDef:
-                return match ($def->format()) {
-                    null => 'string',
-                    'datetime' => 'DateTimeInterface',
-                    'did' => 'string',
-                    'handle' => 'string',
-                    'uri' => 'string',
-                    'at-uri' => 'string',
-                    'cid' => 'string',
-                    'at-identifier' => 'string',
-                    'nsid' => 'string',
-                    'language' => 'string',
-                    default => throw new \RuntimeException('Unknown format: ' . $def->format()),
-                };
+                if ($def->format() === 'datetime') {
+                    return 'DateTimeInterface';
+                }
+
+                return 'string';
             case $def instanceof IntegerDef:
                 return 'int';
             case $def instanceof BooleanDef:
