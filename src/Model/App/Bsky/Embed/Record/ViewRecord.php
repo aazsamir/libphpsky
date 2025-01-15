@@ -28,7 +28,7 @@ class ViewRecord implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\RecordWithMedia\View>|null */
     public ?array $embeds = [];
-    public string $indexedAt;
+    public \DateTimeInterface $indexedAt;
 
     public static function id(): string
     {
@@ -43,7 +43,7 @@ class ViewRecord implements \Aazsamir\Libphpsky\ATProtoObject
         string $uri,
         string $cid,
         mixed $value,
-        string $indexedAt,
+        \DateTimeInterface $indexedAt,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $author = null,
         ?array $labels = null,
         ?int $replyCount = null,

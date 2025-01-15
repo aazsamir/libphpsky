@@ -20,12 +20,12 @@ class RepoView implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<mixed> */
     public array $relatedRecords = [];
-    public string $indexedAt;
+    public \DateTimeInterface $indexedAt;
     public Moderation $moderation;
     public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode $invitedBy = null;
     public ?bool $invitesDisabled = null;
     public ?string $inviteNote = null;
-    public ?string $deactivatedAt = null;
+    public ?\DateTimeInterface $deactivatedAt = null;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\ThreatSignature>|null */
     public ?array $threatSignatures = [];
@@ -43,13 +43,13 @@ class RepoView implements \Aazsamir\Libphpsky\ATProtoObject
         string $did,
         string $handle,
         array $relatedRecords,
-        string $indexedAt,
+        \DateTimeInterface $indexedAt,
         Moderation $moderation,
         ?string $email = null,
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode $invitedBy = null,
         ?bool $invitesDisabled = null,
         ?string $inviteNote = null,
-        ?string $deactivatedAt = null,
+        ?\DateTimeInterface $deactivatedAt = null,
         ?array $threatSignatures = null,
     ): self {
         $instance = new self();

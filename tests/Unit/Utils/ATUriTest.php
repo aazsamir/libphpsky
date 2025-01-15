@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Utils;
 
-use Aazsamir\Libphpsky\Utils\ATUri\ATUri;
+use Aazsamir\Libphpsky\Type\ATUri;
 use Tests\Unit\TestCase;
 
 /**

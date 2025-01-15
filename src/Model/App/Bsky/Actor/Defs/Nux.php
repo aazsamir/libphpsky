@@ -17,15 +17,19 @@ class Nux implements \Aazsamir\Libphpsky\ATProtoObject
     public string $id;
     public bool $completed;
     public ?string $data = null;
-    public ?string $expiresAt = null;
+    public ?\DateTimeInterface $expiresAt = null;
 
     public static function id(): string
     {
         return self::ID;
     }
 
-    public static function new(string $id, bool $completed, ?string $data = null, ?string $expiresAt = null): self
-    {
+    public static function new(
+        string $id,
+        bool $completed,
+        ?string $data = null,
+        ?\DateTimeInterface $expiresAt = null,
+    ): self {
         $instance = new self();
         $instance->id = $id;
         $instance->completed = $completed;

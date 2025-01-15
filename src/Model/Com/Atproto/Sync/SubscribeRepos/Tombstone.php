@@ -16,14 +16,14 @@ class Tombstone implements \Aazsamir\Libphpsky\ATProtoObject
 
     public int $seq;
     public string $did;
-    public string $time;
+    public \DateTimeInterface $time;
 
     public static function id(): string
     {
         return self::ID;
     }
 
-    public static function new(int $seq, string $did, string $time): self
+    public static function new(int $seq, string $did, \DateTimeInterface $time): self
     {
         $instance = new self();
         $instance->seq = $seq;

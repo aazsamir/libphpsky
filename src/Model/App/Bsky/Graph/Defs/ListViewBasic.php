@@ -24,7 +24,7 @@ class ListViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
     public ?ListViewerState $viewer = null;
-    public ?string $indexedAt = null;
+    public ?\DateTimeInterface $indexedAt = null;
 
     public static function id(): string
     {
@@ -43,7 +43,7 @@ class ListViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
         ?int $listItemCount = null,
         ?array $labels = null,
         ?ListViewerState $viewer = null,
-        ?string $indexedAt = null,
+        ?\DateTimeInterface $indexedAt = null,
     ): self {
         $instance = new self();
         $instance->uri = $uri;

@@ -1030,7 +1030,7 @@ class ATProtoMetaClient
         ?int $limit = null,
         ?bool $priority = null,
         ?string $cursor = null,
-        ?string $seenAt = null,
+        ?\DateTimeInterface $seenAt = null,
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListNotifications\Output {
         $action = new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListNotifications\ListNotifications($this->client, $this->token);
         return $action->query(...func_get_args());
@@ -1041,7 +1041,7 @@ class ATProtoMetaClient
      */
     public function appBskyNotificationGetUnreadCount(
         ?bool $priority = null,
-        ?string $seenAt = null,
+        ?\DateTimeInterface $seenAt = null,
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\GetUnreadCount\Output {
         $action = new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\GetUnreadCount\GetUnreadCount($this->client, $this->token);
         return $action->query(...func_get_args());
@@ -1685,15 +1685,15 @@ class ATProtoMetaClient
         ?bool $includeAllUserRecords = null,
         ?string $subject = null,
         ?string $comment = null,
-        ?string $reportedAfter = null,
-        ?string $reportedBefore = null,
-        ?string $reviewedAfter = null,
-        ?string $hostingDeletedAfter = null,
-        ?string $hostingDeletedBefore = null,
-        ?string $hostingUpdatedAfter = null,
-        ?string $hostingUpdatedBefore = null,
+        ?\DateTimeInterface $reportedAfter = null,
+        ?\DateTimeInterface $reportedBefore = null,
+        ?\DateTimeInterface $reviewedAfter = null,
+        ?\DateTimeInterface $hostingDeletedAfter = null,
+        ?\DateTimeInterface $hostingDeletedBefore = null,
+        ?\DateTimeInterface $hostingUpdatedAfter = null,
+        ?\DateTimeInterface $hostingUpdatedBefore = null,
         ?array $hostingStatuses = null,
-        ?string $reviewedBefore = null,
+        ?\DateTimeInterface $reviewedBefore = null,
         ?bool $includeMuted = null,
         ?bool $onlyMuted = null,
         ?string $reviewState = null,
@@ -1753,8 +1753,8 @@ class ATProtoMetaClient
         ?array $types = null,
         ?string $createdBy = null,
         ?string $sortDirection = null,
-        ?string $createdAfter = null,
-        ?string $createdBefore = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdBefore = null,
         ?string $subject = null,
         ?array $collections = null,
         ?string $subjectType = null,

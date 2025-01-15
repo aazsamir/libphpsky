@@ -19,7 +19,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListNotifications\Notification> */
     public array $notifications = [];
     public ?bool $priority = null;
-    public ?string $seenAt = null;
+    public ?\DateTimeInterface $seenAt = null;
 
     public static function id(): string
     {
@@ -33,7 +33,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         array $notifications,
         ?string $cursor = null,
         ?bool $priority = null,
-        ?string $seenAt = null,
+        ?\DateTimeInterface $seenAt = null,
     ): self {
         $instance = new self();
         $instance->notifications = $notifications;

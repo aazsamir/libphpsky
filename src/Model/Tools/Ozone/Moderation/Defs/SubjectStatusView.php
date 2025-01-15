@@ -25,19 +25,19 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var array<string>|null */
     public ?array $subjectBlobCids = [];
     public ?string $subjectRepoHandle = null;
-    public string $updatedAt;
-    public string $createdAt;
+    public \DateTimeInterface $updatedAt;
+    public \DateTimeInterface $createdAt;
     public ?string $reviewState = null;
     public ?string $comment = null;
-    public ?string $muteUntil = null;
-    public ?string $muteReportingUntil = null;
+    public ?\DateTimeInterface $muteUntil = null;
+    public ?\DateTimeInterface $muteReportingUntil = null;
     public ?string $lastReviewedBy = null;
-    public ?string $lastReviewedAt = null;
-    public ?string $lastReportedAt = null;
-    public ?string $lastAppealedAt = null;
+    public ?\DateTimeInterface $lastReviewedAt = null;
+    public ?\DateTimeInterface $lastReportedAt = null;
+    public ?\DateTimeInterface $lastAppealedAt = null;
     public ?bool $takendown = null;
     public ?bool $appealed = null;
-    public ?string $suspendUntil = null;
+    public ?\DateTimeInterface $suspendUntil = null;
 
     /** @var array<string>|null */
     public ?array $tags = [];
@@ -54,22 +54,22 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         int $id,
         \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $subject,
-        string $updatedAt,
-        string $createdAt,
+        \DateTimeInterface $updatedAt,
+        \DateTimeInterface $createdAt,
         AccountHosting|RecordHosting|null $hosting = null,
         ?array $subjectBlobCids = null,
         ?string $subjectRepoHandle = null,
         ?string $reviewState = null,
         ?string $comment = null,
-        ?string $muteUntil = null,
-        ?string $muteReportingUntil = null,
+        ?\DateTimeInterface $muteUntil = null,
+        ?\DateTimeInterface $muteReportingUntil = null,
         ?string $lastReviewedBy = null,
-        ?string $lastReviewedAt = null,
-        ?string $lastReportedAt = null,
-        ?string $lastAppealedAt = null,
+        ?\DateTimeInterface $lastReviewedAt = null,
+        ?\DateTimeInterface $lastReportedAt = null,
+        ?\DateTimeInterface $lastAppealedAt = null,
         ?bool $takendown = null,
         ?bool $appealed = null,
-        ?string $suspendUntil = null,
+        ?\DateTimeInterface $suspendUntil = null,
         ?array $tags = null,
     ): self {
         $instance = new self();

@@ -17,7 +17,7 @@ class BlobView implements \Aazsamir\Libphpsky\ATProtoObject
     public string $cid;
     public string $mimeType;
     public int $size;
-    public string $createdAt;
+    public \DateTimeInterface $createdAt;
 
     /** @var \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ImageDetails|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\VideoDetails|null */
     public mixed $details = null;
@@ -32,7 +32,7 @@ class BlobView implements \Aazsamir\Libphpsky\ATProtoObject
         string $cid,
         string $mimeType,
         int $size,
-        string $createdAt,
+        \DateTimeInterface $createdAt,
         ImageDetails|VideoDetails|null $details = null,
         ?Moderation $moderation = null,
     ): self {

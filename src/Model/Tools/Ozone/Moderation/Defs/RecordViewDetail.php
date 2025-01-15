@@ -23,7 +23,7 @@ class RecordViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
-    public string $indexedAt;
+    public \DateTimeInterface $indexedAt;
     public ?ModerationDetail $moderation = null;
     public ?RepoView $repo = null;
 
@@ -41,7 +41,7 @@ class RecordViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
         string $cid,
         mixed $value,
         array $blobs,
-        string $indexedAt,
+        \DateTimeInterface $indexedAt,
         ?array $labels = null,
         ?ModerationDetail $moderation = null,
         ?RepoView $repo = null,

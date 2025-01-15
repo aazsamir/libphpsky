@@ -16,14 +16,14 @@ class Listitem implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $subject;
     public string $list;
-    public string $createdAt;
+    public \DateTimeInterface $createdAt;
 
     public static function id(): string
     {
         return self::ID;
     }
 
-    public static function new(string $subject, string $list, string $createdAt): self
+    public static function new(string $subject, string $list, \DateTimeInterface $createdAt): self
     {
         $instance = new self();
         $instance->subject = $subject;

@@ -16,7 +16,7 @@ class Account implements \Aazsamir\Libphpsky\ATProtoObject
 
     public int $seq;
     public string $did;
-    public string $time;
+    public \DateTimeInterface $time;
     public bool $active;
     public ?string $status = null;
 
@@ -25,8 +25,13 @@ class Account implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
-    public static function new(int $seq, string $did, string $time, bool $active, ?string $status = null): self
-    {
+    public static function new(
+        int $seq,
+        string $did,
+        \DateTimeInterface $time,
+        bool $active,
+        ?string $status = null,
+    ): self {
         $instance = new self();
         $instance->seq = $seq;
         $instance->did = $did;

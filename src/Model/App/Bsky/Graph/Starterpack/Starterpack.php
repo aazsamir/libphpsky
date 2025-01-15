@@ -23,7 +23,7 @@ class Starterpack implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Starterpack\FeedItem>|null */
     public ?array $feeds = [];
-    public string $createdAt;
+    public \DateTimeInterface $createdAt;
 
     public static function id(): string
     {
@@ -37,7 +37,7 @@ class Starterpack implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         string $name,
         string $list,
-        string $createdAt,
+        \DateTimeInterface $createdAt,
         ?string $description = null,
         ?array $descriptionFacets = null,
         ?array $feeds = null,

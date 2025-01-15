@@ -15,14 +15,14 @@ class Block implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'app.bsky.graph.block';
 
     public string $subject;
-    public string $createdAt;
+    public \DateTimeInterface $createdAt;
 
     public static function id(): string
     {
         return self::ID;
     }
 
-    public static function new(string $subject, string $createdAt): self
+    public static function new(string $subject, \DateTimeInterface $createdAt): self
     {
         $instance = new self();
         $instance->subject = $subject;

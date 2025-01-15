@@ -18,8 +18,8 @@ class Option implements \Aazsamir\Libphpsky\ATProtoObject
     public string $did;
     public mixed $value;
     public ?string $description = null;
-    public ?string $createdAt = null;
-    public ?string $updatedAt = null;
+    public ?\DateTimeInterface $createdAt = null;
+    public ?\DateTimeInterface $updatedAt = null;
     public ?string $managerRole = null;
     public string $scope;
     public string $createdBy;
@@ -38,8 +38,8 @@ class Option implements \Aazsamir\Libphpsky\ATProtoObject
         string $createdBy,
         string $lastUpdatedBy,
         ?string $description = null,
-        ?string $createdAt = null,
-        ?string $updatedAt = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $updatedAt = null,
         ?string $managerRole = null,
     ): self {
         $instance = new self();

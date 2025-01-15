@@ -14,14 +14,14 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.server.deactivateAccount';
 
-    public ?string $deleteAfter = null;
+    public ?\DateTimeInterface $deleteAfter = null;
 
     public static function id(): string
     {
         return self::ID;
     }
 
-    public static function new(?string $deleteAfter = null): self
+    public static function new(?\DateTimeInterface $deleteAfter = null): self
     {
         $instance = new self();
         $instance->deleteAfter = $deleteAfter;

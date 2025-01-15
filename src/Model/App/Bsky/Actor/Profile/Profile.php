@@ -23,7 +23,7 @@ class Profile implements \Aazsamir\Libphpsky\ATProtoObject
     public mixed $labels = null;
     public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $joinedViaStarterPack = null;
     public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $pinnedPost = null;
-    public ?string $createdAt = null;
+    public ?\DateTimeInterface $createdAt = null;
 
     public static function id(): string
     {
@@ -38,7 +38,7 @@ class Profile implements \Aazsamir\Libphpsky\ATProtoObject
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels $labels = null,
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $joinedViaStarterPack = null,
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $pinnedPost = null,
-        ?string $createdAt = null,
+        ?\DateTimeInterface $createdAt = null,
     ): self {
         $instance = new self();
         $instance->displayName = $displayName;

@@ -21,7 +21,7 @@ class Notification implements \Aazsamir\Libphpsky\ATProtoObject
     public ?string $reasonSubject = null;
     public mixed $record;
     public bool $isRead;
-    public string $indexedAt;
+    public \DateTimeInterface $indexedAt;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
@@ -40,7 +40,7 @@ class Notification implements \Aazsamir\Libphpsky\ATProtoObject
         string $reason,
         mixed $record,
         bool $isRead,
-        string $indexedAt,
+        \DateTimeInterface $indexedAt,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $author = null,
         ?string $reasonSubject = null,
         ?array $labels = null,

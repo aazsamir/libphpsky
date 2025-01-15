@@ -16,7 +16,7 @@ class Identity implements \Aazsamir\Libphpsky\ATProtoObject
 
     public int $seq;
     public string $did;
-    public string $time;
+    public \DateTimeInterface $time;
     public ?string $handle = null;
 
     public static function id(): string
@@ -24,7 +24,7 @@ class Identity implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
-    public static function new(int $seq, string $did, string $time, ?string $handle = null): self
+    public static function new(int $seq, string $did, \DateTimeInterface $time, ?string $handle = null): self
     {
         $instance = new self();
         $instance->seq = $seq;

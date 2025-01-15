@@ -19,7 +19,7 @@ class InviteCode implements \Aazsamir\Libphpsky\ATProtoObject
     public bool $disabled;
     public string $forAccount;
     public string $createdBy;
-    public string $createdAt;
+    public \DateTimeInterface $createdAt;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCodeUse> */
     public array $uses = [];
@@ -38,7 +38,7 @@ class InviteCode implements \Aazsamir\Libphpsky\ATProtoObject
         bool $disabled,
         string $forAccount,
         string $createdBy,
-        string $createdAt,
+        \DateTimeInterface $createdAt,
         array $uses,
     ): self {
         $instance = new self();

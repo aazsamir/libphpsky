@@ -14,7 +14,7 @@ use Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetLikes\GetLikes;
 use Aazsamir\Libphpsky\Model\App\Bsky\Feed\Like\Like;
 use Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\ResolveHandle;
 use Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ListRecords\ListRecords;
-use Aazsamir\Libphpsky\Utils\ATUri\ATUri;
+use Aazsamir\Libphpsky\Type\ATUri;
 
 /**
  * This is example code to generate a graph of people who liked our posts and their likes. It can be used further to visualize the graph using Graphviz or any other graph visualization tool.

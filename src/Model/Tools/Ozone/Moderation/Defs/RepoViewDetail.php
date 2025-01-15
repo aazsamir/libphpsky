@@ -20,7 +20,7 @@ class RepoViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<mixed> */
     public array $relatedRecords = [];
-    public string $indexedAt;
+    public \DateTimeInterface $indexedAt;
     public ?ModerationDetail $moderation = null;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
@@ -31,8 +31,8 @@ class RepoViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
     public ?array $invites = [];
     public ?bool $invitesDisabled = null;
     public ?string $inviteNote = null;
-    public ?string $emailConfirmedAt = null;
-    public ?string $deactivatedAt = null;
+    public ?\DateTimeInterface $emailConfirmedAt = null;
+    public ?\DateTimeInterface $deactivatedAt = null;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\ThreatSignature>|null */
     public ?array $threatSignatures = [];
@@ -52,7 +52,7 @@ class RepoViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
         string $did,
         string $handle,
         array $relatedRecords,
-        string $indexedAt,
+        \DateTimeInterface $indexedAt,
         ?string $email = null,
         ?ModerationDetail $moderation = null,
         ?array $labels = null,
@@ -60,8 +60,8 @@ class RepoViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
         ?array $invites = null,
         ?bool $invitesDisabled = null,
         ?string $inviteNote = null,
-        ?string $emailConfirmedAt = null,
-        ?string $deactivatedAt = null,
+        ?\DateTimeInterface $emailConfirmedAt = null,
+        ?\DateTimeInterface $deactivatedAt = null,
         ?array $threatSignatures = null,
     ): self {
         $instance = new self();

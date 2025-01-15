@@ -15,14 +15,14 @@ class InviteCodeUse implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'com.atproto.server.defs';
 
     public string $usedBy;
-    public string $usedAt;
+    public \DateTimeInterface $usedAt;
 
     public static function id(): string
     {
         return self::ID;
     }
 
-    public static function new(string $usedBy, string $usedAt): self
+    public static function new(string $usedBy, \DateTimeInterface $usedAt): self
     {
         $instance = new self();
         $instance->usedBy = $usedBy;

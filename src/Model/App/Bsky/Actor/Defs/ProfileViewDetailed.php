@@ -25,8 +25,8 @@ class ProfileViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
     public ?int $postsCount = null;
     public ?ProfileAssociated $associated = null;
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\StarterPackViewBasic $joinedViaStarterPack = null;
-    public ?string $indexedAt = null;
-    public ?string $createdAt = null;
+    public ?\DateTimeInterface $indexedAt = null;
+    public ?\DateTimeInterface $createdAt = null;
     public ?ViewerState $viewer = null;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
@@ -53,8 +53,8 @@ class ProfileViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
         ?int $postsCount = null,
         ?ProfileAssociated $associated = null,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\StarterPackViewBasic $joinedViaStarterPack = null,
-        ?string $indexedAt = null,
-        ?string $createdAt = null,
+        ?\DateTimeInterface $indexedAt = null,
+        ?\DateTimeInterface $createdAt = null,
         ?ViewerState $viewer = null,
         ?array $labels = null,
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $pinnedPost = null,

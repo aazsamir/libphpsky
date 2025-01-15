@@ -18,7 +18,7 @@ class IdentityEvent implements \Aazsamir\Libphpsky\ATProtoObject
     public ?string $handle = null;
     public ?string $pdsHost = null;
     public ?bool $tombstone = null;
-    public string $timestamp;
+    public \DateTimeInterface $timestamp;
 
     public static function id(): string
     {
@@ -26,7 +26,7 @@ class IdentityEvent implements \Aazsamir\Libphpsky\ATProtoObject
     }
 
     public static function new(
-        string $timestamp,
+        \DateTimeInterface $timestamp,
         ?string $comment = null,
         ?string $handle = null,
         ?string $pdsHost = null,

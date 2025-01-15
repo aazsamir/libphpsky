@@ -20,7 +20,7 @@ class MutedWord implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var array<string> */
     public array $targets = [];
     public ?string $actorTarget = null;
-    public ?string $expiresAt = null;
+    public ?\DateTimeInterface $expiresAt = null;
 
     public static function id(): string
     {
@@ -35,7 +35,7 @@ class MutedWord implements \Aazsamir\Libphpsky\ATProtoObject
         array $targets,
         ?string $id = null,
         ?string $actorTarget = null,
-        ?string $expiresAt = null,
+        ?\DateTimeInterface $expiresAt = null,
     ): self {
         $instance = new self();
         $instance->value = $value;

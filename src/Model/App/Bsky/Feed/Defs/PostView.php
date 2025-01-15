@@ -25,7 +25,7 @@ class PostView implements \Aazsamir\Libphpsky\ATProtoObject
     public ?int $repostCount = null;
     public ?int $likeCount = null;
     public ?int $quoteCount = null;
-    public string $indexedAt;
+    public \DateTimeInterface $indexedAt;
     public ?ViewerState $viewer = null;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
@@ -44,7 +44,7 @@ class PostView implements \Aazsamir\Libphpsky\ATProtoObject
         string $uri,
         string $cid,
         mixed $record,
-        string $indexedAt,
+        \DateTimeInterface $indexedAt,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $author = null,
         \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\RecordWithMedia\View|null $embed = null,
         ?int $replyCount = null,

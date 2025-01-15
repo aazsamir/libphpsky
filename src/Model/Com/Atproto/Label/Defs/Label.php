@@ -20,8 +20,8 @@ class Label implements \Aazsamir\Libphpsky\ATProtoObject
     public ?string $cid = null;
     public string $val;
     public ?bool $neg = null;
-    public string $cts;
-    public ?string $exp = null;
+    public \DateTimeInterface $cts;
+    public ?\DateTimeInterface $exp = null;
     public ?string $sig = null;
 
     public static function id(): string
@@ -33,11 +33,11 @@ class Label implements \Aazsamir\Libphpsky\ATProtoObject
         string $src,
         string $uri,
         string $val,
-        string $cts,
+        \DateTimeInterface $cts,
         ?int $ver = null,
         ?string $cid = null,
         ?bool $neg = null,
-        ?string $exp = null,
+        ?\DateTimeInterface $exp = null,
         ?string $sig = null,
     ): self {
         $instance = new self();

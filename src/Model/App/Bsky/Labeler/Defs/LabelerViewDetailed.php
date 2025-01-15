@@ -20,7 +20,7 @@ class LabelerViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
     public ?LabelerPolicies $policies = null;
     public ?int $likeCount = null;
     public ?LabelerViewerState $viewer = null;
-    public string $indexedAt;
+    public \DateTimeInterface $indexedAt;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
@@ -36,7 +36,7 @@ class LabelerViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         string $uri,
         string $cid,
-        string $indexedAt,
+        \DateTimeInterface $indexedAt,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $creator = null,
         ?LabelerPolicies $policies = null,
         ?int $likeCount = null,

@@ -21,7 +21,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef */
     public mixed $subject;
     public string $reportedBy;
-    public string $createdAt;
+    public \DateTimeInterface $createdAt;
 
     public static function id(): string
     {
@@ -33,7 +33,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         string $reasonType,
         \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $subject,
         string $reportedBy,
-        string $createdAt,
+        \DateTimeInterface $createdAt,
         ?string $reason = null,
     ): self {
         $instance = new self();

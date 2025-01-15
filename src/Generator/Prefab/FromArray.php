@@ -33,6 +33,12 @@ trait FromArray
                 continue;
             }
 
+            if ($propertyType->allowsNull() && $value === null) {
+                $instance->{$key} = null;
+
+                continue;
+            }
+
             if (!$propertyType instanceof \ReflectionNamedType) {
                 throw new \RuntimeException('Union and Intersection types are not supported yet');
             }
@@ -172,8 +178,8 @@ trait FromArray
                 continue;
             }
 
-            if ($propertyType->allowsNull() && $value === null) {
-                $instance->{$key} = null;
+            if ($propertyType->getName() === \DateTimeInterface::class) {
+                $instance->{$key} = new \DateTimeImmutable($value);
 
                 continue;
             }

@@ -20,15 +20,15 @@ class AccountView implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<mixed>|null */
     public ?array $relatedRecords = [];
-    public string $indexedAt;
+    public \DateTimeInterface $indexedAt;
     public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode $invitedBy = null;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode>|null */
     public ?array $invites = [];
     public ?bool $invitesDisabled = null;
-    public ?string $emailConfirmedAt = null;
+    public ?\DateTimeInterface $emailConfirmedAt = null;
     public ?string $inviteNote = null;
-    public ?string $deactivatedAt = null;
+    public ?\DateTimeInterface $deactivatedAt = null;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\ThreatSignature>|null */
     public ?array $threatSignatures = [];
@@ -46,15 +46,15 @@ class AccountView implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         string $did,
         string $handle,
-        string $indexedAt,
+        \DateTimeInterface $indexedAt,
         ?string $email = null,
         ?array $relatedRecords = null,
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode $invitedBy = null,
         ?array $invites = null,
         ?bool $invitesDisabled = null,
-        ?string $emailConfirmedAt = null,
+        ?\DateTimeInterface $emailConfirmedAt = null,
         ?string $inviteNote = null,
-        ?string $deactivatedAt = null,
+        ?\DateTimeInterface $deactivatedAt = null,
         ?array $threatSignatures = null,
     ): self {
         $instance = new self();

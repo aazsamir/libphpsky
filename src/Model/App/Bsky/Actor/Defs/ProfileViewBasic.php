@@ -23,7 +23,7 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
-    public ?string $createdAt = null;
+    public ?\DateTimeInterface $createdAt = null;
 
     public static function id(): string
     {
@@ -41,7 +41,7 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
         ?ProfileAssociated $associated = null,
         ?ViewerState $viewer = null,
         ?array $labels = null,
-        ?string $createdAt = null,
+        ?\DateTimeInterface $createdAt = null,
     ): self {
         $instance = new self();
         $instance->did = $did;

@@ -29,7 +29,7 @@ class Commit implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<string> */
     public array $blobs = [];
-    public string $time;
+    public \DateTimeInterface $time;
 
     public static function id(): string
     {
@@ -51,7 +51,7 @@ class Commit implements \Aazsamir\Libphpsky\ATProtoObject
         string $blocks,
         array $ops,
         array $blobs,
-        string $time,
+        \DateTimeInterface $time,
         ?string $prev = null,
     ): self {
         $instance = new self();

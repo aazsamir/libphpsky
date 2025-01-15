@@ -14,8 +14,8 @@ class Like implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'like';
     public const ID = 'app.bsky.feed.getLikes';
 
-    public string $indexedAt;
-    public string $createdAt;
+    public \DateTimeInterface $indexedAt;
+    public \DateTimeInterface $createdAt;
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $actor = null;
 
     public static function id(): string
@@ -24,8 +24,8 @@ class Like implements \Aazsamir\Libphpsky\ATProtoObject
     }
 
     public static function new(
-        string $indexedAt,
-        string $createdAt,
+        \DateTimeInterface $indexedAt,
+        \DateTimeInterface $createdAt,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $actor = null,
     ): self {
         $instance = new self();

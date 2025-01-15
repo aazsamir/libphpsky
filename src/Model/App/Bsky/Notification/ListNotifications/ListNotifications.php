@@ -28,7 +28,7 @@ class ListNotifications implements \Aazsamir\Libphpsky\Action
         ?int $limit = null,
         ?bool $priority = null,
         ?string $cursor = null,
-        ?string $seenAt = null,
+        ?\DateTimeInterface $seenAt = null,
     ): Output {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListNotifications\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

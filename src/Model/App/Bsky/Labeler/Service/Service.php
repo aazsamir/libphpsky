@@ -18,7 +18,7 @@ class Service implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels|null */
     public mixed $labels = null;
-    public string $createdAt;
+    public \DateTimeInterface $createdAt;
 
     public static function id(): string
     {
@@ -26,7 +26,7 @@ class Service implements \Aazsamir\Libphpsky\ATProtoObject
     }
 
     public static function new(
-        string $createdAt,
+        \DateTimeInterface $createdAt,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Labeler\Defs\LabelerPolicies $policies = null,
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels $labels = null,
     ): self {

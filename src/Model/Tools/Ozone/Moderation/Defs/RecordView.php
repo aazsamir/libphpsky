@@ -20,7 +20,7 @@ class RecordView implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<string> */
     public array $blobCids = [];
-    public string $indexedAt;
+    public \DateTimeInterface $indexedAt;
     public Moderation $moderation;
     public ?RepoView $repo = null;
 
@@ -37,7 +37,7 @@ class RecordView implements \Aazsamir\Libphpsky\ATProtoObject
         string $cid,
         mixed $value,
         array $blobCids,
-        string $indexedAt,
+        \DateTimeInterface $indexedAt,
         Moderation $moderation,
         ?RepoView $repo = null,
     ): self {

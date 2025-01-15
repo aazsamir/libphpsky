@@ -14,7 +14,7 @@ class Postgate implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'main';
     public const ID = 'app.bsky.feed.postgate';
 
-    public string $createdAt;
+    public \DateTimeInterface $createdAt;
     public string $post;
 
     /** @var array<string>|null */
@@ -33,7 +33,7 @@ class Postgate implements \Aazsamir\Libphpsky\ATProtoObject
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Postgate\DisableRule> $embeddingRules
      */
     public static function new(
-        string $createdAt,
+        \DateTimeInterface $createdAt,
         string $post,
         ?array $detachedEmbeddingUris = null,
         ?array $embeddingRules = null,

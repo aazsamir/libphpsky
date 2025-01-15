@@ -29,7 +29,7 @@ class ListView implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
     public ?ListViewerState $viewer = null;
-    public string $indexedAt;
+    public \DateTimeInterface $indexedAt;
 
     public static function id(): string
     {
@@ -44,7 +44,7 @@ class ListView implements \Aazsamir\Libphpsky\ATProtoObject
         string $uri,
         string $cid,
         string $name,
-        string $indexedAt,
+        \DateTimeInterface $indexedAt,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $creator = null,
         ?string $purpose = null,
         ?string $description = null,

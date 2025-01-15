@@ -14,14 +14,14 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'app.bsky.notification.updateSeen';
 
-    public string $seenAt;
+    public \DateTimeInterface $seenAt;
 
     public static function id(): string
     {
         return self::ID;
     }
 
-    public static function new(string $seenAt): self
+    public static function new(\DateTimeInterface $seenAt): self
     {
         $instance = new self();
         $instance->seenAt = $seenAt;

@@ -25,7 +25,7 @@ class ModEventView implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var array<string> */
     public array $subjectBlobCids = [];
     public string $createdBy;
-    public string $createdAt;
+    public \DateTimeInterface $createdAt;
     public ?string $creatorHandle = null;
     public ?string $subjectHandle = null;
 
@@ -43,7 +43,7 @@ class ModEventView implements \Aazsamir\Libphpsky\ATProtoObject
         \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageRef $subject,
         array $subjectBlobCids,
         string $createdBy,
-        string $createdAt,
+        \DateTimeInterface $createdAt,
         ?string $creatorHandle = null,
         ?string $subjectHandle = null,
     ): self {

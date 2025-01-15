@@ -17,8 +17,8 @@ class SetView implements \Aazsamir\Libphpsky\ATProtoObject
     public string $name;
     public ?string $description = null;
     public int $setSize;
-    public string $createdAt;
-    public string $updatedAt;
+    public \DateTimeInterface $createdAt;
+    public \DateTimeInterface $updatedAt;
 
     public static function id(): string
     {
@@ -28,8 +28,8 @@ class SetView implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         string $name,
         int $setSize,
-        string $createdAt,
-        string $updatedAt,
+        \DateTimeInterface $createdAt,
+        \DateTimeInterface $updatedAt,
         ?string $description = null,
     ): self {
         $instance = new self();

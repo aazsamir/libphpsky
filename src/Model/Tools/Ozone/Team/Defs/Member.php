@@ -17,8 +17,8 @@ class Member implements \Aazsamir\Libphpsky\ATProtoObject
     public string $did;
     public ?bool $disabled = null;
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewDetailed $profile = null;
-    public ?string $createdAt = null;
-    public ?string $updatedAt = null;
+    public ?\DateTimeInterface $createdAt = null;
+    public ?\DateTimeInterface $updatedAt = null;
     public ?string $lastUpdatedBy = null;
     public string $role;
 
@@ -32,8 +32,8 @@ class Member implements \Aazsamir\Libphpsky\ATProtoObject
         string $role,
         ?bool $disabled = null,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewDetailed $profile = null,
-        ?string $createdAt = null,
-        ?string $updatedAt = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $updatedAt = null,
         ?string $lastUpdatedBy = null,
     ): self {
         $instance = new self();

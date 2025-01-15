@@ -24,7 +24,7 @@ class MessageView implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View|null */
     public mixed $embed = null;
     public ?MessageViewSender $sender = null;
-    public string $sentAt;
+    public \DateTimeInterface $sentAt;
 
     public static function id(): string
     {
@@ -38,7 +38,7 @@ class MessageView implements \Aazsamir\Libphpsky\ATProtoObject
         string $id,
         string $rev,
         string $text,
-        string $sentAt,
+        \DateTimeInterface $sentAt,
         ?array $facets = null,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View $embed = null,
         ?MessageViewSender $sender = null,

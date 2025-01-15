@@ -18,7 +18,7 @@ class Threadgate implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\MentionRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\FollowingRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\ListRule>|null */
     public ?array $allow = [];
-    public string $createdAt;
+    public \DateTimeInterface $createdAt;
 
     /** @var array<string>|null */
     public ?array $hiddenReplies = [];
@@ -34,7 +34,7 @@ class Threadgate implements \Aazsamir\Libphpsky\ATProtoObject
      */
     public static function new(
         string $post,
-        string $createdAt,
+        \DateTimeInterface $createdAt,
         ?array $allow = null,
         ?array $hiddenReplies = null,
     ): self {

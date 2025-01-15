@@ -25,7 +25,7 @@ class ModEventViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var array<\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\BlobView> */
     public array $subjectBlobs = [];
     public string $createdBy;
-    public string $createdAt;
+    public \DateTimeInterface $createdAt;
 
     public static function id(): string
     {
@@ -41,7 +41,7 @@ class ModEventViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
         RepoView|RepoViewNotFound|RecordView|RecordViewNotFound $subject,
         array $subjectBlobs,
         string $createdBy,
-        string $createdAt,
+        \DateTimeInterface $createdAt,
     ): self {
         $instance = new self();
         $instance->id = $id;

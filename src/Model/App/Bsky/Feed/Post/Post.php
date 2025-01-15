@@ -34,7 +34,7 @@ class Post implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<string>|null */
     public ?array $tags = [];
-    public string $createdAt;
+    public \DateTimeInterface $createdAt;
 
     public static function id(): string
     {
@@ -49,7 +49,7 @@ class Post implements \Aazsamir\Libphpsky\ATProtoObject
      */
     public static function new(
         string $text,
-        string $createdAt,
+        \DateTimeInterface $createdAt,
         ?array $entities = null,
         ?array $facets = null,
         ?ReplyRef $reply = null,

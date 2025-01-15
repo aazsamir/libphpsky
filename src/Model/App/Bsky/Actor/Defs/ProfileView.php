@@ -20,8 +20,8 @@ class ProfileView implements \Aazsamir\Libphpsky\ATProtoObject
     public ?string $description = null;
     public ?string $avatar = null;
     public ?ProfileAssociated $associated = null;
-    public ?string $indexedAt = null;
-    public ?string $createdAt = null;
+    public ?\DateTimeInterface $indexedAt = null;
+    public ?\DateTimeInterface $createdAt = null;
     public ?ViewerState $viewer = null;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
@@ -42,8 +42,8 @@ class ProfileView implements \Aazsamir\Libphpsky\ATProtoObject
         ?string $description = null,
         ?string $avatar = null,
         ?ProfileAssociated $associated = null,
-        ?string $indexedAt = null,
-        ?string $createdAt = null,
+        ?\DateTimeInterface $indexedAt = null,
+        ?\DateTimeInterface $createdAt = null,
         ?ViewerState $viewer = null,
         ?array $labels = null,
     ): self {

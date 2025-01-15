@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Aazsamir\Libphpsky\Utils\ATUri;
+namespace Aazsamir\Libphpsky\Type;
 
 use Psr\Http\Message\UriInterface;
 
-class ATUri implements UriInterface
+class ATUri implements ATUriInterface
 {
     public function __construct(
         private string $host,

@@ -17,15 +17,19 @@ class DeletedMessageView implements \Aazsamir\Libphpsky\ATProtoObject
     public string $id;
     public string $rev;
     public ?MessageViewSender $sender = null;
-    public string $sentAt;
+    public \DateTimeInterface $sentAt;
 
     public static function id(): string
     {
         return self::ID;
     }
 
-    public static function new(string $id, string $rev, string $sentAt, ?MessageViewSender $sender = null): self
-    {
+    public static function new(
+        string $id,
+        string $rev,
+        \DateTimeInterface $sentAt,
+        ?MessageViewSender $sender = null,
+    ): self {
         $instance = new self();
         $instance->id = $id;
         $instance->rev = $rev;

@@ -30,7 +30,7 @@ class StarterPackView implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
-    public string $indexedAt;
+    public \DateTimeInterface $indexedAt;
 
     public static function id(): string
     {
@@ -46,7 +46,7 @@ class StarterPackView implements \Aazsamir\Libphpsky\ATProtoObject
         string $uri,
         string $cid,
         mixed $record,
-        string $indexedAt,
+        \DateTimeInterface $indexedAt,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $creator = null,
         ?ListViewBasic $list = null,
         ?array $listItemsSample = null,

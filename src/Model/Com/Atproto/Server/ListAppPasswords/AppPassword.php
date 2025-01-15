@@ -15,7 +15,7 @@ class AppPassword implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'com.atproto.server.listAppPasswords';
 
     public string $name;
-    public string $createdAt;
+    public \DateTimeInterface $createdAt;
     public ?bool $privileged = null;
 
     public static function id(): string
@@ -23,7 +23,7 @@ class AppPassword implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
-    public static function new(string $name, string $createdAt, ?bool $privileged = null): self
+    public static function new(string $name, \DateTimeInterface $createdAt, ?bool $privileged = null): self
     {
         $instance = new self();
         $instance->name = $name;

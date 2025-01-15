@@ -21,8 +21,8 @@ class TemplateView implements \Aazsamir\Libphpsky\ATProtoObject
     public bool $disabled;
     public ?string $lang = null;
     public string $lastUpdatedBy;
-    public string $createdAt;
-    public string $updatedAt;
+    public \DateTimeInterface $createdAt;
+    public \DateTimeInterface $updatedAt;
 
     public static function id(): string
     {
@@ -35,8 +35,8 @@ class TemplateView implements \Aazsamir\Libphpsky\ATProtoObject
         string $contentMarkdown,
         bool $disabled,
         string $lastUpdatedBy,
-        string $createdAt,
-        string $updatedAt,
+        \DateTimeInterface $createdAt,
+        \DateTimeInterface $updatedAt,
         ?string $subject = null,
         ?string $lang = null,
     ): self {
