@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Examples\Bluegraph;
 
-use Aazsamir\Libphpsky\ATProto\Client\ATProtoClientBuilder;
-use Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileView;
-use Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\Defs\ProfileViewDetailed;
-use Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\GetProfile\GetProfile;
-use Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\GetProfiles\GetProfiles;
-use Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\GetAuthorFeed\GetAuthorFeed;
-use Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\GetLikes\GetLikes;
-use Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\Like\Like;
-use Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Identity\ResolveHandle\ResolveHandle;
-use Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\ListRecords\ListRecords;
-use Aazsamir\Libphpsky\ATProto\Utils\ATUri\ATUri;
+use Aazsamir\Libphpsky\Client\ATProtoClientBuilder;
+use Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView;
+use Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewDetailed;
+use Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfile\GetProfile;
+use Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfiles\GetProfiles;
+use Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetAuthorFeed\GetAuthorFeed;
+use Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetLikes\GetLikes;
+use Aazsamir\Libphpsky\Model\App\Bsky\Feed\Like\Like;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\ResolveHandle;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ListRecords\ListRecords;
+use Aazsamir\Libphpsky\Utils\ATUri\ATUri;
 
 /**
  * This is example code to generate a graph of people who liked our posts and their likes. It can be used further to visualize the graph using Graphviz or any other graph visualization tool.
@@ -42,6 +42,7 @@ class GraphGenerate
     public function generate(string $handle): void
     {
         $self = $this->getMyself($handle);
+        dd($self);
         $myLikers = $this->getMyLikers($self);
         $otherLiked = $this->getOtherLiked($myLikers);
 
@@ -85,7 +86,7 @@ class GraphGenerate
             });
         }
 
-        /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Feed\GetLikes\Output[] $likes */
+        /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetLikes\Output[] $likes */
         [$errors, $likes] = \Amp\Future\awaitAll($futures);
 
         if ($errors) {
@@ -123,7 +124,7 @@ class GraphGenerate
             });
         }
 
-        /** @var \Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Repo\ListRecords\Output[] $records[] */
+        /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ListRecords\Output[] $records[] */
         [$errors, $records] = \Amp\Future\awaitAll($futures);
 
         if ($errors) {
@@ -146,7 +147,7 @@ class GraphGenerate
     /**
      * @param string[] $dids
      *
-     * @return \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\GetProfiles\Output[]
+     * @return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfiles\Output[]
      */
     private function getProfiles(array $dids): array
     {
@@ -156,7 +157,7 @@ class GraphGenerate
             $futures[] = \Amp\async(fn () => $this->getProfiles->query($chunk));
         }
 
-        /** @var \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\GetProfiles\Output[] $profiles[] */
+        /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfiles\Output[] $profiles[] */
         [$errors, $profiles] = \Amp\Future\awaitAll($futures);
 
         if ($errors) {
@@ -169,7 +170,7 @@ class GraphGenerate
     /**
      * @param ProfileView[] $myLikers
      * @param string[][] $otherLiked
-     * @param \Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\GetProfiles\Output[] $profiles
+     * @param \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfiles\Output[] $profiles
      */
     private function createGraph(
         ProfileViewDetailed $myself,

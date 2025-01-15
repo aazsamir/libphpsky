@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Client;
 
-use Aazsamir\Libphpsky\ATProto\Client\QueryCacheClient;
+use Aazsamir\Libphpsky\Client\QueryCacheClient;
 use GuzzleHttp\Psr7\Response;
 use Tests\Unit\Client\Stub\CachePoolStub;
 use Tests\Unit\Client\Stub\ClientStub;

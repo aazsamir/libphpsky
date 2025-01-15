@@ -3,7 +3,11 @@
     "description": "PHP library for interacting with ATProto protocol",
     "autoload": {
         "psr-4": {
-            "Aazsamir\\Libphpsky\\": "src/",
+            "Aazsamir\\Libphpsky\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "Tests\\": "tests/",
             "Examples\\": "examples/"
         }

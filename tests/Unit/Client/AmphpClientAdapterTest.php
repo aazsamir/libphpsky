@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Client;
 
-use Aazsamir\Libphpsky\ATProto\Client\AmphpClientAdapter;
+use Aazsamir\Libphpsky\Client\AmphpClientAdapter;
 use Amp\Http\Client\DelegateHttpClient;
 use Amp\Http\Client\Request;
 use Amp\Http\Client\Response;

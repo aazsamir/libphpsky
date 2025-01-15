@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Prefab\Fixtures;
 
-use Aazsamir\Libphpsky\ATProto\Generator\Prefab\IsAction;
+use Aazsamir\Libphpsky\Generator\Prefab\IsAction;
 
 class Action
 {

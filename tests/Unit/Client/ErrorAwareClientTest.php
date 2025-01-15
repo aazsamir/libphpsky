@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Client;
 
-use Aazsamir\Libphpsky\ATProto\Client\AuthException;
-use Aazsamir\Libphpsky\ATProto\Client\ErrorAwareClient;
-use Aazsamir\Libphpsky\ATProto\Client\ProcedureException;
-use Aazsamir\Libphpsky\ATProto\Client\QueryException;
+use Aazsamir\Libphpsky\Client\AuthException;
+use Aazsamir\Libphpsky\Client\ErrorAwareClient;
+use Aazsamir\Libphpsky\Client\ProcedureException;
+use Aazsamir\Libphpsky\Client\QueryException;
 use GuzzleHttp\Psr7\Response;
 use Tests\Unit\Client\Stub\ClientStub;
 use Tests\Unit\TestCase;

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Generator\Lexicon;
 
-use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\ArrayDef;
-use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\Defs;
-use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\StringDef;
-use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Lexicon;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\ArrayDef;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\Defs;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\StringDef;
+use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Tests\Unit\TestCase;
 
 /**

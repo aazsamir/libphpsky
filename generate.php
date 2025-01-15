@@ -1,6 +1,6 @@
 <?php
 
-use Aazsamir\Libphpsky\ATProto\Generator\Generator;
+use Aazsamir\Libphpsky\Generator\Generator;
 
 require __DIR__ . '/vendor/autoload.php';
 

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Client\Session;
 
-use Aazsamir\Libphpsky\ATProto\Client\AuthConfig;
-use Aazsamir\Libphpsky\ATProto\Client\Session\DecoratedSessionStore;
-use Aazsamir\Libphpsky\ATProto\Client\Session\MemorySessionStore;
-use Aazsamir\Libphpsky\ATProto\Client\Session\NoopSessionStore;
-use Aazsamir\Libphpsky\ATProto\Client\Session\Session;
+use Aazsamir\Libphpsky\Client\AuthConfig;
+use Aazsamir\Libphpsky\Client\Session\DecoratedSessionStore;
+use Aazsamir\Libphpsky\Client\Session\MemorySessionStore;
+use Aazsamir\Libphpsky\Client\Session\NoopSessionStore;
+use Aazsamir\Libphpsky\Client\Session\Session;
 use Tests\Unit\TestCase;
 
 /**

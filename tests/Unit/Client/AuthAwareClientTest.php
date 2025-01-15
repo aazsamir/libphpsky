@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Client;
 
-use Aazsamir\Libphpsky\ATProto\Client\AuthAwareClient;
-use Aazsamir\Libphpsky\ATProto\Client\AuthConfig;
-use Aazsamir\Libphpsky\ATProto\Client\Session\MemorySessionStore;
-use Aazsamir\Libphpsky\ATProto\Client\Session\Session;
-use Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\CreateSession;
-use Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\RefreshSession;
+use Aazsamir\Libphpsky\Client\AuthAwareClient;
+use Aazsamir\Libphpsky\Client\AuthConfig;
+use Aazsamir\Libphpsky\Client\Session\MemorySessionStore;
+use Aazsamir\Libphpsky\Client\Session\Session;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Server\RefreshSession;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\MockObject\MockObject;
 use Tests\Unit\Client\Stub\ClientStub;

@@ -1,0 +1,35 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Aazsamir\Libphpsky\Model\App\Bsky\Feed\Repost;
+
+/**
+ * object
+ */
+class Repost implements \Aazsamir\Libphpsky\ATProtoObject
+{
+    use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+
+    public const NAME = 'main';
+    public const ID = 'app.bsky.feed.repost';
+
+    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $subject = null;
+    public string $createdAt;
+
+    public static function id(): string
+    {
+        return self::ID;
+    }
+
+    public static function new(
+        string $createdAt,
+        ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $subject = null,
+    ): self {
+        $instance = new self();
+        $instance->createdAt = $createdAt;
+        $instance->subject = $subject;
+
+        return $instance;
+    }
+}

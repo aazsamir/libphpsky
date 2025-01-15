@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Generator\Maker\Stub;
 
-use Aazsamir\Libphpsky\ATProto\Generator\Maker\SaveClass;
+use Aazsamir\Libphpsky\Generator\Maker\SaveClass;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\PhpNamespace;
 

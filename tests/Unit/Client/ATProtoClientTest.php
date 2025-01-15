@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Client;
 
-use Aazsamir\Libphpsky\ATProto\Client\ATProtoClient;
+use Aazsamir\Libphpsky\Client\ATProtoClient;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Client\ClientInterface;

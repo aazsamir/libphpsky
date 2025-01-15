@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Generator\Maker;
 
-use Aazsamir\Libphpsky\ATProto\Action;
-use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\ArrayDef;
-use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\Def;
-use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\Defs;
-use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\IntegerDef;
-use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\IOData;
-use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\ObjectDef;
-use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\ParamsDef;
-use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\ProcedureDef;
-use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\QueryDef;
-use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Def\StringDef;
-use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Lexicon;
-use Aazsamir\Libphpsky\ATProto\Generator\Lexicon\Lexicons;
-use Aazsamir\Libphpsky\ATProto\Generator\Maker\MakeConfig;
-use Aazsamir\Libphpsky\ATProto\Generator\Maker\Maker;
+use Aazsamir\Libphpsky\Action;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\ArrayDef;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\Def;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\Defs;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\IntegerDef;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\IOData;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\ObjectDef;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\ParamsDef;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\ProcedureDef;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\QueryDef;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\StringDef;
+use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
+use Aazsamir\Libphpsky\Generator\Lexicon\Lexicons;
+use Aazsamir\Libphpsky\Generator\Maker\MakeConfig;
+use Aazsamir\Libphpsky\Generator\Maker\Maker;
 use Nette\PhpGenerator\ClassType;
 use Tests\Unit\Generator\Maker\Stub\SaveClassStub;
 use Tests\Unit\TestCase;
@@ -57,7 +57,7 @@ final class MakerTest extends TestCase
 
         self::assertEquals('Name', $class->getName());
         $traits = array_keys($class->getTraits());
-        self::assertContains('\Aazsamir\Libphpsky\ATProto\Generator\Prefab\IsQuery', $traits);
+        self::assertContains('\Aazsamir\Libphpsky\Generator\Prefab\IsQuery', $traits);
         self::assertStringContainsString('description', $class->getComment());
         self::assertContains(Action::class, $class->getImplements());
         $nameconst = $class->getConstant('NAME');
@@ -132,7 +132,7 @@ final class MakerTest extends TestCase
 
         self::assertEquals('Name', $class->getName());
         $traits = array_keys($class->getTraits());
-        self::assertContains('\Aazsamir\Libphpsky\ATProto\Generator\Prefab\IsProcedure', $traits);
+        self::assertContains('\Aazsamir\Libphpsky\Generator\Prefab\IsProcedure', $traits);
         self::assertStringContainsString('description', $class->getComment());
         self::assertContains(Action::class, $class->getImplements());
         $nameconst = $class->getConstant('NAME');
@@ -209,7 +209,7 @@ final class MakerTest extends TestCase
 
         self::assertEquals('Name', $class->getName());
         $traits = array_keys($class->getTraits());
-        self::assertContains('\Aazsamir\Libphpsky\ATProto\Generator\Prefab\FromArray', $traits);
+        self::assertContains('\Aazsamir\Libphpsky\Generator\Prefab\FromArray', $traits);
         $nameconst = $class->getConstant('NAME');
         self::assertEquals('name', $nameconst->getValue());
         $idconst = $class->getConstant('ID');

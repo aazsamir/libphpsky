@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Client\Session;
 
-use Aazsamir\Libphpsky\ATProto\Client\AuthConfig;
-use Aazsamir\Libphpsky\ATProto\Client\Session\PsrCacheSessionStore;
-use Aazsamir\Libphpsky\ATProto\Client\Session\Session;
+use Aazsamir\Libphpsky\Client\AuthConfig;
+use Aazsamir\Libphpsky\Client\Session\PsrCacheSessionStore;
+use Aazsamir\Libphpsky\Client\Session\Session;
 use Tests\Unit\Client\Stub\CachePoolStub;
 use Tests\Unit\TestCase;
 

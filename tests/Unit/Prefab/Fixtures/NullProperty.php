@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Prefab\Fixtures;
 
-use Aazsamir\Libphpsky\ATProto\Generator\Prefab\FromArray;
+use Aazsamir\Libphpsky\Generator\Prefab\FromArray;
 
 class NullProperty
 {

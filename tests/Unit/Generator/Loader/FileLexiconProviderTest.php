@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Generator\Loader;
 
-use Aazsamir\Libphpsky\ATProto\Generator\Loader\FileLexiconProvider;
+use Aazsamir\Libphpsky\Generator\Loader\FileLexiconProvider;
 use Tests\Unit\TestCase;
 
 /**

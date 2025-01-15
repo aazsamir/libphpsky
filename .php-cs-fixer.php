@@ -7,7 +7,7 @@ $finder = Symfony\Component\Finder\Finder::create()
         __DIR__ . '/tests',
     ])
     ->exclude([
-        'ATProto/Model',
+        'Model',
     ])
     ->name('*.php')
     ->ignoreDotFiles(true)

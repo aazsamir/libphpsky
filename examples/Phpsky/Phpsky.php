@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Examples\Phpsky;
 
-use Aazsamir\Libphpsky\ATProto\Client\ProcedureException;
-use Aazsamir\Libphpsky\ATProto\Client\QueryException;
-use Aazsamir\Libphpsky\ATProto\Model\App\Bsky\Actor\GetProfile\GetProfile;
-use Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Identity\ResolveHandle\ResolveHandle;
-use Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\CreateSession\CreateSession;
-use Aazsamir\Libphpsky\ATProto\Model\Com\Atproto\Server\CreateSession\Input;
+use Aazsamir\Libphpsky\Client\ProcedureException;
+use Aazsamir\Libphpsky\Client\QueryException;
+use Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfile\GetProfile;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\ResolveHandle;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\CreateSession;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\Input;
 
 class Phpsky
 {

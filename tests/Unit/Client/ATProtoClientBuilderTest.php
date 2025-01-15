@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Client;
 
-use Aazsamir\Libphpsky\ATProto\Client\ATProtoClientBuilder;
+use Aazsamir\Libphpsky\Client\ATProtoClientBuilder;
 use Amp\Http\Client\HttpClient;
 use Tests\Unit\TestCase;
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Generator\Loader\Stub;
 
-use Aazsamir\Libphpsky\ATProto\Generator\Loader\LexiconProvider;
+use Aazsamir\Libphpsky\Generator\Loader\LexiconProvider;
 
 class LexiconProviderStub implements LexiconProvider
 {
