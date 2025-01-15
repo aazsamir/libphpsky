@@ -178,7 +178,7 @@ trait FromArray
                 continue;
             }
 
-            if ($propertyType->getName() === \DateTimeInterface::class) {
+            if ($propertyType->getName() === \DateTimeInterface::class && \is_string($value)) {
                 $instance->{$key} = new \DateTimeImmutable($value);
 
                 continue;
