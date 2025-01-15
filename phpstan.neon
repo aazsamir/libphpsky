@@ -4,4 +4,4 @@ parameters:
         - src
         - examples
     excludePaths:
-        - src/ATProto/Model/Meta
+        - src/Model/Meta
