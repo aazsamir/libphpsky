@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\Defs;
 class SkeletonSearchActor implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'skeletonSearchActor';
     public const ID = 'app.bsky.unspecced.defs';

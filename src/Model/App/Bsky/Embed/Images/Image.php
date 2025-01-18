@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images;
 class Image implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'image';
     public const ID = 'app.bsky.embed.images';

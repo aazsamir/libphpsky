@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs;
 class RepoViewNotFound implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'repoViewNotFound';
     public const ID = 'tools.ozone.moderation.defs';

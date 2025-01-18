@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record;
 class ViewRecord implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'viewRecord';
     public const ID = 'app.bsky.embed.record';

@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\App\Bsky\Video\Defs;
 class JobStatus implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'jobStatus';
     public const ID = 'app.bsky.video.defs';

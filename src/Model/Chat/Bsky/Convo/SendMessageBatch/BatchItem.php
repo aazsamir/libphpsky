@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\SendMessageBatch;
 class BatchItem implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'batchItem';
     public const ID = 'chat.bsky.convo.sendMessageBatch';

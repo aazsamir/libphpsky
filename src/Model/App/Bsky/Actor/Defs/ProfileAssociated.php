@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs;
 class ProfileAssociated implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'profileAssociated';
     public const ID = 'app.bsky.actor.defs';

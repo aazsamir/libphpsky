@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs;
 class InviteCode implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'inviteCode';
     public const ID = 'com.atproto.server.defs';

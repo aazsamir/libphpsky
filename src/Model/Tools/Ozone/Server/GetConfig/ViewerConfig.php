@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Server\GetConfig;
 class ViewerConfig implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'viewerConfig';
     public const ID = 'tools.ozone.server.getConfig';

@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs;
 class LabelValueDefinitionStrings implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'labelValueDefinitionStrings';
     public const ID = 'com.atproto.label.defs';

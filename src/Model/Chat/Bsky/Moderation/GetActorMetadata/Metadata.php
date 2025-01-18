@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetActorMetadata;
 class Metadata implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'metadata';
     public const ID = 'chat.bsky.moderation.getActorMetadata';

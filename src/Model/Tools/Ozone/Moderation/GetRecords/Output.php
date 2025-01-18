@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRecords;
 class Output implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'output';
     public const ID = 'tools.ozone.moderation.getRecords';

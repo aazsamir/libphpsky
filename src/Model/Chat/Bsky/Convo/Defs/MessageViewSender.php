@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs;
 class MessageViewSender implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'messageViewSender';
     public const ID = 'chat.bsky.convo.defs';

@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\Defs;
 class TemplateView implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'templateView';
     public const ID = 'tools.ozone.communication.defs';

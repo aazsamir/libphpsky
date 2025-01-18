@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\Com\Atproto\Sync\SubscribeRepos;
 class RepoOp implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'repoOp';
     public const ID = 'com.atproto.sync.subscribeRepos';

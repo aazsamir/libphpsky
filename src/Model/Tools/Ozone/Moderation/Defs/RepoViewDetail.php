@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs;
 class RepoViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'repoViewDetail';
     public const ID = 'tools.ozone.moderation.defs';

@@ -128,6 +128,7 @@ class Maker
 
             case $def instanceof ObjectDef:
                 $class->addTrait('\Aazsamir\Libphpsky\Generator\Prefab\FromArray');
+                $class->addTrait('\Aazsamir\Libphpsky\Generator\Prefab\ToArray');
                 $class->addImplement(ATProtoObject::class);
 
                 $constructorTypes = $this->addObjectParameters($class, $def);

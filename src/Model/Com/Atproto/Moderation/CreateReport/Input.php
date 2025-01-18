@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\Com\Atproto\Moderation\CreateReport;
 class Input implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'input';
     public const ID = 'com.atproto.moderation.createReport';

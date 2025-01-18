@@ -10,6 +10,7 @@ namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\Declaration;
 class Declaration implements \Aazsamir\Libphpsky\ATProtoObject
 {
     use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'main';
     public const ID = 'chat.bsky.actor.declaration';
