@@ -26,6 +26,10 @@ trait ToArray
             return $var->toArray();
         }
 
+        if ($var instanceof \DateTimeInterface) {
+            return $var->format(\DateTime::ATOM);
+        }
+
         if (\is_object($var) && method_exists($var, '__toString')) {
             return (string) $var;
         }

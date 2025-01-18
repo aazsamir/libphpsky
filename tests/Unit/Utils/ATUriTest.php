@@ -20,8 +20,8 @@ final class ATUriTest extends TestCase
         self::assertEquals('bsky.app', $uri->getHost());
         self::assertEquals('bsky.app', $uri->getDid());
         self::assertEquals('app.bsky.feed.post/3lery4ketx226', $uri->getPath());
-        self::assertEquals('app.bsky.feed.post', $uri->getLexicon());
-        self::assertEquals('3lery4ketx226', $uri->getLexiconObjectId());
+        self::assertEquals('app.bsky.feed.post', $uri->getCollection());
+        self::assertEquals('3lery4ketx226', $uri->getRecordKey());
         self::assertEmpty($uri->getQuery());
         self::assertEmpty($uri->getFragment());
         self::assertEmpty($uri->getAuthority());

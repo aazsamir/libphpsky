@@ -12,9 +12,9 @@ interface ATUriInterface extends UriInterface
 
     public function getDid(): string;
 
-    public function getLexicon(): string;
+    public function getCollection(): string;
 
-    public function getLexiconObjectId(): string;
+    public function getRecordKey(): string;
 
     public function toString(): string;
 

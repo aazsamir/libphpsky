@@ -30,12 +30,22 @@ class ATUri implements ATUriInterface
         );
     }
 
+    public static function new(string $did, ?string $collection = null, ?string $recordKey = null): self
+    {
+        $path = $collection === null ? '' : "{$collection}/{$recordKey}";
+
+        return new self(
+            $did,
+            $path,
+        );
+    }
+
     public function getDid(): string
     {
         return $this->host;
     }
 
-    public function getLexicon(): string
+    public function getCollection(): string
     {
         if (empty($this->path)) {
             return '';
@@ -45,12 +55,12 @@ class ATUri implements ATUriInterface
             return '';
         }
 
-        $lexicon = explode('/', $this->path, 2);
+        $collection = explode('/', $this->path, 2);
 
-        return $lexicon[0];
+        return $collection[0];
     }
 
-    public function getLexiconObjectId(): string
+    public function getRecordKey(): string
     {
         if (empty($this->path)) {
             return '';
@@ -60,13 +70,13 @@ class ATUri implements ATUriInterface
             return $this->path;
         }
 
-        $lexicon = explode('/', $this->path, 2);
+        $rkey = explode('/', $this->path, 2);
 
-        if (!isset($lexicon[1])) {
+        if (!isset($rkey[1])) {
             return '';
         }
 
-        return $lexicon[1];
+        return $rkey[1];
     }
 
     public function getScheme(): string
@@ -155,6 +165,10 @@ class ATUri implements ATUriInterface
 
     public function __toString(): string
     {
+        if (empty($this->path)) {
+            return "{$this->scheme}://{$this->host}";
+        }
+
         return "{$this->scheme}://{$this->host}/{$this->path}";
     }
 

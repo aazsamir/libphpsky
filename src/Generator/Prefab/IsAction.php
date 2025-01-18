@@ -23,7 +23,12 @@ trait IsAction
 
         if (isset($args['input'])) {
             $body = $args['input'];
-            $body = json_encode($body);
+
+            if (\is_object($body) && method_exists($body, 'toArray')) {
+                $body = json_encode($body->toArray());
+            } else {
+                $body = json_encode($body);
+            }
 
             if ($body === false) {
                 throw new \RuntimeException('Failed to encode input as JSON.');

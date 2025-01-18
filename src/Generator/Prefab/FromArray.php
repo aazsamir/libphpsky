@@ -16,7 +16,7 @@ trait FromArray
         $reflection = new \ReflectionClass($instance);
 
         $nullableFields = $reflection->getProperties();
-        $nullableFields = array_filter($nullableFields, static fn (\ReflectionProperty $property) => $property->getType()?->allowsNull());
+        $nullableFields = array_filter($nullableFields, static fn (\ReflectionProperty $property) => (bool) $property->getType()?->allowsNull());
 
         foreach ($nullableFields as $property) {
             $instance->{$property->getName()} = null;
