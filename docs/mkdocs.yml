@@ -1,0 +1,7 @@
+site_name: 'libphpsky'
+site_url: 'https://github.com/aazsamir/libphpsky'
+theme:
+  name: 'material'
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
