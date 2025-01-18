@@ -17,7 +17,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     public int $id;
     public string $reasonType;
-    public ?string $reason = null;
+    public ?string $reason;
 
     /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef */
     public mixed $subject;

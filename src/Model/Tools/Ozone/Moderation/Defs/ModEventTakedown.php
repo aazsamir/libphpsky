@@ -15,9 +15,9 @@ class ModEventTakedown implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'modEventTakedown';
     public const ID = 'tools.ozone.moderation.defs';
 
-    public ?string $comment = null;
-    public ?int $durationInHours = null;
-    public ?bool $acknowledgeAccountSubjects = null;
+    public ?string $comment;
+    public ?int $durationInHours;
+    public ?bool $acknowledgeAccountSubjects;
 
     /** @var array<string>|null */
     public ?array $policies = [];

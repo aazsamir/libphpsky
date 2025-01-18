@@ -16,7 +16,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'chat.bsky.convo.updateRead';
 
     public string $convoId;
-    public ?string $messageId = null;
+    public ?string $messageId;
 
     public static function id(): string
     {

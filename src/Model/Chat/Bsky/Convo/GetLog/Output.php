@@ -15,7 +15,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'chat.bsky.convo.getLog';
 
-    public ?string $cursor = null;
+    public ?string $cursor;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogBeginConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogLeaveConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogCreateMessage|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogDeleteMessage> */
     public array $logs = [];

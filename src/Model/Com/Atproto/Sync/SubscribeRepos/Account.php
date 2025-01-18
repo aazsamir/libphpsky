@@ -19,7 +19,7 @@ class Account implements \Aazsamir\Libphpsky\ATProtoObject
     public string $did;
     public \DateTimeInterface $time;
     public bool $active;
-    public ?string $status = null;
+    public ?string $status;
 
     public static function id(): string
     {

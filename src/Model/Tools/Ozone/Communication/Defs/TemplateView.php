@@ -17,10 +17,10 @@ class TemplateView implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $id;
     public string $name;
-    public ?string $subject = null;
+    public ?string $subject;
     public string $contentMarkdown;
     public bool $disabled;
-    public ?string $lang = null;
+    public ?string $lang;
     public string $lastUpdatedBy;
     public \DateTimeInterface $createdAt;
     public \DateTimeInterface $updatedAt;

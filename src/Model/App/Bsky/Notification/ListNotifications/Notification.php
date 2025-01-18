@@ -17,9 +17,9 @@ class Notification implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $uri;
     public string $cid;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $author = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $author;
     public string $reason;
-    public ?string $reasonSubject = null;
+    public ?string $reasonSubject;
     public mixed $record;
     public bool $isRead;
     public \DateTimeInterface $indexedAt;

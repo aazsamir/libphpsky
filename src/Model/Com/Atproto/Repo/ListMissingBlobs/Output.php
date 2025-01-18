@@ -15,7 +15,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'com.atproto.repo.listMissingBlobs';
 
-    public ?string $cursor = null;
+    public ?string $cursor;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ListMissingBlobs\RecordBlob> */
     public array $blobs = [];

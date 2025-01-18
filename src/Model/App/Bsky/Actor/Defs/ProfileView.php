@@ -17,13 +17,13 @@ class ProfileView implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $did;
     public string $handle;
-    public ?string $displayName = null;
-    public ?string $description = null;
-    public ?string $avatar = null;
-    public ?ProfileAssociated $associated = null;
-    public ?\DateTimeInterface $indexedAt = null;
-    public ?\DateTimeInterface $createdAt = null;
-    public ?ViewerState $viewer = null;
+    public ?string $displayName;
+    public ?string $description;
+    public ?string $avatar;
+    public ?ProfileAssociated $associated;
+    public ?\DateTimeInterface $indexedAt;
+    public ?\DateTimeInterface $createdAt;
+    public ?ViewerState $viewer;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];

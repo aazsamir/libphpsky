@@ -17,7 +17,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\ThreadViewPost|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\NotFoundPost|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\BlockedPost */
     public mixed $thread;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\ThreadgateView $threadgate = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\ThreadgateView $threadgate;
 
     public static function id(): string
     {

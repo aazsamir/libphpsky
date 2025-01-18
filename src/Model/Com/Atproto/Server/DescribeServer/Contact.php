@@ -15,7 +15,7 @@ class Contact implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'contact';
     public const ID = 'com.atproto.server.describeServer';
 
-    public ?string $email = null;
+    public ?string $email;
 
     public static function id(): string
     {

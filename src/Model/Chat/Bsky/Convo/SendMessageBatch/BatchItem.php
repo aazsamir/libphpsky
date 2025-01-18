@@ -16,7 +16,7 @@ class BatchItem implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'chat.bsky.convo.sendMessageBatch';
 
     public string $convoId;
-    public ?\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageInput $message = null;
+    public ?\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageInput $message;
 
     public static function id(): string
     {

@@ -16,8 +16,8 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'app.bsky.feed.getRepostedBy';
 
     public string $uri;
-    public ?string $cid = null;
-    public ?string $cursor = null;
+    public ?string $cid;
+    public ?string $cursor;
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView> */
     public array $repostedBy = [];

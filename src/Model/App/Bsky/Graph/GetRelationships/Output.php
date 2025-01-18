@@ -15,7 +15,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'app.bsky.graph.getRelationships';
 
-    public ?string $actor = null;
+    public ?string $actor;
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\Relationship|\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\NotFoundActor> */
     public array $relationships = [];

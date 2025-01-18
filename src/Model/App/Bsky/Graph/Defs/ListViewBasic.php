@@ -18,14 +18,14 @@ class ListViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
     public string $uri;
     public string $cid;
     public string $name;
-    public ?string $purpose = null;
-    public ?string $avatar = null;
-    public ?int $listItemCount = null;
+    public ?string $purpose;
+    public ?string $avatar;
+    public ?int $listItemCount;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
-    public ?ListViewerState $viewer = null;
-    public ?\DateTimeInterface $indexedAt = null;
+    public ?ListViewerState $viewer;
+    public ?\DateTimeInterface $indexedAt;
 
     public static function id(): string
     {

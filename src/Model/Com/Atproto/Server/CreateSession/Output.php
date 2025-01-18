@@ -19,12 +19,12 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public string $refreshJwt;
     public string $handle;
     public string $did;
-    public mixed $didDoc = null;
-    public ?string $email = null;
-    public ?bool $emailConfirmed = null;
-    public ?bool $emailAuthFactor = null;
-    public ?bool $active = null;
-    public ?string $status = null;
+    public mixed $didDoc;
+    public ?string $email;
+    public ?bool $emailConfirmed;
+    public ?bool $emailAuthFactor;
+    public ?bool $active;
+    public ?string $status;
 
     public static function id(): string
     {

@@ -19,8 +19,8 @@ class Video implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Caption>|null */
     public ?array $captions = [];
-    public ?string $alt = null;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Defs\AspectRatio $aspectRatio = null;
+    public ?string $alt;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Defs\AspectRatio $aspectRatio;
 
     public static function id(): string
     {

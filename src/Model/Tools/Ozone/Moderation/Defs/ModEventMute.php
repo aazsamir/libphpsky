@@ -15,7 +15,7 @@ class ModEventMute implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'modEventMute';
     public const ID = 'tools.ozone.moderation.defs';
 
-    public ?string $comment = null;
+    public ?string $comment;
     public int $durationInHours;
 
     public static function id(): string

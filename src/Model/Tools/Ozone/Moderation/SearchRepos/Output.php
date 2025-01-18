@@ -15,7 +15,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'tools.ozone.moderation.searchRepos';
 
-    public ?string $cursor = null;
+    public ?string $cursor;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RepoView> */
     public array $repos = [];

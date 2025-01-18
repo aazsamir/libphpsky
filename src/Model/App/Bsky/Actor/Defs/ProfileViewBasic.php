@@ -17,14 +17,14 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $did;
     public string $handle;
-    public ?string $displayName = null;
-    public ?string $avatar = null;
-    public ?ProfileAssociated $associated = null;
-    public ?ViewerState $viewer = null;
+    public ?string $displayName;
+    public ?string $avatar;
+    public ?ProfileAssociated $associated;
+    public ?ViewerState $viewer;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
-    public ?\DateTimeInterface $createdAt = null;
+    public ?\DateTimeInterface $createdAt;
 
     public static function id(): string
     {

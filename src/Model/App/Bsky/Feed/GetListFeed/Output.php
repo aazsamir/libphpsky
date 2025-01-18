@@ -15,7 +15,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'app.bsky.feed.getListFeed';
 
-    public ?string $cursor = null;
+    public ?string $cursor;
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\FeedViewPost> */
     public array $feed = [];

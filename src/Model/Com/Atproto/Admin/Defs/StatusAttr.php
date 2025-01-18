@@ -16,7 +16,7 @@ class StatusAttr implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'com.atproto.admin.defs';
 
     public bool $applied;
-    public ?string $ref = null;
+    public ?string $ref;
 
     public static function id(): string
     {

@@ -16,8 +16,8 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'tools.ozone.team.updateMember';
 
     public string $did;
-    public ?bool $disabled = null;
-    public ?string $role = null;
+    public ?bool $disabled;
+    public ?string $role;
 
     public static function id(): string
     {

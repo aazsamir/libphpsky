@@ -17,8 +17,8 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $identifier;
     public string $password;
-    public ?string $authFactorToken = null;
-    public ?bool $allowTakendown = null;
+    public ?string $authFactorToken;
+    public ?bool $allowTakendown;
 
     public static function id(): string
     {

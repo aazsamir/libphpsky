@@ -15,15 +15,15 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.identity.signPlcOperation';
 
-    public ?string $token = null;
+    public ?string $token;
 
     /** @var array<string>|null */
     public ?array $rotationKeys = [];
 
     /** @var array<string>|null */
     public ?array $alsoKnownAs = [];
-    public mixed $verificationMethods = null;
-    public mixed $services = null;
+    public mixed $verificationMethods;
+    public mixed $services;
 
     public static function id(): string
     {

@@ -15,8 +15,8 @@ class Links implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'links';
     public const ID = 'app.bsky.feed.describeFeedGenerator';
 
-    public ?string $privacyPolicy = null;
-    public ?string $termsOfService = null;
+    public ?string $privacyPolicy;
+    public ?string $termsOfService;
 
     public static function id(): string
     {

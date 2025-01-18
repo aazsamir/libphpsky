@@ -18,10 +18,10 @@ class Option implements \Aazsamir\Libphpsky\ATProtoObject
     public string $key;
     public string $did;
     public mixed $value;
-    public ?string $description = null;
-    public ?\DateTimeInterface $createdAt = null;
-    public ?\DateTimeInterface $updatedAt = null;
-    public ?string $managerRole = null;
+    public ?string $description;
+    public ?\DateTimeInterface $createdAt;
+    public ?\DateTimeInterface $updatedAt;
+    public ?string $managerRole;
     public string $scope;
     public string $createdBy;
     public string $lastUpdatedBy;

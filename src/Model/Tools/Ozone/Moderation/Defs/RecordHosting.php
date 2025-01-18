@@ -16,9 +16,9 @@ class RecordHosting implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'tools.ozone.moderation.defs';
 
     public string $status;
-    public ?\DateTimeInterface $updatedAt = null;
-    public ?\DateTimeInterface $createdAt = null;
-    public ?\DateTimeInterface $deletedAt = null;
+    public ?\DateTimeInterface $updatedAt;
+    public ?\DateTimeInterface $createdAt;
+    public ?\DateTimeInterface $deletedAt;
 
     public static function id(): string
     {

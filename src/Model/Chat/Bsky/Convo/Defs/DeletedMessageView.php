@@ -17,7 +17,7 @@ class DeletedMessageView implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $id;
     public string $rev;
-    public ?MessageViewSender $sender = null;
+    public ?MessageViewSender $sender;
     public \DateTimeInterface $sentAt;
 
     public static function id(): string

@@ -15,8 +15,8 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'app.bsky.graph.getList';
 
-    public ?string $cursor = null;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\ListView $list = null;
+    public ?string $cursor;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\ListView $list;
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\ListItemView> */
     public array $items = [];

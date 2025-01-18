@@ -18,8 +18,8 @@ class Repo implements \Aazsamir\Libphpsky\ATProtoObject
     public string $did;
     public string $head;
     public string $rev;
-    public ?bool $active = null;
-    public ?string $status = null;
+    public ?bool $active;
+    public ?string $status;
 
     public static function id(): string
     {

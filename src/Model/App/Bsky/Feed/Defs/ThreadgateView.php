@@ -15,9 +15,9 @@ class ThreadgateView implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'threadgateView';
     public const ID = 'app.bsky.feed.defs';
 
-    public ?string $uri = null;
-    public ?string $cid = null;
-    public mixed $record = null;
+    public ?string $uri;
+    public ?string $cid;
+    public mixed $record;
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\ListViewBasic>|null */
     public ?array $lists = [];

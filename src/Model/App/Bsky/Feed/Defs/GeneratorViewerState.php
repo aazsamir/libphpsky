@@ -15,7 +15,7 @@ class GeneratorViewerState implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'generatorViewerState';
     public const ID = 'app.bsky.feed.defs';
 
-    public ?string $like = null;
+    public ?string $like;
 
     public static function id(): string
     {

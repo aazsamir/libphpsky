@@ -17,9 +17,9 @@ class View implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $cid;
     public string $playlist;
-    public ?string $thumbnail = null;
-    public ?string $alt = null;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Defs\AspectRatio $aspectRatio = null;
+    public ?string $thumbnail;
+    public ?string $alt;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Defs\AspectRatio $aspectRatio;
 
     public static function id(): string
     {

@@ -20,8 +20,8 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<string>|null */
     public ?array $alsoKnownAs = [];
-    public mixed $verificationMethods = null;
-    public mixed $services = null;
+    public mixed $verificationMethods;
+    public mixed $services;
 
     public static function id(): string
     {

@@ -19,7 +19,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\DescribeFeedGenerator\Feed> */
     public array $feeds = [];
-    public ?Links $links = null;
+    public ?Links $links;
 
     public static function id(): string
     {

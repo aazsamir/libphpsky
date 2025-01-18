@@ -17,7 +17,7 @@ class Migrate implements \Aazsamir\Libphpsky\ATProtoObject
 
     public int $seq;
     public string $did;
-    public string $migrateTo;
+    public ?string $migrateTo = null;
     public \DateTimeInterface $time;
 
     public static function id(): string
@@ -25,13 +25,13 @@ class Migrate implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
-    public static function new(int $seq, string $did, string $migrateTo, \DateTimeInterface $time): self
+    public static function new(int $seq, string $did, \DateTimeInterface $time, ?string $migrateTo = null): self
     {
         $instance = new self();
         $instance->seq = $seq;
         $instance->did = $did;
-        $instance->migrateTo = $migrateTo;
         $instance->time = $time;
+        $instance->migrateTo = $migrateTo;
 
         return $instance;
     }

@@ -15,15 +15,15 @@ class Label implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'label';
     public const ID = 'com.atproto.label.defs';
 
-    public ?int $ver = null;
+    public ?int $ver;
     public string $src;
     public string $uri;
-    public ?string $cid = null;
+    public ?string $cid;
     public string $val;
-    public ?bool $neg = null;
+    public ?bool $neg;
     public \DateTimeInterface $cts;
-    public ?\DateTimeInterface $exp = null;
-    public ?string $sig = null;
+    public ?\DateTimeInterface $exp;
+    public ?string $sig;
 
     public static function id(): string
     {

@@ -15,7 +15,7 @@ class Moderation implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'moderation';
     public const ID = 'tools.ozone.moderation.defs';
 
-    public ?SubjectStatusView $subjectStatus = null;
+    public ?SubjectStatusView $subjectStatus;
 
     public static function id(): string
     {

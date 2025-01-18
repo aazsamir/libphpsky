@@ -17,23 +17,23 @@ class RepoViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $did;
     public string $handle;
-    public ?string $email = null;
+    public ?string $email;
 
     /** @var array<mixed> */
     public array $relatedRecords = [];
     public \DateTimeInterface $indexedAt;
-    public ?ModerationDetail $moderation = null;
+    public ?ModerationDetail $moderation;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
-    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode $invitedBy = null;
+    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode $invitedBy;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode>|null */
     public ?array $invites = [];
-    public ?bool $invitesDisabled = null;
-    public ?string $inviteNote = null;
-    public ?\DateTimeInterface $emailConfirmedAt = null;
-    public ?\DateTimeInterface $deactivatedAt = null;
+    public ?bool $invitesDisabled;
+    public ?string $inviteNote;
+    public ?\DateTimeInterface $emailConfirmedAt;
+    public ?\DateTimeInterface $deactivatedAt;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\ThreatSignature>|null */
     public ?array $threatSignatures = [];

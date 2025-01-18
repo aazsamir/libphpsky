@@ -17,12 +17,12 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $handle;
     public string $did;
-    public ?string $email = null;
-    public ?bool $emailConfirmed = null;
-    public ?bool $emailAuthFactor = null;
-    public mixed $didDoc = null;
-    public ?bool $active = null;
-    public ?string $status = null;
+    public ?string $email;
+    public ?bool $emailConfirmed;
+    public ?bool $emailAuthFactor;
+    public mixed $didDoc;
+    public ?bool $active;
+    public ?string $status;
 
     public static function id(): string
     {

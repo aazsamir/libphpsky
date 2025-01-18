@@ -16,7 +16,7 @@ class Create implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'com.atproto.repo.applyWrites';
 
     public string $collection;
-    public ?string $rkey = null;
+    public ?string $rkey;
     public mixed $value;
 
     public static function id(): string

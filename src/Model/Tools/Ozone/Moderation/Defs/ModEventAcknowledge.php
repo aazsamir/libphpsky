@@ -15,8 +15,8 @@ class ModEventAcknowledge implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'modEventAcknowledge';
     public const ID = 'tools.ozone.moderation.defs';
 
-    public ?string $comment = null;
-    public ?bool $acknowledgeAccountSubjects = null;
+    public ?string $comment;
+    public ?bool $acknowledgeAccountSubjects;
 
     public static function id(): string
     {

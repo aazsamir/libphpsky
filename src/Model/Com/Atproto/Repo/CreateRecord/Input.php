@@ -17,10 +17,10 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $repo;
     public string $collection;
-    public ?string $rkey = null;
-    public ?bool $validate = null;
+    public ?string $rkey;
+    public ?bool $validate;
     public mixed $record;
-    public ?string $swapCommit = null;
+    public ?string $swapCommit;
 
     public static function id(): string
     {

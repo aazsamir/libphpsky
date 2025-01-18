@@ -15,7 +15,7 @@ class ModEventReverseTakedown implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'modEventReverseTakedown';
     public const ID = 'tools.ozone.moderation.defs';
 
-    public ?string $comment = null;
+    public ?string $comment;
 
     public static function id(): string
     {

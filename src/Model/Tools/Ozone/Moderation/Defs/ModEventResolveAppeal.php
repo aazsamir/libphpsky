@@ -15,7 +15,7 @@ class ModEventResolveAppeal implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'modEventResolveAppeal';
     public const ID = 'tools.ozone.moderation.defs';
 
-    public ?string $comment = null;
+    public ?string $comment;
 
     public static function id(): string
     {

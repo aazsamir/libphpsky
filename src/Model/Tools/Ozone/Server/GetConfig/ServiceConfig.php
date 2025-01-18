@@ -15,7 +15,7 @@ class ServiceConfig implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'serviceConfig';
     public const ID = 'tools.ozone.server.getConfig';
 
-    public ?string $url = null;
+    public ?string $url;
 
     public static function id(): string
     {

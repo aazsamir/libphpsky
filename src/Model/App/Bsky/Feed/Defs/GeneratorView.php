@@ -18,19 +18,19 @@ class GeneratorView implements \Aazsamir\Libphpsky\ATProtoObject
     public string $uri;
     public string $cid;
     public string $did;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $creator = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $creator;
     public string $displayName;
-    public ?string $description = null;
+    public ?string $description;
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet>|null */
     public ?array $descriptionFacets = [];
-    public ?string $avatar = null;
-    public ?int $likeCount = null;
-    public ?bool $acceptsInteractions = null;
+    public ?string $avatar;
+    public ?int $likeCount;
+    public ?bool $acceptsInteractions;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
-    public ?GeneratorViewerState $viewer = null;
+    public ?GeneratorViewerState $viewer;
     public \DateTimeInterface $indexedAt;
 
     public static function id(): string

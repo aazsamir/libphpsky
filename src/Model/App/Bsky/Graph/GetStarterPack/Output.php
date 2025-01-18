@@ -15,7 +15,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'app.bsky.graph.getStarterPack';
 
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\StarterPackView $starterPack = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\StarterPackView $starterPack;
 
     public static function id(): string
     {

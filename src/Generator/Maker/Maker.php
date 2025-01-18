@@ -270,12 +270,17 @@ class Maker
             $property = $this->unref($property);
             $phpProperty = $class->addProperty($propertyName);
             $phpPropertyType = $this->namespaceAndClassname($property);
-            $nullable = empty($def->required())
-                || !\in_array($property->name(), $def->required(), true);
+            $required = $def->required() ? \in_array($property->name(), $def->required(), true) : false;
+            $nullable = $def->nullable() ? \in_array($property->name(), $def->nullable(), true) : false;
+
+            if ($nullable) {
+                $phpProperty->setValue(null);
+            }
+
+            $nullable = $nullable || !$required;
 
             if ($nullable) {
                 $phpProperty->setNullable($nullable);
-                $phpProperty->setValue(null);
             }
 
             if ($property instanceof ArrayDef) {

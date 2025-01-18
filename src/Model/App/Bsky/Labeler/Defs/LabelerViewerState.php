@@ -15,7 +15,7 @@ class LabelerViewerState implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'labelerViewerState';
     public const ID = 'app.bsky.labeler.defs';
 
-    public ?string $like = null;
+    public ?string $like;
 
     public static function id(): string
     {

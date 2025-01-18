@@ -15,12 +15,12 @@ class ViewerState implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'viewerState';
     public const ID = 'app.bsky.feed.defs';
 
-    public ?string $repost = null;
-    public ?string $like = null;
-    public ?bool $threadMuted = null;
-    public ?bool $replyDisabled = null;
-    public ?bool $embeddingDisabled = null;
-    public ?bool $pinned = null;
+    public ?string $repost;
+    public ?string $like;
+    public ?bool $threadMuted;
+    public ?bool $replyDisabled;
+    public ?bool $embeddingDisabled;
+    public ?bool $pinned;
 
     public static function id(): string
     {

@@ -17,14 +17,14 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $did;
     public string $handle;
-    public ?string $displayName = null;
-    public ?string $avatar = null;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileAssociated $associated = null;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ViewerState $viewer = null;
+    public ?string $displayName;
+    public ?string $avatar;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileAssociated $associated;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ViewerState $viewer;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
-    public ?bool $chatDisabled = null;
+    public ?bool $chatDisabled;
 
     public static function id(): string
     {

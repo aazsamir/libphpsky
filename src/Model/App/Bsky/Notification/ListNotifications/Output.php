@@ -15,12 +15,12 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'app.bsky.notification.listNotifications';
 
-    public ?string $cursor = null;
+    public ?string $cursor;
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListNotifications\Notification> */
     public array $notifications = [];
-    public ?bool $priority = null;
-    public ?\DateTimeInterface $seenAt = null;
+    public ?bool $priority;
+    public ?\DateTimeInterface $seenAt;
 
     public static function id(): string
     {

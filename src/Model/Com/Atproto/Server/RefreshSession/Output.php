@@ -19,9 +19,9 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public string $refreshJwt;
     public string $handle;
     public string $did;
-    public mixed $didDoc = null;
-    public ?bool $active = null;
-    public ?string $status = null;
+    public mixed $didDoc;
+    public ?bool $active;
+    public ?string $status;
 
     public static function id(): string
     {

@@ -16,7 +16,7 @@ class ListItemView implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'app.bsky.graph.defs';
 
     public string $uri;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $subject = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $subject;
 
     public static function id(): string
     {

@@ -16,7 +16,7 @@ class Set implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'tools.ozone.set.defs';
 
     public string $name;
-    public ?string $description = null;
+    public ?string $description;
 
     public static function id(): string
     {

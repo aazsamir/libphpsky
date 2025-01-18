@@ -21,7 +21,7 @@ class MessageInput implements \Aazsamir\Libphpsky\ATProtoObject
     public ?array $facets = [];
 
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record|null */
-    public mixed $embed = null;
+    public mixed $embed;
 
     public static function id(): string
     {

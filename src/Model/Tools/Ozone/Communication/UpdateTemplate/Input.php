@@ -16,12 +16,12 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'tools.ozone.communication.updateTemplate';
 
     public string $id;
-    public ?string $name = null;
-    public ?string $lang = null;
-    public ?string $contentMarkdown = null;
-    public ?string $subject = null;
-    public ?string $updatedBy = null;
-    public ?bool $disabled = null;
+    public ?string $name;
+    public ?string $lang;
+    public ?string $contentMarkdown;
+    public ?string $subject;
+    public ?string $updatedBy;
+    public ?bool $disabled;
 
     public static function id(): string
     {

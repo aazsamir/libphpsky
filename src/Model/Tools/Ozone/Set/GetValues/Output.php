@@ -15,11 +15,11 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'tools.ozone.set.getValues';
 
-    public ?\Aazsamir\Libphpsky\Model\Tools\Ozone\Set\Defs\SetView $set = null;
+    public ?\Aazsamir\Libphpsky\Model\Tools\Ozone\Set\Defs\SetView $set;
 
     /** @var array<string> */
     public array $values = [];
-    public ?string $cursor = null;
+    public ?string $cursor;
 
     public static function id(): string
     {

@@ -15,8 +15,8 @@ class ThreadViewPref implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'threadViewPref';
     public const ID = 'app.bsky.actor.defs';
 
-    public ?string $sort = null;
-    public ?bool $prioritizeFollowedUsers = null;
+    public ?string $sort;
+    public ?bool $prioritizeFollowedUsers;
 
     public static function id(): string
     {

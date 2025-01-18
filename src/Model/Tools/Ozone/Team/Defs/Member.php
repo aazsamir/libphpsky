@@ -16,11 +16,11 @@ class Member implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'tools.ozone.team.defs';
 
     public string $did;
-    public ?bool $disabled = null;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewDetailed $profile = null;
-    public ?\DateTimeInterface $createdAt = null;
-    public ?\DateTimeInterface $updatedAt = null;
-    public ?string $lastUpdatedBy = null;
+    public ?bool $disabled;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewDetailed $profile;
+    public ?\DateTimeInterface $createdAt;
+    public ?\DateTimeInterface $updatedAt;
+    public ?string $lastUpdatedBy;
     public string $role;
 
     public static function id(): string

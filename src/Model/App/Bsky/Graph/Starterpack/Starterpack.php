@@ -16,7 +16,7 @@ class Starterpack implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'app.bsky.graph.starterpack';
 
     public string $name;
-    public ?string $description = null;
+    public ?string $description;
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet>|null */
     public ?array $descriptionFacets = [];

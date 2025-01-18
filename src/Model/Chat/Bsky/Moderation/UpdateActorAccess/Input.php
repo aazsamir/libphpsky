@@ -17,7 +17,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $actor;
     public bool $allowAccess;
-    public ?string $ref = null;
+    public ?string $ref;
 
     public static function id(): string
     {

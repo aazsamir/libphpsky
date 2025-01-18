@@ -15,11 +15,11 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'app.bsky.unspecced.getSuggestionsSkeleton';
 
-    public ?string $cursor = null;
+    public ?string $cursor;
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\Defs\SkeletonSearchActor> */
     public array $actors = [];
-    public ?string $relativeToDid = null;
+    public ?string $relativeToDid;
 
     public static function id(): string
     {

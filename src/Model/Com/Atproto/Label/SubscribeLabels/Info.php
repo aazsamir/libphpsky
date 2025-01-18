@@ -16,7 +16,7 @@ class Info implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'com.atproto.label.subscribeLabels';
 
     public string $name;
-    public ?string $message = null;
+    public ?string $message;
 
     public static function id(): string
     {

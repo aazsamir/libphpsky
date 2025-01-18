@@ -22,16 +22,16 @@ class Post implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet>|null */
     public ?array $facets = [];
-    public ?ReplyRef $reply = null;
+    public ?ReplyRef $reply;
 
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\Images|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Video|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\External|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\RecordWithMedia\RecordWithMedia|null */
-    public mixed $embed = null;
+    public mixed $embed;
 
     /** @var array<string>|null */
     public ?array $langs = [];
 
     /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels|null */
-    public mixed $labels = null;
+    public mixed $labels;
 
     /** @var array<string>|null */
     public ?array $tags = [];

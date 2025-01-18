@@ -16,7 +16,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'com.atproto.server.createInviteCode';
 
     public int $useCount;
-    public ?string $forAccount = null;
+    public ?string $forAccount;
 
     public static function id(): string
     {

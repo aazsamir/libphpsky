@@ -15,9 +15,9 @@ class ModEventReport implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'modEventReport';
     public const ID = 'tools.ozone.moderation.defs';
 
-    public ?string $comment = null;
-    public ?bool $isReporterMuted = null;
-    public ?string $reportType = null;
+    public ?string $comment;
+    public ?bool $isReporterMuted;
+    public ?string $reportType;
 
     public static function id(): string
     {

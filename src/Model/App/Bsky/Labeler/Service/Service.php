@@ -15,10 +15,10 @@ class Service implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'main';
     public const ID = 'app.bsky.labeler.service';
 
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Labeler\Defs\LabelerPolicies $policies = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Labeler\Defs\LabelerPolicies $policies;
 
     /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels|null */
-    public mixed $labels = null;
+    public mixed $labels;
     public \DateTimeInterface $createdAt;
 
     public static function id(): string

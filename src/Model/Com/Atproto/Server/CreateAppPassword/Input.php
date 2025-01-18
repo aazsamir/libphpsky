@@ -16,7 +16,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'com.atproto.server.createAppPassword';
 
     public string $name;
-    public ?bool $privileged = null;
+    public ?bool $privileged;
 
     public static function id(): string
     {

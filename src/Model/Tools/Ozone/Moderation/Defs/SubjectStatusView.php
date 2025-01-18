@@ -21,24 +21,24 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
     public mixed $subject;
 
     /** @var \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\AccountHosting|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RecordHosting|null */
-    public mixed $hosting = null;
+    public mixed $hosting;
 
     /** @var array<string>|null */
     public ?array $subjectBlobCids = [];
-    public ?string $subjectRepoHandle = null;
+    public ?string $subjectRepoHandle;
     public \DateTimeInterface $updatedAt;
     public \DateTimeInterface $createdAt;
-    public ?string $reviewState = null;
-    public ?string $comment = null;
-    public ?\DateTimeInterface $muteUntil = null;
-    public ?\DateTimeInterface $muteReportingUntil = null;
-    public ?string $lastReviewedBy = null;
-    public ?\DateTimeInterface $lastReviewedAt = null;
-    public ?\DateTimeInterface $lastReportedAt = null;
-    public ?\DateTimeInterface $lastAppealedAt = null;
-    public ?bool $takendown = null;
-    public ?bool $appealed = null;
-    public ?\DateTimeInterface $suspendUntil = null;
+    public ?string $reviewState;
+    public ?string $comment;
+    public ?\DateTimeInterface $muteUntil;
+    public ?\DateTimeInterface $muteReportingUntil;
+    public ?string $lastReviewedBy;
+    public ?\DateTimeInterface $lastReviewedAt;
+    public ?\DateTimeInterface $lastReportedAt;
+    public ?\DateTimeInterface $lastAppealedAt;
+    public ?bool $takendown;
+    public ?bool $appealed;
+    public ?\DateTimeInterface $suspendUntil;
 
     /** @var array<string>|null */
     public ?array $tags = [];

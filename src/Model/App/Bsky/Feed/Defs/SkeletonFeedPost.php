@@ -18,8 +18,8 @@ class SkeletonFeedPost implements \Aazsamir\Libphpsky\ATProtoObject
     public string $post;
 
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\SkeletonReasonRepost|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\SkeletonReasonPin|null */
-    public mixed $reason = null;
-    public ?string $feedContext = null;
+    public mixed $reason;
+    public ?string $feedContext;
 
     public static function id(): string
     {

@@ -15,8 +15,8 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'app.bsky.unspecced.searchPostsSkeleton';
 
-    public ?string $cursor = null;
-    public ?int $hitsTotal = null;
+    public ?string $cursor;
+    public ?int $hitsTotal;
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\Defs\SkeletonSearchPost> */
     public array $posts = [];

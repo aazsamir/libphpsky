@@ -20,7 +20,7 @@ class SavedFeedsPref implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<string> */
     public array $saved = [];
-    public ?int $timelineIndex = null;
+    public ?int $timelineIndex;
 
     public static function id(): string
     {

@@ -15,7 +15,7 @@ class BskyAppStatePref implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'bskyAppStatePref';
     public const ID = 'app.bsky.actor.defs';
 
-    public ?BskyAppProgressGuide $activeProgressGuide = null;
+    public ?BskyAppProgressGuide $activeProgressGuide;
 
     /** @var array<string>|null */
     public ?array $queuedNudges = [];

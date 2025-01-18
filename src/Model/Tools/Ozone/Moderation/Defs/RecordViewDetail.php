@@ -25,8 +25,8 @@ class RecordViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
     public \DateTimeInterface $indexedAt;
-    public ?ModerationDetail $moderation = null;
-    public ?RepoView $repo = null;
+    public ?ModerationDetail $moderation;
+    public ?RepoView $repo;
 
     public static function id(): string
     {

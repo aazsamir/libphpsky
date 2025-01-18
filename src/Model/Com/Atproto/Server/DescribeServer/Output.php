@@ -15,13 +15,13 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'com.atproto.server.describeServer';
 
-    public ?bool $inviteCodeRequired = null;
-    public ?bool $phoneVerificationRequired = null;
+    public ?bool $inviteCodeRequired;
+    public ?bool $phoneVerificationRequired;
 
     /** @var array<string> */
     public array $availableUserDomains = [];
-    public ?Links $links = null;
-    public ?Contact $contact = null;
+    public ?Links $links;
+    public ?Contact $contact;
     public string $did;
 
     public static function id(): string

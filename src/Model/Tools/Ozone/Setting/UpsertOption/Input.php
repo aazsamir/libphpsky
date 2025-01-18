@@ -18,8 +18,8 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public string $key;
     public string $scope;
     public mixed $value;
-    public ?string $description = null;
-    public ?string $managerRole = null;
+    public ?string $description;
+    public ?string $managerRole;
 
     public static function id(): string
     {

@@ -20,7 +20,7 @@ class ModEventTag implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<string> */
     public array $remove = [];
-    public ?string $comment = null;
+    public ?string $comment;
 
     public static function id(): string
     {

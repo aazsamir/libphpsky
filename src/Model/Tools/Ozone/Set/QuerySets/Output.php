@@ -17,7 +17,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<\Aazsamir\Libphpsky\Model\Tools\Ozone\Set\Defs\SetView> */
     public array $sets = [];
-    public ?string $cursor = null;
+    public ?string $cursor;
 
     public static function id(): string
     {

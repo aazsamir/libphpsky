@@ -15,7 +15,7 @@ class RecordWithMedia implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'main';
     public const ID = 'app.bsky.embed.recordWithMedia';
 
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record $record = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record $record;
 
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\Images|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Video|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\External */
     public mixed $media;

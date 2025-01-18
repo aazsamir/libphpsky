@@ -15,11 +15,11 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'tools.ozone.server.getConfig';
 
-    public ?ServiceConfig $appview = null;
-    public ?ServiceConfig $pds = null;
-    public ?ServiceConfig $blobDivert = null;
-    public ?ServiceConfig $chat = null;
-    public ?ViewerConfig $viewer = null;
+    public ?ServiceConfig $appview;
+    public ?ServiceConfig $pds;
+    public ?ServiceConfig $blobDivert;
+    public ?ServiceConfig $chat;
+    public ?ViewerConfig $viewer;
 
     public static function id(): string
     {

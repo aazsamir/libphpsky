@@ -17,10 +17,10 @@ class LabelerViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $uri;
     public string $cid;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $creator = null;
-    public ?LabelerPolicies $policies = null;
-    public ?int $likeCount = null;
-    public ?LabelerViewerState $viewer = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $creator;
+    public ?LabelerPolicies $policies;
+    public ?int $likeCount;
+    public ?LabelerViewerState $viewer;
     public \DateTimeInterface $indexedAt;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */

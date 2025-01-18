@@ -16,8 +16,8 @@ class Relationship implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'app.bsky.graph.defs';
 
     public string $did;
-    public ?string $following = null;
-    public ?string $followedBy = null;
+    public ?string $following;
+    public ?string $followedBy;
 
     public static function id(): string
     {

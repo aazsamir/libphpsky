@@ -15,9 +15,9 @@ class RecordEvent implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'recordEvent';
     public const ID = 'tools.ozone.moderation.defs';
 
-    public ?string $comment = null;
+    public ?string $comment;
     public string $op;
-    public ?string $cid = null;
+    public ?string $cid;
     public \DateTimeInterface $timestamp;
 
     public static function id(): string

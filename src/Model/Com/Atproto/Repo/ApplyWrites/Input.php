@@ -16,11 +16,11 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'com.atproto.repo.applyWrites';
 
     public string $repo;
-    public ?bool $validate = null;
+    public ?bool $validate;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\Create|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\Update|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\Delete> */
     public array $writes = [];
-    public ?string $swapCommit = null;
+    public ?string $swapCommit;
 
     public static function id(): string
     {

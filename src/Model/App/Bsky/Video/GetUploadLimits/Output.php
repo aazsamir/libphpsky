@@ -16,10 +16,10 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'app.bsky.video.getUploadLimits';
 
     public bool $canUpload;
-    public ?int $remainingDailyVideos = null;
-    public ?int $remainingDailyBytes = null;
-    public ?string $message = null;
-    public ?string $error = null;
+    public ?int $remainingDailyVideos;
+    public ?int $remainingDailyBytes;
+    public ?string $message;
+    public ?string $error;
 
     public static function id(): string
     {

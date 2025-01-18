@@ -15,9 +15,9 @@ class Interaction implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'interaction';
     public const ID = 'app.bsky.feed.defs';
 
-    public ?string $item = null;
-    public ?string $event = null;
-    public ?string $feedContext = null;
+    public ?string $item;
+    public ?string $event;
+    public ?string $feedContext;
 
     public static function id(): string
     {

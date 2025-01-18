@@ -27,8 +27,8 @@ class ModEventView implements \Aazsamir\Libphpsky\ATProtoObject
     public array $subjectBlobCids = [];
     public string $createdBy;
     public \DateTimeInterface $createdAt;
-    public ?string $creatorHandle = null;
-    public ?string $subjectHandle = null;
+    public ?string $creatorHandle;
+    public ?string $subjectHandle;
 
     public static function id(): string
     {

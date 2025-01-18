@@ -18,10 +18,10 @@ class StarterPackViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
     public string $uri;
     public string $cid;
     public mixed $record;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $creator = null;
-    public ?int $listItemCount = null;
-    public ?int $joinedWeekCount = null;
-    public ?int $joinedAllTimeCount = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $creator;
+    public ?int $listItemCount;
+    public ?int $joinedWeekCount;
+    public ?int $joinedAllTimeCount;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];

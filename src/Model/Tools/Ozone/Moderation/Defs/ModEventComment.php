@@ -16,7 +16,7 @@ class ModEventComment implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'tools.ozone.moderation.defs';
 
     public string $comment;
-    public ?bool $sticky = null;
+    public ?bool $sticky;
 
     public static function id(): string
     {

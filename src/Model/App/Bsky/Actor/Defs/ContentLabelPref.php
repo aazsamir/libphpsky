@@ -15,7 +15,7 @@ class ContentLabelPref implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'contentLabelPref';
     public const ID = 'app.bsky.actor.defs';
 
-    public ?string $labelerDid = null;
+    public ?string $labelerDid;
     public string $label;
     public string $visibility;
 

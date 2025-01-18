@@ -17,9 +17,9 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $recipientDid;
     public string $content;
-    public ?string $subject = null;
+    public ?string $subject;
     public string $senderDid;
-    public ?string $comment = null;
+    public ?string $comment;
 
     public static function id(): string
     {

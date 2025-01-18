@@ -17,19 +17,19 @@ class AccountView implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $did;
     public string $handle;
-    public ?string $email = null;
+    public ?string $email;
 
     /** @var array<mixed>|null */
     public ?array $relatedRecords = [];
     public \DateTimeInterface $indexedAt;
-    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode $invitedBy = null;
+    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode $invitedBy;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode>|null */
     public ?array $invites = [];
-    public ?bool $invitesDisabled = null;
-    public ?\DateTimeInterface $emailConfirmedAt = null;
-    public ?string $inviteNote = null;
-    public ?\DateTimeInterface $deactivatedAt = null;
+    public ?bool $invitesDisabled;
+    public ?\DateTimeInterface $emailConfirmedAt;
+    public ?string $inviteNote;
+    public ?\DateTimeInterface $deactivatedAt;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\ThreatSignature>|null */
     public ?array $threatSignatures = [];

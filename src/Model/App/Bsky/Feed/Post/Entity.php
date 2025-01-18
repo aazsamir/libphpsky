@@ -15,7 +15,7 @@ class Entity implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'entity';
     public const ID = 'app.bsky.feed.post';
 
-    public ?TextSlice $index = null;
+    public ?TextSlice $index;
     public string $type;
     public string $value;
 

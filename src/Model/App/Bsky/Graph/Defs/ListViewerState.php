@@ -15,8 +15,8 @@ class ListViewerState implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'listViewerState';
     public const ID = 'app.bsky.graph.defs';
 
-    public ?bool $muted = null;
-    public ?string $blocked = null;
+    public ?bool $muted;
+    public ?string $blocked;
 
     public static function id(): string
     {

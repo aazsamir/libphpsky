@@ -15,7 +15,7 @@ class Repost implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'main';
     public const ID = 'app.bsky.feed.repost';
 
-    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $subject = null;
+    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $subject;
     public \DateTimeInterface $createdAt;
 
     public static function id(): string

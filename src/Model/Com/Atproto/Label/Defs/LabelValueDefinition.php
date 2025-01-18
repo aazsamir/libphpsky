@@ -18,8 +18,8 @@ class LabelValueDefinition implements \Aazsamir\Libphpsky\ATProtoObject
     public string $identifier;
     public string $severity;
     public string $blurs;
-    public ?string $defaultSetting = null;
-    public ?bool $adultOnly = null;
+    public ?string $defaultSetting;
+    public ?bool $adultOnly;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\LabelValueDefinitionStrings> */
     public array $locales = [];

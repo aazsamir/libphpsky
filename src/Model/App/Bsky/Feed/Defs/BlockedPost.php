@@ -17,7 +17,7 @@ class BlockedPost implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $uri;
     public bool $blocked;
-    public ?BlockedAuthor $author = null;
+    public ?BlockedAuthor $author;
 
     public static function id(): string
     {

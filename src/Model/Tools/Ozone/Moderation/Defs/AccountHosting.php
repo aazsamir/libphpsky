@@ -16,11 +16,11 @@ class AccountHosting implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'tools.ozone.moderation.defs';
 
     public string $status;
-    public ?\DateTimeInterface $updatedAt = null;
-    public ?\DateTimeInterface $createdAt = null;
-    public ?\DateTimeInterface $deletedAt = null;
-    public ?\DateTimeInterface $deactivatedAt = null;
-    public ?\DateTimeInterface $reactivatedAt = null;
+    public ?\DateTimeInterface $updatedAt;
+    public ?\DateTimeInterface $createdAt;
+    public ?\DateTimeInterface $deletedAt;
+    public ?\DateTimeInterface $deactivatedAt;
+    public ?\DateTimeInterface $reactivatedAt;
 
     public static function id(): string
     {

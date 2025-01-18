@@ -17,8 +17,8 @@ class Nux implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $id;
     public bool $completed;
-    public ?string $data = null;
-    public ?\DateTimeInterface $expiresAt = null;
+    public ?string $data;
+    public ?\DateTimeInterface $expiresAt;
 
     public static function id(): string
     {

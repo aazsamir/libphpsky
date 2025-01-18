@@ -15,7 +15,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'app.bsky.unspecced.getConfig';
 
-    public ?bool $checkEmailConfirmed = null;
+    public ?bool $checkEmailConfirmed;
 
     public static function id(): string
     {

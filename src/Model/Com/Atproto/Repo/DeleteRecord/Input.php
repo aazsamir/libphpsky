@@ -18,8 +18,8 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public string $repo;
     public string $collection;
     public string $rkey;
-    public ?string $swapRecord = null;
-    public ?string $swapCommit = null;
+    public ?string $swapRecord;
+    public ?string $swapCommit;
 
     public static function id(): string
     {

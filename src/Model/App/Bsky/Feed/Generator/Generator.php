@@ -17,15 +17,15 @@ class Generator implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $did;
     public string $displayName;
-    public ?string $description = null;
+    public ?string $description;
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet>|null */
     public ?array $descriptionFacets = [];
-    public ?string $avatar = null;
-    public ?bool $acceptsInteractions = null;
+    public ?string $avatar;
+    public ?bool $acceptsInteractions;
 
     /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels|null */
-    public mixed $labels = null;
+    public mixed $labels;
     public \DateTimeInterface $createdAt;
 
     public static function id(): string

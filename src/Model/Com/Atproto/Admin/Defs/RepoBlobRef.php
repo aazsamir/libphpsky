@@ -17,7 +17,7 @@ class RepoBlobRef implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $did;
     public string $cid;
-    public ?string $recordUri = null;
+    public ?string $recordUri;
 
     public static function id(): string
     {

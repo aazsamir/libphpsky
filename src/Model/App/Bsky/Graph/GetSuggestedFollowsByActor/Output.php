@@ -17,7 +17,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView> */
     public array $suggestions = [];
-    public ?bool $isFallback = null;
+    public ?bool $isFallback;
 
     public static function id(): string
     {

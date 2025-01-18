@@ -15,7 +15,7 @@ class View implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'view';
     public const ID = 'app.bsky.embed.recordWithMedia';
 
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View $record = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View $record;
 
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\View */
     public mixed $media;

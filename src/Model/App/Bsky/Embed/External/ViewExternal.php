@@ -18,7 +18,7 @@ class ViewExternal implements \Aazsamir\Libphpsky\ATProtoObject
     public string $uri;
     public string $title;
     public string $description;
-    public ?string $thumb = null;
+    public ?string $thumb;
 
     public static function id(): string
     {

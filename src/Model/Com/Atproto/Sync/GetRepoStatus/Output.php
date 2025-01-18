@@ -17,8 +17,8 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $did;
     public bool $active;
-    public ?string $status = null;
-    public ?string $rev = null;
+    public ?string $status;
+    public ?string $rev;
 
     public static function id(): string
     {

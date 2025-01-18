@@ -17,19 +17,19 @@ class ListView implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $uri;
     public string $cid;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $creator = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $creator;
     public string $name;
-    public ?string $purpose = null;
-    public ?string $description = null;
+    public ?string $purpose;
+    public ?string $description;
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet>|null */
     public ?array $descriptionFacets = [];
-    public ?string $avatar = null;
-    public ?int $listItemCount = null;
+    public ?string $avatar;
+    public ?int $listItemCount;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
-    public ?ListViewerState $viewer = null;
+    public ?ListViewerState $viewer;
     public \DateTimeInterface $indexedAt;
 
     public static function id(): string

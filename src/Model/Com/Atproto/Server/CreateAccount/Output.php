@@ -19,7 +19,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public string $refreshJwt;
     public string $handle;
     public string $did;
-    public mixed $didDoc = null;
+    public mixed $didDoc;
 
     public static function id(): string
     {

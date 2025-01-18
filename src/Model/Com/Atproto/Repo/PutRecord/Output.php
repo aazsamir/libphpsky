@@ -17,8 +17,8 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $uri;
     public string $cid;
-    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\Defs\CommitMeta $commit = null;
-    public ?string $validationStatus = null;
+    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\Defs\CommitMeta $commit;
+    public ?string $validationStatus;
 
     public static function id(): string
     {

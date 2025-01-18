@@ -15,10 +15,10 @@ class ThreadViewPost implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'threadViewPost';
     public const ID = 'app.bsky.feed.defs';
 
-    public ?PostView $post = null;
+    public ?PostView $post;
 
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\ThreadViewPost|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\NotFoundPost|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\BlockedPost|null */
-    public mixed $parent = null;
+    public mixed $parent;
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\ThreadViewPost|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\NotFoundPost|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\BlockedPost>|null */
     public ?array $replies = [];

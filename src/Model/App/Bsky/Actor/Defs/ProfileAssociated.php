@@ -15,11 +15,11 @@ class ProfileAssociated implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'profileAssociated';
     public const ID = 'app.bsky.actor.defs';
 
-    public ?int $lists = null;
-    public ?int $feedgens = null;
-    public ?int $starterPacks = null;
-    public ?bool $labeler = null;
-    public ?ProfileAssociatedChat $chat = null;
+    public ?int $lists;
+    public ?int $feedgens;
+    public ?int $starterPacks;
+    public ?bool $labeler;
+    public ?ProfileAssociatedChat $chat;
 
     public static function id(): string
     {

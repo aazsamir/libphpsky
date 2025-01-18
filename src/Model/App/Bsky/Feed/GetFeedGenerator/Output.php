@@ -15,7 +15,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'app.bsky.feed.getFeedGenerator';
 
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\GeneratorView $view = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\GeneratorView $view;
     public bool $isOnline;
     public bool $isValid;
 

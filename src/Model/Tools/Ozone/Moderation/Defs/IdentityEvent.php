@@ -15,10 +15,10 @@ class IdentityEvent implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'identityEvent';
     public const ID = 'tools.ozone.moderation.defs';
 
-    public ?string $comment = null;
-    public ?string $handle = null;
-    public ?string $pdsHost = null;
-    public ?bool $tombstone = null;
+    public ?string $comment;
+    public ?string $handle;
+    public ?string $pdsHost;
+    public ?bool $tombstone;
     public \DateTimeInterface $timestamp;
 
     public static function id(): string

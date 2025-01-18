@@ -16,8 +16,8 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'com.atproto.server.updateEmail';
 
     public string $email;
-    public ?bool $emailAuthFactor = null;
-    public ?string $token = null;
+    public ?bool $emailAuthFactor;
+    public ?string $token;
 
     public static function id(): string
     {

@@ -18,16 +18,16 @@ class StarterPackView implements \Aazsamir\Libphpsky\ATProtoObject
     public string $uri;
     public string $cid;
     public mixed $record;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $creator = null;
-    public ?ListViewBasic $list = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $creator;
+    public ?ListViewBasic $list;
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\ListItemView>|null */
     public ?array $listItemsSample = [];
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\GeneratorView>|null */
     public ?array $feeds = [];
-    public ?int $joinedWeekCount = null;
-    public ?int $joinedAllTimeCount = null;
+    public ?int $joinedWeekCount;
+    public ?int $joinedAllTimeCount;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];

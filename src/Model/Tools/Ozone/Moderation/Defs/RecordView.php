@@ -23,7 +23,7 @@ class RecordView implements \Aazsamir\Libphpsky\ATProtoObject
     public array $blobCids = [];
     public \DateTimeInterface $indexedAt;
     public Moderation $moderation;
-    public ?RepoView $repo = null;
+    public ?RepoView $repo;
 
     public static function id(): string
     {

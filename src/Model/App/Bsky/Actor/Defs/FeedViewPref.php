@@ -16,11 +16,11 @@ class FeedViewPref implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'app.bsky.actor.defs';
 
     public string $feed;
-    public ?bool $hideReplies = null;
-    public ?bool $hideRepliesByUnfollowed = null;
-    public ?int $hideRepliesByLikeCount = null;
-    public ?bool $hideReposts = null;
-    public ?bool $hideQuotePosts = null;
+    public ?bool $hideReplies;
+    public ?bool $hideRepliesByUnfollowed;
+    public ?int $hideRepliesByLikeCount;
+    public ?bool $hideReposts;
+    public ?bool $hideQuotePosts;
 
     public static function id(): string
     {

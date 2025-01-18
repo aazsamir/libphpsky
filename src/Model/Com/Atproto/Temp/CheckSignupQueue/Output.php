@@ -16,8 +16,8 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'com.atproto.temp.checkSignupQueue';
 
     public bool $activated;
-    public ?int $placeInQueue = null;
-    public ?int $estimatedTimeMs = null;
+    public ?int $placeInQueue;
+    public ?int $estimatedTimeMs;
 
     public static function id(): string
     {

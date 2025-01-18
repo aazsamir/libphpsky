@@ -15,7 +15,7 @@ class ModEventUnmute implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'modEventUnmute';
     public const ID = 'tools.ozone.moderation.defs';
 
-    public ?string $comment = null;
+    public ?string $comment;
 
     public static function id(): string
     {

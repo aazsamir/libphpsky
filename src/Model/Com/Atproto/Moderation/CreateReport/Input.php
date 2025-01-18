@@ -16,7 +16,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'com.atproto.moderation.createReport';
 
     public string $reasonType;
-    public ?string $reason = null;
+    public ?string $reason;
 
     /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef */
     public mixed $subject;

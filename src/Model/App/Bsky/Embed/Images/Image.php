@@ -17,7 +17,7 @@ class Image implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $image;
     public string $alt;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Defs\AspectRatio $aspectRatio = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Defs\AspectRatio $aspectRatio;
 
     public static function id(): string
     {

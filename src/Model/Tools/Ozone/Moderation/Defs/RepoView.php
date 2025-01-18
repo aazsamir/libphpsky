@@ -17,16 +17,16 @@ class RepoView implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $did;
     public string $handle;
-    public ?string $email = null;
+    public ?string $email;
 
     /** @var array<mixed> */
     public array $relatedRecords = [];
     public \DateTimeInterface $indexedAt;
     public Moderation $moderation;
-    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode $invitedBy = null;
-    public ?bool $invitesDisabled = null;
-    public ?string $inviteNote = null;
-    public ?\DateTimeInterface $deactivatedAt = null;
+    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode $invitedBy;
+    public ?bool $invitesDisabled;
+    public ?string $inviteNote;
+    public ?\DateTimeInterface $deactivatedAt;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\ThreatSignature>|null */
     public ?array $threatSignatures = [];

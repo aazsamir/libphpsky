@@ -16,7 +16,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'com.atproto.repo.getRecord';
 
     public string $uri;
-    public ?string $cid = null;
+    public ?string $cid;
     public mixed $value;
 
     public static function id(): string

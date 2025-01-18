@@ -23,8 +23,8 @@ class MessageView implements \Aazsamir\Libphpsky\ATProtoObject
     public ?array $facets = [];
 
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View|null */
-    public mixed $embed = null;
-    public ?MessageViewSender $sender = null;
+    public mixed $embed;
+    public ?MessageViewSender $sender;
     public \DateTimeInterface $sentAt;
 
     public static function id(): string

@@ -15,7 +15,7 @@ class ModEventEscalate implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'modEventEscalate';
     public const ID = 'tools.ozone.moderation.defs';
 
-    public ?string $comment = null;
+    public ?string $comment;
 
     public static function id(): string
     {

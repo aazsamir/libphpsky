@@ -17,7 +17,7 @@ class ViewBlocked implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $uri;
     public bool $blocked;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\BlockedAuthor $author = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\BlockedAuthor $author;
 
     public static function id(): string
     {

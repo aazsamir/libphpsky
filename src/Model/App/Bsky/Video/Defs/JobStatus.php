@@ -18,10 +18,10 @@ class JobStatus implements \Aazsamir\Libphpsky\ATProtoObject
     public string $jobId;
     public string $did;
     public string $state;
-    public ?int $progress = null;
-    public ?string $blob = null;
-    public ?string $error = null;
-    public ?string $message = null;
+    public ?int $progress;
+    public ?string $blob;
+    public ?string $error;
+    public ?string $message;
 
     public static function id(): string
     {

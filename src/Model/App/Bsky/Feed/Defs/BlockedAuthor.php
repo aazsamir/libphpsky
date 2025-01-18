@@ -16,7 +16,7 @@ class BlockedAuthor implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'app.bsky.feed.defs';
 
     public string $did;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ViewerState $viewer = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ViewerState $viewer;
 
     public static function id(): string
     {

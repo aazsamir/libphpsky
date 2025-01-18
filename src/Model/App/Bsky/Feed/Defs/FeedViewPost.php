@@ -15,12 +15,12 @@ class FeedViewPost implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'feedViewPost';
     public const ID = 'app.bsky.feed.defs';
 
-    public ?PostView $post = null;
-    public ?ReplyRef $reply = null;
+    public ?PostView $post;
+    public ?ReplyRef $reply;
 
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\ReasonRepost|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\ReasonPin|null */
-    public mixed $reason = null;
-    public ?string $feedContext = null;
+    public mixed $reason;
+    public ?string $feedContext;
 
     public static function id(): string
     {

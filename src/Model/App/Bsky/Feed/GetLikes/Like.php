@@ -17,7 +17,7 @@ class Like implements \Aazsamir\Libphpsky\ATProtoObject
 
     public \DateTimeInterface $indexedAt;
     public \DateTimeInterface $createdAt;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $actor = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $actor;
 
     public static function id(): string
     {

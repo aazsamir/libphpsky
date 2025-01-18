@@ -21,8 +21,8 @@ class BlobView implements \Aazsamir\Libphpsky\ATProtoObject
     public \DateTimeInterface $createdAt;
 
     /** @var \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ImageDetails|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\VideoDetails|null */
-    public mixed $details = null;
-    public ?Moderation $moderation = null;
+    public mixed $details;
+    public ?Moderation $moderation;
 
     public static function id(): string
     {

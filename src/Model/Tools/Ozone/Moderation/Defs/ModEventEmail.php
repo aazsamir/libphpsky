@@ -16,8 +16,8 @@ class ModEventEmail implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'tools.ozone.moderation.defs';
 
     public string $subjectLine;
-    public ?string $content = null;
-    public ?string $comment = null;
+    public ?string $content;
+    public ?string $comment;
 
     public static function id(): string
     {

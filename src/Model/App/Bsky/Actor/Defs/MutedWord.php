@@ -15,13 +15,13 @@ class MutedWord implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'mutedWord';
     public const ID = 'app.bsky.actor.defs';
 
-    public ?string $id = null;
+    public ?string $id;
     public string $value;
 
     /** @var array<string> */
     public array $targets = [];
-    public ?string $actorTarget = null;
-    public ?\DateTimeInterface $expiresAt = null;
+    public ?string $actorTarget;
+    public ?\DateTimeInterface $expiresAt;
 
     public static function id(): string
     {

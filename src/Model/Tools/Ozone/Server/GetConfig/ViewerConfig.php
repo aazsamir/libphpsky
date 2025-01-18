@@ -15,7 +15,7 @@ class ViewerConfig implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'viewerConfig';
     public const ID = 'tools.ozone.server.getConfig';
 
-    public ?string $role = null;
+    public ?string $role;
 
     public static function id(): string
     {

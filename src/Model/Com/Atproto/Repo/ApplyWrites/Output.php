@@ -15,7 +15,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'com.atproto.repo.applyWrites';
 
-    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\Defs\CommitMeta $commit = null;
+    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\Defs\CommitMeta $commit;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\CreateResult|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\UpdateResult|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\DeleteResult>|null */
     public ?array $results = [];

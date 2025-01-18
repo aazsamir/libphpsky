@@ -15,7 +15,7 @@ class View implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'view';
     public const ID = 'app.bsky.embed.external';
 
-    public ?ViewExternal $external = null;
+    public ?ViewExternal $external;
 
     public static function id(): string
     {

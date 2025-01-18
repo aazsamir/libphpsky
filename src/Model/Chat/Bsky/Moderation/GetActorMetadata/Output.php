@@ -15,9 +15,9 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'chat.bsky.moderation.getActorMetadata';
 
-    public ?Metadata $day = null;
-    public ?Metadata $month = null;
-    public ?Metadata $all = null;
+    public ?Metadata $day;
+    public ?Metadata $month;
+    public ?Metadata $all;
 
     public static function id(): string
     {

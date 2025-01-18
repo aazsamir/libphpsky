@@ -15,7 +15,7 @@ class RelatedAccount implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'relatedAccount';
     public const ID = 'tools.ozone.signature.findRelatedAccounts';
 
-    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\AccountView $account = null;
+    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\AccountView $account;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\Defs\SigDetail>|null */
     public ?array $similarities = [];

@@ -17,7 +17,7 @@ class AppPassword implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $name;
     public \DateTimeInterface $createdAt;
-    public ?bool $privileged = null;
+    public ?bool $privileged;
 
     public static function id(): string
     {

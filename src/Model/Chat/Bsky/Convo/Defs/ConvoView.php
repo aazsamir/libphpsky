@@ -22,9 +22,9 @@ class ConvoView implements \Aazsamir\Libphpsky\ATProtoObject
     public array $members = [];
 
     /** @var \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView|null */
-    public mixed $lastMessage = null;
+    public mixed $lastMessage;
     public bool $muted;
-    public ?bool $opened = null;
+    public ?bool $opened;
     public int $unreadCount;
 
     public static function id(): string

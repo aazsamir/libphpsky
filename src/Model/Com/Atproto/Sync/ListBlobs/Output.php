@@ -15,7 +15,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'com.atproto.sync.listBlobs';
 
-    public ?string $cursor = null;
+    public ?string $cursor;
 
     /** @var array<string> */
     public array $cids = [];

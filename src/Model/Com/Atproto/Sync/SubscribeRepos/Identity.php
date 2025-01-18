@@ -18,7 +18,7 @@ class Identity implements \Aazsamir\Libphpsky\ATProtoObject
     public int $seq;
     public string $did;
     public \DateTimeInterface $time;
-    public ?string $handle = null;
+    public ?string $handle;
 
     public static function id(): string
     {

@@ -15,8 +15,8 @@ class ReplyRef implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'replyRef';
     public const ID = 'app.bsky.feed.post';
 
-    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $root = null;
-    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $parent = null;
+    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $root;
+    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $parent;
 
     public static function id(): string
     {

@@ -15,7 +15,7 @@ class Facet implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'main';
     public const ID = 'app.bsky.richtext.facet';
 
-    public ?ByteSlice $index = null;
+    public ?ByteSlice $index;
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Mention|\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Link|\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Tag> */
     public array $features = [];

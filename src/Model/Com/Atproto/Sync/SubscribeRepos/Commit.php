@@ -22,7 +22,7 @@ class Commit implements \Aazsamir\Libphpsky\ATProtoObject
     public string $commit;
     public ?string $prev = null;
     public string $rev;
-    public string $since;
+    public ?string $since = null;
     public string $blocks;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Sync\SubscribeRepos\RepoOp> */
@@ -48,12 +48,12 @@ class Commit implements \Aazsamir\Libphpsky\ATProtoObject
         string $repo,
         string $commit,
         string $rev,
-        string $since,
         string $blocks,
         array $ops,
         array $blobs,
         \DateTimeInterface $time,
         ?string $prev = null,
+        ?string $since = null,
     ): self {
         $instance = new self();
         $instance->seq = $seq;
@@ -62,12 +62,12 @@ class Commit implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->repo = $repo;
         $instance->commit = $commit;
         $instance->rev = $rev;
-        $instance->since = $since;
         $instance->blocks = $blocks;
         $instance->ops = $ops;
         $instance->blobs = $blobs;
         $instance->time = $time;
         $instance->prev = $prev;
+        $instance->since = $since;
 
         return $instance;
     }

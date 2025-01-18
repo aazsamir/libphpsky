@@ -15,9 +15,9 @@ class AccountEvent implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'accountEvent';
     public const ID = 'tools.ozone.moderation.defs';
 
-    public ?string $comment = null;
+    public ?string $comment;
     public bool $active;
-    public ?string $status = null;
+    public ?string $status;
     public \DateTimeInterface $timestamp;
 
     public static function id(): string

@@ -18,8 +18,8 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public string $name;
     public string $contentMarkdown;
     public string $subject;
-    public ?string $lang = null;
-    public ?string $createdBy = null;
+    public ?string $lang;
+    public ?string $createdBy;
 
     public static function id(): string
     {

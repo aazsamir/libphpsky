@@ -17,21 +17,21 @@ class PostView implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $uri;
     public string $cid;
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $author = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $author;
     public mixed $record;
 
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\RecordWithMedia\View|null */
-    public mixed $embed = null;
-    public ?int $replyCount = null;
-    public ?int $repostCount = null;
-    public ?int $likeCount = null;
-    public ?int $quoteCount = null;
+    public mixed $embed;
+    public ?int $replyCount;
+    public ?int $repostCount;
+    public ?int $likeCount;
+    public ?int $quoteCount;
     public \DateTimeInterface $indexedAt;
-    public ?ViewerState $viewer = null;
+    public ?ViewerState $viewer;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
-    public ?ThreadgateView $threadgate = null;
+    public ?ThreadgateView $threadgate;
 
     public static function id(): string
     {

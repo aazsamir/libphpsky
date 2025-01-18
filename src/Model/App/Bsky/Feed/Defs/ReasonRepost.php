@@ -15,7 +15,7 @@ class ReasonRepost implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'reasonRepost';
     public const ID = 'app.bsky.feed.defs';
 
-    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $by = null;
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $by;
     public \DateTimeInterface $indexedAt;
 
     public static function id(): string

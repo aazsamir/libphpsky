@@ -15,15 +15,15 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.server.createAccount';
 
-    public ?string $email = null;
+    public ?string $email;
     public string $handle;
-    public ?string $did = null;
-    public ?string $inviteCode = null;
-    public ?string $verificationCode = null;
-    public ?string $verificationPhone = null;
-    public ?string $password = null;
-    public ?string $recoveryKey = null;
-    public mixed $plcOp = null;
+    public ?string $did;
+    public ?string $inviteCode;
+    public ?string $verificationCode;
+    public ?string $verificationPhone;
+    public ?string $password;
+    public ?string $recoveryKey;
+    public mixed $plcOp;
 
     public static function id(): string
     {

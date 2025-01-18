@@ -17,7 +17,7 @@ class UpdateResult implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $uri;
     public string $cid;
-    public ?string $validationStatus = null;
+    public ?string $validationStatus;
 
     public static function id(): string
     {
