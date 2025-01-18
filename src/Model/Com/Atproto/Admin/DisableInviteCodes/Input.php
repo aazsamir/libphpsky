@@ -30,7 +30,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
      * @param array<string> $codes
      * @param array<string> $accounts
      */
-    public static function new(?array $codes = null, ?array $accounts = null): self
+    public static function new(?array $codes = [], ?array $accounts = []): self
     {
         $instance = new self();
         $instance->codes = $codes;

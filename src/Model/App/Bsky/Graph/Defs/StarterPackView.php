@@ -50,11 +50,11 @@ class StarterPackView implements \Aazsamir\Libphpsky\ATProtoObject
         \DateTimeInterface $indexedAt,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $creator = null,
         ?ListViewBasic $list = null,
-        ?array $listItemsSample = null,
-        ?array $feeds = null,
+        ?array $listItemsSample = [],
+        ?array $feeds = [],
         ?int $joinedWeekCount = null,
         ?int $joinedAllTimeCount = null,
-        ?array $labels = null,
+        ?array $labels = [],
     ): self {
         $instance = new self();
         $instance->uri = $uri;

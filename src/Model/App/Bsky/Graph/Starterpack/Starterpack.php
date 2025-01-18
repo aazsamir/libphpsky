@@ -40,8 +40,8 @@ class Starterpack implements \Aazsamir\Libphpsky\ATProtoObject
         string $list,
         \DateTimeInterface $createdAt,
         ?string $description = null,
-        ?array $descriptionFacets = null,
-        ?array $feeds = null,
+        ?array $descriptionFacets = [],
+        ?array $feeds = [],
     ): self {
         $instance = new self();
         $instance->name = $name;

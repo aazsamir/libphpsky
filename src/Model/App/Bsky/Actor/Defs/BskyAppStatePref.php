@@ -34,8 +34,8 @@ class BskyAppStatePref implements \Aazsamir\Libphpsky\ATProtoObject
      */
     public static function new(
         ?BskyAppProgressGuide $activeProgressGuide = null,
-        ?array $queuedNudges = null,
-        ?array $nuxs = null,
+        ?array $queuedNudges = [],
+        ?array $nuxs = [],
     ): self {
         $instance = new self();
         $instance->activeProgressGuide = $activeProgressGuide;

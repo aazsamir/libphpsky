@@ -36,8 +36,8 @@ class Threadgate implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         string $post,
         \DateTimeInterface $createdAt,
-        ?array $allow = null,
-        ?array $hiddenReplies = null,
+        ?array $allow = [],
+        ?array $hiddenReplies = [],
     ): self {
         $instance = new self();
         $instance->post = $post;

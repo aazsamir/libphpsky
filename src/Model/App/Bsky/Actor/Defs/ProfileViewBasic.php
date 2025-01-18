@@ -41,7 +41,7 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
         ?string $avatar = null,
         ?ProfileAssociated $associated = null,
         ?ViewerState $viewer = null,
-        ?array $labels = null,
+        ?array $labels = [],
         ?\DateTimeInterface $createdAt = null,
     ): self {
         $instance = new self();

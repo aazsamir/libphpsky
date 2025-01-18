@@ -46,12 +46,12 @@ class ViewRecord implements \Aazsamir\Libphpsky\ATProtoObject
         mixed $value,
         \DateTimeInterface $indexedAt,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $author = null,
-        ?array $labels = null,
+        ?array $labels = [],
         ?int $replyCount = null,
         ?int $repostCount = null,
         ?int $likeCount = null,
         ?int $quoteCount = null,
-        ?array $embeds = null,
+        ?array $embeds = [],
     ): self {
         $instance = new self();
         $instance->uri = $uri;

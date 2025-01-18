@@ -34,7 +34,7 @@ class ThreadViewPost implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         ?PostView $post = null,
         ThreadViewPost|NotFoundPost|BlockedPost|null $parent = null,
-        ?array $replies = null,
+        ?array $replies = [],
     ): self {
         $instance = new self();
         $instance->post = $post;

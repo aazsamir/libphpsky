@@ -51,13 +51,13 @@ class Post implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         string $text,
         \DateTimeInterface $createdAt,
-        ?array $entities = null,
-        ?array $facets = null,
+        ?array $entities = [],
+        ?array $facets = [],
         ?ReplyRef $reply = null,
         \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\Images|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Video|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\External|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\RecordWithMedia\RecordWithMedia|null $embed = null,
-        ?array $langs = null,
+        ?array $langs = [],
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels $labels = null,
-        ?array $tags = null,
+        ?array $tags = [],
     ): self {
         $instance = new self();
         $instance->text = $text;

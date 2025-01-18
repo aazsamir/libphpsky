@@ -42,7 +42,7 @@ class LabelerViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
         ?LabelerPolicies $policies = null,
         ?int $likeCount = null,
         ?LabelerViewerState $viewer = null,
-        ?array $labels = null,
+        ?array $labels = [],
     ): self {
         $instance = new self();
         $instance->uri = $uri;

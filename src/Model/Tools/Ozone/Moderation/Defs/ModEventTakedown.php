@@ -34,7 +34,7 @@ class ModEventTakedown implements \Aazsamir\Libphpsky\ATProtoObject
         ?string $comment = null,
         ?int $durationInHours = null,
         ?bool $acknowledgeAccountSubjects = null,
-        ?array $policies = null,
+        ?array $policies = [],
     ): self {
         $instance = new self();
         $instance->comment = $comment;

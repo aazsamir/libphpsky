@@ -33,7 +33,7 @@ class MessageInput implements \Aazsamir\Libphpsky\ATProtoObject
      */
     public static function new(
         string $text,
-        ?array $facets = null,
+        ?array $facets = [],
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record $embed = null,
     ): self {
         $instance = new self();

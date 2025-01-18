@@ -44,7 +44,7 @@ class Notification implements \Aazsamir\Libphpsky\ATProtoObject
         \DateTimeInterface $indexedAt,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $author = null,
         ?string $reasonSubject = null,
-        ?array $labels = null,
+        ?array $labels = [],
     ): self {
         $instance = new self();
         $instance->uri = $uri;

@@ -15,6 +15,13 @@ trait FromArray
         $instance = new self();
         $reflection = new \ReflectionClass($instance);
 
+        $nullableFields = $reflection->getProperties();
+        $nullableFields = array_filter($nullableFields, static fn (\ReflectionProperty $property) => $property->getType()?->allowsNull());
+
+        foreach ($nullableFields as $property) {
+            $instance->{$property->getName()} = null;
+        }
+
         foreach ($data as $key => $value) {
             if (str_starts_with($key, '$')) {
                 continue;
@@ -144,7 +151,7 @@ trait FromArray
                         if (class_exists($type)) {
                             $instance->{$key} = array_map(static fn ($item) => $type::fromArray($item), $value);
 
-                            break;
+                            continue;
                         }
                     }
                 }

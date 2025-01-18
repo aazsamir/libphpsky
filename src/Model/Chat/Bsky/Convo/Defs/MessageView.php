@@ -40,7 +40,7 @@ class MessageView implements \Aazsamir\Libphpsky\ATProtoObject
         string $rev,
         string $text,
         \DateTimeInterface $sentAt,
-        ?array $facets = null,
+        ?array $facets = [],
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View $embed = null,
         ?MessageViewSender $sender = null,
     ): self {

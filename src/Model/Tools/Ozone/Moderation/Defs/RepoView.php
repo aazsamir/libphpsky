@@ -51,7 +51,7 @@ class RepoView implements \Aazsamir\Libphpsky\ATProtoObject
         ?bool $invitesDisabled = null,
         ?string $inviteNote = null,
         ?\DateTimeInterface $deactivatedAt = null,
-        ?array $threatSignatures = null,
+        ?array $threatSignatures = [],
     ): self {
         $instance = new self();
         $instance->did = $did;

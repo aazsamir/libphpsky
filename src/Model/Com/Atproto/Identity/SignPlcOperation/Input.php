@@ -36,8 +36,8 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
      */
     public static function new(
         ?string $token = null,
-        ?array $rotationKeys = null,
-        ?array $alsoKnownAs = null,
+        ?array $rotationKeys = [],
+        ?array $alsoKnownAs = [],
         mixed $verificationMethods = null,
         mixed $services = null,
     ): self {

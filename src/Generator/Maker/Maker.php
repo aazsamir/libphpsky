@@ -352,7 +352,11 @@ class Maker
             }
 
             if ($type['nullable']) {
-                $parameter->setDefaultValue(null);
+                if ($type['type'] === 'array') {
+                    $parameter->setDefaultValue([]);
+                } else {
+                    $parameter->setDefaultValue(null);
+                }
             }
 
             $constructor->addBody('$instance->' . $type['name'] . ' = $' . $type['name'] . ';');

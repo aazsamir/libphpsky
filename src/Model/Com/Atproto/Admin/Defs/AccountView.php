@@ -49,14 +49,14 @@ class AccountView implements \Aazsamir\Libphpsky\ATProtoObject
         string $handle,
         \DateTimeInterface $indexedAt,
         ?string $email = null,
-        ?array $relatedRecords = null,
+        ?array $relatedRecords = [],
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode $invitedBy = null,
-        ?array $invites = null,
+        ?array $invites = [],
         ?bool $invitesDisabled = null,
         ?\DateTimeInterface $emailConfirmedAt = null,
         ?string $inviteNote = null,
         ?\DateTimeInterface $deactivatedAt = null,
-        ?array $threatSignatures = null,
+        ?array $threatSignatures = [],
     ): self {
         $instance = new self();
         $instance->did = $did;

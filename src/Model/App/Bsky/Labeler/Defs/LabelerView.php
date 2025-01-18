@@ -40,7 +40,7 @@ class LabelerView implements \Aazsamir\Libphpsky\ATProtoObject
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $creator = null,
         ?int $likeCount = null,
         ?LabelerViewerState $viewer = null,
-        ?array $labels = null,
+        ?array $labels = [],
     ): self {
         $instance = new self();
         $instance->uri = $uri;

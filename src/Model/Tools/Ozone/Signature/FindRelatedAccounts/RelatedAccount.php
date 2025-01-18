@@ -30,7 +30,7 @@ class RelatedAccount implements \Aazsamir\Libphpsky\ATProtoObject
      */
     public static function new(
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\AccountView $account = null,
-        ?array $similarities = null,
+        ?array $similarities = [],
     ): self {
         $instance = new self();
         $instance->account = $account;

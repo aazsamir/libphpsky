@@ -32,7 +32,7 @@ class Video implements \Aazsamir\Libphpsky\ATProtoObject
      */
     public static function new(
         string $video,
-        ?array $captions = null,
+        ?array $captions = [],
         ?string $alt = null,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Defs\AspectRatio $aspectRatio = null,
     ): self {

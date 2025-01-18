@@ -46,7 +46,7 @@ class ProfileView implements \Aazsamir\Libphpsky\ATProtoObject
         ?\DateTimeInterface $indexedAt = null,
         ?\DateTimeInterface $createdAt = null,
         ?ViewerState $viewer = null,
-        ?array $labels = null,
+        ?array $labels = [],
     ): self {
         $instance = new self();
         $instance->did = $did;

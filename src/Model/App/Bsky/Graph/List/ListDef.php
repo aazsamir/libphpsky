@@ -40,7 +40,7 @@ class ListDef implements \Aazsamir\Libphpsky\ATProtoObject
         \DateTimeInterface $createdAt,
         ?string $purpose = null,
         ?string $description = null,
-        ?array $descriptionFacets = null,
+        ?array $descriptionFacets = [],
         ?string $avatar = null,
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels $labels = null,
     ): self {

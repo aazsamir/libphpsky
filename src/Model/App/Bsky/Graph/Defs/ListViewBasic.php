@@ -42,7 +42,7 @@ class ListViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
         ?string $purpose = null,
         ?string $avatar = null,
         ?int $listItemCount = null,
-        ?array $labels = null,
+        ?array $labels = [],
         ?ListViewerState $viewer = null,
         ?\DateTimeInterface $indexedAt = null,
     ): self {

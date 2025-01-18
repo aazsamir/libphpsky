@@ -30,7 +30,7 @@ class LabelerPolicies implements \Aazsamir\Libphpsky\ATProtoObject
      * @param array<string> $labelValues
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\LabelValueDefinition> $labelValueDefinitions
      */
-    public static function new(array $labelValues, ?array $labelValueDefinitions = null): self
+    public static function new(array $labelValues, ?array $labelValueDefinitions = []): self
     {
         $instance = new self();
         $instance->labelValues = $labelValues;

@@ -57,7 +57,7 @@ class ProfileViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
         ?\DateTimeInterface $indexedAt = null,
         ?\DateTimeInterface $createdAt = null,
         ?ViewerState $viewer = null,
-        ?array $labels = null,
+        ?array $labels = [],
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $pinnedPost = null,
     ): self {
         $instance = new self();

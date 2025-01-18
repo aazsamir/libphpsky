@@ -41,7 +41,7 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
         ?string $avatar = null,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileAssociated $associated = null,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ViewerState $viewer = null,
-        ?array $labels = null,
+        ?array $labels = [],
         ?bool $chatDisabled = null,
     ): self {
         $instance = new self();

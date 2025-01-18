@@ -49,10 +49,10 @@ class ListView implements \Aazsamir\Libphpsky\ATProtoObject
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $creator = null,
         ?string $purpose = null,
         ?string $description = null,
-        ?array $descriptionFacets = null,
+        ?array $descriptionFacets = [],
         ?string $avatar = null,
         ?int $listItemCount = null,
-        ?array $labels = null,
+        ?array $labels = [],
         ?ListViewerState $viewer = null,
     ): self {
         $instance = new self();

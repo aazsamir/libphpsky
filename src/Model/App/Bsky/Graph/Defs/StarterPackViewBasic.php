@@ -44,7 +44,7 @@ class StarterPackViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
         ?int $listItemCount = null,
         ?int $joinedWeekCount = null,
         ?int $joinedAllTimeCount = null,
-        ?array $labels = null,
+        ?array $labels = [],
     ): self {
         $instance = new self();
         $instance->uri = $uri;

@@ -34,7 +34,7 @@ class ThreadgateView implements \Aazsamir\Libphpsky\ATProtoObject
         ?string $uri = null,
         ?string $cid = null,
         mixed $record = null,
-        ?array $lists = null,
+        ?array $lists = [],
     ): self {
         $instance = new self();
         $instance->uri = $uri;

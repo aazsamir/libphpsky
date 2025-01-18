@@ -53,7 +53,7 @@ class PostView implements \Aazsamir\Libphpsky\ATProtoObject
         ?int $likeCount = null,
         ?int $quoteCount = null,
         ?ViewerState $viewer = null,
-        ?array $labels = null,
+        ?array $labels = [],
         ?ThreadgateView $threadgate = null,
     ): self {
         $instance = new self();

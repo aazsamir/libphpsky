@@ -36,8 +36,8 @@ class Postgate implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         \DateTimeInterface $createdAt,
         string $post,
-        ?array $detachedEmbeddingUris = null,
-        ?array $embeddingRules = null,
+        ?array $detachedEmbeddingUris = [],
+        ?array $embeddingRules = [],
     ): self {
         $instance = new self();
         $instance->createdAt = $createdAt;

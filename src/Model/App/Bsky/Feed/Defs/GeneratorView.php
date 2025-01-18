@@ -51,11 +51,11 @@ class GeneratorView implements \Aazsamir\Libphpsky\ATProtoObject
         \DateTimeInterface $indexedAt,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $creator = null,
         ?string $description = null,
-        ?array $descriptionFacets = null,
+        ?array $descriptionFacets = [],
         ?string $avatar = null,
         ?int $likeCount = null,
         ?bool $acceptsInteractions = null,
-        ?array $labels = null,
+        ?array $labels = [],
         ?GeneratorViewerState $viewer = null,
         ?string $contentMode = null,
     ): self {

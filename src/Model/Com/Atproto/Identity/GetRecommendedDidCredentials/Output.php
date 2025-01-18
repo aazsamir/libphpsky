@@ -33,8 +33,8 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
      * @param array<string> $alsoKnownAs
      */
     public static function new(
-        ?array $rotationKeys = null,
-        ?array $alsoKnownAs = null,
+        ?array $rotationKeys = [],
+        ?array $alsoKnownAs = [],
         mixed $verificationMethods = null,
         mixed $services = null,
     ): self {

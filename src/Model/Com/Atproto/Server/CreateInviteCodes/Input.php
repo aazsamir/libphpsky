@@ -29,7 +29,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     /**
      * @param array<string> $forAccounts
      */
-    public static function new(int $codeCount, int $useCount, ?array $forAccounts = null): self
+    public static function new(int $codeCount, int $useCount, ?array $forAccounts = []): self
     {
         $instance = new self();
         $instance->codeCount = $codeCount;

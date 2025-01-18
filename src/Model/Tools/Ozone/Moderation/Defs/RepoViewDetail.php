@@ -56,14 +56,14 @@ class RepoViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
         \DateTimeInterface $indexedAt,
         ?string $email = null,
         ?ModerationDetail $moderation = null,
-        ?array $labels = null,
+        ?array $labels = [],
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode $invitedBy = null,
-        ?array $invites = null,
+        ?array $invites = [],
         ?bool $invitesDisabled = null,
         ?string $inviteNote = null,
         ?\DateTimeInterface $emailConfirmedAt = null,
         ?\DateTimeInterface $deactivatedAt = null,
-        ?array $threatSignatures = null,
+        ?array $threatSignatures = [],
     ): self {
         $instance = new self();
         $instance->did = $did;

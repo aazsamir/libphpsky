@@ -30,7 +30,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
      */
     public static function new(
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\Defs\CommitMeta $commit = null,
-        ?array $results = null,
+        ?array $results = [],
     ): self {
         $instance = new self();
         $instance->commit = $commit;

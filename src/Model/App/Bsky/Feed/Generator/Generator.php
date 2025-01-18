@@ -42,7 +42,7 @@ class Generator implements \Aazsamir\Libphpsky\ATProtoObject
         string $displayName,
         \DateTimeInterface $createdAt,
         ?string $description = null,
-        ?array $descriptionFacets = null,
+        ?array $descriptionFacets = [],
         ?string $avatar = null,
         ?bool $acceptsInteractions = null,
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels $labels = null,

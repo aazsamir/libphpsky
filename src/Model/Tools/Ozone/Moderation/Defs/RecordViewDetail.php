@@ -43,7 +43,7 @@ class RecordViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
         mixed $value,
         array $blobs,
         \DateTimeInterface $indexedAt,
-        ?array $labels = null,
+        ?array $labels = [],
         ?ModerationDetail $moderation = null,
         ?RepoView $repo = null,
     ): self {

@@ -58,7 +58,7 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
         \DateTimeInterface $updatedAt,
         \DateTimeInterface $createdAt,
         AccountHosting|RecordHosting|null $hosting = null,
-        ?array $subjectBlobCids = null,
+        ?array $subjectBlobCids = [],
         ?string $subjectRepoHandle = null,
         ?string $reviewState = null,
         ?string $comment = null,
@@ -71,7 +71,7 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
         ?bool $takendown = null,
         ?bool $appealed = null,
         ?\DateTimeInterface $suspendUntil = null,
-        ?array $tags = null,
+        ?array $tags = [],
     ): self {
         $instance = new self();
         $instance->id = $id;
