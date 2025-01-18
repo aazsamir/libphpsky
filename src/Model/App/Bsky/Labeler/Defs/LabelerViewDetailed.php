@@ -31,6 +31,21 @@ class LabelerViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['uri', 'cid', 'creator', 'policies', 'indexedAt'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> $labels
      */
@@ -48,11 +63,21 @@ class LabelerViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->uri = $uri;
         $instance->cid = $cid;
         $instance->indexedAt = $indexedAt;
-        $instance->creator = $creator;
-        $instance->policies = $policies;
-        $instance->likeCount = $likeCount;
-        $instance->viewer = $viewer;
-        $instance->labels = $labels;
+        if ($creator !== null) {
+            $instance->creator = $creator;
+        }
+        if ($policies !== null) {
+            $instance->policies = $policies;
+        }
+        if ($likeCount !== null) {
+            $instance->likeCount = $likeCount;
+        }
+        if ($viewer !== null) {
+            $instance->viewer = $viewer;
+        }
+        if ($labels !== null) {
+            $instance->labels = $labels;
+        }
 
         return $instance;
     }

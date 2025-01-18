@@ -29,6 +29,21 @@ class BlobView implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['cid', 'mimeType', 'size', 'createdAt'];
+    }
+
     public static function new(
         string $cid,
         string $mimeType,
@@ -42,8 +57,12 @@ class BlobView implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->mimeType = $mimeType;
         $instance->size = $size;
         $instance->createdAt = $createdAt;
-        $instance->details = $details;
-        $instance->moderation = $moderation;
+        if ($details !== null) {
+            $instance->details = $details;
+        }
+        if ($moderation !== null) {
+            $instance->moderation = $moderation;
+        }
 
         return $instance;
     }

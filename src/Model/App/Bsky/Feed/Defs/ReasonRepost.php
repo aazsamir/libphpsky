@@ -23,13 +23,30 @@ class ReasonRepost implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['by', 'indexedAt'];
+    }
+
     public static function new(
         \DateTimeInterface $indexedAt,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $by = null,
     ): self {
         $instance = new self();
         $instance->indexedAt = $indexedAt;
-        $instance->by = $by;
+        if ($by !== null) {
+            $instance->by = $by;
+        }
 
         return $instance;
     }

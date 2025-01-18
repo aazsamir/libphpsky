@@ -20,6 +20,11 @@ class UpsertSet implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function procedure(
         \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\Defs\Set $input,
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\Defs\SetView {

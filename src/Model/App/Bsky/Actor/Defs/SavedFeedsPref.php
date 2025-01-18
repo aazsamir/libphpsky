@@ -27,6 +27,21 @@ class SavedFeedsPref implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['pinned', 'saved'];
+    }
+
     /**
      * @param array<string> $pinned
      * @param array<string> $saved
@@ -36,7 +51,9 @@ class SavedFeedsPref implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->pinned = $pinned;
         $instance->saved = $saved;
-        $instance->timelineIndex = $timelineIndex;
+        if ($timelineIndex !== null) {
+            $instance->timelineIndex = $timelineIndex;
+        }
 
         return $instance;
     }

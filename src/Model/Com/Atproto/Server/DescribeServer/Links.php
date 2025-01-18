@@ -23,11 +23,30 @@ class Links implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return [];
+    }
+
     public static function new(?string $privacyPolicy = null, ?string $termsOfService = null): self
     {
         $instance = new self();
-        $instance->privacyPolicy = $privacyPolicy;
-        $instance->termsOfService = $termsOfService;
+        if ($privacyPolicy !== null) {
+            $instance->privacyPolicy = $privacyPolicy;
+        }
+        if ($termsOfService !== null) {
+            $instance->termsOfService = $termsOfService;
+        }
 
         return $instance;
     }

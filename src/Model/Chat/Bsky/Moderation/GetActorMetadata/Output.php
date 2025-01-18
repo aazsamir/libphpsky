@@ -24,12 +24,33 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['day', 'month', 'all'];
+    }
+
     public static function new(?Metadata $day = null, ?Metadata $month = null, ?Metadata $all = null): self
     {
         $instance = new self();
-        $instance->day = $day;
-        $instance->month = $month;
-        $instance->all = $all;
+        if ($day !== null) {
+            $instance->day = $day;
+        }
+        if ($month !== null) {
+            $instance->month = $month;
+        }
+        if ($all !== null) {
+            $instance->all = $all;
+        }
 
         return $instance;
     }

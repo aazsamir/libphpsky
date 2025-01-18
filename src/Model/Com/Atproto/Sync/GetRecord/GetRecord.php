@@ -20,6 +20,11 @@ class GetRecord implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function query(string $did, string $collection, string $rkey, ?string $commit = null): mixed
     {
         return $this->request($this->argsWithKeys(func_get_args()));

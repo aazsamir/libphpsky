@@ -20,6 +20,11 @@ class ListAppPasswords implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function query(): Output
     {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ListAppPasswords\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

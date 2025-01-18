@@ -31,6 +31,21 @@ class Profile implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return [];
+    }
+
     public static function new(
         ?string $displayName = null,
         ?string $description = null,
@@ -42,14 +57,30 @@ class Profile implements \Aazsamir\Libphpsky\ATProtoObject
         ?\DateTimeInterface $createdAt = null,
     ): self {
         $instance = new self();
-        $instance->displayName = $displayName;
-        $instance->description = $description;
-        $instance->avatar = $avatar;
-        $instance->banner = $banner;
-        $instance->labels = $labels;
-        $instance->joinedViaStarterPack = $joinedViaStarterPack;
-        $instance->pinnedPost = $pinnedPost;
-        $instance->createdAt = $createdAt;
+        if ($displayName !== null) {
+            $instance->displayName = $displayName;
+        }
+        if ($description !== null) {
+            $instance->description = $description;
+        }
+        if ($avatar !== null) {
+            $instance->avatar = $avatar;
+        }
+        if ($banner !== null) {
+            $instance->banner = $banner;
+        }
+        if ($labels !== null) {
+            $instance->labels = $labels;
+        }
+        if ($joinedViaStarterPack !== null) {
+            $instance->joinedViaStarterPack = $joinedViaStarterPack;
+        }
+        if ($pinnedPost !== null) {
+            $instance->pinnedPost = $pinnedPost;
+        }
+        if ($createdAt !== null) {
+            $instance->createdAt = $createdAt;
+        }
 
         return $instance;
     }

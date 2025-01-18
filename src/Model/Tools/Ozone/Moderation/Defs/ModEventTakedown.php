@@ -27,6 +27,21 @@ class ModEventTakedown implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return [];
+    }
+
     /**
      * @param array<string> $policies
      */
@@ -37,10 +52,18 @@ class ModEventTakedown implements \Aazsamir\Libphpsky\ATProtoObject
         ?array $policies = [],
     ): self {
         $instance = new self();
-        $instance->comment = $comment;
-        $instance->durationInHours = $durationInHours;
-        $instance->acknowledgeAccountSubjects = $acknowledgeAccountSubjects;
-        $instance->policies = $policies;
+        if ($comment !== null) {
+            $instance->comment = $comment;
+        }
+        if ($durationInHours !== null) {
+            $instance->durationInHours = $durationInHours;
+        }
+        if ($acknowledgeAccountSubjects !== null) {
+            $instance->acknowledgeAccountSubjects = $acknowledgeAccountSubjects;
+        }
+        if ($policies !== null) {
+            $instance->policies = $policies;
+        }
 
         return $instance;
     }

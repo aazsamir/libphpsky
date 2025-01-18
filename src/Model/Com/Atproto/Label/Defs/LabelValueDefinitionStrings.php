@@ -24,6 +24,21 @@ class LabelValueDefinitionStrings implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['lang', 'name', 'description'];
+    }
+
     public static function new(string $lang, string $name, string $description): self
     {
         $instance = new self();

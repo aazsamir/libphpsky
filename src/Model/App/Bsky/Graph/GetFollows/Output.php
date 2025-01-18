@@ -26,6 +26,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['subject', 'follows'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView> $follows
      */
@@ -36,8 +51,12 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     ): self {
         $instance = new self();
         $instance->follows = $follows;
-        $instance->subject = $subject;
-        $instance->cursor = $cursor;
+        if ($subject !== null) {
+            $instance->subject = $subject;
+        }
+        if ($cursor !== null) {
+            $instance->cursor = $cursor;
+        }
 
         return $instance;
     }

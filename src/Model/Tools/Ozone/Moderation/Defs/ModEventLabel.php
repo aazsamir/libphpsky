@@ -28,6 +28,21 @@ class ModEventLabel implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['createLabelVals', 'negateLabelVals'];
+    }
+
     /**
      * @param array<string> $createLabelVals
      * @param array<string> $negateLabelVals
@@ -37,7 +52,9 @@ class ModEventLabel implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->createLabelVals = $createLabelVals;
         $instance->negateLabelVals = $negateLabelVals;
-        $instance->comment = $comment;
+        if ($comment !== null) {
+            $instance->comment = $comment;
+        }
 
         return $instance;
     }

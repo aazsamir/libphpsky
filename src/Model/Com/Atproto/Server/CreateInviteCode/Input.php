@@ -23,11 +23,28 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['useCount'];
+    }
+
     public static function new(int $useCount, ?string $forAccount = null): self
     {
         $instance = new self();
         $instance->useCount = $useCount;
-        $instance->forAccount = $forAccount;
+        if ($forAccount !== null) {
+            $instance->forAccount = $forAccount;
+        }
 
         return $instance;
     }

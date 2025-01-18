@@ -23,6 +23,21 @@ class View implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['record'];
+    }
+
     public static function new(
         ViewRecord|ViewNotFound|ViewBlocked|ViewDetached|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\GeneratorView|\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\ListView|\Aazsamir\Libphpsky\Model\App\Bsky\Labeler\Defs\LabelerView|\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\StarterPackViewBasic $record,
     ): self {

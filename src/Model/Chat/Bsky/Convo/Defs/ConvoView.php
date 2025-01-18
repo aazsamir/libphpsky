@@ -32,6 +32,21 @@ class ConvoView implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['id', 'rev', 'members', 'muted', 'unreadCount'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\Defs\ProfileViewBasic> $members
      */
@@ -50,8 +65,12 @@ class ConvoView implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->members = $members;
         $instance->muted = $muted;
         $instance->unreadCount = $unreadCount;
-        $instance->lastMessage = $lastMessage;
-        $instance->opened = $opened;
+        if ($lastMessage !== null) {
+            $instance->lastMessage = $lastMessage;
+        }
+        if ($opened !== null) {
+            $instance->opened = $opened;
+        }
 
         return $instance;
     }

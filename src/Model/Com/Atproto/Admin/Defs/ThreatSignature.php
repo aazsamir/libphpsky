@@ -23,6 +23,21 @@ class ThreatSignature implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['property', 'value'];
+    }
+
     public static function new(string $property, string $value): self
     {
         $instance = new self();

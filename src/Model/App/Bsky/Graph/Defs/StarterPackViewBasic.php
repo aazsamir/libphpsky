@@ -32,6 +32,21 @@ class StarterPackViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['uri', 'cid', 'record', 'creator', 'indexedAt'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> $labels
      */
@@ -51,11 +66,21 @@ class StarterPackViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->cid = $cid;
         $instance->record = $record;
         $instance->indexedAt = $indexedAt;
-        $instance->creator = $creator;
-        $instance->listItemCount = $listItemCount;
-        $instance->joinedWeekCount = $joinedWeekCount;
-        $instance->joinedAllTimeCount = $joinedAllTimeCount;
-        $instance->labels = $labels;
+        if ($creator !== null) {
+            $instance->creator = $creator;
+        }
+        if ($listItemCount !== null) {
+            $instance->listItemCount = $listItemCount;
+        }
+        if ($joinedWeekCount !== null) {
+            $instance->joinedWeekCount = $joinedWeekCount;
+        }
+        if ($joinedAllTimeCount !== null) {
+            $instance->joinedAllTimeCount = $joinedAllTimeCount;
+        }
+        if ($labels !== null) {
+            $instance->labels = $labels;
+        }
 
         return $instance;
     }

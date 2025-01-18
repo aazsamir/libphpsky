@@ -22,10 +22,27 @@ class ServiceConfig implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return [];
+    }
+
     public static function new(?string $url = null): self
     {
         $instance = new self();
-        $instance->url = $url;
+        if ($url !== null) {
+            $instance->url = $url;
+        }
 
         return $instance;
     }

@@ -20,6 +20,11 @@ class GetRecord implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function query(string $repo, string $collection, string $rkey, ?string $cid = null): Output
     {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\GetRecord\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

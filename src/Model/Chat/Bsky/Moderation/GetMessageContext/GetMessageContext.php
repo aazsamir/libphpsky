@@ -19,6 +19,11 @@ class GetMessageContext implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function query(string $messageId, ?string $convoId = null, ?int $before = null, ?int $after = null): Output
     {
         return \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetMessageContext\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

@@ -24,12 +24,31 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['email'];
+    }
+
     public static function new(string $email, ?bool $emailAuthFactor = null, ?string $token = null): self
     {
         $instance = new self();
         $instance->email = $email;
-        $instance->emailAuthFactor = $emailAuthFactor;
-        $instance->token = $token;
+        if ($emailAuthFactor !== null) {
+            $instance->emailAuthFactor = $emailAuthFactor;
+        }
+        if ($token !== null) {
+            $instance->token = $token;
+        }
 
         return $instance;
     }

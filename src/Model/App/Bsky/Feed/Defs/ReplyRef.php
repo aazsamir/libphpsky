@@ -27,6 +27,21 @@ class ReplyRef implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['root', 'parent'];
+    }
+
     public static function new(
         PostView|NotFoundPost|BlockedPost $root,
         PostView|NotFoundPost|BlockedPost $parent,
@@ -35,7 +50,9 @@ class ReplyRef implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->root = $root;
         $instance->parent = $parent;
-        $instance->grandparentAuthor = $grandparentAuthor;
+        if ($grandparentAuthor !== null) {
+            $instance->grandparentAuthor = $grandparentAuthor;
+        }
 
         return $instance;
     }

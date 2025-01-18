@@ -25,6 +25,21 @@ class AccountEvent implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['timestamp', 'active'];
+    }
+
     public static function new(
         bool $active,
         \DateTimeInterface $timestamp,
@@ -34,8 +49,12 @@ class AccountEvent implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->active = $active;
         $instance->timestamp = $timestamp;
-        $instance->comment = $comment;
-        $instance->status = $status;
+        if ($comment !== null) {
+            $instance->comment = $comment;
+        }
+        if ($status !== null) {
+            $instance->status = $status;
+        }
 
         return $instance;
     }

@@ -23,6 +23,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['repos'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RepoViewDetail|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RepoViewNotFound> $repos
      */

@@ -26,6 +26,21 @@ class LabelerPolicies implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['labelValues'];
+    }
+
     /**
      * @param array<string> $labelValues
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\LabelValueDefinition> $labelValueDefinitions
@@ -34,7 +49,9 @@ class LabelerPolicies implements \Aazsamir\Libphpsky\ATProtoObject
     {
         $instance = new self();
         $instance->labelValues = $labelValues;
-        $instance->labelValueDefinitions = $labelValueDefinitions;
+        if ($labelValueDefinitions !== null) {
+            $instance->labelValueDefinitions = $labelValueDefinitions;
+        }
 
         return $instance;
     }

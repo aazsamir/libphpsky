@@ -28,6 +28,21 @@ class JobStatus implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['jobId', 'did', 'state'];
+    }
+
     public static function new(
         string $jobId,
         string $did,
@@ -41,10 +56,18 @@ class JobStatus implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->jobId = $jobId;
         $instance->did = $did;
         $instance->state = $state;
-        $instance->progress = $progress;
-        $instance->blob = $blob;
-        $instance->error = $error;
-        $instance->message = $message;
+        if ($progress !== null) {
+            $instance->progress = $progress;
+        }
+        if ($blob !== null) {
+            $instance->blob = $blob;
+        }
+        if ($error !== null) {
+            $instance->error = $error;
+        }
+        if ($message !== null) {
+            $instance->message = $message;
+        }
 
         return $instance;
     }

@@ -19,6 +19,11 @@ class GetLog implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function query(?string $cursor = null): Output
     {
         return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetLog\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

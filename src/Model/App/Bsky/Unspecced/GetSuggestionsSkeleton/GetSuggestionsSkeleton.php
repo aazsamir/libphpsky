@@ -20,6 +20,11 @@ class GetSuggestionsSkeleton implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function query(
         ?string $viewer = null,
         ?int $limit = null,

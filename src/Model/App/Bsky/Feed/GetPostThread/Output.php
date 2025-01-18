@@ -24,13 +24,30 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['thread'];
+    }
+
     public static function new(
         \Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\ThreadViewPost|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\NotFoundPost|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\BlockedPost $thread,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\ThreadgateView $threadgate = null,
     ): self {
         $instance = new self();
         $instance->thread = $thread;
-        $instance->threadgate = $threadgate;
+        if ($threadgate !== null) {
+            $instance->threadgate = $threadgate;
+        }
 
         return $instance;
     }

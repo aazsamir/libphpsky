@@ -26,6 +26,21 @@ class ProfileAssociated implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return [];
+    }
+
     public static function new(
         ?int $lists = null,
         ?int $feedgens = null,
@@ -34,11 +49,21 @@ class ProfileAssociated implements \Aazsamir\Libphpsky\ATProtoObject
         ?ProfileAssociatedChat $chat = null,
     ): self {
         $instance = new self();
-        $instance->lists = $lists;
-        $instance->feedgens = $feedgens;
-        $instance->starterPacks = $starterPacks;
-        $instance->labeler = $labeler;
-        $instance->chat = $chat;
+        if ($lists !== null) {
+            $instance->lists = $lists;
+        }
+        if ($feedgens !== null) {
+            $instance->feedgens = $feedgens;
+        }
+        if ($starterPacks !== null) {
+            $instance->starterPacks = $starterPacks;
+        }
+        if ($labeler !== null) {
+            $instance->labeler = $labeler;
+        }
+        if ($chat !== null) {
+            $instance->chat = $chat;
+        }
 
         return $instance;
     }

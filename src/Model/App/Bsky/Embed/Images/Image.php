@@ -24,6 +24,21 @@ class Image implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['image', 'alt'];
+    }
+
     public static function new(
         string $image,
         string $alt,
@@ -32,7 +47,9 @@ class Image implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->image = $image;
         $instance->alt = $alt;
-        $instance->aspectRatio = $aspectRatio;
+        if ($aspectRatio !== null) {
+            $instance->aspectRatio = $aspectRatio;
+        }
 
         return $instance;
     }

@@ -31,6 +31,21 @@ class Starterpack implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['name', 'list', 'createdAt'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> $descriptionFacets
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Starterpack\FeedItem> $feeds
@@ -47,9 +62,15 @@ class Starterpack implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->name = $name;
         $instance->list = $list;
         $instance->createdAt = $createdAt;
-        $instance->description = $description;
-        $instance->descriptionFacets = $descriptionFacets;
-        $instance->feeds = $feeds;
+        if ($description !== null) {
+            $instance->description = $description;
+        }
+        if ($descriptionFacets !== null) {
+            $instance->descriptionFacets = $descriptionFacets;
+        }
+        if ($feeds !== null) {
+            $instance->feeds = $feeds;
+        }
 
         return $instance;
     }

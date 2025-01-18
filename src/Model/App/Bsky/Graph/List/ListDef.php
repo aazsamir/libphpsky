@@ -32,6 +32,21 @@ class ListDef implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['name', 'purpose', 'createdAt'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> $descriptionFacets
      */
@@ -47,11 +62,21 @@ class ListDef implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->name = $name;
         $instance->createdAt = $createdAt;
-        $instance->purpose = $purpose;
-        $instance->description = $description;
-        $instance->descriptionFacets = $descriptionFacets;
-        $instance->avatar = $avatar;
-        $instance->labels = $labels;
+        if ($purpose !== null) {
+            $instance->purpose = $purpose;
+        }
+        if ($description !== null) {
+            $instance->description = $description;
+        }
+        if ($descriptionFacets !== null) {
+            $instance->descriptionFacets = $descriptionFacets;
+        }
+        if ($avatar !== null) {
+            $instance->avatar = $avatar;
+        }
+        if ($labels !== null) {
+            $instance->labels = $labels;
+        }
 
         return $instance;
     }

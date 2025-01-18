@@ -27,6 +27,21 @@ class ThreadgateView implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return [];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\ListViewBasic> $lists
      */
@@ -37,10 +52,18 @@ class ThreadgateView implements \Aazsamir\Libphpsky\ATProtoObject
         ?array $lists = [],
     ): self {
         $instance = new self();
-        $instance->uri = $uri;
-        $instance->cid = $cid;
-        $instance->record = $record;
-        $instance->lists = $lists;
+        if ($uri !== null) {
+            $instance->uri = $uri;
+        }
+        if ($cid !== null) {
+            $instance->cid = $cid;
+        }
+        if ($record !== null) {
+            $instance->record = $record;
+        }
+        if ($lists !== null) {
+            $instance->lists = $lists;
+        }
 
         return $instance;
     }

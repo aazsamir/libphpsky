@@ -26,6 +26,21 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return [];
+    }
+
     /**
      * @param array<string> $codes
      * @param array<string> $accounts
@@ -33,8 +48,12 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(?array $codes = [], ?array $accounts = []): self
     {
         $instance = new self();
-        $instance->codes = $codes;
-        $instance->accounts = $accounts;
+        if ($codes !== null) {
+            $instance->codes = $codes;
+        }
+        if ($accounts !== null) {
+            $instance->accounts = $accounts;
+        }
 
         return $instance;
     }

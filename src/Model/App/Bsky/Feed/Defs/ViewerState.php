@@ -27,6 +27,21 @@ class ViewerState implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return [];
+    }
+
     public static function new(
         ?string $repost = null,
         ?string $like = null,
@@ -36,12 +51,24 @@ class ViewerState implements \Aazsamir\Libphpsky\ATProtoObject
         ?bool $pinned = null,
     ): self {
         $instance = new self();
-        $instance->repost = $repost;
-        $instance->like = $like;
-        $instance->threadMuted = $threadMuted;
-        $instance->replyDisabled = $replyDisabled;
-        $instance->embeddingDisabled = $embeddingDisabled;
-        $instance->pinned = $pinned;
+        if ($repost !== null) {
+            $instance->repost = $repost;
+        }
+        if ($like !== null) {
+            $instance->like = $like;
+        }
+        if ($threadMuted !== null) {
+            $instance->threadMuted = $threadMuted;
+        }
+        if ($replyDisabled !== null) {
+            $instance->replyDisabled = $replyDisabled;
+        }
+        if ($embeddingDisabled !== null) {
+            $instance->embeddingDisabled = $embeddingDisabled;
+        }
+        if ($pinned !== null) {
+            $instance->pinned = $pinned;
+        }
 
         return $instance;
     }

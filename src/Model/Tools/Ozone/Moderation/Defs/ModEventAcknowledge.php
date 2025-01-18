@@ -23,11 +23,30 @@ class ModEventAcknowledge implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return [];
+    }
+
     public static function new(?string $comment = null, ?bool $acknowledgeAccountSubjects = null): self
     {
         $instance = new self();
-        $instance->comment = $comment;
-        $instance->acknowledgeAccountSubjects = $acknowledgeAccountSubjects;
+        if ($comment !== null) {
+            $instance->comment = $comment;
+        }
+        if ($acknowledgeAccountSubjects !== null) {
+            $instance->acknowledgeAccountSubjects = $acknowledgeAccountSubjects;
+        }
 
         return $instance;
     }

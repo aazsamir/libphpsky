@@ -26,6 +26,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['canUpload'];
+    }
+
     public static function new(
         bool $canUpload,
         ?int $remainingDailyVideos = null,
@@ -35,10 +50,18 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     ): self {
         $instance = new self();
         $instance->canUpload = $canUpload;
-        $instance->remainingDailyVideos = $remainingDailyVideos;
-        $instance->remainingDailyBytes = $remainingDailyBytes;
-        $instance->message = $message;
-        $instance->error = $error;
+        if ($remainingDailyVideos !== null) {
+            $instance->remainingDailyVideos = $remainingDailyVideos;
+        }
+        if ($remainingDailyBytes !== null) {
+            $instance->remainingDailyBytes = $remainingDailyBytes;
+        }
+        if ($message !== null) {
+            $instance->message = $message;
+        }
+        if ($error !== null) {
+            $instance->error = $error;
+        }
 
         return $instance;
     }

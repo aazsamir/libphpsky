@@ -29,6 +29,21 @@ class ViewerState implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return [];
+    }
+
     public static function new(
         ?bool $muted = null,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\ListViewBasic $mutedByList = null,
@@ -40,14 +55,30 @@ class ViewerState implements \Aazsamir\Libphpsky\ATProtoObject
         ?KnownFollowers $knownFollowers = null,
     ): self {
         $instance = new self();
-        $instance->muted = $muted;
-        $instance->mutedByList = $mutedByList;
-        $instance->blockedBy = $blockedBy;
-        $instance->blocking = $blocking;
-        $instance->blockingByList = $blockingByList;
-        $instance->following = $following;
-        $instance->followedBy = $followedBy;
-        $instance->knownFollowers = $knownFollowers;
+        if ($muted !== null) {
+            $instance->muted = $muted;
+        }
+        if ($mutedByList !== null) {
+            $instance->mutedByList = $mutedByList;
+        }
+        if ($blockedBy !== null) {
+            $instance->blockedBy = $blockedBy;
+        }
+        if ($blocking !== null) {
+            $instance->blocking = $blocking;
+        }
+        if ($blockingByList !== null) {
+            $instance->blockingByList = $blockingByList;
+        }
+        if ($following !== null) {
+            $instance->following = $following;
+        }
+        if ($followedBy !== null) {
+            $instance->followedBy = $followedBy;
+        }
+        if ($knownFollowers !== null) {
+            $instance->knownFollowers = $knownFollowers;
+        }
 
         return $instance;
     }

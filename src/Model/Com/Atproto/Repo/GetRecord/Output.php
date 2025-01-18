@@ -24,12 +24,29 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['uri', 'value'];
+    }
+
     public static function new(string $uri, mixed $value, ?string $cid = null): self
     {
         $instance = new self();
         $instance->uri = $uri;
         $instance->value = $value;
-        $instance->cid = $cid;
+        if ($cid !== null) {
+            $instance->cid = $cid;
+        }
 
         return $instance;
     }

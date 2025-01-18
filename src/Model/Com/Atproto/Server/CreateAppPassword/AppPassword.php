@@ -25,6 +25,21 @@ class AppPassword implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['name', 'password', 'createdAt'];
+    }
+
     public static function new(
         string $name,
         string $password,
@@ -35,7 +50,9 @@ class AppPassword implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->name = $name;
         $instance->password = $password;
         $instance->createdAt = $createdAt;
-        $instance->privileged = $privileged;
+        if ($privileged !== null) {
+            $instance->privileged = $privileged;
+        }
 
         return $instance;
     }

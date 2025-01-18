@@ -26,6 +26,21 @@ class SkeletonFeedPost implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['post'];
+    }
+
     public static function new(
         string $post,
         SkeletonReasonRepost|SkeletonReasonPin|null $reason = null,
@@ -33,8 +48,12 @@ class SkeletonFeedPost implements \Aazsamir\Libphpsky\ATProtoObject
     ): self {
         $instance = new self();
         $instance->post = $post;
-        $instance->reason = $reason;
-        $instance->feedContext = $feedContext;
+        if ($reason !== null) {
+            $instance->reason = $reason;
+        }
+        if ($feedContext !== null) {
+            $instance->feedContext = $feedContext;
+        }
 
         return $instance;
     }

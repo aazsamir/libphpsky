@@ -29,6 +29,21 @@ class Threadgate implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['post', 'createdAt'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\MentionRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\FollowingRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\ListRule> $allow
      * @param array<string> $hiddenReplies
@@ -42,8 +57,12 @@ class Threadgate implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->post = $post;
         $instance->createdAt = $createdAt;
-        $instance->allow = $allow;
-        $instance->hiddenReplies = $hiddenReplies;
+        if ($allow !== null) {
+            $instance->allow = $allow;
+        }
+        if ($hiddenReplies !== null) {
+            $instance->hiddenReplies = $hiddenReplies;
+        }
 
         return $instance;
     }

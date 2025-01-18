@@ -27,6 +27,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['notifications'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListNotifications\Notification> $notifications
      */
@@ -38,9 +53,15 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     ): self {
         $instance = new self();
         $instance->notifications = $notifications;
-        $instance->cursor = $cursor;
-        $instance->priority = $priority;
-        $instance->seenAt = $seenAt;
+        if ($cursor !== null) {
+            $instance->cursor = $cursor;
+        }
+        if ($priority !== null) {
+            $instance->priority = $priority;
+        }
+        if ($seenAt !== null) {
+            $instance->seenAt = $seenAt;
+        }
 
         return $instance;
     }

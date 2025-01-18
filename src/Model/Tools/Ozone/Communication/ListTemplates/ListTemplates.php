@@ -20,6 +20,11 @@ class ListTemplates implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function query(): Output
     {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\ListTemplates\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

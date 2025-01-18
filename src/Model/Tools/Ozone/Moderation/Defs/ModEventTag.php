@@ -27,6 +27,21 @@ class ModEventTag implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['add', 'remove'];
+    }
+
     /**
      * @param array<string> $add
      * @param array<string> $remove
@@ -36,7 +51,9 @@ class ModEventTag implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->add = $add;
         $instance->remove = $remove;
-        $instance->comment = $comment;
+        if ($comment !== null) {
+            $instance->comment = $comment;
+        }
 
         return $instance;
     }

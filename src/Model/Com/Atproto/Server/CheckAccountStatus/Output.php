@@ -30,6 +30,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['activated', 'validDid', 'repoCommit', 'repoRev', 'repoBlocks', 'indexedRecords', 'privateStateValues', 'expectedBlobs', 'importedBlobs'];
+    }
+
     public static function new(
         bool $activated,
         bool $validDid,

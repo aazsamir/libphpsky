@@ -39,6 +39,21 @@ class AccountView implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['did', 'handle', 'indexedAt'];
+    }
+
     /**
      * @param array<mixed> $relatedRecords
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode> $invites
@@ -62,15 +77,33 @@ class AccountView implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->did = $did;
         $instance->handle = $handle;
         $instance->indexedAt = $indexedAt;
-        $instance->email = $email;
-        $instance->relatedRecords = $relatedRecords;
-        $instance->invitedBy = $invitedBy;
-        $instance->invites = $invites;
-        $instance->invitesDisabled = $invitesDisabled;
-        $instance->emailConfirmedAt = $emailConfirmedAt;
-        $instance->inviteNote = $inviteNote;
-        $instance->deactivatedAt = $deactivatedAt;
-        $instance->threatSignatures = $threatSignatures;
+        if ($email !== null) {
+            $instance->email = $email;
+        }
+        if ($relatedRecords !== null) {
+            $instance->relatedRecords = $relatedRecords;
+        }
+        if ($invitedBy !== null) {
+            $instance->invitedBy = $invitedBy;
+        }
+        if ($invites !== null) {
+            $instance->invites = $invites;
+        }
+        if ($invitesDisabled !== null) {
+            $instance->invitesDisabled = $invitesDisabled;
+        }
+        if ($emailConfirmedAt !== null) {
+            $instance->emailConfirmedAt = $emailConfirmedAt;
+        }
+        if ($inviteNote !== null) {
+            $instance->inviteNote = $inviteNote;
+        }
+        if ($deactivatedAt !== null) {
+            $instance->deactivatedAt = $deactivatedAt;
+        }
+        if ($threatSignatures !== null) {
+            $instance->threatSignatures = $threatSignatures;
+        }
 
         return $instance;
     }

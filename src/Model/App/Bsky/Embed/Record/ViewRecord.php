@@ -36,6 +36,21 @@ class ViewRecord implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['uri', 'cid', 'author', 'value', 'indexedAt'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> $labels
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\RecordWithMedia\View> $embeds
@@ -58,13 +73,27 @@ class ViewRecord implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->cid = $cid;
         $instance->value = $value;
         $instance->indexedAt = $indexedAt;
-        $instance->author = $author;
-        $instance->labels = $labels;
-        $instance->replyCount = $replyCount;
-        $instance->repostCount = $repostCount;
-        $instance->likeCount = $likeCount;
-        $instance->quoteCount = $quoteCount;
-        $instance->embeds = $embeds;
+        if ($author !== null) {
+            $instance->author = $author;
+        }
+        if ($labels !== null) {
+            $instance->labels = $labels;
+        }
+        if ($replyCount !== null) {
+            $instance->replyCount = $replyCount;
+        }
+        if ($repostCount !== null) {
+            $instance->repostCount = $repostCount;
+        }
+        if ($likeCount !== null) {
+            $instance->likeCount = $likeCount;
+        }
+        if ($quoteCount !== null) {
+            $instance->quoteCount = $quoteCount;
+        }
+        if ($embeds !== null) {
+            $instance->embeds = $embeds;
+        }
 
         return $instance;
     }

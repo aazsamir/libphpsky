@@ -27,6 +27,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['actors'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\Defs\SkeletonSearchActor> $actors
      */
@@ -38,9 +53,15 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     ): self {
         $instance = new self();
         $instance->actors = $actors;
-        $instance->cursor = $cursor;
-        $instance->relativeToDid = $relativeToDid;
-        $instance->recId = $recId;
+        if ($cursor !== null) {
+            $instance->cursor = $cursor;
+        }
+        if ($relativeToDid !== null) {
+            $instance->relativeToDid = $relativeToDid;
+        }
+        if ($recId !== null) {
+            $instance->recId = $recId;
+        }
 
         return $instance;
     }

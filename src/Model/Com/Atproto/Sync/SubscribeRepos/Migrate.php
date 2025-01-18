@@ -25,6 +25,21 @@ class Migrate implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return ['migrateTo'];
+    }
+
+    public static function required(): array
+    {
+        return ['seq', 'did', 'migrateTo', 'time'];
+    }
+
     public static function new(int $seq, string $did, \DateTimeInterface $time, ?string $migrateTo = null): self
     {
         $instance = new self();

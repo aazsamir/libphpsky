@@ -23,13 +23,32 @@ class ReplyRef implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['root', 'parent'];
+    }
+
     public static function new(
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $root = null,
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $parent = null,
     ): self {
         $instance = new self();
-        $instance->root = $root;
-        $instance->parent = $parent;
+        if ($root !== null) {
+            $instance->root = $root;
+        }
+        if ($parent !== null) {
+            $instance->parent = $parent;
+        }
 
         return $instance;
     }

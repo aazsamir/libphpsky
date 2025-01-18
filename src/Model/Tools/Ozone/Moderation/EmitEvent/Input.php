@@ -30,6 +30,21 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['event', 'subject', 'createdBy'];
+    }
+
     /**
      * @param array<string> $subjectBlobCids
      */
@@ -43,7 +58,9 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->event = $event;
         $instance->subject = $subject;
         $instance->createdBy = $createdBy;
-        $instance->subjectBlobCids = $subjectBlobCids;
+        if ($subjectBlobCids !== null) {
+            $instance->subjectBlobCids = $subjectBlobCids;
+        }
 
         return $instance;
     }

@@ -24,12 +24,33 @@ class Interaction implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return [];
+    }
+
     public static function new(?string $item = null, ?string $event = null, ?string $feedContext = null): self
     {
         $instance = new self();
-        $instance->item = $item;
-        $instance->event = $event;
-        $instance->feedContext = $feedContext;
+        if ($item !== null) {
+            $instance->item = $item;
+        }
+        if ($event !== null) {
+            $instance->event = $event;
+        }
+        if ($feedContext !== null) {
+            $instance->feedContext = $feedContext;
+        }
 
         return $instance;
     }

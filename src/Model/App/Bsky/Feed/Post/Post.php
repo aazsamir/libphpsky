@@ -42,6 +42,21 @@ class Post implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['text', 'createdAt'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Post\Entity> $entities
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> $facets
@@ -62,13 +77,27 @@ class Post implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->text = $text;
         $instance->createdAt = $createdAt;
-        $instance->entities = $entities;
-        $instance->facets = $facets;
-        $instance->reply = $reply;
-        $instance->embed = $embed;
-        $instance->langs = $langs;
-        $instance->labels = $labels;
-        $instance->tags = $tags;
+        if ($entities !== null) {
+            $instance->entities = $entities;
+        }
+        if ($facets !== null) {
+            $instance->facets = $facets;
+        }
+        if ($reply !== null) {
+            $instance->reply = $reply;
+        }
+        if ($embed !== null) {
+            $instance->embed = $embed;
+        }
+        if ($langs !== null) {
+            $instance->langs = $langs;
+        }
+        if ($labels !== null) {
+            $instance->labels = $labels;
+        }
+        if ($tags !== null) {
+            $instance->tags = $tags;
+        }
 
         return $instance;
     }

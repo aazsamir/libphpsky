@@ -25,6 +25,21 @@ class Facet implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['index', 'features'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Mention|\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Link|\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Tag> $features
      */
@@ -32,7 +47,9 @@ class Facet implements \Aazsamir\Libphpsky\ATProtoObject
     {
         $instance = new self();
         $instance->features = $features;
-        $instance->index = $index;
+        if ($index !== null) {
+            $instance->index = $index;
+        }
 
         return $instance;
     }

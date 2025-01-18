@@ -33,6 +33,21 @@ class ProfileView implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['did', 'handle'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> $labels
      */
@@ -51,14 +66,30 @@ class ProfileView implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->did = $did;
         $instance->handle = $handle;
-        $instance->displayName = $displayName;
-        $instance->description = $description;
-        $instance->avatar = $avatar;
-        $instance->associated = $associated;
-        $instance->indexedAt = $indexedAt;
-        $instance->createdAt = $createdAt;
-        $instance->viewer = $viewer;
-        $instance->labels = $labels;
+        if ($displayName !== null) {
+            $instance->displayName = $displayName;
+        }
+        if ($description !== null) {
+            $instance->description = $description;
+        }
+        if ($avatar !== null) {
+            $instance->avatar = $avatar;
+        }
+        if ($associated !== null) {
+            $instance->associated = $associated;
+        }
+        if ($indexedAt !== null) {
+            $instance->indexedAt = $indexedAt;
+        }
+        if ($createdAt !== null) {
+            $instance->createdAt = $createdAt;
+        }
+        if ($viewer !== null) {
+            $instance->viewer = $viewer;
+        }
+        if ($labels !== null) {
+            $instance->labels = $labels;
+        }
 
         return $instance;
     }

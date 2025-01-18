@@ -43,6 +43,21 @@ class RepoViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['did', 'handle', 'relatedRecords', 'indexedAt', 'moderation'];
+    }
+
     /**
      * @param array<mixed> $relatedRecords
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> $labels
@@ -70,16 +85,36 @@ class RepoViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->handle = $handle;
         $instance->relatedRecords = $relatedRecords;
         $instance->indexedAt = $indexedAt;
-        $instance->email = $email;
-        $instance->moderation = $moderation;
-        $instance->labels = $labels;
-        $instance->invitedBy = $invitedBy;
-        $instance->invites = $invites;
-        $instance->invitesDisabled = $invitesDisabled;
-        $instance->inviteNote = $inviteNote;
-        $instance->emailConfirmedAt = $emailConfirmedAt;
-        $instance->deactivatedAt = $deactivatedAt;
-        $instance->threatSignatures = $threatSignatures;
+        if ($email !== null) {
+            $instance->email = $email;
+        }
+        if ($moderation !== null) {
+            $instance->moderation = $moderation;
+        }
+        if ($labels !== null) {
+            $instance->labels = $labels;
+        }
+        if ($invitedBy !== null) {
+            $instance->invitedBy = $invitedBy;
+        }
+        if ($invites !== null) {
+            $instance->invites = $invites;
+        }
+        if ($invitesDisabled !== null) {
+            $instance->invitesDisabled = $invitesDisabled;
+        }
+        if ($inviteNote !== null) {
+            $instance->inviteNote = $inviteNote;
+        }
+        if ($emailConfirmedAt !== null) {
+            $instance->emailConfirmedAt = $emailConfirmedAt;
+        }
+        if ($deactivatedAt !== null) {
+            $instance->deactivatedAt = $deactivatedAt;
+        }
+        if ($threatSignatures !== null) {
+            $instance->threatSignatures = $threatSignatures;
+        }
 
         return $instance;
     }

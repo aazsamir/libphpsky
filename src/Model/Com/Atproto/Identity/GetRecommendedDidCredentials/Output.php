@@ -28,6 +28,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return [];
+    }
+
     /**
      * @param array<string> $rotationKeys
      * @param array<string> $alsoKnownAs
@@ -39,10 +54,18 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         mixed $services = null,
     ): self {
         $instance = new self();
-        $instance->rotationKeys = $rotationKeys;
-        $instance->alsoKnownAs = $alsoKnownAs;
-        $instance->verificationMethods = $verificationMethods;
-        $instance->services = $services;
+        if ($rotationKeys !== null) {
+            $instance->rotationKeys = $rotationKeys;
+        }
+        if ($alsoKnownAs !== null) {
+            $instance->alsoKnownAs = $alsoKnownAs;
+        }
+        if ($verificationMethods !== null) {
+            $instance->verificationMethods = $verificationMethods;
+        }
+        if ($services !== null) {
+            $instance->services = $services;
+        }
 
         return $instance;
     }

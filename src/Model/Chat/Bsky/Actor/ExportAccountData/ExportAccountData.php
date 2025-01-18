@@ -19,6 +19,11 @@ class ExportAccountData implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function query(): mixed
     {
         return $this->request($this->argsWithKeys(func_get_args()));

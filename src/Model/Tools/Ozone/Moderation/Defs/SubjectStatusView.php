@@ -48,6 +48,21 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['id', 'subject', 'createdAt', 'updatedAt', 'reviewState'];
+    }
+
     /**
      * @param array<string> $subjectBlobCids
      * @param array<string> $tags
@@ -78,21 +93,51 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->subject = $subject;
         $instance->updatedAt = $updatedAt;
         $instance->createdAt = $createdAt;
-        $instance->hosting = $hosting;
-        $instance->subjectBlobCids = $subjectBlobCids;
-        $instance->subjectRepoHandle = $subjectRepoHandle;
-        $instance->reviewState = $reviewState;
-        $instance->comment = $comment;
-        $instance->muteUntil = $muteUntil;
-        $instance->muteReportingUntil = $muteReportingUntil;
-        $instance->lastReviewedBy = $lastReviewedBy;
-        $instance->lastReviewedAt = $lastReviewedAt;
-        $instance->lastReportedAt = $lastReportedAt;
-        $instance->lastAppealedAt = $lastAppealedAt;
-        $instance->takendown = $takendown;
-        $instance->appealed = $appealed;
-        $instance->suspendUntil = $suspendUntil;
-        $instance->tags = $tags;
+        if ($hosting !== null) {
+            $instance->hosting = $hosting;
+        }
+        if ($subjectBlobCids !== null) {
+            $instance->subjectBlobCids = $subjectBlobCids;
+        }
+        if ($subjectRepoHandle !== null) {
+            $instance->subjectRepoHandle = $subjectRepoHandle;
+        }
+        if ($reviewState !== null) {
+            $instance->reviewState = $reviewState;
+        }
+        if ($comment !== null) {
+            $instance->comment = $comment;
+        }
+        if ($muteUntil !== null) {
+            $instance->muteUntil = $muteUntil;
+        }
+        if ($muteReportingUntil !== null) {
+            $instance->muteReportingUntil = $muteReportingUntil;
+        }
+        if ($lastReviewedBy !== null) {
+            $instance->lastReviewedBy = $lastReviewedBy;
+        }
+        if ($lastReviewedAt !== null) {
+            $instance->lastReviewedAt = $lastReviewedAt;
+        }
+        if ($lastReportedAt !== null) {
+            $instance->lastReportedAt = $lastReportedAt;
+        }
+        if ($lastAppealedAt !== null) {
+            $instance->lastAppealedAt = $lastAppealedAt;
+        }
+        if ($takendown !== null) {
+            $instance->takendown = $takendown;
+        }
+        if ($appealed !== null) {
+            $instance->appealed = $appealed;
+        }
+        if ($suspendUntil !== null) {
+            $instance->suspendUntil = $suspendUntil;
+        }
+        if ($tags !== null) {
+            $instance->tags = $tags;
+        }
 
         return $instance;
     }

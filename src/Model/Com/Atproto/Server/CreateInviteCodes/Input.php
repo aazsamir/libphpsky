@@ -26,6 +26,21 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['codeCount', 'useCount'];
+    }
+
     /**
      * @param array<string> $forAccounts
      */
@@ -34,7 +49,9 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->codeCount = $codeCount;
         $instance->useCount = $useCount;
-        $instance->forAccounts = $forAccounts;
+        if ($forAccounts !== null) {
+            $instance->forAccounts = $forAccounts;
+        }
 
         return $instance;
     }

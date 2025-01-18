@@ -34,6 +34,21 @@ class Generator implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['did', 'displayName', 'createdAt'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> $descriptionFacets
      */
@@ -52,12 +67,24 @@ class Generator implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->did = $did;
         $instance->displayName = $displayName;
         $instance->createdAt = $createdAt;
-        $instance->description = $description;
-        $instance->descriptionFacets = $descriptionFacets;
-        $instance->avatar = $avatar;
-        $instance->acceptsInteractions = $acceptsInteractions;
-        $instance->labels = $labels;
-        $instance->contentMode = $contentMode;
+        if ($description !== null) {
+            $instance->description = $description;
+        }
+        if ($descriptionFacets !== null) {
+            $instance->descriptionFacets = $descriptionFacets;
+        }
+        if ($avatar !== null) {
+            $instance->avatar = $avatar;
+        }
+        if ($acceptsInteractions !== null) {
+            $instance->acceptsInteractions = $acceptsInteractions;
+        }
+        if ($labels !== null) {
+            $instance->labels = $labels;
+        }
+        if ($contentMode !== null) {
+            $instance->contentMode = $contentMode;
+        }
 
         return $instance;
     }

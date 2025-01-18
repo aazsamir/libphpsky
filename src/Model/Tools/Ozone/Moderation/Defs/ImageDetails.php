@@ -23,6 +23,21 @@ class ImageDetails implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['width', 'height'];
+    }
+
     public static function new(int $width, int $height): self
     {
         $instance = new self();

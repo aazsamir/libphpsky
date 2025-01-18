@@ -26,6 +26,21 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['recipientDid', 'content', 'senderDid'];
+    }
+
     public static function new(
         string $recipientDid,
         string $content,
@@ -37,8 +52,12 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->recipientDid = $recipientDid;
         $instance->content = $content;
         $instance->senderDid = $senderDid;
-        $instance->subject = $subject;
-        $instance->comment = $comment;
+        if ($subject !== null) {
+            $instance->subject = $subject;
+        }
+        if ($comment !== null) {
+            $instance->comment = $comment;
+        }
 
         return $instance;
     }

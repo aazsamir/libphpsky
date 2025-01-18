@@ -28,6 +28,21 @@ class MutedWord implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['value', 'targets'];
+    }
+
     /**
      * @param array<string> $targets
      */
@@ -41,9 +56,15 @@ class MutedWord implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->value = $value;
         $instance->targets = $targets;
-        $instance->id = $id;
-        $instance->actorTarget = $actorTarget;
-        $instance->expiresAt = $expiresAt;
+        if ($id !== null) {
+            $instance->id = $id;
+        }
+        if ($actorTarget !== null) {
+            $instance->actorTarget = $actorTarget;
+        }
+        if ($expiresAt !== null) {
+            $instance->expiresAt = $expiresAt;
+        }
 
         return $instance;
     }

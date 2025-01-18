@@ -20,6 +20,11 @@ class GetTimeline implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function query(?string $algorithm = null, ?int $limit = null, ?string $cursor = null): Output
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetTimeline\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

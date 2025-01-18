@@ -30,6 +30,21 @@ class Label implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['src', 'uri', 'val', 'cts'];
+    }
+
     public static function new(
         string $src,
         string $uri,
@@ -46,11 +61,21 @@ class Label implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->uri = $uri;
         $instance->val = $val;
         $instance->cts = $cts;
-        $instance->ver = $ver;
-        $instance->cid = $cid;
-        $instance->neg = $neg;
-        $instance->exp = $exp;
-        $instance->sig = $sig;
+        if ($ver !== null) {
+            $instance->ver = $ver;
+        }
+        if ($cid !== null) {
+            $instance->cid = $cid;
+        }
+        if ($neg !== null) {
+            $instance->neg = $neg;
+        }
+        if ($exp !== null) {
+            $instance->exp = $exp;
+        }
+        if ($sig !== null) {
+            $instance->sig = $sig;
+        }
 
         return $instance;
     }

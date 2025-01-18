@@ -20,6 +20,11 @@ class GetTrendingTopics implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function query(?string $viewer = null, ?int $limit = null): Output
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrendingTopics\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

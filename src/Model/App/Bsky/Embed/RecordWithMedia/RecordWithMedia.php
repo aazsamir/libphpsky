@@ -25,13 +25,30 @@ class RecordWithMedia implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['record', 'media'];
+    }
+
     public static function new(
         \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\Images|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Video|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\External $media,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record $record = null,
     ): self {
         $instance = new self();
         $instance->media = $media;
-        $instance->record = $record;
+        if ($record !== null) {
+            $instance->record = $record;
+        }
 
         return $instance;
     }

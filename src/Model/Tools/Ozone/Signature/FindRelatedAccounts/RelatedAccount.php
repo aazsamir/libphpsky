@@ -25,6 +25,21 @@ class RelatedAccount implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['account'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\Defs\SigDetail> $similarities
      */
@@ -33,8 +48,12 @@ class RelatedAccount implements \Aazsamir\Libphpsky\ATProtoObject
         ?array $similarities = [],
     ): self {
         $instance = new self();
-        $instance->account = $account;
-        $instance->similarities = $similarities;
+        if ($account !== null) {
+            $instance->account = $account;
+        }
+        if ($similarities !== null) {
+            $instance->similarities = $similarities;
+        }
 
         return $instance;
     }

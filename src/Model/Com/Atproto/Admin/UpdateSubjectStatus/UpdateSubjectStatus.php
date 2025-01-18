@@ -20,6 +20,11 @@ class UpdateSubjectStatus implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function procedure(Input $input): Output
     {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateSubjectStatus\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

@@ -26,6 +26,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return [];
+    }
+
     public static function new(
         ?ServiceConfig $appview = null,
         ?ServiceConfig $pds = null,
@@ -34,11 +49,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         ?ViewerConfig $viewer = null,
     ): self {
         $instance = new self();
-        $instance->appview = $appview;
-        $instance->pds = $pds;
-        $instance->blobDivert = $blobDivert;
-        $instance->chat = $chat;
-        $instance->viewer = $viewer;
+        if ($appview !== null) {
+            $instance->appview = $appview;
+        }
+        if ($pds !== null) {
+            $instance->pds = $pds;
+        }
+        if ($blobDivert !== null) {
+            $instance->blobDivert = $blobDivert;
+        }
+        if ($chat !== null) {
+            $instance->chat = $chat;
+        }
+        if ($viewer !== null) {
+            $instance->viewer = $viewer;
+        }
 
         return $instance;
     }

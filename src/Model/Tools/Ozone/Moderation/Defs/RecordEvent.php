@@ -25,6 +25,21 @@ class RecordEvent implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['timestamp', 'op'];
+    }
+
     public static function new(
         string $op,
         \DateTimeInterface $timestamp,
@@ -34,8 +49,12 @@ class RecordEvent implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->op = $op;
         $instance->timestamp = $timestamp;
-        $instance->comment = $comment;
-        $instance->cid = $cid;
+        if ($comment !== null) {
+            $instance->comment = $comment;
+        }
+        if ($cid !== null) {
+            $instance->cid = $cid;
+        }
 
         return $instance;
     }

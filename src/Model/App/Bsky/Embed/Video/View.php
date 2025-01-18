@@ -26,6 +26,21 @@ class View implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['cid', 'playlist'];
+    }
+
     public static function new(
         string $cid,
         string $playlist,
@@ -36,9 +51,15 @@ class View implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->cid = $cid;
         $instance->playlist = $playlist;
-        $instance->thumbnail = $thumbnail;
-        $instance->alt = $alt;
-        $instance->aspectRatio = $aspectRatio;
+        if ($thumbnail !== null) {
+            $instance->thumbnail = $thumbnail;
+        }
+        if ($alt !== null) {
+            $instance->alt = $alt;
+        }
+        if ($aspectRatio !== null) {
+            $instance->aspectRatio = $aspectRatio;
+        }
 
         return $instance;
     }

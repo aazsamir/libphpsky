@@ -27,6 +27,21 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['repo', 'writes'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\Create|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\Update|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\Delete> $writes
      */
@@ -35,8 +50,12 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->repo = $repo;
         $instance->writes = $writes;
-        $instance->validate = $validate;
-        $instance->swapCommit = $swapCommit;
+        if ($validate !== null) {
+            $instance->validate = $validate;
+        }
+        if ($swapCommit !== null) {
+            $instance->swapCommit = $swapCommit;
+        }
 
         return $instance;
     }

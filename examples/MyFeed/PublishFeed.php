@@ -37,18 +37,20 @@ class PublishFeed
 
         $myself = $this->metaClient->comAtprotoIdentityResolveHandle($this->authConfig->login());
 
-        $record = new Generator();
-        $record->did = 'did:web:' . $this->hostname;
-        $record->displayName = 'Libphpsky Feed';
-        $record->description = 'Libphpsky Feed Description';
-        $record->createdAt = new \DateTimeImmutable();
+        $record = Generator::new(
+            did: 'did:web:' . $this->hostname,
+            displayName: 'Libphpsky Feed',
+            description: 'Libphpsky Feed Description',
+            createdAt: new \DateTimeImmutable(),
+        );
 
-        $input = new PutRecord\Input();
-        $input->repo = $myself->did;
-        $input->collection = Generator::ID;
-        $input->rkey = 'libphpsky-feed';
-        $input->record = $record;
-        $input->validate = true;
+        $input = PutRecord\Input::new(
+            repo: $myself->did,
+            collection: Generator::ID,
+            rkey: 'libphpsky-feed',
+            record: $record,
+            validate: true,
+        );
 
         $response = $this->metaClient->comAtprotoRepoPutRecord($input);
 
@@ -63,10 +65,11 @@ class PublishFeed
 
         $myself = $this->metaClient->comAtprotoIdentityResolveHandle($this->authConfig->login());
 
-        $input = new DeleteRecord\Input();
-        $input->repo = $myself->did;
-        $input->collection = Generator::ID;
-        $input->rkey = 'libphpsky-feed';
+        $input = DeleteRecord\Input::new(
+            repo: $myself->did,
+            collection: Generator::ID,
+            rkey: 'libphpsky-feed',
+        );
 
         $response = $this->metaClient->comAtprotoRepoDeleteRecord($input);
 

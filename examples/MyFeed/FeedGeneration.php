@@ -90,16 +90,17 @@ class FeedGeneration
 
     private function getLibphpskyFeed(): void
     {
-        $post = new SkeletonFeedPost();
-        $post->post = ATUri::new(
-            did: 'did:plc:rbkeag6b36ghkibhr6x235pm',
-            collection: 'app.bsky.feed.post',
-            recordKey: '3lfsth7mlks23',
-        )->toString();
-
         $feed = GetFeedSkeleton\Output::new(
             cursor: '1',
-            feed: [$post],
+            feed: [
+                SkeletonFeedPost::new(
+                    post: ATUri::new(
+                        did: 'did:plc:rbkeag6b36ghkibhr6x235pm',
+                        collection: 'app.bsky.feed.post',
+                        recordKey: '3lfsth7mlks23',
+                    )->toString(),
+                ),
+            ],
         );
 
         header('Content-Type: application/json');

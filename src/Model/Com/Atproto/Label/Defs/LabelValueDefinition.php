@@ -29,6 +29,21 @@ class LabelValueDefinition implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['identifier', 'severity', 'blurs', 'locales'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\LabelValueDefinitionStrings> $locales
      */
@@ -45,8 +60,12 @@ class LabelValueDefinition implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->severity = $severity;
         $instance->blurs = $blurs;
         $instance->locales = $locales;
-        $instance->defaultSetting = $defaultSetting;
-        $instance->adultOnly = $adultOnly;
+        if ($defaultSetting !== null) {
+            $instance->defaultSetting = $defaultSetting;
+        }
+        if ($adultOnly !== null) {
+            $instance->adultOnly = $adultOnly;
+        }
 
         return $instance;
     }

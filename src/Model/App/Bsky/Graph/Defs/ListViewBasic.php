@@ -32,6 +32,21 @@ class ListViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['uri', 'cid', 'name', 'purpose'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> $labels
      */
@@ -50,12 +65,24 @@ class ListViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->uri = $uri;
         $instance->cid = $cid;
         $instance->name = $name;
-        $instance->purpose = $purpose;
-        $instance->avatar = $avatar;
-        $instance->listItemCount = $listItemCount;
-        $instance->labels = $labels;
-        $instance->viewer = $viewer;
-        $instance->indexedAt = $indexedAt;
+        if ($purpose !== null) {
+            $instance->purpose = $purpose;
+        }
+        if ($avatar !== null) {
+            $instance->avatar = $avatar;
+        }
+        if ($listItemCount !== null) {
+            $instance->listItemCount = $listItemCount;
+        }
+        if ($labels !== null) {
+            $instance->labels = $labels;
+        }
+        if ($viewer !== null) {
+            $instance->viewer = $viewer;
+        }
+        if ($indexedAt !== null) {
+            $instance->indexedAt = $indexedAt;
+        }
 
         return $instance;
     }

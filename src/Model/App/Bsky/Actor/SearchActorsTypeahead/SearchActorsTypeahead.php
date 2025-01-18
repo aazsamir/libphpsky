@@ -20,6 +20,11 @@ class SearchActorsTypeahead implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function query(?string $term = null, ?string $q = null, ?int $limit = null): Output
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\SearchActorsTypeahead\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

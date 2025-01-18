@@ -27,6 +27,21 @@ class FeedViewPref implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['feed'];
+    }
+
     public static function new(
         string $feed,
         ?bool $hideReplies = null,
@@ -37,11 +52,21 @@ class FeedViewPref implements \Aazsamir\Libphpsky\ATProtoObject
     ): self {
         $instance = new self();
         $instance->feed = $feed;
-        $instance->hideReplies = $hideReplies;
-        $instance->hideRepliesByUnfollowed = $hideRepliesByUnfollowed;
-        $instance->hideRepliesByLikeCount = $hideRepliesByLikeCount;
-        $instance->hideReposts = $hideReposts;
-        $instance->hideQuotePosts = $hideQuotePosts;
+        if ($hideReplies !== null) {
+            $instance->hideReplies = $hideReplies;
+        }
+        if ($hideRepliesByUnfollowed !== null) {
+            $instance->hideRepliesByUnfollowed = $hideRepliesByUnfollowed;
+        }
+        if ($hideRepliesByLikeCount !== null) {
+            $instance->hideRepliesByLikeCount = $hideRepliesByLikeCount;
+        }
+        if ($hideReposts !== null) {
+            $instance->hideReposts = $hideReposts;
+        }
+        if ($hideQuotePosts !== null) {
+            $instance->hideQuotePosts = $hideQuotePosts;
+        }
 
         return $instance;
     }

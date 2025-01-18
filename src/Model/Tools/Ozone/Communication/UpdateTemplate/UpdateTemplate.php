@@ -20,6 +20,11 @@ class UpdateTemplate implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function procedure(Input $input): \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\Defs\TemplateView
     {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\Defs\TemplateView::fromArray($this->request($this->argsWithKeys(func_get_args())));

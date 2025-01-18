@@ -32,6 +32,21 @@ class MessageView implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['id', 'rev', 'text', 'sender', 'sentAt'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> $facets
      */
@@ -49,9 +64,15 @@ class MessageView implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->rev = $rev;
         $instance->text = $text;
         $instance->sentAt = $sentAt;
-        $instance->facets = $facets;
-        $instance->embed = $embed;
-        $instance->sender = $sender;
+        if ($facets !== null) {
+            $instance->facets = $facets;
+        }
+        if ($embed !== null) {
+            $instance->embed = $embed;
+        }
+        if ($sender !== null) {
+            $instance->sender = $sender;
+        }
 
         return $instance;
     }

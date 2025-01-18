@@ -30,6 +30,21 @@ class RecordView implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['uri', 'cid', 'value', 'blobCids', 'indexedAt', 'moderation', 'repo'];
+    }
+
     /**
      * @param array<string> $blobCids
      */
@@ -49,7 +64,9 @@ class RecordView implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->blobCids = $blobCids;
         $instance->indexedAt = $indexedAt;
         $instance->moderation = $moderation;
-        $instance->repo = $repo;
+        if ($repo !== null) {
+            $instance->repo = $repo;
+        }
 
         return $instance;
     }

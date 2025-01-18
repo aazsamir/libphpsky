@@ -38,6 +38,21 @@ class StarterPackView implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['uri', 'cid', 'record', 'creator', 'indexedAt'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\ListItemView> $listItemsSample
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\GeneratorView> $feeds
@@ -61,13 +76,27 @@ class StarterPackView implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->cid = $cid;
         $instance->record = $record;
         $instance->indexedAt = $indexedAt;
-        $instance->creator = $creator;
-        $instance->list = $list;
-        $instance->listItemsSample = $listItemsSample;
-        $instance->feeds = $feeds;
-        $instance->joinedWeekCount = $joinedWeekCount;
-        $instance->joinedAllTimeCount = $joinedAllTimeCount;
-        $instance->labels = $labels;
+        if ($creator !== null) {
+            $instance->creator = $creator;
+        }
+        if ($list !== null) {
+            $instance->list = $list;
+        }
+        if ($listItemsSample !== null) {
+            $instance->listItemsSample = $listItemsSample;
+        }
+        if ($feeds !== null) {
+            $instance->feeds = $feeds;
+        }
+        if ($joinedWeekCount !== null) {
+            $instance->joinedWeekCount = $joinedWeekCount;
+        }
+        if ($joinedAllTimeCount !== null) {
+            $instance->joinedAllTimeCount = $joinedAllTimeCount;
+        }
+        if ($labels !== null) {
+            $instance->labels = $labels;
+        }
 
         return $instance;
     }

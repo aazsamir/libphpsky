@@ -25,6 +25,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['codes'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode> $codes
      */
@@ -32,7 +47,9 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     {
         $instance = new self();
         $instance->codes = $codes;
-        $instance->cursor = $cursor;
+        if ($cursor !== null) {
+            $instance->cursor = $cursor;
+        }
 
         return $instance;
     }

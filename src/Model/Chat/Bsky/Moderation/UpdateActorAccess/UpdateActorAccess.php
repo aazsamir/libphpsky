@@ -19,6 +19,11 @@ class UpdateActorAccess implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function procedure(Input $input): void
     {
         $this->request($this->argsWithKeys(func_get_args()));

@@ -32,6 +32,21 @@ class Notification implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['uri', 'cid', 'author', 'reason', 'record', 'isRead', 'indexedAt'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> $labels
      */
@@ -53,9 +68,15 @@ class Notification implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->record = $record;
         $instance->isRead = $isRead;
         $instance->indexedAt = $indexedAt;
-        $instance->author = $author;
-        $instance->reasonSubject = $reasonSubject;
-        $instance->labels = $labels;
+        if ($author !== null) {
+            $instance->author = $author;
+        }
+        if ($reasonSubject !== null) {
+            $instance->reasonSubject = $reasonSubject;
+        }
+        if ($labels !== null) {
+            $instance->labels = $labels;
+        }
 
         return $instance;
     }

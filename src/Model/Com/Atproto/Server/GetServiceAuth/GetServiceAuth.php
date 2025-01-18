@@ -20,6 +20,11 @@ class GetServiceAuth implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function query(string $aud, ?int $exp = null, ?string $lxm = null): Output
     {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\GetServiceAuth\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

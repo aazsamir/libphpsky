@@ -37,6 +37,21 @@ class Commit implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return ['prev', 'since'];
+    }
+
+    public static function required(): array
+    {
+        return ['seq', 'rebase', 'tooBig', 'repo', 'commit', 'rev', 'since', 'blocks', 'ops', 'blobs', 'time'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Sync\SubscribeRepos\RepoOp> $ops
      * @param array<string> $blobs

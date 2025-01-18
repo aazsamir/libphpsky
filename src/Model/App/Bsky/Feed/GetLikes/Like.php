@@ -24,6 +24,21 @@ class Like implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['indexedAt', 'createdAt', 'actor'];
+    }
+
     public static function new(
         \DateTimeInterface $indexedAt,
         \DateTimeInterface $createdAt,
@@ -32,7 +47,9 @@ class Like implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->indexedAt = $indexedAt;
         $instance->createdAt = $createdAt;
-        $instance->actor = $actor;
+        if ($actor !== null) {
+            $instance->actor = $actor;
+        }
 
         return $instance;
     }

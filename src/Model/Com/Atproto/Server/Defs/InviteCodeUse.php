@@ -23,6 +23,21 @@ class InviteCodeUse implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['usedBy', 'usedAt'];
+    }
+
     public static function new(string $usedBy, \DateTimeInterface $usedAt): self
     {
         $instance = new self();

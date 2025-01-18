@@ -26,6 +26,21 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['subject', 'contentMarkdown', 'name'];
+    }
+
     public static function new(
         string $name,
         string $contentMarkdown,
@@ -37,8 +52,12 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->name = $name;
         $instance->contentMarkdown = $contentMarkdown;
         $instance->subject = $subject;
-        $instance->lang = $lang;
-        $instance->createdBy = $createdBy;
+        if ($lang !== null) {
+            $instance->lang = $lang;
+        }
+        if ($createdBy !== null) {
+            $instance->createdBy = $createdBy;
+        }
 
         return $instance;
     }

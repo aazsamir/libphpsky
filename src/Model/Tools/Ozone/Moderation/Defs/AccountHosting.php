@@ -27,6 +27,21 @@ class AccountHosting implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['status'];
+    }
+
     public static function new(
         string $status,
         ?\DateTimeInterface $updatedAt = null,
@@ -37,11 +52,21 @@ class AccountHosting implements \Aazsamir\Libphpsky\ATProtoObject
     ): self {
         $instance = new self();
         $instance->status = $status;
-        $instance->updatedAt = $updatedAt;
-        $instance->createdAt = $createdAt;
-        $instance->deletedAt = $deletedAt;
-        $instance->deactivatedAt = $deactivatedAt;
-        $instance->reactivatedAt = $reactivatedAt;
+        if ($updatedAt !== null) {
+            $instance->updatedAt = $updatedAt;
+        }
+        if ($createdAt !== null) {
+            $instance->createdAt = $createdAt;
+        }
+        if ($deletedAt !== null) {
+            $instance->deletedAt = $deletedAt;
+        }
+        if ($deactivatedAt !== null) {
+            $instance->deactivatedAt = $deactivatedAt;
+        }
+        if ($reactivatedAt !== null) {
+            $instance->reactivatedAt = $reactivatedAt;
+        }
 
         return $instance;
     }

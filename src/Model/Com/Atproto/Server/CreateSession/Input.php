@@ -25,6 +25,21 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['identifier', 'password'];
+    }
+
     public static function new(
         string $identifier,
         string $password,
@@ -34,8 +49,12 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->identifier = $identifier;
         $instance->password = $password;
-        $instance->authFactorToken = $authFactorToken;
-        $instance->allowTakendown = $allowTakendown;
+        if ($authFactorToken !== null) {
+            $instance->authFactorToken = $authFactorToken;
+        }
+        if ($allowTakendown !== null) {
+            $instance->allowTakendown = $allowTakendown;
+        }
 
         return $instance;
     }

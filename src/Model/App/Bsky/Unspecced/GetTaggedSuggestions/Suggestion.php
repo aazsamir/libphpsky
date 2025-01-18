@@ -24,6 +24,21 @@ class Suggestion implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['tag', 'subjectType', 'subject'];
+    }
+
     public static function new(string $tag, string $subjectType, string $subject): self
     {
         $instance = new self();

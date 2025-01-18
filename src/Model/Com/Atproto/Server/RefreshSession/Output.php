@@ -28,6 +28,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['accessJwt', 'refreshJwt', 'handle', 'did'];
+    }
+
     public static function new(
         string $accessJwt,
         string $refreshJwt,
@@ -42,9 +57,15 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->refreshJwt = $refreshJwt;
         $instance->handle = $handle;
         $instance->did = $did;
-        $instance->didDoc = $didDoc;
-        $instance->active = $active;
-        $instance->status = $status;
+        if ($didDoc !== null) {
+            $instance->didDoc = $didDoc;
+        }
+        if ($active !== null) {
+            $instance->active = $active;
+        }
+        if ($status !== null) {
+            $instance->status = $status;
+        }
 
         return $instance;
     }

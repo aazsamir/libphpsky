@@ -23,13 +23,30 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['convoId', 'message'];
+    }
+
     public static function new(
         string $convoId,
         ?\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageInput $message = null,
     ): self {
         $instance = new self();
         $instance->convoId = $convoId;
-        $instance->message = $message;
+        if ($message !== null) {
+            $instance->message = $message;
+        }
 
         return $instance;
     }

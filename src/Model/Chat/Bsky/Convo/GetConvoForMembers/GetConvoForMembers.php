@@ -19,6 +19,11 @@ class GetConvoForMembers implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     /**
      * @param array<string> $members
      */

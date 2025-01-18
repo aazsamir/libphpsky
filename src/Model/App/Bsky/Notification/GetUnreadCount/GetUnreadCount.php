@@ -20,6 +20,11 @@ class GetUnreadCount implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function query(?bool $priority = null, ?\DateTimeInterface $seenAt = null): Output
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Notification\GetUnreadCount\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

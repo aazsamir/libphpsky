@@ -24,6 +24,21 @@ class RepoOp implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return ['cid'];
+    }
+
+    public static function required(): array
+    {
+        return ['action', 'path', 'cid'];
+    }
+
     public static function new(string $action, string $path, ?string $cid = null): self
     {
         $instance = new self();

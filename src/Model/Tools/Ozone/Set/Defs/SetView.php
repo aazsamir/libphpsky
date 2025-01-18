@@ -26,6 +26,21 @@ class SetView implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['name', 'setSize', 'createdAt', 'updatedAt'];
+    }
+
     public static function new(
         string $name,
         int $setSize,
@@ -38,7 +53,9 @@ class SetView implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->setSize = $setSize;
         $instance->createdAt = $createdAt;
         $instance->updatedAt = $updatedAt;
-        $instance->description = $description;
+        if ($description !== null) {
+            $instance->description = $description;
+        }
 
         return $instance;
     }

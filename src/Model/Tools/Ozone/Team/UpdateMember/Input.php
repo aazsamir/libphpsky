@@ -24,12 +24,31 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['did'];
+    }
+
     public static function new(string $did, ?bool $disabled = null, ?string $role = null): self
     {
         $instance = new self();
         $instance->did = $did;
-        $instance->disabled = $disabled;
-        $instance->role = $role;
+        if ($disabled !== null) {
+            $instance->disabled = $disabled;
+        }
+        if ($role !== null) {
+            $instance->role = $role;
+        }
 
         return $instance;
     }

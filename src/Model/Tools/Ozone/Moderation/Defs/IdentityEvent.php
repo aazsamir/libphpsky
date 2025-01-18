@@ -26,6 +26,21 @@ class IdentityEvent implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['timestamp'];
+    }
+
     public static function new(
         \DateTimeInterface $timestamp,
         ?string $comment = null,
@@ -35,10 +50,18 @@ class IdentityEvent implements \Aazsamir\Libphpsky\ATProtoObject
     ): self {
         $instance = new self();
         $instance->timestamp = $timestamp;
-        $instance->comment = $comment;
-        $instance->handle = $handle;
-        $instance->pdsHost = $pdsHost;
-        $instance->tombstone = $tombstone;
+        if ($comment !== null) {
+            $instance->comment = $comment;
+        }
+        if ($handle !== null) {
+            $instance->handle = $handle;
+        }
+        if ($pdsHost !== null) {
+            $instance->pdsHost = $pdsHost;
+        }
+        if ($tombstone !== null) {
+            $instance->tombstone = $tombstone;
+        }
 
         return $instance;
     }

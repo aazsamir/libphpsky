@@ -25,6 +25,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return [];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\CreateResult|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\UpdateResult|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\DeleteResult> $results
      */
@@ -33,8 +48,12 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         ?array $results = [],
     ): self {
         $instance = new self();
-        $instance->commit = $commit;
-        $instance->results = $results;
+        if ($commit !== null) {
+            $instance->commit = $commit;
+        }
+        if ($results !== null) {
+            $instance->results = $results;
+        }
 
         return $instance;
     }

@@ -25,6 +25,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['subjectStatuses'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\SubjectStatusView> $subjectStatuses
      */
@@ -32,7 +47,9 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     {
         $instance = new self();
         $instance->subjectStatuses = $subjectStatuses;
-        $instance->cursor = $cursor;
+        if ($cursor !== null) {
+            $instance->cursor = $cursor;
+        }
 
         return $instance;
     }

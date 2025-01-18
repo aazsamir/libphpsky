@@ -23,6 +23,21 @@ class Delete implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['collection', 'rkey'];
+    }
+
     public static function new(string $collection, string $rkey): self
     {
         $instance = new self();

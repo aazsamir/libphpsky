@@ -26,6 +26,21 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['repo', 'collection', 'rkey'];
+    }
+
     public static function new(
         string $repo,
         string $collection,
@@ -37,8 +52,12 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->repo = $repo;
         $instance->collection = $collection;
         $instance->rkey = $rkey;
-        $instance->swapRecord = $swapRecord;
-        $instance->swapCommit = $swapCommit;
+        if ($swapRecord !== null) {
+            $instance->swapRecord = $swapRecord;
+        }
+        if ($swapCommit !== null) {
+            $instance->swapCommit = $swapCommit;
+        }
 
         return $instance;
     }

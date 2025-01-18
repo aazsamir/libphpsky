@@ -25,6 +25,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['options'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Tools\Ozone\Setting\Defs\Option> $options
      */
@@ -32,7 +47,9 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     {
         $instance = new self();
         $instance->options = $options;
-        $instance->cursor = $cursor;
+        if ($cursor !== null) {
+            $instance->cursor = $cursor;
+        }
 
         return $instance;
     }

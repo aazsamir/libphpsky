@@ -24,6 +24,21 @@ class ViewBlocked implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['uri', 'blocked', 'author'];
+    }
+
     public static function new(
         string $uri,
         bool $blocked,
@@ -32,7 +47,9 @@ class ViewBlocked implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->uri = $uri;
         $instance->blocked = $blocked;
-        $instance->author = $author;
+        if ($author !== null) {
+            $instance->author = $author;
+        }
 
         return $instance;
     }

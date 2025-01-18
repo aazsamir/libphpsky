@@ -30,6 +30,21 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['handle'];
+    }
+
     public static function new(
         string $handle,
         ?string $email = null,
@@ -43,14 +58,30 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     ): self {
         $instance = new self();
         $instance->handle = $handle;
-        $instance->email = $email;
-        $instance->did = $did;
-        $instance->inviteCode = $inviteCode;
-        $instance->verificationCode = $verificationCode;
-        $instance->verificationPhone = $verificationPhone;
-        $instance->password = $password;
-        $instance->recoveryKey = $recoveryKey;
-        $instance->plcOp = $plcOp;
+        if ($email !== null) {
+            $instance->email = $email;
+        }
+        if ($did !== null) {
+            $instance->did = $did;
+        }
+        if ($inviteCode !== null) {
+            $instance->inviteCode = $inviteCode;
+        }
+        if ($verificationCode !== null) {
+            $instance->verificationCode = $verificationCode;
+        }
+        if ($verificationPhone !== null) {
+            $instance->verificationPhone = $verificationPhone;
+        }
+        if ($password !== null) {
+            $instance->password = $password;
+        }
+        if ($recoveryKey !== null) {
+            $instance->recoveryKey = $recoveryKey;
+        }
+        if ($plcOp !== null) {
+            $instance->plcOp = $plcOp;
+        }
 
         return $instance;
     }

@@ -20,6 +20,11 @@ class GetEvent implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function query(int $id): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventViewDetail
     {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventViewDetail::fromArray($this->request($this->argsWithKeys(func_get_args())));

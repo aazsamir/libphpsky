@@ -24,12 +24,31 @@ class ModEventEmail implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['subjectLine'];
+    }
+
     public static function new(string $subjectLine, ?string $content = null, ?string $comment = null): self
     {
         $instance = new self();
         $instance->subjectLine = $subjectLine;
-        $instance->content = $content;
-        $instance->comment = $comment;
+        if ($content !== null) {
+            $instance->content = $content;
+        }
+        if ($comment !== null) {
+            $instance->comment = $comment;
+        }
 
         return $instance;
     }

@@ -23,11 +23,28 @@ class StatusAttr implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['applied'];
+    }
+
     public static function new(bool $applied, ?string $ref = null): self
     {
         $instance = new self();
         $instance->applied = $applied;
-        $instance->ref = $ref;
+        if ($ref !== null) {
+            $instance->ref = $ref;
+        }
 
         return $instance;
     }

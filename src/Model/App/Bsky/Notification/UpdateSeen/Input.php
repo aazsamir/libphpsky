@@ -22,6 +22,21 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['seenAt'];
+    }
+
     public static function new(\DateTimeInterface $seenAt): self
     {
         $instance = new self();

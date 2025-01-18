@@ -23,11 +23,28 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['account'];
+    }
+
     public static function new(string $account, ?string $note = null): self
     {
         $instance = new self();
         $instance->account = $account;
-        $instance->note = $note;
+        if ($note !== null) {
+            $instance->note = $note;
+        }
 
         return $instance;
     }

@@ -22,6 +22,21 @@ class SelfLabel implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['val'];
+    }
+
     public static function new(string $val): self
     {
         $instance = new self();

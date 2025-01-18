@@ -20,6 +20,11 @@ class SendInteractions implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function procedure(Input $input): Output
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\SendInteractions\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

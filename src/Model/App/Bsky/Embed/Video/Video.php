@@ -27,6 +27,21 @@ class Video implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['video'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Caption> $captions
      */
@@ -38,9 +53,15 @@ class Video implements \Aazsamir\Libphpsky\ATProtoObject
     ): self {
         $instance = new self();
         $instance->video = $video;
-        $instance->captions = $captions;
-        $instance->alt = $alt;
-        $instance->aspectRatio = $aspectRatio;
+        if ($captions !== null) {
+            $instance->captions = $captions;
+        }
+        if ($alt !== null) {
+            $instance->alt = $alt;
+        }
+        if ($aspectRatio !== null) {
+            $instance->aspectRatio = $aspectRatio;
+        }
 
         return $instance;
     }

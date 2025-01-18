@@ -29,6 +29,21 @@ class Postgate implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['post', 'createdAt'];
+    }
+
     /**
      * @param array<string> $detachedEmbeddingUris
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Postgate\DisableRule> $embeddingRules
@@ -42,8 +57,12 @@ class Postgate implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->createdAt = $createdAt;
         $instance->post = $post;
-        $instance->detachedEmbeddingUris = $detachedEmbeddingUris;
-        $instance->embeddingRules = $embeddingRules;
+        if ($detachedEmbeddingUris !== null) {
+            $instance->detachedEmbeddingUris = $detachedEmbeddingUris;
+        }
+        if ($embeddingRules !== null) {
+            $instance->embeddingRules = $embeddingRules;
+        }
 
         return $instance;
     }

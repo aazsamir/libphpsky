@@ -30,6 +30,21 @@ class InviteCode implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['code', 'available', 'disabled', 'forAccount', 'createdBy', 'createdAt', 'uses'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCodeUse> $uses
      */

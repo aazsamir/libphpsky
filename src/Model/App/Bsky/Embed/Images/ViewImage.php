@@ -25,6 +25,21 @@ class ViewImage implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['thumb', 'fullsize', 'alt'];
+    }
+
     public static function new(
         string $thumb,
         string $fullsize,
@@ -35,7 +50,9 @@ class ViewImage implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->thumb = $thumb;
         $instance->fullsize = $fullsize;
         $instance->alt = $alt;
-        $instance->aspectRatio = $aspectRatio;
+        if ($aspectRatio !== null) {
+            $instance->aspectRatio = $aspectRatio;
+        }
 
         return $instance;
     }

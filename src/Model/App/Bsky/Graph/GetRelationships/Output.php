@@ -25,6 +25,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['relationships'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\Relationship|\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\NotFoundActor> $relationships
      */
@@ -32,7 +47,9 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     {
         $instance = new self();
         $instance->relationships = $relationships;
-        $instance->actor = $actor;
+        if ($actor !== null) {
+            $instance->actor = $actor;
+        }
 
         return $instance;
     }

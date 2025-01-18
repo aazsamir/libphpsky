@@ -24,6 +24,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['view', 'isOnline', 'isValid'];
+    }
+
     public static function new(
         bool $isOnline,
         bool $isValid,
@@ -32,7 +47,9 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->isOnline = $isOnline;
         $instance->isValid = $isValid;
-        $instance->view = $view;
+        if ($view !== null) {
+            $instance->view = $view;
+        }
 
         return $instance;
     }

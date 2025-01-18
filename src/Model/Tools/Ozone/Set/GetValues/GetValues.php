@@ -20,6 +20,11 @@ class GetValues implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function query(string $name, ?int $limit = null, ?string $cursor = null): Output
     {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\GetValues\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

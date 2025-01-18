@@ -35,6 +35,21 @@ class ModEventView implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['id', 'event', 'subject', 'subjectBlobCids', 'createdBy', 'createdAt'];
+    }
+
     /**
      * @param array<string> $subjectBlobCids
      */
@@ -55,8 +70,12 @@ class ModEventView implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->subjectBlobCids = $subjectBlobCids;
         $instance->createdBy = $createdBy;
         $instance->createdAt = $createdAt;
-        $instance->creatorHandle = $creatorHandle;
-        $instance->subjectHandle = $subjectHandle;
+        if ($creatorHandle !== null) {
+            $instance->creatorHandle = $creatorHandle;
+        }
+        if ($subjectHandle !== null) {
+            $instance->subjectHandle = $subjectHandle;
+        }
 
         return $instance;
     }

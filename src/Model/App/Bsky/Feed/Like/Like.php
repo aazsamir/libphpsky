@@ -23,13 +23,30 @@ class Like implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['subject', 'createdAt'];
+    }
+
     public static function new(
         \DateTimeInterface $createdAt,
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $subject = null,
     ): self {
         $instance = new self();
         $instance->createdAt = $createdAt;
-        $instance->subject = $subject;
+        if ($subject !== null) {
+            $instance->subject = $subject;
+        }
 
         return $instance;
     }

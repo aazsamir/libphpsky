@@ -26,6 +26,21 @@ class Account implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['seq', 'did', 'time', 'active'];
+    }
+
     public static function new(
         int $seq,
         string $did,
@@ -38,7 +53,9 @@ class Account implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->did = $did;
         $instance->time = $time;
         $instance->active = $active;
-        $instance->status = $status;
+        if ($status !== null) {
+            $instance->status = $status;
+        }
 
         return $instance;
     }

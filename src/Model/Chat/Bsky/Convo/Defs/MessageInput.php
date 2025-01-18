@@ -28,6 +28,21 @@ class MessageInput implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['text'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> $facets
      */
@@ -38,8 +53,12 @@ class MessageInput implements \Aazsamir\Libphpsky\ATProtoObject
     ): self {
         $instance = new self();
         $instance->text = $text;
-        $instance->facets = $facets;
-        $instance->embed = $embed;
+        if ($facets !== null) {
+            $instance->facets = $facets;
+        }
+        if ($embed !== null) {
+            $instance->embed = $embed;
+        }
 
         return $instance;
     }

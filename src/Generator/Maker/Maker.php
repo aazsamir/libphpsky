@@ -95,6 +95,11 @@ class Maker
             ->setReturnType('string')
             ->setBody('return self::ID;');
 
+        $class->addMethod('name')
+            ->setStatic()
+            ->setReturnType('string')
+            ->setBody('return self::NAME;');
+
         switch (true) {
             case $def instanceof QueryDef:
                 $class->addTrait('\Aazsamir\Libphpsky\Generator\Prefab\IsQuery');
@@ -329,6 +334,18 @@ class Maker
             }
         }
 
+        $nullableMethod = $class->addMethod('nullable');
+        $nullableMethod->setPublic();
+        $nullableMethod->setReturnType('array');
+        $nullableMethod->setStatic();
+        $nullableMethod->addBody('return [' . implode(', ', array_map(static fn ($name) => "'$name'", $def->nullable() ?? [])) . '];');
+
+        $requiredMethod = $class->addMethod('required');
+        $requiredMethod->setPublic();
+        $requiredMethod->setReturnType('array');
+        $requiredMethod->setStatic();
+        $requiredMethod->addBody('return [' . implode(', ', array_map(static fn ($name) => "'$name'", $def->required() ?? [])) . '];');
+
         return $constructorTypes;
     }
 
@@ -357,9 +374,19 @@ class Maker
                 } else {
                     $parameter->setDefaultValue(null);
                 }
-            }
 
-            $constructor->addBody('$instance->' . $type['name'] . ' = $' . $type['name'] . ';');
+                $nullable = $def->nullable() ? \in_array($type['name'], $def->nullable(), true) : false;
+
+                if ($nullable) {
+                    $constructor->addBody('$instance->' . $type['name'] . ' = $' . $type['name'] . ';');
+                } else {
+                    $constructor->addBody(\sprintf('if ($%s !== null) {', $type['name']));
+                    $constructor->addBody(\sprintf('    $instance->%s = $%s;', $type['name'], $type['name']));
+                    $constructor->addBody('}');
+                }
+            } else {
+                $constructor->addBody(\sprintf('$instance->%s = $%s;', $type['name'], $type['name']));
+            }
         }
 
         $constructor->addBody('');

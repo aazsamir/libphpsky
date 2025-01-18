@@ -20,6 +20,11 @@ class GetProfile implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function query(string $actor): \Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewDetailed
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewDetailed::fromArray($this->request($this->argsWithKeys(func_get_args())));

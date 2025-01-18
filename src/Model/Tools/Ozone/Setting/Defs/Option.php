@@ -31,6 +31,21 @@ class Option implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['key', 'value', 'did', 'scope', 'createdBy', 'lastUpdatedBy'];
+    }
+
     public static function new(
         string $key,
         string $did,
@@ -50,10 +65,18 @@ class Option implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->scope = $scope;
         $instance->createdBy = $createdBy;
         $instance->lastUpdatedBy = $lastUpdatedBy;
-        $instance->description = $description;
-        $instance->createdAt = $createdAt;
-        $instance->updatedAt = $updatedAt;
-        $instance->managerRole = $managerRole;
+        if ($description !== null) {
+            $instance->description = $description;
+        }
+        if ($createdAt !== null) {
+            $instance->createdAt = $createdAt;
+        }
+        if ($updatedAt !== null) {
+            $instance->updatedAt = $updatedAt;
+        }
+        if ($managerRole !== null) {
+            $instance->managerRole = $managerRole;
+        }
 
         return $instance;
     }

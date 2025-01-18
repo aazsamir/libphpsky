@@ -23,11 +23,28 @@ class ModEventMute implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['durationInHours'];
+    }
+
     public static function new(int $durationInHours, ?string $comment = null): self
     {
         $instance = new self();
         $instance->durationInHours = $durationInHours;
-        $instance->comment = $comment;
+        if ($comment !== null) {
+            $instance->comment = $comment;
+        }
 
         return $instance;
     }

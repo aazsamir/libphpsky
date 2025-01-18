@@ -30,6 +30,21 @@ class TemplateView implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['id', 'name', 'contentMarkdown', 'disabled', 'lastUpdatedBy', 'createdAt', 'updatedAt'];
+    }
+
     public static function new(
         string $id,
         string $name,
@@ -49,8 +64,12 @@ class TemplateView implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->lastUpdatedBy = $lastUpdatedBy;
         $instance->createdAt = $createdAt;
         $instance->updatedAt = $updatedAt;
-        $instance->subject = $subject;
-        $instance->lang = $lang;
+        if ($subject !== null) {
+            $instance->subject = $subject;
+        }
+        if ($lang !== null) {
+            $instance->lang = $lang;
+        }
 
         return $instance;
     }

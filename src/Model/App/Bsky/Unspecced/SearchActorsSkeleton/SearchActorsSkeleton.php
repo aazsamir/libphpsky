@@ -20,6 +20,11 @@ class SearchActorsSkeleton implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function query(
         string $q,
         ?string $viewer = null,

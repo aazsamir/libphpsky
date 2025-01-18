@@ -29,6 +29,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['did', 'availableUserDomains'];
+    }
+
     /**
      * @param array<string> $availableUserDomains
      */
@@ -43,10 +58,18 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->availableUserDomains = $availableUserDomains;
         $instance->did = $did;
-        $instance->inviteCodeRequired = $inviteCodeRequired;
-        $instance->phoneVerificationRequired = $phoneVerificationRequired;
-        $instance->links = $links;
-        $instance->contact = $contact;
+        if ($inviteCodeRequired !== null) {
+            $instance->inviteCodeRequired = $inviteCodeRequired;
+        }
+        if ($phoneVerificationRequired !== null) {
+            $instance->phoneVerificationRequired = $phoneVerificationRequired;
+        }
+        if ($links !== null) {
+            $instance->links = $links;
+        }
+        if ($contact !== null) {
+            $instance->contact = $contact;
+        }
 
         return $instance;
     }

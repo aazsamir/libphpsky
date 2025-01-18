@@ -25,6 +25,21 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['uri', 'cid'];
+    }
+
     public static function new(
         string $uri,
         string $cid,
@@ -34,8 +49,12 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         $instance = new self();
         $instance->uri = $uri;
         $instance->cid = $cid;
-        $instance->commit = $commit;
-        $instance->validationStatus = $validationStatus;
+        if ($commit !== null) {
+            $instance->commit = $commit;
+        }
+        if ($validationStatus !== null) {
+            $instance->validationStatus = $validationStatus;
+        }
 
         return $instance;
     }

@@ -19,6 +19,11 @@ class SendMessage implements \Aazsamir\Libphpsky\Action
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
     public function procedure(Input $input): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView
     {
         return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView::fromArray($this->request($this->argsWithKeys(func_get_args())));

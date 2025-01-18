@@ -37,6 +37,21 @@ class ListView implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['uri', 'cid', 'creator', 'name', 'purpose', 'indexedAt'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> $descriptionFacets
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> $labels
@@ -60,14 +75,30 @@ class ListView implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->cid = $cid;
         $instance->name = $name;
         $instance->indexedAt = $indexedAt;
-        $instance->creator = $creator;
-        $instance->purpose = $purpose;
-        $instance->description = $description;
-        $instance->descriptionFacets = $descriptionFacets;
-        $instance->avatar = $avatar;
-        $instance->listItemCount = $listItemCount;
-        $instance->labels = $labels;
-        $instance->viewer = $viewer;
+        if ($creator !== null) {
+            $instance->creator = $creator;
+        }
+        if ($purpose !== null) {
+            $instance->purpose = $purpose;
+        }
+        if ($description !== null) {
+            $instance->description = $description;
+        }
+        if ($descriptionFacets !== null) {
+            $instance->descriptionFacets = $descriptionFacets;
+        }
+        if ($avatar !== null) {
+            $instance->avatar = $avatar;
+        }
+        if ($listItemCount !== null) {
+            $instance->listItemCount = $listItemCount;
+        }
+        if ($labels !== null) {
+            $instance->labels = $labels;
+        }
+        if ($viewer !== null) {
+            $instance->viewer = $viewer;
+        }
 
         return $instance;
     }

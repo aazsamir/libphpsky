@@ -28,6 +28,21 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['id'];
+    }
+
     public static function new(
         string $id,
         ?string $name = null,
@@ -39,12 +54,24 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     ): self {
         $instance = new self();
         $instance->id = $id;
-        $instance->name = $name;
-        $instance->lang = $lang;
-        $instance->contentMarkdown = $contentMarkdown;
-        $instance->subject = $subject;
-        $instance->updatedBy = $updatedBy;
-        $instance->disabled = $disabled;
+        if ($name !== null) {
+            $instance->name = $name;
+        }
+        if ($lang !== null) {
+            $instance->lang = $lang;
+        }
+        if ($contentMarkdown !== null) {
+            $instance->contentMarkdown = $contentMarkdown;
+        }
+        if ($subject !== null) {
+            $instance->subject = $subject;
+        }
+        if ($updatedBy !== null) {
+            $instance->updatedBy = $updatedBy;
+        }
+        if ($disabled !== null) {
+            $instance->disabled = $disabled;
+        }
 
         return $instance;
     }

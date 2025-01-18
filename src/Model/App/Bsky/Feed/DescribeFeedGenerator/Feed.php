@@ -22,6 +22,21 @@ class Feed implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['uri'];
+    }
+
     public static function new(string $uri): self
     {
         $instance = new self();

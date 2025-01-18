@@ -39,6 +39,21 @@ class GeneratorView implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['uri', 'cid', 'did', 'creator', 'displayName', 'indexedAt'];
+    }
+
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> $descriptionFacets
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> $labels
@@ -65,15 +80,33 @@ class GeneratorView implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->did = $did;
         $instance->displayName = $displayName;
         $instance->indexedAt = $indexedAt;
-        $instance->creator = $creator;
-        $instance->description = $description;
-        $instance->descriptionFacets = $descriptionFacets;
-        $instance->avatar = $avatar;
-        $instance->likeCount = $likeCount;
-        $instance->acceptsInteractions = $acceptsInteractions;
-        $instance->labels = $labels;
-        $instance->viewer = $viewer;
-        $instance->contentMode = $contentMode;
+        if ($creator !== null) {
+            $instance->creator = $creator;
+        }
+        if ($description !== null) {
+            $instance->description = $description;
+        }
+        if ($descriptionFacets !== null) {
+            $instance->descriptionFacets = $descriptionFacets;
+        }
+        if ($avatar !== null) {
+            $instance->avatar = $avatar;
+        }
+        if ($likeCount !== null) {
+            $instance->likeCount = $likeCount;
+        }
+        if ($acceptsInteractions !== null) {
+            $instance->acceptsInteractions = $acceptsInteractions;
+        }
+        if ($labels !== null) {
+            $instance->labels = $labels;
+        }
+        if ($viewer !== null) {
+            $instance->viewer = $viewer;
+        }
+        if ($contentMode !== null) {
+            $instance->contentMode = $contentMode;
+        }
 
         return $instance;
     }

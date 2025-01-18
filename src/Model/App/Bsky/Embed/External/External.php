@@ -25,13 +25,30 @@ class External implements \Aazsamir\Libphpsky\ATProtoObject
         return self::ID;
     }
 
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['uri', 'title', 'description'];
+    }
+
     public static function new(string $uri, string $title, string $description, ?string $thumb = null): self
     {
         $instance = new self();
         $instance->uri = $uri;
         $instance->title = $title;
         $instance->description = $description;
-        $instance->thumb = $thumb;
+        if ($thumb !== null) {
+            $instance->thumb = $thumb;
+        }
 
         return $instance;
     }
