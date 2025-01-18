@@ -7,7 +7,7 @@ Libphpsky is a PHP library designed to interact with the Bluesky decentralized s
 ## Table of Contents
 
 -   [Installation](#installation)
--   [Usage](#usage)
+-   [Documentation](#documentation)
 -   [Features](#features)
 -   [Contributing](#contributing)
 -   [License](#license)
@@ -20,7 +20,11 @@ To install Libphpsky, use Composer:
 composer require aazsamir/libphpsky
 ```
 
-## Usage
+## Documentation
+
+Check docs at [https://aazsamir.github.io/libphpsky/](https://aazsamir.github.io/libphpsky/).
+
+### Usage
 
 Interact with the protocol using plain Atproto types:
 
