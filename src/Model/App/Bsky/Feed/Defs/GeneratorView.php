@@ -31,6 +31,7 @@ class GeneratorView implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
     public ?array $labels = [];
     public ?GeneratorViewerState $viewer;
+    public ?string $contentMode;
     public \DateTimeInterface $indexedAt;
 
     public static function id(): string
@@ -56,6 +57,7 @@ class GeneratorView implements \Aazsamir\Libphpsky\ATProtoObject
         ?bool $acceptsInteractions = null,
         ?array $labels = null,
         ?GeneratorViewerState $viewer = null,
+        ?string $contentMode = null,
     ): self {
         $instance = new self();
         $instance->uri = $uri;
@@ -71,6 +73,7 @@ class GeneratorView implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->acceptsInteractions = $acceptsInteractions;
         $instance->labels = $labels;
         $instance->viewer = $viewer;
+        $instance->contentMode = $contentMode;
 
         return $instance;
     }

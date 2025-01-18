@@ -26,6 +26,7 @@ class Generator implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels|null */
     public mixed $labels;
+    public ?string $contentMode;
     public \DateTimeInterface $createdAt;
 
     public static function id(): string
@@ -45,6 +46,7 @@ class Generator implements \Aazsamir\Libphpsky\ATProtoObject
         ?string $avatar = null,
         ?bool $acceptsInteractions = null,
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels $labels = null,
+        ?string $contentMode = null,
     ): self {
         $instance = new self();
         $instance->did = $did;
@@ -55,6 +57,7 @@ class Generator implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->avatar = $avatar;
         $instance->acceptsInteractions = $acceptsInteractions;
         $instance->labels = $labels;
+        $instance->contentMode = $contentMode;
 
         return $instance;
     }
