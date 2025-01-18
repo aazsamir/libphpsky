@@ -24,7 +24,7 @@
             <directory>src</directory>
         </include>
         <exclude>
-            <directory>src/ATProto/Model</directory>
+            <directory>src/Model</directory>
         </exclude>
     </source>
 
