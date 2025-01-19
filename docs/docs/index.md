@@ -16,6 +16,12 @@ If you are using Laravel, you can use the [libphpsky-laravel](https://github.com
 composer require aazsamir/libphpsky-laravel
 ```
 
+If you are using Symfony, you can use the [libphpsky-symfony](https://github.com/aazsamir/libphpsky-symfony) package.
+
+```bash
+composer require aazsamir/libphpsky-symfony
+```
+
 ## Usage
 
 Get list of posts from a `bsky.app` user:

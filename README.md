@@ -26,6 +26,12 @@ For integration with Laravel, use [`aazsamir/libphpsky-laravel`](https://github.
 composer require aazsamir/libphpsky-laravel
 ```
 
+For integration with Symfony, use [`aazsamir/libphpsky-symfony`](https://github.com/aazsamir/libphpsky-symfony) package:
+
+```sh
+composer require aazsamir/libphpsky-symfony
+```
+
 ## Documentation
 
 Check docs at [https://aazsamir.github.io/libphpsky/](https://aazsamir.github.io/libphpsky/).
