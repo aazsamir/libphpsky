@@ -133,4 +133,41 @@ final class AuthAwareClientTest extends TestCase
             $this->sessionStore->retrieve($this->authConfig)->getRefreshToken(),
         );
     }
+
+    public function testSessionRequest(): void
+    {
+        $client = new AuthAwareClient(
+            $this->mocked,
+            $this->authConfig,
+            $this->sessionStore,
+            $this->createSession,
+            $this->refreshSession,
+        );
+
+        $this->createSession->expects(self::never())->method('procedure');
+        $this->refreshSession->expects(self::never())->method('procedure');
+
+        $client->sendRequest($this->createRequest(uri: 'http://example.com/xrpc/com.atproto.server.createSession'));
+        $got = $this->mocked->requests[0];
+        
+        self::assertFalse($got->hasHeader('Authorization'));
+    }
+
+    public function testAuthorizedRequest(): void
+    {
+        $client = new AuthAwareClient(
+            $this->mocked,
+            $this->authConfig,
+            $this->sessionStore,
+            $this->createSession,
+            $this->refreshSession,
+        );
+
+        $this->createSession->expects(self::never())->method('procedure');
+        $this->refreshSession->expects(self::never())->method('procedure');
+        $client->sendRequest($this->createRequest(headers: ['Authorization' => 'token']));
+
+        $got = $this->mocked->requests[0];
+        self::assertEquals('token', $got->getHeaderLine('Authorization'));
+    }
 }
