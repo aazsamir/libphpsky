@@ -6,6 +6,11 @@ namespace Aazsamir\Libphpsky\Generator\Prefab;
 
 trait ToArray
 {
+    public function toJson(): string
+    {
+        return json_encode($this->toArray(), \JSON_THROW_ON_ERROR);
+    }
+
     /**
      * @return array<string, mixed>
      */
