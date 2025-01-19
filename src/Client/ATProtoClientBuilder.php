@@ -33,6 +33,11 @@ class ATProtoClientBuilder
         return self::$default;
     }
 
+    public static function setDefault(ATProtoClientInterface $default): void
+    {
+        self::$default = $default;
+    }
+
     public static function default(): self
     {
         $self = new self();
