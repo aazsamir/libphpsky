@@ -454,7 +454,6 @@ class Maker
 
         return match ($classname) {
             'List' => 'ListDef',
-            'Parent' => 'ParentDef',
             default => $classname,
         };
     }
