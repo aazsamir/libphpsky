@@ -43,4 +43,20 @@ final class ATUriTest extends TestCase
 
         self::assertEquals('scheme://host/path', $newUri->toString());
     }
+
+    public function testNew(): void
+    {
+        $uri = ATUri::new('did:plc:something', 'app.bsky.feed.post', '3lery4ketx226');
+
+        self::assertEquals('at://did:plc:something/app.bsky.feed.post/3lery4ketx226', (string) $uri);
+    }
+
+    public function testOnlyDid(): void
+    {
+        $uri = ATUri::new('did:plc:something');
+
+        self::assertEquals('at://did:plc:something', $uri->toString());
+        self::assertEmpty($uri->getCollection());
+        self::assertEmpty($uri->getRecordKey());
+    }
 }
