@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Generator\Prefab;
 
 use Aazsamir\Libphpsky\Client\ATProtoClientBuilder;
-use Psr\Http\Client\ClientInterface;
+use Aazsamir\Libphpsky\Client\ATProtoClientInterface;
 
 trait IsQuery
 {
     use IsAction;
 
-    public function __construct(ClientInterface $client, ?string $accessToken = null)
+    public function __construct(ATProtoClientInterface $client, ?string $accessToken = null)
     {
         $this->client = $client;
         $this->token = $accessToken;

@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Generator\Prefab;
 
-use GuzzleHttp\Client;
+use Aazsamir\Libphpsky\Client\ATProtoClientInterface;
 use GuzzleHttp\Psr7\Request;
-use Psr\Http\Client\ClientInterface;
 
 trait IsAction
 {
-    private ClientInterface $client;
+    private ATProtoClientInterface $client;
     private ?string $token = null;
     private ?string $endpoint = 'https://bsky.social/xrpc/';
 
@@ -104,16 +103,12 @@ trait IsAction
         return $args;
     }
 
-    private function client(): ClientInterface
+    private function client(): ATProtoClientInterface
     {
-        if (!isset($this->client)) {
-            $this->client = new Client();
-        }
-
         return $this->client;
     }
 
-    public function withClient(ClientInterface $client): self
+    public function withClient(ATProtoClientInterface $client): self
     {
         $self = clone $this;
         $self->client = $client;
