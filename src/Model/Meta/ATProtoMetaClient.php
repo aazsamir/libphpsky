@@ -9,8 +9,10 @@ class ATProtoMetaClient
     private \Aazsamir\Libphpsky\Client\ATProtoClientInterface $client;
     private ?string $token;
 
-    public function __construct(?\Aazsamir\Libphpsky\Client\ATProtoClientInterface $client = null, ?string $token = null)
-    {
+    public function __construct(
+        ?\Aazsamir\Libphpsky\Client\ATProtoClientInterface $client = null,
+        ?string $token = null,
+    ) {
         if ($client === null) {
             $client = \Aazsamir\Libphpsky\Client\ATProtoClientBuilder::getDefault();
         }

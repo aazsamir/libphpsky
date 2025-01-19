@@ -6,7 +6,6 @@ namespace Aazsamir\Libphpsky\Generator\Maker;
 
 use Aazsamir\Libphpsky\Action;
 use Aazsamir\Libphpsky\ATProtoObject;
-use Aazsamir\Libphpsky\Client\ATProtoClient;
 use Aazsamir\Libphpsky\Client\ATProtoClientBuilder;
 use Aazsamir\Libphpsky\Client\ATProtoClientInterface;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\ArrayDef;
@@ -104,13 +103,11 @@ class Maker
             case $def instanceof QueryDef:
                 $class->addTrait('\Aazsamir\Libphpsky\Generator\Prefab\IsQuery');
                 $class->addImplement(Action::class);
-                $method = new Method('query');
+                $method = $class->addMethod('query');
                 $method->setPublic();
 
                 $this->addQueryParameters($method, $def);
                 $this->addQueryReturnType($method, $def);
-
-                $class->addMember($method);
 
                 $this->saveClass($class, $phpNamespace);
 
@@ -119,13 +116,11 @@ class Maker
             case $def instanceof ProcedureDef:
                 $class->addTrait('\Aazsamir\Libphpsky\Generator\Prefab\IsProcedure');
                 $class->addImplement(Action::class);
-                $method = new Method('procedure');
+                $method = $class->addMethod('procedure');
                 $method->setPublic();
 
                 $this->addProcedureParameters($method, $def);
                 $this->addProcedureReturnType($method, $def);
-
-                $class->addMember($method);
 
                 $this->saveClass($class, $phpNamespace);
 
@@ -538,7 +533,7 @@ class Maker
         $metaClient->addMember((new Property('client'))->setPrivate()->setType(ATProtoClientInterface::class));
         $metaClient->addMember((new Property('token'))->setPrivate()->setType('string')->setNullable());
         $constructor = $metaClient->addMethod('__construct');
-        $constructor->addParameter('client')->setType(ATProtoClient::class)->setNullable()->setDefaultValue(null);
+        $constructor->addParameter('client')->setType(ATProtoClientInterface::class)->setNullable()->setDefaultValue(null);
         $constructor->addParameter('token')->setType('string')->setNullable()->setDefaultValue(null);
         $constructor->addBody('if ($client === null) {');
         $constructor->addBody(\sprintf('    $client = \%s::getDefault();', ATProtoClientBuilder::class));

@@ -10,7 +10,10 @@ use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\PhpNamespace;
 use Tests\Unit\TestCase;
 
-class FileSaveClassTest extends TestCase
+/**
+ * @internal
+ */
+final class FileSaveClassTest extends TestCase
 {
     private FileSaveClass $fileSaveClass;
     private MakeConfig $makeConfig;
@@ -47,15 +50,15 @@ class FileSaveClassTest extends TestCase
     {
         $class = new ClassType('TestClass');
         $namespace = new PhpNamespace($this->makeConfig->namespace);
-        
+
         $this->fileSaveClass->save($class, $namespace);
 
-        $this->assertFileExists($this->path . '/TestClass.php');
+        self::assertFileExists($this->path . '/TestClass.php');
 
         $content = file_get_contents($this->path . '/TestClass.php');
 
-        $this->assertStringContainsString('declare(strict_types=1);', $content);
-        $this->assertStringContainsString('namespace Tests\Artifacts;', $content);
-        $this->assertStringContainsString('class TestClass', $content);
+        self::assertStringContainsString('declare(strict_types=1);', $content);
+        self::assertStringContainsString('namespace Tests\Artifacts;', $content);
+        self::assertStringContainsString('class TestClass', $content);
     }
 }

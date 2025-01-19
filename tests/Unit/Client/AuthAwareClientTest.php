@@ -149,7 +149,7 @@ final class AuthAwareClientTest extends TestCase
 
         $client->sendRequest($this->createRequest(uri: 'http://example.com/xrpc/com.atproto.server.createSession'));
         $got = $this->mocked->requests[0];
-        
+
         self::assertFalse($got->hasHeader('Authorization'));
     }
 
