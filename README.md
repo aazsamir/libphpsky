@@ -20,6 +20,12 @@ To install Libphpsky, use Composer:
 composer require aazsamir/libphpsky
 ```
 
+For integration with Laravel, use [`aazsamir/libphpsky-laravel`](https://github.com/aazsamir/libphpsky-laravel) package:
+
+```sh
+composer require aazsamir/libphpsky-laravel
+```
+
 ## Documentation
 
 Check docs at [https://aazsamir.github.io/libphpsky/](https://aazsamir.github.io/libphpsky/).

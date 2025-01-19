@@ -10,6 +10,12 @@ You can install the package via composer:
 composer require aazsamir/libphpsky
 ```
 
+If you are using Laravel, you can use the [libphpsky-laravel](https://github.com/aazsamir/libphpsky-laravel) package.
+
+```bash
+composer require aazsamir/libphpsky-laravel
+```
+
 ## Usage
 
 Get list of posts from a `bsky.app` user:
