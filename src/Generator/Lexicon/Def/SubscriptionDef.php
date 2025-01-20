@@ -50,10 +50,16 @@ class SubscriptionDef implements Def, HasDescription, DefContainer
 
     public function defs(): Defs
     {
-        if ($this->parameters === null) {
-            return new Defs([]);
+        $defs = [];
+
+        if ($this->parameters !== null) {
+            $defs[] = $this->parameters;
         }
 
-        return new Defs([$this->parameters]);
+        if ($this->message !== null) {
+            $defs[] = $this->message->schema();
+        }
+
+        return new Defs($defs);
     }
 }

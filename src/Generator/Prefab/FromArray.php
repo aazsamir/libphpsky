@@ -180,6 +180,22 @@ trait FromArray
             }
 
             if ($propertyType->isBuiltin()) {
+                // ugly handling of blobs, should be refactored
+                if (
+                    \is_array($value)
+                    && $propertyType->getName() === 'string'
+                    && isset($value['$type'])
+                    && $value['$type'] === 'blob'
+                    && isset($value['ref'])
+                    && \is_array($value['ref'])
+                    && isset($value['ref']['$link'])
+                ) {
+                    $link = $value['ref']['$link'];
+                    $instance->{$key} = $link;
+
+                    continue;
+                }
+
                 $instance->{$key} = $value;
 
                 continue;

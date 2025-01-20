@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Prefab;
 
+use Tests\Unit\Prefab\Fixtures\BlobProperty;
 use Tests\Unit\Prefab\Fixtures\DateTimeObject;
 use Tests\Unit\Prefab\Fixtures\NullableObjectArray;
 use Tests\Unit\Prefab\Fixtures\NullProperty;
@@ -146,6 +147,22 @@ final class FromArrayTest extends TestCase
         $instance = DateTimeObject::fromArray($data);
 
         self::assertEquals(new \DateTimeImmutable($date), $instance->date);
+    }
+
+    public function testBlobObject(): void
+    {
+        $data = [
+            'blob' => [
+                '$type' => 'blob',
+                'ref' => [
+                    '$link' => 'something',
+                ],
+            ],
+        ];
+
+        $instance = BlobProperty::fromArray($data);
+
+        self::assertEquals('something', $instance->blob);
     }
 
     private function createPlainObject(): PlainObject
