@@ -17,9 +17,6 @@ class WebSocketClientFactory implements WebSocketClientFactoryInterface
         private string $userAgent = 'Libphpsky/1.0',
     ) {}
 
-    /**
-     * @param array<string, mixed> $args
-     */
     public function create(array $args): \WebSocket\Client
     {
         /** @var string $host */
