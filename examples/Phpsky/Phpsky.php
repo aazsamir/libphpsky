@@ -11,7 +11,10 @@ use Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\ResolveHandle;
 use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\CreateSession;
 use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\Input;
 
-class Phpsky
+/**
+ * @internal
+ */
+final class Phpsky
 {
     /**
      * @var array{

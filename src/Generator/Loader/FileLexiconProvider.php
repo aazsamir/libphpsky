@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Generator\Loader;
 
-class FileLexiconProvider implements LexiconProvider
+/**
+ * @internal
+ */
+final class FileLexiconProvider implements LexiconProvider
 {
     private string $path;
 

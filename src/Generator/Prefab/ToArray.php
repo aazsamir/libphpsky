@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Generator\Prefab;
 
+/**
+ * @internal
+ */
 trait ToArray
 {
     public function toJson(): string

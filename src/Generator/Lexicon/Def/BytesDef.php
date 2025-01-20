@@ -7,7 +7,10 @@ namespace Aazsamir\Libphpsky\Generator\Lexicon\Def;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 
-class BytesDef implements Def
+/**
+ * @internal
+ */
+final class BytesDef implements Def
 {
     public function __construct(
         private readonly string $name,

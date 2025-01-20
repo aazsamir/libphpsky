@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Generator\Lexicon\Def;
 
-class Defs
+/**
+ * @internal
+ */
+final class Defs
 {
     /**
      * @param Def[] $defs

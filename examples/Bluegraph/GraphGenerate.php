@@ -18,8 +18,10 @@ use Aazsamir\Libphpsky\Type\ATUri;
 
 /**
  * This is example code to generate a graph of people who liked our posts and their likes. It can be used further to visualize the graph using Graphviz or any other graph visualization tool.
+ *
+ * @internal
  */
-class GraphGenerate
+final class GraphGenerate
 {
     private ResolveHandle $resolveHandle;
     private GetAuthorFeed $authorFeed;

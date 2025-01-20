@@ -7,7 +7,10 @@ namespace Aazsamir\Libphpsky\Generator\Lexicon\Def;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 
-class UnionDef implements Def
+/**
+ * @internal
+ */
+final class UnionDef implements Def
 {
     /**
      * @var Def[]

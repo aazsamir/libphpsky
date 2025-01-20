@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Examples\Bluegraph;
 
-class Graph
+/**
+ * @internal
+ */
+final class Graph
 {
     /** @var array<string, array<string, string|int|null>> */
     private array $nodes = [];

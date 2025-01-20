@@ -8,7 +8,10 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\Def;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\DefContainer;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\Defs;
 
-class Lexicon
+/**
+ * @internal
+ */
+final class Lexicon
 {
     private Defs $defs;
 

@@ -7,7 +7,10 @@ namespace Aazsamir\Libphpsky\Generator\Lexicon\Def;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 
-class ArrayDef implements Def, DefContainer
+/**
+ * @internal
+ */
+final class ArrayDef implements Def, DefContainer
 {
     public function __construct(
         private readonly string $name,

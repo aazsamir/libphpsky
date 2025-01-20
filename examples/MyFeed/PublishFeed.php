@@ -11,7 +11,10 @@ use Aazsamir\Libphpsky\Model\Com\Atproto\Repo\DeleteRecord;
 use Aazsamir\Libphpsky\Model\Com\Atproto\Repo\PutRecord;
 use Aazsamir\Libphpsky\Model\Meta\ATProtoMetaClient;
 
-class PublishFeed
+/**
+ * @internal
+ */
+final class PublishFeed
 {
     private ATProtoMetaClient $metaClient;
     private AuthConfig $authConfig;

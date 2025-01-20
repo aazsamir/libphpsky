@@ -7,6 +7,9 @@ namespace Aazsamir\Libphpsky\Generator\Prefab;
 use Aazsamir\Libphpsky\Client\ATProtoClientBuilder;
 use Aazsamir\Libphpsky\Client\ATProtoClientInterface;
 
+/**
+ * @internal
+ */
 trait IsProcedure
 {
     use IsAction;

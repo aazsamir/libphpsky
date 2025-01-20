@@ -7,7 +7,10 @@ namespace Aazsamir\Libphpsky\Generator\Lexicon\Def;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 
-class BlobDef implements Def
+/**
+ * @internal
+ */
+final class BlobDef implements Def
 {
     /**
      * @param array<mixed>|null $accept

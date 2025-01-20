@@ -9,7 +9,10 @@ use Nette\PhpGenerator\PhpFile;
 use Nette\PhpGenerator\PhpNamespace;
 use Nette\PhpGenerator\PsrPrinter;
 
-class FileSaveClass implements SaveClass
+/**
+ * @internal
+ */
+final class FileSaveClass implements SaveClass
 {
     public function __construct(
         private readonly MakeConfig $config,

@@ -6,6 +6,9 @@ namespace Aazsamir\Libphpsky\Generator\Loader;
 
 use Generator;
 
+/**
+ * @internal
+ */
 interface LexiconProvider
 {
     /**

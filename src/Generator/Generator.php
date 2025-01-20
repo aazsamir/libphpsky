@@ -11,7 +11,10 @@ use Aazsamir\Libphpsky\Generator\Maker\FileSaveClass;
 use Aazsamir\Libphpsky\Generator\Maker\MakeConfig;
 use Aazsamir\Libphpsky\Generator\Maker\Maker;
 
-class Generator
+/**
+ * @internal
+ */
+final class Generator
 {
     public function generate(): Lexicons
     {

@@ -7,7 +7,10 @@ namespace Aazsamir\Libphpsky\Generator\Lexicon\Def;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 
-class RecordDef implements Def, HasDescription, DefContainer
+/**
+ * @internal
+ */
+final class RecordDef implements Def, HasDescription, DefContainer
 {
     public function __construct(
         private readonly string $name,

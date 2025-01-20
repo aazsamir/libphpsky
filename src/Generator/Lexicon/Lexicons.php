@@ -7,7 +7,10 @@ namespace Aazsamir\Libphpsky\Generator\Lexicon;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\Def;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\DefContainer;
 
-class Lexicons
+/**
+ * @internal
+ */
+final class Lexicons
 {
     /**
      * @param Lexicon[] $lexicons

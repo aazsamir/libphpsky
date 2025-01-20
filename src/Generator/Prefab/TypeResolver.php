@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Generator\Prefab;
 
-class TypeResolver
+/**
+ * @internal
+ */
+final class TypeResolver
 {
     /**
      * @param string $type in form of `app.bsky.feed.defs#postView`

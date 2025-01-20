@@ -13,7 +13,10 @@ use Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedSkeleton;
 use Aazsamir\Libphpsky\Model\Meta\ATProtoMetaClient;
 use Aazsamir\Libphpsky\Type\ATUri;
 
-class FeedGeneration
+/**
+ * @internal
+ */
+final class FeedGeneration
 {
     private ATProtoMetaClient $metaClient;
     private AuthConfig $authConfig;

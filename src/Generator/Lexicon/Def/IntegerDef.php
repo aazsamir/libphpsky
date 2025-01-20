@@ -7,7 +7,10 @@ namespace Aazsamir\Libphpsky\Generator\Lexicon\Def;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 
-class IntegerDef implements Def
+/**
+ * @internal
+ */
+final class IntegerDef implements Def
 {
     /**
      * @param string[]|null $enum

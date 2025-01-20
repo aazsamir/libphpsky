@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Generator\Lexicon\Def;
 
-class IOData
+/**
+ * @internal
+ */
+final class IOData
 {
     public function __construct(
         private readonly string $encoding,

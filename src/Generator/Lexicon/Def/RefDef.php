@@ -7,7 +7,10 @@ namespace Aazsamir\Libphpsky\Generator\Lexicon\Def;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 
-class RefDef implements Def
+/**
+ * @internal
+ */
+final class RefDef implements Def
 {
     private Def $resolvedDef;
 

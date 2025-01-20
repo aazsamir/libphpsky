@@ -11,7 +11,10 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\UnionDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicons;
 
-class RefResolver
+/**
+ * @internal
+ */
+final class RefResolver
 {
     public function resolveRefs(Lexicons $lexicons): Lexicons
     {

@@ -33,7 +33,10 @@ use Nette\PhpGenerator\PhpNamespace;
 use Nette\PhpGenerator\Property;
 use Nette\PhpGenerator\Type;
 
-class Maker
+/**
+ * @internal
+ */
+final class Maker
 {
     /**
      * @var array<string, bool>

@@ -29,7 +29,10 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicons;
 use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 
-class Loader
+/**
+ * @internal
+ */
+final class Loader
 {
     public function __construct(
         private LexiconProvider $lexiconProvider,

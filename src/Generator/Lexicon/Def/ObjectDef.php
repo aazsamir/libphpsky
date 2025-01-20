@@ -7,7 +7,10 @@ namespace Aazsamir\Libphpsky\Generator\Lexicon\Def;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 
-class ObjectDef implements Def, DefContainer
+/**
+ * @internal
+ */
+final class ObjectDef implements Def, DefContainer
 {
     /**
      * @param string[]|null $required

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Generator\Prefab;
 
+/**
+ * @internal
+ */
 trait FromArray
 {
     public static function fromArray(mixed $data): self

@@ -7,6 +7,9 @@ namespace Aazsamir\Libphpsky\Generator\Prefab;
 use Aazsamir\Libphpsky\Client\ATProtoClientInterface;
 use GuzzleHttp\Psr7\Request;
 
+/**
+ * @internal
+ */
 trait IsAction
 {
     private ATProtoClientInterface $client;
