@@ -13,7 +13,10 @@ use Psr\Http\Message\ResponseInterface;
 
 class AmphpClientAdapter implements ATProtoClientInterface
 {
-    public function __construct(private DelegateHttpClient $client) {}
+    public function __construct(
+        private DelegateHttpClient $client,
+        private string $userAgent = 'Libphpsky/1.0',
+    ) {}
 
     public function sendRequest(RequestInterface $request): ResponseInterface
     {
@@ -32,6 +35,7 @@ class AmphpClientAdapter implements ATProtoClientInterface
             $amRequest->addHeader($name, $values);
         }
 
+        $amRequest->addHeader('User-Agent', $this->userAgent);
         $amResponse = $this->client->request($amRequest, new NullCancellation());
 
         return new Response(

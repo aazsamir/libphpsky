@@ -14,6 +14,7 @@ class WebSocketClientFactory
             'wss://jetstream1.us-west.bsky.network/subscribe',
             'wss://jetstream2.us-west.bsky.network/subscribe',
         ],
+        private string $userAgent = 'Libphpsky/1.0',
     ) {}
 
     /**
@@ -32,7 +33,7 @@ class WebSocketClientFactory
         $client = new \WebSocket\Client($host);
         $client
             ->addMiddleware(new \WebSocket\Middleware\CloseHandler())
-            ->addHeader('User-Agent', 'Libphpsky');
+            ->addHeader('User-Agent', $this->userAgent);
 
         return $client;
     }

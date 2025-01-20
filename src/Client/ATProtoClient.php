@@ -12,10 +12,13 @@ class ATProtoClient implements ATProtoClientInterface
 {
     public function __construct(
         private ClientInterface $client,
+        private string $userAgent = 'Libphpsky/1.0',
     ) {}
 
     public function sendRequest(RequestInterface $request): ResponseInterface
     {
+        $request = $request->withHeader('User-Agent', $this->userAgent);
+
         return $this->client->sendRequest($request);
     }
 }
