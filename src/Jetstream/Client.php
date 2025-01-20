@@ -19,6 +19,7 @@ interface Client
         array $wantedDids = [],
         ?int $maxMessageSizeBytes = null,
         ?string $cursor = null,
+        bool $compress = true,
     ): \Generator;
 
     public function stop(): void;

@@ -19,7 +19,7 @@ class WssClient implements Client
     private bool $stop = false;
 
     public function __construct(
-        private WebSocketClientFactory $clientFactory,
+        private WebSocketClientFactoryInterface $clientFactory,
     ) {}
 
     public function subscribe(
@@ -27,6 +27,7 @@ class WssClient implements Client
         array $wantedDids = [],
         ?int $maxMessageSizeBytes = null,
         ?string $cursor = null,
+        bool $compress = true,
     ): \Generator {
         $args = [];
 
@@ -44,6 +45,10 @@ class WssClient implements Client
 
         if ($cursor) {
             $args['cursor'] = $cursor;
+        }
+
+        if ($compress) {
+            $args['compress'] = $compress;
         }
 
         $client = $this->clientFactory->create($args);
@@ -81,7 +86,7 @@ class WssClient implements Client
                     throw new JetstreamException('Invalid did');
                 }
 
-                $timeUs = new \DateTimeImmutable('@' . $message['time_us']);
+                $timeUs = new \DateTimeImmutable('@' . (int) $message['time_us'] / 1_000_000);
                 $did = $message['did'];
 
                 switch (true) {

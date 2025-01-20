@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Jetstream;
 
-class WebSocketClientFactory
+class WebSocketClientFactory implements WebSocketClientFactoryInterface
 {
     /** @phpstan-ignore-next-line */
     public function __construct(
