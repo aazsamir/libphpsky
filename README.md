@@ -100,6 +100,7 @@ Check `examples` directory for more examples.
 -   Authorization and automatic session management
 -   Query caching
 -   Amphp client support
+-   Subscriptions over WebSockets
 
 ## Contributing
 
