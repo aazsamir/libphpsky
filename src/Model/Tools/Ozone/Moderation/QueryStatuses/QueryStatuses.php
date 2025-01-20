@@ -63,6 +63,9 @@ class QueryStatuses implements \Aazsamir\Libphpsky\Action
         ?string $cursor = null,
         ?array $collections = null,
         ?string $subjectType = null,
+        ?int $minAccountSuspendCount = null,
+        ?int $minReportedRecordsCount = null,
+        ?int $minTakendownRecordsCount = null,
     ): Output {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryStatuses\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

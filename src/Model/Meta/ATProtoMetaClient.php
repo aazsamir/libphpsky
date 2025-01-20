@@ -1711,6 +1711,9 @@ class ATProtoMetaClient
         ?string $cursor = null,
         ?array $collections = null,
         ?string $subjectType = null,
+        ?int $minAccountSuspendCount = null,
+        ?int $minReportedRecordsCount = null,
+        ?int $minTakendownRecordsCount = null,
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryStatuses\Output {
         $action = new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryStatuses\QueryStatuses($this->client, $this->token);
         return $action->query(...func_get_args());

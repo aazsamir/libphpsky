@@ -42,6 +42,8 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<string>|null */
     public ?array $tags = [];
+    public ?AccountStats $accountStats;
+    public ?RecordsStats $recordsStats;
 
     public static function id(): string
     {
@@ -87,6 +89,8 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
         ?bool $appealed = null,
         ?\DateTimeInterface $suspendUntil = null,
         ?array $tags = [],
+        ?AccountStats $accountStats = null,
+        ?RecordsStats $recordsStats = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -137,6 +141,12 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($tags !== null) {
             $instance->tags = $tags;
+        }
+        if ($accountStats !== null) {
+            $instance->accountStats = $accountStats;
+        }
+        if ($recordsStats !== null) {
+            $instance->recordsStats = $recordsStats;
         }
 
         return $instance;
