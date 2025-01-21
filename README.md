@@ -38,26 +38,7 @@ Check docs at [https://aazsamir.github.io/libphpsky/](https://aazsamir.github.io
 
 ### Usage
 
-Interact with the protocol using plain Atproto types:
-
-```php
-$createSession = new CreateSession();
-$input = Input::new(
-    identifier: $username,
-    password: $password,
-);
-$response = $createSession->procedure($input);
-$accessJwt = $response->accessJwt;
-
-$resolveHandle = new ResolveHandle();
-$response = $resolveHandle->query('bsky.app');
-$did = $response->did;
-
-$getProfile = new GetProfile();
-$response = $getProfile->withAuth($accessJwt)->query($did);
-```
-
-Libphpsky also provides a client for a more streamlined experience. The default implementation handles authorization out of the box by providing `ATPROTO_LOGIN` and `ATPROTO_PASSWORD` environment variables. If the session is stale, it will automatically refresh it.
+The default implementation handles authorization out of the box by providing `ATPROTO_LOGIN` and `ATPROTO_PASSWORD` environment variables. If the session is stale, it will automatically refresh it.
 
 ```php
 $resolveHandle = ResolveHandle::default();
