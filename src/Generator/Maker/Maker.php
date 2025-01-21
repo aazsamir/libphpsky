@@ -83,60 +83,24 @@ final class Maker
             namespace: $phpNamespace,
         );
 
-        $class->addConstant('NAME', $def->name());
-        $class->addConstant('ID', $def->lexicon()->id());
-
-        if ($def instanceof HasDescription && $def->description()) {
-            $class->addComment($def->description());
-        }
-
-        $class->addComment($def->type()->value);
-
-        $class->addMethod('id')
-            ->setStatic()
-            ->setReturnType('string')
-            ->setBody('return self::ID;');
-
-        $class->addMethod('name')
-            ->setStatic()
-            ->setReturnType('string')
-            ->setBody('return self::NAME;');
+        $this->initializeClass($class, $def);
+        $this->addCommonMethods($class);
 
         switch (true) {
             case $def instanceof QueryDef:
-                $class->addTrait('\Aazsamir\Libphpsky\Generator\Prefab\IsQuery');
-                $class->addImplement(Action::class);
-                $method = $class->addMethod('query');
-                $method->setPublic();
-
-                $this->addQueryParameters($method, $def);
-                $this->addQueryReturnType($method, $def);
-
+                $this->createQuery($class, $def);
                 $this->saveClass($class, $phpNamespace);
 
                 break;
 
             case $def instanceof ProcedureDef:
-                $class->addTrait('\Aazsamir\Libphpsky\Generator\Prefab\IsProcedure');
-                $class->addImplement(Action::class);
-                $method = $class->addMethod('procedure');
-                $method->setPublic();
-
-                $this->addProcedureParameters($method, $def);
-                $this->addProcedureReturnType($method, $def);
-
+                $this->createProcedure($class, $def);
                 $this->saveClass($class, $phpNamespace);
 
                 break;
 
             case $def instanceof ObjectDef:
-                $class->addTrait('\Aazsamir\Libphpsky\Generator\Prefab\FromArray');
-                $class->addTrait('\Aazsamir\Libphpsky\Generator\Prefab\ToArray');
-                $class->addImplement(ATProtoObject::class);
-
-                $constructorTypes = $this->addObjectParameters($class, $def);
-                $this->addObjectConstructor($class, $def, $constructorTypes);
-
+                $this->createObject($class, $def);
                 $this->saveClass($class, $phpNamespace);
 
                 break;
@@ -149,37 +113,75 @@ final class Maker
         }
     }
 
+    private function initializeClass(ClassType $class, Def $def): void
+    {
+        $class->addConstant('NAME', $def->name());
+        $class->addConstant('ID', $def->lexicon()->id());
+
+        if ($def instanceof HasDescription && $def->description()) {
+            $class->addComment($def->description());
+        }
+
+        $class->addComment($def->type()->value);
+    }
+
+    private function addCommonMethods(ClassType $class): void
+    {
+        $class->addMethod('id')
+            ->setStatic()
+            ->setReturnType('string')
+            ->setBody('return self::ID;');
+
+        $class->addMethod('name')
+            ->setStatic()
+            ->setReturnType('string')
+            ->setBody('return self::NAME;');
+    }
+
+    private function createQuery(ClassType $class, QueryDef $def): void
+    {
+        $class->addTrait('\Aazsamir\Libphpsky\Generator\Prefab\IsQuery');
+        $class->addImplement(Action::class);
+        $method = $class->addMethod('query');
+        $method->setPublic();
+
+        $this->addQueryParameters($method, $def);
+        $this->addQueryReturnType($method, $def);
+    }
+
     private function addQueryParameters(Method $method, QueryDef $def): void
     {
-        if ($def->parameters()) {
-            $properties = $def->parameters()->properties()->toArray();
+        if (!$def->parameters()) {
+            return;
+        }
 
-            // sort by nullability
-            $required = $def->parameters()->required() ?? [];
-            usort($properties, static fn ($a, $b) => !\in_array($a->name(), $required, true) <=> !\in_array($b->name(), $required, true));
+        $properties = $def->parameters()->properties()->toArray();
 
-            foreach ($properties as $property) {
-                $propertyName = $property->name();
-                $property = $this->unref($property);
-                $parameter = $method->addParameter($propertyName);
-                $parameterType = $this->namespaceAndClassname($property);
-                $nullable = !\in_array($propertyName, $def->parameters()->required() ?? [], true);
+        // sort by nullability
+        $required = $def->parameters()->required() ?? [];
+        usort($properties, static fn ($a, $b) => !\in_array($a->name(), $required, true) <=> !\in_array($b->name(), $required, true));
 
-                if ($property instanceof ArrayDef) {
-                    $parameter->setType('array');
-                    $method->addComment(
-                        '@param '
-                            . ($nullable ? '?' : '')
-                            . $parameterType
-                            . ' $' . $propertyName
-                    );
-                } else {
-                    $parameter->setType($parameterType);
-                }
+        foreach ($properties as $property) {
+            $propertyName = $property->name();
+            $property = $this->unref($property);
+            $parameter = $method->addParameter($propertyName);
+            $parameterType = $this->namespaceAndClassname($property);
+            $nullable = !\in_array($propertyName, $def->parameters()->required() ?? [], true);
 
-                if ($nullable) {
-                    $parameter->setNullable(true)->setDefaultValue(null);
-                }
+            if ($property instanceof ArrayDef) {
+                $parameter->setType('array');
+                $method->addComment(
+                    '@param '
+                        . ($nullable ? '?' : '')
+                        . $parameterType
+                        . ' $' . $propertyName
+                );
+            } else {
+                $parameter->setType($parameterType);
+            }
+
+            if ($nullable) {
+                $parameter->setNullable(true)->setDefaultValue(null);
             }
         }
     }
@@ -203,6 +205,17 @@ final class Maker
             $body = 'return $this->request($this->argsWithKeys(func_get_args()));';
             $method->addBody($body);
         }
+    }
+
+    private function createProcedure(ClassType $class, ProcedureDef $def): void
+    {
+        $class->addTrait('\Aazsamir\Libphpsky\Generator\Prefab\IsProcedure');
+        $class->addImplement(Action::class);
+        $method = $class->addMethod('procedure');
+        $method->setPublic();
+
+        $this->addProcedureParameters($method, $def);
+        $this->addProcedureReturnType($method, $def);
     }
 
     private function addProcedureParameters(Method $method, ProcedureDef $def): void
@@ -261,6 +274,16 @@ final class Maker
         return false;
     }
 
+    private function createObject(ClassType $class, ObjectDef $def): void
+    {
+        $class->addTrait('\Aazsamir\Libphpsky\Generator\Prefab\FromArray');
+        $class->addTrait('\Aazsamir\Libphpsky\Generator\Prefab\ToArray');
+        $class->addImplement(ATProtoObject::class);
+
+        $constructorTypes = $this->addObjectParameters($class, $def);
+        $this->addObjectConstructor($class, $def, $constructorTypes);
+    }
+
     /**
      * @return array<array{name: string, type: string, nullable: bool, comment: string|null}>
      */
@@ -288,6 +311,7 @@ final class Maker
 
             if ($property instanceof ArrayDef) {
                 $phpProperty->setType('array');
+
                 if ($nullable) {
                     $phpProperty->addComment('@var ' . $phpPropertyType . '|null');
                 } else {
@@ -307,7 +331,6 @@ final class Maker
                     }
 
                     $types = Type::union(...$types);
-
                     $phpProperty->addComment('@var ' . $types);
                 }
             } else {
@@ -427,7 +450,7 @@ final class Maker
             case $def instanceof ArrayDef:
                 $item = $this->unref($def->items());
 
-                return 'array<' . $this->defToClassName($item) . '>';
+                return 'array<' . $this->namespaceAndClassname($item) . '>';
             case $def instanceof UnionDef:
                 $types = [];
 
@@ -495,14 +518,8 @@ final class Maker
             return $classname;
         }
 
-        if ($def instanceof UnionDef) {
+        if ($def instanceof ArrayDef || $def instanceof UnionDef) {
             return $classname;
-        }
-
-        if ($def instanceof ArrayDef) {
-            $def = $this->unref($def->items());
-
-            return 'array<' . $this->namespaceAndClassname($def) . '>';
         }
 
         $namespace = $this->lexiconToNamespace($def->lexicon());
