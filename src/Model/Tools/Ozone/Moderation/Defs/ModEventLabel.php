@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs;
 
 /**
+ * Apply/Negate labels on a subject
  * object
  */
 class ModEventLabel implements \Aazsamir\Libphpsky\ATProtoObject

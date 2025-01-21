@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Feed\Postgate;
 
 /**
+ * Disables embedding of this post.
  * object
  */
 class DisableRule implements \Aazsamir\Libphpsky\ATProtoObject

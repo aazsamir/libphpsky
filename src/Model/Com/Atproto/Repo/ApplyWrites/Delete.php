@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites;
 
 /**
+ * Operation which deletes an existing record.
  * object
  */
 class Delete implements \Aazsamir\Libphpsky\ATProtoObject

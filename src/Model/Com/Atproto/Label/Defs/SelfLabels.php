@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs;
 
 /**
+ * Metadata tags on an atproto record, published by the author within the record.
  * object
  */
 class SelfLabels implements \Aazsamir\Libphpsky\ATProtoObject

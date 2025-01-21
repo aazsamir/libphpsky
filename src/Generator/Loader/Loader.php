@@ -127,6 +127,7 @@ final class Loader
     {
         $default = $def['default'] ?? null;
         $const = $def['const'] ?? null;
+        $description = $def['description'] ?? null;
 
         if (
             $default !== null
@@ -139,11 +140,19 @@ final class Loader
             throw new \Exception(\sprintf('Const must be a boolean for def %s', $name));
         }
 
+        if (
+            $description !== null
+            && !\is_string($description)
+        ) {
+            throw new \Exception('Description must be a string or null');
+        }
+
         return new BooleanDef(
             name: $name,
             lexicon: $lexicon,
             default: $default,
             const: $const,
+            description: $description,
         );
     }
 
@@ -157,6 +166,7 @@ final class Loader
         $enum = $def['enum'] ?? null;
         $default = $def['default'] ?? null;
         $const = $def['const'] ?? null;
+        $description = $def['description'] ?? null;
 
         if ($minimum !== null && !\is_int($minimum)) {
             throw new \Exception(\sprintf('Minimum must be an integer for def %s', $name));
@@ -173,6 +183,12 @@ final class Loader
         if ($const !== null && !\is_int($const)) {
             throw new \Exception(\sprintf('Const must be an integer for def %s', $name));
         }
+        if (
+            $description !== null
+            && !\is_string($description)
+        ) {
+            throw new \Exception('Description must be a string or null');
+        }
 
         return new IntegerDef(
             name: $name,
@@ -182,6 +198,7 @@ final class Loader
             enum: $enum,
             default: $default,
             const: $const,
+            description: $description,
         );
     }
 
@@ -199,6 +216,7 @@ final class Loader
         $enum = $def['enum'] ?? null;
         $default = $def['default'] ?? null;
         $const = $def['const'] ?? null;
+        $description = $def['description'] ?? null;
 
         if ($format !== null && !\is_string($format)) {
             throw new \Exception(\sprintf('Format must be a string for def %s', $name));
@@ -227,6 +245,12 @@ final class Loader
         if ($const !== null && !\is_string($const)) {
             throw new \Exception(\sprintf('Const must be a string for def %s', $name));
         }
+        if (
+            $description !== null
+            && !\is_string($description)
+        ) {
+            throw new \Exception('Description must be a string or null');
+        }
 
         return new StringDef(
             name: $name,
@@ -240,6 +264,7 @@ final class Loader
             enum: $enum,
             default: $default,
             const: $const,
+            description: $description,
         );
     }
 
@@ -250,6 +275,7 @@ final class Loader
     {
         $maxLength = $def['maxLength'] ?? null;
         $minLength = $def['minLength'] ?? null;
+        $description = $def['description'] ?? null;
 
         if ($maxLength !== null && !\is_int($maxLength)) {
             throw new \Exception(\sprintf('MaxLength must be an integer for def %s', $name));
@@ -257,12 +283,19 @@ final class Loader
         if ($minLength !== null && !\is_int($minLength)) {
             throw new \Exception(\sprintf('MinLength must be an integer for def %s', $name));
         }
+        if (
+            $description !== null
+            && !\is_string($description)
+        ) {
+            throw new \Exception('Description must be a string or null');
+        }
 
         return new BytesDef(
             name: $name,
             lexicon: $lexicon,
             maxLength: $maxLength,
             minLength: $minLength,
+            description: $description,
         );
     }
 
@@ -271,9 +304,19 @@ final class Loader
      */
     private function makeCidLinkDef(string $name, array $def, Lexicon $lexicon): CidLinkDef
     {
+        $description = $def['description'] ?? null;
+
+        if (
+            $description !== null
+            && !\is_string($description)
+        ) {
+            throw new \Exception('Description must be a string or null');
+        }
+
         return new CidLinkDef(
             name: $name,
             lexicon: $lexicon,
+            description: $description,
         );
     }
 
@@ -284,6 +327,7 @@ final class Loader
     {
         $accept = $def['accept'] ?? null;
         $maxSize = $def['maxSize'] ?? null;
+        $description = $def['description'] ?? null;
 
         if ($accept !== null && !\is_array($accept)) {
             throw new \Exception(\sprintf('Accept must be a string for def %s', $name));
@@ -291,12 +335,19 @@ final class Loader
         if ($maxSize !== null && !\is_int($maxSize)) {
             throw new \Exception(\sprintf('MaxSize must be an integer for def %s', $name));
         }
+        if (
+            $description !== null
+            && !\is_string($description)
+        ) {
+            throw new \Exception('Description must be a string or null');
+        }
 
         return new BlobDef(
             name: $name,
             lexicon: $lexicon,
             accept: $accept,
             maxSize: $maxSize,
+            description: $description,
         );
     }
 
@@ -308,6 +359,7 @@ final class Loader
         $items = $def['items'] ?? null;
         $minLength = $def['minLength'] ?? null;
         $maxLength = $def['maxLength'] ?? null;
+        $description = $def['description'] ?? null;
 
         if (!\is_array($items)) {
             throw new \Exception(\sprintf('Items is required for def %s', $name));
@@ -319,6 +371,12 @@ final class Loader
         if ($maxLength !== null && !\is_int($maxLength)) {
             throw new \Exception(\sprintf('MaxLength must be an integer for def %s', $name));
         }
+        if (
+            $description !== null
+            && !\is_string($description)
+        ) {
+            throw new \Exception('Description must be a string or null');
+        }
 
         return new ArrayDef(
             name: $name,
@@ -326,6 +384,7 @@ final class Loader
             items: $this->makeDef($name . 'Item', $items, $lexicon),
             minLength: $minLength,
             maxLength: $maxLength,
+            description: $description,
         );
     }
 
@@ -337,6 +396,7 @@ final class Loader
         $properties = $def['properties'] ?? null;
         $required = $def['required'] ?? null;
         $nullable = $def['nullable'] ?? null;
+        $description = $def['description'] ?? null;
 
         if (!\is_array($properties)) {
             throw new \Exception(\sprintf('Properties is required for def %s', $name));
@@ -348,6 +408,12 @@ final class Loader
         if ($nullable !== null) {
             $this->assertStrings($nullable);
         }
+        if (
+            $description !== null
+            && !\is_string($description)
+        ) {
+            throw new \Exception('Description must be a string or null');
+        }
 
         return new ObjectDef(
             name: $name,
@@ -355,6 +421,7 @@ final class Loader
             properties: $this->makeDefs($properties, $lexicon),
             required: $required,
             nullable: $nullable,
+            description: $description,
         );
     }
 
@@ -365,6 +432,7 @@ final class Loader
     {
         $properties = $def['properties'] ?? null;
         $required = $def['required'] ?? null;
+        $description = $def['description'] ?? null;
 
         if (!\is_array($properties)) {
             throw new \Exception(\sprintf('Properties is required for def %s', $name));
@@ -373,12 +441,19 @@ final class Loader
         if ($required !== null) {
             $this->assertStrings($required);
         }
+        if (
+            $description !== null
+            && !\is_string($description)
+        ) {
+            throw new \Exception('Description must be a string or null');
+        }
 
         return new ParamsDef(
             name: $name,
             lexicon: $lexicon,
             properties: $this->makeDefs($properties, $lexicon),
             required: $required ?? null,
+            description: $description,
         );
     }
 
@@ -387,9 +462,19 @@ final class Loader
      */
     private function makeTokenDef(string $name, array $def, Lexicon $lexicon): TokenDef
     {
+        $description = $def['description'] ?? null;
+
+        if (
+            $description !== null
+            && !\is_string($description)
+        ) {
+            throw new \Exception('Description must be a string or null');
+        }
+
         return new TokenDef(
             name: $name,
             lexicon: $lexicon,
+            description: $description,
         );
     }
 
@@ -399,15 +484,24 @@ final class Loader
     private function makeRefDef(string $name, array $def, Lexicon $lexicon): RefDef
     {
         $ref = $def['ref'] ?? null;
+        $description = $def['description'] ?? null;
 
         if (!\is_string($ref)) {
             throw new \Exception(\sprintf('Ref is required for def %s', $name));
+        }
+
+        if (
+            $description !== null
+            && !\is_string($description)
+        ) {
+            throw new \Exception('Description must be a string or null');
         }
 
         return new RefDef(
             name: $name,
             lexicon: $lexicon,
             ref: $ref,
+            description: $description,
         );
     }
 
@@ -418,12 +512,19 @@ final class Loader
     {
         $refs = $def['refs'] ?? null;
         $closed = $def['closed'] ?? null;
+        $description = $def['description'] ?? null;
 
         if (!\is_array($refs)) {
             throw new \Exception(\sprintf('Refs is required for def %s', $name));
         }
         if ($closed !== null && !\is_bool($closed)) {
             throw new \Exception(\sprintf('Closed must be a boolean for def %s', $name));
+        }
+        if (
+            $description !== null
+            && !\is_string($description)
+        ) {
+            throw new \Exception('Description must be a string or null');
         }
 
         $this->assertStrings($refs);
@@ -433,6 +534,7 @@ final class Loader
             lexicon: $lexicon,
             refs: $refs,
             closed: $closed,
+            description: $description,
         );
     }
 

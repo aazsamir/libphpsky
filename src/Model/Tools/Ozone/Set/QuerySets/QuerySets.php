@@ -25,6 +25,9 @@ class QuerySets implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
+    /**
+     * @param ?string $sortDirection Defaults to ascending order of name field.
+     */
     public function query(
         ?int $limit = null,
         ?string $cursor = null,

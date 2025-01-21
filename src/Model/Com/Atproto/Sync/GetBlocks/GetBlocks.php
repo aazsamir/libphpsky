@@ -26,6 +26,7 @@ class GetBlocks implements \Aazsamir\Libphpsky\Action
     }
 
     /**
+     * @param string $did The DID of the repo.
      * @param array<string> $cids
      */
     public function query(string $did, array $cids): mixed

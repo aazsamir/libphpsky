@@ -15,12 +15,13 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.identity.signPlcOperation';
 
+    /** @var ?string A token received through com.atproto.identity.requestPlcOperationSignature */
     public ?string $token;
 
-    /** @var array<string>|null */
+    /** @var ?array<string> */
     public ?array $rotationKeys = [];
 
-    /** @var array<string>|null */
+    /** @var ?array<string> */
     public ?array $alsoKnownAs = [];
     public mixed $verificationMethods;
     public mixed $services;

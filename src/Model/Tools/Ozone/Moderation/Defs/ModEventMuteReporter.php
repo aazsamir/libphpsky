@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs;
 
 /**
+ * Mute incoming reports from an account
  * object
  */
 class ModEventMuteReporter implements \Aazsamir\Libphpsky\ATProtoObject
@@ -16,6 +17,8 @@ class ModEventMuteReporter implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'tools.ozone.moderation.defs';
 
     public ?string $comment;
+
+    /** @var ?int Indicates how long the account should remain muted. Falsy value here means a permanent mute. */
     public ?int $durationInHours;
 
     public static function id(): string

@@ -25,6 +25,9 @@ class GetLatestCommit implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
+    /**
+     * @param string $did The DID of the repo.
+     */
     public function query(string $did): Output
     {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetLatestCommit\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

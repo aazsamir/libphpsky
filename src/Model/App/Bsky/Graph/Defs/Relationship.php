@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs;
 
 /**
+ * lists the bi-directional graph relationships between one actor (not indicated in the object), and the target actors (the DID included in the object)
  * object
  */
 class Relationship implements \Aazsamir\Libphpsky\ATProtoObject
@@ -16,7 +17,11 @@ class Relationship implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'app.bsky.graph.defs';
 
     public string $did;
+
+    /** @var ?string if the actor follows this DID, this is the AT-URI of the follow record */
     public ?string $following;
+
+    /** @var ?string if the actor is followed by this DID, contains the AT-URI of the follow record */
     public ?string $followedBy;
 
     public static function id(): string

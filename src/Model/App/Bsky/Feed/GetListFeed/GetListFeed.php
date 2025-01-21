@@ -25,6 +25,9 @@ class GetListFeed implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
+    /**
+     * @param string $list Reference (AT-URI) to the list record.
+     */
     public function query(string $list, ?int $limit = null, ?string $cursor = null): Output
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetListFeed\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

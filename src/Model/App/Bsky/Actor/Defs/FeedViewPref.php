@@ -15,11 +15,22 @@ class FeedViewPref implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'feedViewPref';
     public const ID = 'app.bsky.actor.defs';
 
+    /** @var string The URI of the feed, or an identifier which describes the feed. */
     public string $feed;
+
+    /** @var ?bool Hide replies in the feed. */
     public ?bool $hideReplies;
+
+    /** @var ?bool Hide replies in the feed if they are not by followed users. */
     public ?bool $hideRepliesByUnfollowed;
+
+    /** @var ?int Hide replies in the feed if they do not have this number of likes. */
     public ?int $hideRepliesByLikeCount;
+
+    /** @var ?bool Hide reposts in the feed. */
     public ?bool $hideReposts;
+
+    /** @var ?bool Hide quote posts in the feed. */
     public ?bool $hideQuotePosts;
 
     public static function id(): string

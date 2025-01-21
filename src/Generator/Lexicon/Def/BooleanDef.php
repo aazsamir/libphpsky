@@ -17,6 +17,7 @@ final class BooleanDef implements Def
         private readonly Lexicon $lexicon,
         private readonly ?bool $default = null,
         private readonly ?bool $const = null,
+        private readonly ?string $description = null,
     ) {}
 
     public function type(): LexiconType
@@ -37,6 +38,11 @@ final class BooleanDef implements Def
     public function default(): ?bool
     {
         return $this->default;
+    }
+
+    public function description(): ?string
+    {
+        return $this->description;
     }
 
     public function const(): ?bool

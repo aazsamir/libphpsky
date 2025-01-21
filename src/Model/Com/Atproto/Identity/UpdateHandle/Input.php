@@ -15,6 +15,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.identity.updateHandle';
 
+    /** @var string The new handle. */
     public string $handle;
 
     public static function id(): string

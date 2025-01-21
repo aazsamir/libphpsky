@@ -25,6 +25,12 @@ class GetRecord implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
+    /**
+     * @param string $repo The handle or DID of the repo.
+     * @param string $collection The NSID of the record collection.
+     * @param string $rkey The Record Key.
+     * @param ?string $cid The CID of the version of the record. If not specified, then return the most recent version.
+     */
     public function query(string $repo, string $collection, string $rkey, ?string $cid = null): Output
     {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\GetRecord\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

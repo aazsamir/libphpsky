@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs;
 
 /**
+ * A grab bag of state that's specific to the bsky.app program. Third-party apps shouldn't use this.
  * object
  */
 class BskyAppStatePref implements \Aazsamir\Libphpsky\ATProtoObject
@@ -17,10 +18,10 @@ class BskyAppStatePref implements \Aazsamir\Libphpsky\ATProtoObject
 
     public ?BskyAppProgressGuide $activeProgressGuide;
 
-    /** @var array<string>|null */
+    /** @var ?array<string> An array of tokens which identify nudges (modals, popups, tours, highlight dots) that should be shown to the user. */
     public ?array $queuedNudges = [];
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\Nux>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\Nux> Storage for NUXs the user has encountered. */
     public ?array $nuxs = [];
 
     public static function id(): string

@@ -16,12 +16,14 @@ class Postgate implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'app.bsky.feed.postgate';
 
     public \DateTimeInterface $createdAt;
+
+    /** @var string Reference (AT-URI) to the post record. */
     public string $post;
 
-    /** @var array<string>|null */
+    /** @var ?array<string> List of AT-URIs embedding this post that the author has detached from. */
     public ?array $detachedEmbeddingUris = [];
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Postgate\DisableRule>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Postgate\DisableRule> */
     public ?array $embeddingRules = [];
 
     public static function id(): string

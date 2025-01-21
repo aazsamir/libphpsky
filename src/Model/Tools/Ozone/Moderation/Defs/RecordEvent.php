@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs;
 
 /**
+ * Logs lifecycle event on a record subject. Normally captured by automod from the firehose and emitted to ozone for historical tracking.
  * object
  */
 class RecordEvent implements \Aazsamir\Libphpsky\ATProtoObject

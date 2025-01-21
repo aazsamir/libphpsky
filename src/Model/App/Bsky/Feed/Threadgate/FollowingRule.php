@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate;
 
 /**
+ * Allow replies from actors you follow.
  * object
  */
 class FollowingRule implements \Aazsamir\Libphpsky\ATProtoObject

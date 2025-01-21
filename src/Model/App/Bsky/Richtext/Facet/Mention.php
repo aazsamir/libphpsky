@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet;
 
 /**
+ * Facet feature for mention of another account. The text is usually a handle, including a '@' prefix, but the facet reference is a DID.
  * object
  */
 class Mention implements \Aazsamir\Libphpsky\ATProtoObject

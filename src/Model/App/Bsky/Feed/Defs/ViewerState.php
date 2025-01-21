@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs;
 
 /**
+ * Metadata about the requesting account's relationship with the subject content. Only has meaningful content for authed requests.
  * object
  */
 class ViewerState implements \Aazsamir\Libphpsky\ATProtoObject

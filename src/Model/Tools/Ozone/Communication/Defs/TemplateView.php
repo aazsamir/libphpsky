@@ -16,11 +16,21 @@ class TemplateView implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'tools.ozone.communication.defs';
 
     public string $id;
+
+    /** @var string Name of the template. */
     public string $name;
+
+    /** @var ?string Content of the template, can contain markdown and variable placeholders. */
     public ?string $subject;
+
+    /** @var string Subject of the message, used in emails. */
     public string $contentMarkdown;
     public bool $disabled;
+
+    /** @var ?string Message language. */
     public ?string $lang;
+
+    /** @var string DID of the user who last updated the template. */
     public string $lastUpdatedBy;
     public \DateTimeInterface $createdAt;
     public \DateTimeInterface $updatedAt;

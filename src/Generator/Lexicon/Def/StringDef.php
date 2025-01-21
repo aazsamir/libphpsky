@@ -28,6 +28,7 @@ final class StringDef implements Def
         private readonly ?array $enum = null,
         private readonly ?string $default = null,
         private readonly ?string $const = null,
+        private readonly ?string $description = null,
     ) {}
 
     public function type(): LexiconType
@@ -94,5 +95,10 @@ final class StringDef implements Def
     public function const(): ?string
     {
         return $this->const;
+    }
+
+    public function description(): ?string
+    {
+        return $this->description;
     }
 }

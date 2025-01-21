@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs;
 
 /**
+ * Add/Remove a tag on a subject
  * object
  */
 class ModEventTag implements \Aazsamir\Libphpsky\ATProtoObject
@@ -15,11 +16,13 @@ class ModEventTag implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'modEventTag';
     public const ID = 'tools.ozone.moderation.defs';
 
-    /** @var array<string> */
+    /** @var array<string> Tags to be added to the subject. If already exists, won't be duplicated. */
     public array $add = [];
 
-    /** @var array<string> */
+    /** @var array<string> Tags to be removed to the subject. Ignores a tag If it doesn't exist, won't be duplicated. */
     public array $remove = [];
+
+    /** @var ?string Additional comment about added/removed tags. */
     public ?string $comment;
 
     public static function id(): string

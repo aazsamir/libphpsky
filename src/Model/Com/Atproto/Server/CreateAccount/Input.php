@@ -16,12 +16,20 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'com.atproto.server.createAccount';
 
     public ?string $email;
+
+    /** @var string Requested handle for the account. */
     public string $handle;
+
+    /** @var ?string Pre-existing atproto DID, being imported to a new account. */
     public ?string $did;
     public ?string $inviteCode;
     public ?string $verificationCode;
     public ?string $verificationPhone;
+
+    /** @var ?string Initial account password. May need to meet instance-specific password strength requirements. */
     public ?string $password;
+
+    /** @var ?string DID PLC rotation key (aka, recovery key) to be included in PLC creation operation. */
     public ?string $recoveryKey;
     public mixed $plcOp;
 

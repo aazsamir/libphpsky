@@ -25,6 +25,10 @@ class GetLikes implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
+    /**
+     * @param string $uri AT-URI of the subject (eg, a post record).
+     * @param ?string $cid CID of the subject record (aka, specific version of record), to filter likes.
+     */
     public function query(string $uri, ?string $cid = null, ?int $limit = null, ?string $cursor = null): Output
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetLikes\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

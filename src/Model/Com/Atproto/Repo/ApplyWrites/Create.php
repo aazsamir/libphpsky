@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites;
 
 /**
+ * Operation which creates a new record.
  * object
  */
 class Create implements \Aazsamir\Libphpsky\ATProtoObject

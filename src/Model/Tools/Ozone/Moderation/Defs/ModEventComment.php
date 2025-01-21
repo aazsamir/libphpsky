@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs;
 
 /**
+ * Add a comment to a subject
  * object
  */
 class ModEventComment implements \Aazsamir\Libphpsky\ATProtoObject
@@ -16,6 +17,8 @@ class ModEventComment implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'tools.ozone.moderation.defs';
 
     public string $comment;
+
+    /** @var ?bool Make the comment persistent on the subject */
     public ?bool $sticky;
 
     public static function id(): string

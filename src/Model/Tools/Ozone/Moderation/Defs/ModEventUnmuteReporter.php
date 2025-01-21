@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs;
 
 /**
+ * Unmute incoming reports from an account
  * object
  */
 class ModEventUnmuteReporter implements \Aazsamir\Libphpsky\ATProtoObject
@@ -15,6 +16,7 @@ class ModEventUnmuteReporter implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'modEventUnmuteReporter';
     public const ID = 'tools.ozone.moderation.defs';
 
+    /** @var ?string Describe reasoning behind the reversal. */
     public ?string $comment;
 
     public static function id(): string

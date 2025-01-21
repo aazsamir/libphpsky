@@ -18,13 +18,15 @@ class Notification implements \Aazsamir\Libphpsky\ATProtoObject
     public string $uri;
     public string $cid;
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $author;
+
+    /** @var string Expected values are 'like', 'repost', 'follow', 'mention', 'reply', 'quote', and 'starterpack-joined'. */
     public string $reason;
     public ?string $reasonSubject;
     public mixed $record;
     public bool $isRead;
     public \DateTimeInterface $indexedAt;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> */
     public ?array $labels = [];
 
     public static function id(): string

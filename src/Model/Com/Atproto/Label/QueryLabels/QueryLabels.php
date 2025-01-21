@@ -26,8 +26,8 @@ class QueryLabels implements \Aazsamir\Libphpsky\Action
     }
 
     /**
-     * @param array<string> $uriPatterns
-     * @param ?array<string> $sources
+     * @param array<string> $uriPatterns  List of AT URI patterns to match (boolean 'OR'). Each may be a prefix (ending with '*'; will match inclusive of the string leading to '*'), or a full URI.
+     * @param ?array<string> $sources  Optional list of label sources (DIDs) to filter on.
      */
     public function query(
         array $uriPatterns,

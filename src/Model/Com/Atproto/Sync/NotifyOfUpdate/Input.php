@@ -15,6 +15,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.sync.notifyOfUpdate';
 
+    /** @var string Hostname of the current service (usually a PDS) that is notifying of update. */
     public string $hostname;
 
     public static function id(): string

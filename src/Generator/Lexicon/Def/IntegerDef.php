@@ -23,6 +23,7 @@ final class IntegerDef implements Def
         private readonly ?array $enum = null,
         private readonly ?int $default = null,
         private readonly ?int $const = null,
+        private readonly ?string $description = null,
     ) {}
 
     public function type(): LexiconType
@@ -66,5 +67,10 @@ final class IntegerDef implements Def
     public function const(): ?int
     {
         return $this->const;
+    }
+
+    public function description(): ?string
+    {
+        return $this->description;
     }
 }

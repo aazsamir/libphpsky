@@ -15,7 +15,7 @@ class HiddenPostsPref implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'hiddenPostsPref';
     public const ID = 'app.bsky.actor.defs';
 
-    /** @var array<string> */
+    /** @var array<string> A list of URIs of posts the account owner has hidden. */
     public array $items = [];
 
     public static function id(): string

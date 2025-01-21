@@ -15,6 +15,7 @@ class Block implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'main';
     public const ID = 'app.bsky.graph.block';
 
+    /** @var string DID of the account to be blocked. */
     public string $subject;
     public \DateTimeInterface $createdAt;
 

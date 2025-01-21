@@ -22,7 +22,7 @@ class ListViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
     public ?string $avatar;
     public ?int $listItemCount;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> */
     public ?array $labels = [];
     public ?ListViewerState $viewer;
     public ?\DateTimeInterface $indexedAt;

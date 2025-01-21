@@ -15,10 +15,10 @@ class LabelerPolicies implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'labelerPolicies';
     public const ID = 'app.bsky.labeler.defs';
 
-    /** @var array<string> */
+    /** @var array<string> The label values which this labeler publishes. May include global or custom labels. */
     public array $labelValues = [];
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\LabelValueDefinition>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\LabelValueDefinition> Label values created by this labeler and scoped exclusively to it. Labels defined here will override global label definitions for this labeler. */
     public ?array $labelValueDefinitions = [];
 
     public static function id(): string

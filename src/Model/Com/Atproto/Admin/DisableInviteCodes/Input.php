@@ -15,10 +15,10 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.admin.disableInviteCodes';
 
-    /** @var array<string>|null */
+    /** @var ?array<string> */
     public ?array $codes = [];
 
-    /** @var array<string>|null */
+    /** @var ?array<string> */
     public ?array $accounts = [];
 
     public static function id(): string

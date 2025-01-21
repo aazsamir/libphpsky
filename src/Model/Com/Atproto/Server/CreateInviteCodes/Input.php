@@ -18,7 +18,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public int $codeCount;
     public int $useCount;
 
-    /** @var array<string>|null */
+    /** @var ?array<string> */
     public ?array $forAccounts = [];
 
     public static function id(): string

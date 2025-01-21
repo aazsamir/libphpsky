@@ -21,7 +21,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef */
     public mixed $subject;
 
-    /** @var array<string>|null */
+    /** @var ?array<string> */
     public ?array $subjectBlobCids = [];
     public string $createdBy;
 

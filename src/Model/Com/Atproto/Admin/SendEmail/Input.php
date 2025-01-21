@@ -19,6 +19,8 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public string $content;
     public ?string $subject;
     public string $senderDid;
+
+    /** @var ?string Additional comment by the sender that won't be used in the email itself but helpful to provide more context for moderators/reviewers */
     public ?string $comment;
 
     public static function id(): string

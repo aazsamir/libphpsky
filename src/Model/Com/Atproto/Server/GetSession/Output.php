@@ -22,6 +22,8 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public ?bool $emailAuthFactor;
     public mixed $didDoc;
     public ?bool $active;
+
+    /** @var ?string If active=false, this optional field indicates a possible reason for why the account is not active. If active=false and no status is supplied, then the host makes no claim for why the repository is no longer being hosted. */
     public ?string $status;
 
     public static function id(): string

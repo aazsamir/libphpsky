@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet;
 
 /**
+ * Facet feature for a hashtag. The text usually includes a '#' prefix, but the facet reference should not (except in the case of 'double hash tags').
  * object
  */
 class Tag implements \Aazsamir\Libphpsky\ATProtoObject

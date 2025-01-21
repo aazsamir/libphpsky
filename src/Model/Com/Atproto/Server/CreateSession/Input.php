@@ -15,9 +15,12 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.server.createSession';
 
+    /** @var string Handle or other identifier supported by the server for the authenticating user. */
     public string $identifier;
     public string $password;
     public ?string $authFactorToken;
+
+    /** @var ?bool When true, instead of throwing error for takendown accounts, a valid response with a narrow scoped token will be returned */
     public ?bool $allowTakendown;
 
     public static function id(): string

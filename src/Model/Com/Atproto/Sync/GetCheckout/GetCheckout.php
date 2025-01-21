@@ -25,6 +25,9 @@ class GetCheckout implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
+    /**
+     * @param string $did The DID of the repo.
+     */
     public function query(string $did): mixed
     {
         return $this->request($this->argsWithKeys(func_get_args()));

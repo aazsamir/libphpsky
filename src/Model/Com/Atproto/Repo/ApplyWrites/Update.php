@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites;
 
 /**
+ * Operation which updates an existing record.
  * object
  */
 class Update implements \Aazsamir\Libphpsky\ATProtoObject

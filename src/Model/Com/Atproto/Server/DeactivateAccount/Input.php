@@ -15,6 +15,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.server.deactivateAccount';
 
+    /** @var ?\DateTimeInterface A recommendation to server as to how long they should hold onto the deactivated account before deleting. */
     public ?\DateTimeInterface $deleteAfter;
 
     public static function id(): string

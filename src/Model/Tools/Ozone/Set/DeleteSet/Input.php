@@ -15,6 +15,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'tools.ozone.set.deleteSet';
 
+    /** @var string Name of the set to delete */
     public string $name;
 
     public static function id(): string

@@ -26,7 +26,8 @@ class ListOptions implements \Aazsamir\Libphpsky\Action
     }
 
     /**
-     * @param ?array<string> $keys
+     * @param ?string $prefix Filter keys by prefix
+     * @param ?array<string> $keys  Filter for only the specified keys. Ignored if prefix is provided
      */
     public function query(
         ?int $limit = null,

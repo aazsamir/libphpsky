@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs;
 
 /**
+ * Resolve appeal on a subject
  * object
  */
 class ModEventResolveAppeal implements \Aazsamir\Libphpsky\ATProtoObject
@@ -15,6 +16,7 @@ class ModEventResolveAppeal implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'modEventResolveAppeal';
     public const ID = 'tools.ozone.moderation.defs';
 
+    /** @var ?string Describe resolution. */
     public ?string $comment;
 
     public static function id(): string

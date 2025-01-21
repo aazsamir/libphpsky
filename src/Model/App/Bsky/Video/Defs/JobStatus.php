@@ -17,7 +17,11 @@ class JobStatus implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $jobId;
     public string $did;
+
+    /** @var string The state of the video processing job. All values not listed as a known value indicate that the job is in process. */
     public string $state;
+
+    /** @var ?int Progress within the current processing state. */
     public ?int $progress;
     public ?string $blob;
     public ?string $error;

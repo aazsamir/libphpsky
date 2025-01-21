@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate;
 
 /**
+ * Allow replies from actors on a list.
  * object
  */
 class ListRule implements \Aazsamir\Libphpsky\ATProtoObject

@@ -19,7 +19,7 @@ class ThreadgateView implements \Aazsamir\Libphpsky\ATProtoObject
     public ?string $cid;
     public mixed $record;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\ListViewBasic>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\ListViewBasic> */
     public ?array $lists = [];
 
     public static function id(): string

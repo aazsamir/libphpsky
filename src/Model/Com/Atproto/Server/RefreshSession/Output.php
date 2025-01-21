@@ -21,6 +21,8 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public string $did;
     public mixed $didDoc;
     public ?bool $active;
+
+    /** @var ?string Hosting status of the account. If not specified, then assume 'active'. */
     public ?string $status;
 
     public static function id(): string

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Feed\Post;
 
 /**
+ * Deprecated. Use app.bsky.richtext instead -- A text segment. Start is inclusive, end is exclusive. Indices are for utf16-encoded strings.
  * object
  */
 class TextSlice implements \Aazsamir\Libphpsky\ATProtoObject

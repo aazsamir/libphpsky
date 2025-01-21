@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs;
 
 /**
+ * Logs account status related events on a repo subject. Normally captured by automod from the firehose and emitted to ozone for historical tracking.
  * object
  */
 class AccountEvent implements \Aazsamir\Libphpsky\ATProtoObject
@@ -16,6 +17,8 @@ class AccountEvent implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'tools.ozone.moderation.defs';
 
     public ?string $comment;
+
+    /** @var bool Indicates that the account has a repository which can be fetched from the host that emitted this event. */
     public bool $active;
     public ?string $status;
     public \DateTimeInterface $timestamp;

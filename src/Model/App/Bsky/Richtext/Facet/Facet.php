@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet;
 
 /**
+ * Annotation of a sub-string within rich text.
  * object
  */
 class Facet implements \Aazsamir\Libphpsky\ATProtoObject

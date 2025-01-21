@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs;
 
 /**
+ * Logs identity related events on a repo subject. Normally captured by automod from the firehose and emitted to ozone for historical tracking.
  * object
  */
 class IdentityEvent implements \Aazsamir\Libphpsky\ATProtoObject

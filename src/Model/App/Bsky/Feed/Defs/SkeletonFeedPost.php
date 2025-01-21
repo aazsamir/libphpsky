@@ -19,6 +19,8 @@ class SkeletonFeedPost implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\SkeletonReasonRepost|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\SkeletonReasonPin|null */
     public mixed $reason;
+
+    /** @var ?string Context that will be passed through to client and may be passed to feed generator back alongside interactions. */
     public ?string $feedContext;
 
     public static function id(): string

@@ -16,9 +16,13 @@ class Repo implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'com.atproto.sync.listRepos';
 
     public string $did;
+
+    /** @var string Current repo commit CID */
     public string $head;
     public string $rev;
     public ?bool $active;
+
+    /** @var ?string If active=false, this optional field indicates a possible reason for why the account is not active. If active=false and no status is supplied, then the host makes no claim for why the repository is no longer being hosted. */
     public ?string $status;
 
     public static function id(): string

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs;
 
 /**
+ * Revert take down action on a subject
  * object
  */
 class ModEventReverseTakedown implements \Aazsamir\Libphpsky\ATProtoObject
@@ -15,6 +16,7 @@ class ModEventReverseTakedown implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'modEventReverseTakedown';
     public const ID = 'tools.ozone.moderation.defs';
 
+    /** @var ?string Describe reasoning behind the reversal. */
     public ?string $comment;
 
     public static function id(): string

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs;
 
 /**
+ * Keep a log of outgoing email to a user
  * object
  */
 class ModEventEmail implements \Aazsamir\Libphpsky\ATProtoObject
@@ -15,8 +16,13 @@ class ModEventEmail implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'modEventEmail';
     public const ID = 'tools.ozone.moderation.defs';
 
+    /** @var string The subject line of the email sent to the user. */
     public string $subjectLine;
+
+    /** @var ?string The content of the email sent to the user. */
     public ?string $content;
+
+    /** @var ?string Additional comment about the outgoing comm. */
     public ?string $comment;
 
     public static function id(): string

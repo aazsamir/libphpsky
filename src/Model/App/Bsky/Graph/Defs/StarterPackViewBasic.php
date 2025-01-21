@@ -23,7 +23,7 @@ class StarterPackViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
     public ?int $joinedWeekCount;
     public ?int $joinedAllTimeCount;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> */
     public ?array $labels = [];
     public \DateTimeInterface $indexedAt;
 

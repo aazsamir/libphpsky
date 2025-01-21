@@ -15,11 +15,14 @@ class ListDef implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'main';
     public const ID = 'app.bsky.graph.list';
 
+    /** @var ?string Defines the purpose of the list (aka, moderation-oriented or curration-oriented) */
     public ?string $purpose;
+
+    /** @var string Display name for list; can not be empty. */
     public string $name;
     public ?string $description;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> */
     public ?array $descriptionFacets = [];
     public ?string $avatar;
 

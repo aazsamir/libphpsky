@@ -16,6 +16,8 @@ class Image implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'app.bsky.embed.images';
 
     public string $image;
+
+    /** @var string Alt text description of the image, for accessibility. */
     public string $alt;
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Defs\AspectRatio $aspectRatio;
 

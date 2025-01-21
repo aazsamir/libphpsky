@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet;
 
 /**
+ * Facet feature for a URL. The text URL may have been simplified or truncated, but the facet reference should be a complete URL.
  * object
  */
 class Link implements \Aazsamir\Libphpsky\ATProtoObject

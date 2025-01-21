@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateAccount;
 
 /**
+ * Account login session returned on successful account creation.
  * object
  */
 class Output implements \Aazsamir\Libphpsky\ATProtoObject
@@ -18,6 +19,8 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public string $accessJwt;
     public string $refreshJwt;
     public string $handle;
+
+    /** @var string The DID of the new account. */
     public string $did;
     public mixed $didDoc;
 

@@ -15,13 +15,14 @@ class Threadgate implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'main';
     public const ID = 'app.bsky.feed.threadgate';
 
+    /** @var string Reference (AT-URI) to the post record. */
     public string $post;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\MentionRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\FollowingRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\ListRule>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\MentionRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\FollowingRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\ListRule> */
     public ?array $allow = [];
     public \DateTimeInterface $createdAt;
 
-    /** @var array<string>|null */
+    /** @var ?array<string> List of hidden reply URIs. */
     public ?array $hiddenReplies = [];
 
     public static function id(): string

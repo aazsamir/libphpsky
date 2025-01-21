@@ -25,6 +25,11 @@ class SearchStarterPacksSkeleton implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
+    /**
+     * @param string $q Search query string; syntax, phrase, boolean, and faceting is unspecified, but Lucene query syntax is recommended.
+     * @param ?string $viewer DID of the account making the request (not included for public/unauthenticated queries).
+     * @param ?string $cursor Optional pagination mechanism; may not necessarily allow scrolling through entire result set.
+     */
     public function query(string $q, ?string $viewer = null, ?int $limit = null, ?string $cursor = null): Output
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchStarterPacksSkeleton\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

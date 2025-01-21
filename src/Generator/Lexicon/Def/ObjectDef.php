@@ -22,6 +22,7 @@ final class ObjectDef implements Def, DefContainer
         private readonly Defs $properties,
         private readonly ?array $required = null,
         private readonly ?array $nullable = null,
+        private readonly ?string $description = null,
     ) {}
 
     public function type(): LexiconType
@@ -58,6 +59,11 @@ final class ObjectDef implements Def, DefContainer
     public function nullable(): ?array
     {
         return $this->nullable;
+    }
+
+    public function description(): ?string
+    {
+        return $this->description;
     }
 
     public function defs(): Defs

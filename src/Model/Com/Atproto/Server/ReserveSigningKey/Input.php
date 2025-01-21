@@ -15,6 +15,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.server.reserveSigningKey';
 
+    /** @var ?string The DID to reserve a key for. */
     public ?string $did;
 
     public static function id(): string

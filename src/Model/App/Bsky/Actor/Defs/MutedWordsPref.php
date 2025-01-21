@@ -15,7 +15,7 @@ class MutedWordsPref implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'mutedWordsPref';
     public const ID = 'app.bsky.actor.defs';
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\MutedWord> */
+    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\MutedWord> A list of words the account owner has muted. */
     public array $items = [];
 
     public static function id(): string

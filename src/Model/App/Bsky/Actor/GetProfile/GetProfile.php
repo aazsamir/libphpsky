@@ -25,6 +25,9 @@ class GetProfile implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
+    /**
+     * @param string $actor Handle or DID of account to fetch profile of.
+     */
     public function query(string $actor): \Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewDetailed
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewDetailed::fromArray($this->request($this->argsWithKeys(func_get_args())));

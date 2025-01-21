@@ -18,6 +18,7 @@ final class ArrayDef implements Def, DefContainer
         private readonly Def $items,
         private readonly ?int $minLength = null,
         private readonly ?int $maxLength = null,
+        private readonly ?string $description = null,
     ) {}
 
     public function type(): LexiconType
@@ -48,6 +49,11 @@ final class ArrayDef implements Def, DefContainer
     public function maxLength(): ?int
     {
         return $this->maxLength;
+    }
+
+    public function description(): ?string
+    {
+        return $this->description;
     }
 
     public function defs(): Defs

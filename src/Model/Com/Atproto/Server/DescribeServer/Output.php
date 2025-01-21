@@ -15,12 +15,19 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'com.atproto.server.describeServer';
 
+    /** @var ?bool If true, an invite code must be supplied to create an account on this instance. */
     public ?bool $inviteCodeRequired;
+
+    /** @var ?bool If true, a phone verification token must be supplied to create an account on this instance. */
     public ?bool $phoneVerificationRequired;
 
-    /** @var array<string> */
+    /** @var array<string> List of domain suffixes that can be used in account handles. */
     public array $availableUserDomains = [];
+
+    /** @var ?\Aazsamir\Libphpsky\Model\Com\Atproto\Server\DescribeServer\Links URLs of service policy documents. */
     public ?Links $links;
+
+    /** @var ?\Aazsamir\Libphpsky\Model\Com\Atproto\Server\DescribeServer\Contact Contact information */
     public ?Contact $contact;
     public string $did;
 

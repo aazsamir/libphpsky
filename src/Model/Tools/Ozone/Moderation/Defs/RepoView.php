@@ -28,7 +28,7 @@ class RepoView implements \Aazsamir\Libphpsky\ATProtoObject
     public ?string $inviteNote;
     public ?\DateTimeInterface $deactivatedAt;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\ThreatSignature>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\ThreatSignature> */
     public ?array $threatSignatures = [];
 
     public static function id(): string

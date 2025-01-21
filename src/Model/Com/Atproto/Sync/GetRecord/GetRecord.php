@@ -25,6 +25,11 @@ class GetRecord implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
+    /**
+     * @param string $did The DID of the repo.
+     * @param string $rkey Record Key
+     * @param ?string $commit DEPRECATED: referenced a repo commit by CID, and retrieved record as of that commit
+     */
     public function query(string $did, string $collection, string $rkey, ?string $commit = null): mixed
     {
         return $this->request($this->argsWithKeys(func_get_args()));

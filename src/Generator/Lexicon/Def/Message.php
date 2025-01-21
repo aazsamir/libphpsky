@@ -7,7 +7,7 @@ namespace Aazsamir\Libphpsky\Generator\Lexicon\Def;
 /**
  * @internal
  */
-final class Message implements HasDescription
+final class Message
 {
     public function __construct(
         private readonly UnionDef $schema,

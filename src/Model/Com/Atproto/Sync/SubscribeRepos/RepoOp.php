@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Com\Atproto\Sync\SubscribeRepos;
 
 /**
+ * A repo operation, ie a mutation of a single record.
  * object
  */
 class RepoOp implements \Aazsamir\Libphpsky\ATProtoObject
@@ -17,6 +18,8 @@ class RepoOp implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $action;
     public string $path;
+
+    /** @var ?string For creates and updates, the new record CID. For deletions, null. */
     public ?string $cid = null;
 
     public static function id(): string

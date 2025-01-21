@@ -20,6 +20,7 @@ final class BlobDef implements Def
         private readonly Lexicon $lexicon,
         private readonly ?array $accept = null,
         private readonly ?int $maxSize = null,
+        private readonly ?string $description = null,
     ) {}
 
     public function type(): LexiconType
@@ -43,6 +44,11 @@ final class BlobDef implements Def
     public function accept(): ?array
     {
         return $this->accept;
+    }
+
+    public function description(): ?string
+    {
+        return $this->description;
     }
 
     public function maxSize(): ?int

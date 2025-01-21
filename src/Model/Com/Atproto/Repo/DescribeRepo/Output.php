@@ -19,8 +19,10 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public string $did;
     public mixed $didDoc;
 
-    /** @var array<string> */
+    /** @var array<string> List of all the collections (NSIDs) for which this repo contains at least one record. */
     public array $collections = [];
+
+    /** @var bool Indicates if handle is currently valid (resolves bi-directionally) */
     public bool $handleIsCorrect;
 
     public static function id(): string

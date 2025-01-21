@@ -22,8 +22,10 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileAssociated $associated;
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ViewerState $viewer;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> */
     public ?array $labels = [];
+
+    /** @var ?bool Set to true when the actor cannot actively participate in converations */
     public ?bool $chatDisabled;
 
     public static function id(): string

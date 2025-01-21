@@ -25,6 +25,9 @@ class GetTimeline implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
+    /**
+     * @param ?string $algorithm Variant 'algorithm' for timeline. Implementation-specific. NOTE: most feed flexibility has been moved to feed generator mechanism.
+     */
     public function query(?string $algorithm = null, ?int $limit = null, ?string $cursor = null): Output
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetTimeline\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

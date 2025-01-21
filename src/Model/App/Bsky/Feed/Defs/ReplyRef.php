@@ -20,6 +20,8 @@ class ReplyRef implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\PostView|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\NotFoundPost|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\BlockedPost */
     public mixed $parent;
+
+    /** @var ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic When parent is a reply to another post, this is the author of that post. */
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $grandparentAuthor;
 
     public static function id(): string

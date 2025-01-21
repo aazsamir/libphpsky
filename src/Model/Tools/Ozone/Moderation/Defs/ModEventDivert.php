@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs;
 
 /**
+ * Divert a record's blobs to a 3rd party service for further scanning/tagging
  * object
  */
 class ModEventDivert implements \Aazsamir\Libphpsky\ATProtoObject

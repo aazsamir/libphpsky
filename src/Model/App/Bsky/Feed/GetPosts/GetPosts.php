@@ -26,7 +26,7 @@ class GetPosts implements \Aazsamir\Libphpsky\Action
     }
 
     /**
-     * @param array<string> $uris
+     * @param array<string> $uris  List of post AT-URIs to return hydrated views for.
      */
     public function query(array $uris): Output
     {

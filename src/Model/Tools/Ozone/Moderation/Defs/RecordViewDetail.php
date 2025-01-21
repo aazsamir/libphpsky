@@ -22,7 +22,7 @@ class RecordViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var array<\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\BlobView> */
     public array $blobs = [];
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> */
     public ?array $labels = [];
     public \DateTimeInterface $indexedAt;
     public ?ModerationDetail $moderation;

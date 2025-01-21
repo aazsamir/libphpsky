@@ -29,7 +29,7 @@ class PostView implements \Aazsamir\Libphpsky\ATProtoObject
     public \DateTimeInterface $indexedAt;
     public ?ViewerState $viewer;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> */
     public ?array $labels = [];
     public ?ThreadgateView $threadgate;
 

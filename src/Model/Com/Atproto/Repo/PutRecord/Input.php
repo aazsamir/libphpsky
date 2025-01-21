@@ -15,12 +15,23 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.repo.putRecord';
 
+    /** @var string The handle or DID of the repo (aka, current account). */
     public string $repo;
+
+    /** @var string The NSID of the record collection. */
     public string $collection;
+
+    /** @var string The Record Key. */
     public string $rkey;
+
+    /** @var ?bool Can be set to 'false' to skip Lexicon schema validation of record data, 'true' to require it, or leave unset to validate only for known Lexicons. */
     public ?bool $validate;
     public mixed $record;
+
+    /** @var ?string Compare and swap with the previous record by CID. WARNING: nullable and optional field; may cause problems with golang implementation */
     public ?string $swapRecord = null;
+
+    /** @var ?string Compare and swap with the previous commit by CID. */
     public ?string $swapCommit;
 
     public static function id(): string

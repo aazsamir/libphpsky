@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs;
 
 /**
+ * Strings which describe the label in the UI, localized into a specific language.
  * object
  */
 class LabelValueDefinitionStrings implements \Aazsamir\Libphpsky\ATProtoObject
@@ -15,8 +16,13 @@ class LabelValueDefinitionStrings implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'labelValueDefinitionStrings';
     public const ID = 'com.atproto.label.defs';
 
+    /** @var string The code of the language these strings are written in. */
     public string $lang;
+
+    /** @var string A short human-readable name for the label. */
     public string $name;
+
+    /** @var string A longer description of what the label means and why it might be applied. */
     public string $description;
 
     public static function id(): string

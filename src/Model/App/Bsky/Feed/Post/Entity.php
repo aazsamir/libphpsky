@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Feed\Post;
 
 /**
+ * Deprecated: use facets instead.
  * object
  */
 class Entity implements \Aazsamir\Libphpsky\ATProtoObject
@@ -16,6 +17,8 @@ class Entity implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'app.bsky.feed.post';
 
     public ?TextSlice $index;
+
+    /** @var string Expected values are 'mention' and 'link'. */
     public string $type;
     public string $value;
 

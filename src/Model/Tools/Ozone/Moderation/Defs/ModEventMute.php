@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs;
 
 /**
+ * Mute incoming reports on a subject
  * object
  */
 class ModEventMute implements \Aazsamir\Libphpsky\ATProtoObject
@@ -16,6 +17,8 @@ class ModEventMute implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'tools.ozone.moderation.defs';
 
     public ?string $comment;
+
+    /** @var int Indicates how long the subject should remain muted. */
     public int $durationInHours;
 
     public static function id(): string

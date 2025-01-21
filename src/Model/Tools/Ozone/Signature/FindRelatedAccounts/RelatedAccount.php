@@ -17,7 +17,7 @@ class RelatedAccount implements \Aazsamir\Libphpsky\ATProtoObject
 
     public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\AccountView $account;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\Defs\SigDetail>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\Defs\SigDetail> */
     public ?array $similarities = [];
 
     public static function id(): string

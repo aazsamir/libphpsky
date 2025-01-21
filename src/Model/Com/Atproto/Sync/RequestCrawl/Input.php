@@ -15,6 +15,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.sync.requestCrawl';
 
+    /** @var string Hostname of the current service (eg, PDS) that is requesting to be crawled. */
     public string $hostname;
 
     public static function id(): string

@@ -15,6 +15,7 @@ class PersonalDetailsPref implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'personalDetailsPref';
     public const ID = 'app.bsky.actor.defs';
 
+    /** @var ?\DateTimeInterface The birth date of account owner. */
     public ?\DateTimeInterface $birthDate;
 
     public static function id(): string

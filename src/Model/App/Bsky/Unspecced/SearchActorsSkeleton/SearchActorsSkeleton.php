@@ -25,6 +25,12 @@ class SearchActorsSkeleton implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
+    /**
+     * @param string $q Search query string; syntax, phrase, boolean, and faceting is unspecified, but Lucene query syntax is recommended. For typeahead search, only simple term match is supported, not full syntax.
+     * @param ?string $viewer DID of the account making the request (not included for public/unauthenticated queries). Used to boost followed accounts in ranking.
+     * @param ?bool $typeahead If true, acts as fast/simple 'typeahead' query.
+     * @param ?string $cursor Optional pagination mechanism; may not necessarily allow scrolling through entire result set.
+     */
     public function query(
         string $q,
         ?string $viewer = null,

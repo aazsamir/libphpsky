@@ -15,6 +15,7 @@ class Listblock implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'main';
     public const ID = 'app.bsky.graph.listblock';
 
+    /** @var string Reference (AT-URI) to the mod list record. */
     public string $subject;
     public \DateTimeInterface $createdAt;
 

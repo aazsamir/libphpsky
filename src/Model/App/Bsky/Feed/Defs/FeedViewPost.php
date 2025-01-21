@@ -20,6 +20,8 @@ class FeedViewPost implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\ReasonRepost|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\ReasonPin|null */
     public mixed $reason;
+
+    /** @var ?string Context provided by feed generator that may be passed back alongside interactions. */
     public ?string $feedContext;
 
     public static function id(): string

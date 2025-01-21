@@ -15,6 +15,7 @@ class Schema implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'main';
     public const ID = 'com.atproto.lexicon.schema';
 
+    /** @var int Indicates the 'version' of the Lexicon language. Must be '1' for the current atproto/Lexicon schema system. */
     public int $lexicon;
 
     public static function id(): string

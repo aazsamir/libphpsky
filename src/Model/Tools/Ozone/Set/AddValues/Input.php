@@ -15,9 +15,10 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'tools.ozone.set.addValues';
 
+    /** @var string Name of the set to add values to */
     public string $name;
 
-    /** @var array<string> */
+    /** @var array<string> Array of string values to add to the set */
     public array $values = [];
 
     public static function id(): string

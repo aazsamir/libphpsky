@@ -17,4 +17,6 @@ interface Def
     public function name(): string;
 
     public function lexicon(): Lexicon;
+
+    public function description(): ?string;
 }

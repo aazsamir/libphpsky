@@ -24,6 +24,9 @@ class GetMessageContext implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
+    /**
+     * @param ?string $convoId Conversation that the message is from. NOTE: this field will eventually be required.
+     */
     public function query(string $messageId, ?string $convoId = null, ?int $before = null, ?int $after = null): Output
     {
         return \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetMessageContext\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

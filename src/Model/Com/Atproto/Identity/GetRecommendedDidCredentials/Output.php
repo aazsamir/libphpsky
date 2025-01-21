@@ -15,10 +15,10 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'com.atproto.identity.getRecommendedDidCredentials';
 
-    /** @var array<string>|null */
+    /** @var ?array<string> Recommended rotation keys for PLC dids. Should be undefined (or ignored) for did:webs. */
     public ?array $rotationKeys = [];
 
-    /** @var array<string>|null */
+    /** @var ?array<string> */
     public ?array $alsoKnownAs = [];
     public mixed $verificationMethods;
     public mixed $services;

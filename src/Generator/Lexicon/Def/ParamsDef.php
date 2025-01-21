@@ -20,6 +20,7 @@ final class ParamsDef implements Def, DefContainer
         private readonly Lexicon $lexicon,
         private readonly Defs $properties,
         private readonly ?array $required = null,
+        private readonly ?string $description = null,
     ) {}
 
     public function type(): LexiconType
@@ -48,6 +49,11 @@ final class ParamsDef implements Def, DefContainer
     public function required(): ?array
     {
         return $this->required;
+    }
+
+    public function description(): ?string
+    {
+        return $this->description;
     }
 
     public function defs(): Defs

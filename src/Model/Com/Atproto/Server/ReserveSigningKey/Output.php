@@ -15,6 +15,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'com.atproto.server.reserveSigningKey';
 
+    /** @var string The public key for the reserved signing key, in did:key serialization. */
     public string $signingKey;
 
     public static function id(): string

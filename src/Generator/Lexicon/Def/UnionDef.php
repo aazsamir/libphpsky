@@ -25,6 +25,7 @@ final class UnionDef implements Def
         private readonly Lexicon $lexicon,
         private readonly array $refs,
         private readonly ?bool $closed = null,
+        private readonly ?string $description = null,
     ) {}
 
     public function type(): LexiconType
@@ -53,6 +54,11 @@ final class UnionDef implements Def
     public function closed(): ?bool
     {
         return $this->closed;
+    }
+
+    public function description(): ?string
+    {
+        return $this->description;
     }
 
     /**

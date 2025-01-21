@@ -25,6 +25,9 @@ class GetAuthorFeed implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
+    /**
+     * @param ?string $filter Combinations of post/repost types to include in response.
+     */
     public function query(
         string $actor,
         ?int $limit = null,

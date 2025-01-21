@@ -26,7 +26,8 @@ class GetRelationships implements \Aazsamir\Libphpsky\Action
     }
 
     /**
-     * @param ?array<string> $others
+     * @param string $actor Primary account requesting relationships for.
+     * @param ?array<string> $others  List of 'other' accounts to be related back to the primary.
      */
     public function query(string $actor, ?array $others = null): Output
     {

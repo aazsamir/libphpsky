@@ -10,7 +10,7 @@ use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 /**
  * @internal
  */
-final class SubscriptionDef implements Def, HasDescription, DefContainer
+final class SubscriptionDef implements Def, DefContainer
 {
     public function __construct(
         private readonly string $name,

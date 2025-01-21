@@ -25,6 +25,9 @@ class SearchRepos implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
+    /**
+     * @param ?string $term DEPRECATED: use 'q' instead
+     */
     public function query(?string $term = null, ?string $q = null, ?int $limit = null, ?string $cursor = null): Output
     {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\SearchRepos\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

@@ -21,15 +21,15 @@ class StarterPackView implements \Aazsamir\Libphpsky\ATProtoObject
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $creator;
     public ?ListViewBasic $list;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\ListItemView>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\ListItemView> */
     public ?array $listItemsSample = [];
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\GeneratorView>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\GeneratorView> */
     public ?array $feeds = [];
     public ?int $joinedWeekCount;
     public ?int $joinedAllTimeCount;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> */
     public ?array $labels = [];
     public \DateTimeInterface $indexedAt;
 

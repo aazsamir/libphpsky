@@ -15,10 +15,19 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'tools.ozone.communication.createTemplate';
 
+    /** @var string Name of the template. */
     public string $name;
+
+    /** @var string Content of the template, markdown supported, can contain variable placeholders. */
     public string $contentMarkdown;
+
+    /** @var string Subject of the message, used in emails. */
     public string $subject;
+
+    /** @var ?string Message language. */
     public ?string $lang;
+
+    /** @var ?string DID of the user who is creating the template. */
     public ?string $createdBy;
 
     public static function id(): string

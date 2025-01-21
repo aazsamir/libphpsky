@@ -22,7 +22,7 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
     public ?ProfileAssociated $associated;
     public ?ViewerState $viewer;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> */
     public ?array $labels = [];
     public ?\DateTimeInterface $createdAt;
 

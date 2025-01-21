@@ -17,8 +17,10 @@ class Video implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $video;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Caption>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Caption> */
     public ?array $captions = [];
+
+    /** @var ?string Alt text description of the video, for accessibility. */
     public ?string $alt;
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Defs\AspectRatio $aspectRatio;
 

@@ -26,7 +26,7 @@ class ListNotifications implements \Aazsamir\Libphpsky\Action
     }
 
     /**
-     * @param ?array<string> $reasons
+     * @param ?array<string> $reasons  Notification reasons to include in response.
      */
     public function query(
         ?array $reasons = null,

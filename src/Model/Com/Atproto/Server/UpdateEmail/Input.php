@@ -17,6 +17,8 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $email;
     public ?bool $emailAuthFactor;
+
+    /** @var ?string Requires a token from com.atproto.sever.requestEmailUpdate if the account's email has been confirmed. */
     public ?string $token;
 
     public static function id(): string

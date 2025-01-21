@@ -17,7 +17,11 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView> */
     public array $suggestions = [];
+
+    /** @var ?bool If true, response has fallen-back to generic results, and is not scoped using relativeToDid */
     public ?bool $isFallback;
+
+    /** @var ?int Snowflake for this recommendation, use when submitting recommendation events. */
     public ?int $recId;
 
     public static function id(): string

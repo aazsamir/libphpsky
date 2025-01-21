@@ -15,11 +15,16 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.repo.applyWrites';
 
+    /** @var string The handle or DID of the repo (aka, current account). */
     public string $repo;
+
+    /** @var ?bool Can be set to 'false' to skip Lexicon schema validation of record data across all operations, 'true' to require it, or leave unset to validate only for known Lexicons. */
     public ?bool $validate;
 
     /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\Create|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\Update|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\Delete> */
     public array $writes = [];
+
+    /** @var ?string If provided, the entire operation will fail if the current repo commit CID does not match this value. Used to prevent conflicting repo mutations. */
     public ?string $swapCommit;
 
     public static function id(): string

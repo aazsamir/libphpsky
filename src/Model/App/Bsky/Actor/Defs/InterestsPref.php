@@ -15,7 +15,7 @@ class InterestsPref implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'interestsPref';
     public const ID = 'app.bsky.actor.defs';
 
-    /** @var array<string> */
+    /** @var array<string> A list of tags which describe the account owner's interests gathered during onboarding. */
     public array $tags = [];
 
     public static function id(): string

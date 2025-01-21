@@ -25,6 +25,9 @@ class ResolveHandle implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
+    /**
+     * @param string $handle The handle to resolve.
+     */
     public function query(string $handle): Output
     {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));

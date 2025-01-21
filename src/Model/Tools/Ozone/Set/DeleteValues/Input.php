@@ -15,9 +15,10 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'tools.ozone.set.deleteValues';
 
+    /** @var string Name of the set to delete values from */
     public string $name;
 
-    /** @var array<string> */
+    /** @var array<string> Array of string values to delete from the set */
     public array $values = [];
 
     public static function id(): string

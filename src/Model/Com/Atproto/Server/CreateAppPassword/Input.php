@@ -15,7 +15,10 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.server.createAppPassword';
 
+    /** @var string A short name for the App Password, to help distinguish them. */
     public string $name;
+
+    /** @var ?bool If an app password has 'privileged' access to possibly sensitive account state. Meant for use with trusted clients. */
     public ?bool $privileged;
 
     public static function id(): string

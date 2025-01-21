@@ -16,6 +16,8 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'com.atproto.admin.disableAccountInvites';
 
     public string $account;
+
+    /** @var ?string Optional reason for disabled invites. */
     public ?string $note;
 
     public static function id(): string

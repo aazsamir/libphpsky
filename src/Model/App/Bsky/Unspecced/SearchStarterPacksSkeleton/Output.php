@@ -16,6 +16,8 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'app.bsky.unspecced.searchStarterPacksSkeleton';
 
     public ?string $cursor;
+
+    /** @var ?int Count of search hits. Optional, may be rounded/truncated, and may not be possible to paginate through all hits. */
     public ?int $hitsTotal;
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\Defs\SkeletonSearchStarterPack> */

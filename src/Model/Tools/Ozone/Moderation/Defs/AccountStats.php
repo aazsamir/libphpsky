@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs;
 
 /**
+ * Statistics about a particular account subject
  * object
  */
 class AccountStats implements \Aazsamir\Libphpsky\ATProtoObject
@@ -15,10 +16,19 @@ class AccountStats implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'accountStats';
     public const ID = 'tools.ozone.moderation.defs';
 
+    /** @var ?int Total number of reports on the account */
     public ?int $reportCount;
+
+    /** @var ?int Total number of appeals against a moderation action on the account */
     public ?int $appealCount;
+
+    /** @var ?int Number of times the account was suspended */
     public ?int $suspendCount;
+
+    /** @var ?int Number of times the account was escalated */
     public ?int $escalateCount;
+
+    /** @var ?int Number of times the account was taken down */
     public ?int $takedownCount;
 
     public static function id(): string

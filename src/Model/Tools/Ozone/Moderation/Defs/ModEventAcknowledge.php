@@ -16,6 +16,8 @@ class ModEventAcknowledge implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'tools.ozone.moderation.defs';
 
     public ?string $comment;
+
+    /** @var ?bool If true, all other reports on content authored by this account will be resolved (acknowledged). */
     public ?bool $acknowledgeAccountSubjects;
 
     public static function id(): string

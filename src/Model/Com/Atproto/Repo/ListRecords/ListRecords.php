@@ -25,6 +25,14 @@ class ListRecords implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
+    /**
+     * @param string $repo The handle or DID of the repo.
+     * @param string $collection The NSID of the record type.
+     * @param ?int $limit The number of records to return.
+     * @param ?string $rkeyStart DEPRECATED: The lowest sort-ordered rkey to start from (exclusive)
+     * @param ?string $rkeyEnd DEPRECATED: The highest sort-ordered rkey to stop at (exclusive)
+     * @param ?bool $reverse Flag to reverse the order of the returned records.
+     */
     public function query(
         string $repo,
         string $collection,

@@ -22,12 +22,12 @@ class ListView implements \Aazsamir\Libphpsky\ATProtoObject
     public ?string $purpose;
     public ?string $description;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> */
     public ?array $descriptionFacets = [];
     public ?string $avatar;
     public ?int $listItemCount;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> */
     public ?array $labels = [];
     public ?ListViewerState $viewer;
     public \DateTimeInterface $indexedAt;

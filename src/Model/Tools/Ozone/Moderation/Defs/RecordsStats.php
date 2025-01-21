@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs;
 
 /**
+ * Statistics about a set of record subject items
  * object
  */
 class RecordsStats implements \Aazsamir\Libphpsky\ATProtoObject
@@ -15,13 +16,28 @@ class RecordsStats implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'recordsStats';
     public const ID = 'tools.ozone.moderation.defs';
 
+    /** @var ?int Cumulative sum of the number of reports on the items in the set */
     public ?int $totalReports;
+
+    /** @var ?int Number of items that were reported at least once */
     public ?int $reportedCount;
+
+    /** @var ?int Number of items that were escalated at least once */
     public ?int $escalatedCount;
+
+    /** @var ?int Number of items that were appealed at least once */
     public ?int $appealedCount;
+
+    /** @var ?int Total number of item in the set */
     public ?int $subjectCount;
+
+    /** @var ?int Number of item currently in "reviewOpen" or "reviewEscalated" state */
     public ?int $pendingCount;
+
+    /** @var ?int Number of item currently in "reviewNone" or "reviewClosed" state */
     public ?int $processedCount;
+
+    /** @var ?int Number of item currently taken down */
     public ?int $takendownCount;
 
     public static function id(): string

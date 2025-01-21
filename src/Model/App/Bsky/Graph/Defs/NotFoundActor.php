@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs;
 
 /**
+ * indicates that a handle or DID could not be resolved
  * object
  */
 class NotFoundActor implements \Aazsamir\Libphpsky\ATProtoObject

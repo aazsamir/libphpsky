@@ -19,7 +19,7 @@ class MessageView implements \Aazsamir\Libphpsky\ATProtoObject
     public string $rev;
     public string $text;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> Annotations of text (mentions, URLs, hashtags, etc) */
     public ?array $facets = [];
 
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View|null */

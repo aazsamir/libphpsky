@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Com\Atproto\Sync\SubscribeRepos;
 
 /**
+ * DEPRECATED -- Use #account event instead
  * object
  */
 class Tombstone implements \Aazsamir\Libphpsky\ATProtoObject

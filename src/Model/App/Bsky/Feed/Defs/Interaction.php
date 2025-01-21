@@ -17,6 +17,8 @@ class Interaction implements \Aazsamir\Libphpsky\ATProtoObject
 
     public ?string $item;
     public ?string $event;
+
+    /** @var ?string Context on a feed item that was originally supplied by the feed generator on getFeedSkeleton. */
     public ?string $feedContext;
 
     public static function id(): string

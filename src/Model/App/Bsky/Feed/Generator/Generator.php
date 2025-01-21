@@ -19,12 +19,14 @@ class Generator implements \Aazsamir\Libphpsky\ATProtoObject
     public string $displayName;
     public ?string $description;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> */
     public ?array $descriptionFacets = [];
     public ?string $avatar;
+
+    /** @var ?bool Declaration that a feed accepts feedback interactions from a client through app.bsky.feed.sendInteractions */
     public ?bool $acceptsInteractions;
 
-    /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels|null */
+    /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels|null Self-label values */
     public mixed $labels;
     public ?string $contentMode;
     public \DateTimeInterface $createdAt;

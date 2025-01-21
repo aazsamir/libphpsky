@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs;
 
 /**
+ * If set, an active progress guide. Once completed, can be set to undefined. Should have unspecced fields tracking progress.
  * object
  */
 class BskyAppProgressGuide implements \Aazsamir\Libphpsky\ATProtoObject

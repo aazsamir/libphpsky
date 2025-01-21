@@ -15,26 +15,29 @@ class Post implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'main';
     public const ID = 'app.bsky.feed.post';
 
+    /** @var string The primary post content. May be an empty string, if there are embeds. */
     public string $text;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Post\Entity>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Post\Entity> DEPRECATED: replaced by app.bsky.richtext.facet. */
     public ?array $entities = [];
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> Annotations of text (mentions, URLs, hashtags, etc) */
     public ?array $facets = [];
     public ?ReplyRef $reply;
 
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\Images|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Video|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\External|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\RecordWithMedia\RecordWithMedia|null */
     public mixed $embed;
 
-    /** @var array<string>|null */
+    /** @var ?array<string> Indicates human language of post primary text content. */
     public ?array $langs = [];
 
-    /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels|null */
+    /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels|null Self-label values for this post. Effectively content warnings. */
     public mixed $labels;
 
-    /** @var array<string>|null */
+    /** @var ?array<string> Additional hashtags, in addition to any included in post text and facets. */
     public ?array $tags = [];
+
+    /** @var \DateTimeInterface Client-declared timestamp when this post was originally created. */
     public \DateTimeInterface $createdAt;
 
     public static function id(): string

@@ -25,6 +25,10 @@ class GetSuggestionsSkeleton implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
+    /**
+     * @param ?string $viewer DID of the account making the request (not included for public/unauthenticated queries). Used to boost followed accounts in ranking.
+     * @param ?string $relativeToDid DID of the account to get suggestions relative to. If not provided, suggestions will be based on the viewer.
+     */
     public function query(
         ?string $viewer = null,
         ?int $limit = null,

@@ -16,11 +16,17 @@ class Profile implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'app.bsky.actor.profile';
 
     public ?string $displayName;
+
+    /** @var ?string Free-form profile description text. */
     public ?string $description;
+
+    /** @var ?string Small image to be displayed next to posts from account. AKA, 'profile picture' */
     public ?string $avatar;
+
+    /** @var ?string Larger horizontal image to display behind profile view. */
     public ?string $banner;
 
-    /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels|null */
+    /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels|null Self-label values, specific to the Bluesky application, on the overall account. */
     public mixed $labels;
     public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $joinedViaStarterPack;
     public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $pinnedPost;

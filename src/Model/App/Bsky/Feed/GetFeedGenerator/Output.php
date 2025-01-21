@@ -16,7 +16,11 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'app.bsky.feed.getFeedGenerator';
 
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\GeneratorView $view;
+
+    /** @var bool Indicates whether the feed generator service has been online recently, or else seems to be inactive. */
     public bool $isOnline;
+
+    /** @var bool Indicates whether the feed generator service is compatible with the record declaration. */
     public bool $isValid;
 
     public static function id(): string

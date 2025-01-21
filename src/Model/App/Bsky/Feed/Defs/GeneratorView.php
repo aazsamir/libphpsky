@@ -22,13 +22,13 @@ class GeneratorView implements \Aazsamir\Libphpsky\ATProtoObject
     public string $displayName;
     public ?string $description;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> */
     public ?array $descriptionFacets = [];
     public ?string $avatar;
     public ?int $likeCount;
     public ?bool $acceptsInteractions;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> */
     public ?array $labels = [];
     public ?GeneratorViewerState $viewer;
     public ?string $contentMode;

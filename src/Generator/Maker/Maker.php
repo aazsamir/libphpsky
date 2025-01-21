@@ -15,9 +15,9 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\BytesDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\CidLinkDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\Def;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\DefContainer;
-use Aazsamir\Libphpsky\Generator\Lexicon\Def\HasDescription;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\IntegerDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\ObjectDef;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\ParamsDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\ProcedureDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\QueryDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\RefDef;
@@ -118,7 +118,7 @@ final class Maker
         $class->addConstant('NAME', $def->name());
         $class->addConstant('ID', $def->lexicon()->id());
 
-        if ($def instanceof HasDescription && $def->description()) {
+        if ($def->description()) {
             $class->addComment($def->description());
         }
 
@@ -155,56 +155,24 @@ final class Maker
             return;
         }
 
-        $properties = $def->parameters()->properties()->toArray();
-
-        // sort by nullability
-        $required = $def->parameters()->required() ?? [];
-        usort($properties, static fn ($a, $b) => !\in_array($a->name(), $required, true) <=> !\in_array($b->name(), $required, true));
-
-        foreach ($properties as $property) {
-            $propertyName = $property->name();
-            $property = $this->unref($property);
-            $parameter = $method->addParameter($propertyName);
-            $parameterType = $this->namespaceAndClassname($property);
-            $nullable = !\in_array($propertyName, $def->parameters()->required() ?? [], true);
-
-            if ($property instanceof ArrayDef) {
-                $parameter->setType('array');
-                $method->addComment(
-                    '@param '
-                        . ($nullable ? '?' : '')
-                        . $parameterType
-                        . ' $' . $propertyName
-                );
-            } else {
-                $parameter->setType($parameterType);
-            }
-
-            if ($nullable) {
-                $parameter->setNullable(true)->setDefaultValue(null);
-            }
-        }
+        $this->addParameters($method, $def->parameters());
     }
 
     private function addQueryReturnType(Method $method, QueryDef $def): void
     {
         if ($def->output() && $def->output()->schema()) {
             $return = $this->unref($def->output()->schema());
-
-            if ($return instanceof ArrayDef) {
-                $method->setReturnType('array');
-                $method->addComment('@return ' . $this->namespaceAndClassname($return));
-            } else {
-                $returnType = $this->namespaceAndClassname($return);
-                $method->setReturnType($returnType);
-                $body = \sprintf('return %s::fromArray($this->request($this->argsWithKeys(func_get_args())));', $returnType);
-                $method->addBody($body);
-            }
-        } else {
-            $method->setReturnType('mixed');
-            $body = 'return $this->request($this->argsWithKeys(func_get_args()));';
+            $returnType = $this->namespaceAndClassname($return);
+            $method->setReturnType($returnType);
+            $body = \sprintf('return %s::fromArray($this->request($this->argsWithKeys(func_get_args())));', $returnType);
             $method->addBody($body);
+
+            return;
         }
+
+        $method->setReturnType('mixed');
+        $body = 'return $this->request($this->argsWithKeys(func_get_args()));';
+        $method->addBody($body);
     }
 
     private function createProcedure(ClassType $class, ProcedureDef $def): void
@@ -221,31 +189,13 @@ final class Maker
     private function addProcedureParameters(Method $method, ProcedureDef $def): void
     {
         if ($def->parameters()) {
-            foreach ($def->parameters()->properties()->toArray() as $property) {
-                $propertyName = $property->name();
-                $property = $this->unref($property);
-                $parameter = $method->addParameter($propertyName);
-                $parameterType = $this->namespaceAndClassname($property);
-
-                if ($property instanceof ArrayDef) {
-                    $parameter->setType('array');
-                    $method->addComment('@param ' . $parameterType . ' $' . $propertyName);
-                } else {
-                    $parameter->setType($parameterType);
-                }
-            }
+            $this->addParameters($method, $def->parameters());
         }
 
         if ($def->input() && $def->input()->schema()) {
             $input = $this->unref($def->input()->schema());
             $inputType = $this->namespaceAndClassname($input);
-
-            if ($input instanceof ArrayDef) {
-                $method->addParameter('input')->setType('array');
-                $method->addComment('@param ' . $inputType . ' $input');
-            } else {
-                $method->addParameter('input')->setType($inputType);
-            }
+            $method->addParameter('input')->setType($inputType);
         }
     }
 
@@ -254,15 +204,9 @@ final class Maker
         if ($def->output() && $def->output()->schema()) {
             $return = $this->unref($def->output()->schema());
             $returnType = $this->namespaceAndClassname($return);
-
-            if ($return instanceof ArrayDef) {
-                $method->setReturnType('array');
-                $method->addComment('@return ' . $returnType);
-            } else {
-                $method->setReturnType($returnType);
-                $body = \sprintf('return %s::fromArray($this->request($this->argsWithKeys(func_get_args())));', $returnType);
-                $method->addBody($body);
-            }
+            $method->setReturnType($returnType);
+            $body = \sprintf('return %s::fromArray($this->request($this->argsWithKeys(func_get_args())));', $returnType);
+            $method->addBody($body);
 
             return true;
         }
@@ -293,6 +237,7 @@ final class Maker
 
         foreach ($def->properties()->toArray() as $property) {
             $propertyName = $property->name();
+            $description = $property->description();
             $property = $this->unref($property);
             $phpProperty = $class->addProperty($propertyName);
             $phpPropertyType = $this->namespaceAndClassname($property);
@@ -311,12 +256,12 @@ final class Maker
 
             if ($property instanceof ArrayDef) {
                 $phpProperty->setType('array');
-
-                if ($nullable) {
-                    $phpProperty->addComment('@var ' . $phpPropertyType . '|null');
-                } else {
-                    $phpProperty->addComment('@var ' . $phpPropertyType);
-                }
+                $phpProperty->addComment(
+                    '@var '
+                    . ($nullable ? '?' : '')
+                    . $phpPropertyType
+                    . ($description ? ' ' . $description : '')
+                );
             } elseif ($property instanceof UnionDef) {
                 $phpProperty->setType('mixed');
                 $types = [];
@@ -331,10 +276,20 @@ final class Maker
                     }
 
                     $types = Type::union(...$types);
-                    $phpProperty->addComment('@var ' . $types);
+                    $phpProperty->addComment('@var ' . $types . ($description ? ' ' . $description : ''));
                 }
             } else {
                 $phpProperty->setType($phpPropertyType);
+
+                if ($description) {
+                    $phpProperty->addComment(
+                        '@var '
+                        . ($nullable ? '?' : '')
+                        . $phpPropertyType
+                        . ' '
+                        . $description
+                    );
+                }
             }
 
             if ($property instanceof ArrayDef) {
@@ -414,6 +369,66 @@ final class Maker
         $constructor->addBody('return $instance;');
     }
 
+    private function addParameters(Method $method, ParamsDef $def): void
+    {
+        $properties = $def->properties()->toArray();
+        // sort by nullability
+        $required = $def->required() ?? [];
+        usort($properties, static fn ($a, $b) => !\in_array($a->name(), $required, true) <=> !\in_array($b->name(), $required, true));
+
+        foreach ($properties as $property) {
+            $propertyName = $property->name();
+            $property = $this->unref($property);
+            $parameter = $method->addParameter($propertyName);
+            $parameterType = $this->namespaceAndClassname($property);
+            $nullable = !\in_array($propertyName, $required, true);
+
+            if ($property instanceof ArrayDef) {
+                $parameter->setType('array');
+            } else {
+                $parameter->setType($parameterType);
+            }
+
+            $this->addParamComment($method, $propertyName, $parameterType, $nullable, $property->description());
+
+            if ($nullable) {
+                $parameter->setNullable(true)->setDefaultValue(null);
+            }
+        }
+    }
+
+    private function addParamComment(
+        Method $method,
+        string $name,
+        string $type,
+        bool $nullable,
+        ?string $description,
+    ): void {
+        if (str_starts_with($type, 'array<')) {
+            $method->addComment(
+                '@param '
+                    . ($nullable ? '?' : '')
+                    . $type
+                    . ' $' . $name
+                    . ' '
+                    . ($description ? ' ' . $description : ''),
+            );
+
+            return;
+        }
+
+        if ($description) {
+            $method->addComment(
+                '@param '
+                    . ($nullable ? '?' : '')
+                    . $type
+                    . ' $' . $name
+                    . ' '
+                    . $description,
+            );
+        }
+    }
+
     private function lexiconToNamespace(Lexicon $lexicon): string
     {
         $id = $lexicon->id();
@@ -439,7 +454,7 @@ final class Maker
                 return 'string';
             case $def instanceof StringDef:
                 if ($def->format() === 'datetime') {
-                    return 'DateTimeInterface';
+                    return '\DateTimeInterface';
                 }
 
                 return 'string';

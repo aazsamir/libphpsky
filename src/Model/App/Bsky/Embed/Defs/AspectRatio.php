@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Embed\Defs;
 
 /**
+ * width:height represents an aspect ratio. It may be approximate, and may not correspond to absolute dimensions in any given unit.
  * object
  */
 class AspectRatio implements \Aazsamir\Libphpsky\ATProtoObject

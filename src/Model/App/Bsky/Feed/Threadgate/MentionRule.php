@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate;
 
 /**
+ * Allow replies from actors mentioned in your post.
  * object
  */
 class MentionRule implements \Aazsamir\Libphpsky\ATProtoObject

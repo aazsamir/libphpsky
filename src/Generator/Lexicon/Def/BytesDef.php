@@ -17,6 +17,7 @@ final class BytesDef implements Def
         private readonly Lexicon $lexicon,
         private readonly ?int $minLength = null,
         private readonly ?int $maxLength = null,
+        private readonly ?string $description = null,
     ) {}
 
     public function type(): LexiconType
@@ -37,6 +38,11 @@ final class BytesDef implements Def
     public function minLength(): ?int
     {
         return $this->minLength;
+    }
+
+    public function description(): ?string
+    {
+        return $this->description;
     }
 
     public function maxLength(): ?int

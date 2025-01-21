@@ -190,7 +190,7 @@ final class MakerTest extends TestCase
         self::assertNull($procedure->getParameter('stringParam')->getDefaultValue());
         self::assertEquals('array', $procedure->getParameter('arrayParam')->getType());
         self::assertNull($procedure->getParameter('arrayParam')->getDefaultValue());
-        self::assertStringContainsString('@param array<string> $arrayParam', $procedure->getComment());
+        self::assertStringContainsString('@param ?array<string> $arrayParam', $procedure->getComment());
         self::assertEquals('int', $procedure->getReturnType());
     }
 

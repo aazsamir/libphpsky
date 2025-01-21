@@ -15,7 +15,10 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.moderation.createReport';
 
+    /** @var string Indicates the broad category of violation the report is for. */
     public string $reasonType;
+
+    /** @var ?string Additional context about the content and violation. */
     public ?string $reason;
 
     /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef */

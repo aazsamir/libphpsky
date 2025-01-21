@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs;
 
 /**
+ * The subject's followers whom you also follow
  * object
  */
 class KnownFollowers implements \Aazsamir\Libphpsky\ATProtoObject

@@ -15,7 +15,10 @@ class ThreadViewPref implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'threadViewPref';
     public const ID = 'app.bsky.actor.defs';
 
+    /** @var ?string Sorting mode for threads. */
     public ?string $sort;
+
+    /** @var ?bool Show followed users at the top of all replies. */
     public ?bool $prioritizeFollowedUsers;
 
     public static function id(): string

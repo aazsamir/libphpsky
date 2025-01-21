@@ -15,7 +15,10 @@ class Listitem implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'main';
     public const ID = 'app.bsky.graph.listitem';
 
+    /** @var string The account which is included on the list. */
     public string $subject;
+
+    /** @var string Reference (AT-URI) to the list record (app.bsky.graph.list). */
     public string $list;
     public \DateTimeInterface $createdAt;
 

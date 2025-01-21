@@ -19,7 +19,11 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\Defs\SkeletonSearchActor> */
     public array $actors = [];
+
+    /** @var ?string DID of the account these suggestions are relative to. If this is returned undefined, suggestions are based on the viewer. */
     public ?string $relativeToDid;
+
+    /** @var ?int Snowflake for this recommendation, use when submitting recommendation events. */
     public ?int $recId;
 
     public static function id(): string

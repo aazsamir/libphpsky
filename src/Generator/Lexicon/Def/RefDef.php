@@ -18,6 +18,7 @@ final class RefDef implements Def
         private readonly string $name,
         private readonly Lexicon $lexicon,
         private readonly string $ref,
+        private readonly ?string $description = null,
     ) {}
 
     public function type(): LexiconType
@@ -38,6 +39,11 @@ final class RefDef implements Def
     public function ref(): string
     {
         return $this->ref;
+    }
+
+    public function description(): ?string
+    {
+        return $this->description;
     }
 
     public function setResolvedDef(Def $def): void

@@ -24,18 +24,18 @@ class RepoViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
     public \DateTimeInterface $indexedAt;
     public ?ModerationDetail $moderation;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> */
     public ?array $labels = [];
     public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode $invitedBy;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Server\Defs\InviteCode> */
     public ?array $invites = [];
     public ?bool $invitesDisabled;
     public ?string $inviteNote;
     public ?\DateTimeInterface $emailConfirmedAt;
     public ?\DateTimeInterface $deactivatedAt;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\ThreatSignature>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\ThreatSignature> */
     public ?array $threatSignatures = [];
 
     public static function id(): string

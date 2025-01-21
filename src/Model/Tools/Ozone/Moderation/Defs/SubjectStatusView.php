@@ -23,26 +23,40 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\AccountHosting|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RecordHosting|null */
     public mixed $hosting;
 
-    /** @var array<string>|null */
+    /** @var ?array<string> */
     public ?array $subjectBlobCids = [];
     public ?string $subjectRepoHandle;
+
+    /** @var \DateTimeInterface Timestamp referencing when the last update was made to the moderation status of the subject */
     public \DateTimeInterface $updatedAt;
+
+    /** @var \DateTimeInterface Timestamp referencing the first moderation status impacting event was emitted on the subject */
     public \DateTimeInterface $createdAt;
     public ?string $reviewState;
+
+    /** @var ?string Sticky comment on the subject. */
     public ?string $comment;
     public ?\DateTimeInterface $muteUntil;
     public ?\DateTimeInterface $muteReportingUntil;
     public ?string $lastReviewedBy;
     public ?\DateTimeInterface $lastReviewedAt;
     public ?\DateTimeInterface $lastReportedAt;
+
+    /** @var ?\DateTimeInterface Timestamp referencing when the author of the subject appealed a moderation action */
     public ?\DateTimeInterface $lastAppealedAt;
     public ?bool $takendown;
+
+    /** @var ?bool True indicates that the a previously taken moderator action was appealed against, by the author of the content. False indicates last appeal was resolved by moderators. */
     public ?bool $appealed;
     public ?\DateTimeInterface $suspendUntil;
 
-    /** @var array<string>|null */
+    /** @var ?array<string> */
     public ?array $tags = [];
+
+    /** @var ?\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\AccountStats Statistics related to the account subject */
     public ?AccountStats $accountStats;
+
+    /** @var ?\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RecordsStats Statistics related to the record subjects authored by the subject's account */
     public ?RecordsStats $recordsStats;
 
     public static function id(): string

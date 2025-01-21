@@ -15,14 +15,17 @@ class Starterpack implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'main';
     public const ID = 'app.bsky.graph.starterpack';
 
+    /** @var string Display name for starter pack; can not be empty. */
     public string $name;
     public ?string $description;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> */
     public ?array $descriptionFacets = [];
+
+    /** @var string Reference (AT-URI) to the list record. */
     public string $list;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Starterpack\FeedItem>|null */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Starterpack\FeedItem> */
     public ?array $feeds = [];
     public \DateTimeInterface $createdAt;
 

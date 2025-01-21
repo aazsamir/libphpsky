@@ -15,6 +15,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'com.atproto.admin.updateAccountEmail';
 
+    /** @var string The handle or DID of the repo. */
     public string $account;
     public string $email;
 
