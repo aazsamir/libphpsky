@@ -12,6 +12,9 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\UnionDef;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\Type;
 
+/**
+ * @internal
+ */
 class ObjectDefHandler implements DefHandler
 {
     use AddParameters;

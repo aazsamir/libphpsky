@@ -10,6 +10,9 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\QueryDef;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\Method;
 
+/**
+ * @internal
+ */
 class QueryDefHandler implements DefHandler
 {
     use AddParameters;

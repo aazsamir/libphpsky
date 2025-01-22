@@ -10,6 +10,9 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\ProcedureDef;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\Method;
 
+/**
+ * @internal
+ */
 class ProcedureDefHandler implements DefHandler
 {
     use AddParameters;

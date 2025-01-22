@@ -8,6 +8,9 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\Def;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\PhpNamespace;
 
+/**
+ * @internal
+ */
 trait DefHandlerCommon
 {
     /**

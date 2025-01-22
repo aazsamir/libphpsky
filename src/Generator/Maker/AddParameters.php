@@ -9,6 +9,9 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\Def;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\ParamsDef;
 use Nette\PhpGenerator\Method;
 
+/**
+ * @internal
+ */
 trait AddParameters
 {
     private function addParameters(Method $method, ParamsDef $def): void

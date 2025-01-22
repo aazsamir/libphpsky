@@ -13,6 +13,9 @@ use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\PhpNamespace;
 use Nette\PhpGenerator\Property;
 
+/**
+ * @internal
+ */
 class MetaClientGenerator
 {
     public function __construct(

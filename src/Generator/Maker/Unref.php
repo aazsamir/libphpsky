@@ -7,6 +7,9 @@ namespace Aazsamir\Libphpsky\Generator\Maker;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\Def;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\RefDef;
 
+/**
+ * @internal
+ */
 trait Unref
 {
     private function unref(Def $def): Def
