@@ -22,6 +22,7 @@ class ThreadViewPost implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\ThreadViewPost|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\NotFoundPost|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\BlockedPost> */
     public ?array $replies = [];
+    public ?ThreadContext $threadContext;
 
     public static function id(): string
     {
@@ -50,6 +51,7 @@ class ThreadViewPost implements \Aazsamir\Libphpsky\ATProtoObject
         ?PostView $post = null,
         ThreadViewPost|NotFoundPost|BlockedPost|null $parent = null,
         ?array $replies = [],
+        ?ThreadContext $threadContext = null,
     ): self {
         $instance = new self();
         if ($post !== null) {
@@ -60,6 +62,9 @@ class ThreadViewPost implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($replies !== null) {
             $instance->replies = $replies;
+        }
+        if ($threadContext !== null) {
+            $instance->threadContext = $threadContext;
         }
 
         return $instance;
