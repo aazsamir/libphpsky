@@ -98,7 +98,7 @@ $actors = ['bsky.app', 'steampowered.com'];
 $futures = [];
 
 foreach ($actors as $actor) {
-    $futures[] = \Amp\async(fn() => $this->getProfile->query($actor));
+    $futures[] = \Amp\async(fn() => $getProfile->query($actor));
 }
 
 [$errors, $profiles] = \Amp\Future\awaitAll($futures);
