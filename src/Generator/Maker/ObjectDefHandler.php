@@ -19,7 +19,7 @@ class ObjectDefHandler implements DefHandler
     use Unref;
 
     public function __construct(
-        private ClassNameResolver $classNameResolver,
+        private ClassResolver $classResolver,
         private SaveClass $saveClass,
     ) {}
 
@@ -57,7 +57,7 @@ class ObjectDefHandler implements DefHandler
             $description = $property->description();
             $property = $this->unref($property);
             $phpProperty = $class->addProperty($propertyName);
-            $phpPropertyType = $this->classNameResolver->namespaceAndClassname($property);
+            $phpPropertyType = $this->classResolver->namespaceAndClassname($property);
             $required = $def->required() ? \in_array($property->name(), $def->required(), true) : false;
             $nullable = $def->nullable() ? \in_array($property->name(), $def->nullable(), true) : false;
 
@@ -84,7 +84,7 @@ class ObjectDefHandler implements DefHandler
                 $types = [];
 
                 foreach ($property->resolvedRefs() as $type) {
-                    $types[] = $this->classNameResolver->namespaceAndClassname($type);
+                    $types[] = $this->classResolver->namespaceAndClassname($type);
                 }
 
                 if ($types) {
@@ -186,8 +186,8 @@ class ObjectDefHandler implements DefHandler
         $constructor->addBody('return $instance;');
     }
 
-    private function classResolver(): ClassNameResolver
+    private function classResolver(): ClassResolver
     {
-        return $this->classNameResolver;
+        return $this->classResolver;
     }
 }

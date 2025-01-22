@@ -7,7 +7,7 @@ namespace Aazsamir\Libphpsky\Generator;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicons;
 use Aazsamir\Libphpsky\Generator\Loader\FileLexiconProvider;
 use Aazsamir\Libphpsky\Generator\Loader\Loader;
-use Aazsamir\Libphpsky\Generator\Maker\ClassNameResolver;
+use Aazsamir\Libphpsky\Generator\Maker\ClassResolver;
 use Aazsamir\Libphpsky\Generator\Maker\FileSaveClass;
 use Aazsamir\Libphpsky\Generator\Maker\MakeConfig;
 use Aazsamir\Libphpsky\Generator\Maker\Maker;
@@ -37,30 +37,30 @@ final class Generator
         );
 
         $saver = new FileSaveClass($config);
-        $classNameResolver = new ClassNameResolver(
+        $classResolver = new ClassResolver(
             $config,
         );
         $queryDefHandler = new QueryDefHandler(
-            $classNameResolver,
+            $classResolver,
             $saver,
         );
         $procedureDefHandler = new ProcedureDefHandler(
-            $classNameResolver,
+            $classResolver,
             $saver,
         );
         $objectDefHandler = new ObjectDefHandler(
-            $classNameResolver,
+            $classResolver,
             $saver,
         );
         $metaClientGenerator = new MetaClientGenerator(
             $config,
             $saver,
-            $classNameResolver,
+            $classResolver,
             $queryDefHandler,
             $procedureDefHandler,
         );
         $maker = new Maker(
-            $classNameResolver,
+            $classResolver,
             $queryDefHandler,
             $objectDefHandler,
             $procedureDefHandler,

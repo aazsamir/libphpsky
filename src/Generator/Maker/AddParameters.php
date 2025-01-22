@@ -71,7 +71,7 @@ trait AddParameters
         }
     }
 
-    abstract private function classResolver(): ClassNameResolver;
+    abstract private function classResolver(): ClassResolver;
 
     abstract private function unref(Def $def): Def;
 }

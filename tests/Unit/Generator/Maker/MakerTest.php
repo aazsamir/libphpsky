@@ -17,7 +17,7 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\QueryDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\StringDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicons;
-use Aazsamir\Libphpsky\Generator\Maker\ClassNameResolver;
+use Aazsamir\Libphpsky\Generator\Maker\ClassResolver;
 use Aazsamir\Libphpsky\Generator\Maker\MakeConfig;
 use Aazsamir\Libphpsky\Generator\Maker\Maker;
 use Aazsamir\Libphpsky\Generator\Maker\MetaClientGenerator;
@@ -37,7 +37,7 @@ final class MakerTest extends TestCase
 {
     private SaveClassStub $saveClass;
     private MakeConfig $makeConfig;
-    private ClassNameResolver $classNameResolver;
+    private ClassResolver $classResolver;
     private QueryDefHandler $queryDefHandler;
     private ProcedureDefHandler $procedureDefHandler;
     private ObjectDefHandler $objectDefHandler;
@@ -57,14 +57,14 @@ final class MakerTest extends TestCase
             revision: null,
             description: 'lexicon description',
         );
-        $this->classNameResolver = new ClassNameResolver($this->makeConfig);
-        $this->queryDefHandler = new QueryDefHandler($this->classNameResolver, $this->saveClass);
-        $this->procedureDefHandler = new ProcedureDefHandler($this->classNameResolver, $this->saveClass);
-        $this->objectDefHandler = new ObjectDefHandler($this->classNameResolver, $this->saveClass);
+        $this->classResolver = new ClassResolver($this->makeConfig);
+        $this->queryDefHandler = new QueryDefHandler($this->classResolver, $this->saveClass);
+        $this->procedureDefHandler = new ProcedureDefHandler($this->classResolver, $this->saveClass);
+        $this->objectDefHandler = new ObjectDefHandler($this->classResolver, $this->saveClass);
         $this->metaClientGenerator = new MetaClientGenerator(
             $this->makeConfig,
             $this->saveClass,
-            $this->classNameResolver,
+            $this->classResolver,
             $this->queryDefHandler,
             $this->procedureDefHandler,
         );
@@ -274,7 +274,7 @@ final class MakerTest extends TestCase
         $lexicons = new Lexicons([$this->lexicon]);
 
         $maker = new Maker(
-            $this->classNameResolver,
+            $this->classResolver,
             $this->queryDefHandler,
             $this->objectDefHandler,
             $this->procedureDefHandler,

@@ -17,7 +17,7 @@ class ProcedureDefHandler implements DefHandler
     use Unref;
 
     public function __construct(
-        private ClassNameResolver $classNameResolver,
+        private ClassResolver $classResolver,
         private SaveClass $saveClass,
     ) {}
 
@@ -52,7 +52,7 @@ class ProcedureDefHandler implements DefHandler
 
         if ($def->input() && $def->input()->schema()) {
             $input = $this->unref($def->input()->schema());
-            $inputType = $this->classNameResolver->namespaceAndClassname($input);
+            $inputType = $this->classResolver->namespaceAndClassname($input);
             $method->addParameter('input')->setType($inputType);
         }
     }
@@ -61,7 +61,7 @@ class ProcedureDefHandler implements DefHandler
     {
         if ($def->output() && $def->output()->schema()) {
             $return = $this->unref($def->output()->schema());
-            $returnType = $this->classNameResolver->namespaceAndClassname($return);
+            $returnType = $this->classResolver->namespaceAndClassname($return);
             $method->setReturnType($returnType);
             $body = \sprintf('return %s::fromArray($this->request($this->argsWithKeys(func_get_args())));', $returnType);
             $method->addBody($body);
@@ -76,8 +76,8 @@ class ProcedureDefHandler implements DefHandler
         return false;
     }
 
-    private function classResolver(): ClassNameResolver
+    private function classResolver(): ClassResolver
     {
-        return $this->classNameResolver;
+        return $this->classResolver;
     }
 }

@@ -17,7 +17,7 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\UnionDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\UnknownDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 
-class ClassNameResolver
+class ClassResolver
 {
     use Unref;
 

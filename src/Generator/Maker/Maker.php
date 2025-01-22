@@ -26,13 +26,13 @@ final class Maker
     private array $resolved = [];
 
     public function __construct(
-        private ClassNameResolver $classNameResolver,
+        private ClassResolver $classResolver,
         private QueryDefHandler $queryDefHandler,
         private ObjectDefHandler $objectDefHandler,
         private ProcedureDefHandler $procedureDefHandler,
         private MetaClientGenerator $metaClientGenerator,
     ) {
-        $this->classNameResolver = $classNameResolver;
+        $this->classResolver = $classResolver;
         $this->queryDefHandler = $queryDefHandler;
         $this->procedureDefHandler = $procedureDefHandler;
     }
@@ -86,7 +86,7 @@ final class Maker
 
     private function shouldSkipDef(Def $def): bool
     {
-        return $this->classNameResolver->isPhpPrimitive($def)
+        return $this->classResolver->isPhpPrimitive($def)
             || $def instanceof ArrayDef
             || $def instanceof UnionDef;
     }

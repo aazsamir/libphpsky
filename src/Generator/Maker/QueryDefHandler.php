@@ -17,7 +17,7 @@ class QueryDefHandler implements DefHandler
     use Unref;
 
     public function __construct(
-        private ClassNameResolver $classNameResolver,
+        private ClassResolver $classResolver,
         private SaveClass $saveClass,
     ) {}
 
@@ -55,7 +55,7 @@ class QueryDefHandler implements DefHandler
     {
         if ($def->output() && $def->output()->schema()) {
             $return = $this->unref($def->output()->schema());
-            $returnType = $this->classNameResolver->namespaceAndClassname($return);
+            $returnType = $this->classResolver->namespaceAndClassname($return);
             $method->setReturnType($returnType);
             $body = \sprintf('return %s::fromArray($this->request($this->argsWithKeys(func_get_args())));', $returnType);
             $method->addBody($body);
@@ -68,8 +68,8 @@ class QueryDefHandler implements DefHandler
         $method->addBody($body);
     }
 
-    private function classResolver(): ClassNameResolver
+    private function classResolver(): ClassResolver
     {
-        return $this->classNameResolver;
+        return $this->classResolver;
     }
 }

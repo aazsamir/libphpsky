@@ -52,5 +52,5 @@ trait DefHandlerCommon
             ->setBody('return self::NAME;');
     }
 
-    abstract private function classResolver(): ClassNameResolver;
+    abstract private function classResolver(): ClassResolver;
 }
