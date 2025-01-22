@@ -80,11 +80,9 @@ final class GraphGenerate
                 continue;
             }
 
-            $futures[] = \Amp\async(function () use ($feedPost) {
-                return $this->getLikes->query(
-                    uri: $feedPost->post->uri,
-                );
-            });
+            $futures[] = \Amp\async(fn () => $this->getLikes->query(
+                uri: $feedPost->post->uri,
+            ));
         }
 
         /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetLikes\Output[] $likes */
@@ -116,13 +114,11 @@ final class GraphGenerate
         $futures = [];
 
         foreach ($myLikers as $myLiker) {
-            $futures[] = \Amp\async(function () use ($myLiker) {
-                return $this->listRecords->query(
-                    repo: $myLiker->did,
-                    collection: 'app.bsky.feed.like',
-                    limit: 100,
-                );
-            });
+            $futures[] = \Amp\async(fn () => $this->listRecords->query(
+                repo: $myLiker->did,
+                collection: 'app.bsky.feed.like',
+                limit: 100,
+            ));
         }
 
         /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ListRecords\Output[] $records[] */
