@@ -31,8 +31,8 @@ Get list of posts from a `bsky.app` user:
 use Aazsamir\Libphpsky\Model\Meta\ATProtoMetaClient;
 
 $client = new ATProtoMetaClient();
-$resolved = $client->comAtprotoIdentityResolveHandle('bsky.app');
-$posts = $client->appBskyFeedGetAuthorFeed($resolve->did);
+$resolved = $client->comAtprotoIdentityResolveHandle()->query('bsky.app');
+$posts = $client->appBskyFeedGetAuthorFeed()->query($resolve->did);
 
 var_dump($posts);
 ```
@@ -81,7 +81,7 @@ $session = $createSession->procedure($input);
 $getProfile = GetProfile::default();
 $profile = $getProfile->withAuth($session->accessJwt)->query('bsky.app');
 
-// or if you prefer to use meta client
+// or directly to meta client
 $client = new ATProtoMetaClient(token: $session->accessJwt);
 ```
 

@@ -19,8 +19,6 @@ class MetaClientGenerator
         private MakeConfig $config,
         private SaveClass $saveClass,
         private ClassResolver $classResolver,
-        private QueryDefHandler $queryDefHandler,
-        private ProcedureDefHandler $procedureDefHandler,
     ) {}
 
     public function generate(Lexicons $lexicons): void
@@ -61,26 +59,10 @@ class MetaClientGenerator
                     $method->addComment($def->description());
                 }
 
-                if ($def instanceof QueryDef) {
-                    $this->queryDefHandler->addQueryParameters($method, $def);
-                    $this->queryDefHandler->addQueryReturnType($method, $def);
-                    $body = \sprintf('$action = new %s($this->client, $this->token);', $this->classResolver->namespaceAndClassname($def));
-                    $method->setBody($body);
-                    $method->addBody('');
-                    $method->addBody('return $action->query(...func_get_args());');
-                } elseif ($def instanceof ProcedureDef) {
-                    $this->procedureDefHandler->addProcedureParameters($method, $def);
-                    $returns = $this->procedureDefHandler->addProcedureReturnType($method, $def);
-                    $body = \sprintf('$action = new %s($this->client, $this->token);', $this->classResolver->namespaceAndClassname($def));
-                    $method->setBody($body);
-                    $method->addBody('');
-
-                    if ($returns) {
-                        $method->addBody('return $action->procedure(...func_get_args());');
-                    } else {
-                        $method->addBody('$action->procedure(...func_get_args());');
-                    }
-                }
+                $type = $this->classResolver->namespaceAndClassname($def);
+                $method->setReturnType($type);
+                $body = \sprintf('return new %s($this->client, $this->token);', $this->classResolver->namespaceAndClassname($def));
+                $method->setBody($body);
             }
         }
 

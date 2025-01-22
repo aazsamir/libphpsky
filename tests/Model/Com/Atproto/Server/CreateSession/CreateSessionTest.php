@@ -13,7 +13,7 @@ class CreateSessionTest extends TestCase
     {
         $this->mockResponse($this->jsonres($this->valid()));
 
-        $response = $this->client->comAtprotoServerCreateSession(
+        $response = $this->client->comAtprotoServerCreateSession()->procedure(
             Input::new(
                 identifier: 'samorollo.bsky.social',
                 password: 'password',

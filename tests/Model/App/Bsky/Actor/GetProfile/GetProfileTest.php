@@ -12,7 +12,7 @@ class GetProfileTest extends TestCase
     {
         $this->mockResponse($this->jsonres($this->valid()));
 
-        $response = $this->client->appBskyActorGetProfile('actor');
+        $response = $this->client->appBskyActorGetProfile()->query('actor');
 
         $this->assertEquals('did:plc:z72i7hdynmk6r22z27h6tvur', $response->did);
         $this->assertEquals('bsky.app', $response->handle);

@@ -38,7 +38,7 @@ final class PublishFeed
             throw new \RuntimeException('Provide ATPROTO_LOGIN and ATPROTO_PASSWORD');
         }
 
-        $myself = $this->metaClient->comAtprotoIdentityResolveHandle($this->authConfig->login());
+        $myself = $this->metaClient->comAtprotoIdentityResolveHandle()->query($this->authConfig->login());
 
         $record = Generator::new(
             did: 'did:web:' . $this->hostname,
@@ -55,7 +55,7 @@ final class PublishFeed
             validate: true,
         );
 
-        $response = $this->metaClient->comAtprotoRepoPutRecord($input);
+        $response = $this->metaClient->comAtprotoRepoPutRecord()->procedure($input);
 
         dump($response);
     }
@@ -66,7 +66,7 @@ final class PublishFeed
             throw new \RuntimeException('Provide ATPROTO_LOGIN and ATPROTO_PASSWORD');
         }
 
-        $myself = $this->metaClient->comAtprotoIdentityResolveHandle($this->authConfig->login());
+        $myself = $this->metaClient->comAtprotoIdentityResolveHandle()->query($this->authConfig->login());
 
         $input = DeleteRecord\Input::new(
             repo: $myself->did,
@@ -74,7 +74,7 @@ final class PublishFeed
             rkey: 'libphpsky-feed',
         );
 
-        $response = $this->metaClient->comAtprotoRepoDeleteRecord($input);
+        $response = $this->metaClient->comAtprotoRepoDeleteRecord()->procedure($input);
 
         dump($response);
     }

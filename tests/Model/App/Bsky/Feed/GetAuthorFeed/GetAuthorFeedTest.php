@@ -12,7 +12,7 @@ class GetAuthorFeedTest extends TestCase
     {
         $this->mockResponse($this->jsonres($this->valid()));
 
-        $response = $this->client->appBskyFeedGetAuthorFeed('bsky.app');
+        $response = $this->client->appBskyFeedGetAuthorFeed()->query('bsky.app');
 
         $this->assertEquals('2025-01-17T21:08:17.119Z', $response->cursor);
         $this->assertNotEmpty($response->feed);

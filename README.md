@@ -52,7 +52,7 @@ On top of that, there is a meta client, which can be used to handle all possible
 
 ```php
 $client = new ATProtoMetaClient();
-$resolved = $client->comAtprotoIdentityResolveHandle('bsky.app');
+$resolved = $client->comAtprotoIdentityResolveHandle()->query('bsky.app');
 ```
 
 Libphpsky also supports `\Amp\Http\Client\HttpClient` from [`amphp/http-client`](https://github.com/amphp/http-client) package out of the box.

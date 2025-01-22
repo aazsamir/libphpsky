@@ -70,7 +70,7 @@ final class FeedGeneration
             throw new \RuntimeException('ATPROTO_LOGIN is required');
         }
 
-        $myself = $this->metaClient->comAtprotoIdentityResolveHandle($this->authConfig->login());
+        $myself = $this->metaClient->comAtprotoIdentityResolveHandle()->query($this->authConfig->login());
 
         $generator = DescribeFeedGenerator\Output::new(
             did: ATUri::new(

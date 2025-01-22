@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Generator\Maker;
 
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\Defs;
-use Aazsamir\Libphpsky\Generator\Lexicon\Def\IntegerDef;
-use Aazsamir\Libphpsky\Generator\Lexicon\Def\IOData;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\ProcedureDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\QueryDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
@@ -22,8 +20,6 @@ final class MetaClientGeneratorTest extends TestCase
     private MakeConfig $config;
     private SaveClassStub $saveClass;
     private ClassResolver $classResolver;
-    private QueryDefHandler $queryDefHandler;
-    private ProcedureDefHandler $procedureDefHandler;
     private MetaClientGenerator $metaClientGenerator;
 
     protected function setUp(): void
@@ -34,20 +30,10 @@ final class MetaClientGeneratorTest extends TestCase
         );
         $this->saveClass = new SaveClassStub();
         $this->classResolver = new ClassResolver($this->config);
-        $this->queryDefHandler = new QueryDefHandler(
-            $this->classResolver,
-            $this->saveClass,
-        );
-        $this->procedureDefHandler = new ProcedureDefHandler(
-            $this->classResolver,
-            $this->saveClass,
-        );
         $this->metaClientGenerator = new MetaClientGenerator(
             $this->config,
             $this->saveClass,
             $this->classResolver,
-            $this->queryDefHandler,
-            $this->procedureDefHandler,
         );
     }
 
@@ -64,14 +50,6 @@ final class MetaClientGeneratorTest extends TestCase
                 name: 'query',
                 lexicon: $lexicon,
                 description: 'description',
-                output: new IOData(
-                    encoding: 'application/json',
-                    description: 'output description',
-                    schema: new IntegerDef(
-                        name: 'output',
-                        lexicon: $lexicon,
-                    ),
-                )
             ),
         ]));
 
@@ -82,7 +60,7 @@ final class MetaClientGeneratorTest extends TestCase
         $method = $class->getMethod('testlexicon');
         self::assertEquals('testLexicon', $method->getName());
         self::assertNotEmpty($method->getBody());
-        self::assertEquals('int', $method->getReturnType());
+        self::assertEquals('\Tests\Fixtures\Test\Lexicon\Query', $method->getReturnType());
     }
 
     public function testMakeMetaClientProcedure(): void
@@ -95,17 +73,9 @@ final class MetaClientGeneratorTest extends TestCase
         );
         $lexicon->setDefs(new Defs([
             new ProcedureDef(
-                name: 'query',
+                name: 'Procedure',
                 lexicon: $lexicon,
                 description: 'description',
-                output: new IOData(
-                    encoding: 'application/json',
-                    description: 'output description',
-                    schema: new IntegerDef(
-                        name: 'output',
-                        lexicon: $lexicon,
-                    ),
-                )
             ),
         ]));
 
@@ -116,6 +86,6 @@ final class MetaClientGeneratorTest extends TestCase
         $method = $class->getMethod('testlexicon');
         self::assertEquals('testLexicon', $method->getName());
         self::assertNotEmpty($method->getBody());
-        self::assertEquals('int', $method->getReturnType());
+        self::assertEquals('\Tests\Fixtures\Test\Lexicon\Procedure', $method->getReturnType());
     }
 }

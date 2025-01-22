@@ -56,8 +56,6 @@ final class Generator
             $config,
             $saver,
             $classResolver,
-            $queryDefHandler,
-            $procedureDefHandler,
         );
         $maker = new Maker(
             $classResolver,

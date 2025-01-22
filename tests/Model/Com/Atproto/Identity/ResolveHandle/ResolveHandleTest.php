@@ -14,7 +14,7 @@ class ResolveHandleTest extends TestCase
             'did' => 'did:plc:z72i7hdynmk6r22z27h6tvur',
         ]);
 
-        $response = $this->client->comAtprotoIdentityResolveHandle('handle');
+        $response = $this->client->comAtprotoIdentityResolveHandle()->query('handle');
 
         $this->assertEquals('did:plc:z72i7hdynmk6r22z27h6tvur', $response->did);
     }

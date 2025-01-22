@@ -104,12 +104,8 @@ class ATProtoMetaClient
     /**
      * Resolves a handle (domain name) to a DID.
      */
-    public function comAtprotoIdentityResolveHandle(
-        string $handle,
-    ): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\Output {
-        $action = new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\ResolveHandle($this->client, $this->token);
-
-        return $action->query(...func_get_args());
+    public function comAtprotoIdentityResolveHandle(): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\Output {
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\ResolveHandle($this->client, $this->token);
     }
     // ...
 }
