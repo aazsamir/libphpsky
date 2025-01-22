@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Generator\Maker;
 
-use Aazsamir\Libphpsky\Generator\Lexicon\Def\ArrayDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\Def;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\DefContainer;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\ObjectDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\ProcedureDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\QueryDef;
-use Aazsamir\Libphpsky\Generator\Lexicon\Def\UnionDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicons;
 
 /**
@@ -63,7 +61,7 @@ final class Maker
 
         $this->resolved[$defId] = true;
 
-        if ($this->shouldSkipDef($def)) {
+        if ($this->classResolver->isPhpPrimitive($def)) {
             return;
         }
 
@@ -82,13 +80,6 @@ final class Maker
     private function createDefIdentifier(Def $def): string
     {
         return $def->lexicon()->id() . '#' . $def->name();
-    }
-
-    private function shouldSkipDef(Def $def): bool
-    {
-        return $this->classResolver->isPhpPrimitive($def)
-            || $def instanceof ArrayDef
-            || $def instanceof UnionDef;
     }
 
     private function processDefContainer(DefContainer $def): void
