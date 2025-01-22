@@ -57,5 +57,6 @@ return (new PhpCsFixer\Config())
         'php_unit_test_class_requires_covers' => false,
         'fully_qualified_strict_types' => false,
         'php_unit_strict' => false,
+        'final_internal_class' => false,
     ])
     ->setFinder($finder);
