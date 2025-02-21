@@ -25,8 +25,15 @@ class ListMembers implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?int $limit = null, ?string $cursor = null): Output
-    {
+    /**
+     * @param ?array<string> $roles
+     */
+    public function query(
+        ?bool $disabled = null,
+        ?array $roles = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): Output {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\ListMembers\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

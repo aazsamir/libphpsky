@@ -17,6 +17,8 @@ class Create implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'com.atproto.repo.applyWrites';
 
     public string $collection;
+
+    /** @var ?string NOTE: maxLength is redundant with record-key format. Keeping it temporarily to ensure backwards compatibility. */
     public ?string $rkey;
     public mixed $value;
 

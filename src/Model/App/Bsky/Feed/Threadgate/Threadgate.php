@@ -18,7 +18,7 @@ class Threadgate implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var string Reference (AT-URI) to the post record. */
     public string $post;
 
-    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\MentionRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\FollowingRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\ListRule> */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\MentionRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\FollowerRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\FollowingRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\ListRule> List of rules defining who can reply to this post. If value is an empty array, no one can reply. If value is undefined, anyone can reply. */
     public ?array $allow = [];
     public \DateTimeInterface $createdAt;
 
@@ -46,7 +46,7 @@ class Threadgate implements \Aazsamir\Libphpsky\ATProtoObject
     }
 
     /**
-     * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\MentionRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\FollowingRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\ListRule> $allow
+     * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\MentionRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\FollowerRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\FollowingRule|\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Threadgate\ListRule> $allow
      * @param array<string> $hiddenReplies
      */
     public static function new(

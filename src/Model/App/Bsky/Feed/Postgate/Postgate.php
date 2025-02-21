@@ -23,7 +23,7 @@ class Postgate implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?array<string> List of AT-URIs embedding this post that the author has detached from. */
     public ?array $detachedEmbeddingUris = [];
 
-    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Postgate\DisableRule> */
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Postgate\DisableRule> List of rules defining who can embed this post. If value is an empty array or is undefined, no particular rules apply and anyone can embed. */
     public ?array $embeddingRules = [];
 
     public static function id(): string

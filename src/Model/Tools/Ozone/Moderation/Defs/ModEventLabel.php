@@ -24,6 +24,9 @@ class ModEventLabel implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var array<string> */
     public array $negateLabelVals = [];
 
+    /** @var ?int Indicates how long the label will remain on the subject. Only applies on labels that are being added. */
+    public ?int $durationInHours;
+
     public static function id(): string
     {
         return self::ID;
@@ -48,13 +51,20 @@ class ModEventLabel implements \Aazsamir\Libphpsky\ATProtoObject
      * @param array<string> $createLabelVals
      * @param array<string> $negateLabelVals
      */
-    public static function new(array $createLabelVals, array $negateLabelVals, ?string $comment = null): self
-    {
+    public static function new(
+        array $createLabelVals,
+        array $negateLabelVals,
+        ?string $comment = null,
+        ?int $durationInHours = null,
+    ): self {
         $instance = new self();
         $instance->createLabelVals = $createLabelVals;
         $instance->negateLabelVals = $negateLabelVals;
         if ($comment !== null) {
             $instance->comment = $comment;
+        }
+        if ($durationInHours !== null) {
+            $instance->durationInHours = $durationInHours;
         }
 
         return $instance;

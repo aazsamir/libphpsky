@@ -36,6 +36,9 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var ?string Sticky comment on the subject. */
     public ?string $comment;
+
+    /** @var ?int Numeric value representing the level of priority. Higher score means higher priority. */
+    public ?int $priorityScore;
     public ?\DateTimeInterface $muteUntil;
     public ?\DateTimeInterface $muteReportingUntil;
     public ?string $lastReviewedBy;
@@ -93,6 +96,7 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
         ?string $subjectRepoHandle = null,
         ?string $reviewState = null,
         ?string $comment = null,
+        ?int $priorityScore = null,
         ?\DateTimeInterface $muteUntil = null,
         ?\DateTimeInterface $muteReportingUntil = null,
         ?string $lastReviewedBy = null,
@@ -125,6 +129,9 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($comment !== null) {
             $instance->comment = $comment;
+        }
+        if ($priorityScore !== null) {
+            $instance->priorityScore = $priorityScore;
         }
         if ($muteUntil !== null) {
             $instance->muteUntil = $muteUntil;

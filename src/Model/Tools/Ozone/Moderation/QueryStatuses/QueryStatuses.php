@@ -55,6 +55,7 @@ class QueryStatuses implements \Aazsamir\Libphpsky\Action
      * @param ?int $minAccountSuspendCount If specified, only subjects that belong to an account that has at least this many suspensions will be returned.
      * @param ?int $minReportedRecordsCount If specified, only subjects that belong to an account that has at least this many reported records will be returned.
      * @param ?int $minTakendownRecordsCount If specified, only subjects that belong to an account that has at least this many taken down records will be returned.
+     * @param ?int $minPriorityScore If specified, only subjects that have priority score value above the given value will be returned.
      */
     public function query(
         ?int $queueCount = null,
@@ -90,6 +91,7 @@ class QueryStatuses implements \Aazsamir\Libphpsky\Action
         ?int $minAccountSuspendCount = null,
         ?int $minReportedRecordsCount = null,
         ?int $minTakendownRecordsCount = null,
+        ?int $minPriorityScore = null,
     ): Output {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryStatuses\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

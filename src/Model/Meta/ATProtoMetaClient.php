@@ -258,6 +258,14 @@ class ATProtoMetaClient
     }
 
     /**
+     * Enumerates all the DIDs which have records with the given collection NSID.
+     */
+    public function comAtprotoSyncListReposByCollection(
+    ): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListReposByCollection\ListReposByCollection {
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListReposByCollection\ListReposByCollection($this->client, $this->token);
+    }
+
+    /**
      * Get data blocks needed to prove the existence or non-existence of record in the current version of repo. Does not require auth.
      */
     public function comAtprotoSyncGetRecord(): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetRecord\GetRecord
@@ -1239,6 +1247,14 @@ class ATProtoMetaClient
     public function toolsOzoneModerationGetRecords(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRecords\GetRecords {
         return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRecords\GetRecords($this->client, $this->token);
+    }
+
+    /**
+     * Get reporter stats for a list of users.
+     */
+    public function toolsOzoneModerationGetReporterStats(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetReporterStats\GetReporterStats {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetReporterStats\GetReporterStats($this->client, $this->token);
     }
 
     /**
