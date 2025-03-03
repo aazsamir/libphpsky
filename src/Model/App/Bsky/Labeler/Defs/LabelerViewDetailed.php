@@ -26,6 +26,15 @@ class LabelerViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> */
     public ?array $labels = [];
 
+    /** @var ?array<string> The set of report reason 'codes' which are in-scope for this service to review and action. These usually align to policy categories. If not defined (distinct from empty array), all reason types are allowed. */
+    public ?array $reasonTypes = [];
+
+    /** @var ?array<string> The set of subject types (account, record, etc) this service accepts reports on. */
+    public ?array $subjectTypes = [];
+
+    /** @var ?array<string> Set of record types (collection NSIDs) which can be reported to this service. If not defined (distinct from empty array), default is any record type. */
+    public ?array $subjectCollections = [];
+
     public static function id(): string
     {
         return self::ID;
@@ -48,6 +57,9 @@ class LabelerViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
 
     /**
      * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> $labels
+     * @param array<string> $reasonTypes
+     * @param array<string> $subjectTypes
+     * @param array<string> $subjectCollections
      */
     public static function new(
         string $uri,
@@ -58,6 +70,9 @@ class LabelerViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
         ?int $likeCount = null,
         ?LabelerViewerState $viewer = null,
         ?array $labels = [],
+        ?array $reasonTypes = [],
+        ?array $subjectTypes = [],
+        ?array $subjectCollections = [],
     ): self {
         $instance = new self();
         $instance->uri = $uri;
@@ -77,6 +92,15 @@ class LabelerViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($labels !== null) {
             $instance->labels = $labels;
+        }
+        if ($reasonTypes !== null) {
+            $instance->reasonTypes = $reasonTypes;
+        }
+        if ($subjectTypes !== null) {
+            $instance->subjectTypes = $subjectTypes;
+        }
+        if ($subjectCollections !== null) {
+            $instance->subjectCollections = $subjectCollections;
         }
 
         return $instance;

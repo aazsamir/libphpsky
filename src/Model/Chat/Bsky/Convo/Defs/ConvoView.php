@@ -24,7 +24,7 @@ class ConvoView implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView|null */
     public mixed $lastMessage;
     public bool $muted;
-    public ?bool $opened;
+    public ?string $status;
     public int $unreadCount;
 
     public static function id(): string
@@ -57,7 +57,7 @@ class ConvoView implements \Aazsamir\Libphpsky\ATProtoObject
         bool $muted,
         int $unreadCount,
         MessageView|DeletedMessageView|null $lastMessage = null,
-        ?bool $opened = null,
+        ?string $status = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -68,8 +68,8 @@ class ConvoView implements \Aazsamir\Libphpsky\ATProtoObject
         if ($lastMessage !== null) {
             $instance->lastMessage = $lastMessage;
         }
-        if ($opened !== null) {
-            $instance->opened = $opened;
+        if ($status !== null) {
+            $instance->status = $status;
         }
 
         return $instance;

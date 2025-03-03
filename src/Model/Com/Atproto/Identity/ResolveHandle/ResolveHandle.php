@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle;
 
 /**
- * Resolves a handle (domain name) to a DID.
+ * Resolves an atproto handle (hostname) to a DID. Does not necessarily bi-directionally verify against the the DID document.
  * query
  */
 class ResolveHandle implements \Aazsamir\Libphpsky\Action

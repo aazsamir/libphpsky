@@ -24,8 +24,12 @@ class ListConvos implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?int $limit = null, ?string $cursor = null): Output
-    {
+    public function query(
+        ?int $limit = null,
+        ?string $cursor = null,
+        ?string $readState = null,
+        ?string $status = null,
+    ): Output {
         return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\ListConvos\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

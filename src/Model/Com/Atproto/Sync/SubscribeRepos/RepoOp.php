@@ -22,6 +22,9 @@ class RepoOp implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?string For creates and updates, the new record CID. For deletions, null. */
     public ?string $cid = null;
 
+    /** @var ?string For updates and deletes, the previous record CID (required for inductive firehose). For creations, field should not be defined. */
+    public ?string $prev;
+
     public static function id(): string
     {
         return self::ID;
@@ -42,12 +45,15 @@ class RepoOp implements \Aazsamir\Libphpsky\ATProtoObject
         return ['action', 'path', 'cid'];
     }
 
-    public static function new(string $action, string $path, ?string $cid = null): self
+    public static function new(string $action, string $path, ?string $cid = null, ?string $prev = null): self
     {
         $instance = new self();
         $instance->action = $action;
         $instance->path = $path;
         $instance->cid = $cid;
+        if ($prev !== null) {
+            $instance->prev = $prev;
+        }
 
         return $instance;
     }

@@ -65,6 +65,14 @@ class ATProtoMetaClient
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetMessages\GetMessages($this->client, $this->token);
     }
 
+    /**
+     * Get whether the requester and the other members can chat. If an existing convo is found for these members, it is returned.
+     */
+    public function chatBskyConvoGetConvoAvailability(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoAvailability\GetConvoAvailability {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoAvailability\GetConvoAvailability($this->client, $this->token);
+    }
+
     public function chatBskyConvoLeaveConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\LeaveConvo\LeaveConvo
     {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\LeaveConvo\LeaveConvo($this->client, $this->token);
@@ -90,9 +98,19 @@ class ATProtoMetaClient
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\ListConvos\ListConvos($this->client, $this->token);
     }
 
+    public function chatBskyConvoUpdateAllRead(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UpdateAllRead\UpdateAllRead {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UpdateAllRead\UpdateAllRead($this->client, $this->token);
+    }
+
     public function chatBskyConvoSendMessage(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\SendMessage\SendMessage
     {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\SendMessage\SendMessage($this->client, $this->token);
+    }
+
+    public function chatBskyConvoAcceptConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\AcceptConvo\AcceptConvo
+    {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\AcceptConvo\AcceptConvo($this->client, $this->token);
     }
 
     public function chatBskyConvoUpdateRead(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UpdateRead\UpdateRead
@@ -250,7 +268,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * Notify a crawling service of a recent update, and that crawling should resume. Intended use is after a gap between repo stream events caused the crawling service to disconnect. Does not require auth; implemented by Relay.
+     * Notify a crawling service of a recent update, and that crawling should resume. Intended use is after a gap between repo stream events caused the crawling service to disconnect. Does not require auth; implemented by Relay. DEPRECATED: just use com.atproto.sync.requestCrawl
      */
     public function comAtprotoSyncNotifyOfUpdate(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\NotifyOfUpdate\NotifyOfUpdate {
@@ -338,6 +356,14 @@ class ATProtoMetaClient
     }
 
     /**
+     * Resolves DID to DID document. Does not bi-directionally verify handle.
+     */
+    public function comAtprotoIdentityResolveDid(
+    ): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveDid\ResolveDid {
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveDid\ResolveDid($this->client, $this->token);
+    }
+
+    /**
      * Request an email with a code to in order to request a signed PLC operation. Requires Auth.
      */
     public function comAtprotoIdentityRequestPlcOperationSignature(
@@ -346,7 +372,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * Resolves a handle (domain name) to a DID.
+     * Resolves an atproto handle (hostname) to a DID. Does not necessarily bi-directionally verify against the the DID document.
      */
     public function comAtprotoIdentityResolveHandle(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\ResolveHandle {
@@ -367,6 +393,22 @@ class ATProtoMetaClient
     public function comAtprotoIdentityUpdateHandle(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\UpdateHandle\UpdateHandle {
         return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\UpdateHandle\UpdateHandle($this->client, $this->token);
+    }
+
+    /**
+     * Request that the server re-resolve an identity (DID and handle). The server may ignore this request, or require authentication, depending on the role, implementation, and policy of the server.
+     */
+    public function comAtprotoIdentityRefreshIdentity(
+    ): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\RefreshIdentity\RefreshIdentity {
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\RefreshIdentity\RefreshIdentity($this->client, $this->token);
+    }
+
+    /**
+     * Resolves an identity (DID or Handle) to a full identity (DID document and verified handle).
+     */
+    public function comAtprotoIdentityResolveIdentity(
+    ): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveIdentity\ResolveIdentity {
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveIdentity\ResolveIdentity($this->client, $this->token);
     }
 
     /**
