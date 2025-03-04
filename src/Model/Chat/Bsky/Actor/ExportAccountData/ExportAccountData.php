@@ -28,4 +28,9 @@ class ExportAccountData implements \Aazsamir\Libphpsky\Action
     {
         return $this->request($this->argsWithKeys(func_get_args()));
     }
+
+    public function rawQuery(): mixed
+    {
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

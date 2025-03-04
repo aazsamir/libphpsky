@@ -28,4 +28,13 @@ class GetActorMetadata implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetActorMetadata\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $actor): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

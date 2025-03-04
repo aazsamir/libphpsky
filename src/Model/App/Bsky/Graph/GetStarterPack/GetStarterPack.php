@@ -32,4 +32,14 @@ class GetStarterPack implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPack\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param string $starterPack Reference (AT-URI) of the starter pack record.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $starterPack): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

@@ -29,4 +29,13 @@ class GetFollows implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetFollows\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $actor, ?int $limit = null, ?string $cursor = null): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

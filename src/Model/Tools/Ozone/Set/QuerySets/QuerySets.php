@@ -37,4 +37,19 @@ class QuerySets implements \Aazsamir\Libphpsky\Action
     ): Output {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\QuerySets\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param ?string $sortDirection Defaults to ascending order of name field.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(
+        ?int $limit = null,
+        ?string $cursor = null,
+        ?string $namePrefix = null,
+        ?string $sortBy = null,
+        ?string $sortDirection = null,
+    ): array {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

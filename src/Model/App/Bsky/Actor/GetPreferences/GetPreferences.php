@@ -29,4 +29,13 @@ class GetPreferences implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetPreferences\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rawQuery(): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

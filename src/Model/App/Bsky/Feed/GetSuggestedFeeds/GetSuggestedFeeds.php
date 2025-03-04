@@ -29,4 +29,13 @@ class GetSuggestedFeeds implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetSuggestedFeeds\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rawQuery(?int $limit = null, ?string $cursor = null): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

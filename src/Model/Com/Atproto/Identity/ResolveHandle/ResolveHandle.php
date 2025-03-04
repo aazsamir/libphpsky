@@ -32,4 +32,14 @@ class ResolveHandle implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param string $handle The handle to resolve.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $handle): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

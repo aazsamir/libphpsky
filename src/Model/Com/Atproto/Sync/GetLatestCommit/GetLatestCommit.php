@@ -32,4 +32,14 @@ class GetLatestCommit implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetLatestCommit\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param string $did The DID of the repo.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $did): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

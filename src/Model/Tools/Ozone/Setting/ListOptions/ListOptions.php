@@ -38,4 +38,20 @@ class ListOptions implements \Aazsamir\Libphpsky\Action
     ): Output {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Setting\ListOptions\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param ?string $prefix Filter keys by prefix
+     * @param ?array<string> $keys  Filter for only the specified keys. Ignored if prefix is provided
+     * @return array<string, mixed>
+     */
+    public function rawQuery(
+        ?int $limit = null,
+        ?string $cursor = null,
+        ?string $scope = null,
+        ?string $prefix = null,
+        ?array $keys = null,
+    ): array {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

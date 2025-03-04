@@ -37,4 +37,19 @@ class ListNotifications implements \Aazsamir\Libphpsky\Action
     ): Output {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListNotifications\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param ?array<string> $reasons  Notification reasons to include in response.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(
+        ?array $reasons = null,
+        ?int $limit = null,
+        ?bool $priority = null,
+        ?string $cursor = null,
+        ?\DateTimeInterface $seenAt = null,
+    ): array {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

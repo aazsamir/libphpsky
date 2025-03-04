@@ -33,4 +33,15 @@ class SearchActorsTypeahead implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\SearchActorsTypeahead\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param ?string $term DEPRECATED: use 'q' instead.
+     * @param ?string $q Search query prefix; not a full query string.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(?string $term = null, ?string $q = null, ?int $limit = null): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

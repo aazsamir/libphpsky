@@ -29,4 +29,13 @@ class GetAccountInfo implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\AccountView::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $did): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

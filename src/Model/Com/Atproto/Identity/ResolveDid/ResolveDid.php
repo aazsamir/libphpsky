@@ -32,4 +32,14 @@ class ResolveDid implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveDid\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param string $did DID to resolve.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $did): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

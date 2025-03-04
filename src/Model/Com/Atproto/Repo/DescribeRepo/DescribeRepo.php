@@ -32,4 +32,14 @@ class DescribeRepo implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\DescribeRepo\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param string $repo The handle or DID of the repo.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $repo): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

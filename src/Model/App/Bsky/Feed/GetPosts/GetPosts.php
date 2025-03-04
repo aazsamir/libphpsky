@@ -32,4 +32,14 @@ class GetPosts implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetPosts\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param array<string> $uris  List of post AT-URIs to return hydrated views for.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(array $uris): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

@@ -33,4 +33,15 @@ class GetRelationships implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetRelationships\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param string $actor Primary account requesting relationships for.
+     * @param ?array<string> $others  List of 'other' accounts to be related back to the primary.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $actor, ?array $others = null): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

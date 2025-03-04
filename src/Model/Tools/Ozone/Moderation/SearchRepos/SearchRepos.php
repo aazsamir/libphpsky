@@ -32,4 +32,18 @@ class SearchRepos implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\SearchRepos\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param ?string $term DEPRECATED: use 'q' instead
+     * @return array<string, mixed>
+     */
+    public function rawQuery(
+        ?string $term = null,
+        ?string $q = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): array {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

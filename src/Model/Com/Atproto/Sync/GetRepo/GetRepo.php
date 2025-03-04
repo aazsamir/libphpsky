@@ -33,4 +33,13 @@ class GetRepo implements \Aazsamir\Libphpsky\Action
     {
         return $this->request($this->argsWithKeys(func_get_args()));
     }
+
+    /**
+     * @param string $did The DID of the repo.
+     * @param ?string $since The revision ('rev') of the repo to create a diff from.
+     */
+    public function rawQuery(string $did, ?string $since = null): mixed
+    {
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

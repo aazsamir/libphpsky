@@ -32,4 +32,14 @@ class GetProfile implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewDetailed::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param string $actor Handle or DID of account to fetch profile of.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $actor): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

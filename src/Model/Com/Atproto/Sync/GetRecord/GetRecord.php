@@ -33,4 +33,13 @@ class GetRecord implements \Aazsamir\Libphpsky\Action
     {
         return $this->request($this->argsWithKeys(func_get_args()));
     }
+
+    /**
+     * @param string $did The DID of the repo.
+     * @param string $rkey Record Key
+     */
+    public function rawQuery(string $did, string $collection, string $rkey): mixed
+    {
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

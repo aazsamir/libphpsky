@@ -36,4 +36,18 @@ class ListMembers implements \Aazsamir\Libphpsky\Action
     ): Output {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\ListMembers\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param ?array<string> $roles
+     * @return array<string, mixed>
+     */
+    public function rawQuery(
+        ?bool $disabled = null,
+        ?array $roles = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): array {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

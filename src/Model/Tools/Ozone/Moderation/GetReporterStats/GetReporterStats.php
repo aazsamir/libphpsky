@@ -32,4 +32,14 @@ class GetReporterStats implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetReporterStats\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param array<string> $dids
+     * @return array<string, mixed>
+     */
+    public function rawQuery(array $dids): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

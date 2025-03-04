@@ -32,4 +32,14 @@ class ResolveIdentity implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\Defs\IdentityInfo::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param string $identifier Handle or DID to resolve.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $identifier): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

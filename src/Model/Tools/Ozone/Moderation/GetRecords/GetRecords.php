@@ -32,4 +32,14 @@ class GetRecords implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRecords\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param array<string> $uris
+     * @return array<string, mixed>
+     */
+    public function rawQuery(array $uris): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

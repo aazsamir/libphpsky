@@ -37,4 +37,19 @@ class GetSuggestionsSkeleton implements \Aazsamir\Libphpsky\Action
     ): Output {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestionsSkeleton\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param ?string $viewer DID of the account making the request (not included for public/unauthenticated queries). Used to boost followed accounts in ranking.
+     * @param ?string $relativeToDid DID of the account to get suggestions relative to. If not provided, suggestions will be based on the viewer.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(
+        ?string $viewer = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+        ?string $relativeToDid = null,
+    ): array {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

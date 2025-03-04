@@ -29,4 +29,13 @@ class GetValues implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\GetValues\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $name, ?int $limit = null, ?string $cursor = null): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

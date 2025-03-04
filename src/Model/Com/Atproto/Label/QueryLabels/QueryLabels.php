@@ -37,4 +37,19 @@ class QueryLabels implements \Aazsamir\Libphpsky\Action
     ): Output {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Label\QueryLabels\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param array<string> $uriPatterns  List of AT URI patterns to match (boolean 'OR'). Each may be a prefix (ending with '*'; will match inclusive of the string leading to '*'), or a full URI.
+     * @param ?array<string> $sources  Optional list of label sources (DIDs) to filter on.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(
+        array $uriPatterns,
+        ?array $sources = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): array {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

@@ -29,4 +29,13 @@ class FindRelatedAccounts implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\FindRelatedAccounts\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $did, ?string $cursor = null, ?int $limit = null): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

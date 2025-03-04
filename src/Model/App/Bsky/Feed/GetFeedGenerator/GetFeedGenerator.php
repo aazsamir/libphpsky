@@ -32,4 +32,14 @@ class GetFeedGenerator implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedGenerator\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param string $feed AT-URI of the feed generator record.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $feed): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

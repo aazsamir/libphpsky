@@ -31,4 +31,13 @@ class GetRecord implements \Aazsamir\Libphpsky\Action
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RecordViewDetail {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RecordViewDetail::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $uri, ?string $cid = null): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

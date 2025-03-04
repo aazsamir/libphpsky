@@ -37,4 +37,19 @@ class GetAuthorFeed implements \Aazsamir\Libphpsky\Action
     ): Output {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetAuthorFeed\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param ?string $filter Combinations of post/repost types to include in response.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(
+        string $actor,
+        ?int $limit = null,
+        ?string $cursor = null,
+        ?string $filter = null,
+        ?bool $includePins = null,
+    ): array {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

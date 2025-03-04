@@ -32,4 +32,14 @@ class ListReposByCollection implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListReposByCollection\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param ?int $limit Maximum size of response set. Recommend setting a large maximum (1000+) when enumerating large DID lists.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $collection, ?int $limit = null, ?string $cursor = null): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

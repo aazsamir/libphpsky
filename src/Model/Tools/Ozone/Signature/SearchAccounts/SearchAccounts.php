@@ -32,4 +32,14 @@ class SearchAccounts implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\SearchAccounts\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param array<string> $values
+     * @return array<string, mixed>
+     */
+    public function rawQuery(array $values, ?string $cursor = null, ?int $limit = null): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

@@ -34,4 +34,16 @@ class GetPostThread implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetPostThread\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param string $uri Reference (AT-URI) to post record.
+     * @param ?int $depth How many levels of reply depth should be included in response.
+     * @param ?int $parentHeight How many levels of parent (and grandparent, etc) post to include.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $uri, ?int $depth = null, ?int $parentHeight = null): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

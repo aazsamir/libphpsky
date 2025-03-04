@@ -40,4 +40,22 @@ class SearchActorsSkeleton implements \Aazsamir\Libphpsky\Action
     ): Output {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchActorsSkeleton\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param string $q Search query string; syntax, phrase, boolean, and faceting is unspecified, but Lucene query syntax is recommended. For typeahead search, only simple term match is supported, not full syntax.
+     * @param ?string $viewer DID of the account making the request (not included for public/unauthenticated queries). Used to boost followed accounts in ranking.
+     * @param ?bool $typeahead If true, acts as fast/simple 'typeahead' query.
+     * @param ?string $cursor Optional pagination mechanism; may not necessarily allow scrolling through entire result set.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(
+        string $q,
+        ?string $viewer = null,
+        ?bool $typeahead = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): array {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

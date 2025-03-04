@@ -33,4 +33,15 @@ class GetRepostedBy implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetRepostedBy\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param string $uri Reference (AT-URI) of post record
+     * @param ?string $cid If supplied, filters to reposts of specific version (by CID) of the post record.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $uri, ?string $cid = null, ?int $limit = null, ?string $cursor = null): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

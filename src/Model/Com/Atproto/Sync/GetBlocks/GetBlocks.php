@@ -33,4 +33,13 @@ class GetBlocks implements \Aazsamir\Libphpsky\Action
     {
         return $this->request($this->argsWithKeys(func_get_args()));
     }
+
+    /**
+     * @param string $did The DID of the repo.
+     * @param array<string> $cids
+     */
+    public function rawQuery(string $did, array $cids): mixed
+    {
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

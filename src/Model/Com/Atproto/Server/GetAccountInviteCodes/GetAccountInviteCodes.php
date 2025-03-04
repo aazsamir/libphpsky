@@ -32,4 +32,14 @@ class GetAccountInviteCodes implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\GetAccountInviteCodes\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param ?bool $createAvailable Controls whether any new 'earned' but not 'created' invites should be created.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(?bool $includeUsed = null, ?bool $createAvailable = null): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

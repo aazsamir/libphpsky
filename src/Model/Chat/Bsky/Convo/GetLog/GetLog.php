@@ -28,4 +28,13 @@ class GetLog implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetLog\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rawQuery(?string $cursor = null): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

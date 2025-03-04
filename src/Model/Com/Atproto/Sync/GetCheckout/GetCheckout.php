@@ -32,4 +32,12 @@ class GetCheckout implements \Aazsamir\Libphpsky\Action
     {
         return $this->request($this->argsWithKeys(func_get_args()));
     }
+
+    /**
+     * @param string $did The DID of the repo.
+     */
+    public function rawQuery(string $did): mixed
+    {
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

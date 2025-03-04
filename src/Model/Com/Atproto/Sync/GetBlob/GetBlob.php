@@ -33,4 +33,13 @@ class GetBlob implements \Aazsamir\Libphpsky\Action
     {
         return $this->request($this->argsWithKeys(func_get_args()));
     }
+
+    /**
+     * @param string $did The DID of the account.
+     * @param string $cid The CID of the blob to fetch
+     */
+    public function rawQuery(string $did, string $cid): mixed
+    {
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

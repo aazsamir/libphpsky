@@ -32,4 +32,14 @@ class GetList implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetList\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @param string $list Reference (AT-URI) of the list record to hydrate.
+     * @return array<string, mixed>
+     */
+    public function rawQuery(string $list, ?int $limit = null, ?string $cursor = null): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }
