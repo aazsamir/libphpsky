@@ -179,7 +179,7 @@ final class MessageAdapterTest extends TestCase
         self::assertSame('3l3qo2vutsw2b', $event->commit->rev);
         self::assertSame('create', $event->commit->operation->value);
         self::assertSame('totally.unknown.collection', $event->commit->collection);
-        self::assertSame('3l3qo2vuowo2b', $event->commit->rkey);        
+        self::assertSame('3l3qo2vuowo2b', $event->commit->rkey);
         self::assertSame($record, $event->commit->record);
     }
 
