@@ -4,36 +4,31 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Jetstream;
 
+use Aazsamir\Libphpsky\Jetstream\MessageAdapter;
 use Aazsamir\Libphpsky\Jetstream\Model\AccountEvent;
 use Aazsamir\Libphpsky\Jetstream\Model\CommitEvent;
-use Aazsamir\Libphpsky\Jetstream\Model\Event;
 use Aazsamir\Libphpsky\Jetstream\Model\IdentityEvent;
-use Aazsamir\Libphpsky\Jetstream\WssClient;
 use Aazsamir\Libphpsky\Model\App\Bsky\Feed\Like\Like;
-use PHPUnit\Framework\MockObject\MockObject;
-use Tests\Unit\Jetstream\Stub\WebSocketClientFactoryStub;
 use Tests\Unit\TestCase;
-use WebSocket\Client;
 use WebSocket\Message\Text;
 
 /**
  * @internal
  */
-final class WssClientTest extends TestCase
+final class MessageAdapterTest extends TestCase
 {
-    private Client&MockObject $client;
-    private WssClient $wssClient;
+    private MessageAdapter $adapter;
 
     protected function setUp(): void
     {
-        $this->client = $this->createMock(Client::class);
-        $factory = new WebSocketClientFactoryStub($this->client);
-        $this->wssClient = new WssClient($factory);
+        parent::setUp();
+
+        $this->adapter = new MessageAdapter();
     }
 
     public function testCommitCreate(): void
     {
-        $this->mockMessage([
+        $message = $this->mockMessage([
             'did' => 'did:plc:eygmaihciaxprqvxpfvl6flk',
             'time_us' => 1725911162329308,
             'kind' => 'commit',
@@ -55,7 +50,7 @@ final class WssClientTest extends TestCase
         ]);
 
         /** @var CommitEvent $event */
-        $event = $this->getEvent();
+        $event = $this->adapter->adapt($message);
 
         self::assertInstanceOf(CommitEvent::class, $event);
         self::assertSame('did:plc:eygmaihciaxprqvxpfvl6flk', $event->did);
@@ -75,7 +70,7 @@ final class WssClientTest extends TestCase
 
     public function testCommitDelete(): void
     {
-        $this->mockMessage([
+        $message = $this->mockMessage([
             'did' => 'did:plc:rfov6bpyztcnedeyyzgfq42k',
             'time_us' => 1725516666833633,
             'kind' => 'commit',
@@ -88,7 +83,7 @@ final class WssClientTest extends TestCase
         ]);
 
         /** @var CommitEvent $event */
-        $event = $this->getEvent();
+        $event = $this->adapter->adapt($message);
 
         self::assertInstanceOf(CommitEvent::class, $event);
         self::assertSame('did:plc:rfov6bpyztcnedeyyzgfq42k', $event->did);
@@ -103,7 +98,7 @@ final class WssClientTest extends TestCase
 
     public function testIdentity(): void
     {
-        $this->mockMessage([
+        $message = $this->mockMessage([
             'did' => 'did:plc:ufbl4k27gp6kzas5glhz7fim',
             'time_us' => 1725516665234703,
             'kind' => 'identity',
@@ -116,7 +111,7 @@ final class WssClientTest extends TestCase
         ]);
 
         /** @var IdentityEvent $event */
-        $event = $this->getEvent();
+        $event = $this->adapter->adapt($message);
 
         self::assertInstanceOf(IdentityEvent::class, $event);
         self::assertSame('did:plc:ufbl4k27gp6kzas5glhz7fim', $event->did);
@@ -129,7 +124,7 @@ final class WssClientTest extends TestCase
 
     public function testAccount(): void
     {
-        $this->mockMessage([
+        $message = $this->mockMessage([
             'did' => 'did:plc:ufbl4k27gp6kzas5glhz7fim',
             'time_us' => 1725516665333808,
             'kind' => 'account',
@@ -141,8 +136,7 @@ final class WssClientTest extends TestCase
             ],
         ]);
 
-        /** @var AccountEvent $event */
-        $event = $this->getEvent();
+        $event = $this->adapter->adapt($message);
 
         self::assertInstanceOf(AccountEvent::class, $event);
         self::assertSame('did:plc:ufbl4k27gp6kzas5glhz7fim', $event->did);
@@ -153,22 +147,44 @@ final class WssClientTest extends TestCase
         self::assertSame('2024-09-05T06:11:04+00:00', $event->account->time->format(\DateTime::ATOM));
     }
 
-    private function mockMessage(array $data): void
+    public function testCommitUnknownType(): void
     {
-        $message = new Text(json_encode($data));
+        $record = [
+            '$type' => 'totally.unknown.collection.record',
+            'createdAt' => '2024-09-09T19:46:02.102Z',
+            'subject' => [
+                'something' => 'else',
+            ],
+        ];
+        $message = $this->mockMessage([
+            'did' => 'did:plc:eygmaihciaxprqvxpfvl6flk',
+            'time_us' => 1725911162329308,
+            'kind' => 'commit',
+            'commit' => [
+                'rev' => '3l3qo2vutsw2b',
+                'operation' => 'create',
+                'collection' => 'totally.unknown.collection',
+                'rkey' => '3l3qo2vuowo2b',
+                'record' => $record,
+                'cid' => 'bafyreidwaivazkwu67xztlmuobx35hs2lnfh3kolmgfmucldvhd3sgzcqi',
+            ],
+        ]);
 
-        $this->client
-            ->expects(self::once())
-            ->method('receive')
-            ->willReturn($message);
+        /** @var CommitEvent $event */
+        $event = $this->adapter->adapt($message);
+
+        self::assertInstanceOf(CommitEvent::class, $event);
+        self::assertSame('did:plc:eygmaihciaxprqvxpfvl6flk', $event->did);
+        self::assertSame('2024-09-09T19:46:02+00:00', $event->timeUs->format(\DateTime::ATOM));
+        self::assertSame('3l3qo2vutsw2b', $event->commit->rev);
+        self::assertSame('create', $event->commit->operation->value);
+        self::assertSame('totally.unknown.collection', $event->commit->collection);
+        self::assertSame('3l3qo2vuowo2b', $event->commit->rkey);        
+        self::assertSame($record, $event->commit->record);
     }
 
-    private function getEvent(): Event
+    private function mockMessage(array $data): Text
     {
-        foreach ($this->wssClient->subscribe() as $event) {
-            $this->wssClient->stop();
-        }
-
-        return $event;
+        return new Text(json_encode($data));
     }
 }
