@@ -19,7 +19,7 @@ class Notification implements \Aazsamir\Libphpsky\ATProtoObject
     public string $cid;
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $author;
 
-    /** @var string Expected values are 'like', 'repost', 'follow', 'mention', 'reply', 'quote', and 'starterpack-joined'. */
+    /** @var string Expected values are 'like', 'repost', 'follow', 'mention', 'reply', 'quote', 'starterpack-joined', 'verified', and 'unverified'. */
     public string $reason;
     public ?string $reasonSubject;
     public mixed $record;

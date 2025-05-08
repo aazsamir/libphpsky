@@ -29,6 +29,7 @@ class ListMembers implements \Aazsamir\Libphpsky\Action
      * @param ?array<string> $roles
      */
     public function query(
+        ?string $q = null,
         ?bool $disabled = null,
         ?array $roles = null,
         ?int $limit = null,
@@ -42,6 +43,7 @@ class ListMembers implements \Aazsamir\Libphpsky\Action
      * @return array<string, mixed>
      */
     public function rawQuery(
+        ?string $q = null,
         ?bool $disabled = null,
         ?array $roles = null,
         ?int $limit = null,

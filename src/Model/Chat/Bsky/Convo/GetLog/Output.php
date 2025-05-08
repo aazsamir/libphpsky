@@ -17,7 +17,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     public ?string $cursor;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogBeginConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogAcceptConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogLeaveConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogCreateMessage|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogDeleteMessage> */
+    /** @var array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogBeginConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogAcceptConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogLeaveConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogMuteConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogUnmuteConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogCreateMessage|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogDeleteMessage|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogReadMessage|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogAddReaction|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogRemoveReaction> */
     public array $logs = [];
 
     public static function id(): string
@@ -41,7 +41,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     }
 
     /**
-     * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogBeginConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogAcceptConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogLeaveConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogCreateMessage|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogDeleteMessage> $logs
+     * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogBeginConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogAcceptConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogLeaveConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogMuteConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogUnmuteConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogCreateMessage|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogDeleteMessage|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogReadMessage|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogAddReaction|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\LogRemoveReaction> $logs
      */
     public static function new(array $logs, ?string $cursor = null): self
     {

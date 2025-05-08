@@ -15,6 +15,7 @@ class Video implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'main';
     public const ID = 'app.bsky.embed.video';
 
+    /** @var string The mp4 video file. May be up to 100mb, formerly limited to 50mb. */
     public string $video;
 
     /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Caption> */

@@ -78,6 +78,14 @@ class ATProtoMetaClient
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\LeaveConvo\LeaveConvo($this->client, $this->token);
     }
 
+    /**
+     * Adds an emoji reaction to a message. Requires authentication. It is idempotent, so multiple calls from the same user with the same emoji result in a single reaction.
+     */
+    public function chatBskyConvoAddReaction(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\AddReaction\AddReaction
+    {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\AddReaction\AddReaction($this->client, $this->token);
+    }
+
     public function chatBskyConvoDeleteMessageForSelf(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\DeleteMessageForSelf\DeleteMessageForSelf {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\DeleteMessageForSelf\DeleteMessageForSelf($this->client, $this->token);
@@ -86,6 +94,14 @@ class ATProtoMetaClient
     public function chatBskyConvoGetConvoForMembers(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoForMembers\GetConvoForMembers {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoForMembers\GetConvoForMembers($this->client, $this->token);
+    }
+
+    /**
+     * Removes an emoji reaction from a message. Requires authentication. It is idempotent, so multiple calls from the same user with the same emoji result in that reaction not being present, even if it already wasn't.
+     */
+    public function chatBskyConvoRemoveReaction(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\RemoveReaction\RemoveReaction {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\RemoveReaction\RemoveReaction($this->client, $this->token);
     }
 
     public function chatBskyConvoUnmuteConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UnmuteConvo\UnmuteConvo
@@ -204,6 +220,14 @@ class ATProtoMetaClient
     }
 
     /**
+     * Administrative action to update an account's signing key in their Did document.
+     */
+    public function comAtprotoAdminUpdateAccountSigningKey(
+    ): \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateAccountSigningKey\UpdateAccountSigningKey {
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateAccountSigningKey\UpdateAccountSigningKey($this->client, $this->token);
+    }
+
+    /**
      * Re-enable an account's ability to receive invite codes.
      */
     public function comAtprotoAdminEnableAccountInvites(
@@ -241,6 +265,14 @@ class ATProtoMetaClient
     public function comAtprotoSyncRequestCrawl(): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\RequestCrawl\RequestCrawl
     {
         return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\RequestCrawl\RequestCrawl($this->client, $this->token);
+    }
+
+    /**
+     * Enumerates upstream hosts (eg, PDS or relay instances) that this service consumes from. Implemented by relays.
+     */
+    public function comAtprotoSyncListHosts(): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListHosts\ListHosts
+    {
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListHosts\ListHosts($this->client, $this->token);
     }
 
     /**
@@ -297,6 +329,14 @@ class ATProtoMetaClient
     public function comAtprotoSyncGetBlob(): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetBlob\GetBlob
     {
         return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetBlob\GetBlob($this->client, $this->token);
+    }
+
+    /**
+     * Returns information about a specified upstream host, as consumed by the server. Implemented by relays.
+     */
+    public function comAtprotoSyncGetHostStatus(
+    ): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetHostStatus\GetHostStatus {
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetHostStatus\GetHostStatus($this->client, $this->token);
     }
 
     /**
@@ -1180,6 +1220,14 @@ class ATProtoMetaClient
     }
 
     /**
+     * Get a list of suggested feeds
+     */
+    public function appBskyUnspeccedGetSuggestedFeeds(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedFeeds\GetSuggestedFeeds {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedFeeds\GetSuggestedFeeds($this->client, $this->token);
+    }
+
+    /**
      * Get a list of trending topics
      */
     public function appBskyUnspeccedGetTrendingTopics(
@@ -1188,11 +1236,35 @@ class ATProtoMetaClient
     }
 
     /**
+     * Get a skeleton of suggested starterpacks. Intended to be called and hydrated by app.bsky.unspecced.getSuggestedStarterpacks
+     */
+    public function appBskyUnspeccedGetSuggestedStarterPacksSkeleton(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedStarterPacksSkeleton\GetSuggestedStarterPacksSkeleton {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedStarterPacksSkeleton\GetSuggestedStarterPacksSkeleton($this->client, $this->token);
+    }
+
+    /**
      * Backend Starter Pack search, returns only skeleton.
      */
     public function appBskyUnspeccedSearchStarterPacksSkeleton(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchStarterPacksSkeleton\SearchStarterPacksSkeleton {
         return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchStarterPacksSkeleton\SearchStarterPacksSkeleton($this->client, $this->token);
+    }
+
+    /**
+     * Get a list of suggested starterpacks
+     */
+    public function appBskyUnspeccedGetSuggestedStarterPacks(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedStarterPacks\GetSuggestedStarterPacks {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedStarterPacks\GetSuggestedStarterPacks($this->client, $this->token);
+    }
+
+    /**
+     * Get a skeleton of suggested feeds. Intended to be called and hydrated by app.bsky.unspecced.getSuggestedFeeds
+     */
+    public function appBskyUnspeccedGetSuggestedFeedsSkeleton(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedFeedsSkeleton\GetSuggestedFeedsSkeleton {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedFeedsSkeleton\GetSuggestedFeedsSkeleton($this->client, $this->token);
     }
 
     /**
@@ -1212,6 +1284,14 @@ class ATProtoMetaClient
     }
 
     /**
+     * Get a list of suggested users
+     */
+    public function appBskyUnspeccedGetSuggestedUsers(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsers\GetSuggestedUsers {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsers\GetSuggestedUsers($this->client, $this->token);
+    }
+
+    /**
      * Backend Actors (profile) search, returns only skeleton.
      */
     public function appBskyUnspeccedSearchActorsSkeleton(
@@ -1220,11 +1300,27 @@ class ATProtoMetaClient
     }
 
     /**
+     * Get the current trends on the network
+     */
+    public function appBskyUnspeccedGetTrends(): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrends\GetTrends
+    {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrends\GetTrends($this->client, $this->token);
+    }
+
+    /**
      * Get a skeleton of suggested actors. Intended to be called and then hydrated through app.bsky.actor.getSuggestions
      */
     public function appBskyUnspeccedGetSuggestionsSkeleton(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestionsSkeleton\GetSuggestionsSkeleton {
         return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestionsSkeleton\GetSuggestionsSkeleton($this->client, $this->token);
+    }
+
+    /**
+     * Get a skeleton of suggested users. Intended to be called and hydrated by app.bsky.unspecced.getSuggestedUsers
+     */
+    public function appBskyUnspeccedGetSuggestedUsersSkeleton(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersSkeleton\GetSuggestedUsersSkeleton {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersSkeleton\GetSuggestedUsersSkeleton($this->client, $this->token);
     }
 
     /**
@@ -1241,6 +1337,14 @@ class ATProtoMetaClient
     public function appBskyUnspeccedSearchPostsSkeleton(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchPostsSkeleton\SearchPostsSkeleton {
         return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchPostsSkeleton\SearchPostsSkeleton($this->client, $this->token);
+    }
+
+    /**
+     * Get the skeleton of trends on the network. Intended to be called and then hydrated through app.bsky.unspecced.getTrends
+     */
+    public function appBskyUnspeccedGetTrendsSkeleton(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrendsSkeleton\GetTrendsSkeleton {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrendsSkeleton\GetTrendsSkeleton($this->client, $this->token);
     }
 
     /**
@@ -1324,6 +1428,14 @@ class ATProtoMetaClient
     }
 
     /**
+     * Get details about subjects.
+     */
+    public function toolsOzoneModerationGetSubjects(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetSubjects\GetSubjects {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetSubjects\GetSubjects($this->client, $this->token);
+    }
+
+    /**
      * List moderation events related to a subject.
      */
     public function toolsOzoneModerationQueryEvents(
@@ -1353,6 +1465,30 @@ class ATProtoMetaClient
     public function toolsOzoneModerationGetRepos(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRepos\GetRepos
     {
         return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRepos\GetRepos($this->client, $this->token);
+    }
+
+    /**
+     * Revoke previously granted verifications in batches of up to 100.
+     */
+    public function toolsOzoneVerificationRevokeVerifications(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\RevokeVerifications\RevokeVerifications {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\RevokeVerifications\RevokeVerifications($this->client, $this->token);
+    }
+
+    /**
+     * List verifications
+     */
+    public function toolsOzoneVerificationListVerifications(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\ListVerifications\ListVerifications {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\ListVerifications\ListVerifications($this->client, $this->token);
+    }
+
+    /**
+     * Grant verifications to multiple subjects. Allows batch processing of up to 100 verifications at once.
+     */
+    public function toolsOzoneVerificationGrantVerifications(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\GrantVerifications\GrantVerifications {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\GrantVerifications\GrantVerifications($this->client, $this->token);
     }
 
     /**
@@ -1465,6 +1601,14 @@ class ATProtoMetaClient
     public function toolsOzoneServerGetConfig(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Server\GetConfig\GetConfig
     {
         return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Server\GetConfig\GetConfig($this->client, $this->token);
+    }
+
+    /**
+     * Get account history, e.g. log of updated email addresses or other identity information.
+     */
+    public function toolsOzoneHostingGetAccountHistory(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Hosting\GetAccountHistory\GetAccountHistory {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Hosting\GetAccountHistory\GetAccountHistory($this->client, $this->token);
     }
 
     /**

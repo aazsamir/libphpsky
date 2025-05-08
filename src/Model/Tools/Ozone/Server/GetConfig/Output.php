@@ -21,6 +21,9 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public ?ServiceConfig $chat;
     public ?ViewerConfig $viewer;
 
+    /** @var ?string The did of the verifier used for verification. */
+    public ?string $verifierDid;
+
     public static function id(): string
     {
         return self::ID;
@@ -47,6 +50,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         ?ServiceConfig $blobDivert = null,
         ?ServiceConfig $chat = null,
         ?ViewerConfig $viewer = null,
+        ?string $verifierDid = null,
     ): self {
         $instance = new self();
         if ($appview !== null) {
@@ -63,6 +67,9 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($viewer !== null) {
             $instance->viewer = $viewer;
+        }
+        if ($verifierDid !== null) {
+            $instance->verifierDid = $verifierDid;
         }
 
         return $instance;
