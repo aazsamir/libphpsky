@@ -89,7 +89,7 @@ final class GraphGenerate
         [$errors, $likes] = \Amp\Future\awaitAll($futures);
 
         if ($errors) {
-            dd($errors);
+            dump($errors);
         }
 
         foreach ($likes as $like) {
@@ -125,7 +125,7 @@ final class GraphGenerate
         [$errors, $records] = \Amp\Future\awaitAll($futures);
 
         if ($errors) {
-            dd($errors);
+            dump($errors);
         }
 
         foreach ($records as $recordResponse) {
@@ -158,7 +158,7 @@ final class GraphGenerate
         [$errors, $profiles] = \Amp\Future\awaitAll($futures);
 
         if ($errors) {
-            dd($errors);
+            dump($errors);
         }
 
         return $profiles;
