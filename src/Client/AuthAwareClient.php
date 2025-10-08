@@ -101,7 +101,7 @@ class AuthAwareClient implements ATProtoClientInterface
     private function createSession(): CreateSession
     {
         if ($this->createSession === null) {
-            $this->createSession = new CreateSession($this->decorated);
+            $this->createSession = new CreateSession($this->atprotoClient());
         }
 
         return $this->createSession;
@@ -110,10 +110,19 @@ class AuthAwareClient implements ATProtoClientInterface
     private function refreshSession(): RefreshSession
     {
         if ($this->refreshSession === null) {
-            $this->refreshSession = new RefreshSession($this->decorated);
+            $this->refreshSession = new RefreshSession($this->atprotoClient());
         }
 
         return $this->refreshSession;
+    }
+
+    private function atprotoClient(): ATProtoClientInterface
+    {
+        if ($this->decorated instanceof ATProtoClientInterface) {
+            return $this->decorated;
+        }
+
+        return new ATProtoClient($this->decorated);
     }
 
     private function withSession(RequestInterface $request, Session $session): RequestInterface
