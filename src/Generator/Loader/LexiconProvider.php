@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Generator\Loader;
 
-use Generator;
-
 /**
  * @internal
  */
 interface LexiconProvider
 {
     /**
-     * @return Generator<int, array{
+     * @return \Generator<int, array{
      *  lexicon: int,
      *  id: string,
      *  revision?: int,
