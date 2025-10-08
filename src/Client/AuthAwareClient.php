@@ -47,11 +47,11 @@ class AuthAwareClient implements ATProtoClientInterface
 
     private function getSession(): Session
     {
-        $session = $this->sessionStore->retrieve($this->authConfig);
-
         if ($this->authConfig->login() === null || $this->authConfig->password() === null) {
             throw new AuthException('ClientError', 'Login and password must be set');
         }
+
+        $session = $this->sessionStore->retrieve($this->authConfig);
 
         if ($session === null) {
             $input = \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\Input::new(
@@ -101,7 +101,7 @@ class AuthAwareClient implements ATProtoClientInterface
     private function createSession(): CreateSession
     {
         if ($this->createSession === null) {
-            $this->createSession = CreateSession::default();
+            $this->createSession = new CreateSession($this->decorated);
         }
 
         return $this->createSession;
@@ -110,7 +110,7 @@ class AuthAwareClient implements ATProtoClientInterface
     private function refreshSession(): RefreshSession
     {
         if ($this->refreshSession === null) {
-            $this->refreshSession = RefreshSession::default();
+            $this->refreshSession = new RefreshSession($this->decorated);
         }
 
         return $this->refreshSession;
