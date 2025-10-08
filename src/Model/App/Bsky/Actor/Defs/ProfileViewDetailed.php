@@ -19,6 +19,8 @@ class ProfileViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
     public string $handle;
     public ?string $displayName;
     public ?string $description;
+    public ?string $pronouns;
+    public ?string $website;
     public ?string $avatar;
     public ?string $banner;
     public ?int $followersCount;
@@ -64,6 +66,8 @@ class ProfileViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
         string $handle,
         ?string $displayName = null,
         ?string $description = null,
+        ?string $pronouns = null,
+        ?string $website = null,
         ?string $avatar = null,
         ?string $banner = null,
         ?int $followersCount = null,
@@ -87,6 +91,12 @@ class ProfileViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($description !== null) {
             $instance->description = $description;
+        }
+        if ($pronouns !== null) {
+            $instance->pronouns = $pronouns;
+        }
+        if ($website !== null) {
+            $instance->website = $website;
         }
         if ($avatar !== null) {
             $instance->avatar = $avatar;

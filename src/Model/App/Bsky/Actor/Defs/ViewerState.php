@@ -23,7 +23,12 @@ class ViewerState implements \Aazsamir\Libphpsky\ATProtoObject
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Graph\Defs\ListViewBasic $blockingByList;
     public ?string $following;
     public ?string $followedBy;
+
+    /** @var ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\KnownFollowers This property is present only in selected cases, as an optimization. */
     public ?KnownFollowers $knownFollowers;
+
+    /** @var ?\Aazsamir\Libphpsky\Model\App\Bsky\Notification\Defs\ActivitySubscription This property is present only in selected cases, as an optimization. */
+    public ?\Aazsamir\Libphpsky\Model\App\Bsky\Notification\Defs\ActivitySubscription $activitySubscription;
 
     public static function id(): string
     {
@@ -54,6 +59,7 @@ class ViewerState implements \Aazsamir\Libphpsky\ATProtoObject
         ?string $following = null,
         ?string $followedBy = null,
         ?KnownFollowers $knownFollowers = null,
+        ?\Aazsamir\Libphpsky\Model\App\Bsky\Notification\Defs\ActivitySubscription $activitySubscription = null,
     ): self {
         $instance = new self();
         if ($muted !== null) {
@@ -79,6 +85,9 @@ class ViewerState implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($knownFollowers !== null) {
             $instance->knownFollowers = $knownFollowers;
+        }
+        if ($activitySubscription !== null) {
+            $instance->activitySubscription = $activitySubscription;
         }
 
         return $instance;

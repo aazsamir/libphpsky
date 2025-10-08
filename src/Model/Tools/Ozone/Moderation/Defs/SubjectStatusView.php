@@ -17,7 +17,7 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
 
     public int $id;
 
-    /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef */
+    /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageRef */
     public mixed $subject;
 
     /** @var \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\AccountHosting|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RecordHosting|null */
@@ -62,6 +62,12 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RecordsStats Statistics related to the record subjects authored by the subject's account */
     public ?RecordsStats $recordsStats;
 
+    /** @var ?string Current age assurance state of the subject. */
+    public ?string $ageAssuranceState;
+
+    /** @var ?string Whether or not the last successful update to age assurance was made by the user or admin. */
+    public ?string $ageAssuranceUpdatedBy;
+
     public static function id(): string
     {
         return self::ID;
@@ -88,7 +94,7 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
      */
     public static function new(
         int $id,
-        \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $subject,
+        \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageRef $subject,
         \DateTimeInterface $updatedAt,
         \DateTimeInterface $createdAt,
         AccountHosting|RecordHosting|null $hosting = null,
@@ -109,6 +115,8 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
         ?array $tags = [],
         ?AccountStats $accountStats = null,
         ?RecordsStats $recordsStats = null,
+        ?string $ageAssuranceState = null,
+        ?string $ageAssuranceUpdatedBy = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -168,6 +176,12 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($recordsStats !== null) {
             $instance->recordsStats = $recordsStats;
+        }
+        if ($ageAssuranceState !== null) {
+            $instance->ageAssuranceState = $ageAssuranceState;
+        }
+        if ($ageAssuranceUpdatedBy !== null) {
+            $instance->ageAssuranceUpdatedBy = $ageAssuranceUpdatedBy;
         }
 
         return $instance;

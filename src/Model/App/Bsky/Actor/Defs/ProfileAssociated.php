@@ -20,6 +20,7 @@ class ProfileAssociated implements \Aazsamir\Libphpsky\ATProtoObject
     public ?int $starterPacks;
     public ?bool $labeler;
     public ?ProfileAssociatedChat $chat;
+    public ?ProfileAssociatedActivitySubscription $activitySubscription;
 
     public static function id(): string
     {
@@ -47,6 +48,7 @@ class ProfileAssociated implements \Aazsamir\Libphpsky\ATProtoObject
         ?int $starterPacks = null,
         ?bool $labeler = null,
         ?ProfileAssociatedChat $chat = null,
+        ?ProfileAssociatedActivitySubscription $activitySubscription = null,
     ): self {
         $instance = new self();
         if ($lists !== null) {
@@ -63,6 +65,9 @@ class ProfileAssociated implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($chat !== null) {
             $instance->chat = $chat;
+        }
+        if ($activitySubscription !== null) {
+            $instance->activitySubscription = $activitySubscription;
         }
 
         return $instance;

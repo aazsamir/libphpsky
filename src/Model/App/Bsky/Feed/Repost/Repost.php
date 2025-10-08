@@ -17,6 +17,7 @@ class Repost implements \Aazsamir\Libphpsky\ATProtoObject
 
     public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $subject;
     public \DateTimeInterface $createdAt;
+    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $via;
 
     public static function id(): string
     {
@@ -41,11 +42,15 @@ class Repost implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         \DateTimeInterface $createdAt,
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $subject = null,
+        ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $via = null,
     ): self {
         $instance = new self();
         $instance->createdAt = $createdAt;
         if ($subject !== null) {
             $instance->subject = $subject;
+        }
+        if ($via !== null) {
+            $instance->via = $via;
         }
 
         return $instance;

@@ -17,7 +17,7 @@ class ModEventViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
 
     public int $id;
 
-    /** @var \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventTakedown|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventReverseTakedown|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventComment|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventReport|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventLabel|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventAcknowledge|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventEscalate|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventMute|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventUnmute|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventMuteReporter|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventUnmuteReporter|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventEmail|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventResolveAppeal|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventDivert|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventTag|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\AccountEvent|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\IdentityEvent|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RecordEvent|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventPriorityScore */
+    /** @var \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventTakedown|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventReverseTakedown|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventComment|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventReport|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventLabel|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventAcknowledge|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventEscalate|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventMute|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventUnmute|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventMuteReporter|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventUnmuteReporter|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventEmail|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventResolveAppeal|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventDivert|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventTag|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\AccountEvent|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\IdentityEvent|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RecordEvent|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventPriorityScore|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\AgeAssuranceEvent|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\AgeAssuranceOverrideEvent|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RevokeAccountCredentialsEvent|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ScheduleTakedownEvent|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\CancelScheduledTakedownEvent */
     public mixed $event;
 
     /** @var \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RepoView|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RepoViewNotFound|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RecordView|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RecordViewNotFound */
@@ -27,6 +27,7 @@ class ModEventViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
     public array $subjectBlobs = [];
     public string $createdBy;
     public \DateTimeInterface $createdAt;
+    public ?ModTool $modTool;
 
     public static function id(): string
     {
@@ -53,11 +54,12 @@ class ModEventViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
      */
     public static function new(
         int $id,
-        ModEventTakedown|ModEventReverseTakedown|ModEventComment|ModEventReport|ModEventLabel|ModEventAcknowledge|ModEventEscalate|ModEventMute|ModEventUnmute|ModEventMuteReporter|ModEventUnmuteReporter|ModEventEmail|ModEventResolveAppeal|ModEventDivert|ModEventTag|AccountEvent|IdentityEvent|RecordEvent|ModEventPriorityScore $event,
+        ModEventTakedown|ModEventReverseTakedown|ModEventComment|ModEventReport|ModEventLabel|ModEventAcknowledge|ModEventEscalate|ModEventMute|ModEventUnmute|ModEventMuteReporter|ModEventUnmuteReporter|ModEventEmail|ModEventResolveAppeal|ModEventDivert|ModEventTag|AccountEvent|IdentityEvent|RecordEvent|ModEventPriorityScore|AgeAssuranceEvent|AgeAssuranceOverrideEvent|RevokeAccountCredentialsEvent|ScheduleTakedownEvent|CancelScheduledTakedownEvent $event,
         RepoView|RepoViewNotFound|RecordView|RecordViewNotFound $subject,
         array $subjectBlobs,
         string $createdBy,
         \DateTimeInterface $createdAt,
+        ?ModTool $modTool = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -66,6 +68,9 @@ class ModEventViewDetail implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->subjectBlobs = $subjectBlobs;
         $instance->createdBy = $createdBy;
         $instance->createdAt = $createdAt;
+        if ($modTool !== null) {
+            $instance->modTool = $modTool;
+        }
 
         return $instance;
     }

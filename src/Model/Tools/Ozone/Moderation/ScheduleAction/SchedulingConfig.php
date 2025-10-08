@@ -1,0 +1,66 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\ScheduleAction;
+
+/**
+ * Configuration for when the action should be executed
+ * object
+ */
+class SchedulingConfig implements \Aazsamir\Libphpsky\ATProtoObject
+{
+    use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
+
+    public const NAME = 'schedulingConfig';
+    public const ID = 'tools.ozone.moderation.scheduleAction';
+
+    /** @var ?\DateTimeInterface Exact time to execute the action */
+    public ?\DateTimeInterface $executeAt;
+
+    /** @var ?\DateTimeInterface Earliest time to execute the action (for randomized scheduling) */
+    public ?\DateTimeInterface $executeAfter;
+
+    /** @var ?\DateTimeInterface Latest time to execute the action (for randomized scheduling) */
+    public ?\DateTimeInterface $executeUntil;
+
+    public static function id(): string
+    {
+        return self::ID;
+    }
+
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return [];
+    }
+
+    public static function new(
+        ?\DateTimeInterface $executeAt = null,
+        ?\DateTimeInterface $executeAfter = null,
+        ?\DateTimeInterface $executeUntil = null,
+    ): self {
+        $instance = new self();
+        if ($executeAt !== null) {
+            $instance->executeAt = $executeAt;
+        }
+        if ($executeAfter !== null) {
+            $instance->executeAfter = $executeAfter;
+        }
+        if ($executeUntil !== null) {
+            $instance->executeUntil = $executeUntil;
+        }
+
+        return $instance;
+    }
+}

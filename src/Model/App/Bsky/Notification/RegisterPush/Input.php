@@ -20,6 +20,9 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     public string $platform;
     public string $appId;
 
+    /** @var ?bool Set to true when the actor is age restricted */
+    public ?bool $ageRestricted;
+
     public static function id(): string
     {
         return self::ID;
@@ -40,13 +43,21 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         return ['serviceDid', 'token', 'platform', 'appId'];
     }
 
-    public static function new(string $serviceDid, string $token, string $platform, string $appId): self
-    {
+    public static function new(
+        string $serviceDid,
+        string $token,
+        string $platform,
+        string $appId,
+        ?bool $ageRestricted = null,
+    ): self {
         $instance = new self();
         $instance->serviceDid = $serviceDid;
         $instance->token = $token;
         $instance->platform = $platform;
         $instance->appId = $appId;
+        if ($ageRestricted !== null) {
+            $instance->ageRestricted = $ageRestricted;
+        }
 
         return $instance;
     }

@@ -21,6 +21,9 @@ class Interaction implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?string Context on a feed item that was originally supplied by the feed generator on getFeedSkeleton. */
     public ?string $feedContext;
 
+    /** @var ?string Unique identifier per request that may be passed back alongside interactions. */
+    public ?string $reqId;
+
     public static function id(): string
     {
         return self::ID;
@@ -41,8 +44,12 @@ class Interaction implements \Aazsamir\Libphpsky\ATProtoObject
         return [];
     }
 
-    public static function new(?string $item = null, ?string $event = null, ?string $feedContext = null): self
-    {
+    public static function new(
+        ?string $item = null,
+        ?string $event = null,
+        ?string $feedContext = null,
+        ?string $reqId = null,
+    ): self {
         $instance = new self();
         if ($item !== null) {
             $instance->item = $item;
@@ -52,6 +59,9 @@ class Interaction implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($feedContext !== null) {
             $instance->feedContext = $feedContext;
+        }
+        if ($reqId !== null) {
+            $instance->reqId = $reqId;
         }
 
         return $instance;

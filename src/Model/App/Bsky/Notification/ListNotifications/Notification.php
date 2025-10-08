@@ -19,7 +19,7 @@ class Notification implements \Aazsamir\Libphpsky\ATProtoObject
     public string $cid;
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView $author;
 
-    /** @var string Expected values are 'like', 'repost', 'follow', 'mention', 'reply', 'quote', 'starterpack-joined', 'verified', and 'unverified'. */
+    /** @var string The reason why this notification was delivered - e.g. your post was liked, or you received a new follower. */
     public string $reason;
     public ?string $reasonSubject;
     public mixed $record;

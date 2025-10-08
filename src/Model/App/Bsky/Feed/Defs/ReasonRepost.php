@@ -16,6 +16,8 @@ class ReasonRepost implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'app.bsky.feed.defs';
 
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $by;
+    public ?string $uri;
+    public ?string $cid;
     public \DateTimeInterface $indexedAt;
 
     public static function id(): string
@@ -41,11 +43,19 @@ class ReasonRepost implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         \DateTimeInterface $indexedAt,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $by = null,
+        ?string $uri = null,
+        ?string $cid = null,
     ): self {
         $instance = new self();
         $instance->indexedAt = $indexedAt;
         if ($by !== null) {
             $instance->by = $by;
+        }
+        if ($uri !== null) {
+            $instance->uri = $uri;
+        }
+        if ($cid !== null) {
+            $instance->cid = $cid;
         }
 
         return $instance;

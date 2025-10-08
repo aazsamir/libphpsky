@@ -17,6 +17,9 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     public ?bool $checkEmailConfirmed;
 
+    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetConfig\LiveNowConfig> */
+    public ?array $liveNow = [];
+
     public static function id(): string
     {
         return self::ID;
@@ -37,11 +40,17 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         return [];
     }
 
-    public static function new(?bool $checkEmailConfirmed = null): self
+    /**
+     * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetConfig\LiveNowConfig> $liveNow
+     */
+    public static function new(?bool $checkEmailConfirmed = null, ?array $liveNow = []): self
     {
         $instance = new self();
         if ($checkEmailConfirmed !== null) {
             $instance->checkEmailConfirmed = $checkEmailConfirmed;
+        }
+        if ($liveNow !== null) {
+            $instance->liveNow = $liveNow;
         }
 
         return $instance;

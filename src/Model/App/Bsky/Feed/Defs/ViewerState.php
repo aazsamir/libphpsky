@@ -18,6 +18,7 @@ class ViewerState implements \Aazsamir\Libphpsky\ATProtoObject
 
     public ?string $repost;
     public ?string $like;
+    public ?bool $bookmarked;
     public ?bool $threadMuted;
     public ?bool $replyDisabled;
     public ?bool $embeddingDisabled;
@@ -46,6 +47,7 @@ class ViewerState implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         ?string $repost = null,
         ?string $like = null,
+        ?bool $bookmarked = null,
         ?bool $threadMuted = null,
         ?bool $replyDisabled = null,
         ?bool $embeddingDisabled = null,
@@ -57,6 +59,9 @@ class ViewerState implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($like !== null) {
             $instance->like = $like;
+        }
+        if ($bookmarked !== null) {
+            $instance->bookmarked = $bookmarked;
         }
         if ($threadMuted !== null) {
             $instance->threadMuted = $threadMuted;

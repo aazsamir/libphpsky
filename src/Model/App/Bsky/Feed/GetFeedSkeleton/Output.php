@@ -20,6 +20,9 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\SkeletonFeedPost> */
     public array $feed = [];
 
+    /** @var ?string Unique identifier per request that may be passed back alongside interactions. */
+    public ?string $reqId;
+
     public static function id(): string
     {
         return self::ID;
@@ -43,12 +46,15 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\SkeletonFeedPost> $feed
      */
-    public static function new(array $feed, ?string $cursor = null): self
+    public static function new(array $feed, ?string $cursor = null, ?string $reqId = null): self
     {
         $instance = new self();
         $instance->feed = $feed;
         if ($cursor !== null) {
             $instance->cursor = $cursor;
+        }
+        if ($reqId !== null) {
+            $instance->reqId = $reqId;
         }
 
         return $instance;

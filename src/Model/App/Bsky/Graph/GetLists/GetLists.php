@@ -27,18 +27,24 @@ class GetLists implements \Aazsamir\Libphpsky\Action
 
     /**
      * @param string $actor The account (actor) to enumerate lists from.
+     * @param ?array<string> $purposes  Optional filter by list purpose. If not specified, all supported types are returned.
      */
-    public function query(string $actor, ?int $limit = null, ?string $cursor = null): Output
+    public function query(string $actor, ?int $limit = null, ?string $cursor = null, ?array $purposes = null): Output
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetLists\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 
     /**
      * @param string $actor The account (actor) to enumerate lists from.
+     * @param ?array<string> $purposes  Optional filter by list purpose. If not specified, all supported types are returned.
      * @return array<string, mixed>
      */
-    public function rawQuery(string $actor, ?int $limit = null, ?string $cursor = null): array
-    {
+    public function rawQuery(
+        string $actor,
+        ?int $limit = null,
+        ?string $cursor = null,
+        ?array $purposes = null,
+    ): array {
         // @phpstan-ignore-next-line
         return $this->request($this->argsWithKeys(func_get_args()));
     }

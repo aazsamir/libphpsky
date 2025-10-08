@@ -23,6 +23,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef */
     public mixed $subject;
+    public ?ModTool $modTool;
 
     public static function id(): string
     {
@@ -48,12 +49,16 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         string $reasonType,
         \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $subject,
         ?string $reason = null,
+        ?ModTool $modTool = null,
     ): self {
         $instance = new self();
         $instance->reasonType = $reasonType;
         $instance->subject = $subject;
         if ($reason !== null) {
             $instance->reason = $reason;
+        }
+        if ($modTool !== null) {
+            $instance->modTool = $modTool;
         }
 
         return $instance;

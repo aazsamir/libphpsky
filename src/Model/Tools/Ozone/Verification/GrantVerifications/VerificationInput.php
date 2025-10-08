@@ -24,8 +24,8 @@ class VerificationInput implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var string Display name of the subject the verification applies to at the moment of verifying. */
     public string $displayName;
 
-    /** @var ?string Timestamp for verification record. Defaults to current time when not specified. */
-    public ?string $createdAt;
+    /** @var ?\DateTimeInterface Timestamp for verification record. Defaults to current time when not specified. */
+    public ?\DateTimeInterface $createdAt;
 
     public static function id(): string
     {
@@ -47,8 +47,12 @@ class VerificationInput implements \Aazsamir\Libphpsky\ATProtoObject
         return ['subject', 'handle', 'displayName'];
     }
 
-    public static function new(string $subject, string $handle, string $displayName, ?string $createdAt = null): self
-    {
+    public static function new(
+        string $subject,
+        string $handle,
+        string $displayName,
+        ?\DateTimeInterface $createdAt = null,
+    ): self {
         $instance = new self();
         $instance->subject = $subject;
         $instance->handle = $handle;

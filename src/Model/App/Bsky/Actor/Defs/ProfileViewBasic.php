@@ -18,6 +18,7 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
     public string $did;
     public string $handle;
     public ?string $displayName;
+    public ?string $pronouns;
     public ?string $avatar;
     public ?ProfileAssociated $associated;
     public ?ViewerState $viewer;
@@ -55,6 +56,7 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
         string $did,
         string $handle,
         ?string $displayName = null,
+        ?string $pronouns = null,
         ?string $avatar = null,
         ?ProfileAssociated $associated = null,
         ?ViewerState $viewer = null,
@@ -68,6 +70,9 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->handle = $handle;
         if ($displayName !== null) {
             $instance->displayName = $displayName;
+        }
+        if ($pronouns !== null) {
+            $instance->pronouns = $pronouns;
         }
         if ($avatar !== null) {
             $instance->avatar = $avatar;

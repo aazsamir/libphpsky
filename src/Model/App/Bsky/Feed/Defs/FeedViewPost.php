@@ -24,6 +24,9 @@ class FeedViewPost implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?string Context provided by feed generator that may be passed back alongside interactions. */
     public ?string $feedContext;
 
+    /** @var ?string Unique identifier per request that may be passed back alongside interactions. */
+    public ?string $reqId;
+
     public static function id(): string
     {
         return self::ID;
@@ -49,6 +52,7 @@ class FeedViewPost implements \Aazsamir\Libphpsky\ATProtoObject
         ?ReplyRef $reply = null,
         ReasonRepost|ReasonPin|null $reason = null,
         ?string $feedContext = null,
+        ?string $reqId = null,
     ): self {
         $instance = new self();
         if ($post !== null) {
@@ -62,6 +66,9 @@ class FeedViewPost implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($feedContext !== null) {
             $instance->feedContext = $feedContext;
+        }
+        if ($reqId !== null) {
+            $instance->reqId = $reqId;
         }
 
         return $instance;

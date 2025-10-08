@@ -20,6 +20,10 @@ class Profile implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?string Free-form profile description text. */
     public ?string $description;
 
+    /** @var ?string Free-form pronouns text. */
+    public ?string $pronouns;
+    public ?string $website;
+
     /** @var ?string Small image to be displayed next to posts from account. AKA, 'profile picture' */
     public ?string $avatar;
 
@@ -55,6 +59,8 @@ class Profile implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         ?string $displayName = null,
         ?string $description = null,
+        ?string $pronouns = null,
+        ?string $website = null,
         ?string $avatar = null,
         ?string $banner = null,
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels $labels = null,
@@ -68,6 +74,12 @@ class Profile implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($description !== null) {
             $instance->description = $description;
+        }
+        if ($pronouns !== null) {
+            $instance->pronouns = $pronouns;
+        }
+        if ($website !== null) {
+            $instance->website = $website;
         }
         if ($avatar !== null) {
             $instance->avatar = $avatar;

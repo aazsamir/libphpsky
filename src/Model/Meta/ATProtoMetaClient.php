@@ -492,6 +492,30 @@ class ATProtoMetaClient
     }
 
     /**
+     * Revoke sessions, password, and app passwords associated with account. May be resolved by a password reset.
+     */
+    public function comAtprotoTempRevokeAccountCredentials(
+    ): \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\RevokeAccountCredentials\RevokeAccountCredentials {
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\RevokeAccountCredentials\RevokeAccountCredentials($this->client, $this->token);
+    }
+
+    /**
+     * Checks whether the provided handle is available. If the handle is not available, available suggestions will be returned. Optional inputs will be used to generate suggestions.
+     */
+    public function comAtprotoTempCheckHandleAvailability(
+    ): \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\CheckHandleAvailability\CheckHandleAvailability {
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\CheckHandleAvailability\CheckHandleAvailability($this->client, $this->token);
+    }
+
+    /**
+     * Allows finding the oauth permission scope from a reference
+     */
+    public function comAtprotoTempDereferenceScope(
+    ): \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\DereferenceScope\DereferenceScope {
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\DereferenceScope\DereferenceScope($this->client, $this->token);
+    }
+
+    /**
      * Import a repo in the form of a CAR file. Requires Content-Length HTTP header to be set.
      */
     public function comAtprotoRepoImportRepo(): \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ImportRepo\ImportRepo
@@ -860,6 +884,38 @@ class ATProtoMetaClient
     }
 
     /**
+     * Gets views of records bookmarked by the authenticated user. Requires authentication.
+     */
+    public function appBskyBookmarkGetBookmarks(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Bookmark\GetBookmarks\GetBookmarks {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Bookmark\GetBookmarks\GetBookmarks($this->client, $this->token);
+    }
+
+    /**
+     * Deletes a private bookmark for the specified record. Currently, only `app.bsky.feed.post` records are supported. Requires authentication.
+     */
+    public function appBskyBookmarkDeleteBookmark(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Bookmark\DeleteBookmark\DeleteBookmark {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Bookmark\DeleteBookmark\DeleteBookmark($this->client, $this->token);
+    }
+
+    /**
+     * Creates a private bookmark for the specified record. Currently, only `app.bsky.feed.post` records are supported. Requires authentication.
+     */
+    public function appBskyBookmarkCreateBookmark(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Bookmark\CreateBookmark\CreateBookmark {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Bookmark\CreateBookmark\CreateBookmark($this->client, $this->token);
+    }
+
+    /**
+     * The inverse of registerPush - inform a specified service that push notifications should no longer be sent to the given token for the requesting account. Requires auth.
+     */
+    public function appBskyNotificationUnregisterPush(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\UnregisterPush\UnregisterPush {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\UnregisterPush\UnregisterPush($this->client, $this->token);
+    }
+
+    /**
      * Notify server that the requesting account has seen notifications. Requires auth.
      */
     public function appBskyNotificationUpdateSeen(
@@ -889,6 +945,38 @@ class ATProtoMetaClient
     public function appBskyNotificationListNotifications(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListNotifications\ListNotifications {
         return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListNotifications\ListNotifications($this->client, $this->token);
+    }
+
+    /**
+     * Puts an activity subscription entry. The key should be omitted for creation and provided for updates. Requires auth.
+     */
+    public function appBskyNotificationPutActivitySubscription(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutActivitySubscription\PutActivitySubscription {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutActivitySubscription\PutActivitySubscription($this->client, $this->token);
+    }
+
+    /**
+     * Enumerate all accounts to which the requesting account is subscribed to receive notifications for. Requires auth.
+     */
+    public function appBskyNotificationListActivitySubscriptions(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListActivitySubscriptions\ListActivitySubscriptions {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListActivitySubscriptions\ListActivitySubscriptions($this->client, $this->token);
+    }
+
+    /**
+     * Set notification-related preferences for an account. Requires auth.
+     */
+    public function appBskyNotificationPutPreferencesV2(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutPreferencesV2\PutPreferencesV2 {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutPreferencesV2\PutPreferencesV2($this->client, $this->token);
+    }
+
+    /**
+     * Get notification-related preferences for an account. Requires auth.
+     */
+    public function appBskyNotificationGetPreferences(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\GetPreferences\GetPreferences {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\GetPreferences\GetPreferences($this->client, $this->token);
     }
 
     /**
@@ -1004,7 +1092,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * Find posts matching search criteria, returning views of those posts.
+     * Find posts matching search criteria, returning views of those posts. Note that this API endpoint may require authentication (eg, not public) for some service providers and implementations.
      */
     public function appBskyFeedSearchPosts(): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\SearchPosts\SearchPosts
     {
@@ -1172,6 +1260,14 @@ class ATProtoMetaClient
     }
 
     /**
+     * Enumerates the lists created by the session user, and includes membership information about `actor` in those lists. Only supports curation and moderation lists (no reference lists, used in starter packs). Requires auth.
+     */
+    public function appBskyGraphGetListsWithMembership(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetListsWithMembership\GetListsWithMembership {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetListsWithMembership\GetListsWithMembership($this->client, $this->token);
+    }
+
+    /**
      * Enumerates accounts which follow a specified account (actor) and are followed by the viewer.
      */
     public function appBskyGraphGetKnownFollowers(
@@ -1185,6 +1281,14 @@ class ATProtoMetaClient
     public function appBskyGraphGetSuggestedFollowsByActor(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetSuggestedFollowsByActor\GetSuggestedFollowsByActor {
         return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetSuggestedFollowsByActor\GetSuggestedFollowsByActor($this->client, $this->token);
+    }
+
+    /**
+     * Enumerates the starter packs created by the session user, and includes membership information about `actor` in those starter packs. Requires auth.
+     */
+    public function appBskyGraphGetStarterPacksWithMembership(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPacksWithMembership\GetStarterPacksWithMembership {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPacksWithMembership\GetStarterPacksWithMembership($this->client, $this->token);
     }
 
     /**
@@ -1217,6 +1321,22 @@ class ATProtoMetaClient
     public function appBskyGraphGetListMutes(): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetListMutes\GetListMutes
     {
         return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetListMutes\GetListMutes($this->client, $this->token);
+    }
+
+    /**
+     * Initiate age assurance for an account. This is a one-time action that will start the process of verifying the user's age.
+     */
+    public function appBskyUnspeccedInitAgeAssurance(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\InitAgeAssurance\InitAgeAssurance {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\InitAgeAssurance\InitAgeAssurance($this->client, $this->token);
+    }
+
+    /**
+     * (NOTE: this endpoint is under development and WILL change without notice. Don't use it until it is moved out of `unspecced` or your application WILL break) Get posts in a thread. It is based in an anchor post at any depth of the tree, and returns posts above it (recursively resolving the parent, without further branching to their replies) and below it (recursive replies, with branching to their replies). Does not require auth, but additional metadata and filtering will be applied for authed requests.
+     */
+    public function appBskyUnspeccedGetPostThreadV2(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadV2\GetPostThreadV2 {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadV2\GetPostThreadV2($this->client, $this->token);
     }
 
     /**
@@ -1276,11 +1396,27 @@ class ATProtoMetaClient
     }
 
     /**
+     * Returns the current state of the age assurance process for an account. This is used to check if the user has completed age assurance or if further action is required.
+     */
+    public function appBskyUnspeccedGetAgeAssuranceState(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetAgeAssuranceState\GetAgeAssuranceState {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetAgeAssuranceState\GetAgeAssuranceState($this->client, $this->token);
+    }
+
+    /**
      * Get a list of suggestions (feeds and users) tagged with categories
      */
     public function appBskyUnspeccedGetTaggedSuggestions(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTaggedSuggestions\GetTaggedSuggestions {
         return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTaggedSuggestions\GetTaggedSuggestions($this->client, $this->token);
+    }
+
+    /**
+     * Get a skeleton of suggested starterpacks for onboarding. Intended to be called and hydrated by app.bsky.unspecced.getOnboardingSuggestedStarterPacks
+     */
+    public function appBskyUnspeccedGetOnboardingSuggestedStarterPacksSkeleton(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetOnboardingSuggestedStarterPacksSkeleton\GetOnboardingSuggestedStarterPacksSkeleton {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetOnboardingSuggestedStarterPacksSkeleton\GetOnboardingSuggestedStarterPacksSkeleton($this->client, $this->token);
     }
 
     /**
@@ -1324,6 +1460,14 @@ class ATProtoMetaClient
     }
 
     /**
+     * Get a list of suggested starterpacks for onboarding
+     */
+    public function appBskyUnspeccedGetOnboardingSuggestedStarterPacks(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetOnboardingSuggestedStarterPacks\GetOnboardingSuggestedStarterPacks {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetOnboardingSuggestedStarterPacks\GetOnboardingSuggestedStarterPacks($this->client, $this->token);
+    }
+
+    /**
      * An unspecced view of globally popular feed generators.
      */
     public function appBskyUnspeccedGetPopularFeedGenerators(
@@ -1345,6 +1489,14 @@ class ATProtoMetaClient
     public function appBskyUnspeccedGetTrendsSkeleton(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrendsSkeleton\GetTrendsSkeleton {
         return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrendsSkeleton\GetTrendsSkeleton($this->client, $this->token);
+    }
+
+    /**
+     * (NOTE: this endpoint is under development and WILL change without notice. Don't use it until it is moved out of `unspecced` or your application WILL break) Get additional posts under a thread e.g. replies hidden by threadgate. Based on an anchor post at any depth of the tree, returns top-level replies below that anchor. It does not include ancestors nor the anchor itself. This should be called after exhausting `app.bsky.unspecced.getPostThreadV2`. Does not require auth, but additional metadata and filtering will be applied for authed requests.
+     */
+    public function appBskyUnspeccedGetPostThreadOtherV2(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadOtherV2\GetPostThreadOtherV2 {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadOtherV2\GetPostThreadOtherV2($this->client, $this->token);
     }
 
     /**
@@ -1396,6 +1548,14 @@ class ATProtoMetaClient
     }
 
     /**
+     * List scheduled moderation actions with optional filtering
+     */
+    public function toolsOzoneModerationListScheduledActions(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\ListScheduledActions\ListScheduledActions {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\ListScheduledActions\ListScheduledActions($this->client, $this->token);
+    }
+
+    /**
      * Get reporter stats for a list of users.
      */
     public function toolsOzoneModerationGetReporterStats(
@@ -1409,6 +1569,22 @@ class ATProtoMetaClient
     public function toolsOzoneModerationQueryStatuses(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryStatuses\QueryStatuses {
         return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryStatuses\QueryStatuses($this->client, $this->token);
+    }
+
+    /**
+     * Cancel all pending scheduled moderation actions for specified subjects
+     */
+    public function toolsOzoneModerationCancelScheduledActions(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\CancelScheduledActions\CancelScheduledActions {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\CancelScheduledActions\CancelScheduledActions($this->client, $this->token);
+    }
+
+    /**
+     * Get timeline of all available events of an account. This includes moderation events, account history and did history.
+     */
+    public function toolsOzoneModerationGetAccountTimeline(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetAccountTimeline\GetAccountTimeline {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetAccountTimeline\GetAccountTimeline($this->client, $this->token);
     }
 
     /**
@@ -1433,6 +1609,14 @@ class ATProtoMetaClient
     public function toolsOzoneModerationGetSubjects(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetSubjects\GetSubjects {
         return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetSubjects\GetSubjects($this->client, $this->token);
+    }
+
+    /**
+     * Schedule a moderation action to be executed at a future time
+     */
+    public function toolsOzoneModerationScheduleAction(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\ScheduleAction\ScheduleAction {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\ScheduleAction\ScheduleAction($this->client, $this->token);
     }
 
     /**
@@ -1545,6 +1729,46 @@ class ATProtoMetaClient
     public function toolsOzoneTeamUpdateMember(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\UpdateMember\UpdateMember
     {
         return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\UpdateMember\UpdateMember($this->client, $this->token);
+    }
+
+    /**
+     * Remove an existing URL safety rule
+     */
+    public function toolsOzoneSafelinkRemoveRule(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\RemoveRule\RemoveRule {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\RemoveRule\RemoveRule($this->client, $this->token);
+    }
+
+    /**
+     * Update an existing URL safety rule
+     */
+    public function toolsOzoneSafelinkUpdateRule(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\UpdateRule\UpdateRule {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\UpdateRule\UpdateRule($this->client, $this->token);
+    }
+
+    /**
+     * Add a new URL safety rule
+     */
+    public function toolsOzoneSafelinkAddRule(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\AddRule\AddRule
+    {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\AddRule\AddRule($this->client, $this->token);
+    }
+
+    /**
+     * Query URL safety audit events
+     */
+    public function toolsOzoneSafelinkQueryEvents(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\QueryEvents\QueryEvents {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\QueryEvents\QueryEvents($this->client, $this->token);
+    }
+
+    /**
+     * Query URL safety rules
+     */
+    public function toolsOzoneSafelinkQueryRules(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\QueryRules\QueryRules {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\QueryRules\QueryRules($this->client, $this->token);
     }
 
     /**
