@@ -50,6 +50,6 @@ class PsrCacheSessionStore implements SessionStore
 
     private function key(AuthConfig $authConfig): string
     {
-        return $this->prefix . $authConfig->login() . '@' . $authConfig->password();
+        return md5($this->prefix . $authConfig->login() . '::' . $authConfig->password());
     }
 }
