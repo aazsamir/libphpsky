@@ -114,6 +114,7 @@ trait FromArray
                 $type = str_replace('>', '', $type);
                 $nullable = str_contains($type, '|null');
                 $type = str_replace('|null', '', $type);
+                $type = str_replace('?', '', $type);
                 // if is builtin type
                 if (\in_array($type, ['int', 'float', 'string', 'bool', 'mixed', 'array'], true)) {
                     $instance->{$key} = $value;

@@ -7,6 +7,7 @@ namespace Tests\Unit\Prefab;
 use Tests\Unit\Prefab\Fixtures\BlobProperty;
 use Tests\Unit\Prefab\Fixtures\DateTimeObject;
 use Tests\Unit\Prefab\Fixtures\NullableObjectArray;
+use Tests\Unit\Prefab\Fixtures\NullableQuestionMarkArray;
 use Tests\Unit\Prefab\Fixtures\NullProperty;
 use Tests\Unit\Prefab\Fixtures\ObjectArray;
 use Tests\Unit\Prefab\Fixtures\ObjectProperty;
@@ -53,6 +54,20 @@ final class FromArrayTest extends TestCase
         $data = $object->toArray();
 
         $instance = NullableObjectArray::fromArray($data);
+
+        self::assertEquals($object, $instance);
+        self::assertSame($object->toArray(), $instance->toArray());
+    }
+
+    public function testNullableObjectArrayWithQuestionMark(): void
+    {
+        $object = new NullableQuestionMarkArray();
+        $object->objects = [
+            $this->createPlainObject(),
+        ];
+        $data = $object->toArray();
+
+        $instance = NullableQuestionMarkArray::fromArray($data);
 
         self::assertEquals($object, $instance);
         self::assertSame($object->toArray(), $instance->toArray());
