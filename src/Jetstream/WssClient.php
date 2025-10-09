@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Jetstream;
 
+use WebSocket\Message\Text;
+
 class WssClient implements Client
 {
     private bool $stop = false;
@@ -46,6 +48,10 @@ class WssClient implements Client
 
         while ($this->stop === false) {
             $message = $client->receive();
+
+            if (!$message instanceof Text) {
+                continue;
+            }
 
             yield $this->messageAdapter->adapt($message);
         }
