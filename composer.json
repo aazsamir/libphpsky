@@ -19,14 +19,14 @@
         }
     ],
     "require": {
-        "php": "^8.3",
-        "nette/php-generator": "^4.1",
+        "php": ">=8.3",
+        "nette/php-generator": ">=4.1",
         "psr/http-client": "^1.0",
-        "guzzlehttp/guzzle": "^7.9",
+        "guzzlehttp/guzzle": ">=7.0",
         "psr/cache": "^3.0",
-        "symfony/cache": "^7.2",
-        "amphp/amp": "^3.0",
-        "amphp/http-client": "^5.2",
+        "symfony/cache": ">=7.0",
+        "amphp/amp": ">=3.0",
+        "amphp/http-client": ">=5.2",
         "phrity/websocket": "^3.2"
     },
     "minimum-stability": "stable",
