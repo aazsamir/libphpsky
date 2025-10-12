@@ -72,7 +72,9 @@ foreach ($actors as $actor) {
 
 ### Examples
 
-Check `examples` directory for more examples.
+[libphpsky-feed](https://github.com/aazsamir/libphpsky-feed) is an example project that uses libphpsky to serve a bluesky feed.
+
+For more examples, check `examples` directory.
 
 ## Features
 
