@@ -8,13 +8,16 @@ use Aazsamir\Libphpsky\Generator\Generator;
 use Aazsamir\Libphpsky\Generator\Maker\MakeConfig;
 use Aazsamir\Libphpsky\Generator\Maker\MakeConfigEntry;
 
+/**
+ * @internal
+ */
 class GeneratorTest extends TestCase
 {
     public function testGeneratorResultMatchRepo(): void
     {
         $generator = Generator::default();
         $originDir = __DIR__ . '/../../src/Model';
-        $tempDir = sys_get_temp_dir() . '/' . \uniqid() . '/src/Model';
+        $tempDir = sys_get_temp_dir() . '/' . uniqid() . '/src/Model';
 
         $configEntry = new MakeConfigEntry(
             lexiconsPath: __DIR__ . '/../../lexicons',
@@ -30,8 +33,8 @@ class GeneratorTest extends TestCase
 
         [$tempHash, $tempCount] = $this->calculateDirectoryHash($tempDir);
 
-        $this->assertEquals($repoCount, $tempCount, 'Generated Model files count do not match repository files. Remove "src/Model" and run "php generate.php".');
-        $this->assertEquals($repoHash, $tempHash, 'Generated Model files do not match repository files. Run "php generate.php".');
+        self::assertEquals($repoCount, $tempCount, 'Generated Model files count do not match repository files. Remove "src/Model" and run "php generate.php".');
+        self::assertEquals($repoHash, $tempHash, 'Generated Model files do not match repository files. Run "php generate.php".');
     }
 
     /**
@@ -45,11 +48,11 @@ class GeneratorTest extends TestCase
         foreach ($files as $file) {
             /** @var \SplFileInfo $file */
             if ($file->isFile() && $file->getExtension() === 'php') {
-                $hashes[] = \md5_file($file->getRealPath());
+                $hashes[] = md5_file($file->getRealPath());
             }
         }
         sort($hashes);
 
-        return [md5(implode('', $hashes)), count($hashes)];
+        return [md5(implode('', $hashes)), \count($hashes)];
     }
 }
