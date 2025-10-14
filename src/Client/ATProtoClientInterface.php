@@ -6,4 +6,7 @@ namespace Aazsamir\Libphpsky\Client;
 
 use Psr\Http\Client\ClientInterface;
 
-interface ATProtoClientInterface extends ClientInterface {}
+interface ATProtoClientInterface extends ClientInterface
+{
+    public const USER_AGENT = 'Libphpsky/1.0';
+}

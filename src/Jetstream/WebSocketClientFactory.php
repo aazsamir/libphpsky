@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Jetstream;
 
+use Aazsamir\Libphpsky\Client\ATProtoClientInterface;
+
 class WebSocketClientFactory implements WebSocketClientFactoryInterface
 {
     /** @phpstan-ignore-next-line */
@@ -14,7 +16,7 @@ class WebSocketClientFactory implements WebSocketClientFactoryInterface
             'wss://jetstream1.us-west.bsky.network/subscribe',
             'wss://jetstream2.us-west.bsky.network/subscribe',
         ],
-        private string $userAgent = 'Libphpsky/1.0',
+        private string $userAgent = ATProtoClientInterface::USER_AGENT,
     ) {}
 
     public function create(array $args): \WebSocket\Client

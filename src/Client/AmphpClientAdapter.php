@@ -15,7 +15,7 @@ class AmphpClientAdapter implements ATProtoClientInterface
 {
     public function __construct(
         private DelegateHttpClient $client,
-        private string $userAgent = 'Libphpsky/1.0',
+        private string $userAgent = ATProtoClientInterface::USER_AGENT,
     ) {}
 
     public function sendRequest(RequestInterface $request): ResponseInterface
