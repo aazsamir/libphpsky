@@ -49,6 +49,6 @@ Right now, Jetstream supports the following events:
 - Account
 - Identity
 
-Check the Jetstream repository for more information on the events.
+Check the [Jetstream repository](https://github.com/bluesky-social/jetstream) for more information on the events.
 
-[https://github.com/bluesky-social/jetstream](https://github.com/bluesky-social/jetstream)
+You can find the working example in the [examples/Subscriptions](https://github.com/aazsamir/libphpsky/tree/main/examples/LikesSubscribe) directory.

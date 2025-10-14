@@ -99,13 +99,20 @@ Given previous example of `com.atproto.identity.resolveHandle`, the `ATProtoMeta
 
 namespace Aazsamir\Libphpsky\Model\Meta;
 
+use Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle;
+
 class ATProtoMetaClient
 {
     /**
      * Resolves a handle (domain name) to a DID.
      */
-    public function comAtprotoIdentityResolveHandle(): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\Output {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\ResolveHandle($this->client, $this->token);
+    public function comAtprotoIdentityResolveHandle(): ResolveHandle\Output
+    {
+        return new ResolveHandle\ResolveHandle(
+          $this->client,
+          $this->typeResolver,
+          $this->token,
+        );
     }
     // ...
 }

@@ -85,4 +85,4 @@ $profile = $getProfile->withAuth($session->accessJwt)->query('bsky.app');
 $client = new ATProtoMetaClient(token: $session->accessJwt);
 ```
 
-> You can also provide your own client implementation, to handle authorization on a different layer. See the [Client](client.md) section for more details.
+> You can also provide your own client implementation, to handle authorization on a different layer. See the [Client](02_client.md) section for more details.
