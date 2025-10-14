@@ -126,4 +126,12 @@ trait IsAction
 
         return $self;
     }
+
+    public function withEndpoint(string $endpoint): self
+    {
+        $self = clone $this;
+        $self->endpoint = rtrim($endpoint, '/') . '/xrpc/';
+
+        return $self;
+    }
 }
