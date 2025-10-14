@@ -10,7 +10,7 @@ readonly class MakeConfigEntry
         public string $lexiconsPath,
         public string $path,
         public string $namespace,
-        public bool $metaClient,
-        public bool $generate,
+        public bool $metaClient = true,
+        public bool $generate = true,
     ) {}
 }
