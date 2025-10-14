@@ -10,6 +10,7 @@ permissions:
 jobs:
   integration:
     runs-on: ubuntu-latest
+    environment: main
     permissions:
       contents: read
 
@@ -31,5 +32,5 @@ jobs:
       - name: Run test suite
         run: composer run-script integration-tests
         env:
-            ATPROTO_LOGIN: ${{ secrets.ATPROTO_LOGIN }}
-            ATPROTO_PASSWORD: ${{ secrets.ATPROTO_PASSWORD }}
+          ATPROTO_LOGIN: ${{ secrets.ATPROTO_LOGIN }}
+          ATPROTO_PASSWORD: ${{ secrets.ATPROTO_PASSWORD }}
