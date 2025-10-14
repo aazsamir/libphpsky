@@ -48,7 +48,7 @@ class GeneratorTest extends TestCase
         foreach ($files as $file) {
             /** @var \SplFileInfo $file */
             if ($file->isFile() && $file->getExtension() === 'php') {
-                $hashes[] = md5_file($file->getRealPath());
+                $hashes[] = md5(\file_get_contents($file->getRealPath()));
             }
         }
         sort($hashes);
