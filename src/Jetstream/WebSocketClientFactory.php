@@ -22,6 +22,8 @@ class WebSocketClientFactory implements WebSocketClientFactoryInterface
         /** @var string $host */
         $host = $this->hosts[array_rand($this->hosts)];
         $query = http_build_query($args);
+        // arg[0]=a&arg[1]=b => arg=a&arg=b
+        $query = preg_replace('/%5B\d+%5D=/', '=', $query);
 
         if ($query) {
             $host .= '?' . $query;
