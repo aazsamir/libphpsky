@@ -21,14 +21,17 @@ final class Generator
         private RefResolver $refResolver,
     ) {}
 
-    public static function default(): self
-    {
+    public static function default(
+        ?Loader $loader = null,
+        ?Maker $maker = null,
+        ?RefResolver $refResolver = null,
+    ): self {
         return new self(
-            loader: new Loader(
+            loader: $loader ?? new Loader(
                 new FileLexiconProvider(),
             ),
-            maker: Maker::default(),
-            refResolver: new RefResolver(),
+            maker: $maker ?? Maker::default(),
+            refResolver: $refResolver ?? new RefResolver(),
         );
     }
 

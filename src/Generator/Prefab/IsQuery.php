@@ -21,9 +21,16 @@ trait IsQuery
         $this->token = $accessToken;
     }
 
-    public static function default(?string $accessToken = null): self
-    {
-        return new self(ATProtoClientBuilder::getDefault(), TypeResolver::default(), $accessToken);
+    public static function default(
+        ?ATProtoClientInterface $client = null,
+        ?TypeResolver $typeResolver = null,
+        ?string $accessToken = null,
+    ): self {
+        return new self(
+            $client ?? ATProtoClientBuilder::getDefault(),
+            $typeResolver ?? TypeResolver::default(),
+            $accessToken,
+        );
     }
 
     /**

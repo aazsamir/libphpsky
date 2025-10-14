@@ -35,23 +35,29 @@ final class Maker
         $this->procedureDefHandler = $procedureDefHandler;
     }
 
-    public static function default(): self
-    {
-        $saver = new FileSaveClass();
-        $classResolver = new ClassResolver();
-        $queryDefHandler = new QueryDefHandler(
+    public static function default(
+        ?ClassResolver $classResolver = null,
+        ?QueryDefHandler $queryDefHandler = null,
+        ?ObjectDefHandler $objectDefHandler = null,
+        ?ProcedureDefHandler $procedureDefHandler = null,
+        ?MetaClientGenerator $metaClientGenerator = null,
+        ?SaveClass $saver = null,
+    ): self {
+        $saver ??= new FileSaveClass();
+        $classResolver ??= new ClassResolver();
+        $queryDefHandler ??= new QueryDefHandler(
             $classResolver,
             $saver,
         );
-        $procedureDefHandler = new ProcedureDefHandler(
+        $procedureDefHandler ??= new ProcedureDefHandler(
             $classResolver,
             $saver,
         );
-        $objectDefHandler = new ObjectDefHandler(
+        $objectDefHandler ??= new ObjectDefHandler(
             $classResolver,
             $saver,
         );
-        $metaClientGenerator = new MetaClientGenerator(
+        $metaClientGenerator ??= new MetaClientGenerator(
             $saver,
             $classResolver,
         );

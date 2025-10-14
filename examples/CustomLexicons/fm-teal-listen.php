@@ -11,7 +11,6 @@ use Aazsamir\Libphpsky\Generator\Maker\MakeConfigEntry;
 use Aazsamir\Libphpsky\Generator\Prefab\TypeResolver;
 use Aazsamir\Libphpsky\Jetstream\MessageAdapter;
 use Aazsamir\Libphpsky\Jetstream\Model\CommitEvent;
-use Aazsamir\Libphpsky\Jetstream\WebSocketClientFactory;
 use Aazsamir\Libphpsky\Jetstream\WssClient;
 use Examples\CustomLexicons\FmTeal\Meta\ATProtoMetaClient;
 
@@ -33,9 +32,9 @@ $generator->generate($config);
 // we create a TypeResolver with our custom config, so it can resolve fm.teal.alpha.* lexicon types
 $typeResolver = new TypeResolver($config);
 
-$factory = new WebSocketClientFactory();
-$adapter = new MessageAdapter(new TypeResolver($config));
-$client = new WssClient($factory, $adapter);
+$client = WssClient::default(
+    messageAdapter: new MessageAdapter($typeResolver),
+);
 
 $eventsStream = $client->subscribe(
     wantedCollections: [
