@@ -6,6 +6,7 @@ namespace Aazsamir\Libphpsky\Client;
 
 use Aazsamir\Libphpsky\Client\Session\Session;
 use Aazsamir\Libphpsky\Client\Session\SessionStore;
+use Aazsamir\Libphpsky\Generator\Prefab\TypeResolver;
 use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\CreateSession;
 use Aazsamir\Libphpsky\Model\Com\Atproto\Server\RefreshSession\RefreshSession;
 use Psr\Http\Client\ClientInterface;
@@ -101,7 +102,7 @@ class AuthAwareClient implements ATProtoClientInterface
     private function createSession(): CreateSession
     {
         if ($this->createSession === null) {
-            $this->createSession = new CreateSession($this->atprotoClient());
+            $this->createSession = new CreateSession($this->atprotoClient(), TypeResolver::default());
         }
 
         return $this->createSession;
@@ -110,7 +111,7 @@ class AuthAwareClient implements ATProtoClientInterface
     private function refreshSession(): RefreshSession
     {
         if ($this->refreshSession === null) {
-            $this->refreshSession = new RefreshSession($this->atprotoClient());
+            $this->refreshSession = new RefreshSession($this->atprotoClient(), TypeResolver::default());
         }
 
         return $this->refreshSession;

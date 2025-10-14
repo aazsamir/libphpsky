@@ -30,7 +30,7 @@ class ResolveIdentity implements \Aazsamir\Libphpsky\Action
      */
     public function query(string $identifier): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\Defs\IdentityInfo
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\Defs\IdentityInfo::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\Defs\IdentityInfo::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

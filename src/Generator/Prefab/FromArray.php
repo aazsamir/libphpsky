@@ -9,8 +9,10 @@ namespace Aazsamir\Libphpsky\Generator\Prefab;
  */
 trait FromArray
 {
-    public static function fromArray(mixed $data): self
+    public static function fromArray(mixed $data, ?TypeResolver $typeResolver = null): self
     {
+        $typeResolver ??= TypeResolver::default();
+
         if (!\is_array($data)) {
             throw new \InvalidArgumentException('Data must be an array');
         }
@@ -81,7 +83,7 @@ trait FromArray
                     $classname = $type::ID . '#' . $type::NAME;
 
                     if ($classname === $data[$key]['$type']) {
-                        $instance->{$key} = $type::fromArray($value);
+                        $instance->{$key} = $type::fromArray($value, $typeResolver);
 
                         break;
                     }
@@ -145,7 +147,7 @@ trait FromArray
                                 $classname = $type::ID . '#' . $type::NAME;
 
                                 if ($classname === $v['$type']) {
-                                    $resolved[] = $type::fromArray($v);
+                                    $resolved[] = $type::fromArray($v, $typeResolver);
                                 }
                             }
                         }
@@ -153,7 +155,7 @@ trait FromArray
                         $instance->{$key} = $resolved;
                     } else {
                         if (class_exists($type)) {
-                            $instance->{$key} = array_map(static fn ($item) => $type::fromArray($item), $value);
+                            $instance->{$key} = array_map(static fn ($item) => $type::fromArray($item, $typeResolver), $value);
 
                             continue;
                         }
@@ -174,10 +176,12 @@ trait FromArray
                 && isset($data[$key]['$type'])
                 && \is_string($data[$key]['$type'])
             ) {
-                $type = TypeResolver::resolve($data[$key]['$type']);
+                $type = $typeResolver->resolve($data[$key]['$type']);
 
                 if ($type) {
-                    $instance->{$key} = $type::fromArray($value);
+                    $instance->{$key} = $type::fromArray($value, $typeResolver);
+                } else {
+                    $instance->{$key} = $value;
                 }
 
                 continue;
@@ -206,12 +210,16 @@ trait FromArray
             }
 
             if ($propertyType->getName() === \DateTimeInterface::class && \is_string($value)) {
-                $instance->{$key} = new \DateTimeImmutable($value);
+                if (is_numeric($value)) {
+                    $instance->{$key} = new \DateTimeImmutable('@' . $value);
+                } else {
+                    $instance->{$key} = new \DateTimeImmutable($value);
+                }
 
                 continue;
             }
 
-            $instance->{$key} = $propertyType->getName()::fromArray($value);
+            $instance->{$key} = $propertyType->getName()::fromArray($value, $typeResolver);
         }
 
         return $instance;

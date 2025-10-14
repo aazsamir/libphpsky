@@ -30,7 +30,7 @@ class SearchAccounts implements \Aazsamir\Libphpsky\Action
      */
     public function query(array $values, ?string $cursor = null, ?int $limit = null): Output
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\SearchAccounts\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\SearchAccounts\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

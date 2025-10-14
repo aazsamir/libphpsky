@@ -69,7 +69,7 @@ class QueryDefHandler implements DefHandler
             $return = $this->unref($def->output()->schema());
             $returnType = $this->classResolver->namespaceAndClassname($return);
             $method->setReturnType($returnType);
-            $body = \sprintf('return %s::fromArray($this->request($this->argsWithKeys(func_get_args())));', $returnType);
+            $body = \sprintf('return %s::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);', $returnType);
             $method->addBody($body);
 
             return;

@@ -13,6 +13,7 @@ use GuzzleHttp\Psr7\Request;
 trait IsAction
 {
     private ATProtoClientInterface $client;
+    private TypeResolver $typeResolver;
     private ?string $token = null;
     private ?string $endpoint = 'https://bsky.social/xrpc/';
 

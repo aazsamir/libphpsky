@@ -30,7 +30,7 @@ class DereferenceScope implements \Aazsamir\Libphpsky\Action
      */
     public function query(string $scope): Output
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\DereferenceScope\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\DereferenceScope\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

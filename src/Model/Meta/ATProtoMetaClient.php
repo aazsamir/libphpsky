@@ -7,62 +7,68 @@ namespace Aazsamir\Libphpsky\Model\Meta;
 class ATProtoMetaClient
 {
     private \Aazsamir\Libphpsky\Client\ATProtoClientInterface $client;
+    private \Aazsamir\Libphpsky\Generator\Prefab\TypeResolver $typeResolver;
     private ?string $token;
 
     public function __construct(
         ?\Aazsamir\Libphpsky\Client\ATProtoClientInterface $client = null,
+        ?\Aazsamir\Libphpsky\Generator\Prefab\TypeResolver $typeResolver = null,
         ?string $token = null,
     ) {
         if ($client === null) {
             $client = \Aazsamir\Libphpsky\Client\ATProtoClientBuilder::getDefault();
         }
+        if ($typeResolver === null) {
+            $typeResolver = \Aazsamir\Libphpsky\Generator\Prefab\TypeResolver::default();
+        }
         $this->client = $client;
+        $this->typeResolver = $typeResolver;
         $this->token = $token;
     }
 
     public function chatBskyModerationUpdateActorAccess(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\UpdateActorAccess\UpdateActorAccess {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\UpdateActorAccess\UpdateActorAccess($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\UpdateActorAccess\UpdateActorAccess($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyModerationGetMessageContext(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetMessageContext\GetMessageContext {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetMessageContext\GetMessageContext($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetMessageContext\GetMessageContext($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyModerationGetActorMetadata(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetActorMetadata\GetActorMetadata {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetActorMetadata\GetActorMetadata($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetActorMetadata\GetActorMetadata($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyActorDeleteAccount(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\DeleteAccount\DeleteAccount {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\DeleteAccount\DeleteAccount($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\DeleteAccount\DeleteAccount($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyActorExportAccountData(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\ExportAccountData\ExportAccountData {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\ExportAccountData\ExportAccountData($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\ExportAccountData\ExportAccountData($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyConvoSendMessageBatch(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\SendMessageBatch\SendMessageBatch {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\SendMessageBatch\SendMessageBatch($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\SendMessageBatch\SendMessageBatch($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyConvoGetLog(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetLog\GetLog
     {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetLog\GetLog($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetLog\GetLog($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyConvoMuteConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\MuteConvo\MuteConvo
     {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\MuteConvo\MuteConvo($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\MuteConvo\MuteConvo($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyConvoGetMessages(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetMessages\GetMessages
     {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetMessages\GetMessages($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetMessages\GetMessages($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -70,12 +76,12 @@ class ATProtoMetaClient
      */
     public function chatBskyConvoGetConvoAvailability(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoAvailability\GetConvoAvailability {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoAvailability\GetConvoAvailability($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoAvailability\GetConvoAvailability($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyConvoLeaveConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\LeaveConvo\LeaveConvo
     {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\LeaveConvo\LeaveConvo($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\LeaveConvo\LeaveConvo($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -83,17 +89,17 @@ class ATProtoMetaClient
      */
     public function chatBskyConvoAddReaction(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\AddReaction\AddReaction
     {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\AddReaction\AddReaction($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\AddReaction\AddReaction($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyConvoDeleteMessageForSelf(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\DeleteMessageForSelf\DeleteMessageForSelf {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\DeleteMessageForSelf\DeleteMessageForSelf($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\DeleteMessageForSelf\DeleteMessageForSelf($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyConvoGetConvoForMembers(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoForMembers\GetConvoForMembers {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoForMembers\GetConvoForMembers($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoForMembers\GetConvoForMembers($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -101,42 +107,42 @@ class ATProtoMetaClient
      */
     public function chatBskyConvoRemoveReaction(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\RemoveReaction\RemoveReaction {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\RemoveReaction\RemoveReaction($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\RemoveReaction\RemoveReaction($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyConvoUnmuteConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UnmuteConvo\UnmuteConvo
     {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UnmuteConvo\UnmuteConvo($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UnmuteConvo\UnmuteConvo($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyConvoListConvos(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\ListConvos\ListConvos
     {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\ListConvos\ListConvos($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\ListConvos\ListConvos($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyConvoUpdateAllRead(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UpdateAllRead\UpdateAllRead {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UpdateAllRead\UpdateAllRead($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UpdateAllRead\UpdateAllRead($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyConvoSendMessage(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\SendMessage\SendMessage
     {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\SendMessage\SendMessage($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\SendMessage\SendMessage($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyConvoAcceptConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\AcceptConvo\AcceptConvo
     {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\AcceptConvo\AcceptConvo($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\AcceptConvo\AcceptConvo($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyConvoUpdateRead(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UpdateRead\UpdateRead
     {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UpdateRead\UpdateRead($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UpdateRead\UpdateRead($this->client, $this->typeResolver, $this->token);
     }
 
     public function chatBskyConvoGetConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvo\GetConvo
     {
-        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvo\GetConvo($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvo\GetConvo($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -144,7 +150,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoAdminUpdateAccountEmail(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateAccountEmail\UpdateAccountEmail {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateAccountEmail\UpdateAccountEmail($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateAccountEmail\UpdateAccountEmail($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -152,7 +158,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoAdminDisableInviteCodes(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\DisableInviteCodes\DisableInviteCodes {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\DisableInviteCodes\DisableInviteCodes($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\DisableInviteCodes\DisableInviteCodes($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -160,7 +166,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoAdminGetInviteCodes(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetInviteCodes\GetInviteCodes {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetInviteCodes\GetInviteCodes($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetInviteCodes\GetInviteCodes($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -168,7 +174,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoAdminDisableAccountInvites(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\DisableAccountInvites\DisableAccountInvites {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\DisableAccountInvites\DisableAccountInvites($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\DisableAccountInvites\DisableAccountInvites($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -176,7 +182,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoAdminGetAccountInfo(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetAccountInfo\GetAccountInfo {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetAccountInfo\GetAccountInfo($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetAccountInfo\GetAccountInfo($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -184,7 +190,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoAdminGetAccountInfos(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetAccountInfos\GetAccountInfos {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetAccountInfos\GetAccountInfos($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetAccountInfos\GetAccountInfos($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -192,7 +198,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoAdminDeleteAccount(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\DeleteAccount\DeleteAccount {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\DeleteAccount\DeleteAccount($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\DeleteAccount\DeleteAccount($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -200,7 +206,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoAdminUpdateAccountHandle(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateAccountHandle\UpdateAccountHandle {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateAccountHandle\UpdateAccountHandle($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateAccountHandle\UpdateAccountHandle($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -208,7 +214,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoAdminUpdateSubjectStatus(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateSubjectStatus\UpdateSubjectStatus {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateSubjectStatus\UpdateSubjectStatus($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateSubjectStatus\UpdateSubjectStatus($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -216,7 +222,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoAdminSendEmail(): \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\SendEmail\SendEmail
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\SendEmail\SendEmail($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\SendEmail\SendEmail($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -224,7 +230,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoAdminUpdateAccountSigningKey(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateAccountSigningKey\UpdateAccountSigningKey {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateAccountSigningKey\UpdateAccountSigningKey($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateAccountSigningKey\UpdateAccountSigningKey($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -232,7 +238,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoAdminEnableAccountInvites(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\EnableAccountInvites\EnableAccountInvites {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\EnableAccountInvites\EnableAccountInvites($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\EnableAccountInvites\EnableAccountInvites($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -240,7 +246,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoAdminGetSubjectStatus(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetSubjectStatus\GetSubjectStatus {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetSubjectStatus\GetSubjectStatus($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetSubjectStatus\GetSubjectStatus($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -248,7 +254,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoAdminUpdateAccountPassword(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateAccountPassword\UpdateAccountPassword {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateAccountPassword\UpdateAccountPassword($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateAccountPassword\UpdateAccountPassword($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -256,7 +262,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoAdminSearchAccounts(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\SearchAccounts\SearchAccounts {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\SearchAccounts\SearchAccounts($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\SearchAccounts\SearchAccounts($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -264,7 +270,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoSyncRequestCrawl(): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\RequestCrawl\RequestCrawl
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\RequestCrawl\RequestCrawl($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\RequestCrawl\RequestCrawl($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -272,7 +278,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoSyncListHosts(): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListHosts\ListHosts
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListHosts\ListHosts($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListHosts\ListHosts($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -280,7 +286,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoSyncListRepos(): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListRepos\ListRepos
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListRepos\ListRepos($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListRepos\ListRepos($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -288,7 +294,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoSyncGetRepoStatus(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetRepoStatus\GetRepoStatus {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetRepoStatus\GetRepoStatus($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetRepoStatus\GetRepoStatus($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -296,7 +302,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoSyncGetRepo(): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetRepo\GetRepo
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetRepo\GetRepo($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetRepo\GetRepo($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -304,7 +310,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoSyncNotifyOfUpdate(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\NotifyOfUpdate\NotifyOfUpdate {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\NotifyOfUpdate\NotifyOfUpdate($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\NotifyOfUpdate\NotifyOfUpdate($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -312,7 +318,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoSyncListReposByCollection(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListReposByCollection\ListReposByCollection {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListReposByCollection\ListReposByCollection($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListReposByCollection\ListReposByCollection($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -320,7 +326,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoSyncGetRecord(): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetRecord\GetRecord
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetRecord\GetRecord($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetRecord\GetRecord($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -328,7 +334,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoSyncGetBlob(): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetBlob\GetBlob
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetBlob\GetBlob($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetBlob\GetBlob($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -336,7 +342,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoSyncGetHostStatus(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetHostStatus\GetHostStatus {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetHostStatus\GetHostStatus($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetHostStatus\GetHostStatus($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -344,7 +350,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoSyncGetBlocks(): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetBlocks\GetBlocks
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetBlocks\GetBlocks($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetBlocks\GetBlocks($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -352,7 +358,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoSyncListBlobs(): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListBlobs\ListBlobs
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListBlobs\ListBlobs($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListBlobs\ListBlobs($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -360,7 +366,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoSyncGetLatestCommit(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetLatestCommit\GetLatestCommit {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetLatestCommit\GetLatestCommit($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetLatestCommit\GetLatestCommit($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -368,7 +374,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoSyncGetCheckout(): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetCheckout\GetCheckout
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetCheckout\GetCheckout($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetCheckout\GetCheckout($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -376,7 +382,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoSyncGetHead(): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetHead\GetHead
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetHead\GetHead($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetHead\GetHead($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -384,7 +390,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoModerationCreateReport(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Moderation\CreateReport\CreateReport {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Moderation\CreateReport\CreateReport($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Moderation\CreateReport\CreateReport($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -392,7 +398,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoIdentitySubmitPlcOperation(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\SubmitPlcOperation\SubmitPlcOperation {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\SubmitPlcOperation\SubmitPlcOperation($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\SubmitPlcOperation\SubmitPlcOperation($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -400,7 +406,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoIdentityResolveDid(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveDid\ResolveDid {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveDid\ResolveDid($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveDid\ResolveDid($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -408,7 +414,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoIdentityRequestPlcOperationSignature(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\RequestPlcOperationSignature\RequestPlcOperationSignature {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\RequestPlcOperationSignature\RequestPlcOperationSignature($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\RequestPlcOperationSignature\RequestPlcOperationSignature($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -416,7 +422,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoIdentityResolveHandle(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\ResolveHandle {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\ResolveHandle($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\ResolveHandle($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -424,7 +430,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoIdentitySignPlcOperation(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\SignPlcOperation\SignPlcOperation {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\SignPlcOperation\SignPlcOperation($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\SignPlcOperation\SignPlcOperation($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -432,7 +438,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoIdentityUpdateHandle(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\UpdateHandle\UpdateHandle {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\UpdateHandle\UpdateHandle($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\UpdateHandle\UpdateHandle($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -440,7 +446,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoIdentityRefreshIdentity(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\RefreshIdentity\RefreshIdentity {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\RefreshIdentity\RefreshIdentity($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\RefreshIdentity\RefreshIdentity($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -448,7 +454,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoIdentityResolveIdentity(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveIdentity\ResolveIdentity {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveIdentity\ResolveIdentity($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveIdentity\ResolveIdentity($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -456,7 +462,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoIdentityGetRecommendedDidCredentials(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\GetRecommendedDidCredentials\GetRecommendedDidCredentials {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\GetRecommendedDidCredentials\GetRecommendedDidCredentials($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\GetRecommendedDidCredentials\GetRecommendedDidCredentials($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -464,7 +470,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoTempCheckSignupQueue(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\CheckSignupQueue\CheckSignupQueue {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\CheckSignupQueue\CheckSignupQueue($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\CheckSignupQueue\CheckSignupQueue($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -472,7 +478,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoTempAddReservedHandle(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\AddReservedHandle\AddReservedHandle {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\AddReservedHandle\AddReservedHandle($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\AddReservedHandle\AddReservedHandle($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -480,7 +486,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoTempRequestPhoneVerification(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\RequestPhoneVerification\RequestPhoneVerification {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\RequestPhoneVerification\RequestPhoneVerification($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\RequestPhoneVerification\RequestPhoneVerification($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -488,7 +494,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoTempFetchLabels(): \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\FetchLabels\FetchLabels
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\FetchLabels\FetchLabels($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\FetchLabels\FetchLabels($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -496,7 +502,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoTempRevokeAccountCredentials(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\RevokeAccountCredentials\RevokeAccountCredentials {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\RevokeAccountCredentials\RevokeAccountCredentials($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\RevokeAccountCredentials\RevokeAccountCredentials($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -504,7 +510,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoTempCheckHandleAvailability(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\CheckHandleAvailability\CheckHandleAvailability {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\CheckHandleAvailability\CheckHandleAvailability($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\CheckHandleAvailability\CheckHandleAvailability($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -512,7 +518,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoTempDereferenceScope(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\DereferenceScope\DereferenceScope {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\DereferenceScope\DereferenceScope($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\DereferenceScope\DereferenceScope($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -520,7 +526,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoRepoImportRepo(): \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ImportRepo\ImportRepo
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ImportRepo\ImportRepo($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ImportRepo\ImportRepo($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -528,7 +534,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoRepoListMissingBlobs(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ListMissingBlobs\ListMissingBlobs {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ListMissingBlobs\ListMissingBlobs($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ListMissingBlobs\ListMissingBlobs($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -536,7 +542,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoRepoDeleteRecord(): \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\DeleteRecord\DeleteRecord
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\DeleteRecord\DeleteRecord($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\DeleteRecord\DeleteRecord($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -544,7 +550,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoRepoCreateRecord(): \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\CreateRecord\CreateRecord
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\CreateRecord\CreateRecord($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\CreateRecord\CreateRecord($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -552,7 +558,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoRepoGetRecord(): \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\GetRecord\GetRecord
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\GetRecord\GetRecord($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\GetRecord\GetRecord($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -560,7 +566,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoRepoListRecords(): \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ListRecords\ListRecords
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ListRecords\ListRecords($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ListRecords\ListRecords($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -568,7 +574,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoRepoDescribeRepo(): \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\DescribeRepo\DescribeRepo
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\DescribeRepo\DescribeRepo($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\DescribeRepo\DescribeRepo($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -576,7 +582,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoRepoPutRecord(): \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\PutRecord\PutRecord
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\PutRecord\PutRecord($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\PutRecord\PutRecord($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -584,7 +590,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoRepoApplyWrites(): \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\ApplyWrites
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\ApplyWrites($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\ApplyWrites($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -592,7 +598,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoRepoUploadBlob(): \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\UploadBlob\UploadBlob
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\UploadBlob\UploadBlob($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\UploadBlob\UploadBlob($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -600,7 +606,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoLabelQueryLabels(): \Aazsamir\Libphpsky\Model\Com\Atproto\Label\QueryLabels\QueryLabels
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Label\QueryLabels\QueryLabels($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Label\QueryLabels\QueryLabels($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -608,7 +614,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerGetSession(): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\GetSession\GetSession
     {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\GetSession\GetSession($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\GetSession\GetSession($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -616,7 +622,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerRequestEmailUpdate(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RequestEmailUpdate\RequestEmailUpdate {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RequestEmailUpdate\RequestEmailUpdate($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RequestEmailUpdate\RequestEmailUpdate($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -624,7 +630,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerDeleteSession(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\DeleteSession\DeleteSession {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\DeleteSession\DeleteSession($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\DeleteSession\DeleteSession($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -632,7 +638,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerRefreshSession(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RefreshSession\RefreshSession {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RefreshSession\RefreshSession($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RefreshSession\RefreshSession($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -640,7 +646,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerDeleteAccount(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\DeleteAccount\DeleteAccount {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\DeleteAccount\DeleteAccount($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\DeleteAccount\DeleteAccount($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -648,7 +654,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerRevokeAppPassword(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RevokeAppPassword\RevokeAppPassword {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RevokeAppPassword\RevokeAppPassword($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RevokeAppPassword\RevokeAppPassword($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -656,7 +662,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerRequestAccountDelete(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RequestAccountDelete\RequestAccountDelete {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RequestAccountDelete\RequestAccountDelete($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RequestAccountDelete\RequestAccountDelete($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -664,7 +670,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerCreateAccount(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateAccount\CreateAccount {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateAccount\CreateAccount($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateAccount\CreateAccount($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -672,7 +678,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerReserveSigningKey(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ReserveSigningKey\ReserveSigningKey {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ReserveSigningKey\ReserveSigningKey($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ReserveSigningKey\ReserveSigningKey($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -680,7 +686,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerDeactivateAccount(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\DeactivateAccount\DeactivateAccount {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\DeactivateAccount\DeactivateAccount($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\DeactivateAccount\DeactivateAccount($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -688,7 +694,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerRequestEmailConfirmation(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RequestEmailConfirmation\RequestEmailConfirmation {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RequestEmailConfirmation\RequestEmailConfirmation($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RequestEmailConfirmation\RequestEmailConfirmation($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -696,7 +702,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerGetServiceAuth(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\GetServiceAuth\GetServiceAuth {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\GetServiceAuth\GetServiceAuth($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\GetServiceAuth\GetServiceAuth($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -704,7 +710,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerCheckAccountStatus(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CheckAccountStatus\CheckAccountStatus {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CheckAccountStatus\CheckAccountStatus($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CheckAccountStatus\CheckAccountStatus($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -712,7 +718,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerDescribeServer(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\DescribeServer\DescribeServer {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\DescribeServer\DescribeServer($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\DescribeServer\DescribeServer($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -720,7 +726,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerCreateInviteCodes(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateInviteCodes\CreateInviteCodes {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateInviteCodes\CreateInviteCodes($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateInviteCodes\CreateInviteCodes($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -728,7 +734,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerGetAccountInviteCodes(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\GetAccountInviteCodes\GetAccountInviteCodes {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\GetAccountInviteCodes\GetAccountInviteCodes($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\GetAccountInviteCodes\GetAccountInviteCodes($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -736,7 +742,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerConfirmEmail(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ConfirmEmail\ConfirmEmail {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ConfirmEmail\ConfirmEmail($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ConfirmEmail\ConfirmEmail($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -744,7 +750,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerUpdateEmail(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\UpdateEmail\UpdateEmail {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\UpdateEmail\UpdateEmail($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\UpdateEmail\UpdateEmail($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -752,7 +758,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerCreateAppPassword(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateAppPassword\CreateAppPassword {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateAppPassword\CreateAppPassword($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateAppPassword\CreateAppPassword($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -760,7 +766,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerListAppPasswords(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ListAppPasswords\ListAppPasswords {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ListAppPasswords\ListAppPasswords($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ListAppPasswords\ListAppPasswords($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -768,7 +774,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerCreateSession(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\CreateSession {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\CreateSession($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\CreateSession($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -776,7 +782,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerRequestPasswordReset(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RequestPasswordReset\RequestPasswordReset {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RequestPasswordReset\RequestPasswordReset($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RequestPasswordReset\RequestPasswordReset($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -784,7 +790,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerActivateAccount(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ActivateAccount\ActivateAccount {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ActivateAccount\ActivateAccount($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ActivateAccount\ActivateAccount($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -792,7 +798,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerCreateInviteCode(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateInviteCode\CreateInviteCode {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateInviteCode\CreateInviteCode($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateInviteCode\CreateInviteCode($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -800,7 +806,7 @@ class ATProtoMetaClient
      */
     public function comAtprotoServerResetPassword(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ResetPassword\ResetPassword {
-        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ResetPassword\ResetPassword($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ResetPassword\ResetPassword($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -808,7 +814,7 @@ class ATProtoMetaClient
      */
     public function appBskyVideoGetJobStatus(): \Aazsamir\Libphpsky\Model\App\Bsky\Video\GetJobStatus\GetJobStatus
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Video\GetJobStatus\GetJobStatus($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Video\GetJobStatus\GetJobStatus($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -816,7 +822,7 @@ class ATProtoMetaClient
      */
     public function appBskyVideoGetUploadLimits(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Video\GetUploadLimits\GetUploadLimits {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Video\GetUploadLimits\GetUploadLimits($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Video\GetUploadLimits\GetUploadLimits($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -824,7 +830,7 @@ class ATProtoMetaClient
      */
     public function appBskyVideoUploadVideo(): \Aazsamir\Libphpsky\Model\App\Bsky\Video\UploadVideo\UploadVideo
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Video\UploadVideo\UploadVideo($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Video\UploadVideo\UploadVideo($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -832,7 +838,7 @@ class ATProtoMetaClient
      */
     public function appBskyActorSearchActorsTypeahead(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Actor\SearchActorsTypeahead\SearchActorsTypeahead {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Actor\SearchActorsTypeahead\SearchActorsTypeahead($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Actor\SearchActorsTypeahead\SearchActorsTypeahead($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -840,7 +846,7 @@ class ATProtoMetaClient
      */
     public function appBskyActorGetProfiles(): \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfiles\GetProfiles
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfiles\GetProfiles($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfiles\GetProfiles($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -848,7 +854,7 @@ class ATProtoMetaClient
      */
     public function appBskyActorPutPreferences(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Actor\PutPreferences\PutPreferences {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Actor\PutPreferences\PutPreferences($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Actor\PutPreferences\PutPreferences($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -856,7 +862,7 @@ class ATProtoMetaClient
      */
     public function appBskyActorGetProfile(): \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfile\GetProfile
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfile\GetProfile($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfile\GetProfile($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -864,7 +870,7 @@ class ATProtoMetaClient
      */
     public function appBskyActorGetSuggestions(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetSuggestions\GetSuggestions {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetSuggestions\GetSuggestions($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetSuggestions\GetSuggestions($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -872,7 +878,7 @@ class ATProtoMetaClient
      */
     public function appBskyActorSearchActors(): \Aazsamir\Libphpsky\Model\App\Bsky\Actor\SearchActors\SearchActors
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Actor\SearchActors\SearchActors($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Actor\SearchActors\SearchActors($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -880,7 +886,7 @@ class ATProtoMetaClient
      */
     public function appBskyActorGetPreferences(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetPreferences\GetPreferences {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetPreferences\GetPreferences($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetPreferences\GetPreferences($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -888,7 +894,7 @@ class ATProtoMetaClient
      */
     public function appBskyBookmarkGetBookmarks(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Bookmark\GetBookmarks\GetBookmarks {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Bookmark\GetBookmarks\GetBookmarks($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Bookmark\GetBookmarks\GetBookmarks($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -896,7 +902,7 @@ class ATProtoMetaClient
      */
     public function appBskyBookmarkDeleteBookmark(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Bookmark\DeleteBookmark\DeleteBookmark {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Bookmark\DeleteBookmark\DeleteBookmark($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Bookmark\DeleteBookmark\DeleteBookmark($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -904,7 +910,7 @@ class ATProtoMetaClient
      */
     public function appBskyBookmarkCreateBookmark(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Bookmark\CreateBookmark\CreateBookmark {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Bookmark\CreateBookmark\CreateBookmark($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Bookmark\CreateBookmark\CreateBookmark($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -912,7 +918,7 @@ class ATProtoMetaClient
      */
     public function appBskyNotificationUnregisterPush(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\UnregisterPush\UnregisterPush {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\UnregisterPush\UnregisterPush($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\UnregisterPush\UnregisterPush($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -920,7 +926,7 @@ class ATProtoMetaClient
      */
     public function appBskyNotificationUpdateSeen(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\UpdateSeen\UpdateSeen {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\UpdateSeen\UpdateSeen($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\UpdateSeen\UpdateSeen($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -928,7 +934,7 @@ class ATProtoMetaClient
      */
     public function appBskyNotificationRegisterPush(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\RegisterPush\RegisterPush {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\RegisterPush\RegisterPush($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\RegisterPush\RegisterPush($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -936,7 +942,7 @@ class ATProtoMetaClient
      */
     public function appBskyNotificationPutPreferences(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutPreferences\PutPreferences {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutPreferences\PutPreferences($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutPreferences\PutPreferences($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -944,7 +950,7 @@ class ATProtoMetaClient
      */
     public function appBskyNotificationListNotifications(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListNotifications\ListNotifications {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListNotifications\ListNotifications($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListNotifications\ListNotifications($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -952,7 +958,7 @@ class ATProtoMetaClient
      */
     public function appBskyNotificationPutActivitySubscription(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutActivitySubscription\PutActivitySubscription {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutActivitySubscription\PutActivitySubscription($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutActivitySubscription\PutActivitySubscription($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -960,7 +966,7 @@ class ATProtoMetaClient
      */
     public function appBskyNotificationListActivitySubscriptions(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListActivitySubscriptions\ListActivitySubscriptions {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListActivitySubscriptions\ListActivitySubscriptions($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListActivitySubscriptions\ListActivitySubscriptions($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -968,7 +974,7 @@ class ATProtoMetaClient
      */
     public function appBskyNotificationPutPreferencesV2(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutPreferencesV2\PutPreferencesV2 {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutPreferencesV2\PutPreferencesV2($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutPreferencesV2\PutPreferencesV2($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -976,7 +982,7 @@ class ATProtoMetaClient
      */
     public function appBskyNotificationGetPreferences(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\GetPreferences\GetPreferences {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\GetPreferences\GetPreferences($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\GetPreferences\GetPreferences($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -984,7 +990,7 @@ class ATProtoMetaClient
      */
     public function appBskyNotificationGetUnreadCount(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\GetUnreadCount\GetUnreadCount {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\GetUnreadCount\GetUnreadCount($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\GetUnreadCount\GetUnreadCount($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -992,7 +998,7 @@ class ATProtoMetaClient
      */
     public function appBskyLabelerGetServices(): \Aazsamir\Libphpsky\Model\App\Bsky\Labeler\GetServices\GetServices
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Labeler\GetServices\GetServices($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Labeler\GetServices\GetServices($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1000,7 +1006,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedGetFeed(): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeed\GetFeed
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeed\GetFeed($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeed\GetFeed($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1008,7 +1014,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedGetSuggestedFeeds(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetSuggestedFeeds\GetSuggestedFeeds {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetSuggestedFeeds\GetSuggestedFeeds($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetSuggestedFeeds\GetSuggestedFeeds($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1016,7 +1022,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedDescribeFeedGenerator(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\DescribeFeedGenerator\DescribeFeedGenerator {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\DescribeFeedGenerator\DescribeFeedGenerator($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\DescribeFeedGenerator\DescribeFeedGenerator($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1024,7 +1030,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedGetActorFeeds(): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetActorFeeds\GetActorFeeds
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetActorFeeds\GetActorFeeds($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetActorFeeds\GetActorFeeds($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1032,7 +1038,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedGetRepostedBy(): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetRepostedBy\GetRepostedBy
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetRepostedBy\GetRepostedBy($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetRepostedBy\GetRepostedBy($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1040,7 +1046,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedGetListFeed(): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetListFeed\GetListFeed
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetListFeed\GetListFeed($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetListFeed\GetListFeed($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1048,7 +1054,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedGetPosts(): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetPosts\GetPosts
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetPosts\GetPosts($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetPosts\GetPosts($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1056,7 +1062,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedGetFeedGenerator(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedGenerator\GetFeedGenerator {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedGenerator\GetFeedGenerator($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedGenerator\GetFeedGenerator($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1064,7 +1070,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedGetFeedGenerators(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedGenerators\GetFeedGenerators {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedGenerators\GetFeedGenerators($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedGenerators\GetFeedGenerators($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1072,7 +1078,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedGetActorLikes(): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetActorLikes\GetActorLikes
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetActorLikes\GetActorLikes($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetActorLikes\GetActorLikes($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1080,7 +1086,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedGetPostThread(): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetPostThread\GetPostThread
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetPostThread\GetPostThread($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetPostThread\GetPostThread($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1088,7 +1094,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedGetTimeline(): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetTimeline\GetTimeline
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetTimeline\GetTimeline($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetTimeline\GetTimeline($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1096,7 +1102,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedSearchPosts(): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\SearchPosts\SearchPosts
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\SearchPosts\SearchPosts($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\SearchPosts\SearchPosts($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1104,7 +1110,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedGetLikes(): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetLikes\GetLikes
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetLikes\GetLikes($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetLikes\GetLikes($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1112,7 +1118,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedGetQuotes(): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetQuotes\GetQuotes
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetQuotes\GetQuotes($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetQuotes\GetQuotes($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1120,7 +1126,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedGetAuthorFeed(): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetAuthorFeed\GetAuthorFeed
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetAuthorFeed\GetAuthorFeed($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetAuthorFeed\GetAuthorFeed($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1128,7 +1134,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedGetFeedSkeleton(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedSkeleton\GetFeedSkeleton {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedSkeleton\GetFeedSkeleton($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedSkeleton\GetFeedSkeleton($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1136,7 +1142,7 @@ class ATProtoMetaClient
      */
     public function appBskyFeedSendInteractions(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\SendInteractions\SendInteractions {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\SendInteractions\SendInteractions($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\SendInteractions\SendInteractions($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1144,7 +1150,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphGetLists(): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetLists\GetLists
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetLists\GetLists($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetLists\GetLists($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1152,7 +1158,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphSearchStarterPacks(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\SearchStarterPacks\SearchStarterPacks {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\SearchStarterPacks\SearchStarterPacks($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\SearchStarterPacks\SearchStarterPacks($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1160,7 +1166,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphGetStarterPacks(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPacks\GetStarterPacks {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPacks\GetStarterPacks($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPacks\GetStarterPacks($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1168,7 +1174,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphMuteActorList(): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\MuteActorList\MuteActorList
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\MuteActorList\MuteActorList($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\MuteActorList\MuteActorList($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1176,7 +1182,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphGetFollowers(): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetFollowers\GetFollowers
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetFollowers\GetFollowers($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetFollowers\GetFollowers($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1184,7 +1190,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphGetFollows(): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetFollows\GetFollows
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetFollows\GetFollows($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetFollows\GetFollows($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1192,7 +1198,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphUnmuteThread(): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\UnmuteThread\UnmuteThread
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\UnmuteThread\UnmuteThread($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\UnmuteThread\UnmuteThread($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1200,7 +1206,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphGetActorStarterPacks(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetActorStarterPacks\GetActorStarterPacks {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetActorStarterPacks\GetActorStarterPacks($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetActorStarterPacks\GetActorStarterPacks($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1208,7 +1214,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphGetRelationships(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetRelationships\GetRelationships {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetRelationships\GetRelationships($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetRelationships\GetRelationships($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1216,7 +1222,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphGetListBlocks(): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetListBlocks\GetListBlocks
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetListBlocks\GetListBlocks($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetListBlocks\GetListBlocks($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1224,7 +1230,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphMuteThread(): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\MuteThread\MuteThread
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\MuteThread\MuteThread($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\MuteThread\MuteThread($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1232,7 +1238,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphMuteActor(): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\MuteActor\MuteActor
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\MuteActor\MuteActor($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\MuteActor\MuteActor($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1240,7 +1246,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphGetMutes(): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetMutes\GetMutes
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetMutes\GetMutes($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetMutes\GetMutes($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1248,7 +1254,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphUnmuteActor(): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\UnmuteActor\UnmuteActor
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\UnmuteActor\UnmuteActor($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\UnmuteActor\UnmuteActor($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1256,7 +1262,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphUnmuteActorList(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\UnmuteActorList\UnmuteActorList {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\UnmuteActorList\UnmuteActorList($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\UnmuteActorList\UnmuteActorList($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1264,7 +1270,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphGetListsWithMembership(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetListsWithMembership\GetListsWithMembership {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetListsWithMembership\GetListsWithMembership($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetListsWithMembership\GetListsWithMembership($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1272,7 +1278,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphGetKnownFollowers(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetKnownFollowers\GetKnownFollowers {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetKnownFollowers\GetKnownFollowers($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetKnownFollowers\GetKnownFollowers($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1280,7 +1286,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphGetSuggestedFollowsByActor(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetSuggestedFollowsByActor\GetSuggestedFollowsByActor {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetSuggestedFollowsByActor\GetSuggestedFollowsByActor($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetSuggestedFollowsByActor\GetSuggestedFollowsByActor($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1288,7 +1294,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphGetStarterPacksWithMembership(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPacksWithMembership\GetStarterPacksWithMembership {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPacksWithMembership\GetStarterPacksWithMembership($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPacksWithMembership\GetStarterPacksWithMembership($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1296,7 +1302,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphGetStarterPack(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPack\GetStarterPack {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPack\GetStarterPack($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPack\GetStarterPack($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1304,7 +1310,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphGetBlocks(): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetBlocks\GetBlocks
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetBlocks\GetBlocks($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetBlocks\GetBlocks($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1312,7 +1318,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphGetList(): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetList\GetList
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetList\GetList($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetList\GetList($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1320,7 +1326,7 @@ class ATProtoMetaClient
      */
     public function appBskyGraphGetListMutes(): \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetListMutes\GetListMutes
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetListMutes\GetListMutes($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetListMutes\GetListMutes($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1328,7 +1334,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedInitAgeAssurance(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\InitAgeAssurance\InitAgeAssurance {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\InitAgeAssurance\InitAgeAssurance($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\InitAgeAssurance\InitAgeAssurance($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1336,7 +1342,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetPostThreadV2(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadV2\GetPostThreadV2 {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadV2\GetPostThreadV2($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadV2\GetPostThreadV2($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1344,7 +1350,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetSuggestedFeeds(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedFeeds\GetSuggestedFeeds {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedFeeds\GetSuggestedFeeds($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedFeeds\GetSuggestedFeeds($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1352,7 +1358,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetTrendingTopics(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrendingTopics\GetTrendingTopics {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrendingTopics\GetTrendingTopics($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrendingTopics\GetTrendingTopics($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1360,7 +1366,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetSuggestedStarterPacksSkeleton(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedStarterPacksSkeleton\GetSuggestedStarterPacksSkeleton {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedStarterPacksSkeleton\GetSuggestedStarterPacksSkeleton($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedStarterPacksSkeleton\GetSuggestedStarterPacksSkeleton($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1368,7 +1374,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedSearchStarterPacksSkeleton(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchStarterPacksSkeleton\SearchStarterPacksSkeleton {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchStarterPacksSkeleton\SearchStarterPacksSkeleton($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchStarterPacksSkeleton\SearchStarterPacksSkeleton($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1376,7 +1382,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetSuggestedStarterPacks(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedStarterPacks\GetSuggestedStarterPacks {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedStarterPacks\GetSuggestedStarterPacks($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedStarterPacks\GetSuggestedStarterPacks($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1384,7 +1390,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetSuggestedFeedsSkeleton(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedFeedsSkeleton\GetSuggestedFeedsSkeleton {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedFeedsSkeleton\GetSuggestedFeedsSkeleton($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedFeedsSkeleton\GetSuggestedFeedsSkeleton($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1392,7 +1398,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetConfig(): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetConfig\GetConfig
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetConfig\GetConfig($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetConfig\GetConfig($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1400,7 +1406,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetAgeAssuranceState(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetAgeAssuranceState\GetAgeAssuranceState {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetAgeAssuranceState\GetAgeAssuranceState($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetAgeAssuranceState\GetAgeAssuranceState($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1408,7 +1414,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetTaggedSuggestions(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTaggedSuggestions\GetTaggedSuggestions {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTaggedSuggestions\GetTaggedSuggestions($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTaggedSuggestions\GetTaggedSuggestions($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1416,7 +1422,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetOnboardingSuggestedStarterPacksSkeleton(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetOnboardingSuggestedStarterPacksSkeleton\GetOnboardingSuggestedStarterPacksSkeleton {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetOnboardingSuggestedStarterPacksSkeleton\GetOnboardingSuggestedStarterPacksSkeleton($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetOnboardingSuggestedStarterPacksSkeleton\GetOnboardingSuggestedStarterPacksSkeleton($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1424,7 +1430,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetSuggestedUsers(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsers\GetSuggestedUsers {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsers\GetSuggestedUsers($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsers\GetSuggestedUsers($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1432,7 +1438,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedSearchActorsSkeleton(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchActorsSkeleton\SearchActorsSkeleton {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchActorsSkeleton\SearchActorsSkeleton($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchActorsSkeleton\SearchActorsSkeleton($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1440,7 +1446,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetTrends(): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrends\GetTrends
     {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrends\GetTrends($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrends\GetTrends($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1448,7 +1454,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetSuggestionsSkeleton(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestionsSkeleton\GetSuggestionsSkeleton {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestionsSkeleton\GetSuggestionsSkeleton($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestionsSkeleton\GetSuggestionsSkeleton($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1456,7 +1462,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetSuggestedUsersSkeleton(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersSkeleton\GetSuggestedUsersSkeleton {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersSkeleton\GetSuggestedUsersSkeleton($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersSkeleton\GetSuggestedUsersSkeleton($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1464,7 +1470,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetOnboardingSuggestedStarterPacks(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetOnboardingSuggestedStarterPacks\GetOnboardingSuggestedStarterPacks {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetOnboardingSuggestedStarterPacks\GetOnboardingSuggestedStarterPacks($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetOnboardingSuggestedStarterPacks\GetOnboardingSuggestedStarterPacks($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1472,7 +1478,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetPopularFeedGenerators(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPopularFeedGenerators\GetPopularFeedGenerators {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPopularFeedGenerators\GetPopularFeedGenerators($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPopularFeedGenerators\GetPopularFeedGenerators($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1480,7 +1486,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedSearchPostsSkeleton(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchPostsSkeleton\SearchPostsSkeleton {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchPostsSkeleton\SearchPostsSkeleton($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchPostsSkeleton\SearchPostsSkeleton($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1488,7 +1494,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetTrendsSkeleton(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrendsSkeleton\GetTrendsSkeleton {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrendsSkeleton\GetTrendsSkeleton($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrendsSkeleton\GetTrendsSkeleton($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1496,7 +1502,7 @@ class ATProtoMetaClient
      */
     public function appBskyUnspeccedGetPostThreadOtherV2(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadOtherV2\GetPostThreadOtherV2 {
-        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadOtherV2\GetPostThreadOtherV2($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadOtherV2\GetPostThreadOtherV2($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1504,7 +1510,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneCommunicationUpdateTemplate(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\UpdateTemplate\UpdateTemplate {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\UpdateTemplate\UpdateTemplate($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\UpdateTemplate\UpdateTemplate($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1512,7 +1518,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneCommunicationCreateTemplate(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\CreateTemplate\CreateTemplate {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\CreateTemplate\CreateTemplate($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\CreateTemplate\CreateTemplate($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1520,7 +1526,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneCommunicationDeleteTemplate(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\DeleteTemplate\DeleteTemplate {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\DeleteTemplate\DeleteTemplate($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\DeleteTemplate\DeleteTemplate($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1528,7 +1534,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneCommunicationListTemplates(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\ListTemplates\ListTemplates {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\ListTemplates\ListTemplates($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\ListTemplates\ListTemplates($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1536,7 +1542,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneModerationGetRepo(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRepo\GetRepo
     {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRepo\GetRepo($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRepo\GetRepo($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1544,7 +1550,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneModerationGetRecords(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRecords\GetRecords {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRecords\GetRecords($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRecords\GetRecords($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1552,7 +1558,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneModerationListScheduledActions(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\ListScheduledActions\ListScheduledActions {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\ListScheduledActions\ListScheduledActions($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\ListScheduledActions\ListScheduledActions($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1560,7 +1566,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneModerationGetReporterStats(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetReporterStats\GetReporterStats {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetReporterStats\GetReporterStats($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetReporterStats\GetReporterStats($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1568,7 +1574,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneModerationQueryStatuses(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryStatuses\QueryStatuses {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryStatuses\QueryStatuses($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryStatuses\QueryStatuses($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1576,7 +1582,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneModerationCancelScheduledActions(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\CancelScheduledActions\CancelScheduledActions {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\CancelScheduledActions\CancelScheduledActions($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\CancelScheduledActions\CancelScheduledActions($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1584,7 +1590,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneModerationGetAccountTimeline(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetAccountTimeline\GetAccountTimeline {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetAccountTimeline\GetAccountTimeline($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetAccountTimeline\GetAccountTimeline($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1592,7 +1598,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneModerationGetRecord(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRecord\GetRecord {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRecord\GetRecord($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRecord\GetRecord($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1600,7 +1606,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneModerationSearchRepos(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\SearchRepos\SearchRepos {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\SearchRepos\SearchRepos($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\SearchRepos\SearchRepos($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1608,7 +1614,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneModerationGetSubjects(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetSubjects\GetSubjects {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetSubjects\GetSubjects($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetSubjects\GetSubjects($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1616,7 +1622,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneModerationScheduleAction(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\ScheduleAction\ScheduleAction {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\ScheduleAction\ScheduleAction($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\ScheduleAction\ScheduleAction($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1624,7 +1630,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneModerationQueryEvents(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryEvents\QueryEvents {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryEvents\QueryEvents($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryEvents\QueryEvents($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1632,7 +1638,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneModerationGetEvent(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetEvent\GetEvent
     {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetEvent\GetEvent($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetEvent\GetEvent($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1640,7 +1646,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneModerationEmitEvent(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\EmitEvent\EmitEvent {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\EmitEvent\EmitEvent($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\EmitEvent\EmitEvent($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1648,7 +1654,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneModerationGetRepos(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRepos\GetRepos
     {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRepos\GetRepos($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRepos\GetRepos($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1656,7 +1662,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneVerificationRevokeVerifications(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\RevokeVerifications\RevokeVerifications {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\RevokeVerifications\RevokeVerifications($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\RevokeVerifications\RevokeVerifications($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1664,7 +1670,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneVerificationListVerifications(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\ListVerifications\ListVerifications {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\ListVerifications\ListVerifications($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\ListVerifications\ListVerifications($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1672,7 +1678,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneVerificationGrantVerifications(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\GrantVerifications\GrantVerifications {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\GrantVerifications\GrantVerifications($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\GrantVerifications\GrantVerifications($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1680,7 +1686,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneSignatureFindCorrelation(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\FindCorrelation\FindCorrelation {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\FindCorrelation\FindCorrelation($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\FindCorrelation\FindCorrelation($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1688,7 +1694,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneSignatureFindRelatedAccounts(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\FindRelatedAccounts\FindRelatedAccounts {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\FindRelatedAccounts\FindRelatedAccounts($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\FindRelatedAccounts\FindRelatedAccounts($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1696,7 +1702,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneSignatureSearchAccounts(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\SearchAccounts\SearchAccounts {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\SearchAccounts\SearchAccounts($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\SearchAccounts\SearchAccounts($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1704,7 +1710,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneTeamAddMember(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\AddMember\AddMember
     {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\AddMember\AddMember($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\AddMember\AddMember($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1712,7 +1718,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneTeamDeleteMember(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\DeleteMember\DeleteMember
     {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\DeleteMember\DeleteMember($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\DeleteMember\DeleteMember($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1720,7 +1726,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneTeamListMembers(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\ListMembers\ListMembers
     {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\ListMembers\ListMembers($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\ListMembers\ListMembers($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1728,7 +1734,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneTeamUpdateMember(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\UpdateMember\UpdateMember
     {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\UpdateMember\UpdateMember($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\UpdateMember\UpdateMember($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1736,7 +1742,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneSafelinkRemoveRule(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\RemoveRule\RemoveRule {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\RemoveRule\RemoveRule($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\RemoveRule\RemoveRule($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1744,7 +1750,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneSafelinkUpdateRule(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\UpdateRule\UpdateRule {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\UpdateRule\UpdateRule($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\UpdateRule\UpdateRule($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1752,7 +1758,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneSafelinkAddRule(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\AddRule\AddRule
     {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\AddRule\AddRule($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\AddRule\AddRule($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1760,7 +1766,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneSafelinkQueryEvents(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\QueryEvents\QueryEvents {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\QueryEvents\QueryEvents($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\QueryEvents\QueryEvents($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1768,7 +1774,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneSafelinkQueryRules(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\QueryRules\QueryRules {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\QueryRules\QueryRules($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\QueryRules\QueryRules($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1776,7 +1782,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneSetUpsertSet(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\UpsertSet\UpsertSet
     {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\UpsertSet\UpsertSet($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\UpsertSet\UpsertSet($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1784,7 +1790,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneSetGetValues(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\GetValues\GetValues
     {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\GetValues\GetValues($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\GetValues\GetValues($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1792,7 +1798,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneSetDeleteSet(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\DeleteSet\DeleteSet
     {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\DeleteSet\DeleteSet($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\DeleteSet\DeleteSet($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1800,7 +1806,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneSetQuerySets(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\QuerySets\QuerySets
     {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\QuerySets\QuerySets($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\QuerySets\QuerySets($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1808,7 +1814,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneSetAddValues(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\AddValues\AddValues
     {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\AddValues\AddValues($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\AddValues\AddValues($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1816,7 +1822,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneSetDeleteValues(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\DeleteValues\DeleteValues
     {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\DeleteValues\DeleteValues($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\DeleteValues\DeleteValues($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1824,7 +1830,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneServerGetConfig(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Server\GetConfig\GetConfig
     {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Server\GetConfig\GetConfig($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Server\GetConfig\GetConfig($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1832,7 +1838,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneHostingGetAccountHistory(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Hosting\GetAccountHistory\GetAccountHistory {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Hosting\GetAccountHistory\GetAccountHistory($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Hosting\GetAccountHistory\GetAccountHistory($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1840,7 +1846,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneSettingUpsertOption(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Setting\UpsertOption\UpsertOption {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Setting\UpsertOption\UpsertOption($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Setting\UpsertOption\UpsertOption($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1848,7 +1854,7 @@ class ATProtoMetaClient
      */
     public function toolsOzoneSettingListOptions(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Setting\ListOptions\ListOptions {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Setting\ListOptions\ListOptions($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Setting\ListOptions\ListOptions($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1856,6 +1862,6 @@ class ATProtoMetaClient
      */
     public function toolsOzoneSettingRemoveOptions(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Setting\RemoveOptions\RemoveOptions {
-        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Setting\RemoveOptions\RemoveOptions($this->client, $this->token);
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Setting\RemoveOptions\RemoveOptions($this->client, $this->typeResolver, $this->token);
     }
 }

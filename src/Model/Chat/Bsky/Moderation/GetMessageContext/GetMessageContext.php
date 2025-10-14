@@ -29,7 +29,7 @@ class GetMessageContext implements \Aazsamir\Libphpsky\Action
      */
     public function query(string $messageId, ?string $convoId = null, ?int $before = null, ?int $after = null): Output
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetMessageContext\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetMessageContext\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

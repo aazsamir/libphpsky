@@ -24,11 +24,11 @@ readonly final class MakeConfig
     {
         return new self([
             new MakeConfigEntry(
-                lexiconsPath: __DIR__ . '/atproto/lexicons',
-                path: __DIR__ . '/src/Model',
+                lexiconsPath: __DIR__ . '/../../../lexicons',
+                path: __DIR__ . '/../../Model',
                 namespace: 'Aazsamir\Libphpsky\Model',
-                metaClient: true,
-                generate: true,
+                generate: false,
+                metaClient: false,
             ),
         ]);
     }

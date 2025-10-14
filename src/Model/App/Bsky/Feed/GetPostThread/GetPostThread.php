@@ -32,7 +32,7 @@ class GetPostThread implements \Aazsamir\Libphpsky\Action
      */
     public function query(string $uri, ?int $depth = null, ?int $parentHeight = null): Output
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetPostThread\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetPostThread\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

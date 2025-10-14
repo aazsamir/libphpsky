@@ -32,7 +32,7 @@ class GetServiceAuth implements \Aazsamir\Libphpsky\Action
      */
     public function query(string $aud, ?int $exp = null, ?string $lxm = null): Output
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\GetServiceAuth\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\GetServiceAuth\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

@@ -4,17 +4,26 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Generator\Prefab;
 
+use Aazsamir\Libphpsky\Generator\Maker\MakeConfig;
+
 /**
  * @internal
  */
 final class TypeResolver
 {
+    public function __construct(private MakeConfig $config) {}
+
+    public static function default(): self
+    {
+        return new self(MakeConfig::default());
+    }
+
     /**
      * @param string $type in form of `app.bsky.feed.defs#postView`
      *
      * @phpstan-return class-string|null
      */
-    public static function resolve(string $type): ?string
+    public function resolve(string $type): ?string
     {
         if (!str_contains($type, '#')) {
             $class = explode('.', $type);
@@ -38,12 +47,15 @@ final class TypeResolver
             $class = 'ListDef';
         }
 
-        $class = '\Aazsamir\Libphpsky\Model\\' . $namespace . '\\' . $class;
+        foreach ($this->config->entries as $configEntry) {
+            // that's a bit dumb but works for now
+            $potentialClass = '\\' . $configEntry->namespace . '\\' . $namespace . '\\' . $class;
 
-        if (!class_exists($class)) {
-            return null;
+            if (class_exists($potentialClass)) {
+                return $potentialClass;
+            }
         }
 
-        return $class;
+        return null;
     }
 }

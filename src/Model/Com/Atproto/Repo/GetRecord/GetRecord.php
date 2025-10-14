@@ -33,7 +33,7 @@ class GetRecord implements \Aazsamir\Libphpsky\Action
      */
     public function query(string $repo, string $collection, string $rkey, ?string $cid = null): Output
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\GetRecord\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\GetRecord\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

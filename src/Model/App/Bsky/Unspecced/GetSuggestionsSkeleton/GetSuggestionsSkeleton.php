@@ -35,7 +35,7 @@ class GetSuggestionsSkeleton implements \Aazsamir\Libphpsky\Action
         ?string $cursor = null,
         ?string $relativeToDid = null,
     ): Output {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestionsSkeleton\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestionsSkeleton\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

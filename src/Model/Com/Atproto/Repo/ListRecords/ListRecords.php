@@ -38,7 +38,7 @@ class ListRecords implements \Aazsamir\Libphpsky\Action
         ?string $cursor = null,
         ?bool $reverse = null,
     ): Output {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ListRecords\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ListRecords\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

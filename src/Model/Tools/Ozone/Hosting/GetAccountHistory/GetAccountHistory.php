@@ -30,7 +30,7 @@ class GetAccountHistory implements \Aazsamir\Libphpsky\Action
      */
     public function query(string $did, ?array $events = null, ?string $cursor = null, ?int $limit = null): Output
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Hosting\GetAccountHistory\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Hosting\GetAccountHistory\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

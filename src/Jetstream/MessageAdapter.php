@@ -18,6 +18,15 @@ use WebSocket\Message\Message;
 
 class MessageAdapter implements MessageAdapterInterface
 {
+    public function __construct(
+        private TypeResolver $typeResolver,
+    ) {}
+
+    public static function default(): self
+    {
+        return new self(TypeResolver::default());
+    }
+
     public function adapt(Message $message): Event
     {
         if (!$message instanceof \WebSocket\Message\Text) {
@@ -89,7 +98,7 @@ class MessageAdapter implements MessageAdapterInterface
                     }
 
                     $recordtype = $record['$type'];
-                    $type = TypeResolver::resolve($recordtype);
+                    $type = $this->typeResolver->resolve($recordtype);
 
                     if ($type) {
                         $record = $type::fromArray($record);

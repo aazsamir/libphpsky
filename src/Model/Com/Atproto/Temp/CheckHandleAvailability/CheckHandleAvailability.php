@@ -32,7 +32,7 @@ class CheckHandleAvailability implements \Aazsamir\Libphpsky\Action
      */
     public function query(string $handle, ?string $email = null, ?\DateTimeInterface $birthDate = null): Output
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\CheckHandleAvailability\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\CheckHandleAvailability\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

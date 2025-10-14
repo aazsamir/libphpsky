@@ -27,7 +27,7 @@ class GetSuggestedStarterPacks implements \Aazsamir\Libphpsky\Action
 
     public function query(?int $limit = null): Output
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedStarterPacks\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedStarterPacks\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

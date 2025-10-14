@@ -27,7 +27,7 @@ class GetPreferences implements \Aazsamir\Libphpsky\Action
 
     public function query(): Output
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetPreferences\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetPreferences\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

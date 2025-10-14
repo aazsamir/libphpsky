@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Examples\Bluegraph;
 
 use Aazsamir\Libphpsky\Client\ATProtoClientBuilder;
+use Aazsamir\Libphpsky\Generator\Prefab\TypeResolver;
 use Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView;
 use Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewDetailed;
 use Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfile\GetProfile;
@@ -33,12 +34,13 @@ final class GraphGenerate
     public function __construct()
     {
         $client = ATProtoClientBuilder::default()->useAsync(true)->useQueryCache(true)->build();
-        $this->resolveHandle = new ResolveHandle($client);
-        $this->authorFeed = new GetAuthorFeed($client);
-        $this->getLikes = new GetLikes($client);
-        $this->listRecords = new ListRecords($client);
-        $this->getProfiles = new GetProfiles($client);
-        $this->getProfile = new GetProfile($client);
+        $typeResolver = TypeResolver::default();
+        $this->resolveHandle = new ResolveHandle($client, $typeResolver);
+        $this->authorFeed = new GetAuthorFeed($client, $typeResolver);
+        $this->getLikes = new GetLikes($client, $typeResolver);
+        $this->listRecords = new ListRecords($client, $typeResolver);
+        $this->getProfiles = new GetProfiles($client, $typeResolver);
+        $this->getProfile = new GetProfile($client, $typeResolver);
     }
 
     public function generate(string $handle): void

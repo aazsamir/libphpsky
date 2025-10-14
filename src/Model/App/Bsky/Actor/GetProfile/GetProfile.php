@@ -30,7 +30,7 @@ class GetProfile implements \Aazsamir\Libphpsky\Action
      */
     public function query(string $actor): \Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewDetailed
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewDetailed::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewDetailed::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

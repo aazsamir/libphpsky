@@ -35,6 +35,36 @@ final class Maker
         $this->procedureDefHandler = $procedureDefHandler;
     }
 
+    public static function default(): self
+    {
+        $saver = new FileSaveClass();
+        $classResolver = new ClassResolver();
+        $queryDefHandler = new QueryDefHandler(
+            $classResolver,
+            $saver,
+        );
+        $procedureDefHandler = new ProcedureDefHandler(
+            $classResolver,
+            $saver,
+        );
+        $objectDefHandler = new ObjectDefHandler(
+            $classResolver,
+            $saver,
+        );
+        $metaClientGenerator = new MetaClientGenerator(
+            $saver,
+            $classResolver,
+        );
+
+        return new self(
+            $classResolver,
+            $queryDefHandler,
+            $objectDefHandler,
+            $procedureDefHandler,
+            $metaClientGenerator,
+        );
+    }
+
     public function make(Lexicons $lexicons): void
     {
         $this->processLexicons($lexicons);

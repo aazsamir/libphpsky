@@ -14,15 +14,16 @@ trait IsProcedure
 {
     use IsAction;
 
-    public function __construct(ATProtoClientInterface $client, ?string $accessToken = null)
+    public function __construct(ATProtoClientInterface $client, TypeResolver $typeResolver, ?string $accessToken = null)
     {
         $this->client = $client;
+        $this->typeResolver = $typeResolver;
         $this->token = $accessToken;
     }
 
     public static function default(?string $accessToken = null): self
     {
-        return new self(ATProtoClientBuilder::getDefault(), $accessToken);
+        return new self(ATProtoClientBuilder::getDefault(), TypeResolver::default(), $accessToken);
     }
 
     /**

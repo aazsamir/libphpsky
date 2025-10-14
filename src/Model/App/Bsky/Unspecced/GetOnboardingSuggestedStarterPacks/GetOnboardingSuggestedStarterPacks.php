@@ -27,7 +27,7 @@ class GetOnboardingSuggestedStarterPacks implements \Aazsamir\Libphpsky\Action
 
     public function query(?int $limit = null): Output
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetOnboardingSuggestedStarterPacks\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetOnboardingSuggestedStarterPacks\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

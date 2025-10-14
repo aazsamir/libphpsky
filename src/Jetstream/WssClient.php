@@ -15,6 +15,14 @@ class WssClient implements Client
         private MessageAdapterInterface $messageAdapter,
     ) {}
 
+    public static function default(): self
+    {
+        return new self(
+            new WebSocketClientFactory(),
+            MessageAdapter::default(),
+        );
+    }
+
     public function subscribe(
         array $wantedCollections = [],
         array $wantedDids = [],

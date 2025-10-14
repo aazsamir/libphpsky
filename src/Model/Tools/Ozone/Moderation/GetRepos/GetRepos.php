@@ -30,7 +30,7 @@ class GetRepos implements \Aazsamir\Libphpsky\Action
      */
     public function query(array $dids): Output
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRepos\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRepos\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

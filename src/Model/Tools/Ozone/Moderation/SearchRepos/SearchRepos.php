@@ -30,7 +30,7 @@ class SearchRepos implements \Aazsamir\Libphpsky\Action
      */
     public function query(?string $term = null, ?string $q = null, ?int $limit = null, ?string $cursor = null): Output
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\SearchRepos\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\SearchRepos\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

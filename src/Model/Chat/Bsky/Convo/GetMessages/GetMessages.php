@@ -26,7 +26,7 @@ class GetMessages implements \Aazsamir\Libphpsky\Action
 
     public function query(string $convoId, ?int $limit = null, ?string $cursor = null): Output
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetMessages\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetMessages\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

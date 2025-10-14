@@ -26,7 +26,7 @@ class GetActorMetadata implements \Aazsamir\Libphpsky\Action
 
     public function query(string $actor): Output
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetActorMetadata\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetActorMetadata\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

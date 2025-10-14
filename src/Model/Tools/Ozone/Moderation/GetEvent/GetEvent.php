@@ -27,7 +27,7 @@ class GetEvent implements \Aazsamir\Libphpsky\Action
 
     public function query(int $id): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventViewDetail
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventViewDetail::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventViewDetail::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

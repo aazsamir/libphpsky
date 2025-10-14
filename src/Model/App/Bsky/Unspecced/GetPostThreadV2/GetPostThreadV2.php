@@ -41,7 +41,7 @@ class GetPostThreadV2 implements \Aazsamir\Libphpsky\Action
         ?bool $prioritizeFollowedUsers = null,
         ?string $sort = null,
     ): Output {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadV2\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadV2\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

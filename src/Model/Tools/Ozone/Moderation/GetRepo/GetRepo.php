@@ -27,7 +27,7 @@ class GetRepo implements \Aazsamir\Libphpsky\Action
 
     public function query(string $did): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RepoViewDetail
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RepoViewDetail::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RepoViewDetail::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

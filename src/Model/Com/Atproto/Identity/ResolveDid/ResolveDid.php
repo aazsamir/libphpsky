@@ -30,7 +30,7 @@ class ResolveDid implements \Aazsamir\Libphpsky\Action
      */
     public function query(string $did): Output
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveDid\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveDid\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

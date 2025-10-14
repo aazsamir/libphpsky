@@ -30,7 +30,7 @@ class GetAccountInfos implements \Aazsamir\Libphpsky\Action
      */
     public function query(array $dids): Output
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetAccountInfos\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetAccountInfos\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

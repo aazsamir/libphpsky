@@ -27,7 +27,7 @@ class GetFeed implements \Aazsamir\Libphpsky\Action
 
     public function query(string $feed, ?int $limit = null, ?string $cursor = null): Output
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeed\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeed\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

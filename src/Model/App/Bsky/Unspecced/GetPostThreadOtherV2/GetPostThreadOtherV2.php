@@ -31,7 +31,7 @@ class GetPostThreadOtherV2 implements \Aazsamir\Libphpsky\Action
      */
     public function query(string $anchor, ?bool $prioritizeFollowedUsers = null): Output
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadOtherV2\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadOtherV2\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

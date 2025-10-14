@@ -35,7 +35,7 @@ class QuerySets implements \Aazsamir\Libphpsky\Action
         ?string $sortBy = null,
         ?string $sortDirection = null,
     ): Output {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\QuerySets\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\QuerySets\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

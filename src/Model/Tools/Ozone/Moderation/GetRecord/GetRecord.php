@@ -29,7 +29,7 @@ class GetRecord implements \Aazsamir\Libphpsky\Action
         string $uri,
         ?string $cid = null,
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RecordViewDetail {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RecordViewDetail::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RecordViewDetail::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

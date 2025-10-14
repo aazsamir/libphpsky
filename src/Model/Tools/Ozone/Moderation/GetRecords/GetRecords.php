@@ -30,7 +30,7 @@ class GetRecords implements \Aazsamir\Libphpsky\Action
      */
     public function query(array $uris): Output
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRecords\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRecords\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

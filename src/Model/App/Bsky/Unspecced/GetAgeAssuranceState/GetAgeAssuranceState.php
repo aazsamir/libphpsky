@@ -27,7 +27,7 @@ class GetAgeAssuranceState implements \Aazsamir\Libphpsky\Action
 
     public function query(): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\Defs\AgeAssuranceState
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\Defs\AgeAssuranceState::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\Defs\AgeAssuranceState::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

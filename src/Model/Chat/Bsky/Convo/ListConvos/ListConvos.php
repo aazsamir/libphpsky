@@ -30,7 +30,7 @@ class ListConvos implements \Aazsamir\Libphpsky\Action
         ?string $readState = null,
         ?string $status = null,
     ): Output {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\ListConvos\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\ListConvos\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

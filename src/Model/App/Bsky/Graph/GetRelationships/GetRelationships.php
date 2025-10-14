@@ -31,7 +31,7 @@ class GetRelationships implements \Aazsamir\Libphpsky\Action
      */
     public function query(string $actor, ?array $others = null): Output
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetRelationships\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetRelationships\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

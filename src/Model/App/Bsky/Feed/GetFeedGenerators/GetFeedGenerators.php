@@ -30,7 +30,7 @@ class GetFeedGenerators implements \Aazsamir\Libphpsky\Action
      */
     public function query(array $feeds): Output
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedGenerators\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedGenerators\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

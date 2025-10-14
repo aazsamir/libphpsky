@@ -45,7 +45,7 @@ class ListVerifications implements \Aazsamir\Libphpsky\Action
         ?string $sortDirection = null,
         ?bool $isRevoked = null,
     ): Output {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\ListVerifications\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\ListVerifications\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

@@ -30,7 +30,7 @@ class DescribeRepo implements \Aazsamir\Libphpsky\Action
      */
     public function query(string $repo): Output
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\DescribeRepo\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\DescribeRepo\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

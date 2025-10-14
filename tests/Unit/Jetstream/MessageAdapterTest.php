@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Jetstream;
 
+use Aazsamir\Libphpsky\Generator\Prefab\TypeResolver;
 use Aazsamir\Libphpsky\Jetstream\MessageAdapter;
 use Aazsamir\Libphpsky\Jetstream\Model\AccountEvent;
 use Aazsamir\Libphpsky\Jetstream\Model\CommitEvent;
@@ -23,7 +24,9 @@ final class MessageAdapterTest extends TestCase
     {
         parent::setUp();
 
-        $this->adapter = new MessageAdapter();
+        $this->adapter = new MessageAdapter(
+            TypeResolver::default(),
+        );
     }
 
     public function testCommitCreate(): void

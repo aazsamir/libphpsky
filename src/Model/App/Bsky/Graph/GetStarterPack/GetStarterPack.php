@@ -30,7 +30,7 @@ class GetStarterPack implements \Aazsamir\Libphpsky\Action
      */
     public function query(string $starterPack): Output
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPack\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPack\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

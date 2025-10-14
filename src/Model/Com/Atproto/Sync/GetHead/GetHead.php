@@ -30,7 +30,7 @@ class GetHead implements \Aazsamir\Libphpsky\Action
      */
     public function query(string $did): Output
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetHead\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetHead\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

@@ -38,7 +38,7 @@ class SearchActorsSkeleton implements \Aazsamir\Libphpsky\Action
         ?int $limit = null,
         ?string $cursor = null,
     ): Output {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchActorsSkeleton\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchActorsSkeleton\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

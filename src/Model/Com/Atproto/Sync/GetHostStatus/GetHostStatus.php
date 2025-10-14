@@ -30,7 +30,7 @@ class GetHostStatus implements \Aazsamir\Libphpsky\Action
      */
     public function query(string $hostname): Output
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetHostStatus\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetHostStatus\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

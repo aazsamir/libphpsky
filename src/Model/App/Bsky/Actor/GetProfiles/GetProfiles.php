@@ -30,7 +30,7 @@ class GetProfiles implements \Aazsamir\Libphpsky\Action
      */
     public function query(array $actors): Output
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfiles\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfiles\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**
