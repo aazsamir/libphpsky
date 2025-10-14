@@ -16,6 +16,16 @@ abstract class TestCase extends FrameworkTestCase
 
     protected function setUp(): void
     {
+        if (isset($_ENV['ATPROTO_LOGIN']) && strlen($_ENV['ATPROTO_LOGIN']) > 3) {
+            print('ATPROTO_LOGIN is set; ');
+        } else {
+            print('ATPROTO_LOGIN is NOT set; ');
+        }
+        if (isset($_ENV['ATPROTO_PASSWORD']) && strlen($_ENV['ATPROTO_PASSWORD']) > 3) {
+            print('ATPROTO_PASSWORD is set; ');
+        } else {
+            print('ATPROTO_PASSWORD is NOT set; ');
+        }
         $client = ATProtoClientBuilder::default()->useQueryCache(false)->build();
         $this->client = new ATProtoMetaClient($client);
 
