@@ -11,10 +11,6 @@ use Psr\Http\Message\ResponseInterface;
 
 class ClientStub implements ATProtoClientInterface
 {
-    /**
-     * @var ResponseInterface[]
-     */
-    public array $responses = [];
     public int $requestCount = 0;
     /**
      * @var RequestInterface[]
@@ -22,10 +18,11 @@ class ClientStub implements ATProtoClientInterface
     public array $requests = [];
 
     public function __construct(
-        array $responses = [],
-    ) {
-        $this->responses = $responses;
-    }
+        /**
+         * @var ResponseInterface[]
+         */
+        public array $responses = [],
+    ) {}
 
     public function sendRequest(RequestInterface $request): ResponseInterface
     {

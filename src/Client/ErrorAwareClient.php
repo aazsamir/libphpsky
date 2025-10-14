@@ -11,7 +11,7 @@ use Psr\Http\Message\ResponseInterface;
 class ErrorAwareClient implements ATProtoClientInterface
 {
     public function __construct(
-        private ClientInterface $decorated,
+        private readonly ClientInterface $decorated,
     ) {}
 
     public function sendRequest(RequestInterface $request): ResponseInterface

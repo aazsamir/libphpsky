@@ -10,14 +10,14 @@ use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 /**
  * @internal
  */
-final class BooleanDef implements Def
+final readonly class BooleanDef implements Def
 {
     public function __construct(
-        private readonly string $name,
-        private readonly Lexicon $lexicon,
-        private readonly ?bool $default = null,
-        private readonly ?bool $const = null,
-        private readonly ?string $description = null,
+        private string $name,
+        private Lexicon $lexicon,
+        private ?bool $default = null,
+        private ?bool $const = null,
+        private ?string $description = null,
     ) {}
 
     public function type(): LexiconType

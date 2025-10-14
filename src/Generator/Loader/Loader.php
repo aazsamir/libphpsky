@@ -34,7 +34,7 @@ use Aazsamir\Libphpsky\Generator\Maker\MakeConfigEntry;
 /**
  * @internal
  */
-final class Loader
+final readonly class Loader
 {
     public function __construct(
         private LexiconProvider $lexiconProvider,

@@ -10,20 +10,20 @@ use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 /**
  * @internal
  */
-final class IntegerDef implements Def
+final readonly class IntegerDef implements Def
 {
     /**
      * @param string[]|null $enum
      */
     public function __construct(
-        private readonly string $name,
-        private readonly Lexicon $lexicon,
-        private readonly ?int $minimum = null,
-        private readonly ?int $maximum = null,
-        private readonly ?array $enum = null,
-        private readonly ?int $default = null,
-        private readonly ?int $const = null,
-        private readonly ?string $description = null,
+        private string $name,
+        private Lexicon $lexicon,
+        private ?int $minimum = null,
+        private ?int $maximum = null,
+        private ?array $enum = null,
+        private ?int $default = null,
+        private ?int $const = null,
+        private ?string $description = null,
     ) {}
 
     public function type(): LexiconType

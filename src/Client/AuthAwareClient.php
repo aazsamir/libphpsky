@@ -16,16 +16,16 @@ use Psr\Http\Message\ResponseInterface;
 class AuthAwareClient implements ATProtoClientInterface
 {
     public function __construct(
-        private ClientInterface $decorated,
-        private AuthConfig $authConfig,
-        private SessionStore $sessionStore,
+        private readonly ClientInterface $decorated,
+        private readonly AuthConfig $authConfig,
+        private readonly SessionStore $sessionStore,
         private ?CreateSession $createSession = null,
         private ?RefreshSession $refreshSession = null,
     ) {}
 
     public function sendRequest(RequestInterface $request): ResponseInterface
     {
-        $uri = (string) $request->getUri()->getPath();
+        $uri = $request->getUri()->getPath();
         $uri = strtolower($uri);
 
         // ugly, but to prevent infinite loop

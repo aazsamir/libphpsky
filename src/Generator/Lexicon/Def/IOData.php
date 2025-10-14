@@ -7,12 +7,12 @@ namespace Aazsamir\Libphpsky\Generator\Lexicon\Def;
 /**
  * @internal
  */
-final class IOData
+final readonly class IOData
 {
     public function __construct(
-        private readonly string $encoding,
-        private readonly ?string $description = null,
-        private readonly ?Def $schema = null,
+        private string $encoding,
+        private ?string $description = null,
+        private ?Def $schema = null,
     ) {}
 
     public function description(): ?string

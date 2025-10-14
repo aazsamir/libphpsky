@@ -10,12 +10,12 @@ use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 /**
  * @internal
  */
-final class TokenDef implements Def
+final readonly class TokenDef implements Def
 {
     public function __construct(
-        private readonly string $name,
-        private readonly Lexicon $lexicon,
-        private readonly ?string $description = null,
+        private string $name,
+        private Lexicon $lexicon,
+        private ?string $description = null,
     ) {}
 
     public function type(): LexiconType

@@ -65,7 +65,7 @@ final class ProcedureDefHandlerTest extends TestCase
 
         self::assertEquals('Name', $class->getName());
         $traits = array_keys($class->getTraits());
-        self::assertContains('\Aazsamir\Libphpsky\Generator\Prefab\IsProcedure', $traits);
+        self::assertContains(\Aazsamir\Libphpsky\Generator\Prefab\IsProcedure::class, $traits);
         self::assertStringContainsString('description', $class->getComment());
         self::assertContains(Action::class, $class->getImplements());
         $nameconst = $class->getConstant('NAME');

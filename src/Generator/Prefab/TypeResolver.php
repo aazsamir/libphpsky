@@ -9,7 +9,7 @@ use Aazsamir\Libphpsky\Generator\Maker\MakeConfig;
 /**
  * @internal
  */
-final class TypeResolver
+final readonly class TypeResolver
 {
     public function __construct(private MakeConfig $config) {}
 
@@ -38,7 +38,7 @@ final class TypeResolver
         }
 
         $namespace = explode('.', $namespace);
-        $namespace = array_map(static fn ($part) => ucfirst($part), $namespace);
+        $namespace = array_map(static fn ($part): string => ucfirst($part), $namespace);
         $namespace = implode('\\', $namespace);
         $class = ucfirst($class);
 

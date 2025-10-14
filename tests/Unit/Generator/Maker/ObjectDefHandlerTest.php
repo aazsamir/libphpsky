@@ -65,7 +65,7 @@ final class ObjectDefHandlerTest extends TestCase
 
         self::assertEquals('Name', $class->getName());
         $traits = array_keys($class->getTraits());
-        self::assertContains('\Aazsamir\Libphpsky\Generator\Prefab\FromArray', $traits);
+        self::assertContains(\Aazsamir\Libphpsky\Generator\Prefab\FromArray::class, $traits);
         $nameconst = $class->getConstant('NAME');
         self::assertEquals('name', $nameconst->getValue());
         $idconst = $class->getConstant('ID');

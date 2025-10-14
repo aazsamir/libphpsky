@@ -19,7 +19,7 @@ trait AddParameters
         $properties = $def->properties()->toArray();
         // sort by nullability
         $required = $def->required() ?? [];
-        usort($properties, static fn ($a, $b) => !\in_array($a->name(), $required, true) <=> !\in_array($b->name(), $required, true));
+        usort($properties, static fn ($a, $b): int => !\in_array($a->name(), $required, true) <=> !\in_array($b->name(), $required, true));
 
         foreach ($properties as $property) {
             $propertyName = $property->name();

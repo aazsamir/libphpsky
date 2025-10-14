@@ -10,14 +10,14 @@ use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 /**
  * @internal
  */
-final class QueryDef implements Def, DefContainer
+final readonly class QueryDef implements Def, DefContainer
 {
     public function __construct(
-        private readonly string $name,
-        private readonly Lexicon $lexicon,
-        private readonly ?string $description = null,
-        private readonly ?ParamsDef $parameters = null,
-        private readonly ?IOData $output = null,
+        private string $name,
+        private Lexicon $lexicon,
+        private ?string $description = null,
+        private ?ParamsDef $parameters = null,
+        private ?IOData $output = null,
         // TODO: errors
     ) {}
 

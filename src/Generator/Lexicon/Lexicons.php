@@ -10,13 +10,13 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\DefContainer;
 /**
  * @internal
  */
-final class Lexicons
+final readonly class Lexicons
 {
     /**
      * @param Lexicon[] $lexicons
      */
     public function __construct(
-        private readonly array $lexicons,
+        private array $lexicons,
     ) {}
 
     /**

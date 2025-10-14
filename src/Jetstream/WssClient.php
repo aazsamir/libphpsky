@@ -11,8 +11,8 @@ class WssClient implements Client
     private bool $stop = false;
 
     public function __construct(
-        private WebSocketClientFactoryInterface $clientFactory,
-        private MessageAdapterInterface $messageAdapter,
+        private readonly WebSocketClientFactoryInterface $clientFactory,
+        private readonly MessageAdapterInterface $messageAdapter,
     ) {}
 
     public static function default(

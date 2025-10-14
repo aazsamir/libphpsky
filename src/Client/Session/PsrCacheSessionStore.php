@@ -10,9 +10,9 @@ use Psr\Cache\CacheItemPoolInterface;
 class PsrCacheSessionStore implements SessionStore
 {
     public function __construct(
-        private CacheItemPoolInterface $cache,
-        private string $prefix = 'atproto_session_',
-        private int $ttl = 600,
+        private readonly CacheItemPoolInterface $cache,
+        private readonly string $prefix = 'atproto_session_',
+        private readonly int $ttl = 600,
     ) {}
 
     public function store(AuthConfig $authConfig, Session $session): void

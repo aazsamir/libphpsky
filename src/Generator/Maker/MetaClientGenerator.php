@@ -20,8 +20,8 @@ use Nette\PhpGenerator\Property;
 class MetaClientGenerator
 {
     public function __construct(
-        private SaveClass $saveClass,
-        private ClassResolver $classResolver,
+        private readonly SaveClass $saveClass,
+        private readonly ClassResolver $classResolver,
     ) {}
 
     public function generate(Lexicons $lexicons): void
@@ -64,7 +64,7 @@ class MetaClientGenerator
 
                 $methodname = $def->lexicon()->id();
                 $methodname = explode('.', $methodname);
-                $methodname = array_map(static fn ($part) => ucfirst($part), $methodname);
+                $methodname = array_map(static fn ($part): string => ucfirst($part), $methodname);
                 $methodname = implode('', $methodname);
                 $methodname = lcfirst($methodname);
 

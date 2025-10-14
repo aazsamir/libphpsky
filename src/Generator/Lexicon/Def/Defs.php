@@ -7,7 +7,7 @@ namespace Aazsamir\Libphpsky\Generator\Lexicon\Def;
 /**
  * @internal
  */
-final class Defs
+final readonly class Defs
 {
     /**
      * @param Def[] $defs

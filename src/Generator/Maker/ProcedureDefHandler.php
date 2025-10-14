@@ -38,7 +38,7 @@ class ProcedureDefHandler implements DefHandler
 
     public function createProcedure(ClassType $class, ProcedureDef $def): void
     {
-        $class->addTrait('\Aazsamir\Libphpsky\Generator\Prefab\IsProcedure');
+        $class->addTrait(\Aazsamir\Libphpsky\Generator\Prefab\IsProcedure::class);
         $class->addImplement(Action::class);
         $method = $class->addMethod('procedure');
         $method->setPublic();

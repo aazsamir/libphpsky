@@ -7,8 +7,8 @@ namespace Aazsamir\Libphpsky\Client;
 class AuthConfig
 {
     public function __construct(
-        private ?string $login = null,
-        private ?string $password = null,
+        private readonly ?string $login = null,
+        private readonly ?string $password = null,
     ) {}
 
     public function login(): ?string

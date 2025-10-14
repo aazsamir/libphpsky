@@ -31,7 +31,7 @@ class QueryDefHandler implements DefHandler
         }
 
         [$class, $phpNamespace] = $this->createClass($def);
-        $class->addTrait('\Aazsamir\Libphpsky\Generator\Prefab\IsQuery');
+        $class->addTrait(\Aazsamir\Libphpsky\Generator\Prefab\IsQuery::class);
         $class->addImplement(Action::class);
 
         $this->createQuery($class, $def);

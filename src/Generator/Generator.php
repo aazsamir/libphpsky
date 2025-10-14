@@ -13,7 +13,7 @@ use Aazsamir\Libphpsky\Generator\Maker\Maker;
 /**
  * @internal
  */
-final class Generator
+final readonly class Generator
 {
     public function __construct(
         private Loader $loader,

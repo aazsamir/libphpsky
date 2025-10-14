@@ -10,17 +10,17 @@ use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 /**
  * @internal
  */
-final class BlobDef implements Def
+final readonly class BlobDef implements Def
 {
     /**
      * @param array<mixed>|null $accept
      */
     public function __construct(
-        private readonly string $name,
-        private readonly Lexicon $lexicon,
-        private readonly ?array $accept = null,
-        private readonly ?int $maxSize = null,
-        private readonly ?string $description = null,
+        private string $name,
+        private Lexicon $lexicon,
+        private ?array $accept = null,
+        private ?int $maxSize = null,
+        private ?string $description = null,
     ) {}
 
     public function type(): LexiconType

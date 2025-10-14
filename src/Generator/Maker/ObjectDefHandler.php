@@ -40,8 +40,8 @@ class ObjectDefHandler implements DefHandler
 
     private function createObject(ClassType $class, ObjectDef $def): void
     {
-        $class->addTrait('\Aazsamir\Libphpsky\Generator\Prefab\FromArray');
-        $class->addTrait('\Aazsamir\Libphpsky\Generator\Prefab\ToArray');
+        $class->addTrait(\Aazsamir\Libphpsky\Generator\Prefab\FromArray::class);
+        $class->addTrait(\Aazsamir\Libphpsky\Generator\Prefab\ToArray::class);
         $class->addImplement(ATProtoObject::class);
 
         $constructorTypes = $this->addObjectParameters($class, $def);
@@ -134,13 +134,13 @@ class ObjectDefHandler implements DefHandler
         $nullableMethod->setPublic();
         $nullableMethod->setReturnType('array');
         $nullableMethod->setStatic();
-        $nullableMethod->addBody('return [' . implode(', ', array_map(static fn ($name) => "'$name'", $def->nullable() ?? [])) . '];');
+        $nullableMethod->addBody('return [' . implode(', ', array_map(static fn ($name): string => "'$name'", $def->nullable() ?? [])) . '];');
 
         $requiredMethod = $class->addMethod('required');
         $requiredMethod->setPublic();
         $requiredMethod->setReturnType('array');
         $requiredMethod->setStatic();
-        $requiredMethod->addBody('return [' . implode(', ', array_map(static fn ($name) => "'$name'", $def->required() ?? [])) . '];');
+        $requiredMethod->addBody('return [' . implode(', ', array_map(static fn ($name): string => "'$name'", $def->required() ?? [])) . '];');
 
         return $constructorTypes;
     }
@@ -151,7 +151,7 @@ class ObjectDefHandler implements DefHandler
     private function addObjectConstructor(ClassType $class, ObjectDef $def, array $constructorTypes): void
     {
         // nullable last
-        usort($constructorTypes, static fn ($a, $b) => $a['nullable'] <=> $b['nullable']);
+        usort($constructorTypes, static fn ($a, $b): int => $a['nullable'] <=> $b['nullable']);
         $constructor = $class->addMethod('new')->setStatic()->setReturnType('self');
         $constructor->addBody('$instance = new self();');
 

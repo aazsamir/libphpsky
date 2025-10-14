@@ -7,11 +7,11 @@ namespace Aazsamir\Libphpsky\Generator\Lexicon\Def;
 /**
  * @internal
  */
-final class Message
+final readonly class Message
 {
     public function __construct(
-        private readonly UnionDef $schema,
-        private readonly ?string $description = null,
+        private UnionDef $schema,
+        private ?string $description = null,
     ) {}
 
     public function schema(): UnionDef

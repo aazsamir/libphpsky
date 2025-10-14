@@ -12,10 +12,10 @@ use Psr\Http\Message\ResponseInterface;
 class QueryCacheClient implements ATProtoClientInterface
 {
     public function __construct(
-        private ATProtoClientInterface $decorated,
-        private CacheItemPoolInterface $cache,
-        private int $ttl = 3600,
-        private string $prefix = 'atproto_query_cache_',
+        private readonly ATProtoClientInterface $decorated,
+        private readonly CacheItemPoolInterface $cache,
+        private readonly int $ttl = 3600,
+        private readonly string $prefix = 'atproto_query_cache_',
     ) {}
 
     public function sendRequest(RequestInterface $request): ResponseInterface

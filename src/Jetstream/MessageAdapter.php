@@ -19,7 +19,7 @@ use WebSocket\Message\Message;
 class MessageAdapter implements MessageAdapterInterface
 {
     public function __construct(
-        private TypeResolver $typeResolver,
+        private readonly TypeResolver $typeResolver,
     ) {}
 
     public static function default(): self
@@ -62,7 +62,7 @@ class MessageAdapter implements MessageAdapterInterface
             throw new JetstreamException('Invalid did');
         }
 
-        $timeUs = new \DateTimeImmutable('@' . (int) $message['time_us'] / 1_000_000);
+        $timeUs = new \DateTimeImmutable('@' . $message['time_us'] / 1_000_000);
         $did = $message['did'];
 
         switch (true) {

@@ -7,8 +7,8 @@ namespace Aazsamir\Libphpsky\Client\Session;
 class Session
 {
     public function __construct(
-        private string $accessToken,
-        private string $refreshToken,
+        private readonly string $accessToken,
+        private readonly string $refreshToken,
     ) {}
 
     public function getAccessToken(): string

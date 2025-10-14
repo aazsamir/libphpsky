@@ -10,15 +10,15 @@ use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 /**
  * @internal
  */
-final class ArrayDef implements Def, DefContainer
+final readonly class ArrayDef implements Def, DefContainer
 {
     public function __construct(
-        private readonly string $name,
-        private readonly Lexicon $lexicon,
-        private readonly Def $items,
-        private readonly ?int $minLength = null,
-        private readonly ?int $maxLength = null,
-        private readonly ?string $description = null,
+        private string $name,
+        private Lexicon $lexicon,
+        private Def $items,
+        private ?int $minLength = null,
+        private ?int $maxLength = null,
+        private ?string $description = null,
     ) {}
 
     public function type(): LexiconType

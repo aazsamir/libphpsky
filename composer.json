@@ -34,7 +34,8 @@
         "friendsofphp/php-cs-fixer": "^3.65",
         "symfony/var-dumper": "^7.2",
         "phpstan/phpstan": "^2.0",
-        "phpunit/phpunit": "^11.5"
+        "phpunit/phpunit": "^11.5",
+        "rector/rector": "^2.2"
     },
     "config": {
         "allow-plugins": {
@@ -45,12 +46,14 @@
     "scripts": {
         "qa": [
             "@phpcsfixer",
+            "@rector",
             "@phpstan",
             "@phpunit"
         ],
         "phpcsfixer": "php-cs-fixer fix --diff --dry-run --verbose --allow-risky=yes",
         "phpstan": "phpstan analyse",
         "phpunit": "XDEBUG_MODE=coverage phpunit --coverage-text",
+        "rector": "rector --dry-run",
         "integration-tests": "phpunit --testsuite integration"
     }
 }

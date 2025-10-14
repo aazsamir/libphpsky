@@ -10,15 +10,15 @@ use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 /**
  * @internal
  */
-final class RecordDef implements Def, DefContainer
+final readonly class RecordDef implements Def, DefContainer
 {
     public function __construct(
-        private readonly string $name,
-        private readonly Lexicon $lexicon,
+        private string $name,
+        private Lexicon $lexicon,
         // TODO: Record Key Type
-        private readonly string $key,
-        private readonly ObjectDef $record,
-        private readonly ?string $description = null,
+        private string $key,
+        private ObjectDef $record,
+        private ?string $description = null,
     ) {}
 
     public function type(): LexiconType

@@ -31,7 +31,7 @@ abstract class TestCase extends FrameworkTestCase
     {
         $json = trim($json);
         $json = \preg_replace('/\s+/', ' ', $json);
-        return json_decode($json, true);
+        return json_decode((string) $json, true);
     }
 
     protected function fileres(string $file): array

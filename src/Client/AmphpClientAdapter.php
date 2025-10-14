@@ -14,8 +14,8 @@ use Psr\Http\Message\ResponseInterface;
 class AmphpClientAdapter implements ATProtoClientInterface
 {
     public function __construct(
-        private DelegateHttpClient $client,
-        private string $userAgent = ATProtoClientInterface::USER_AGENT,
+        private readonly DelegateHttpClient $client,
+        private readonly string $userAgent = ATProtoClientInterface::USER_AGENT,
     ) {}
 
     public function sendRequest(RequestInterface $request): ResponseInterface

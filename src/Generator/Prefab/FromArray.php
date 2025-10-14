@@ -21,14 +21,14 @@ trait FromArray
         $reflection = new \ReflectionClass($instance);
 
         $nullableFields = $reflection->getProperties();
-        $nullableFields = array_filter($nullableFields, static fn (\ReflectionProperty $property) => (bool) $property->getType()?->allowsNull());
+        $nullableFields = array_filter($nullableFields, static fn (\ReflectionProperty $property): bool => (bool) $property->getType()?->allowsNull());
 
         foreach ($nullableFields as $property) {
             $instance->{$property->getName()} = null;
         }
 
         foreach ($data as $key => $value) {
-            if (str_starts_with($key, '$')) {
+            if (str_starts_with((string) $key, '$')) {
                 continue;
             }
 

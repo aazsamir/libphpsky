@@ -16,7 +16,7 @@ class WebSocketClientFactory implements WebSocketClientFactoryInterface
             'wss://jetstream1.us-west.bsky.network/subscribe',
             'wss://jetstream2.us-west.bsky.network/subscribe',
         ],
-        private string $userAgent = ATProtoClientInterface::USER_AGENT,
+        private readonly string $userAgent = ATProtoClientInterface::USER_AGENT,
     ) {}
 
     public function create(array $args): \WebSocket\Client

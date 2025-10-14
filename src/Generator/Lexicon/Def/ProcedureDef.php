@@ -10,15 +10,15 @@ use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
 /**
  * @internal
  */
-final class ProcedureDef implements Def, DefContainer
+final readonly class ProcedureDef implements Def, DefContainer
 {
     public function __construct(
-        private readonly string $name,
-        private readonly Lexicon $lexicon,
-        private readonly ?string $description = null,
-        private readonly ?ParamsDef $parameters = null,
-        private readonly ?IOData $output = null,
-        private readonly ?IOData $input = null,
+        private string $name,
+        private Lexicon $lexicon,
+        private ?string $description = null,
+        private ?ParamsDef $parameters = null,
+        private ?IOData $output = null,
+        private ?IOData $input = null,
         // TODO: errors
     ) {}
 

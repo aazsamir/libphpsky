@@ -9,8 +9,8 @@ use Aazsamir\Libphpsky\Client\AuthConfig;
 class DecoratedSessionStore implements SessionStore
 {
     public function __construct(
-        private SessionStore $decorated,
-        private SessionStore $actual,
+        private readonly SessionStore $decorated,
+        private readonly SessionStore $actual,
     ) {}
 
     public function store(AuthConfig $authConfig, Session $session): void

@@ -18,10 +18,10 @@ final class Lexicon
     private MakeConfigEntry $configEntry;
 
     public function __construct(
-        private int $lexicon,
-        private string $id,
-        private ?int $revision,
-        private ?string $description,
+        private readonly int $lexicon,
+        private readonly string $id,
+        private readonly ?int $revision,
+        private readonly ?string $description,
     ) {}
 
     public function lexicon(): int
