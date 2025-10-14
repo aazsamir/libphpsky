@@ -4,16 +4,18 @@ declare(strict_types=1);
 
 namespace Tests\Integration;
 
-use Aazsamir\Libphpsky\Model\App\Bsky\Notification\UpdateSeen as UpdateSeen;
-use DateTimeImmutable;
+use Aazsamir\Libphpsky\Model\App\Bsky\Notification\UpdateSeen;
 
+/**
+ * @internal
+ */
 class UpdateSeenTest extends TestCase
 {
     public function testItUpdatesSeen(): void
     {
         $this->client->appBskyNotificationUpdateSeen()->procedure(
-            UpdateSeen\Input::new(new DateTimeImmutable()),
+            UpdateSeen\Input::new(new \DateTimeImmutable()),
         );
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 }

@@ -7,6 +7,9 @@ namespace Tests\Integration;
 use Aazsamir\Libphpsky\Model\App\Bsky\Notification\Defs\FilterablePreference;
 use Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutPreferencesV2;
 
+/**
+ * @internal
+ */
 class PutPreferencesTest extends TestCase
 {
     public function testItUpdatesPreferences(): void
@@ -21,8 +24,8 @@ class PutPreferencesTest extends TestCase
             ),
         );
 
-        $this->assertEquals('all', $output->preferences->like->include);
-        $this->assertTrue($output->preferences->like->list);
-        $this->assertTrue($output->preferences->like->push);
+        self::assertEquals('all', $output->preferences->like->include);
+        self::assertTrue($output->preferences->like->list);
+        self::assertTrue($output->preferences->like->push);
     }
 }

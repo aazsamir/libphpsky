@@ -8,6 +8,9 @@ use Aazsamir\Libphpsky\Jetstream\Model\CommitEvent;
 use Aazsamir\Libphpsky\Jetstream\Model\Operation;
 use Aazsamir\Libphpsky\Model\App\Bsky\Graph\Follow\Follow;
 
+/**
+ * @internal
+ */
 class JetstreamTest extends TestCase
 {
     public function testItGetsEvents(): void
@@ -19,7 +22,7 @@ class JetstreamTest extends TestCase
             break;
         }
 
-        $this->assertTrue($fired);
+        self::assertTrue($fired);
     }
 
     public function testOnlyWantedCollectionsAreGotten(): void
@@ -44,13 +47,13 @@ class JetstreamTest extends TestCase
 
             $count--;
             $fired = true;
-            $this->assertInstanceOf(Follow::class, $event->commit->record);
+            self::assertInstanceOf(Follow::class, $event->commit->record);
 
             if ($count <= 0) {
                 break;
             }
         }
 
-        $this->assertTrue($fired);
+        self::assertTrue($fired);
     }
 }
