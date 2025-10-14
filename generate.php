@@ -46,7 +46,7 @@ $refResolver = new RefResolver();
 
 $config = new MakeConfig([
     new MakeConfigEntry(
-        lexiconsPath: __DIR__ . '/atproto/lexicons',
+        lexiconsPath: __DIR__ . '/lexicons',
         path: __DIR__ . '/src/Model',
         namespace: 'Aazsamir\Libphpsky\Model',
         metaClient: true,
