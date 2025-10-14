@@ -53,6 +53,7 @@ foreach ($eventsStream as $i => $event) {
 }
 
 $client = ATProtoClientBuilder::default()->build();
+// @phpstan-ignore-next-line
 $client = new ATProtoMetaClient(
     $client,
     $typeResolver,
@@ -60,4 +61,5 @@ $client = new ATProtoMetaClient(
 
 // we can use custom queries/procedures as well, if we know domain of the server
 // that can handle fm.teal.alpha lexicon
+// @phpstan-ignore-next-line
 $client->fmTealAlphaActorGetProfile()->withEndpoint('https://example-fm-server.com')->query('some.actor');
