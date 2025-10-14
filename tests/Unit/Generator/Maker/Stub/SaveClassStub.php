@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Generator\Maker\Stub;
 
+use Aazsamir\Libphpsky\Generator\Maker\MakeConfigEntry;
 use Aazsamir\Libphpsky\Generator\Maker\SaveClass;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\PhpNamespace;
@@ -15,7 +16,7 @@ class SaveClassStub implements SaveClass
     /** @var PhpNamespace[] */
     public array $namespaces = [];
 
-    public function save(ClassType $class, PhpNamespace $namespace): void
+    public function save(ClassType $class, PhpNamespace $namespace, MakeConfigEntry $configEntry): void
     {
         $this->classes[] = $class;
         $this->namespaces[] = $namespace;

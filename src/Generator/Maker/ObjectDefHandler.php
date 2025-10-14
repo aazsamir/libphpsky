@@ -35,7 +35,7 @@ class ObjectDefHandler implements DefHandler
         [$class, $phpNamespace] = $this->createClass($def);
         $this->createObject($class, $def);
 
-        $this->saveClass->save($class, $phpNamespace);
+        $this->saveClass->save($class, $phpNamespace, $def->lexicon()->configEntry());
     }
 
     private function createObject(ClassType $class, ObjectDef $def): void

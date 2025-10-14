@@ -28,6 +28,8 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\UnknownDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicons;
 use Aazsamir\Libphpsky\Generator\Lexicon\LexiconType;
+use Aazsamir\Libphpsky\Generator\Maker\MakeConfig;
+use Aazsamir\Libphpsky\Generator\Maker\MakeConfigEntry;
 
 /**
  * @internal
@@ -38,12 +40,12 @@ final class Loader
         private LexiconProvider $lexiconProvider,
     ) {}
 
-    public function load(): Lexicons
+    public function load(MakeConfig $config): Lexicons
     {
         $lexicons = [];
 
-        foreach ($this->lexiconProvider->provide() as $lexicon) {
-            $lexicon = $this->makeLexicon($lexicon);
+        foreach ($this->lexiconProvider->provide($config) as [$lexicon, $configEntry]) {
+            $lexicon = $this->makeLexicon($lexicon, $configEntry);
             $lexicons[] = $lexicon;
         }
 
@@ -59,7 +61,7 @@ final class Loader
      *  defs: array<string, array<string, mixed>>
      * } $data
      */
-    private function makeLexicon(array $data): Lexicon
+    private function makeLexicon(array $data, MakeConfigEntry $configEntry): Lexicon
     {
         $lexicon = new Lexicon(
             lexicon: $data['lexicon'],
@@ -68,6 +70,7 @@ final class Loader
             description: $data['description'] ?? null,
         );
         $lexicon->setDefs($this->makeDefs($data['defs'], $lexicon));
+        $lexicon->setConfigEntry($configEntry);
 
         return $lexicon;
     }

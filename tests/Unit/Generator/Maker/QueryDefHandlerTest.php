@@ -14,6 +14,7 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\StringDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\Generator\Maker\ClassResolver;
 use Aazsamir\Libphpsky\Generator\Maker\MakeConfig;
+use Aazsamir\Libphpsky\Generator\Maker\MakeConfigEntry;
 use Aazsamir\Libphpsky\Generator\Maker\QueryDefHandler;
 use Tests\Unit\Generator\Maker\Stub\SaveClassStub;
 use Tests\Unit\TestCase;
@@ -30,7 +31,14 @@ final class QueryDefHandlerTest extends TestCase
     protected function setUp(): void
     {
         $this->saveClass = new SaveClassStub();
-        $config = new MakeConfig(__DIR__, 'Tests\Fixtures');
+        $configEntry = new MakeConfigEntry(
+            namespace: 'Test\Generated',
+            lexiconsPath: __DIR__,
+            path: __DIR__,
+            metaClient: true,
+            generate: true,
+        );
+        $config = new MakeConfig([$configEntry]);
         $classResolver = new ClassResolver($config);
         $this->queryDefHandler = new QueryDefHandler(
             $classResolver,
@@ -42,6 +50,7 @@ final class QueryDefHandlerTest extends TestCase
             revision: null,
             description: null,
         );
+        $this->lexicon->setConfigEntry($configEntry);
     }
 
     public function testMakeQueryDefEmpty(): void

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Generator\Maker;
 
 use Aazsamir\Libphpsky\Generator\Maker\FileSaveClass;
-use Aazsamir\Libphpsky\Generator\Maker\MakeConfig;
+use Aazsamir\Libphpsky\Generator\Maker\MakeConfigEntry;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\PhpNamespace;
 use Tests\Unit\TestCase;
@@ -16,17 +16,20 @@ use Tests\Unit\TestCase;
 final class FileSaveClassTest extends TestCase
 {
     private FileSaveClass $fileSaveClass;
-    private MakeConfig $makeConfig;
+    private MakeConfigEntry $configEntry;
     private string $path = __DIR__ . '/artifacts';
 
     protected function setUp(): void
     {
         $this->deleteDir();
-        $this->makeConfig = new MakeConfig(
+        $this->configEntry = new MakeConfigEntry(
+            lexiconsPath: '',
             path: $this->path,
             namespace: 'Tests\Artifacts',
+            metaClient: true,
+            generate: true,
         );
-        $this->fileSaveClass = new FileSaveClass($this->makeConfig);
+        $this->fileSaveClass = new FileSaveClass();
     }
 
     protected function tearDown(): void
@@ -49,9 +52,9 @@ final class FileSaveClassTest extends TestCase
     public function testSave(): void
     {
         $class = new ClassType('TestClass');
-        $namespace = new PhpNamespace($this->makeConfig->namespace);
+        $namespace = new PhpNamespace($this->configEntry->namespace);
 
-        $this->fileSaveClass->save($class, $namespace);
+        $this->fileSaveClass->save($class, $namespace, $this->configEntry);
 
         self::assertFileExists($this->path . '/TestClass.php');
 

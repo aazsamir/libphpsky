@@ -37,7 +37,7 @@ class QueryDefHandler implements DefHandler
         $this->createQuery($class, $def);
         $this->createRawQuery($class, $def);
 
-        $this->saveClass->save($class, $phpNamespace);
+        $this->saveClass->save($class, $phpNamespace, $def->lexicon()->configEntry());
     }
 
     public function createQuery(ClassType $class, QueryDef $def): void

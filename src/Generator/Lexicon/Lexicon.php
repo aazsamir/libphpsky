@@ -7,6 +7,7 @@ namespace Aazsamir\Libphpsky\Generator\Lexicon;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\Def;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\DefContainer;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\Defs;
+use Aazsamir\Libphpsky\Generator\Maker\MakeConfigEntry;
 
 /**
  * @internal
@@ -14,6 +15,7 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\Defs;
 final class Lexicon
 {
     private Defs $defs;
+    private MakeConfigEntry $configEntry;
 
     public function __construct(
         private int $lexicon,
@@ -50,6 +52,16 @@ final class Lexicon
     public function setDefs(Defs $defs): void
     {
         $this->defs = $defs;
+    }
+
+    public function configEntry(): MakeConfigEntry
+    {
+        return $this->configEntry;
+    }
+
+    public function setConfigEntry(MakeConfigEntry $configEntry): void
+    {
+        $this->configEntry = $configEntry;
     }
 
     public function findDefByRef(string $ref, ?string $lexicon): ?Def

@@ -19,31 +19,37 @@ use Nette\PhpGenerator\Property;
 class MetaClientGenerator
 {
     public function __construct(
-        private MakeConfig $config,
         private SaveClass $saveClass,
         private ClassResolver $classResolver,
     ) {}
 
     public function generate(Lexicons $lexicons): void
     {
-        $config = new MakeConfig(
-            path: $this->config->path . '/Meta',
-            namespace: $this->config->namespace . '\Meta',
-        );
-        $namespace = new PhpNamespace($config->namespace);
-        $metaClient = new ClassType('ATProtoMetaClient');
-        $metaClient->addMember((new Property('client'))->setPrivate()->setType(ATProtoClientInterface::class));
-        $metaClient->addMember((new Property('token'))->setPrivate()->setType('string')->setNullable());
-        $constructor = $metaClient->addMethod('__construct');
-        $constructor->addParameter('client')->setType(ATProtoClientInterface::class)->setNullable()->setDefaultValue(null);
-        $constructor->addParameter('token')->setType('string')->setNullable()->setDefaultValue(null);
-        $constructor->addBody('if ($client === null) {');
-        $constructor->addBody(\sprintf('    $client = \%s::getDefault();', ATProtoClientBuilder::class));
-        $constructor->addBody('}');
-        $constructor->addBody('$this->client = $client;');
-        $constructor->addBody('$this->token = $token;');
+        $metaClients = [];
 
         foreach ($lexicons->toArray() as $lexicon) {
+            if ($lexicon->configEntry()->metaClient === false) {
+                continue;
+            }
+
+            if (isset($metaClients[$lexicon->configEntry()->namespace])) {
+                $metaClient = $metaClients[$lexicon->configEntry()->namespace];
+            } else {
+                $metaClient = new ClassType('ATProtoMetaClient');
+                $metaClient->addMember((new Property('client'))->setPrivate()->setType(ATProtoClientInterface::class));
+                $metaClient->addMember((new Property('token'))->setPrivate()->setType('string')->setNullable());
+                $constructor = $metaClient->addMethod('__construct');
+                $constructor->addParameter('client')->setType(ATProtoClientInterface::class)->setNullable()->setDefaultValue(null);
+                $constructor->addParameter('token')->setType('string')->setNullable()->setDefaultValue(null);
+                $constructor->addBody('if ($client === null) {');
+                $constructor->addBody(\sprintf('    $client = \%s::getDefault();', ATProtoClientBuilder::class));
+                $constructor->addBody('}');
+                $constructor->addBody('$this->client = $client;');
+                $constructor->addBody('$this->token = $token;');
+
+                $metaClients[$lexicon->configEntry()->namespace] = $metaClient;
+            }
+
             foreach ($lexicon->defs()->toArray() as $def) {
                 if (!($def instanceof QueryDef || $def instanceof ProcedureDef)) {
                     continue;
@@ -69,6 +75,27 @@ class MetaClientGenerator
             }
         }
 
-        $this->saveClass->save($metaClient, $namespace);
+        foreach ($metaClients as $namespace => $metaClient) {
+            $lexicon = null;
+
+            foreach ($lexicons->toArray() as $lx) {
+                if ($lx->configEntry()->namespace === $namespace) {
+                    $lexicon = $lx;
+
+                    break;
+                }
+            }
+
+            if ($lexicon === null) {
+                // this should be unreachable
+                throw new \RuntimeException('Lexicon not found for namespace ' . $namespace);
+            }
+
+            $namespace = new PhpNamespace(
+                $lexicon->configEntry()->namespace . '\Meta',
+            );
+
+            $this->saveClass->save($metaClient, $namespace, $lexicon->configEntry());
+        }
     }
 }

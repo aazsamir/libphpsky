@@ -9,8 +9,32 @@ namespace Aazsamir\Libphpsky\Generator\Maker;
  */
 readonly final class MakeConfig
 {
+    /**
+     * @param MakeConfigEntry[] $entries
+     */
     public function __construct(
-        public string $path,
-        public string $namespace,
-    ) {}
+        public array $entries,
+    ) {
+        if (empty($entries)) {
+            throw new \InvalidArgumentException('At least one MakeConfigEntry is required.');
+        }
+    }
+
+    public static function default(): self
+    {
+        return new self([
+            new MakeConfigEntry(
+                lexiconsPath: __DIR__ . '/atproto/lexicons',
+                path: __DIR__ . '/src/Model',
+                namespace: 'Aazsamir\Libphpsky\Model',
+                metaClient: true,
+                generate: true,
+            ),
+        ]);
+    }
+
+    public function with(MakeConfigEntry ...$entries): self
+    {
+        return new self([...$this->entries, ...$entries]);
+    }
 }

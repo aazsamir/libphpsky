@@ -25,8 +25,9 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\UnknownDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicons;
 use Aazsamir\Libphpsky\Generator\Loader\FileLexiconProvider;
-use Aazsamir\Libphpsky\Generator\Loader\LexiconProvider;
 use Aazsamir\Libphpsky\Generator\Loader\Loader;
+use Aazsamir\Libphpsky\Generator\Maker\MakeConfig;
+use Aazsamir\Libphpsky\Generator\Maker\MakeConfigEntry;
 use Tests\Unit\Generator\Loader\Stub\LexiconProviderStub;
 use Tests\Unit\TestCase;
 
@@ -38,8 +39,8 @@ final class LoaderTest extends TestCase
 {
     public function testLexicon(): void
     {
-        $loader = $this->fileloader('lexicon');
-        $lexicons = $loader->load();
+        $loader = $this->fileloader();
+        $lexicons = $loader->load($this->createMakeConfig(__DIR__ . '/res/LoaderTest/lexicon'));
 
         self::assertCount(9, $lexicons->toArray());
         $defs = $lexicons->defs();
@@ -53,7 +54,7 @@ final class LoaderTest extends TestCase
             'type' => 'boolean',
         ]);
 
-        $lexicons = $loader->load();
+        $lexicons = $loader->load($this->createMakeConfig());
         $lexicon = $this->getFirstLexicon($lexicons);
         $def = $this->getFirstDef($lexicons);
 
@@ -73,7 +74,7 @@ final class LoaderTest extends TestCase
             'const' => 1,
         ]);
 
-        $lexicons = $loader->load();
+        $lexicons = $loader->load($this->createMakeConfig());
         $def = $this->getFirstDef($lexicons);
 
         self::assertInstanceOf(IntegerDef::class, $def);
@@ -93,7 +94,7 @@ final class LoaderTest extends TestCase
             'const' => '1',
         ]);
 
-        $lexicons = $loader->load();
+        $lexicons = $loader->load($this->createMakeConfig());
         $def = $this->getFirstDef($lexicons);
 
         self::assertInstanceOf(StringDef::class, $def);
@@ -107,7 +108,7 @@ final class LoaderTest extends TestCase
             'minLength' => 1,
         ]);
 
-        $lexicons = $loader->load();
+        $lexicons = $loader->load($this->createMakeConfig());
         $def = $this->getFirstDef($lexicons);
 
         self::assertInstanceOf(BytesDef::class, $def);
@@ -119,7 +120,7 @@ final class LoaderTest extends TestCase
             'type' => 'cid-link',
         ]);
 
-        $lexicons = $loader->load();
+        $lexicons = $loader->load($this->createMakeConfig());
         $def = $this->getFirstDef($lexicons);
 
         self::assertInstanceOf(CidLinkDef::class, $def);
@@ -133,7 +134,7 @@ final class LoaderTest extends TestCase
             'maxSize' => 100,
         ]);
 
-        $lexicons = $loader->load();
+        $lexicons = $loader->load($this->createMakeConfig());
         $def = $this->getFirstDef($lexicons);
 
         self::assertInstanceOf(BlobDef::class, $def);
@@ -150,7 +151,7 @@ final class LoaderTest extends TestCase
             'maxLength' => 10,
         ]);
 
-        $lexicons = $loader->load();
+        $lexicons = $loader->load($this->createMakeConfig());
         $def = $this->getFirstDef($lexicons);
 
         self::assertInstanceOf(ArrayDef::class, $def);
@@ -171,7 +172,7 @@ final class LoaderTest extends TestCase
             'nullable' => ['name'],
         ]);
 
-        $lexicons = $loader->load();
+        $lexicons = $loader->load($this->createMakeConfig());
         $def = $this->getFirstDef($lexicons);
 
         self::assertInstanceOf(ObjectDef::class, $def);
@@ -191,7 +192,7 @@ final class LoaderTest extends TestCase
             'required' => ['name'],
         ]);
 
-        $lexicons = $loader->load();
+        $lexicons = $loader->load($this->createMakeConfig());
         $def = $this->getFirstDef($lexicons);
 
         self::assertInstanceOf(ParamsDef::class, $def);
@@ -205,7 +206,7 @@ final class LoaderTest extends TestCase
             'type' => 'token',
         ]);
 
-        $lexicons = $loader->load();
+        $lexicons = $loader->load($this->createMakeConfig());
         $def = $this->getFirstDef($lexicons);
 
         self::assertInstanceOf(TokenDef::class, $def);
@@ -218,7 +219,7 @@ final class LoaderTest extends TestCase
             'ref' => 'main',
         ]);
 
-        $lexicons = $loader->load();
+        $lexicons = $loader->load($this->createMakeConfig());
         $def = $this->getFirstDef($lexicons);
 
         self::assertInstanceOf(RefDef::class, $def);
@@ -232,7 +233,7 @@ final class LoaderTest extends TestCase
             'closed' => true,
         ]);
 
-        $lexicons = $loader->load();
+        $lexicons = $loader->load($this->createMakeConfig());
         $def = $this->getFirstDef($lexicons);
 
         self::assertInstanceOf(UnionDef::class, $def);
@@ -254,7 +255,7 @@ final class LoaderTest extends TestCase
             'description' => 'description',
         ]);
 
-        $lexicons = $loader->load();
+        $lexicons = $loader->load($this->createMakeConfig());
         $def = $this->getFirstDef($lexicons);
 
         self::assertInstanceOf(RecordDef::class, $def);
@@ -284,7 +285,7 @@ final class LoaderTest extends TestCase
             ],
         ]);
 
-        $lexicons = $loader->load();
+        $lexicons = $loader->load($this->createMakeConfig());
         $def = $this->getFirstDef($lexicons);
 
         self::assertInstanceOf(QueryDef::class, $def);
@@ -322,7 +323,7 @@ final class LoaderTest extends TestCase
             ],
         ]);
 
-        $lexicons = $loader->load();
+        $lexicons = $loader->load($this->createMakeConfig());
         $def = $this->getFirstDef($lexicons);
 
         self::assertInstanceOf(ProcedureDef::class, $def);
@@ -353,7 +354,7 @@ final class LoaderTest extends TestCase
             ],
         ]);
 
-        $lexicons = $loader->load();
+        $lexicons = $loader->load($this->createMakeConfig());
         $def = $this->getFirstDef($lexicons);
 
         self::assertInstanceOf(SubscriptionDef::class, $def);
@@ -368,7 +369,7 @@ final class LoaderTest extends TestCase
             'type' => 'unknown',
         ]);
 
-        $lexicons = $loader->load();
+        $lexicons = $loader->load($this->createMakeConfig());
         $def = $this->getFirstDef($lexicons);
 
         self::assertInstanceOf(UnknownDef::class, $def);
@@ -379,9 +380,22 @@ final class LoaderTest extends TestCase
         return new Loader(new LexiconProviderStub($data));
     }
 
-    private function fileloader(string $dirname): Loader
+    private function fileloader(): Loader
     {
-        return new Loader($this->provider($dirname));
+        return new Loader(new FileLexiconProvider());
+    }
+
+    private function createMakeConfig(?string $path = null): MakeConfig
+    {
+        return new MakeConfig([
+            new MakeConfigEntry(
+                lexiconsPath: $path ?? '',
+                path: '',
+                namespace: '',
+                metaClient: true,
+                generate: true,
+            ),
+        ]);
     }
 
     private function getFirstLexicon(Lexicons $lexicons): Lexicon
@@ -397,12 +411,5 @@ final class LoaderTest extends TestCase
         $defs = iterator_to_array($defs);
 
         return $defs[0];
-    }
-
-    private function provider(string $dirname): LexiconProvider
-    {
-        return new FileLexiconProvider(
-            __DIR__ . '/res/LoaderTest/' . $dirname
-        );
     }
 }

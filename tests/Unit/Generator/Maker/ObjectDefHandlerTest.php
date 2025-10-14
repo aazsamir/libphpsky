@@ -9,7 +9,7 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\ObjectDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\StringDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\Generator\Maker\ClassResolver;
-use Aazsamir\Libphpsky\Generator\Maker\MakeConfig;
+use Aazsamir\Libphpsky\Generator\Maker\MakeConfigEntry;
 use Aazsamir\Libphpsky\Generator\Maker\ObjectDefHandler;
 use Tests\Unit\Generator\Maker\Stub\SaveClassStub;
 use Tests\Unit\TestCase;
@@ -26,8 +26,14 @@ final class ObjectDefHandlerTest extends TestCase
     protected function setUp(): void
     {
         $this->saveClass = new SaveClassStub();
-        $config = new MakeConfig(__DIR__, 'Tests\Fixtures');
-        $classResolver = new ClassResolver($config);
+        $configEntry = new MakeConfigEntry(
+            lexiconsPath: '',
+            path: __DIR__,
+            namespace: 'Tests\Fixtures',
+            metaClient: true,
+            generate: true,
+        );
+        $classResolver = new ClassResolver();
         $this->objectDefHandler = new ObjectDefHandler(
             $classResolver,
             $this->saveClass
@@ -38,6 +44,7 @@ final class ObjectDefHandlerTest extends TestCase
             revision: null,
             description: null,
         );
+        $this->lexicon->setConfigEntry($configEntry);
     }
 
     public function testMakeObjectDef(): void

@@ -33,7 +33,7 @@ class ProcedureDefHandler implements DefHandler
         [$class, $phpNamespace] = $this->createClass($def);
         $this->createProcedure($class, $def);
 
-        $this->saveClass->save($class, $phpNamespace);
+        $this->saveClass->save($class, $phpNamespace, $def->lexicon()->configEntry());
     }
 
     public function createProcedure(ClassType $class, ProcedureDef $def): void

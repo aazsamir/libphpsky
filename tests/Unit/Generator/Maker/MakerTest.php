@@ -14,7 +14,7 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\SubscriptionDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicons;
 use Aazsamir\Libphpsky\Generator\Maker\ClassResolver;
-use Aazsamir\Libphpsky\Generator\Maker\MakeConfig;
+use Aazsamir\Libphpsky\Generator\Maker\MakeConfigEntry;
 use Aazsamir\Libphpsky\Generator\Maker\Maker;
 use Aazsamir\Libphpsky\Generator\Maker\MetaClientGenerator;
 use Aazsamir\Libphpsky\Generator\Maker\ObjectDefHandler;
@@ -28,7 +28,6 @@ use Tests\Unit\TestCase;
  */
 final class MakerTest extends TestCase
 {
-    private MakeConfig $makeConfig;
     private ClassResolver $classResolver;
     private QueryDefHandler&MockObject $queryDefHandler;
     private ProcedureDefHandler&MockObject $procedureDefHandler;
@@ -39,9 +38,12 @@ final class MakerTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->makeConfig = new MakeConfig(
+        $configEntry = new MakeConfigEntry(
+            lexiconsPath: __DIR__,
             path: __DIR__ . '/res/output',
             namespace: 'Artifact\Namespace',
+            metaClient: true,
+            generate: true,
         );
         $this->lexicon = new Lexicon(
             lexicon: 1,
@@ -49,7 +51,8 @@ final class MakerTest extends TestCase
             revision: null,
             description: 'lexicon description',
         );
-        $this->classResolver = new ClassResolver($this->makeConfig);
+        $this->lexicon->setConfigEntry($configEntry);
+        $this->classResolver = new ClassResolver();
         $this->queryDefHandler = $this->createMock(QueryDefHandler::class);
         $this->procedureDefHandler = $this->createMock(ProcedureDefHandler::class);
         $this->objectDefHandler = $this->createMock(ObjectDefHandler::class);

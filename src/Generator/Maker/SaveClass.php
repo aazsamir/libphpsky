@@ -12,5 +12,5 @@ use Nette\PhpGenerator\PhpNamespace;
  */
 interface SaveClass
 {
-    public function save(ClassType $class, PhpNamespace $namespace): void;
+    public function save(ClassType $class, PhpNamespace $namespace, MakeConfigEntry $configEntry): void;
 }

@@ -19,7 +19,7 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\UnionDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\UnknownDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicon;
 use Aazsamir\Libphpsky\Generator\Maker\ClassResolver;
-use Aazsamir\Libphpsky\Generator\Maker\MakeConfig;
+use Aazsamir\Libphpsky\Generator\Maker\MakeConfigEntry;
 use Tests\Unit\TestCase;
 
 /**
@@ -32,17 +32,21 @@ final class ClassResolverTest extends TestCase
 
     protected function setUp(): void
     {
-        $config = new MakeConfig(
-            __DIR__,
-            'Tests\Fixtures',
+        $configEntry = new MakeConfigEntry(
+            lexiconsPath: '',
+            path: '',
+            namespace: 'Tests\Fixtures',
+            metaClient: true,
+            generate: true,
         );
-        $this->resolver = new ClassResolver($config);
+        $this->resolver = new ClassResolver();
         $this->lexicon = new Lexicon(
             lexicon: 1,
             id: 'test.id.something',
             revision: null,
             description: null,
         );
+        $this->lexicon->setConfigEntry($configEntry);
     }
 
     public function testLexiconToNamespace(): void

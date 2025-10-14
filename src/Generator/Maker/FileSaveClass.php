@@ -14,16 +14,16 @@ use Nette\PhpGenerator\PsrPrinter;
  */
 final class FileSaveClass implements SaveClass
 {
-    public function __construct(
-        private readonly MakeConfig $config,
-    ) {}
-
-    public function save(ClassType $class, PhpNamespace $namespace): void
+    public function save(ClassType $class, PhpNamespace $namespace, MakeConfigEntry $configEntry): void
     {
+        if ($configEntry->generate === false) {
+            return;
+        }
+
         $namespace = $namespace->getName();
 
-        $relativeNamespace = str_replace($this->config->namespace, '', $namespace);
-        $path = rtrim($this->config->path, '/') . str_replace('\\', '/', $relativeNamespace);
+        $relativeNamespace = str_replace($configEntry->namespace, '', $namespace);
+        $path = rtrim($configEntry->path, '/') . str_replace('\\', '/', $relativeNamespace);
 
         if (!is_dir($path)) {
             mkdir($path, 0777, true);

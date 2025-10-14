@@ -33,7 +33,7 @@ final class TypeResolver
         $namespace = implode('\\', $namespace);
         $class = ucfirst($class);
 
-        // List is a reserved keyword in PHP, the same is in Aazsamir\Libphpsky\Generator\Maker\Maker
+        // List is a reserved keyword in PHP, the same is in Aazsamir\Libphpsky\Generator\Maker\ClassResolver
         if ($class === 'List') {
             $class = 'ListDef';
         }

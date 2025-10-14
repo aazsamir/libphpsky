@@ -17,21 +17,23 @@ use Tests\Unit\TestCase;
  */
 final class MetaClientGeneratorTest extends TestCase
 {
-    private MakeConfig $config;
     private SaveClassStub $saveClass;
     private ClassResolver $classResolver;
     private MetaClientGenerator $metaClientGenerator;
+    private MakeConfigEntry $configEntry;
 
     protected function setUp(): void
     {
-        $this->config = new MakeConfig(
-            __DIR__,
-            'Tests\Fixtures',
+        $this->configEntry = new MakeConfigEntry(
+            lexiconsPath: '',
+            path: __DIR__,
+            namespace: 'Tests\Fixtures',
+            metaClient: true,
+            generate: true,
         );
         $this->saveClass = new SaveClassStub();
-        $this->classResolver = new ClassResolver($this->config);
+        $this->classResolver = new ClassResolver();
         $this->metaClientGenerator = new MetaClientGenerator(
-            $this->config,
             $this->saveClass,
             $this->classResolver,
         );
@@ -45,6 +47,7 @@ final class MetaClientGeneratorTest extends TestCase
             revision: null,
             description: 'lexicon description',
         );
+        $lexicon->setConfigEntry($this->configEntry);
         $lexicon->setDefs(new Defs([
             new QueryDef(
                 name: 'query',
@@ -71,6 +74,7 @@ final class MetaClientGeneratorTest extends TestCase
             revision: null,
             description: 'lexicon description',
         );
+        $lexicon->setConfigEntry($this->configEntry);
         $lexicon->setDefs(new Defs([
             new ProcedureDef(
                 name: 'Procedure',

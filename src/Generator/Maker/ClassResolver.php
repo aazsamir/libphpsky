@@ -24,15 +24,11 @@ class ClassResolver
 {
     use Unref;
 
-    public function __construct(
-        private MakeConfig $config,
-    ) {}
-
     public function lexiconToNamespace(Lexicon $lexicon): string
     {
         $id = $lexicon->id();
         $id = explode('.', $id);
-        $namespace = $this->config->namespace;
+        $namespace = $lexicon->configEntry()->namespace;
         $namespace = rtrim($namespace, '\\');
 
         foreach ($id as $idElement) {
