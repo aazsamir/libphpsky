@@ -1,6 +1,8 @@
 name: MKDocs
 on:
   push:
+    paths:
+      - "docs/**"
     branches:
       - main
 permissions:
