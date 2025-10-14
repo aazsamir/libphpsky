@@ -78,12 +78,13 @@ For more examples, check `examples` directory.
 
 ## Features
 
--   Comprehensive interaction with the Bluesky protocol
+-   Comprehensive interaction with the ATProtocol
 -   Statically typed queries, procedures and objects
 -   Authorization and automatic session management
 -   Query caching
 -   Amphp client support
 -   Subscriptions over WebSockets
+-   Custom lexicons support
 
 ## Contributing
 
