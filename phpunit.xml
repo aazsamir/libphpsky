@@ -31,10 +31,4 @@
             <directory>src/Model</directory>
         </exclude>
     </source>
-
-    <coverage pathCoverage="false">
-          <report>
-            <html outputDirectory="tests-coverage" />
-          </report>
-    </coverage>
 </phpunit>
