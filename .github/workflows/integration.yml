@@ -1,0 +1,33 @@
+name: Integration Tests
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Run test suite
+        run: composer run-script integration-tests
+        env:
+            ATPROTO_LOGIN: ${{ secrets.ATPROTO_LOGIN }}
+            ATPROTO_PASSWORD: ${{ secrets.ATPROTO_PASSWORD }}

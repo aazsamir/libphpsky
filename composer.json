@@ -50,6 +50,7 @@
         ],
         "phpcsfixer": "php-cs-fixer fix --diff --dry-run --verbose --allow-risky=yes",
         "phpstan": "phpstan analyse",
-        "phpunit": "XDEBUG_MODE=coverage phpunit --coverage-text"
+        "phpunit": "XDEBUG_MODE=coverage phpunit --coverage-text",
+        "integration-tests": "phpunit --testsuite integration"
     }
 }
