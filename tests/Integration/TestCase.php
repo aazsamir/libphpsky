@@ -12,6 +12,7 @@ use PHPUnit\Framework\TestCase as FrameworkTestCase;
 abstract class TestCase extends FrameworkTestCase
 {
     protected ATProtoMetaClient $client;
+    protected ATProtoMetaClient $asyncClient;
     protected WssClient $wssClient;
 
     protected function setUp(): void
@@ -21,6 +22,9 @@ abstract class TestCase extends FrameworkTestCase
 
         $client = ATProtoClientBuilder::default()->useQueryCache(false)->build();
         $this->client = new ATProtoMetaClient($client);
+
+        $client = ATProtoClientBuilder::default()->useQueryCache(false)->useAsync(true)->build();
+        $this->asyncClient = new ATProtoMetaClient($client);
 
         $this->wssClient = WssClient::default();
     }
