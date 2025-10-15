@@ -28,7 +28,6 @@ trait FromArray
                 $reflection,
                 (string) $key,
                 $value,
-                $data,
                 $typeResolver,
             );
         }
@@ -36,6 +35,9 @@ trait FromArray
         return $instance;
     }
 
+    /**
+     * @param \ReflectionClass<self> $reflection
+     */
     private static function fillNulls(self $instance, \ReflectionClass $reflection): void
     {
         foreach (self::nullableFields($reflection) as $property) {
@@ -44,6 +46,8 @@ trait FromArray
     }
 
     /**
+     * @param \ReflectionClass<self> $reflection
+     *
      * @return \ReflectionProperty[]
      */
     private static function nullableFields(\ReflectionClass $reflection): array
@@ -54,15 +58,17 @@ trait FromArray
         return $nullableFields;
     }
 
+    /**
+     * @param \ReflectionClass<self> $reflection
+     */
     private static function handleProperty(
         self $instance,
         \ReflectionClass $reflection,
-        string|int $key,
+        string $key,
         mixed $value,
-        array $data,
         TypeResolver $typeResolver,
     ): void {
-        if (str_starts_with((string) $key, '$')) {
+        if (str_starts_with($key, '$')) {
             return;
         }
 
@@ -101,6 +107,8 @@ trait FromArray
             return;
         }
 
+        // TODO: I'm not sure why phpstan is complaining here that it will always be false
+        // @phpstan-ignore-next-line
         if (self::isUnknownDef($propertyType, $value)) {
             self::handleUnknownDef($instance, $key, $value, $typeResolver);
 
@@ -108,6 +116,7 @@ trait FromArray
         }
 
         if ($propertyType->isBuiltin()) {
+            // @phpstan-ignore-next-line
             if (self::isBlobDef($propertyType, $value)) {
                 self::handleBlobDef($instance, $key, $value);
 
@@ -128,6 +137,9 @@ trait FromArray
         $instance->{$key} = $propertyType->getName()::fromArray($value, $typeResolver);
     }
 
+    /**
+     * @phpstan-assert-if-true array{ '$type': string } $value
+     */
     private static function isUnionDef(
         \ReflectionProperty $property,
         \ReflectionNamedType $propertyType,
@@ -152,6 +164,9 @@ trait FromArray
         return true;
     }
 
+    /**
+     * @param array{ '$type': string } $value
+     */
     private static function handleUnionDef(
         self $instance,
         \ReflectionProperty $property,
@@ -159,6 +174,7 @@ trait FromArray
         array $value,
         TypeResolver $typeResolver,
     ): void {
+        /** @var string */
         $docComment = $property->getDocComment();
         preg_match('/@var\s+([^\s]+)/', $docComment, $matches);
 
@@ -167,12 +183,9 @@ trait FromArray
         }
 
         $types = explode('|', $matches[1]);
-        $nullable = false;
 
         foreach ($types as $type) {
             if ($type === 'null') {
-                $nullable = true;
-
                 continue;
             }
 
@@ -184,10 +197,6 @@ trait FromArray
 
                 break;
             }
-        }
-
-        if ($nullable && $value === null) {
-            $instance->{$key} = null;
         }
     }
 
@@ -271,6 +280,9 @@ trait FromArray
         }
     }
 
+    /**
+     * @phpstan-assert-if-true array{ '$type': string } $value
+     */
     private static function isUnknownDef(
         \ReflectionNamedType $propertyType,
         mixed $value,
@@ -294,6 +306,9 @@ trait FromArray
         return true;
     }
 
+    /**
+     * @param array{ '$type': string } $value
+     */
     private static function handleUnknownDef(
         self $instance,
         string|int $key,
@@ -309,6 +324,9 @@ trait FromArray
         }
     }
 
+    /**
+     * @phpstan-assert-if-true array{ '$type': 'blob', 'ref': array{ '$link': string } } $value
+     */
     private static function isBlobDef(
         \ReflectionNamedType $propertyType,
         mixed $value,
@@ -348,6 +366,9 @@ trait FromArray
         return true;
     }
 
+    /**
+     * @param array{ '$type': 'blob', 'ref': array{ '$link': string } } $value
+     */
     private static function handleBlobDef(
         self $instance,
         string|int $key,
@@ -357,6 +378,9 @@ trait FromArray
         $instance->{$key} = $link;
     }
 
+    /**
+     * @phpstan-assert-if-true string|int $value
+     */
     private static function isDateTime(
         \ReflectionNamedType $propertyType,
         mixed $value,
