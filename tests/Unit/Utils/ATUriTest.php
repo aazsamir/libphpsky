@@ -59,4 +59,23 @@ final class ATUriTest extends TestCase
         self::assertEmpty($uri->getCollection());
         self::assertEmpty($uri->getRecordKey());
     }
+
+    public function testEmpty(): void
+    {
+        $uri = ATUri::new('');
+        
+        self::assertEmpty($uri->getCollection());
+        self::assertEmpty($uri->getRecordKey());
+        self::assertEquals('at://', $uri->toString());
+    }
+
+    public function testEdgeCases(): void
+    {
+        $uri = ATUri::new('did', 'collection');
+        self::assertEquals('', $uri->getCollection());
+        self::assertEquals('collection/', $uri->getRecordKey());
+
+        $uri = ATUri::fromString('at://host/path.');
+        self::assertEquals('', $uri->getRecordKey());
+    }
 }
