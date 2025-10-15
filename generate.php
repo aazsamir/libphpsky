@@ -20,3 +20,4 @@ $generator = Generator::default();
 $generator->generate(
     $config,
 );
+echo "Generation completed!\n";

@@ -54,6 +54,7 @@
         "phpstan": "phpstan analyse",
         "phpunit": "XDEBUG_MODE=coverage phpunit --coverage-text",
         "rector": "rector --dry-run",
-        "integration-tests": "phpunit --testsuite integration"
+        "integration-tests": "phpunit --testsuite integration",
+        "generate": "php generate.php"
     }
 }
