@@ -9,12 +9,16 @@ use WebSocket\Client;
 
 class WebSocketClientFactoryStub implements WebSocketClientFactoryInterface
 {
+    public array $args;
+
     public function __construct(
         public Client $client,
     ) {}
 
     public function create(array $args): Client
     {
+        $this->args = $args;
+
         return $this->client;
     }
 }
