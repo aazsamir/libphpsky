@@ -1,8 +1,4 @@
 {
-    "files.exclude": {
-        "atproto/**": true,
-        "lexicons/**": true,
-    },
     "search.exclude": {
         "atproto/**": true,
         "lexicons/**": true,
