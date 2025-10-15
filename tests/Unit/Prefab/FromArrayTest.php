@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Prefab;
 
+use Aazsamir\Libphpsky\Model\App\Bsky\Feed\Post\Post;
 use Tests\Unit\Prefab\Fixtures\BlobProperty;
 use Tests\Unit\Prefab\Fixtures\DateTimeObject;
 use Tests\Unit\Prefab\Fixtures\NullableObjectArray;
@@ -14,6 +15,7 @@ use Tests\Unit\Prefab\Fixtures\ObjectProperty;
 use Tests\Unit\Prefab\Fixtures\PlainObject;
 use Tests\Unit\Prefab\Fixtures\UnionArrayObject;
 use Tests\Unit\Prefab\Fixtures\UnionObject;
+use Tests\Unit\Prefab\Fixtures\UnknownProperty;
 use Tests\Unit\TestCase;
 
 /**
@@ -178,6 +180,41 @@ final class FromArrayTest extends TestCase
         $instance = BlobProperty::fromArray($data);
 
         self::assertEquals('something', $instance->blob);
+    }
+
+    public function testUnknown(): void
+    {
+        $data = [
+            'unknown' => [
+                '$type' => 'app.bsky.feed.post',
+                'text' => 'Hello, world!',
+            ],
+        ];
+
+        $instance = UnknownProperty::fromArray($data);
+
+        self::assertInstanceOf(Post::class, $instance->unknown);
+        self::assertEquals('Hello, world!', $instance->unknown->text);
+    }
+
+    public function testUnknownNotExistingType(): void
+    {
+        $data = [
+            'unknown' => [
+                '$type' => 'not.existing.type',
+                'text' => 'Hello, world!',
+            ],
+        ];
+
+        $instance = UnknownProperty::fromArray($data);
+
+        self::assertSame(
+            [
+                '$type' => 'not.existing.type',
+                'text' => 'Hello, world!',
+            ],
+            $instance->unknown
+        );
     }
 
     private function createPlainObject(): PlainObject

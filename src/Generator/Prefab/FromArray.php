@@ -49,7 +49,7 @@ trait FromArray
     private static function nullableFields(\ReflectionClass $reflection): array
     {
         $nullableFields = $reflection->getProperties();
-        $nullableFields = array_filter($nullableFields, static fn(\ReflectionProperty $property): bool => (bool) $property->getType()?->allowsNull());
+        $nullableFields = array_filter($nullableFields, static fn (\ReflectionProperty $property): bool => (bool) $property->getType()?->allowsNull());
 
         return $nullableFields;
     }
@@ -189,8 +189,6 @@ trait FromArray
         if ($nullable && $value === null) {
             $instance->{$key} = null;
         }
-
-        return;
     }
 
     private static function isArrayDef(\ReflectionNamedType $propertyType): bool
@@ -261,7 +259,7 @@ trait FromArray
                 $instance->{$key} = $resolved;
             } else {
                 if (class_exists($type)) {
-                    $instance->{$key} = array_map(static fn($item) => $type::fromArray($item, $typeResolver), $value);
+                    $instance->{$key} = array_map(static fn ($item) => $type::fromArray($item, $typeResolver), $value);
 
                     return;
                 }
@@ -271,8 +269,6 @@ trait FromArray
         if (!isset($instance->{$key})) {
             $instance->{$key} = $value;
         }
-
-        return;
     }
 
     private static function isUnknownDef(
