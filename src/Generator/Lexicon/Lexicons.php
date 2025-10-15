@@ -10,7 +10,7 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\DefContainer;
 /**
  * @internal
  */
-final readonly class Lexicons
+readonly class Lexicons
 {
     /**
      * @param Lexicon[] $lexicons

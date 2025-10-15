@@ -9,6 +9,7 @@ use Aazsamir\Libphpsky\Jetstream\MessageAdapter;
 use Aazsamir\Libphpsky\Jetstream\Model\AccountEvent;
 use Aazsamir\Libphpsky\Jetstream\Model\CommitEvent;
 use Aazsamir\Libphpsky\Jetstream\Model\IdentityEvent;
+use Aazsamir\Libphpsky\Jetstream\Model\Kind;
 use Aazsamir\Libphpsky\Model\App\Bsky\Feed\Like\Like;
 use Tests\Unit\TestCase;
 use WebSocket\Message\Text;
@@ -117,8 +118,9 @@ final class MessageAdapterTest extends TestCase
         $event = $this->adapter->adapt($message);
 
         self::assertInstanceOf(IdentityEvent::class, $event);
-        self::assertSame('did:plc:ufbl4k27gp6kzas5glhz7fim', $event->did);
-        self::assertSame('2024-09-05T06:11:05+00:00', $event->timeUs->format(\DateTime::ATOM));
+        self::assertSame('did:plc:ufbl4k27gp6kzas5glhz7fim', $event->did());
+        self::assertSame('2024-09-05T06:11:05+00:00', $event->timeUs()->format(\DateTime::ATOM));
+        self::assertSame(Kind::IDENTITY, $event->kind());
         self::assertSame('did:plc:ufbl4k27gp6kzas5glhz7fim', $event->identity->did);
         self::assertSame('yohenrique.bsky.social', $event->identity->handle);
         self::assertSame(1409752997, $event->identity->seq);
@@ -142,8 +144,9 @@ final class MessageAdapterTest extends TestCase
         $event = $this->adapter->adapt($message);
 
         self::assertInstanceOf(AccountEvent::class, $event);
-        self::assertSame('did:plc:ufbl4k27gp6kzas5glhz7fim', $event->did);
-        self::assertSame('2024-09-05T06:11:05+00:00', $event->timeUs->format(\DateTime::ATOM));
+        self::assertSame('did:plc:ufbl4k27gp6kzas5glhz7fim', $event->did());
+        self::assertSame('2024-09-05T06:11:05+00:00', $event->timeUs()->format(\DateTime::ATOM));
+        self::assertSame(Kind::ACCOUNT, $event->kind());
         self::assertTrue($event->account->active);
         self::assertSame('did:plc:ufbl4k27gp6kzas5glhz7fim', $event->account->did);
         self::assertSame(1409753013, $event->account->seq);
@@ -177,8 +180,9 @@ final class MessageAdapterTest extends TestCase
         $event = $this->adapter->adapt($message);
 
         self::assertInstanceOf(CommitEvent::class, $event);
-        self::assertSame('did:plc:eygmaihciaxprqvxpfvl6flk', $event->did);
-        self::assertSame('2024-09-09T19:46:02+00:00', $event->timeUs->format(\DateTime::ATOM));
+        self::assertSame('did:plc:eygmaihciaxprqvxpfvl6flk', $event->did());
+        self::assertSame('2024-09-09T19:46:02+00:00', $event->timeUs()->format(\DateTime::ATOM));
+        self::assertSame(Kind::COMMIT, $event->kind());
         self::assertSame('3l3qo2vutsw2b', $event->commit->rev);
         self::assertSame('create', $event->commit->operation->value);
         self::assertSame('totally.unknown.collection', $event->commit->collection);

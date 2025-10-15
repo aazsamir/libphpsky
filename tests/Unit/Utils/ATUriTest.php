@@ -63,7 +63,7 @@ final class ATUriTest extends TestCase
     public function testEmpty(): void
     {
         $uri = ATUri::new('');
-        
+
         self::assertEmpty($uri->getCollection());
         self::assertEmpty($uri->getRecordKey());
         self::assertEquals('at://', $uri->toString());

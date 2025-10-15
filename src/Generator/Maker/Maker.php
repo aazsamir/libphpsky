@@ -14,7 +14,7 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Lexicons;
 /**
  * @internal
  */
-final class Maker
+class Maker implements MakerInterface
 {
     use Unref;
 

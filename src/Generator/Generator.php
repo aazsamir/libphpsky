@@ -7,8 +7,10 @@ namespace Aazsamir\Libphpsky\Generator;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicons;
 use Aazsamir\Libphpsky\Generator\Loader\FileLexiconProvider;
 use Aazsamir\Libphpsky\Generator\Loader\Loader;
+use Aazsamir\Libphpsky\Generator\Loader\LoaderInterface;
 use Aazsamir\Libphpsky\Generator\Maker\MakeConfig;
 use Aazsamir\Libphpsky\Generator\Maker\Maker;
+use Aazsamir\Libphpsky\Generator\Maker\MakerInterface;
 
 /**
  * @internal
@@ -16,15 +18,15 @@ use Aazsamir\Libphpsky\Generator\Maker\Maker;
 final readonly class Generator
 {
     public function __construct(
-        private Loader $loader,
-        private Maker $maker,
-        private RefResolver $refResolver,
+        private LoaderInterface $loader,
+        private MakerInterface $maker,
+        private RefResolverInterface $refResolver,
     ) {}
 
     public static function default(
-        ?Loader $loader = null,
-        ?Maker $maker = null,
-        ?RefResolver $refResolver = null,
+        ?LoaderInterface $loader = null,
+        ?MakerInterface $maker = null,
+        ?RefResolverInterface $refResolver = null,
     ): self {
         return new self(
             loader: $loader ?? new Loader(

@@ -14,7 +14,7 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Lexicons;
 /**
  * @internal
  */
-final class RefResolver
+class RefResolver implements RefResolverInterface
 {
     public function resolveRefs(Lexicons $lexicons): Lexicons
     {

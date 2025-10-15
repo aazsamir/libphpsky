@@ -11,8 +11,10 @@ use Tests\Unit\Jetstream\Stub\MessageFaker;
 use Tests\Unit\Jetstream\Stub\WebSocketClientFactoryStub;
 use Tests\Unit\Jetstream\Stub\WebSocketClientStub;
 use Tests\Unit\TestCase;
-use WebSocket\Message\Text;
 
+/**
+ * @internal
+ */
 class WssClientTest extends TestCase
 {
     private WebSocketClientStub $webSocketClientStub;
@@ -38,7 +40,7 @@ class WssClientTest extends TestCase
         $generator = $this->client->subscribe();
         $event = $generator->current();
 
-        $this->assertInstanceOf(CommitEvent::class, $event);
+        self::assertInstanceOf(CommitEvent::class, $event);
     }
 
     public function testItIgnoresPing(): void
@@ -50,7 +52,7 @@ class WssClientTest extends TestCase
         $generator = $this->client->subscribe();
         $event = $generator->current();
 
-        $this->assertInstanceOf(CommitEvent::class, $event);
+        self::assertInstanceOf(CommitEvent::class, $event);
     }
 
     public function testItStops(): void
@@ -60,7 +62,7 @@ class WssClientTest extends TestCase
         $this->client->stop();
         $generator->next();
 
-        $this->assertTrue($this->webSocketClientStub->closed);
+        self::assertTrue($this->webSocketClientStub->closed);
     }
 
     public function testArgsArePassedToFactory(): void
@@ -75,7 +77,7 @@ class WssClientTest extends TestCase
 
         $args = $this->webSocketClientFactory->args;
 
-        $this->assertSame(
+        self::assertSame(
             [
                 'wantedCollections' => ['foo', 'bar'],
                 'wantedDids' => ['baz'],

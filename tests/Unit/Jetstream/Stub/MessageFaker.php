@@ -32,6 +32,6 @@ class MessageFaker
 
     private static function text(array $data): Text
     {
-        return new Text(\json_encode($data));
+        return new Text(json_encode($data));
     }
 }

@@ -18,18 +18,10 @@ class WebSocketClientStub extends Client
         public array $messages = [],
     ) {}
 
-    public function __call($name, $arguments)
-    {
-        if ($name === 'receive') {
-            return $this->receive();
-        }
-
-        throw new \BadMethodCallException(sprintf("Method {$name} not implemented in %s", __CLASS__));
-    }
-
+    #[\Override]
     public function receive(): Message
     {
-        if ($this->last >= count($this->messages)) {
+        if ($this->last >= \count($this->messages)) {
             $this->last = 0;
         }
 
