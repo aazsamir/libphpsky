@@ -130,8 +130,7 @@ class MessageAdapter implements MessageAdapterInterface
                     || !\is_array($message['identity'])
                     || !isset($message['identity']['did'])
                     || !\is_string($message['identity']['did'])
-                    || !isset($message['identity']['handle'])
-                    || !\is_string($message['identity']['handle'])
+                    || (isset($message['identity']['handle']) && !\is_string($message['identity']['handle']))
                     || !isset($message['identity']['seq'])
                     || !\is_int($message['identity']['seq'])
                     || !isset($message['identity']['time'])
@@ -146,7 +145,7 @@ class MessageAdapter implements MessageAdapterInterface
                     kind: $kindEnum,
                     identity: new Identity(
                         did: $message['identity']['did'],
-                        handle: $message['identity']['handle'],
+                        handle: $message['identity']['handle'] ?? null,
                         seq: $message['identity']['seq'],
                         time: new \DateTimeImmutable($message['identity']['time']),
                     ),
