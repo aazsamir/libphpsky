@@ -17,10 +17,10 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $handle;
     public string $did;
+    public mixed $didDoc;
     public ?string $email;
     public ?bool $emailConfirmed;
     public ?bool $emailAuthFactor;
-    public mixed $didDoc;
     public ?bool $active;
 
     /** @var ?string If active=false, this optional field indicates a possible reason for why the account is not active. If active=false and no status is supplied, then the host makes no claim for why the repository is no longer being hosted. */
@@ -49,16 +49,19 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         string $handle,
         string $did,
+        mixed $didDoc = null,
         ?string $email = null,
         ?bool $emailConfirmed = null,
         ?bool $emailAuthFactor = null,
-        mixed $didDoc = null,
         ?bool $active = null,
         ?string $status = null,
     ): self {
         $instance = new self();
         $instance->handle = $handle;
         $instance->did = $did;
+        if ($didDoc !== null) {
+            $instance->didDoc = $didDoc;
+        }
         if ($email !== null) {
             $instance->email = $email;
         }
@@ -67,9 +70,6 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($emailAuthFactor !== null) {
             $instance->emailAuthFactor = $emailAuthFactor;
-        }
-        if ($didDoc !== null) {
-            $instance->didDoc = $didDoc;
         }
         if ($active !== null) {
             $instance->active = $active;

@@ -44,6 +44,7 @@ class QueryEvents implements \Aazsamir\Libphpsky\Action
      * @param ?array<string> $modTool  If specified, only events where the modTool name matches any of the given values are returned
      * @param ?string $batchId If specified, only events where the batchId matches the given value are returned
      * @param ?string $ageAssuranceState If specified, only events where the age assurance state matches the given value are returned
+     * @param ?bool $withStrike If specified, only events where strikeCount value is set are returned.
      */
     public function query(
         ?array $types = null,
@@ -67,6 +68,7 @@ class QueryEvents implements \Aazsamir\Libphpsky\Action
         ?array $modTool = null,
         ?string $batchId = null,
         ?string $ageAssuranceState = null,
+        ?bool $withStrike = null,
         ?string $cursor = null,
     ): Output {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryEvents\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
@@ -91,6 +93,7 @@ class QueryEvents implements \Aazsamir\Libphpsky\Action
      * @param ?array<string> $modTool  If specified, only events where the modTool name matches any of the given values are returned
      * @param ?string $batchId If specified, only events where the batchId matches the given value are returned
      * @param ?string $ageAssuranceState If specified, only events where the age assurance state matches the given value are returned
+     * @param ?bool $withStrike If specified, only events where strikeCount value is set are returned.
      * @return array<string, mixed>
      */
     public function rawQuery(
@@ -115,6 +118,7 @@ class QueryEvents implements \Aazsamir\Libphpsky\Action
         ?array $modTool = null,
         ?string $batchId = null,
         ?string $ageAssuranceState = null,
+        ?bool $withStrike = null,
         ?string $cursor = null,
     ): array {
         // @phpstan-ignore-next-line

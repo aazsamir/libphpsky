@@ -62,6 +62,9 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RecordsStats Statistics related to the record subjects authored by the subject's account */
     public ?RecordsStats $recordsStats;
 
+    /** @var ?\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\AccountStrike Strike information for the account (account-level only) */
+    public ?AccountStrike $accountStrike;
+
     /** @var ?string Current age assurance state of the subject. */
     public ?string $ageAssuranceState;
 
@@ -115,6 +118,7 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
         ?array $tags = [],
         ?AccountStats $accountStats = null,
         ?RecordsStats $recordsStats = null,
+        ?AccountStrike $accountStrike = null,
         ?string $ageAssuranceState = null,
         ?string $ageAssuranceUpdatedBy = null,
     ): self {
@@ -176,6 +180,9 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($recordsStats !== null) {
             $instance->recordsStats = $recordsStats;
+        }
+        if ($accountStrike !== null) {
+            $instance->accountStrike = $accountStrike;
         }
         if ($ageAssuranceState !== null) {
             $instance->ageAssuranceState = $ageAssuranceState;

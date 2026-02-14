@@ -37,6 +37,7 @@ class ProfileViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
     public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $pinnedPost;
     public ?VerificationState $verification;
     public ?StatusView $status;
+    public mixed $debug;
 
     public static function id(): string
     {
@@ -82,6 +83,7 @@ class ProfileViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $pinnedPost = null,
         ?VerificationState $verification = null,
         ?StatusView $status = null,
+        mixed $debug = null,
     ): self {
         $instance = new self();
         $instance->did = $did;
@@ -139,6 +141,9 @@ class ProfileViewDetailed implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($status !== null) {
             $instance->status = $status;
+        }
+        if ($debug !== null) {
+            $instance->debug = $debug;
         }
 
         return $instance;

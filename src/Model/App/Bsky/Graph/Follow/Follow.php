@@ -17,6 +17,7 @@ class Follow implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $subject;
     public \DateTimeInterface $createdAt;
+    public ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $via;
 
     public static function id(): string
     {
@@ -38,11 +39,17 @@ class Follow implements \Aazsamir\Libphpsky\ATProtoObject
         return ['subject', 'createdAt'];
     }
 
-    public static function new(string $subject, \DateTimeInterface $createdAt): self
-    {
+    public static function new(
+        string $subject,
+        \DateTimeInterface $createdAt,
+        ?\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef $via = null,
+    ): self {
         $instance = new self();
         $instance->subject = $subject;
         $instance->createdAt = $createdAt;
+        if ($via !== null) {
+            $instance->via = $via;
+        }
 
         return $instance;
     }

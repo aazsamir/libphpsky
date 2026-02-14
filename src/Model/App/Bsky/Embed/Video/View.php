@@ -21,6 +21,9 @@ class View implements \Aazsamir\Libphpsky\ATProtoObject
     public ?string $alt;
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Defs\AspectRatio $aspectRatio;
 
+    /** @var ?string A hint to the client about how to present the video. */
+    public ?string $presentation;
+
     public static function id(): string
     {
         return self::ID;
@@ -47,6 +50,7 @@ class View implements \Aazsamir\Libphpsky\ATProtoObject
         ?string $thumbnail = null,
         ?string $alt = null,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Defs\AspectRatio $aspectRatio = null,
+        ?string $presentation = null,
     ): self {
         $instance = new self();
         $instance->cid = $cid;
@@ -59,6 +63,9 @@ class View implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($aspectRatio !== null) {
             $instance->aspectRatio = $aspectRatio;
+        }
+        if ($presentation !== null) {
+            $instance->presentation = $presentation;
         }
 
         return $instance;

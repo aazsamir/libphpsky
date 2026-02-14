@@ -33,6 +33,7 @@ class PostView implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> */
     public ?array $labels = [];
     public ?ThreadgateView $threadgate;
+    public mixed $debug;
 
     public static function id(): string
     {
@@ -72,6 +73,7 @@ class PostView implements \Aazsamir\Libphpsky\ATProtoObject
         ?ViewerState $viewer = null,
         ?array $labels = [],
         ?ThreadgateView $threadgate = null,
+        mixed $debug = null,
     ): self {
         $instance = new self();
         $instance->uri = $uri;
@@ -107,6 +109,9 @@ class PostView implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($threadgate !== null) {
             $instance->threadgate = $threadgate;
+        }
+        if ($debug !== null) {
+            $instance->debug = $debug;
         }
 
         return $instance;

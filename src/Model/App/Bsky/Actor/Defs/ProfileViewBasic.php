@@ -28,6 +28,7 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
     public ?\DateTimeInterface $createdAt;
     public ?VerificationState $verification;
     public ?StatusView $status;
+    public mixed $debug;
 
     public static function id(): string
     {
@@ -64,6 +65,7 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
         ?\DateTimeInterface $createdAt = null,
         ?VerificationState $verification = null,
         ?StatusView $status = null,
+        mixed $debug = null,
     ): self {
         $instance = new self();
         $instance->did = $did;
@@ -94,6 +96,9 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($status !== null) {
             $instance->status = $status;
+        }
+        if ($debug !== null) {
+            $instance->debug = $debug;
         }
 
         return $instance;

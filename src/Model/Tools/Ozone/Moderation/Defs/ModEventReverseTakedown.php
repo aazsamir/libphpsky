@@ -19,6 +19,15 @@ class ModEventReverseTakedown implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?string Describe reasoning behind the reversal. */
     public ?string $comment;
 
+    /** @var ?array<string> Names/Keywords of the policy infraction for which takedown is being reversed. */
+    public ?array $policies = [];
+
+    /** @var ?string Severity level of the violation. Usually set from the last policy infraction's severity. */
+    public ?string $severityLevel;
+
+    /** @var ?int Number of strikes to subtract from the user's strike count. Usually set from the last policy infraction's severity. */
+    public ?int $strikeCount;
+
     public static function id(): string
     {
         return self::ID;
@@ -39,11 +48,27 @@ class ModEventReverseTakedown implements \Aazsamir\Libphpsky\ATProtoObject
         return [];
     }
 
-    public static function new(?string $comment = null): self
-    {
+    /**
+     * @param array<string> $policies
+     */
+    public static function new(
+        ?string $comment = null,
+        ?array $policies = [],
+        ?string $severityLevel = null,
+        ?int $strikeCount = null,
+    ): self {
         $instance = new self();
         if ($comment !== null) {
             $instance->comment = $comment;
+        }
+        if ($policies !== null) {
+            $instance->policies = $policies;
+        }
+        if ($severityLevel !== null) {
+            $instance->severityLevel = $severityLevel;
+        }
+        if ($strikeCount !== null) {
+            $instance->strikeCount = $strikeCount;
         }
 
         return $instance;

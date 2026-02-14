@@ -27,19 +27,17 @@ class GetPostThreadOtherV2 implements \Aazsamir\Libphpsky\Action
 
     /**
      * @param string $anchor Reference (AT-URI) to post record. This is the anchor post.
-     * @param ?bool $prioritizeFollowedUsers Whether to prioritize posts from followed users. It only has effect when the user is authenticated.
      */
-    public function query(string $anchor, ?bool $prioritizeFollowedUsers = null): Output
+    public function query(string $anchor): Output
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadOtherV2\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**
      * @param string $anchor Reference (AT-URI) to post record. This is the anchor post.
-     * @param ?bool $prioritizeFollowedUsers Whether to prioritize posts from followed users. It only has effect when the user is authenticated.
      * @return array<string, mixed>
      */
-    public function rawQuery(string $anchor, ?bool $prioritizeFollowedUsers = null): array
+    public function rawQuery(string $anchor): array
     {
         // @phpstan-ignore-next-line
         return $this->request($this->argsWithKeys(func_get_args()));

@@ -214,6 +214,11 @@
           "type": "ref",
           "ref": "#recordsStats"
         },
+        "accountStrike": {
+          "description": "Strike information for the account (account-level only)",
+          "type": "ref",
+          "ref": "#accountStrike"
+        },
         "ageAssuranceState": {
           "type": "string",
           "description": "Current age assurance state of the subject.",
@@ -320,13 +325,37 @@
         }
       }
     },
+    "accountStrike": {
+      "description": "Strike information for an account",
+      "type": "object",
+      "properties": {
+        "activeStrikeCount": {
+          "description": "Current number of active strikes (excluding expired strikes)",
+          "type": "integer"
+        },
+        "totalStrikeCount": {
+          "description": "Total number of strikes ever received (including expired strikes)",
+          "type": "integer"
+        },
+        "firstStrikeAt": {
+          "description": "Timestamp of the first strike received",
+          "type": "string",
+          "format": "datetime"
+        },
+        "lastStrikeAt": {
+          "description": "Timestamp of the most recent strike received",
+          "type": "string",
+          "format": "datetime"
+        }
+      }
+    },
     "subjectReviewState": {
       "type": "string",
       "knownValues": [
-        "#reviewOpen",
-        "#reviewEscalated",
-        "#reviewClosed",
-        "#reviewNone"
+        "tools.ozone.moderation.defs#reviewOpen",
+        "tools.ozone.moderation.defs#reviewEscalated",
+        "tools.ozone.moderation.defs#reviewClosed",
+        "tools.ozone.moderation.defs#reviewNone"
       ]
     },
     "reviewOpen": {
@@ -365,6 +394,24 @@
           "maxLength": 5,
           "items": { "type": "string" },
           "description": "Names/Keywords of the policies that drove the decision."
+        },
+        "severityLevel": {
+          "type": "string",
+          "description": "Severity level of the violation (e.g., 'sev-0', 'sev-1', 'sev-2', etc.)."
+        },
+        "targetServices": {
+          "type": "array",
+          "items": { "type": "string", "knownValues": ["appview", "pds"] },
+          "description": "List of services where the takedown should be applied. If empty or not provided, takedown is applied on all configured services."
+        },
+        "strikeCount": {
+          "type": "integer",
+          "description": "Number of strikes to assign to the user for this violation."
+        },
+        "strikeExpiresAt": {
+          "type": "string",
+          "format": "datetime",
+          "description": "When the strike should expire. If not provided, the strike never expires."
         }
       }
     },
@@ -375,6 +422,20 @@
         "comment": {
           "type": "string",
           "description": "Describe reasoning behind the reversal."
+        },
+        "policies": {
+          "type": "array",
+          "maxLength": 5,
+          "items": { "type": "string" },
+          "description": "Names/Keywords of the policy infraction for which takedown is being reversed."
+        },
+        "severityLevel": {
+          "type": "string",
+          "description": "Severity level of the violation. Usually set from the last policy infraction's severity."
+        },
+        "strikeCount": {
+          "type": "integer",
+          "description": "Number of strikes to subtract from the user's strike count. Usually set from the last policy infraction's severity."
         }
       }
     },
@@ -466,14 +527,26 @@
           "format": "datetime",
           "description": "The date and time of this write operation."
         },
-        "status": {
-          "type": "string",
-          "description": "The status of the age assurance process.",
-          "knownValues": ["unknown", "pending", "assured"]
-        },
         "attemptId": {
           "type": "string",
           "description": "The unique identifier for this instance of the age assurance flow, in UUID format."
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of the Age Assurance process.",
+          "knownValues": ["unknown", "pending", "assured"]
+        },
+        "access": {
+          "type": "ref",
+          "ref": "app.bsky.ageassurance.defs#access"
+        },
+        "countryCode": {
+          "type": "string",
+          "description": "The ISO 3166-1 alpha-2 country code provided when beginning the Age Assurance flow."
+        },
+        "regionCode": {
+          "type": "string",
+          "description": "The ISO 3166-2 region code provided when beginning the Age Assurance flow."
         },
         "initIp": {
           "type": "string",
@@ -503,8 +576,13 @@
           "description": "The status to be set for the user decided by a moderator, overriding whatever value the user had previously. Use reset to default to original state.",
           "knownValues": ["assured", "reset", "blocked"]
         },
+        "access": {
+          "type": "ref",
+          "ref": "app.bsky.ageassurance.defs#access"
+        },
         "comment": {
           "type": "string",
+          "minLength": 1,
           "description": "Comment describing the reason for the override."
         }
       }
@@ -515,6 +593,7 @@
       "required": ["comment"],
       "properties": {
         "comment": {
+          "minLength": 1,
           "type": "string",
           "description": "Comment describing the reason for the revocation."
         }
@@ -595,6 +674,29 @@
         "comment": {
           "type": "string",
           "description": "Additional comment about the outgoing comm."
+        },
+        "policies": {
+          "type": "array",
+          "maxLength": 5,
+          "items": { "type": "string" },
+          "description": "Names/Keywords of the policies that necessitated the email."
+        },
+        "severityLevel": {
+          "type": "string",
+          "description": "Severity level of the violation. Normally 'sev-1' that adds strike on repeat offense"
+        },
+        "strikeCount": {
+          "type": "integer",
+          "description": "Number of strikes to assign to the user for this violation. Normally 0 as an indicator of a warning and only added as a strike on a repeat offense."
+        },
+        "strikeExpiresAt": {
+          "type": "string",
+          "format": "datetime",
+          "description": "When the strike should expire. If not provided, the strike never expires."
+        },
+        "isDelivered": {
+          "type": "boolean",
+          "description": "Indicates whether the email was successfully delivered to the user's inbox."
         }
       }
     },

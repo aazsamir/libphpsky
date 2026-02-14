@@ -21,6 +21,7 @@ class ProfileAssociated implements \Aazsamir\Libphpsky\ATProtoObject
     public ?bool $labeler;
     public ?ProfileAssociatedChat $chat;
     public ?ProfileAssociatedActivitySubscription $activitySubscription;
+    public ?ProfileAssociatedGerm $germ;
 
     public static function id(): string
     {
@@ -49,6 +50,7 @@ class ProfileAssociated implements \Aazsamir\Libphpsky\ATProtoObject
         ?bool $labeler = null,
         ?ProfileAssociatedChat $chat = null,
         ?ProfileAssociatedActivitySubscription $activitySubscription = null,
+        ?ProfileAssociatedGerm $germ = null,
     ): self {
         $instance = new self();
         if ($lists !== null) {
@@ -68,6 +70,9 @@ class ProfileAssociated implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($activitySubscription !== null) {
             $instance->activitySubscription = $activitySubscription;
+        }
+        if ($germ !== null) {
+            $instance->germ = $germ;
         }
 
         return $instance;

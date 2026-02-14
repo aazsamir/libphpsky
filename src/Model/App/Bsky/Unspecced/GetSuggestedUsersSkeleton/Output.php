@@ -18,6 +18,9 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var array<string> */
     public array $dids = [];
 
+    /** @var ?string Snowflake for this recommendation, use when submitting recommendation events. */
+    public ?string $recId;
+
     public static function id(): string
     {
         return self::ID;
@@ -41,10 +44,13 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     /**
      * @param array<string> $dids
      */
-    public static function new(array $dids): self
+    public static function new(array $dids, ?string $recId = null): self
     {
         $instance = new self();
         $instance->dids = $dids;
+        if ($recId !== null) {
+            $instance->recId = $recId;
+        }
 
         return $instance;
     }

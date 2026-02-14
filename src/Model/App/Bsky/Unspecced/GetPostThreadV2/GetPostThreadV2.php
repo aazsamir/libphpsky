@@ -30,7 +30,6 @@ class GetPostThreadV2 implements \Aazsamir\Libphpsky\Action
      * @param ?bool $above Whether to include parents above the anchor.
      * @param ?int $below How many levels of replies to include below the anchor.
      * @param ?int $branchingFactor Maximum of replies to include at each level of the thread, except for the direct replies to the anchor, which are (NOTE: currently, during unspecced phase) all returned (NOTE: later they might be paginated).
-     * @param ?bool $prioritizeFollowedUsers Whether to prioritize posts from followed users. It only has effect when the user is authenticated.
      * @param ?string $sort Sorting for the thread replies.
      */
     public function query(
@@ -38,7 +37,6 @@ class GetPostThreadV2 implements \Aazsamir\Libphpsky\Action
         ?bool $above = null,
         ?int $below = null,
         ?int $branchingFactor = null,
-        ?bool $prioritizeFollowedUsers = null,
         ?string $sort = null,
     ): Output {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadV2\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
@@ -49,7 +47,6 @@ class GetPostThreadV2 implements \Aazsamir\Libphpsky\Action
      * @param ?bool $above Whether to include parents above the anchor.
      * @param ?int $below How many levels of replies to include below the anchor.
      * @param ?int $branchingFactor Maximum of replies to include at each level of the thread, except for the direct replies to the anchor, which are (NOTE: currently, during unspecced phase) all returned (NOTE: later they might be paginated).
-     * @param ?bool $prioritizeFollowedUsers Whether to prioritize posts from followed users. It only has effect when the user is authenticated.
      * @param ?string $sort Sorting for the thread replies.
      * @return array<string, mixed>
      */
@@ -58,7 +55,6 @@ class GetPostThreadV2 implements \Aazsamir\Libphpsky\Action
         ?bool $above = null,
         ?int $below = null,
         ?int $branchingFactor = null,
-        ?bool $prioritizeFollowedUsers = null,
         ?string $sort = null,
     ): array {
         // @phpstan-ignore-next-line

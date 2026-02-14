@@ -30,6 +30,7 @@ class ProfileView implements \Aazsamir\Libphpsky\ATProtoObject
     public ?array $labels = [];
     public ?VerificationState $verification;
     public ?StatusView $status;
+    public mixed $debug;
 
     public static function id(): string
     {
@@ -68,6 +69,7 @@ class ProfileView implements \Aazsamir\Libphpsky\ATProtoObject
         ?array $labels = [],
         ?VerificationState $verification = null,
         ?StatusView $status = null,
+        mixed $debug = null,
     ): self {
         $instance = new self();
         $instance->did = $did;
@@ -104,6 +106,9 @@ class ProfileView implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($status !== null) {
             $instance->status = $status;
+        }
+        if ($debug !== null) {
+            $instance->debug = $debug;
         }
 
         return $instance;

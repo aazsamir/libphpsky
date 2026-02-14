@@ -19,11 +19,18 @@ class AgeAssuranceEvent implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var \DateTimeInterface The date and time of this write operation. */
     public \DateTimeInterface $createdAt;
 
-    /** @var string The status of the age assurance process. */
-    public string $status;
-
     /** @var string The unique identifier for this instance of the age assurance flow, in UUID format. */
     public string $attemptId;
+
+    /** @var string The status of the Age Assurance process. */
+    public string $status;
+    public ?string $access;
+
+    /** @var ?string The ISO 3166-1 alpha-2 country code provided when beginning the Age Assurance flow. */
+    public ?string $countryCode;
+
+    /** @var ?string The ISO 3166-2 region code provided when beginning the Age Assurance flow. */
+    public ?string $regionCode;
 
     /** @var ?string The IP address used when initiating the AA flow. */
     public ?string $initIp;
@@ -59,8 +66,11 @@ class AgeAssuranceEvent implements \Aazsamir\Libphpsky\ATProtoObject
 
     public static function new(
         \DateTimeInterface $createdAt,
-        string $status,
         string $attemptId,
+        string $status,
+        ?string $access = null,
+        ?string $countryCode = null,
+        ?string $regionCode = null,
         ?string $initIp = null,
         ?string $initUa = null,
         ?string $completeIp = null,
@@ -68,8 +78,17 @@ class AgeAssuranceEvent implements \Aazsamir\Libphpsky\ATProtoObject
     ): self {
         $instance = new self();
         $instance->createdAt = $createdAt;
-        $instance->status = $status;
         $instance->attemptId = $attemptId;
+        $instance->status = $status;
+        if ($access !== null) {
+            $instance->access = $access;
+        }
+        if ($countryCode !== null) {
+            $instance->countryCode = $countryCode;
+        }
+        if ($regionCode !== null) {
+            $instance->regionCode = $regionCode;
+        }
         if ($initIp !== null) {
             $instance->initIp = $initIp;
         }

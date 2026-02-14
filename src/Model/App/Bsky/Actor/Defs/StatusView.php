@@ -15,6 +15,9 @@ class StatusView implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'statusView';
     public const ID = 'app.bsky.actor.defs';
 
+    public ?string $uri;
+    public ?string $cid;
+
     /** @var string The status for the account. */
     public string $status;
     public mixed $record;
@@ -27,6 +30,9 @@ class StatusView implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var ?bool True if the status is not expired, false if it is expired. Only present if expiration was set. */
     public ?bool $isActive;
+
+    /** @var ?bool True if the user's go-live access has been disabled by a moderator, false otherwise. */
+    public ?bool $isDisabled;
 
     public static function id(): string
     {
@@ -51,13 +57,22 @@ class StatusView implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         string $status,
         mixed $record,
+        ?string $uri = null,
+        ?string $cid = null,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\View $embed = null,
         ?\DateTimeInterface $expiresAt = null,
         ?bool $isActive = null,
+        ?bool $isDisabled = null,
     ): self {
         $instance = new self();
         $instance->status = $status;
         $instance->record = $record;
+        if ($uri !== null) {
+            $instance->uri = $uri;
+        }
+        if ($cid !== null) {
+            $instance->cid = $cid;
+        }
         if ($embed !== null) {
             $instance->embed = $embed;
         }
@@ -66,6 +81,9 @@ class StatusView implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($isActive !== null) {
             $instance->isActive = $isActive;
+        }
+        if ($isDisabled !== null) {
+            $instance->isDisabled = $isDisabled;
         }
 
         return $instance;

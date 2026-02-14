@@ -18,6 +18,7 @@ class AgeAssuranceOverrideEvent implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var string The status to be set for the user decided by a moderator, overriding whatever value the user had previously. Use reset to default to original state. */
     public string $status;
+    public ?string $access;
 
     /** @var string Comment describing the reason for the override. */
     public string $comment;
@@ -42,11 +43,14 @@ class AgeAssuranceOverrideEvent implements \Aazsamir\Libphpsky\ATProtoObject
         return ['comment', 'status'];
     }
 
-    public static function new(string $status, string $comment): self
+    public static function new(string $status, string $comment, ?string $access = null): self
     {
         $instance = new self();
         $instance->status = $status;
         $instance->comment = $comment;
+        if ($access !== null) {
+            $instance->access = $access;
+        }
 
         return $instance;
     }

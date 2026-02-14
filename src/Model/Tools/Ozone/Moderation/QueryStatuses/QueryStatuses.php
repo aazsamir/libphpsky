@@ -56,6 +56,7 @@ class QueryStatuses implements \Aazsamir\Libphpsky\Action
      * @param ?int $minReportedRecordsCount If specified, only subjects that belong to an account that has at least this many reported records will be returned.
      * @param ?int $minTakendownRecordsCount If specified, only subjects that belong to an account that has at least this many taken down records will be returned.
      * @param ?int $minPriorityScore If specified, only subjects that have priority score value above the given value will be returned.
+     * @param ?int $minStrikeCount If specified, only subjects that belong to an account that has at least this many active strikes will be returned.
      * @param ?string $ageAssuranceState If specified, only subjects with the given age assurance state will be returned.
      */
     public function query(
@@ -93,6 +94,7 @@ class QueryStatuses implements \Aazsamir\Libphpsky\Action
         ?int $minReportedRecordsCount = null,
         ?int $minTakendownRecordsCount = null,
         ?int $minPriorityScore = null,
+        ?int $minStrikeCount = null,
         ?string $ageAssuranceState = null,
     ): Output {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryStatuses\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
@@ -129,6 +131,7 @@ class QueryStatuses implements \Aazsamir\Libphpsky\Action
      * @param ?int $minReportedRecordsCount If specified, only subjects that belong to an account that has at least this many reported records will be returned.
      * @param ?int $minTakendownRecordsCount If specified, only subjects that belong to an account that has at least this many taken down records will be returned.
      * @param ?int $minPriorityScore If specified, only subjects that have priority score value above the given value will be returned.
+     * @param ?int $minStrikeCount If specified, only subjects that belong to an account that has at least this many active strikes will be returned.
      * @param ?string $ageAssuranceState If specified, only subjects with the given age assurance state will be returned.
      * @return array<string, mixed>
      */
@@ -167,6 +170,7 @@ class QueryStatuses implements \Aazsamir\Libphpsky\Action
         ?int $minReportedRecordsCount = null,
         ?int $minTakendownRecordsCount = null,
         ?int $minPriorityScore = null,
+        ?int $minStrikeCount = null,
         ?string $ageAssuranceState = null,
     ): array {
         // @phpstan-ignore-next-line

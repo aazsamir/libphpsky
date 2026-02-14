@@ -16,6 +16,8 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\IOData;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\Message;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\ObjectDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\ParamsDef;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\PermissionDef;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\PermissionSetDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\ProcedureDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\QueryDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\RecordDef;
@@ -118,6 +120,8 @@ final readonly class Loader implements LoaderInterface
             LexiconType::QUERY => $this->makeQueryDef($name, $def, $lexicon),
             LexiconType::PROCEDURE => $this->makeProcedureDef($name, $def, $lexicon),
             LexiconType::SUBSCRIPTION => $this->makeSubscriptionDef($name, $def, $lexicon),
+            LexiconType::PERMISSION_SET => $this->makePermissionSetDef($name, $def, $lexicon),
+            LexiconType::PERMISSION => throw new \Exception('Permission type is not allowed at the top level?'),
             LexiconType::UNKNOWN => new UnknownDef($name, $lexicon),
             LexiconType::NULL => throw new \Exception('Null type is not allowed?'),
         };
@@ -777,6 +781,99 @@ final readonly class Loader implements LoaderInterface
         return new Message(
             schema: $this->makeUnionDef('noname', $schema, $lexicon),
             description: $description ?? null,
+        );
+    }
+
+    /**
+     * @param array<mixed> $def
+     */
+    private function makePermissionSetDef(string $name, array $def, Lexicon $lexicon): PermissionSetDef
+    {
+        $title = $def['title'] ?? null;
+        $detail = $def['detail'] ?? null;
+        $description = $def['description'] ?? null;
+        /** @var array<mixed>|null */
+        $permissions = $def['permissions'] ?? [];
+
+        if (!\is_string($title)) {
+            throw new \Exception('Title must be a string');
+        }
+
+        if (!\is_string($detail)) {
+            throw new \Exception('Detail must be a string');
+        }
+
+        if (
+            $description !== null
+            && !\is_string($description)
+        ) {
+            throw new \Exception('Description must be a string or null');
+        }
+
+        if (!\is_array($permissions)) {
+            throw new \Exception('Permissions must be an array');
+        }
+
+        $permissionsDefs = [];
+
+        foreach ($permissions as $permission) {
+            if (!\is_array($permission)) {
+                throw new \Exception('Each permission must be an array');
+            }
+
+            $this->assertArrayMap($permission);
+
+            $permissionsDefs[] = $this->makePermissionDef($permission, $lexicon);
+        }
+
+        return new PermissionSetDef(
+            name: $name,
+            lexicon: $lexicon,
+            title: $title,
+            detail: $detail,
+            permissions: $permissionsDefs,
+            description: $description,
+        );
+    }
+
+    /**
+     * @param array<mixed> $def
+     */
+    private function makePermissionDef(array $def, Lexicon $lexicon): PermissionDef
+    {
+        $resource = $def['resource'] ?? null;
+        $inheritAud = $def['inheritAud'] ?? null;
+        $lxm = $def['lxm'] ?? null;
+        $action = $def['action'] ?? null;
+        $collection = $def['collection'] ?? null;
+
+        if (!\is_string($resource)) {
+            throw new \Exception('Resource must be a string');
+        }
+
+        if ($inheritAud !== null && !\is_bool($inheritAud)) {
+            throw new \Exception('inheritAud must be a boolean');
+        }
+
+        if ($lxm !== null) {
+            $this->assertStrings($lxm);
+        }
+
+        if ($action !== null) {
+            $this->assertStrings($action);
+        }
+
+        if ($collection !== null) {
+            $this->assertStrings($collection);
+        }
+
+        return new PermissionDef(
+            lexicon: $lexicon,
+            resource: $resource,
+            inheritAud: $inheritAud,
+            lxm: $lxm,
+            action: $action,
+            collection: $collection,
         );
     }
 

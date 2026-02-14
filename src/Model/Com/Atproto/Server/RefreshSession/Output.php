@@ -20,6 +20,9 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public string $handle;
     public string $did;
     public mixed $didDoc;
+    public ?string $email;
+    public ?bool $emailConfirmed;
+    public ?bool $emailAuthFactor;
     public ?bool $active;
 
     /** @var ?string Hosting status of the account. If not specified, then assume 'active'. */
@@ -51,6 +54,9 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         string $handle,
         string $did,
         mixed $didDoc = null,
+        ?string $email = null,
+        ?bool $emailConfirmed = null,
+        ?bool $emailAuthFactor = null,
         ?bool $active = null,
         ?string $status = null,
     ): self {
@@ -61,6 +67,15 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->did = $did;
         if ($didDoc !== null) {
             $instance->didDoc = $didDoc;
+        }
+        if ($email !== null) {
+            $instance->email = $email;
+        }
+        if ($emailConfirmed !== null) {
+            $instance->emailConfirmed = $emailConfirmed;
+        }
+        if ($emailAuthFactor !== null) {
+            $instance->emailAuthFactor = $emailAuthFactor;
         }
         if ($active !== null) {
             $instance->active = $active;

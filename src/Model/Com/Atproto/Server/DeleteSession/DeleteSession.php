@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Com\Atproto\Server\DeleteSession;
 
 /**
- * Delete the current session. Requires auth.
+ * Delete the current session. Requires auth using the 'refreshJwt' (not the 'accessJwt').
  * procedure
  */
 class DeleteSession implements \Aazsamir\Libphpsky\Action

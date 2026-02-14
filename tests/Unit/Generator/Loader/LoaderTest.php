@@ -13,6 +13,7 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\Def;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\IntegerDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\ObjectDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\ParamsDef;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\PermissionSetDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\ProcedureDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\QueryDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\RecordDef;
@@ -466,6 +467,48 @@ final class LoaderTest extends TestCase
         self::assertEquals('main', $def->name());
         self::assertSame($this->getFirstLexicon($lexicons), $def->lexicon());
         self::assertEquals('description', $def->description());
+    }
+
+    public function testMakePermissionSetDef(): void
+    {
+        $loader = $this->memoryloader([
+            'type' => 'permission-set',
+            'title' => 'Some title',
+            'detail' => 'Some detail',
+            'permissions' => [
+                [
+                    'type' => 'permission',
+                    'resource' => 'rpc',
+                    'inheritAud' => true,
+                    'lxm' => [
+                        'app.bsky.video.uploadVideo',
+                    ],
+                    'action' => ['create'],
+                    'collection' => [
+                        'app.bsky.feed.post',
+                    ],
+                ],
+            ],
+        ]);
+
+        $lexicons = $loader->load($this->createMakeConfig());
+        /** @var PermissionSetDef */
+        $def = $this->getFirstDef($lexicons);
+
+        self::assertInstanceOf(PermissionSetDef::class, $def);
+        self::assertEquals(LexiconType::PERMISSION_SET, $def->type());
+        self::assertEquals('main', $def->name());
+        self::assertSame($this->getFirstLexicon($lexicons), $def->lexicon());
+        self::assertEquals('Some title', $def->title());
+        self::assertEquals('Some detail', $def->detail());
+        self::assertCount(1, $def->permissions());
+        $permission = $def->permissions()[0];
+        self::assertEquals('rpc', $permission->resource());
+        self::assertTrue($permission->inheritAud());
+        self::assertEquals(['app.bsky.video.uploadVideo'], $permission->lxm());
+        self::assertEquals(['create'], $permission->action());
+        self::assertEquals(['app.bsky.feed.post'], $permission->collection());
+        self::assertNull($def->description());
     }
 
     public function testMakeUnknownDef(): void

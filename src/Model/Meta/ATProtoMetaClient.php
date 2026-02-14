@@ -522,6 +522,14 @@ class ATProtoMetaClient
     }
 
     /**
+     * Resolves an atproto lexicon (NSID) to a schema.
+     */
+    public function comAtprotoLexiconResolveLexicon(
+    ): \Aazsamir\Libphpsky\Model\Com\Atproto\Lexicon\ResolveLexicon\ResolveLexicon {
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Lexicon\ResolveLexicon\ResolveLexicon($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
      * Import a repo in the form of a CAR file. Requires Content-Length HTTP header to be set.
      */
     public function comAtprotoRepoImportRepo(): \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ImportRepo\ImportRepo
@@ -626,7 +634,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * Delete the current session. Requires auth.
+     * Delete the current session. Requires auth using the 'refreshJwt' (not the 'accessJwt').
      */
     public function comAtprotoServerDeleteSession(
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Server\DeleteSession\DeleteSession {
@@ -834,6 +842,62 @@ class ATProtoMetaClient
     }
 
     /**
+     * Gets views of user drafts. Requires authentication.
+     */
+    public function appBskyDraftGetDrafts(): \Aazsamir\Libphpsky\Model\App\Bsky\Draft\GetDrafts\GetDrafts
+    {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Draft\GetDrafts\GetDrafts($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Deletes a draft by ID. Requires authentication.
+     */
+    public function appBskyDraftDeleteDraft(): \Aazsamir\Libphpsky\Model\App\Bsky\Draft\DeleteDraft\DeleteDraft
+    {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Draft\DeleteDraft\DeleteDraft($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Inserts a draft using private storage (stash). An upper limit of drafts might be enforced. Requires authentication.
+     */
+    public function appBskyDraftCreateDraft(): \Aazsamir\Libphpsky\Model\App\Bsky\Draft\CreateDraft\CreateDraft
+    {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Draft\CreateDraft\CreateDraft($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Updates a draft using private storage (stash). If the draft ID points to a non-existing ID, the update will be silently ignored. This is done because updates don't enforce draft limit, so it accepts all writes, but will ignore invalid ones. Requires authentication.
+     */
+    public function appBskyDraftUpdateDraft(): \Aazsamir\Libphpsky\Model\App\Bsky\Draft\UpdateDraft\UpdateDraft
+    {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Draft\UpdateDraft\UpdateDraft($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Returns server-computed Age Assurance state, if available, and any additional metadata needed to compute Age Assurance state client-side.
+     */
+    public function appBskyAgeassuranceGetState(): \Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\GetState\GetState
+    {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\GetState\GetState($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Returns Age Assurance configuration for use on the client.
+     */
+    public function appBskyAgeassuranceGetConfig(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\GetConfig\GetConfig {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\GetConfig\GetConfig($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Initiate Age Assurance for an account.
+     */
+    public function appBskyAgeassuranceBegin(): \Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Begin\Begin
+    {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Begin\Begin($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
      * Find actor suggestions for a prefix search term. Expected use is for auto-completion during text field entry. Does not require auth.
      */
     public function appBskyActorSearchActorsTypeahead(
@@ -991,6 +1055,70 @@ class ATProtoMetaClient
     public function appBskyNotificationGetUnreadCount(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Notification\GetUnreadCount\GetUnreadCount {
         return new \Aazsamir\Libphpsky\Model\App\Bsky\Notification\GetUnreadCount\GetUnreadCount($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Removes a match that was found via contact import. It shouldn't appear again if the same contact is re-imported. Requires authentication.
+     */
+    public function appBskyContactDismissMatch(): \Aazsamir\Libphpsky\Model\App\Bsky\Contact\DismissMatch\DismissMatch
+    {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Contact\DismissMatch\DismissMatch($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Gets the user's current contact import status. Requires authentication.
+     */
+    public function appBskyContactGetSyncStatus(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Contact\GetSyncStatus\GetSyncStatus {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Contact\GetSyncStatus\GetSyncStatus($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Starts a phone verification flow. The phone passed will receive a code via SMS that should be passed to `app.bsky.contact.verifyPhone`. Requires authentication.
+     */
+    public function appBskyContactStartPhoneVerification(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Contact\StartPhoneVerification\StartPhoneVerification {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Contact\StartPhoneVerification\StartPhoneVerification($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Returns the matched contacts (contacts that were mutually imported). Excludes dismissed matches. Requires authentication.
+     */
+    public function appBskyContactGetMatches(): \Aazsamir\Libphpsky\Model\App\Bsky\Contact\GetMatches\GetMatches
+    {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Contact\GetMatches\GetMatches($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Verifies control over a phone number with a code received via SMS and starts a contact import session. Requires authentication.
+     */
+    public function appBskyContactVerifyPhone(): \Aazsamir\Libphpsky\Model\App\Bsky\Contact\VerifyPhone\VerifyPhone
+    {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Contact\VerifyPhone\VerifyPhone($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * System endpoint to send notifications related to contact imports. Requires role authentication.
+     */
+    public function appBskyContactSendNotification(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Contact\SendNotification\SendNotification {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Contact\SendNotification\SendNotification($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Import contacts for securely matching with other users. This follows the protocol explained in https://docs.bsky.app/blog/contact-import-rfc. Requires authentication.
+     */
+    public function appBskyContactImportContacts(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Contact\ImportContacts\ImportContacts {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Contact\ImportContacts\ImportContacts($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Removes all stored hashes used for contact matching, existing matches, and sync status. Requires authentication.
+     */
+    public function appBskyContactRemoveData(): \Aazsamir\Libphpsky\Model\App\Bsky\Contact\RemoveData\RemoveData
+    {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Contact\RemoveData\RemoveData($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1458,6 +1586,14 @@ class ATProtoMetaClient
     }
 
     /**
+     * Get a skeleton of suggested users for onboarding. Intended to be called and hydrated by app.bsky.unspecced.getSuggestedOnboardingUsers
+     */
+    public function appBskyUnspeccedGetSuggestedOnboardingUsersSkeleton(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedOnboardingUsersSkeleton\GetSuggestedOnboardingUsersSkeleton {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedOnboardingUsersSkeleton\GetSuggestedOnboardingUsersSkeleton($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
      * Get a skeleton of suggested users. Intended to be called and hydrated by app.bsky.unspecced.getSuggestedUsers
      */
     public function appBskyUnspeccedGetSuggestedUsersSkeleton(
@@ -1503,6 +1639,14 @@ class ATProtoMetaClient
     public function appBskyUnspeccedGetPostThreadOtherV2(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadOtherV2\GetPostThreadOtherV2 {
         return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadOtherV2\GetPostThreadOtherV2($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Get a list of suggested users for onboarding
+     */
+    public function appBskyUnspeccedGetSuggestedOnboardingUsers(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedOnboardingUsers\GetSuggestedOnboardingUsers {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedOnboardingUsers\GetSuggestedOnboardingUsers($this->client, $this->typeResolver, $this->token);
     }
 
     /**

@@ -27,4 +27,6 @@ enum LexiconType: string
     case QUERY = 'query';
     case PROCEDURE = 'procedure';
     case SUBSCRIPTION = 'subscription';
+    case PERMISSION = 'permission';
+    case PERMISSION_SET = 'permission-set';
 }

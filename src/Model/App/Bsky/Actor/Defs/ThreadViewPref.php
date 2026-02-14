@@ -18,9 +18,6 @@ class ThreadViewPref implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?string Sorting mode for threads. */
     public ?string $sort;
 
-    /** @var ?bool Show followed users at the top of all replies. */
-    public ?bool $prioritizeFollowedUsers;
-
     public static function id(): string
     {
         return self::ID;
@@ -41,14 +38,11 @@ class ThreadViewPref implements \Aazsamir\Libphpsky\ATProtoObject
         return [];
     }
 
-    public static function new(?string $sort = null, ?bool $prioritizeFollowedUsers = null): self
+    public static function new(?string $sort = null): self
     {
         $instance = new self();
         if ($sort !== null) {
             $instance->sort = $sort;
-        }
-        if ($prioritizeFollowedUsers !== null) {
-            $instance->prioritizeFollowedUsers = $prioritizeFollowedUsers;
         }
 
         return $instance;

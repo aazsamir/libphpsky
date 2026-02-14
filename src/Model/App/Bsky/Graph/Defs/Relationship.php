@@ -24,6 +24,18 @@ class Relationship implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?string if the actor is followed by this DID, contains the AT-URI of the follow record */
     public ?string $followedBy;
 
+    /** @var ?string if the actor blocks this DID, this is the AT-URI of the block record */
+    public ?string $blocking;
+
+    /** @var ?string if the actor is blocked by this DID, contains the AT-URI of the block record */
+    public ?string $blockedBy;
+
+    /** @var ?string if the actor blocks this DID via a block list, this is the AT-URI of the listblock record */
+    public ?string $blockingByList;
+
+    /** @var ?string if the actor is blocked by this DID via a block list, contains the AT-URI of the listblock record */
+    public ?string $blockedByList;
+
     public static function id(): string
     {
         return self::ID;
@@ -44,8 +56,15 @@ class Relationship implements \Aazsamir\Libphpsky\ATProtoObject
         return ['did'];
     }
 
-    public static function new(string $did, ?string $following = null, ?string $followedBy = null): self
-    {
+    public static function new(
+        string $did,
+        ?string $following = null,
+        ?string $followedBy = null,
+        ?string $blocking = null,
+        ?string $blockedBy = null,
+        ?string $blockingByList = null,
+        ?string $blockedByList = null,
+    ): self {
         $instance = new self();
         $instance->did = $did;
         if ($following !== null) {
@@ -53,6 +72,18 @@ class Relationship implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($followedBy !== null) {
             $instance->followedBy = $followedBy;
+        }
+        if ($blocking !== null) {
+            $instance->blocking = $blocking;
+        }
+        if ($blockedBy !== null) {
+            $instance->blockedBy = $blockedBy;
+        }
+        if ($blockingByList !== null) {
+            $instance->blockingByList = $blockingByList;
+        }
+        if ($blockedByList !== null) {
+            $instance->blockedByList = $blockedByList;
         }
 
         return $instance;
