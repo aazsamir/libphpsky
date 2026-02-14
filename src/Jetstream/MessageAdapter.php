@@ -139,13 +139,19 @@ class MessageAdapter implements MessageAdapterInterface
                     throw new JetstreamException('Invalid identity');
                 }
 
+                $handle = null;
+
+                if (isset($message['identity']['handle']) && \is_string($message['identity']['handle'])) {
+                    $handle = $message['identity']['handle'];
+                }
+
                 return new IdentityEvent(
                     did: $did,
                     timeUs: $timeUs,
                     kind: $kindEnum,
                     identity: new Identity(
                         did: $message['identity']['did'],
-                        handle: $message['identity']['handle'] ?? null,
+                        handle: $handle,
                         seq: $message['identity']['seq'],
                         time: new \DateTimeImmutable($message['identity']['time']),
                     ),
