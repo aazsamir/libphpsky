@@ -21,8 +21,11 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?bool If true, response has fallen-back to generic results, and is not scoped using relativeToDid */
     public ?bool $isFallback;
 
-    /** @var ?int Snowflake for this recommendation, use when submitting recommendation events. */
+    /** @var ?int DEPRECATED: use recIdStr instead. */
     public ?int $recId;
+
+    /** @var ?string Snowflake for this recommendation, use when submitting recommendation events. */
+    public ?string $recIdStr;
 
     public static function id(): string
     {
@@ -47,8 +50,12 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView> $suggestions
      */
-    public static function new(array $suggestions, ?bool $isFallback = null, ?int $recId = null): self
-    {
+    public static function new(
+        array $suggestions,
+        ?bool $isFallback = null,
+        ?int $recId = null,
+        ?string $recIdStr = null,
+    ): self {
         $instance = new self();
         $instance->suggestions = $suggestions;
         if ($isFallback !== null) {
@@ -56,6 +63,9 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($recId !== null) {
             $instance->recId = $recId;
+        }
+        if ($recIdStr !== null) {
+            $instance->recIdStr = $recIdStr;
         }
 
         return $instance;

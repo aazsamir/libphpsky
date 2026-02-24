@@ -23,8 +23,11 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?string DID of the account these suggestions are relative to. If this is returned undefined, suggestions are based on the viewer. */
     public ?string $relativeToDid;
 
-    /** @var ?int Snowflake for this recommendation, use when submitting recommendation events. */
+    /** @var ?int DEPRECATED: use recIdStr instead. */
     public ?int $recId;
+
+    /** @var ?string Snowflake for this recommendation, use when submitting recommendation events. */
+    public ?string $recIdStr;
 
     public static function id(): string
     {
@@ -54,6 +57,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         ?string $cursor = null,
         ?string $relativeToDid = null,
         ?int $recId = null,
+        ?string $recIdStr = null,
     ): self {
         $instance = new self();
         $instance->actors = $actors;
@@ -65,6 +69,9 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($recId !== null) {
             $instance->recId = $recId;
+        }
+        if ($recIdStr !== null) {
+            $instance->recIdStr = $recIdStr;
         }
 
         return $instance;
