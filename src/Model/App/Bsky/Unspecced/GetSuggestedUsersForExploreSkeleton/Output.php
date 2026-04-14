@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsers;
+namespace Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersForExploreSkeleton;
 
 /**
  * object
@@ -13,13 +13,10 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'output';
-    public const ID = 'app.bsky.unspecced.getSuggestedUsers';
+    public const ID = 'app.bsky.unspecced.getSuggestedUsersForExploreSkeleton';
 
-    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView> */
-    public array $actors = [];
-
-    /** @var ?string DEPRECATED: use recIdStr instead. */
-    public ?string $recId;
+    /** @var array<string> */
+    public array $dids = [];
 
     /** @var ?string Snowflake for this recommendation, use when submitting recommendation events. */
     public ?string $recIdStr;
@@ -41,19 +38,16 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     public static function required(): array
     {
-        return ['actors'];
+        return ['dids'];
     }
 
     /**
-     * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView> $actors
+     * @param array<string> $dids
      */
-    public static function new(array $actors, ?string $recId = null, ?string $recIdStr = null): self
+    public static function new(array $dids, ?string $recIdStr = null): self
     {
         $instance = new self();
-        $instance->actors = $actors;
-        if ($recId !== null) {
-            $instance->recId = $recId;
-        }
+        $instance->dids = $dids;
         if ($recIdStr !== null) {
             $instance->recIdStr = $recIdStr;
         }

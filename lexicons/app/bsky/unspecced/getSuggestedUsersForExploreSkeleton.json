@@ -1,10 +1,10 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.unspecced.getOnboardingSuggestedUsersSkeleton",
+  "id": "app.bsky.unspecced.getSuggestedUsersForExploreSkeleton",
   "defs": {
     "main": {
       "type": "query",
-      "description": "Get a skeleton of suggested users for onboarding. Intended to be called and hydrated by app.bsky.unspecced.getSuggestedOnboardingUsers",
+      "description": "Get a skeleton of suggested users for the Explore page. Intended to be called and hydrated by app.bsky.unspecced.getSuggestedUsersForExplore",
       "parameters": {
         "type": "params",
         "properties": {
@@ -37,10 +37,6 @@
                 "type": "string",
                 "format": "did"
               }
-            },
-            "recId": {
-              "type": "string",
-              "description": "DEPRECATED: use recIdStr instead."
             },
             "recIdStr": {
               "type": "string",

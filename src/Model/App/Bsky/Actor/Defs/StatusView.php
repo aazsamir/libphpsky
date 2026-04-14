@@ -25,6 +25,9 @@ class StatusView implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\View|null An optional embed associated with the status. */
     public mixed $embed;
 
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> */
+    public ?array $labels = [];
+
     /** @var ?\DateTimeInterface The date when this status will expire. The application might choose to no longer return the status after expiration. */
     public ?\DateTimeInterface $expiresAt;
 
@@ -54,12 +57,16 @@ class StatusView implements \Aazsamir\Libphpsky\ATProtoObject
         return ['status', 'record'];
     }
 
+    /**
+     * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> $labels
+     */
     public static function new(
         string $status,
         mixed $record,
         ?string $uri = null,
         ?string $cid = null,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\View $embed = null,
+        ?array $labels = [],
         ?\DateTimeInterface $expiresAt = null,
         ?bool $isActive = null,
         ?bool $isDisabled = null,
@@ -75,6 +82,9 @@ class StatusView implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($embed !== null) {
             $instance->embed = $embed;
+        }
+        if ($labels !== null) {
+            $instance->labels = $labels;
         }
         if ($expiresAt !== null) {
             $instance->expiresAt = $expiresAt;

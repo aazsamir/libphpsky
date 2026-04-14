@@ -18,8 +18,11 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView> */
     public array $actors = [];
 
-    /** @var ?string Snowflake for this recommendation, use when submitting recommendation events. */
+    /** @var ?string DEPRECATED: use recIdStr instead. */
     public ?string $recId;
+
+    /** @var ?string Snowflake for this recommendation, use when submitting recommendation events. */
+    public ?string $recIdStr;
 
     public static function id(): string
     {
@@ -44,12 +47,15 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView> $actors
      */
-    public static function new(array $actors, ?string $recId = null): self
+    public static function new(array $actors, ?string $recId = null, ?string $recIdStr = null): self
     {
         $instance = new self();
         $instance->actors = $actors;
         if ($recId !== null) {
             $instance->recId = $recId;
+        }
+        if ($recIdStr !== null) {
+            $instance->recIdStr = $recIdStr;
         }
 
         return $instance;

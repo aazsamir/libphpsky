@@ -1458,6 +1458,22 @@ class ATProtoMetaClient
     }
 
     /**
+     * Get a list of suggested users for the See More page
+     */
+    public function appBskyUnspeccedGetSuggestedUsersForSeeMore(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersForSeeMore\GetSuggestedUsersForSeeMore {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersForSeeMore\GetSuggestedUsersForSeeMore($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Get a skeleton of suggested users for the See More page. Intended to be called and hydrated by app.bsky.unspecced.getSuggestedUsersForSeeMore
+     */
+    public function appBskyUnspeccedGetSuggestedUsersForSeeMoreSkeleton(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersForSeeMoreSkeleton\GetSuggestedUsersForSeeMoreSkeleton {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersForSeeMoreSkeleton\GetSuggestedUsersForSeeMoreSkeleton($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
      * Initiate age assurance for an account. This is a one-time action that will start the process of verifying the user's age.
      */
     public function appBskyUnspeccedInitAgeAssurance(
@@ -1495,6 +1511,14 @@ class ATProtoMetaClient
     public function appBskyUnspeccedGetSuggestedStarterPacksSkeleton(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedStarterPacksSkeleton\GetSuggestedStarterPacksSkeleton {
         return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedStarterPacksSkeleton\GetSuggestedStarterPacksSkeleton($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Get a list of suggested users for the Explore page
+     */
+    public function appBskyUnspeccedGetSuggestedUsersForExplore(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersForExplore\GetSuggestedUsersForExplore {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersForExplore\GetSuggestedUsersForExplore($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1538,6 +1562,14 @@ class ATProtoMetaClient
     }
 
     /**
+     * Get a skeleton of suggested users for the Discover page. Intended to be called and hydrated by app.bsky.unspecced.getSuggestedUsersForDiscover
+     */
+    public function appBskyUnspeccedGetSuggestedUsersForDiscoverSkeleton(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersForDiscoverSkeleton\GetSuggestedUsersForDiscoverSkeleton {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersForDiscoverSkeleton\GetSuggestedUsersForDiscoverSkeleton($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
      * Get a list of suggestions (feeds and users) tagged with categories
      */
     public function appBskyUnspeccedGetTaggedSuggestions(
@@ -1567,6 +1599,14 @@ class ATProtoMetaClient
     public function appBskyUnspeccedSearchActorsSkeleton(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchActorsSkeleton\SearchActorsSkeleton {
         return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchActorsSkeleton\SearchActorsSkeleton($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Get a skeleton of suggested users for the Explore page. Intended to be called and hydrated by app.bsky.unspecced.getSuggestedUsersForExplore
+     */
+    public function appBskyUnspeccedGetSuggestedUsersForExploreSkeleton(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersForExploreSkeleton\GetSuggestedUsersForExploreSkeleton {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersForExploreSkeleton\GetSuggestedUsersForExploreSkeleton($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -1623,6 +1663,14 @@ class ATProtoMetaClient
     public function appBskyUnspeccedSearchPostsSkeleton(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchPostsSkeleton\SearchPostsSkeleton {
         return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchPostsSkeleton\SearchPostsSkeleton($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Get a list of suggested users for the Discover page
+     */
+    public function appBskyUnspeccedGetSuggestedUsersForDiscover(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersForDiscover\GetSuggestedUsersForDiscover {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersForDiscover\GetSuggestedUsersForDiscover($this->client, $this->typeResolver, $this->token);
     }
 
     /**

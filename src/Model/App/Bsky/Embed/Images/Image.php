@@ -15,6 +15,7 @@ class Image implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'image';
     public const ID = 'app.bsky.embed.images';
 
+    /** @var string The raw image file. May be up to 2 MB, formerly limited to 1 MB. */
     public string $image;
 
     /** @var string Alt text description of the image, for accessibility. */
