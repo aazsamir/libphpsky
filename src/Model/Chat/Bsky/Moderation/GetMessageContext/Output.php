@@ -15,7 +15,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'chat.bsky.moderation.getMessageContext';
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView> */
+    /** @var array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\SystemMessageView> */
     public array $messages = [];
 
     public static function id(): string
@@ -39,7 +39,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     }
 
     /**
-     * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView> $messages
+     * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\SystemMessageView> $messages
      */
     public static function new(array $messages): self
     {

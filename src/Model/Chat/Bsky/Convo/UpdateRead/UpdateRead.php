@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UpdateRead;
 
 /**
+ * Updates the read state of a conversation from, optionally specifying the last read message.
  * procedure
  */
 class UpdateRead implements \Aazsamir\Libphpsky\Action

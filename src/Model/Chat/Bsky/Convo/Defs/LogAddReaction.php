@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs;
 
 /**
+ * Event indicating a reaction was added to a message.
  * object
  */
 class LogAddReaction implements \Aazsamir\Libphpsky\ATProtoObject
@@ -21,6 +22,9 @@ class LogAddReaction implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView */
     public mixed $message;
     public ?ReactionView $reaction;
+
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\Defs\ProfileViewBasic> Profiles referred in the message and reaction views. This isn't required for compatibility, because it was added later, but should generally be present. */
+    public ?array $relatedProfiles = [];
 
     public static function id(): string
     {
@@ -42,11 +46,15 @@ class LogAddReaction implements \Aazsamir\Libphpsky\ATProtoObject
         return ['rev', 'convoId', 'message', 'reaction'];
     }
 
+    /**
+     * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\Defs\ProfileViewBasic> $relatedProfiles
+     */
     public static function new(
         string $rev,
         string $convoId,
         MessageView|DeletedMessageView $message,
         ?ReactionView $reaction = null,
+        ?array $relatedProfiles = [],
     ): self {
         $instance = new self();
         $instance->rev = $rev;
@@ -54,6 +62,9 @@ class LogAddReaction implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->message = $message;
         if ($reaction !== null) {
             $instance->reaction = $reaction;
+        }
+        if ($relatedProfiles !== null) {
+            $instance->relatedProfiles = $relatedProfiles;
         }
 
         return $instance;

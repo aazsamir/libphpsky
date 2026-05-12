@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UnmuteConvo;
 
 /**
+ * Unmutes a conversation, allowing notifications related to it.
  * procedure
  */
 class UnmuteConvo implements \Aazsamir\Libphpsky\Action

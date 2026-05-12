@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs;
 
 /**
+ * DEPRECATED: use logReadConvo instead. Event indicating a convo was read up to a certain message.
  * object
  */
 class LogReadMessage implements \Aazsamir\Libphpsky\ATProtoObject
@@ -18,7 +19,7 @@ class LogReadMessage implements \Aazsamir\Libphpsky\ATProtoObject
     public string $rev;
     public string $convoId;
 
-    /** @var \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView */
+    /** @var \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\SystemMessageView */
     public mixed $message;
 
     public static function id(): string
@@ -41,8 +42,11 @@ class LogReadMessage implements \Aazsamir\Libphpsky\ATProtoObject
         return ['rev', 'convoId', 'message'];
     }
 
-    public static function new(string $rev, string $convoId, MessageView|DeletedMessageView $message): self
-    {
+    public static function new(
+        string $rev,
+        string $convoId,
+        MessageView|DeletedMessageView|SystemMessageView $message,
+    ): self {
         $instance = new self();
         $instance->rev = $rev;
         $instance->convoId = $convoId;

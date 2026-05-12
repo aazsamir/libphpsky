@@ -29,6 +29,9 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?string An optional external ID for the event, used to deduplicate events from external systems. Fails when an event of same type with the same external ID exists for the same subject. */
     public ?string $externalId;
 
+    /** @var ?\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\EmitEvent\ReportAction Optional report-level targeting. If provided, this event will be linked to specific reports and reporters may be notified. */
+    public ?ReportAction $reportAction;
+
     public static function id(): string
     {
         return self::ID;
@@ -59,6 +62,7 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         ?array $subjectBlobCids = [],
         ?\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModTool $modTool = null,
         ?string $externalId = null,
+        ?ReportAction $reportAction = null,
     ): self {
         $instance = new self();
         $instance->event = $event;
@@ -72,6 +76,9 @@ class Input implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($externalId !== null) {
             $instance->externalId = $externalId;
+        }
+        if ($reportAction !== null) {
+            $instance->reportAction = $reportAction;
         }
 
         return $instance;

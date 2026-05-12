@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs;
 
 /**
+ * Event indicating the viewer accepted a convo, and it can be moved out of the request inbox. Can be direct or group.
  * object
  */
 class LogAcceptConvo implements \Aazsamir\Libphpsky\ATProtoObject

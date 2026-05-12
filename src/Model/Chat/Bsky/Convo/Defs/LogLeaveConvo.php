@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs;
 
 /**
+ * Event indicating the viewer left a convo. Can be direct or group.
  * object
  */
 class LogLeaveConvo implements \Aazsamir\Libphpsky\ATProtoObject

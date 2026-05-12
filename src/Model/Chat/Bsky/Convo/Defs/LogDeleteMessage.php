@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs;
 
 /**
+ * Event indicating a user-originated message was deleted. Is not emitted for system messages.
  * object
  */
 class LogDeleteMessage implements \Aazsamir\Libphpsky\ATProtoObject

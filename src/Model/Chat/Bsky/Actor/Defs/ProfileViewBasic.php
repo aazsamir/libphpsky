@@ -24,10 +24,14 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\Label> */
     public ?array $labels = [];
+    public ?\DateTimeInterface $createdAt;
 
     /** @var ?bool Set to true when the actor cannot actively participate in conversations */
     public ?bool $chatDisabled;
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\VerificationState $verification;
+
+    /** @var \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\Defs\DirectConvoMember|\Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\Defs\GroupConvoMember|\Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\Defs\PastGroupConvoMember|null Union field that has data specific to different kinds of convos. */
+    public mixed $kind;
 
     public static function id(): string
     {
@@ -60,8 +64,10 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileAssociated $associated = null,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ViewerState $viewer = null,
         ?array $labels = [],
+        ?\DateTimeInterface $createdAt = null,
         ?bool $chatDisabled = null,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\VerificationState $verification = null,
+        DirectConvoMember|GroupConvoMember|PastGroupConvoMember|null $kind = null,
     ): self {
         $instance = new self();
         $instance->did = $did;
@@ -81,11 +87,17 @@ class ProfileViewBasic implements \Aazsamir\Libphpsky\ATProtoObject
         if ($labels !== null) {
             $instance->labels = $labels;
         }
+        if ($createdAt !== null) {
+            $instance->createdAt = $createdAt;
+        }
         if ($chatDisabled !== null) {
             $instance->chatDisabled = $chatDisabled;
         }
         if ($verification !== null) {
             $instance->verification = $verification;
+        }
+        if ($kind !== null) {
+            $instance->kind = $kind;
         }
 
         return $instance;

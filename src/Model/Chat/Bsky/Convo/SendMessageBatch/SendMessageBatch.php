@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\SendMessageBatch;
 
 /**
+ * Sends a batch of messages to a conversation.
  * procedure
  */
 class SendMessageBatch implements \Aazsamir\Libphpsky\Action

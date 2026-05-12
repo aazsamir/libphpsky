@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetMessages;
 
 /**
+ * Returns a page of messages from a conversation.
  * query
  */
 class GetMessages implements \Aazsamir\Libphpsky\Action

@@ -17,6 +17,9 @@ class Declaration implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $allowIncoming;
 
+    /** @var ?string [NOTE: This is under active development and should be considered unstable while this note is here]. Declaration about group chat invitation preferences for the record owner. */
+    public ?string $allowGroupInvites;
+
     public static function id(): string
     {
         return self::ID;
@@ -37,10 +40,13 @@ class Declaration implements \Aazsamir\Libphpsky\ATProtoObject
         return ['allowIncoming'];
     }
 
-    public static function new(string $allowIncoming): self
+    public static function new(string $allowIncoming, ?string $allowGroupInvites = null): self
     {
         $instance = new self();
         $instance->allowIncoming = $allowIncoming;
+        if ($allowGroupInvites !== null) {
+            $instance->allowGroupInvites = $allowGroupInvites;
+        }
 
         return $instance;
     }

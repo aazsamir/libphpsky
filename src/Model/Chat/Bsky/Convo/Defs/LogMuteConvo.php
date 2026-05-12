@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs;
 
 /**
+ * Event indicating the viewer muted a convo. Can be direct or group.
  * object
  */
 class LogMuteConvo implements \Aazsamir\Libphpsky\ATProtoObject

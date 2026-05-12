@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs;
 
 /**
+ * Event indicating a user-originated message was created. Is not emitted for system messages.
  * object
  */
 class LogCreateMessage implements \Aazsamir\Libphpsky\ATProtoObject
@@ -20,6 +21,9 @@ class LogCreateMessage implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView */
     public mixed $message;
+
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\Defs\ProfileViewBasic> Profiles referred to in the message view. This isn't required for compatibility, because it was added later, but should generally be present. */
+    public ?array $relatedProfiles = [];
 
     public static function id(): string
     {
@@ -41,12 +45,22 @@ class LogCreateMessage implements \Aazsamir\Libphpsky\ATProtoObject
         return ['rev', 'convoId', 'message'];
     }
 
-    public static function new(string $rev, string $convoId, MessageView|DeletedMessageView $message): self
-    {
+    /**
+     * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\Defs\ProfileViewBasic> $relatedProfiles
+     */
+    public static function new(
+        string $rev,
+        string $convoId,
+        MessageView|DeletedMessageView $message,
+        ?array $relatedProfiles = [],
+    ): self {
         $instance = new self();
         $instance->rev = $rev;
         $instance->convoId = $convoId;
         $instance->message = $message;
+        if ($relatedProfiles !== null) {
+            $instance->relatedProfiles = $relatedProfiles;
+        }
 
         return $instance;
     }

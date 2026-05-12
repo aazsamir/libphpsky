@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\DeleteMessageForSelf;
 
 /**
+ * Marks a message as deleted for the viewer, so they won't see that message in future enumerations.
  * procedure
  */
 class DeleteMessageForSelf implements \Aazsamir\Libphpsky\Action

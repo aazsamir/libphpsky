@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\LeaveConvo;
 
 /**
+ * Leaves a conversation (direct or group). For group, this effectively removes membership. For direct, membership is never removed, only changed to remove from enumerations by the user who left.
  * procedure
  */
 class LeaveConvo implements \Aazsamir\Libphpsky\Action

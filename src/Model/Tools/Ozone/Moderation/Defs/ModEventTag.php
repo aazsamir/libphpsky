@@ -25,6 +25,9 @@ class ModEventTag implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?string Additional comment about added/removed tags. */
     public ?string $comment;
 
+    /** @var ?int Indicates how long the tags being added should remain before automatically being removed. Only applies to tags being added. */
+    public ?int $durationInHours;
+
     public static function id(): string
     {
         return self::ID;
@@ -49,13 +52,16 @@ class ModEventTag implements \Aazsamir\Libphpsky\ATProtoObject
      * @param array<string> $add
      * @param array<string> $remove
      */
-    public static function new(array $add, array $remove, ?string $comment = null): self
+    public static function new(array $add, array $remove, ?string $comment = null, ?int $durationInHours = null): self
     {
         $instance = new self();
         $instance->add = $add;
         $instance->remove = $remove;
         if ($comment !== null) {
             $instance->comment = $comment;
+        }
+        if ($durationInHours !== null) {
+            $instance->durationInHours = $durationInHours;
         }
 
         return $instance;

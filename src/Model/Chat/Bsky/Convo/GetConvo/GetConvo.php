@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvo;
 
 /**
+ * Gets an existing conversation by its ID.
  * query
  */
 class GetConvo implements \Aazsamir\Libphpsky\Action

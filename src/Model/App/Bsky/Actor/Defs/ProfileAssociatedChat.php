@@ -16,6 +16,7 @@ class ProfileAssociatedChat implements \Aazsamir\Libphpsky\ATProtoObject
     public const ID = 'app.bsky.actor.defs';
 
     public string $allowIncoming;
+    public ?string $allowGroupInvites;
 
     public static function id(): string
     {
@@ -37,10 +38,13 @@ class ProfileAssociatedChat implements \Aazsamir\Libphpsky\ATProtoObject
         return ['allowIncoming'];
     }
 
-    public static function new(string $allowIncoming): self
+    public static function new(string $allowIncoming, ?string $allowGroupInvites = null): self
     {
         $instance = new self();
         $instance->allowIncoming = $allowIncoming;
+        if ($allowGroupInvites !== null) {
+            $instance->allowGroupInvites = $allowGroupInvites;
+        }
 
         return $instance;
     }

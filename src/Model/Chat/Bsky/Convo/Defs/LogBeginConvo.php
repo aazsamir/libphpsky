@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs;
 
 /**
+ * Event indicating a convo containing the viewer was started. Can be direct or group. When a member is added to a group convo, they also get this event.
  * object
  */
 class LogBeginConvo implements \Aazsamir\Libphpsky\ATProtoObject

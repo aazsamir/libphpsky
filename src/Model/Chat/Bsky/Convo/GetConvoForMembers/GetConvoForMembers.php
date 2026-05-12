@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoForMembers;
 
 /**
+ * Get or create a 1-1 conversation for the given members. Always returns the same direct (non-group) conversation. To create a group conversation, use createGroup.
  * query
  */
 class GetConvoForMembers implements \Aazsamir\Libphpsky\Action

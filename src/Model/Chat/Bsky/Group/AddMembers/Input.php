@@ -1,0 +1,54 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Group\AddMembers;
+
+/**
+ * object
+ */
+class Input implements \Aazsamir\Libphpsky\ATProtoObject
+{
+    use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
+
+    public const NAME = 'input';
+    public const ID = 'chat.bsky.group.addMembers';
+
+    public string $convoId;
+
+    /** @var array<string> */
+    public array $members = [];
+
+    public static function id(): string
+    {
+        return self::ID;
+    }
+
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['convoId', 'members'];
+    }
+
+    /**
+     * @param array<string> $members
+     */
+    public static function new(string $convoId, array $members): self
+    {
+        $instance = new self();
+        $instance->convoId = $convoId;
+        $instance->members = $members;
+
+        return $instance;
+    }
+}

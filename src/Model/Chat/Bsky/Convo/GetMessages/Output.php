@@ -17,8 +17,11 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     public ?string $cursor;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView> */
+    /** @var array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\SystemMessageView> */
     public array $messages = [];
+
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\Defs\ProfileViewBasic> Set of all members who authored or reacted to the returned messages. Members referred to by system messages are also included. */
+    public ?array $relatedProfiles = [];
 
     public static function id(): string
     {
@@ -41,14 +44,18 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     }
 
     /**
-     * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView> $messages
+     * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\SystemMessageView> $messages
+     * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\Defs\ProfileViewBasic> $relatedProfiles
      */
-    public static function new(array $messages, ?string $cursor = null): self
+    public static function new(array $messages, ?string $cursor = null, ?array $relatedProfiles = []): self
     {
         $instance = new self();
         $instance->messages = $messages;
         if ($cursor !== null) {
             $instance->cursor = $cursor;
+        }
+        if ($relatedProfiles !== null) {
+            $instance->relatedProfiles = $relatedProfiles;
         }
 
         return $instance;

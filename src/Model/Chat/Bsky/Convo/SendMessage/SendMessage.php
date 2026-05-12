@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\SendMessage;
 
 /**
+ * Sends a message to a conversation.
  * procedure
  */
 class SendMessage implements \Aazsamir\Libphpsky\Action

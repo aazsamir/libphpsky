@@ -41,6 +41,110 @@ class ATProtoMetaClient
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetActorMetadata\GetActorMetadata($this->client, $this->typeResolver, $this->token);
     }
 
+    /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Removes members from a group. This deletes convo memberships, doesn't just set a status.
+     */
+    public function chatBskyGroupRemoveMembers(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RemoveMembers\RemoveMembers {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RemoveMembers\RemoveMembers($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Get public information about a group from an join link.
+     */
+    public function chatBskyGroupGetJoinLinkPreview(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\GetJoinLinkPreview\GetJoinLinkPreview {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\GetJoinLinkPreview\GetJoinLinkPreview($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Approves a request to join a group (via join link) the user owns. Action taken by the group owner.
+     */
+    public function chatBskyGroupApproveJoinRequest(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ApproveJoinRequest\ApproveJoinRequest {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ApproveJoinRequest\ApproveJoinRequest($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Re-enables a previously disabled join link for the group convo.
+     */
+    public function chatBskyGroupEnableJoinLink(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EnableJoinLink\EnableJoinLink {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EnableJoinLink\EnableJoinLink($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Lists a page of request to join a group (via join link) the user owns. Shows the data from the owner's point of view.
+     */
+    public function chatBskyGroupListJoinRequests(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ListJoinRequests\ListJoinRequests {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ListJoinRequests\ListJoinRequests($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Edits group settings.
+     */
+    public function chatBskyGroupEditGroup(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EditGroup\EditGroup
+    {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EditGroup\EditGroup($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Creates a join link for the group convo.
+     */
+    public function chatBskyGroupCreateJoinLink(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\CreateJoinLink\CreateJoinLink {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\CreateJoinLink\CreateJoinLink($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Creates a group convo, specifying the members to be added to it. Unlike getConvoForMembers, this isn't idempotent. It will create new groups even if the membership is identical to pre-existing groups. Will create 'pending' membership for all members, except the owner who is 'accepted'.
+     */
+    public function chatBskyGroupCreateGroup(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\CreateGroup\CreateGroup
+    {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\CreateGroup\CreateGroup($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Disables the active join link for the group convo.
+     */
+    public function chatBskyGroupDisableJoinLink(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\DisableJoinLink\DisableJoinLink {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\DisableJoinLink\DisableJoinLink($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Adds members to a group. The members are added in 'request' status, so they have to accept it. This creates convo memberships.
+     */
+    public function chatBskyGroupAddMembers(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\AddMembers\AddMembers
+    {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\AddMembers\AddMembers($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Sends a request to join a group (via join link) to the group owner. Action taken by the prospective group member.
+     */
+    public function chatBskyGroupRequestJoin(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RequestJoin\RequestJoin
+    {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RequestJoin\RequestJoin($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Edits the existing join link settings for the group convo.
+     */
+    public function chatBskyGroupEditJoinLink(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EditJoinLink\EditJoinLink
+    {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EditJoinLink\EditJoinLink($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Rejects a request to join a group (via join link) the user owns. Action taken by the group owner.
+     */
+    public function chatBskyGroupRejectJoinRequest(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RejectJoinRequest\RejectJoinRequest {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RejectJoinRequest\RejectJoinRequest($this->client, $this->typeResolver, $this->token);
+    }
+
     public function chatBskyActorDeleteAccount(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\DeleteAccount\DeleteAccount {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\DeleteAccount\DeleteAccount($this->client, $this->typeResolver, $this->token);
@@ -51,6 +155,9 @@ class ATProtoMetaClient
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\ExportAccountData\ExportAccountData($this->client, $this->typeResolver, $this->token);
     }
 
+    /**
+     * Sends a batch of messages to a conversation.
+     */
     public function chatBskyConvoSendMessageBatch(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\SendMessageBatch\SendMessageBatch {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\SendMessageBatch\SendMessageBatch($this->client, $this->typeResolver, $this->token);
@@ -61,27 +168,44 @@ class ATProtoMetaClient
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetLog\GetLog($this->client, $this->typeResolver, $this->token);
     }
 
+    /**
+     * Mutes a conversation, preventing notifications related to it.
+     */
     public function chatBskyConvoMuteConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\MuteConvo\MuteConvo
     {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\MuteConvo\MuteConvo($this->client, $this->typeResolver, $this->token);
     }
 
+    /**
+     * Returns a page of messages from a conversation.
+     */
     public function chatBskyConvoGetMessages(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetMessages\GetMessages
     {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetMessages\GetMessages($this->client, $this->typeResolver, $this->token);
     }
 
     /**
-     * Get whether the requester and the other members can chat. If an existing convo is found for these members, it is returned.
+     * Check whether the requester and the other members can start a 1-1 chat. Only applicable to direct (non-group) conversations. If an existing convo is found for these members, it is returned. Does not create a new convo if it doesn't exist.
      */
     public function chatBskyConvoGetConvoAvailability(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoAvailability\GetConvoAvailability {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoAvailability\GetConvoAvailability($this->client, $this->typeResolver, $this->token);
     }
 
+    /**
+     * Leaves a conversation (direct or group). For group, this effectively removes membership. For direct, membership is never removed, only changed to remove from enumerations by the user who left.
+     */
     public function chatBskyConvoLeaveConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\LeaveConvo\LeaveConvo
     {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\LeaveConvo\LeaveConvo($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Returns a paginated list of members from a conversation.
+     */
+    public function chatBskyConvoGetConvoMembers(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoMembers\GetConvoMembers {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoMembers\GetConvoMembers($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -92,11 +216,17 @@ class ATProtoMetaClient
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\AddReaction\AddReaction($this->client, $this->typeResolver, $this->token);
     }
 
+    /**
+     * Marks a message as deleted for the viewer, so they won't see that message in future enumerations.
+     */
     public function chatBskyConvoDeleteMessageForSelf(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\DeleteMessageForSelf\DeleteMessageForSelf {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\DeleteMessageForSelf\DeleteMessageForSelf($this->client, $this->typeResolver, $this->token);
     }
 
+    /**
+     * Get or create a 1-1 conversation for the given members. Always returns the same direct (non-group) conversation. To create a group conversation, use createGroup.
+     */
     public function chatBskyConvoGetConvoForMembers(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoForMembers\GetConvoForMembers {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoForMembers\GetConvoForMembers($this->client, $this->typeResolver, $this->token);
@@ -110,36 +240,81 @@ class ATProtoMetaClient
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\RemoveReaction\RemoveReaction($this->client, $this->typeResolver, $this->token);
     }
 
+    /**
+     * Unmutes a conversation, allowing notifications related to it.
+     */
     public function chatBskyConvoUnmuteConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UnmuteConvo\UnmuteConvo
     {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UnmuteConvo\UnmuteConvo($this->client, $this->typeResolver, $this->token);
     }
 
+    /**
+     * Returns a page of conversations (direct or group) for the user.
+     */
     public function chatBskyConvoListConvos(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\ListConvos\ListConvos
     {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\ListConvos\ListConvos($this->client, $this->typeResolver, $this->token);
     }
 
+    /**
+     * Sets conversations from a user as read to the latest message, with filters.
+     */
     public function chatBskyConvoUpdateAllRead(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UpdateAllRead\UpdateAllRead {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UpdateAllRead\UpdateAllRead($this->client, $this->typeResolver, $this->token);
     }
 
+    /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Unlocks a group convo so it is able to receive new content.
+     */
+    public function chatBskyConvoUnlockConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UnlockConvo\UnlockConvo
+    {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UnlockConvo\UnlockConvo($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Returns a page of incoming conversation requests for the user. Direct convo requests are returned as convoView; group join requests are returned as joinRequestView.
+     */
+    public function chatBskyConvoListConvoRequests(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\ListConvoRequests\ListConvoRequests {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\ListConvoRequests\ListConvoRequests($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Sends a message to a conversation.
+     */
     public function chatBskyConvoSendMessage(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\SendMessage\SendMessage
     {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\SendMessage\SendMessage($this->client, $this->typeResolver, $this->token);
     }
 
+    /**
+     * Marks a conversation as accepted, so it is shown in the list of accepted convos instead on the request convos.
+     */
     public function chatBskyConvoAcceptConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\AcceptConvo\AcceptConvo
     {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\AcceptConvo\AcceptConvo($this->client, $this->typeResolver, $this->token);
     }
 
+    /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Locks a group convo so no more content (messages, reactions) can be added to it.
+     */
+    public function chatBskyConvoLockConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\LockConvo\LockConvo
+    {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\LockConvo\LockConvo($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Updates the read state of a conversation from, optionally specifying the last read message.
+     */
     public function chatBskyConvoUpdateRead(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UpdateRead\UpdateRead
     {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UpdateRead\UpdateRead($this->client, $this->typeResolver, $this->token);
     }
 
+    /**
+     * Gets an existing conversation by its ID.
+     */
     public function chatBskyConvoGetConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvo\GetConvo
     {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvo\GetConvo($this->client, $this->typeResolver, $this->token);
@@ -1906,6 +2081,70 @@ class ATProtoMetaClient
     }
 
     /**
+     * Update queue properties. Currently only supports updating the name and enabled status to prevent configuration conflicts.
+     */
+    public function toolsOzoneQueueUpdateQueue(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\UpdateQueue\UpdateQueue
+    {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\UpdateQueue\UpdateQueue($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Delete a moderation queue. Optionally migrate reports to another queue.
+     */
+    public function toolsOzoneQueueDeleteQueue(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\DeleteQueue\DeleteQueue
+    {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\DeleteQueue\DeleteQueue($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Remove a user's assignment from a queue.
+     */
+    public function toolsOzoneQueueUnassignModerator(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\UnassignModerator\UnassignModerator {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\UnassignModerator\UnassignModerator($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Get moderator assignments, optionally filtered by active status, queue, or moderator.
+     */
+    public function toolsOzoneQueueGetAssignments(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\GetAssignments\GetAssignments {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\GetAssignments\GetAssignments($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Create a new moderation queue. Will fail if the queue configuration conflicts with an existing queue.
+     */
+    public function toolsOzoneQueueCreateQueue(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\CreateQueue\CreateQueue
+    {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\CreateQueue\CreateQueue($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * List all configured moderation queues with statistics.
+     */
+    public function toolsOzoneQueueListQueues(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\ListQueues\ListQueues
+    {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\ListQueues\ListQueues($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Route reports within an ID range to matching queues based.
+     */
+    public function toolsOzoneQueueRouteReports(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\RouteReports\RouteReports {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\RouteReports\RouteReports($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Assign a user to a queue.
+     */
+    public function toolsOzoneQueueAssignModerator(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\AssignModerator\AssignModerator {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\AssignModerator\AssignModerator($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
      * Add a member to the ozone team. Requires admin role.
      */
     public function toolsOzoneTeamAddMember(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\AddMember\AddMember
@@ -2039,6 +2278,102 @@ class ATProtoMetaClient
     public function toolsOzoneHostingGetAccountHistory(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Hosting\GetAccountHistory\GetAccountHistory {
         return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Hosting\GetAccountHistory\GetAccountHistory($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * View moderation reports. Reports are individual instances of content being reported, as opposed to subject statuses which aggregate reports at the subject level.
+     */
+    public function toolsOzoneReportQueryReports(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\QueryReports\QueryReports {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\QueryReports\QueryReports($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Remove report assignment.
+     */
+    public function toolsOzoneReportUnassignModerator(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\UnassignModerator\UnassignModerator {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\UnassignModerator\UnassignModerator($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Get historical daily report statistics. Returns a paginated list of daily stat snapshots, newest first. Filter by queue, moderator, or report type.
+     */
+    public function toolsOzoneReportGetHistoricalStats(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetHistoricalStats\GetHistoricalStats {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetHistoricalStats\GetHistoricalStats($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Get details about a single moderation report by ID.
+     */
+    public function toolsOzoneReportGetReport(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetReport\GetReport
+    {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetReport\GetReport($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Get assignments for reports.
+     */
+    public function toolsOzoneReportGetAssignments(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetAssignments\GetAssignments {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetAssignments\GetAssignments($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Get live report statistics from the past 24 hours. Filter by queue, moderator, or report type. Omit all parameters for aggregate stats.
+     */
+    public function toolsOzoneReportGetLiveStats(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetLiveStats\GetLiveStats {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetLiveStats\GetLiveStats($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Recompute report statistics for a date range. Useful for backfilling after failures or data corrections.
+     */
+    public function toolsOzoneReportRefreshStats(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\RefreshStats\RefreshStats {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\RefreshStats\RefreshStats($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * List all activities for a report, sorted most-recent-first.
+     */
+    public function toolsOzoneReportListActivities(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\ListActivities\ListActivities {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\ListActivities\ListActivities($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Get the most recent report.
+     */
+    public function toolsOzoneReportGetLatestReport(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetLatestReport\GetLatestReport {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetLatestReport\GetLatestReport($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Manually reassign a report to a different queue (or unassign it). Records a queueActivity entry on the report.
+     */
+    public function toolsOzoneReportReassignQueue(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\ReassignQueue\ReassignQueue {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\ReassignQueue\ReassignQueue($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Register an activity on a report. For state-change activity types, validates the transition and updates report.status atomically.
+     */
+    public function toolsOzoneReportCreateActivity(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\CreateActivity\CreateActivity {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\CreateActivity\CreateActivity($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Assign a report to a user. Defaults to the caller. Admins may assign to any moderator.
+     */
+    public function toolsOzoneReportAssignModerator(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\AssignModerator\AssignModerator {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\AssignModerator\AssignModerator($this->client, $this->typeResolver, $this->token);
     }
 
     /**

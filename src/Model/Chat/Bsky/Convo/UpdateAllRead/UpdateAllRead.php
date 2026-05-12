@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UpdateAllRead;
 
 /**
+ * Sets conversations from a user as read to the latest message, with filters.
  * procedure
  */
 class UpdateAllRead implements \Aazsamir\Libphpsky\Action

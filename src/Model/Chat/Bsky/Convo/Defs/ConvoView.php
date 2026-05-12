@@ -18,17 +18,22 @@ class ConvoView implements \Aazsamir\Libphpsky\ATProtoObject
     public string $id;
     public string $rev;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\Defs\ProfileViewBasic> */
+    /** @var array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\Defs\ProfileViewBasic> Members of this conversation. For direct convos, it will be an immutable list of the 2 members. For group convos, it will a list of important members (the first few members, the viewer, the member who invited the viewer, the member who sent the last message, the member who sent the last reaction), but will not contain the full list of members. Use chat.bsky.convo.getConvoMembers to list all members. */
     public array $members = [];
 
-    /** @var \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView|null */
+    /** @var \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\SystemMessageView|null */
     public mixed $lastMessage;
 
     /** @var \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageAndReactionView|null */
     public mixed $lastReaction;
     public bool $muted;
+
+    /** @var ?string Convo status for the viewer member (not the convo itself). */
     public ?string $status;
     public int $unreadCount;
+
+    /** @var \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DirectConvo|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\GroupConvo|null Union field that has data specific to different kinds of convos. */
+    public mixed $kind;
 
     public static function id(): string
     {
@@ -59,9 +64,10 @@ class ConvoView implements \Aazsamir\Libphpsky\ATProtoObject
         array $members,
         bool $muted,
         int $unreadCount,
-        MessageView|DeletedMessageView|null $lastMessage = null,
+        MessageView|DeletedMessageView|SystemMessageView|null $lastMessage = null,
         ?MessageAndReactionView $lastReaction = null,
         ?string $status = null,
+        DirectConvo|GroupConvo|null $kind = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -77,6 +83,9 @@ class ConvoView implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($status !== null) {
             $instance->status = $status;
+        }
+        if ($kind !== null) {
+            $instance->kind = $kind;
         }
 
         return $instance;

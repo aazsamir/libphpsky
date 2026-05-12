@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\MuteConvo;
 
 /**
+ * Mutes a conversation, preventing notifications related to it.
  * procedure
  */
 class MuteConvo implements \Aazsamir\Libphpsky\Action
