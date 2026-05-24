@@ -20,8 +20,8 @@ class External implements \Aazsamir\Libphpsky\ATProtoObject
     public string $description;
     public ?string $thumb;
 
-    /** @var ?string The URI of the Atmosphere record representing this external content, if it exists. Example: a site.standard.document record. */
-    public ?string $associatedRecord;
+    /** @var ?array<\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef> StrongRefs (uri+cid) of the Atmosphere records that backed this view. */
+    public ?array $associatedRefs = [];
 
     public static function id(): string
     {
@@ -43,12 +43,15 @@ class External implements \Aazsamir\Libphpsky\ATProtoObject
         return ['uri', 'title', 'description'];
     }
 
+    /**
+     * @param array<\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef> $associatedRefs
+     */
     public static function new(
         string $uri,
         string $title,
         string $description,
         ?string $thumb = null,
-        ?string $associatedRecord = null,
+        ?array $associatedRefs = [],
     ): self {
         $instance = new self();
         $instance->uri = $uri;
@@ -57,8 +60,8 @@ class External implements \Aazsamir\Libphpsky\ATProtoObject
         if ($thumb !== null) {
             $instance->thumb = $thumb;
         }
-        if ($associatedRecord !== null) {
-            $instance->associatedRecord = $associatedRecord;
+        if ($associatedRefs !== null) {
+            $instance->associatedRefs = $associatedRefs;
         }
 
         return $instance;

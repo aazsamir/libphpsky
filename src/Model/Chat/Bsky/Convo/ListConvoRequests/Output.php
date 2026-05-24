@@ -17,7 +17,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     public ?string $cursor;
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\ConvoView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\JoinRequestView> */
+    /** @var array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\ConvoView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\JoinRequestConvoView> */
     public array $requests = [];
 
     public static function id(): string
@@ -41,7 +41,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     }
 
     /**
-     * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\ConvoView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\JoinRequestView> $requests
+     * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\ConvoView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\JoinRequestConvoView> $requests
      */
     public static function new(array $requests, ?string $cursor = null): self
     {

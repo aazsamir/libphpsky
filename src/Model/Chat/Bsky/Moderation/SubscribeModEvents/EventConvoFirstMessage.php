@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\SubscribeModEvents;
 
 /**
+ * Fired when the first message was sent on a convo.
  * object
  */
 class EventConvoFirstMessage implements \Aazsamir\Libphpsky\ATProtoObject

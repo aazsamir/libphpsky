@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetMessageContext;
+namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Group\GetJoinLinkPreviews;
 
 /**
  * object
@@ -13,10 +13,10 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'output';
-    public const ID = 'chat.bsky.moderation.getMessageContext';
+    public const ID = 'chat.bsky.group.getJoinLinkPreviews';
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\SystemMessageView> */
-    public array $messages = [];
+    /** @var array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\JoinLinkPreviewView> */
+    public array $joinLinkPreviews = [];
 
     public static function id(): string
     {
@@ -35,16 +35,16 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     public static function required(): array
     {
-        return ['messages'];
+        return ['joinLinkPreviews'];
     }
 
     /**
-     * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\SystemMessageView> $messages
+     * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\JoinLinkPreviewView> $joinLinkPreviews
      */
-    public static function new(array $messages): self
+    public static function new(array $joinLinkPreviews): self
     {
         $instance = new self();
-        $instance->messages = $messages;
+        $instance->joinLinkPreviews = $joinLinkPreviews;
 
         return $instance;
     }

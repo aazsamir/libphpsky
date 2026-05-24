@@ -22,7 +22,13 @@ class GroupConvo implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var int The total number of members in the group conversation. */
     public int $memberCount;
     public \DateTimeInterface $createdAt;
+
+    /** @var ?int The total number of pending join requests for the group conversation. Only present for the owner. Capped at 21. */
+    public ?int $joinRequestCount;
     public ?\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\JoinLinkView $joinLink;
+
+    /** @var int The maximum number of members allowed in the group conversation. */
+    public int $memberLimit;
 
     /** @var ?string The lock status of the conversation. */
     public ?string $lockStatus;
@@ -44,13 +50,15 @@ class GroupConvo implements \Aazsamir\Libphpsky\ATProtoObject
 
     public static function required(): array
     {
-        return ['name', 'lockStatus', 'memberCount', 'createdAt'];
+        return ['name', 'lockStatus', 'memberCount', 'memberLimit', 'createdAt'];
     }
 
     public static function new(
         string $name,
         int $memberCount,
         \DateTimeInterface $createdAt,
+        int $memberLimit,
+        ?int $joinRequestCount = null,
         ?\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\JoinLinkView $joinLink = null,
         ?string $lockStatus = null,
     ): self {
@@ -58,6 +66,10 @@ class GroupConvo implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->name = $name;
         $instance->memberCount = $memberCount;
         $instance->createdAt = $createdAt;
+        $instance->memberLimit = $memberLimit;
+        if ($joinRequestCount !== null) {
+            $instance->joinRequestCount = $joinRequestCount;
+        }
         if ($joinLink !== null) {
             $instance->joinLink = $joinLink;
         }

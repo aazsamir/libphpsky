@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetMessageContext;
+namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ListMutualGroups;
 
 /**
  * object
@@ -13,10 +13,12 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
     public const NAME = 'output';
-    public const ID = 'chat.bsky.moderation.getMessageContext';
+    public const ID = 'chat.bsky.group.listMutualGroups';
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\SystemMessageView> */
-    public array $messages = [];
+    public ?string $cursor;
+
+    /** @var array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\ConvoView> */
+    public array $convos = [];
 
     public static function id(): string
     {
@@ -35,16 +37,19 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
 
     public static function required(): array
     {
-        return ['messages'];
+        return ['convos'];
     }
 
     /**
-     * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\SystemMessageView> $messages
+     * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\ConvoView> $convos
      */
-    public static function new(array $messages): self
+    public static function new(array $convos, ?string $cursor = null): self
     {
         $instance = new self();
-        $instance->messages = $messages;
+        $instance->convos = $convos;
+        if ($cursor !== null) {
+            $instance->cursor = $cursor;
+        }
 
         return $instance;
     }

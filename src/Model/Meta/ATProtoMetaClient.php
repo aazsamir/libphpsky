@@ -106,6 +106,14 @@ class ATProtoMetaClient
     }
 
     /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Returns a page of group conversations that both the requester and the specified actor are members of.
+     */
+    public function chatBskyGroupListMutualGroups(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ListMutualGroups\ListMutualGroups {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ListMutualGroups\ListMutualGroups($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
      * [NOTE: This is under active development and should be considered unstable while this note is here]. Disables the active join link for the group convo.
      */
     public function chatBskyGroupDisableJoinLink(
@@ -145,6 +153,14 @@ class ATProtoMetaClient
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RejectJoinRequest\RejectJoinRequest($this->client, $this->typeResolver, $this->token);
     }
 
+    /**
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Get public information about groups from join links. Invalid or disabled codes are silently omitted from results.
+     */
+    public function chatBskyGroupGetJoinLinkPreviews(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\GetJoinLinkPreviews\GetJoinLinkPreviews {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\GetJoinLinkPreviews\GetJoinLinkPreviews($this->client, $this->typeResolver, $this->token);
+    }
+
     public function chatBskyActorDeleteAccount(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\DeleteAccount\DeleteAccount {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\DeleteAccount\DeleteAccount($this->client, $this->typeResolver, $this->token);
@@ -153,6 +169,14 @@ class ATProtoMetaClient
     public function chatBskyActorExportAccountData(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\ExportAccountData\ExportAccountData {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\ExportAccountData\ExportAccountData($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Get the authenticated viewer's chat status: whether their account is chat-disabled and whether their group-membership additions are restricted to accounts they follow.
+     */
+    public function chatBskyActorGetStatus(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\GetStatus\GetStatus
+    {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\GetStatus\GetStatus($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -273,7 +297,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Returns a page of incoming conversation requests for the user. Direct convo requests are returned as convoView; group join requests are returned as joinRequestView.
+     * [NOTE: This is under active development and should be considered unstable while this note is here]. Returns a page of incoming conversation requests for the user. Direct convo requests are returned as convoView; group join requests made by the user are returned as joinRequestConvoView.
      */
     public function chatBskyConvoListConvoRequests(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\ListConvoRequests\ListConvoRequests {
@@ -1446,6 +1470,14 @@ class ATProtoMetaClient
     public function appBskyFeedSendInteractions(
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\SendInteractions\SendInteractions {
         return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\SendInteractions\SendInteractions($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Resolve one or more AT-URIs into the data needed to render an enhanced external embed. Returns `associatedRefs` (strongRefs to embed into a post's external.associatedRefs), the raw `associatedRecords`, and a hydrated `view`. The response is empty (`{}`) when no records were resolvable, or when validation determined the resolved records don't actually back the requested URL; clients should fall back to their own link-card rendering in that case and skip writing strongRefs to the post.
+     */
+    public function appBskyEmbedGetEmbedExternalView(
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Embed\GetEmbedExternalView\GetEmbedExternalView {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Embed\GetEmbedExternalView\GetEmbedExternalView($this->client, $this->typeResolver, $this->token);
     }
 
     /**
