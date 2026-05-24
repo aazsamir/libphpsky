@@ -15,7 +15,7 @@ trait FromArray
             throw new \InvalidArgumentException('Data must be an array');
         }
 
-        $typeResolver ??= TypeResolver::default();
+        $typeResolver ??= TypeResolver::getDefault();
 
         $instance = new self();
         $reflection = new \ReflectionClass($instance);

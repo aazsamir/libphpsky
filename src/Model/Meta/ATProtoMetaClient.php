@@ -19,7 +19,7 @@ class ATProtoMetaClient
             $client = \Aazsamir\Libphpsky\Client\ATProtoClientBuilder::getDefault();
         }
         if ($typeResolver === null) {
-            $typeResolver = \Aazsamir\Libphpsky\Generator\Prefab\TypeResolver::default();
+            $typeResolver = \Aazsamir\Libphpsky\Generator\Prefab\TypeResolver::getDefault();
         }
         $this->client = $client;
         $this->typeResolver = $typeResolver;

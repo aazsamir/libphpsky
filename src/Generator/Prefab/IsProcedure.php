@@ -28,7 +28,7 @@ trait IsProcedure
     ): self {
         return new self(
             $client ?? ATProtoClientBuilder::getDefault(),
-            $typeResolver ?? TypeResolver::default(),
+            $typeResolver ?? TypeResolver::getDefault(),
             $accessToken,
         );
     }

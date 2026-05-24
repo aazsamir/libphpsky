@@ -24,7 +24,7 @@ class MessageAdapter implements MessageAdapterInterface
 
     public static function default(): self
     {
-        return new self(TypeResolver::default());
+        return new self(TypeResolver::getDefault());
     }
 
     public function adapt(Message $message): Event

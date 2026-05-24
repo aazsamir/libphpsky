@@ -9,9 +9,20 @@ use Aazsamir\Libphpsky\Generator\Maker\MakeConfig;
 /**
  * @internal
  */
-final readonly class TypeResolver
+final class TypeResolver
 {
-    public function __construct(private MakeConfig $config) {}
+    private static self $default;
+
+    public function __construct(private readonly MakeConfig $config) {}
+
+    public static function getDefault(): self
+    {
+        if (!isset(self::$default)) {
+            self::$default = self::default();
+        }
+
+        return self::$default;
+    }
 
     public static function default(): self
     {
