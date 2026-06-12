@@ -17,7 +17,7 @@ class RecordWithMedia implements \Aazsamir\Libphpsky\ATProtoObject
 
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record $record;
 
-    /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\Images|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Video|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\External */
+    /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\Images|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Video|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Gallery\Gallery|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\External */
     public mixed $media;
 
     public static function id(): string
@@ -41,7 +41,7 @@ class RecordWithMedia implements \Aazsamir\Libphpsky\ATProtoObject
     }
 
     public static function new(
-        \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\Images|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Video|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\External $media,
+        \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\Images|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Video|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Gallery\Gallery|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\External $media,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record $record = null,
     ): self {
         $instance = new self();

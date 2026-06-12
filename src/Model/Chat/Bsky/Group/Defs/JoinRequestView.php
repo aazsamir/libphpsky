@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs;
 
 /**
+ * A join request from the perspective of the group owner.
  * object
  */
 class JoinRequestView implements \Aazsamir\Libphpsky\ATProtoObject

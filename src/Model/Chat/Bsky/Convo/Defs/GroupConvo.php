@@ -16,22 +16,29 @@ class GroupConvo implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'groupConvo';
     public const ID = 'chat.bsky.convo.defs';
 
-    /** @var string The display name of the group conversation. */
-    public string $name;
-
-    /** @var int The total number of members in the group conversation. */
-    public int $memberCount;
     public \DateTimeInterface $createdAt;
+    public ?\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\JoinLinkView $joinLink;
 
     /** @var ?int The total number of pending join requests for the group conversation. Only present for the owner. Capped at 21. */
     public ?int $joinRequestCount;
-    public ?\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\JoinLinkView $joinLink;
+
+    /** @var ?string The lock status of the conversation. */
+    public ?string $lockStatus;
+
+    /** @var bool Whether the lock status is being forced by a moderation override (account inactivation or convo takedown) rather than the owner's own setting. */
+    public bool $lockStatusModerationOverride;
+
+    /** @var int The total number of members in the group conversation. */
+    public int $memberCount;
 
     /** @var int The maximum number of members allowed in the group conversation. */
     public int $memberLimit;
 
-    /** @var ?string The lock status of the conversation. */
-    public ?string $lockStatus;
+    /** @var string The display name of the group conversation. */
+    public string $name;
+
+    /** @var ?int The number of unread join requests for the group conversation. Only present for the owner. */
+    public ?int $unreadJoinRequestCount;
 
     public static function id(): string
     {
@@ -50,31 +57,37 @@ class GroupConvo implements \Aazsamir\Libphpsky\ATProtoObject
 
     public static function required(): array
     {
-        return ['name', 'lockStatus', 'memberCount', 'memberLimit', 'createdAt'];
+        return ['createdAt', 'lockStatus', 'lockStatusModerationOverride', 'memberCount', 'memberLimit', 'name'];
     }
 
     public static function new(
-        string $name,
-        int $memberCount,
         \DateTimeInterface $createdAt,
+        bool $lockStatusModerationOverride,
+        int $memberCount,
         int $memberLimit,
-        ?int $joinRequestCount = null,
+        string $name,
         ?\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\JoinLinkView $joinLink = null,
+        ?int $joinRequestCount = null,
         ?string $lockStatus = null,
+        ?int $unreadJoinRequestCount = null,
     ): self {
         $instance = new self();
-        $instance->name = $name;
-        $instance->memberCount = $memberCount;
         $instance->createdAt = $createdAt;
+        $instance->lockStatusModerationOverride = $lockStatusModerationOverride;
+        $instance->memberCount = $memberCount;
         $instance->memberLimit = $memberLimit;
-        if ($joinRequestCount !== null) {
-            $instance->joinRequestCount = $joinRequestCount;
-        }
+        $instance->name = $name;
         if ($joinLink !== null) {
             $instance->joinLink = $joinLink;
         }
+        if ($joinRequestCount !== null) {
+            $instance->joinRequestCount = $joinRequestCount;
+        }
         if ($lockStatus !== null) {
             $instance->lockStatus = $lockStatus;
+        }
+        if ($unreadJoinRequestCount !== null) {
+            $instance->unreadJoinRequestCount = $unreadJoinRequestCount;
         }
 
         return $instance;

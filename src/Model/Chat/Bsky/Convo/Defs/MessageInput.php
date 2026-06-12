@@ -20,7 +20,7 @@ class MessageInput implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> Annotations of text (mentions, URLs, hashtags, etc) */
     public ?array $facets = [];
 
-    /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record|null */
+    /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record|\Aazsamir\Libphpsky\Model\Chat\Bsky\Embed\JoinLink\JoinLink|null */
     public mixed $embed;
 
     public static function id(): string
@@ -49,7 +49,7 @@ class MessageInput implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         string $text,
         ?array $facets = [],
-        ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record $embed = null,
+        \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record|\Aazsamir\Libphpsky\Model\Chat\Bsky\Embed\JoinLink\JoinLink|null $embed = null,
     ): self {
         $instance = new self();
         $instance->text = $text;

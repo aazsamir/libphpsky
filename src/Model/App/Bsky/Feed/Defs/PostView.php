@@ -20,7 +20,7 @@ class PostView implements \Aazsamir\Libphpsky\ATProtoObject
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $author;
     public mixed $record;
 
-    /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\RecordWithMedia\View|null */
+    /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Gallery\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\RecordWithMedia\View|null */
     public mixed $embed;
     public ?int $bookmarkCount;
     public ?int $replyCount;
@@ -64,7 +64,7 @@ class PostView implements \Aazsamir\Libphpsky\ATProtoObject
         mixed $record,
         \DateTimeInterface $indexedAt,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileViewBasic $author = null,
-        \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\RecordWithMedia\View|null $embed = null,
+        \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Gallery\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\RecordWithMedia\View|null $embed = null,
         ?int $bookmarkCount = null,
         ?int $replyCount = null,
         ?int $repostCount = null,

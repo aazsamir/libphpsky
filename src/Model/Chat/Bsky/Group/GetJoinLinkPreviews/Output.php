@@ -15,7 +15,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'output';
     public const ID = 'chat.bsky.group.getJoinLinkPreviews';
 
-    /** @var array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\JoinLinkPreviewView> */
+    /** @var array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\JoinLinkPreviewView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\DisabledJoinLinkPreviewView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\InvalidJoinLinkPreviewView> */
     public array $joinLinkPreviews = [];
 
     public static function id(): string
@@ -39,7 +39,7 @@ class Output implements \Aazsamir\Libphpsky\ATProtoObject
     }
 
     /**
-     * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\JoinLinkPreviewView> $joinLinkPreviews
+     * @param array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\JoinLinkPreviewView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\DisabledJoinLinkPreviewView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs\InvalidJoinLinkPreviewView> $joinLinkPreviews
      */
     public static function new(array $joinLinkPreviews): self
     {

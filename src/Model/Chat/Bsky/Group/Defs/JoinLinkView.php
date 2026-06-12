@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Group\Defs;
 
 /**
+ * Join link view to be used within a group view, so the convo is surrounding, not specified inside this view.
  * object
  */
 class JoinLinkView implements \Aazsamir\Libphpsky\ATProtoObject

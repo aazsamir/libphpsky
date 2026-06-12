@@ -22,7 +22,7 @@ class MessageView implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> Annotations of text (mentions, URLs, hashtags, etc) */
     public ?array $facets = [];
 
-    /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View|null */
+    /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View|\Aazsamir\Libphpsky\Model\Chat\Bsky\Embed\JoinLink\View|null */
     public mixed $embed;
 
     /** @var ?array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\ReactionView> Reactions to this message, in ascending order of creation time. */
@@ -60,7 +60,7 @@ class MessageView implements \Aazsamir\Libphpsky\ATProtoObject
         string $text,
         \DateTimeInterface $sentAt,
         ?array $facets = [],
-        ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View $embed = null,
+        \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View|\Aazsamir\Libphpsky\Model\Chat\Bsky\Embed\JoinLink\View|null $embed = null,
         ?array $reactions = [],
         ?MessageViewSender $sender = null,
     ): self {

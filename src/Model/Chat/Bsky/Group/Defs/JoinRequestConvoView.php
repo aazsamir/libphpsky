@@ -21,7 +21,7 @@ class JoinRequestConvoView implements \Aazsamir\Libphpsky\ATProtoObject
     public ?\Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\Defs\ProfileViewBasic $owner;
     public int $memberCount;
     public int $memberLimit;
-    public \DateTimeInterface $requestedAt;
+    public ?JoinLinkViewerState $viewer;
 
     public static function id(): string
     {
@@ -40,7 +40,7 @@ class JoinRequestConvoView implements \Aazsamir\Libphpsky\ATProtoObject
 
     public static function required(): array
     {
-        return ['convoId', 'name', 'owner', 'memberCount', 'memberLimit', 'requestedAt'];
+        return ['convoId', 'name', 'owner', 'memberCount', 'memberLimit', 'viewer'];
     }
 
     public static function new(
@@ -48,17 +48,19 @@ class JoinRequestConvoView implements \Aazsamir\Libphpsky\ATProtoObject
         string $name,
         int $memberCount,
         int $memberLimit,
-        \DateTimeInterface $requestedAt,
         ?\Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\Defs\ProfileViewBasic $owner = null,
+        ?JoinLinkViewerState $viewer = null,
     ): self {
         $instance = new self();
         $instance->convoId = $convoId;
         $instance->name = $name;
         $instance->memberCount = $memberCount;
         $instance->memberLimit = $memberLimit;
-        $instance->requestedAt = $requestedAt;
         if ($owner !== null) {
             $instance->owner = $owner;
+        }
+        if ($viewer !== null) {
+            $instance->viewer = $viewer;
         }
 
         return $instance;

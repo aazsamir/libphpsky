@@ -19,6 +19,12 @@ class VerificationView implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var string The user who issued this verification. */
     public string $issuer;
 
+    /** @var ?string The display name of the issuer. */
+    public ?string $issuerDisplayName;
+
+    /** @var ?string The handle of the issuer. */
+    public ?string $issuerHandle;
+
     /** @var string The AT-URI of the verification record. */
     public string $uri;
 
@@ -48,13 +54,25 @@ class VerificationView implements \Aazsamir\Libphpsky\ATProtoObject
         return ['issuer', 'uri', 'isValid', 'createdAt'];
     }
 
-    public static function new(string $issuer, string $uri, bool $isValid, \DateTimeInterface $createdAt): self
-    {
+    public static function new(
+        string $issuer,
+        string $uri,
+        bool $isValid,
+        \DateTimeInterface $createdAt,
+        ?string $issuerDisplayName = null,
+        ?string $issuerHandle = null,
+    ): self {
         $instance = new self();
         $instance->issuer = $issuer;
         $instance->uri = $uri;
         $instance->isValid = $isValid;
         $instance->createdAt = $createdAt;
+        if ($issuerDisplayName !== null) {
+            $instance->issuerDisplayName = $issuerDisplayName;
+        }
+        if ($issuerHandle !== null) {
+            $instance->issuerHandle = $issuerHandle;
+        }
 
         return $instance;
     }

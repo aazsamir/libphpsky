@@ -51,7 +51,7 @@ class QueryStatuses implements \Aazsamir\Libphpsky\Action
      * @param ?array<string> $tags
      * @param ?array<string> $excludeTags
      * @param ?array<string> $collections  If specified, subjects belonging to the given collections will be returned. When subjectType is set to 'account', this will be ignored.
-     * @param ?string $subjectType If specified, subjects of the given type (account or record) will be returned. When this is set to 'account' the 'collections' parameter will be ignored. When includeAllUserRecords or subject is set, this will be ignored.
+     * @param ?string $subjectType If specified, subjects of the given type (account, record, or conversation) will be returned. When this is set to 'account' the 'collections' parameter will be ignored. When includeAllUserRecords or subject is set, this will be ignored.
      * @param ?int $minAccountSuspendCount If specified, only subjects that belong to an account that has at least this many suspensions will be returned.
      * @param ?int $minReportedRecordsCount If specified, only subjects that belong to an account that has at least this many reported records will be returned.
      * @param ?int $minTakendownRecordsCount If specified, only subjects that belong to an account that has at least this many taken down records will be returned.
@@ -126,7 +126,7 @@ class QueryStatuses implements \Aazsamir\Libphpsky\Action
      * @param ?array<string> $tags
      * @param ?array<string> $excludeTags
      * @param ?array<string> $collections  If specified, subjects belonging to the given collections will be returned. When subjectType is set to 'account', this will be ignored.
-     * @param ?string $subjectType If specified, subjects of the given type (account or record) will be returned. When this is set to 'account' the 'collections' parameter will be ignored. When includeAllUserRecords or subject is set, this will be ignored.
+     * @param ?string $subjectType If specified, subjects of the given type (account, record, or conversation) will be returned. When this is set to 'account' the 'collections' parameter will be ignored. When includeAllUserRecords or subject is set, this will be ignored.
      * @param ?int $minAccountSuspendCount If specified, only subjects that belong to an account that has at least this many suspensions will be returned.
      * @param ?int $minReportedRecordsCount If specified, only subjects that belong to an account that has at least this many reported records will be returned.
      * @param ?int $minTakendownRecordsCount If specified, only subjects that belong to an account that has at least this many taken down records will be returned.

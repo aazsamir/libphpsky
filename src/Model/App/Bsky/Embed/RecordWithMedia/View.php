@@ -17,7 +17,7 @@ class View implements \Aazsamir\Libphpsky\ATProtoObject
 
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View $record;
 
-    /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\View */
+    /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Gallery\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\View */
     public mixed $media;
 
     public static function id(): string
@@ -41,7 +41,7 @@ class View implements \Aazsamir\Libphpsky\ATProtoObject
     }
 
     public static function new(
-        \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\View $media,
+        \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Gallery\View|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\View $media,
         ?\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View $record = null,
     ): self {
         $instance = new self();

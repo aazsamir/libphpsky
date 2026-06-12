@@ -31,7 +31,7 @@ class QueryEvents implements \Aazsamir\Libphpsky\Action
      * @param ?\DateTimeInterface $createdAfter Retrieve events created after a given timestamp
      * @param ?\DateTimeInterface $createdBefore Retrieve events created before a given timestamp
      * @param ?array<string> $collections  If specified, only events where the subject belongs to the given collections will be returned. When subjectType is set to 'account', this will be ignored.
-     * @param ?string $subjectType If specified, only events where the subject is of the given type (account or record) will be returned. When this is set to 'account' the 'collections' parameter will be ignored. When includeAllUserRecords or subject is set, this will be ignored.
+     * @param ?string $subjectType If specified, only events where the subject is of the given type (account, record, or conversation) will be returned. When this is set to 'account' the 'collections' parameter will be ignored. When includeAllUserRecords or subject is set, this will be ignored.
      * @param ?bool $includeAllUserRecords If true, events on all record types (posts, lists, profile etc.) or records from given 'collections' param, owned by the did are returned.
      * @param ?bool $hasComment If true, only events with comments are returned
      * @param ?string $comment If specified, only events with comments containing the keyword are returned. Apply || separator to use multiple keywords and match using OR condition.
@@ -80,7 +80,7 @@ class QueryEvents implements \Aazsamir\Libphpsky\Action
      * @param ?\DateTimeInterface $createdAfter Retrieve events created after a given timestamp
      * @param ?\DateTimeInterface $createdBefore Retrieve events created before a given timestamp
      * @param ?array<string> $collections  If specified, only events where the subject belongs to the given collections will be returned. When subjectType is set to 'account', this will be ignored.
-     * @param ?string $subjectType If specified, only events where the subject is of the given type (account or record) will be returned. When this is set to 'account' the 'collections' parameter will be ignored. When includeAllUserRecords or subject is set, this will be ignored.
+     * @param ?string $subjectType If specified, only events where the subject is of the given type (account, record, or conversation) will be returned. When this is set to 'account' the 'collections' parameter will be ignored. When includeAllUserRecords or subject is set, this will be ignored.
      * @param ?bool $includeAllUserRecords If true, events on all record types (posts, lists, profile etc.) or records from given 'collections' param, owned by the did are returned.
      * @param ?bool $hasComment If true, only events with comments are returned
      * @param ?string $comment If specified, only events with comments containing the keyword are returned. Apply || separator to use multiple keywords and match using OR condition.

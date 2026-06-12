@@ -24,6 +24,7 @@ class DraftPost implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Draft\Defs\DraftEmbedImage> */
     public ?array $embedImages = [];
+    public ?DraftEmbedGallery $embedGallery;
 
     /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Draft\Defs\DraftEmbedVideo> */
     public ?array $embedVideos = [];
@@ -64,6 +65,7 @@ class DraftPost implements \Aazsamir\Libphpsky\ATProtoObject
         string $text,
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels $labels = null,
         ?array $embedImages = [],
+        ?DraftEmbedGallery $embedGallery = null,
         ?array $embedVideos = [],
         ?array $embedExternals = [],
         ?array $embedRecords = [],
@@ -75,6 +77,9 @@ class DraftPost implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($embedImages !== null) {
             $instance->embedImages = $embedImages;
+        }
+        if ($embedGallery !== null) {
+            $instance->embedGallery = $embedGallery;
         }
         if ($embedVideos !== null) {
             $instance->embedVideos = $embedVideos;

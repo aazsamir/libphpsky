@@ -25,7 +25,7 @@ class Post implements \Aazsamir\Libphpsky\ATProtoObject
     public ?array $facets = [];
     public ?ReplyRef $reply;
 
-    /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\Images|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Video|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\External|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\RecordWithMedia\RecordWithMedia|null */
+    /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\Images|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Video|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Gallery\Gallery|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\External|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\RecordWithMedia\RecordWithMedia|null */
     public mixed $embed;
 
     /** @var ?array<string> Indicates human language of post primary text content. */
@@ -72,7 +72,7 @@ class Post implements \Aazsamir\Libphpsky\ATProtoObject
         ?array $entities = [],
         ?array $facets = [],
         ?ReplyRef $reply = null,
-        \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\Images|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Video|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\External|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\RecordWithMedia\RecordWithMedia|null $embed = null,
+        \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Images\Images|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Video\Video|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Gallery\Gallery|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\External\External|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record|\Aazsamir\Libphpsky\Model\App\Bsky\Embed\RecordWithMedia\RecordWithMedia|null $embed = null,
         ?array $langs = [],
         ?\Aazsamir\Libphpsky\Model\Com\Atproto\Label\Defs\SelfLabels $labels = null,
         ?array $tags = [],

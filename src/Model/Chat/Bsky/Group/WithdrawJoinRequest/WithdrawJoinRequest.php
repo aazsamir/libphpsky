@@ -1,0 +1,32 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Group\WithdrawJoinRequest;
+
+/**
+ * [NOTE: This is under active development and should be considered unstable while this note is here]. Withdraws a pending request to join a group. Action taken by the prospective member who originally requested to join.
+ * procedure
+ */
+class WithdrawJoinRequest implements \Aazsamir\Libphpsky\Action
+{
+    use \Aazsamir\Libphpsky\Generator\Prefab\IsProcedure;
+
+    public const NAME = 'main';
+    public const ID = 'chat.bsky.group.withdrawJoinRequest';
+
+    public static function id(): string
+    {
+        return self::ID;
+    }
+
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public function procedure(Input $input): Output
+    {
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\WithdrawJoinRequest\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+    }
+}

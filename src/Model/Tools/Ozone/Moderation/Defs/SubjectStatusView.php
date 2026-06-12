@@ -17,7 +17,7 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
 
     public int $id;
 
-    /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageRef */
+    /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageRef|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\ConvoRef */
     public mixed $subject;
 
     /** @var \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\AccountHosting|\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\RecordHosting|null */
@@ -97,7 +97,7 @@ class SubjectStatusView implements \Aazsamir\Libphpsky\ATProtoObject
      */
     public static function new(
         int $id,
-        \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageRef $subject,
+        \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\Defs\RepoRef|\Aazsamir\Libphpsky\Model\Com\Atproto\Repo\StrongRef\StrongRef|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageRef|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\ConvoRef $subject,
         \DateTimeInterface $updatedAt,
         \DateTimeInterface $createdAt,
         AccountHosting|RecordHosting|null $hosting = null,
