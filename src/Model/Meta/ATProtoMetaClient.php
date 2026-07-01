@@ -15,15 +15,40 @@ class ATProtoMetaClient
         ?\Aazsamir\Libphpsky\Generator\Prefab\TypeResolver $typeResolver = null,
         ?string $token = null,
     ) {
+        if ($client === null || $typeResolver === null) {
+            \trigger_deprecation(
+                'aazsamir/libphpsky',
+                '0.10.0',
+                'ATProtoMetaClient::__construct() without arguments is deprecated, use ATProtoMetaClient::default() instead.',
+            );
+        }
         if ($client === null) {
             $client = \Aazsamir\Libphpsky\Client\ATProtoClientBuilder::getDefault();
         }
         if ($typeResolver === null) {
-            $typeResolver = \Aazsamir\Libphpsky\Generator\Prefab\TypeResolver::default();
+            $typeResolver = \Aazsamir\Libphpsky\Generator\Prefab\TypeResolver::getDefault();
         }
         $this->client = $client;
         $this->typeResolver = $typeResolver;
         $this->token = $token;
+    }
+
+    public static function default(
+        ?\Aazsamir\Libphpsky\Client\ATProtoClientInterface $client = null,
+        ?\Aazsamir\Libphpsky\Generator\Prefab\TypeResolver $typeResolver = null,
+        ?string $token = null,
+    ): self {
+        if ($client === null) {
+            $client = \Aazsamir\Libphpsky\Client\ATProtoClientBuilder::getDefault();
+        }
+        if ($typeResolver === null) {
+            $typeResolver = \Aazsamir\Libphpsky\Generator\Prefab\TypeResolver::getDefault();
+        }
+        return new ATProtoMetaClient(
+            $client,
+            $typeResolver,
+            $token,
+        );
     }
 
     /**

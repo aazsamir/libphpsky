@@ -40,20 +40,8 @@ class MetaClientGenerator
                 $metaClient->addMember((new Property('client'))->setPrivate()->setType(ATProtoClientInterface::class));
                 $metaClient->addMember((new Property('typeResolver'))->setPrivate()->setType(TypeResolver::class));
                 $metaClient->addMember((new Property('token'))->setPrivate()->setType('string')->setNullable());
-                $constructor = $metaClient->addMethod('__construct');
-                $constructor->addParameter('client')->setType(ATProtoClientInterface::class)->setNullable()->setDefaultValue(null);
-                $constructor->addParameter('typeResolver')->setType(TypeResolver::class)->setDefaultValue(null);
-                $constructor->addParameter('token')->setType('string')->setNullable()->setDefaultValue(null);
-                $constructor->addBody('if ($client === null) {');
-                $constructor->addBody(\sprintf('    $client = \%s::getDefault();', ATProtoClientBuilder::class));
-                $constructor->addBody('}');
-                $constructor->addBody('if ($typeResolver === null) {');
-                $constructor->addBody(\sprintf('    $typeResolver = \%s::default();', TypeResolver::class));
-                $constructor->addBody('}');
-                $constructor->addBody('$this->client = $client;');
-                $constructor->addBody('$this->typeResolver = $typeResolver;');
-                $constructor->addBody('$this->token = $token;');
-
+                $this->addConstructor($metaClient);
+                $this->addDefaultMethod($metaClient);
                 $metaClients[$lexicon->configEntry()->namespace] = $metaClient;
             }
 
@@ -104,5 +92,51 @@ class MetaClientGenerator
 
             $this->saveClass->save($metaClient, $namespace, $lexicon->configEntry());
         }
+    }
+
+    private function addConstructor(ClassType $metaClient): void
+    {
+        $constructor = $metaClient->addMethod('__construct');
+        $constructor->addParameter('client')->setType(ATProtoClientInterface::class)->setNullable()->setDefaultValue(null);
+        $constructor->addParameter('typeResolver')->setType(TypeResolver::class)->setDefaultValue(null);
+        $constructor->addParameter('token')->setType('string')->setNullable()->setDefaultValue(null);
+        $constructor->addBody('if ($client === null || $typeResolver === null) {');
+        $constructor->addBody('    \trigger_deprecation(');
+        $constructor->addBody('        \'aazsamir/libphpsky\',');
+        $constructor->addBody('        \'0.10.0\',');
+        $constructor->addBody('        \'ATProtoMetaClient::__construct() without arguments is deprecated, use ATProtoMetaClient::default() instead.\',');
+        $constructor->addBody('    );');
+        $constructor->addBody('}');
+        $constructor->addBody('if ($client === null) {');
+        $constructor->addBody(\sprintf('    $client = \%s::getDefault();', ATProtoClientBuilder::class));
+        $constructor->addBody('}');
+        $constructor->addBody('if ($typeResolver === null) {');
+        $constructor->addBody(\sprintf('    $typeResolver = \%s::getDefault();', TypeResolver::class));
+        $constructor->addBody('}');
+        $constructor->addBody('$this->client = $client;');
+        $constructor->addBody('$this->typeResolver = $typeResolver;');
+        $constructor->addBody('$this->token = $token;');
+    }
+
+    private function addDefaultMethod(ClassType $metaClient): void
+    {
+        $method = $metaClient->addMethod('default');
+        $method->setStatic();
+        $method->setPublic();
+        $method->setReturnType('self');
+        $method->addParameter('client')->setType(ATProtoClientInterface::class)->setNullable()->setDefaultValue(null);
+        $method->addParameter('typeResolver')->setType(TypeResolver::class)->setNullable()->setDefaultValue(null);
+        $method->addParameter('token')->setType('string')->setNullable()->setDefaultValue(null);
+        $method->addBody('if ($client === null) {');
+        $method->addBody(\sprintf('    $client = \%s::getDefault();', ATProtoClientBuilder::class));
+        $method->addBody('}');
+        $method->addBody('if ($typeResolver === null) {');
+        $method->addBody(\sprintf('    $typeResolver = \%s::getDefault();', TypeResolver::class));
+        $method->addBody('}');
+        $method->addBody(\sprintf('return new %s(', $metaClient->getName()));
+        $method->addBody('    $client,');
+        $method->addBody('    $typeResolver,');
+        $method->addBody('    $token,');
+        $method->addBody(');');
     }
 }
