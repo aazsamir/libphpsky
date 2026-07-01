@@ -58,6 +58,7 @@ return (new PhpCsFixer\Config())
         'fully_qualified_strict_types' => false,
         'php_unit_strict' => false,
         'final_internal_class' => false,
+        'single_line_throw' => false,
     ])
     ->setFinder($finder)
     ->setRiskyAllowed(true);

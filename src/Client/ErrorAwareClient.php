@@ -40,13 +40,34 @@ class ErrorAwareClient implements ATProtoClientInterface
             }
 
             if ($response->getStatusCode() === 401) {
-                throw new AuthException(error: $error, message: $message, code: $response->getStatusCode(), endpoint: $request->getUri()->getPath() ?: null, query: $request->getUri()->getQuery() ?: null);
+                throw new AuthException(
+                    error: $error,
+                    message: $message,
+                    code: $response->getStatusCode(),
+                    host: $request->getUri()->getHost() ?: null,
+                    endpoint: $request->getUri()->getPath() ?: null,
+                    query: $request->getUri()->getQuery() ?: null
+                );
             }
 
             if ($query) {
-                throw new QueryException(error: $error, message: $message, code: $response->getStatusCode(), endpoint: $request->getUri()->getPath() ?: null, query: $request->getUri()->getQuery() ?: null);
+                throw new QueryException(
+                    error: $error,
+                    message: $message,
+                    code: $response->getStatusCode(),
+                    host: $request->getUri()->getHost() ?: null,
+                    endpoint: $request->getUri()->getPath() ?: null,
+                    query: $request->getUri()->getQuery() ?: null
+                );
             }
-            throw new ProcedureException(error: $error, message: $message, code: $response->getStatusCode(), endpoint: $request->getUri()->getPath() ?: null, query: $request->getUri()->getQuery() ?: null);
+            throw new ProcedureException(
+                error: $error,
+                message: $message,
+                code: $response->getStatusCode(),
+                host: $request->getUri()->getHost() ?: null,
+                endpoint: $request->getUri()->getPath() ?: null,
+                query: $request->getUri()->getQuery() ?: null
+            );
         }
 
         return $response;

@@ -16,6 +16,10 @@ trait IsAction
     private TypeResolver $typeResolver;
     private ?string $token = null;
     private ?string $endpoint = 'https://bsky.social/xrpc/';
+    /**
+     * @var array<string, string>
+     */
+    private array $headers = [];
 
     /**
      * @param array<string, mixed> $args
@@ -67,6 +71,10 @@ trait IsAction
 
         if ($this->token) {
             $request = $request->withHeader('Authorization', 'Bearer ' . $this->token);
+        }
+
+        foreach ($this->headers as $name => $value) {
+            $request = $request->withHeader($name, $value);
         }
 
         $response = $this->client()->sendRequest($request);
@@ -134,5 +142,34 @@ trait IsAction
         $self->endpoint = rtrim($endpoint, '/') . '/xrpc/';
 
         return $self;
+    }
+
+    public function withHeader(string $name, string $value): self
+    {
+        $self = clone $this;
+        $self->headers[$name] = $value;
+
+        return $self;
+    }
+
+    /**
+     * @param array<string, string> $headers
+     */
+    public function withHeaders(array $headers): self
+    {
+        $self = clone $this;
+        $self->headers = array_merge($self->headers, $headers);
+
+        return $self;
+    }
+
+    public function withHeaderAtprotoProxy(string $proxy): self
+    {
+        return $this->withHeader('atproto-proxy', $proxy);
+    }
+
+    public function withHeaderAtprotoProxyChat(): self
+    {
+        return $this->withHeaderAtprotoProxy('did:web:api.bsky.chat#bsky_chat');
     }
 }

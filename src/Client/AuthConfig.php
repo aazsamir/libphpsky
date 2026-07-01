@@ -23,7 +23,7 @@ class AuthConfig
 
     public function authFactorToken(): string
     {
-        return 'libphpsky';
+        return '';
     }
 
     public function allowTakendown(): bool

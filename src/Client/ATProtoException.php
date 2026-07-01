@@ -11,11 +11,12 @@ class ATProtoException extends \Exception
         string $message,
         int $code = 0,
         ?\Throwable $previous = null,
+        protected ?string $host = null,
         protected ?string $endpoint = null,
         protected ?string $query = null,
     ) {
         parent::__construct(
-            $this->formatMessage($error, $message, $endpoint, $query),
+            $this->formatMessage($error, $message, $host, $endpoint, $query),
             $code,
             $previous
         );
@@ -34,6 +35,7 @@ class ATProtoException extends \Exception
     private function formatMessage(
         string $error,
         string $message,
+        ?string $host = null,
         ?string $endpoint = null,
         ?string $query = null,
     ): string {
@@ -43,17 +45,23 @@ class ATProtoException extends \Exception
             $formattedMessage .= '[' . $this->code . ']';
         }
 
-        if ($endpoint !== null || $query !== null) {
+        if ($host !== null || $endpoint !== null || $query !== null) {
             $formattedMessage .= ' (';
+            $parts = [];
+
+            if ($host !== null) {
+                $parts[] = 'Host: ' . $host;
+            }
 
             if ($endpoint !== null) {
-                $formattedMessage .= 'Endpoint: ' . $endpoint;
+                $parts[] = 'Endpoint: ' . $endpoint;
             }
 
             if ($query !== null) {
-                $formattedMessage .= ' Query: ' . $query;
+                $parts[] = 'Query: ' . $query;
             }
 
+            $formattedMessage .= implode(', ', $parts);
             $formattedMessage .= ')';
         }
 
