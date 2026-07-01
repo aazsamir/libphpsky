@@ -23,6 +23,7 @@ class ATProtoClientBuilder
     private bool $useQueryCache = true;
     private bool $useAsync = false;
     private HttpClient $amphpClient;
+    private int $cacheTtl = 3600;
 
     public static function getDefault(): ATProtoClientInterface
     {
@@ -71,6 +72,10 @@ class ATProtoClientBuilder
 
     public function defaultSessionStore(): SessionStore
     {
+        if (!isset($this->cache)) {
+            $this->cache($this->defaultCache());
+        }
+
         return new DecoratedSessionStore(
             decorated: new MemorySessionStore(),
             actual: new PsrCacheSessionStore(
@@ -132,6 +137,13 @@ class ATProtoClientBuilder
         return $this;
     }
 
+    public function cacheTtl(int $cacheTtl): self
+    {
+        $this->cacheTtl = $cacheTtl;
+
+        return $this;
+    }
+
     public function build(): ATProtoClientInterface
     {
         if ($this->useAsync === false) {
@@ -152,6 +164,7 @@ class ATProtoClientBuilder
             $client = new QueryCacheClient(
                 decorated: $client,
                 cache: $this->cache,
+                ttl: $this->cacheTtl,
             );
         }
 
