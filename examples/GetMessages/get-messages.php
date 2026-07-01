@@ -25,7 +25,7 @@ $did = $client->comAtprotoIdentityResolveHandle()->query($auth->login());
 // request repo record
 $repo = $client->comAtprotoRepoDescribeRepo()->query($did->did);
 // grab service endpoint from repo
-// chat service endpoint must be requested against account service endpoint, not generic https://bsky.social
+// chat must be requested against account service endpoint, not generic https://bsky.social
 /** @var string */
 $serviceEndpoint = $repo->didDoc['service'][0]['serviceEndpoint'] ?? throw new \RuntimeException('Service endpoint not found in DID document.'); // @phpstan-ignore-line
 $unread = $client
