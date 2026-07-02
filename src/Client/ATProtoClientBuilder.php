@@ -12,6 +12,8 @@ use Aazsamir\Libphpsky\Client\Session\PsrCacheSessionStore;
 use Aazsamir\Libphpsky\Client\Session\SessionStore;
 use Aazsamir\Libphpsky\OAuth\ATProtoOAuthClientBuilder;
 use Aazsamir\Libphpsky\OAuth\ClientMetadata;
+use Aazsamir\Libphpsky\OAuth\CryptoKey;
+use Aazsamir\Libphpsky\OAuth\Session\SessionManager;
 use Amp\Http\Client\HttpClient;
 use Amp\Http\Client\HttpClientBuilder;
 use GuzzleHttp\Client;
@@ -31,6 +33,8 @@ class ATProtoClientBuilder
     private bool $useOAuth = false;
     private HandleProvider $oauthHandleProvider;
     private ClientMetadata $oauthClientMetadata;
+    private SessionManager $oauthSessionManager;
+    private CryptoKey $oauthCryptoKey;
 
     public static function getDefault(): ATProtoClientInterface
     {
@@ -163,6 +167,20 @@ class ATProtoClientBuilder
         return $this;
     }
 
+    public function oauthSessionManager(SessionManager $sessionManager): self
+    {
+        $this->oauthSessionManager = $sessionManager;
+
+        return $this;
+    }
+
+    public function oauthCryptoKey(CryptoKey $cryptoKey): self
+    {
+        $this->oauthCryptoKey = $cryptoKey;
+
+        return $this;
+    }
+
     public function amphpClient(HttpClient $amphpClient): self
     {
         $this->amphpClient = $amphpClient;
@@ -214,11 +232,21 @@ class ATProtoClientBuilder
                 throw new ATProtoClientBuilderException('OAuth client metadata must be set when using OAuth. Use the oauthClientMetadata() method to set it.');
             }
 
+            $oauthClientBuilder = ATProtoOAuthClientBuilder::default()
+                ->client($client)
+                ->metadata($this->oauthClientMetadata);
+
+            if (isset($this->oauthSessionManager)) {
+                $oauthClientBuilder->sessionManager($this->oauthSessionManager);
+            }
+
+            if (isset($this->oauthCryptoKey)) {
+                $oauthClientBuilder->key($this->oauthCryptoKey);
+            }
+
             return new OAuthAwareClient(
                 decorated: $client,
-                oauthClient: ATProtoOAuthClientBuilder::default()
-                    ->client($client)
-                    ->metadata($this->oauthClientMetadata)
+                oauthClient: $oauthClientBuilder
                     ->build(),
                 handleProvider: $this->oauthHandleProvider,
             );
