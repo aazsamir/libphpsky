@@ -1,10 +1,10 @@
-# Oauth Example
+# OAuth Example
 
-Example of using oauth2 with libphpsky.
+Example of using OAuth with libphpsky.
 
 ```
 export ATPROTO_OAUTH_HANDLE=your_handle.bsky.social
 php examples/Oauth/oauth.php
 ```
 
-> **Note:** Current OAuth2 implementation is experimental and may change in the future, there might be some rough edges and bugs.
+> **Note:** Current OAuth implementation is experimental and may change in the future. There might be some rough edges, missing features and bugs.
