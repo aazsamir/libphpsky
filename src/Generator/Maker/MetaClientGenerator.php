@@ -42,6 +42,7 @@ class MetaClientGenerator
                 $metaClient->addMember((new Property('token'))->setPrivate()->setType('string')->setNullable());
                 $this->addConstructor($metaClient);
                 $this->addDefaultMethod($metaClient);
+                $this->addGetClientMethod($metaClient);
                 $metaClients[$lexicon->configEntry()->namespace] = $metaClient;
             }
 
@@ -138,5 +139,13 @@ class MetaClientGenerator
         $method->addBody('    $typeResolver,');
         $method->addBody('    $token,');
         $method->addBody(');');
+    }
+
+    private function addGetClientMethod(ClassType $metaClient): void
+    {
+        $method = $metaClient->addMethod('getClient');
+        $method->setPublic();
+        $method->setReturnType(ATProtoClientInterface::class);
+        $method->addBody('return $this->client;');
     }
 }

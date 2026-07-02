@@ -36,6 +36,8 @@ class ErrorAwareClient implements ATProtoClientInterface
 
                 if (isset($body['message']) && \is_string($body['message'])) {
                     $message = $body['message'];
+                } elseif (isset($body['error_description']) && \is_string($body['error_description'])) {
+                    $message = $body['error_description'];
                 }
             }
 
@@ -43,6 +45,7 @@ class ErrorAwareClient implements ATProtoClientInterface
                 throw new AuthException(
                     error: $error,
                     message: $message,
+                    response: $response,
                     code: $response->getStatusCode(),
                     host: $request->getUri()->getHost() ?: null,
                     endpoint: $request->getUri()->getPath() ?: null,
@@ -54,6 +57,7 @@ class ErrorAwareClient implements ATProtoClientInterface
                 throw new QueryException(
                     error: $error,
                     message: $message,
+                    response: $response,
                     code: $response->getStatusCode(),
                     host: $request->getUri()->getHost() ?: null,
                     endpoint: $request->getUri()->getPath() ?: null,
@@ -63,6 +67,7 @@ class ErrorAwareClient implements ATProtoClientInterface
             throw new ProcedureException(
                 error: $error,
                 message: $message,
+                response: $response,
                 code: $response->getStatusCode(),
                 host: $request->getUri()->getHost() ?: null,
                 endpoint: $request->getUri()->getPath() ?: null,

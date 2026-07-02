@@ -51,6 +51,11 @@ class ATProtoMetaClient
         );
     }
 
+    public function getClient(): \Aazsamir\Libphpsky\Client\ATProtoClientInterface
+    {
+        return $this->client;
+    }
+
     /**
      * Get detailed profile views of multiple actors, hydrating social proof (known followers) only for a subset of them. Intended for internal service-to-service use.
      */

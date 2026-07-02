@@ -15,6 +15,7 @@ trait IsAction
     private ATProtoClientInterface $client;
     private TypeResolver $typeResolver;
     private ?string $token = null;
+    private ?string $tokenType = 'Bearer';
     private ?string $endpoint = 'https://bsky.social/xrpc/';
     /**
      * @var array<string, string>
@@ -70,7 +71,10 @@ trait IsAction
         }
 
         if ($this->token) {
-            $request = $request->withHeader('Authorization', 'Bearer ' . $this->token);
+            $request = $request->withHeader(
+                'Authorization',
+                $this->tokenType . ' ' . $this->token,
+            );
         }
 
         foreach ($this->headers as $name => $value) {
@@ -128,10 +132,14 @@ trait IsAction
         return $self;
     }
 
-    public function withAuth(string $token): self
+    public function withAuth(string $token, ?string $tokenType = null): self
     {
         $self = clone $this;
         $self->token = $token;
+
+        if ($tokenType !== null) {
+            $self->tokenType = $tokenType;
+        }
 
         return $self;
     }

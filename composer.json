@@ -27,7 +27,8 @@
         "symfony/cache": ">=7.0 <8.0",
         "amphp/amp": ">=3.0 <4.0",
         "amphp/http-client": ">=5.2 <6.0",
-        "phrity/websocket": "^3.2"
+        "phrity/websocket": "^3.2",
+        "firebase/php-jwt": "^7.1"
     },
     "minimum-stability": "stable",
     "require-dev": {

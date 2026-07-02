@@ -3,3 +3,4 @@
 graph.dot
 tests-coverage
 .phpunit.cache
+libphpsky_oauth_key.pem

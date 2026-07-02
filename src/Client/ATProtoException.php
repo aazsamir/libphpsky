@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Client;
 
+use Psr\Http\Message\ResponseInterface;
+
 class ATProtoException extends \Exception
 {
     public function __construct(
@@ -11,6 +13,7 @@ class ATProtoException extends \Exception
         string $message,
         int $code = 0,
         ?\Throwable $previous = null,
+        protected ?ResponseInterface $response = null,
         protected ?string $host = null,
         protected ?string $endpoint = null,
         protected ?string $query = null,
@@ -22,6 +25,11 @@ class ATProtoException extends \Exception
         );
     }
 
+    public function getHost(): ?string
+    {
+        return $this->host;
+    }
+
     public function getEndpoint(): ?string
     {
         return $this->endpoint;
@@ -30,6 +38,11 @@ class ATProtoException extends \Exception
     public function getQuery(): ?string
     {
         return $this->query;
+    }
+
+    public function getResponse(): ?ResponseInterface
+    {
+        return $this->response;
     }
 
     private function formatMessage(
