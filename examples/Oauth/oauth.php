@@ -8,6 +8,7 @@ use Aazsamir\Libphpsky\Client\OAuth\OAuthCallbackNeeded;
 use Aazsamir\Libphpsky\Client\OAuthAwareClient;
 use Aazsamir\Libphpsky\Model\Meta\ATProtoMetaClient;
 use Aazsamir\Libphpsky\OAuth\ClientMetadata;
+use Aazsamir\Libphpsky\OAuth\Session\FileSessionManager;
 
 require dirname(__DIR__, 2) . '/vendor/autoload.php';
 
@@ -30,7 +31,9 @@ $metadata = new ClientMetadata(
 $builder = ATProtoClientBuilder::default()
     ->useOAuth(true)
     ->useQueryCache(false)
-    ->oauthClientMetadata($metadata);
+    ->oauthMetadata($metadata)
+    ->oauthSessionManager(new FileSessionManager(__DIR__ . '/sessions'));
+
 // grab user handle from ENV
 $handle = $builder->defaultOAuthHandleProvider()->provide();
 

@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 class ATProtoException extends \Exception
 {
     public function __construct(
-        string $error,
+        protected string $error,
         string $message,
         int $code = 0,
         ?\Throwable $previous = null,
@@ -23,6 +23,11 @@ class ATProtoException extends \Exception
             $code,
             $previous
         );
+    }
+
+    public function getError(): string
+    {
+        return $this->error;
     }
 
     public function getHost(): ?string

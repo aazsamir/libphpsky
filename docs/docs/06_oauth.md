@@ -54,13 +54,11 @@ After callback is handled, the session will be stored (cached) for future reques
 try {
     $client = ATProtoClientBuilder::default()
         ->useOAuth(true)
-        ->oauthClientMetadata($metadata)
+        ->oauthMetadata($metadata)
         ->build();
     $oauthClient = $client->getOAuthClient();
-
     $pdsUrl = ATProtoFacade::default()
         ->getPdsUrlByHandle('foo.bsky.social');
-
     $metaClient->appBskyActorGetProfile()
         ->withEndpoint($pdsUrl)
         ->query('foo.bsky.social');

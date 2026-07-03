@@ -96,8 +96,11 @@ final readonly class Crypto
             'htu' => $url,
             'iat' => $now,
             'exp' => $now + $expiration,
-            'nonce' => $nonce ?: '',
         ];
+
+        if (!empty($nonce)) {
+            $payload['nonce'] = $nonce;
+        }
 
         $header = [
             'alg' => self::ALG,
@@ -131,8 +134,11 @@ final readonly class Crypto
             'htm' => strtoupper($method),
             'htu' => $url,
             'ath' => self::s256CodeChallenge($access_token),
-            'nonce' => $nonce ?: '',
         ];
+
+        if (!empty($nonce)) {
+            $payload['nonce'] = $nonce;
+        }
 
         $header = [
             'alg' => self::ALG,

@@ -19,6 +19,7 @@ readonly class OAuthAwareClient implements ATProtoClientInterface
         private ClientInterface $decorated,
         private ATProtoOAuthClient $oauthClient,
         private HandleProvider $handleProvider,
+        private int $sessionTtl = 3600,
     ) {}
 
     public function sendRequest(RequestInterface $request): ResponseInterface
@@ -72,10 +73,14 @@ readonly class OAuthAwareClient implements ATProtoClientInterface
         return $this->oauthClient;
     }
 
+    /**
+     * @todo: this is a bit messy, needs refactor
+     */
     private function sendRequestWithSession(
         RequestInterface $request,
         OAuthSession $session,
         ATProtoOAuthClient $oauthClient,
+        bool $recurrent = false,
     ): ResponseInterface {
         $uri = (string) $request->getUri()->withQuery('');
         $authHeaders = $oauthClient->getAuthHeaders(
@@ -83,6 +88,7 @@ readonly class OAuthAwareClient implements ATProtoClientInterface
             $request->getMethod(),
             $uri,
             $session->dpopNonce,
+            $this->sessionTtl,
         );
 
         foreach ($authHeaders as $name => $value) {
@@ -119,6 +125,7 @@ readonly class OAuthAwareClient implements ATProtoClientInterface
                 $request->getMethod(),
                 $url,
                 $dpopNonce,
+                $this->sessionTtl,
             );
 
             foreach ($authHeaders as $name => $value) {
@@ -128,8 +135,37 @@ readonly class OAuthAwareClient implements ATProtoClientInterface
             try {
                 return $this->decorated->sendRequest($request);
             } catch (\Throwable $e) {
+                // session expired, try to refresh the token and retry the request
+                if ($e instanceof AuthException && $e->getError() === 'invalid_token') {
+                    // to avoid infinite loop
+                    if ($recurrent) {
+                        $this->oauthClient->removeSession($session);
+
+                        throw new OAuthException(
+                            message: 'Token refresh failed. Please re-authenticate.',
+                            previous: $e,
+                        );
+                    }
+
+                    try {
+                        $newSession = $oauthClient->refreshToken($session);
+
+                        return $this->sendRequestWithSession(
+                            $request,
+                            $newSession,
+                            $oauthClient,
+                            true,
+                        );
+                    } catch (\Throwable $e) {
+                        $oauthClient->removeSession($session);
+
+                        throw $e;
+                    }
+                }
+
                 // we remove session on any error
                 $oauthClient->removeSession($session);
+
                 throw $e;
             }
         }

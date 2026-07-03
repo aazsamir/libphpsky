@@ -24,6 +24,8 @@ readonly class ATProtoOAuthClient
         private ATProtoClientInterface $client,
         private ClientMetadata $metadata,
         private CryptoKey $key,
+        private int $initSessionTtl = 600,
+        private int $sessionTtl = 3600,
     ) {}
 
     public function metadata(): ClientMetadata
@@ -106,6 +108,7 @@ readonly class ATProtoOAuthClient
             uri: $authServerMetadata->tokenEndpoint,
             dpopNonce: $sessionInit->dpopNonce,
             body: $body,
+            expiration: $this->sessionTtl,
         );
         $dpopNonce = $this->extractDpopNonce($response);
 
@@ -151,6 +154,67 @@ readonly class ATProtoOAuthClient
         return $session;
     }
 
+    public function refreshToken(OAuthSession $session): OAuthSession
+    {
+        $authServerMetadata = $this->getAuthServerMetadataByDid($session->did);
+
+        $body = [
+            'grant_type' => 'refresh_token',
+            'refresh_token' => $session->refreshToken,
+        ];
+
+        $response = $this->requestAuthServer(
+            authServerMetadata: $authServerMetadata,
+            clientSecretJwk: $this->key,
+            dpopJwk: CryptoKey::fromString($session->dpopPrivateKey),
+            uri: $authServerMetadata->tokenEndpoint,
+            dpopNonce: $session->dpopNonce,
+            body: $body,
+            expiration: $this->sessionTtl,
+        );
+        $dpopNonce = $this->extractDpopNonce($response);
+        /**
+         * @var array{
+         *   access_token: string,
+         *   token_type: string,
+         *   refresh_token: string,
+         *   scope: string,
+         *   expires_in: int,
+         *   sub: string,
+         * }
+         */
+        $response = json_decode((string) $response->getBody(), true);
+        [
+            'access_token' => $resAccessToken,
+            'token_type' => $resTokenType,
+            'refresh_token' => $resRefreshToken,
+            'scope' => $resScope,
+            'expires_in' => $resExpiresIn,
+            'sub' => $resSub,
+        ] = $response;
+
+        if ($resSub !== $session->did) {
+            throw new OAuthException('Subject mismatch in the token response.');
+        }
+
+        $newSession = new OAuthSession(
+            accessToken: $resAccessToken,
+            refreshToken: $resRefreshToken,
+            tokenType: $resTokenType,
+            scope: $resScope,
+            expiresIn: $resExpiresIn,
+            did: $resSub,
+            dpopNonce: $dpopNonce ?? '',
+            handle: $session->handle,
+            issuer: $session->issuer,
+            dpopPrivateKey: $session->dpopPrivateKey,
+        );
+
+        $this->sessionManager->saveSession($newSession);
+
+        return $newSession;
+    }
+
     public function getSessionByHandle(string $handle): ?OAuthSession
     {
         return $this->sessionManager->getSessionByHandle($handle);
@@ -164,6 +228,7 @@ readonly class ATProtoOAuthClient
         string $method,
         string $url,
         ?string $dpopNonce = null,
+        int $expiration = 30,
     ): array {
         $method = strtoupper($method);
         $dpopPrivateKey = CryptoKey::fromString($session->dpopPrivateKey);
@@ -175,6 +240,7 @@ readonly class ATProtoOAuthClient
                 $session->accessToken,
                 $dpopNonce,
                 $dpopPrivateKey,
+                $expiration,
             ),
             'Authorization' => $session->tokenType . ' ' . $session->accessToken,
         ];
@@ -182,6 +248,8 @@ readonly class ATProtoOAuthClient
 
     public function updateDpopNonce(OAuthSession $session, string $dpopNonce): OAuthSession
     {
+        // need to obtain a fresh session from the session manager to avoid overwriting any changes made to the session in the meantime
+        $session = $this->sessionManager->getSessionByHandle($session->handle) ?? $session;
         $session = $session->withDpopNonce($dpopNonce);
         $this->sessionManager->saveSession($session);
 
@@ -231,6 +299,7 @@ readonly class ATProtoOAuthClient
             uri: $authServerMetadata->pushedAuthorizationRequestEndpoint,
             dpopNonce: null,
             body: $body,
+            expiration: $this->initSessionTtl,
         );
 
         return new OAuthInitResult(
@@ -250,11 +319,13 @@ readonly class ATProtoOAuthClient
         string $uri,
         ?string $dpopNonce,
         array $body,
+        int $expiration = 30,
     ): ResponseInterface {
         $clientAssertion = Crypto::clientAssertionJwt(
             $this->metadata->clientId,
             $authServerMetadata->issuer,
             $clientSecretJwk,
+            $expiration,
         );
 
         $body['client_id'] = $this->metadata->clientId;
@@ -266,6 +337,7 @@ readonly class ATProtoOAuthClient
             $uri,
             $dpopNonce,
             $dpopJwk,
+            $expiration,
         );
 
         $request = new Request(
@@ -278,10 +350,10 @@ readonly class ATProtoOAuthClient
             http_build_query($body),
         );
 
-        return $this->sendRequestWithRetry($request, $dpopJwk);
+        return $this->sendRequestWithRetry($request, $dpopJwk, $expiration);
     }
 
-    private function sendRequestWithRetry(Request $request, CryptoKey $dpopJwk): ResponseInterface
+    private function sendRequestWithRetry(Request $request, CryptoKey $dpopJwk, int $expiration = 30): ResponseInterface
     {
         try {
             $response = $this->client->sendRequest($request);
@@ -309,6 +381,7 @@ readonly class ATProtoOAuthClient
                 (string) $request->getUri(),
                 $dpopNonce,
                 $dpopJwk,
+                $expiration,
             ));
 
             return $this->client->sendRequest($request);

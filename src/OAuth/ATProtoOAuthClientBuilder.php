@@ -9,6 +9,7 @@ use Aazsamir\Libphpsky\Client\ATProtoClientInterface;
 use Aazsamir\Libphpsky\Client\Facade\ATProtoFacade;
 use Aazsamir\Libphpsky\OAuth\Session\PsrCacheSessionManager;
 use Aazsamir\Libphpsky\OAuth\Session\SessionManager;
+use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 class ATProtoOAuthClientBuilder
@@ -18,18 +19,13 @@ class ATProtoOAuthClientBuilder
     private ATProtoClientInterface $client;
     private ClientMetadata $metadata;
     private CryptoKey $key;
+    private CacheItemPoolInterface $cache;
+    private int $initSessionTtl = 60 * 10; // 10 minutes
+    private int $sessionTtl = 60 * 60 * 24 * 2; // 2 days
 
     public static function default(): self
     {
-        $self = new self();
-        $self->client = ATProtoClientBuilder::getDefault();
-        $self->facade = ATProtoFacade::default();
-        $self->sessionManager = new PsrCacheSessionManager(
-            new FilesystemAdapter()
-        );
-        $self->key = self::defaultKey();
-
-        return $self;
+        return new self();
     }
 
     public static function defaultKey(): CryptoKey
@@ -97,10 +93,60 @@ class ATProtoOAuthClientBuilder
         return $this;
     }
 
+    public function cache(CacheItemPoolInterface $cache): self
+    {
+        $this->cache = $cache;
+
+        return $this;
+    }
+
+    public function initSessionTtl(int $ttl): self
+    {
+        $this->initSessionTtl = $ttl;
+
+        return $this;
+    }
+
+    public function sessionTtl(int $ttl): self
+    {
+        $this->sessionTtl = $ttl;
+
+        return $this;
+    }
+
+    public function getSessionTtl(): int
+    {
+        return $this->sessionTtl;
+    }
+
     public function build(): ATProtoOAuthClient
     {
+        if (!isset($this->metadata)) {
+            throw new MissingClientMetadata('OAuth client metadata must be set when using OAuth. Use the metadata() method to set it.');
+        }
+
+        if (!isset($this->client)) {
+            $this->client = ATProtoClientBuilder::getDefault();
+        }
+
+        if (!isset($this->sessionManager)) {
+            if (!isset($this->cache)) {
+                $this->cache = new FilesystemAdapter();
+            }
+
+            $this->sessionManager = new PsrCacheSessionManager(
+                cache: $this->cache,
+                initTtl: $this->initSessionTtl,
+                sessionTtl: $this->sessionTtl,
+            );
+        }
+
         if (!isset($this->facade)) {
             $this->facade = ATProtoFacade::default($this->client);
+        }
+
+        if (!isset($this->key)) {
+            $this->key = self::defaultKey();
         }
 
         return new ATProtoOAuthClient(
@@ -109,6 +155,8 @@ class ATProtoOAuthClientBuilder
             client: $this->client,
             metadata: $this->metadata,
             key: $this->key,
+            initSessionTtl: $this->initSessionTtl,
+            sessionTtl: $this->sessionTtl,
         );
     }
 }

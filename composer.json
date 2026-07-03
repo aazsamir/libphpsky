@@ -53,6 +53,7 @@
         ],
         "phpcsfixer": "php-cs-fixer fix --diff --dry-run --verbose --allow-risky=yes",
         "phpstan": "phpstan analyse",
+        "phpstan-fast": "phpstan analyse -c phpstan-fast.neon",
         "phpunit": "XDEBUG_MODE=coverage phpunit --coverage-text",
         "rector": "rector --dry-run",
         "integration-tests": "phpunit --testsuite integration",

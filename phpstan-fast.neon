@@ -1,0 +1,10 @@
+parameters:
+    level: max
+    paths:
+        - src
+        - examples
+    excludePaths:
+        - src/Model
+    ignoreErrors:
+        -
+            identifier: 'trait.unused'

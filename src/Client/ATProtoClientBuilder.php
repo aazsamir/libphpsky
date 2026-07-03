@@ -32,9 +32,7 @@ class ATProtoClientBuilder
     private int $cacheTtl = 3600;
     private bool $useOAuth = false;
     private HandleProvider $oauthHandleProvider;
-    private ClientMetadata $oauthClientMetadata;
-    private SessionManager $oauthSessionManager;
-    private CryptoKey $oauthCryptoKey;
+    private ATProtoOAuthClientBuilder $oauthClientBuilder;
 
     public static function getDefault(): ATProtoClientInterface
     {
@@ -53,6 +51,7 @@ class ATProtoClientBuilder
     public static function default(): self
     {
         $self = new self();
+        $self->oauthClientBuilder(ATProtoOAuthClientBuilder::default());
         $self->authConfig($self->defaultAuthConfig());
         $self->cache($self->defaultCache());
         $self->sessionStore($self->defaultSessionStore());
@@ -128,6 +127,7 @@ class ATProtoClientBuilder
     public function cache(CacheItemPoolInterface $cache): self
     {
         $this->cache = $cache;
+        $this->oauthClientBuilder->cache($cache);
 
         return $this;
     }
@@ -160,25 +160,16 @@ class ATProtoClientBuilder
         return $this;
     }
 
-    public function oauthClientMetadata(ClientMetadata $clientMetadata): self
+    public function oauthClientBuilder(ATProtoOAuthClientBuilder $builder): self
     {
-        $this->oauthClientMetadata = $clientMetadata;
+        $this->oauthClientBuilder = $builder;
 
         return $this;
     }
 
-    public function oauthSessionManager(SessionManager $sessionManager): self
+    public function getOAuthClientBuilder(): ATProtoOAuthClientBuilder
     {
-        $this->oauthSessionManager = $sessionManager;
-
-        return $this;
-    }
-
-    public function oauthCryptoKey(CryptoKey $cryptoKey): self
-    {
-        $this->oauthCryptoKey = $cryptoKey;
-
-        return $this;
+        return $this->oauthClientBuilder;
     }
 
     public function amphpClient(HttpClient $amphpClient): self
@@ -192,6 +183,41 @@ class ATProtoClientBuilder
     public function cacheTtl(int $cacheTtl): self
     {
         $this->cacheTtl = $cacheTtl;
+
+        return $this;
+    }
+
+    public function oauthSessionTtl(int $sessionTtl): self
+    {
+        $this->oauthClientBuilder->sessionTtl($sessionTtl);
+
+        return $this;
+    }
+
+    public function oauthInitSessionTtl(int $initSessionTtl): self
+    {
+        $this->oauthClientBuilder->initSessionTtl($initSessionTtl);
+
+        return $this;
+    }
+
+    public function oauthKey(CryptoKey $key): self
+    {
+        $this->oauthClientBuilder->key($key);
+
+        return $this;
+    }
+
+    public function oauthMetadata(ClientMetadata $metadata): self
+    {
+        $this->oauthClientBuilder->metadata($metadata);
+
+        return $this;
+    }
+
+    public function oauthSessionManager(SessionManager $sessionManager): self
+    {
+        $this->oauthClientBuilder->sessionManager($sessionManager);
 
         return $this;
     }
@@ -228,27 +254,12 @@ class ATProtoClientBuilder
             if (!isset($this->oauthHandleProvider)) {
                 $this->oauthHandleProvider($this->defaultOAuthHandleProvider());
             }
-            if (!isset($this->oauthClientMetadata)) {
-                throw new ATProtoClientBuilderException('OAuth client metadata must be set when using OAuth. Use the oauthClientMetadata() method to set it.');
-            }
-
-            $oauthClientBuilder = ATProtoOAuthClientBuilder::default()
-                ->client($client)
-                ->metadata($this->oauthClientMetadata);
-
-            if (isset($this->oauthSessionManager)) {
-                $oauthClientBuilder->sessionManager($this->oauthSessionManager);
-            }
-
-            if (isset($this->oauthCryptoKey)) {
-                $oauthClientBuilder->key($this->oauthCryptoKey);
-            }
 
             return new OAuthAwareClient(
                 decorated: $client,
-                oauthClient: $oauthClientBuilder
-                    ->build(),
+                oauthClient: $this->oauthClientBuilder->build(),
                 handleProvider: $this->oauthHandleProvider,
+                sessionTtl: $this->oauthClientBuilder->getSessionTtl(),
             );
         }
 
