@@ -41,6 +41,9 @@ class ReportActivityView implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?\Aazsamir\Libphpsky\Model\Tools\Ozone\Team\Defs\Member Full member record of the moderator who created this activity */
     public ?\Aazsamir\Libphpsky\Model\Tools\Ozone\Team\Defs\Member $moderator;
 
+    /** @var ?\Aazsamir\Libphpsky\Model\Tools\Ozone\Report\Defs\ReportView Full view of the report this activity belongs to. */
+    public ?ReportView $report;
+
     /** @var \DateTimeInterface When this activity was created */
     public \DateTimeInterface $createdAt;
 
@@ -75,6 +78,7 @@ class ReportActivityView implements \Aazsamir\Libphpsky\ATProtoObject
         ?string $publicNote = null,
         mixed $meta = null,
         ?\Aazsamir\Libphpsky\Model\Tools\Ozone\Team\Defs\Member $moderator = null,
+        ?ReportView $report = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -94,6 +98,9 @@ class ReportActivityView implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($moderator !== null) {
             $instance->moderator = $moderator;
+        }
+        if ($report !== null) {
+            $instance->report = $report;
         }
 
         return $instance;

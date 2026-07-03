@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EditJoinLink;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Edits the existing join link settings for the group convo.
+ * Edits the existing join link settings for the group convo.
  * procedure
  */
 class EditJoinLink implements \Aazsamir\Libphpsky\Action

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Event indicating a convo was read up to a certain message.
+ * Event indicating a convo was read up to a certain message.
  * object
  */
 class LogReadConvo implements \Aazsamir\Libphpsky\ATProtoObject

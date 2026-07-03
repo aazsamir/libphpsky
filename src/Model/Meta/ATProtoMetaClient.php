@@ -65,7 +65,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Returns a paginated list of members from a conversation, for moderation purposes. Does not require the requester to be a member of the conversation.
+     * Returns a paginated list of members from a conversation, for moderation purposes. Does not require the requester to be a member of the conversation.
      */
     public function chatBskyModerationGetConvoMembers(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetConvoMembers\GetConvoMembers {
@@ -83,7 +83,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Gets existing conversations by their IDs, for moderation purposes. Does not require the requester to be a member of the conversations. Unknown IDs are silently omitted from the response.
+     * Gets existing conversations by their IDs, for moderation purposes. Does not require the requester to be a member of the conversations. Unknown IDs are silently omitted from the response.
      */
     public function chatBskyModerationGetConvos(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetConvos\GetConvos
     {
@@ -96,7 +96,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Gets an existing conversation by its ID, for moderation purposes. Does not require the requester to be a member of the conversation.
+     * Gets an existing conversation by its ID, for moderation purposes. Does not require the requester to be a member of the conversation.
      */
     public function chatBskyModerationGetConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetConvo\GetConvo
     {
@@ -104,7 +104,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Removes members from a group. This deletes convo memberships, doesn't just set a status.
+     * Removes members from a group. This deletes convo memberships, doesn't just set a status.
      */
     public function chatBskyGroupRemoveMembers(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RemoveMembers\RemoveMembers {
@@ -120,7 +120,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Approves a request to join a group (via join link) the user owns. Action taken by the group owner.
+     * Approves a request to join a group (via join link) the user owns. Action taken by the group owner.
      */
     public function chatBskyGroupApproveJoinRequest(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ApproveJoinRequest\ApproveJoinRequest {
@@ -128,7 +128,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Re-enables a previously disabled join link for the group convo.
+     * Re-enables a previously disabled join link for the group convo.
      */
     public function chatBskyGroupEnableJoinLink(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EnableJoinLink\EnableJoinLink {
@@ -136,7 +136,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Lists a page of request to join a group (via join link) the user owns. Shows the data from the owner's point of view.
+     * Lists a page of request to join a group (via join link) the user owns. Shows the data from the owner's point of view.
      */
     public function chatBskyGroupListJoinRequests(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ListJoinRequests\ListJoinRequests {
@@ -144,7 +144,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Edits group settings.
+     * Edits group settings.
      */
     public function chatBskyGroupEditGroup(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EditGroup\EditGroup
     {
@@ -152,7 +152,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Withdraws a pending request to join a group. Action taken by the prospective member who originally requested to join.
+     * Withdraws a pending request to join a group. Action taken by the prospective member who originally requested to join.
      */
     public function chatBskyGroupWithdrawJoinRequest(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\WithdrawJoinRequest\WithdrawJoinRequest {
@@ -160,7 +160,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Creates a join link for the group convo.
+     * Creates a join link for the group convo.
      */
     public function chatBskyGroupCreateJoinLink(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\CreateJoinLink\CreateJoinLink {
@@ -168,7 +168,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Creates a group convo, specifying the members to be added to it. Unlike getConvoForMembers, this isn't idempotent. It will create new groups even if the membership is identical to pre-existing groups. Will create 'request' membership for all members, except the owner who is 'accepted'.
+     * Creates a group convo, specifying the members to be added to it. Unlike getConvoForMembers, this isn't idempotent. It will create new groups even if the membership is identical to pre-existing groups. Will create 'request' membership for all members, except the owner who is 'accepted'.
      */
     public function chatBskyGroupCreateGroup(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\CreateGroup\CreateGroup
     {
@@ -176,7 +176,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Returns a page of group conversations that both the requester and the specified actor are members of.
+     * Returns a page of group conversations that both the requester and the specified actor are members of.
      */
     public function chatBskyGroupListMutualGroups(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ListMutualGroups\ListMutualGroups {
@@ -184,7 +184,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Marks all join requests as read for the group owner.
+     * Marks all join requests as read for the group owner.
      */
     public function chatBskyGroupUpdateJoinRequestsRead(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\UpdateJoinRequestsRead\UpdateJoinRequestsRead {
@@ -192,7 +192,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Disables the active join link for the group convo.
+     * Disables the active join link for the group convo.
      */
     public function chatBskyGroupDisableJoinLink(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\DisableJoinLink\DisableJoinLink {
@@ -200,7 +200,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Adds members to a group. The members are added in 'request' status, so they have to accept it. This creates convo memberships.
+     * Adds members to a group. The members are added in 'request' status, so they have to accept it. This creates convo memberships.
      */
     public function chatBskyGroupAddMembers(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\AddMembers\AddMembers
     {
@@ -208,7 +208,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Sends a request to join a group (via join link) to the group owner. Action taken by the prospective group member.
+     * Sends a request to join a group (via join link) to the group owner. Action taken by the prospective group member.
      */
     public function chatBskyGroupRequestJoin(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RequestJoin\RequestJoin
     {
@@ -216,7 +216,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Edits the existing join link settings for the group convo.
+     * Edits the existing join link settings for the group convo.
      */
     public function chatBskyGroupEditJoinLink(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EditJoinLink\EditJoinLink
     {
@@ -224,7 +224,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Rejects a request to join a group (via join link) the user owns. Action taken by the group owner.
+     * Rejects a request to join a group (via join link) the user owns. Action taken by the group owner.
      */
     public function chatBskyGroupRejectJoinRequest(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RejectJoinRequest\RejectJoinRequest {
@@ -232,7 +232,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Get public information about groups from join links. The output array matches the input codes one-to-one by position (and each view also carries its 'code'). Disabled codes return a disabledJoinLinkPreviewView, and codes that do not map to a previewable link return an invalidJoinLinkPreviewView.
+     * Get public information about groups from join links. The output array matches the input codes one-to-one by position (and each view also carries its 'code'). Disabled codes return a disabledJoinLinkPreviewView, and codes that do not map to a previewable link return an invalidJoinLinkPreviewView.
      */
     public function chatBskyGroupGetJoinLinkPreviews(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\GetJoinLinkPreviews\GetJoinLinkPreviews {
@@ -255,6 +255,22 @@ class ATProtoMetaClient
     public function chatBskyActorGetStatus(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\GetStatus\GetStatus
     {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\GetStatus\GetStatus($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Set the requesting account's chat notification preferences. Only the provided preferences are updated; omitted preferences are left unchanged.
+     */
+    public function chatBskyNotificationPutPreferences(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Notification\PutPreferences\PutPreferences {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Notification\PutPreferences\PutPreferences($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Get the requesting account's chat notification preferences. Defaults are returned for accounts that have not set any preferences. Requires auth.
+     */
+    public function chatBskyNotificationGetPreferences(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Notification\GetPreferences\GetPreferences {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Notification\GetPreferences\GetPreferences($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -343,7 +359,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Returns unread conversation counts for conversations that are unlocked, not muted, split by convo status. Direct convos are excluded when a block relationship exists between the actor and the other member, or when the other member's account is deleted or deactivated. Group convos are considered unread if they have unread join request counts.
+     * Returns unread conversation counts for conversations that are unlocked, not muted, split by convo status. Direct convos are excluded when a block relationship exists between the actor and the other member, or when the other member's account is deleted or deactivated. Group convos are considered unread if they have unread join request counts.
      */
     public function chatBskyConvoGetUnreadCounts(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetUnreadCounts\GetUnreadCounts {
@@ -375,7 +391,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Unlocks a group convo so it is able to receive new content.
+     * Unlocks a group convo so it is able to receive new content.
      */
     public function chatBskyConvoUnlockConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UnlockConvo\UnlockConvo
     {
@@ -383,7 +399,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Returns a page of incoming conversation requests for the user. Direct convo requests are returned as convoView; group join requests made by the user are returned as joinRequestConvoView.
+     * Returns a page of incoming conversation requests for the user. Direct convo requests are returned as convoView; group join requests made by the user are returned as joinRequestConvoView.
      */
     public function chatBskyConvoListConvoRequests(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\ListConvoRequests\ListConvoRequests {
@@ -407,7 +423,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * [NOTE: This is under active development and should be considered unstable while this note is here]. Locks a group convo so no more content (messages, reactions) can be added to it.
+     * Locks a group convo so no more content (messages, reactions) can be added to it.
      */
     public function chatBskyConvoLockConvo(): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\LockConvo\LockConvo
     {
@@ -1511,6 +1527,14 @@ class ATProtoMetaClient
     }
 
     /**
+     * Find posts matching a search query or filters, returning search hits for matching post records.
+     */
+    public function appBskyFeedSearchPostsV2(): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\SearchPostsV2\SearchPostsV2
+    {
+        return new \Aazsamir\Libphpsky\Model\App\Bsky\Feed\SearchPostsV2\SearchPostsV2($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
      * Find posts matching search criteria, returning views of those posts. Note that this API endpoint may require authentication (eg, not public) for some service providers and implementations.
      */
     public function appBskyFeedSearchPosts(): \Aazsamir\Libphpsky\Model\App\Bsky\Feed\SearchPosts\SearchPosts
@@ -2436,6 +2460,14 @@ class ATProtoMetaClient
     public function toolsOzoneReportGetAssignments(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetAssignments\GetAssignments {
         return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetAssignments\GetAssignments($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Query report activities across all reports, ordered by createdAt. Used by downstream pollers; for per-report activity history use listActivities.
+     */
+    public function toolsOzoneReportQueryActivities(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\QueryActivities\QueryActivities {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\QueryActivities\QueryActivities($this->client, $this->typeResolver, $this->token);
     }
 
     /**

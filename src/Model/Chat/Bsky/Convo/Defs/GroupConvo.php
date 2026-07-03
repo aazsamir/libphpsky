@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here].
  * object
  */
 class GroupConvo implements \Aazsamir\Libphpsky\ATProtoObject

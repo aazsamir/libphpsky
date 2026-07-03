@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ListMutualGroups;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Returns a page of group conversations that both the requester and the specified actor are members of.
+ * Returns a page of group conversations that both the requester and the specified actor are members of.
  * query
  */
 class ListMutualGroups implements \Aazsamir\Libphpsky\Action

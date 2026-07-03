@@ -17,7 +17,7 @@ class Declaration implements \Aazsamir\Libphpsky\ATProtoObject
 
     public string $allowIncoming;
 
-    /** @var ?string [NOTE: This is under active development and should be considered unstable while this note is here]. Declaration about group chat invitation preferences for the record owner. */
+    /** @var ?string Declaration about group chat invitation preferences for the record owner. */
     public ?string $allowGroupInvites;
 
     public static function id(): string

@@ -15,6 +15,7 @@ class Preferences implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'preferences';
     public const ID = 'app.bsky.notification.defs';
 
+    /** @var ?\Aazsamir\Libphpsky\Model\App\Bsky\Notification\Defs\ChatPreference Deprecated: use chat.bsky.notification preferences instead. This will only return a default value. */
     public ?ChatPreference $chat;
     public ?FilterablePreference $follow;
     public ?FilterablePreference $like;

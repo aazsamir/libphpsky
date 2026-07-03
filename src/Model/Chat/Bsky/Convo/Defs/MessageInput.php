@@ -23,6 +23,9 @@ class MessageInput implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record|\Aazsamir\Libphpsky\Model\Chat\Bsky\Embed\JoinLink\JoinLink|null */
     public mixed $embed;
 
+    /** @var ?\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\ReplyRef If set, the message this message is replying to. The referenced message must be in the same convo. */
+    public ?ReplyRef $replyTo;
+
     public static function id(): string
     {
         return self::ID;
@@ -50,6 +53,7 @@ class MessageInput implements \Aazsamir\Libphpsky\ATProtoObject
         string $text,
         ?array $facets = [],
         \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\Record|\Aazsamir\Libphpsky\Model\Chat\Bsky\Embed\JoinLink\JoinLink|null $embed = null,
+        ?ReplyRef $replyTo = null,
     ): self {
         $instance = new self();
         $instance->text = $text;
@@ -58,6 +62,9 @@ class MessageInput implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($embed !== null) {
             $instance->embed = $embed;
+        }
+        if ($replyTo !== null) {
+            $instance->replyTo = $replyTo;
         }
 
         return $instance;

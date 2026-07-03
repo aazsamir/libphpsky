@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetConvoMembers;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Returns a paginated list of members from a conversation, for moderation purposes. Does not require the requester to be a member of the conversation.
+ * Returns a paginated list of members from a conversation, for moderation purposes. Does not require the requester to be a member of the conversation.
  * query
  */
 class GetConvoMembers implements \Aazsamir\Libphpsky\Action

@@ -25,6 +25,9 @@ class ConfigRegion implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var int The minimum age (as a whole integer) required to use Bluesky in this region. */
     public int $minAccessAge;
 
+    /** @var ?array<string> Verification methods permitted in this region in addition to the third-party (KWS) flow, which is always supported. `device` permits using the native on-device age APIs (e.g. Apple Declared Age Range, Google Play Age Signals). */
+    public ?array $additionalVerificationMethods = [];
+
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Defs\ConfigRegionRuleDefault|\Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Defs\ConfigRegionRuleIfDeclaredOverAge|\Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Defs\ConfigRegionRuleIfDeclaredUnderAge|\Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Defs\ConfigRegionRuleIfAssuredOverAge|\Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Defs\ConfigRegionRuleIfAssuredUnderAge|\Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Defs\ConfigRegionRuleIfAccountNewerThan|\Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Defs\ConfigRegionRuleIfAccountOlderThan> The ordered list of Age Assurance rules that apply to this region. Rules should be applied in order, and the first matching rule determines the access level granted. The rules array should always include a default rule as the last item. */
     public array $rules = [];
 
@@ -50,15 +53,24 @@ class ConfigRegion implements \Aazsamir\Libphpsky\ATProtoObject
 
     /**
      * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Defs\ConfigRegionRuleDefault|\Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Defs\ConfigRegionRuleIfDeclaredOverAge|\Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Defs\ConfigRegionRuleIfDeclaredUnderAge|\Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Defs\ConfigRegionRuleIfAssuredOverAge|\Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Defs\ConfigRegionRuleIfAssuredUnderAge|\Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Defs\ConfigRegionRuleIfAccountNewerThan|\Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Defs\ConfigRegionRuleIfAccountOlderThan> $rules
+     * @param array<string> $additionalVerificationMethods
      */
-    public static function new(string $countryCode, int $minAccessAge, array $rules, ?string $regionCode = null): self
-    {
+    public static function new(
+        string $countryCode,
+        int $minAccessAge,
+        array $rules,
+        ?string $regionCode = null,
+        ?array $additionalVerificationMethods = [],
+    ): self {
         $instance = new self();
         $instance->countryCode = $countryCode;
         $instance->minAccessAge = $minAccessAge;
         $instance->rules = $rules;
         if ($regionCode !== null) {
             $instance->regionCode = $regionCode;
+        }
+        if ($additionalVerificationMethods !== null) {
+            $instance->additionalVerificationMethods = $additionalVerificationMethods;
         }
 
         return $instance;

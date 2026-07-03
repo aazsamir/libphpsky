@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RequestJoin;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Sends a request to join a group (via join link) to the group owner. Action taken by the prospective group member.
+ * Sends a request to join a group (via join link) to the group owner. Action taken by the prospective group member.
  * procedure
  */
 class RequestJoin implements \Aazsamir\Libphpsky\Action

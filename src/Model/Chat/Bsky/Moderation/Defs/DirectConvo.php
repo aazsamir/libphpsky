@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\Defs;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Data specific to a direct conversation, for moderation purposes.
+ * Data specific to a direct conversation, for moderation purposes.
  * object
  */
 class DirectConvo implements \Aazsamir\Libphpsky\ATProtoObject

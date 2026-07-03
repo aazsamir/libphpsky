@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Event indicating a group convo was locked.
+ * Event indicating a group convo was locked.
  * object
  */
 class LogLockConvo implements \Aazsamir\Libphpsky\ATProtoObject

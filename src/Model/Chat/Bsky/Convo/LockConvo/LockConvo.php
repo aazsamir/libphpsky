@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\LockConvo;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Locks a group convo so no more content (messages, reactions) can be added to it.
+ * Locks a group convo so no more content (messages, reactions) can be added to it.
  * procedure
  */
 class LockConvo implements \Aazsamir\Libphpsky\Action

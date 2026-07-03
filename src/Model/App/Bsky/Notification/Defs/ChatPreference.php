@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\App\Bsky\Notification\Defs;
 
 /**
+ * Deprecated: use chat.bsky.notification preferences instead. This will only return a default value.
  * object
  */
 class ChatPreference implements \Aazsamir\Libphpsky\ATProtoObject

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UnlockConvo;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Unlocks a group convo so it is able to receive new content.
+ * Unlocks a group convo so it is able to receive new content.
  * procedure
  */
 class UnlockConvo implements \Aazsamir\Libphpsky\Action

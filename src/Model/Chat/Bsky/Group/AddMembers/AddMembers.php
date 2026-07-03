@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Group\AddMembers;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Adds members to a group. The members are added in 'request' status, so they have to accept it. This creates convo memberships.
+ * Adds members to a group. The members are added in 'request' status, so they have to accept it. This creates convo memberships.
  * procedure
  */
 class AddMembers implements \Aazsamir\Libphpsky\Action

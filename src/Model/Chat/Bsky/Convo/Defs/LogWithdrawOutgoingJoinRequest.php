@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Event indicating the viewer withdrew their own join request. Only requester actor gets this.
+ * Event indicating the viewer withdrew their own join request. Only requester actor gets this.
  * object
  */
 class LogWithdrawOutgoingJoinRequest implements \Aazsamir\Libphpsky\ATProtoObject

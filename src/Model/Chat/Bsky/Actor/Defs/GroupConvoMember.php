@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\Defs;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. A current group convo member.
+ * A current group convo member.
  * object
  */
 class GroupConvoMember implements \Aazsamir\Libphpsky\ATProtoObject

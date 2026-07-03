@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. System message indicating a user voluntarily left the group convo.
+ * System message indicating a user voluntarily left the group convo.
  * object
  */
 class SystemMessageDataMemberLeave implements \Aazsamir\Libphpsky\ATProtoObject

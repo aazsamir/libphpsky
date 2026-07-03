@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\Defs;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. A past group convo member.
+ * A past group convo member.
  * object
  */
 class PastGroupConvoMember implements \Aazsamir\Libphpsky\ATProtoObject

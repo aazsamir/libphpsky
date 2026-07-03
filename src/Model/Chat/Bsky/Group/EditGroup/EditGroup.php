@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EditGroup;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Edits group settings.
+ * Edits group settings.
  * procedure
  */
 class EditGroup implements \Aazsamir\Libphpsky\Action

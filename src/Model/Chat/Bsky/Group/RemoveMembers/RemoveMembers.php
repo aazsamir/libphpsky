@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RemoveMembers;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Removes members from a group. This deletes convo memberships, doesn't just set a status.
+ * Removes members from a group. This deletes convo memberships, doesn't just set a status.
  * procedure
  */
 class RemoveMembers implements \Aazsamir\Libphpsky\Action

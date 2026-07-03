@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Group\CreateJoinLink;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Creates a join link for the group convo.
+ * Creates a join link for the group convo.
  * procedure
  */
 class CreateJoinLink implements \Aazsamir\Libphpsky\Action

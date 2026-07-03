@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Event indicating a join link was created for a group convo.
+ * Event indicating a join link was created for a group convo.
  * object
  */
 class LogCreateJoinLink implements \Aazsamir\Libphpsky\ATProtoObject

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Group\DisableJoinLink;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Disables the active join link for the group convo.
+ * Disables the active join link for the group convo.
  * procedure
  */
 class DisableJoinLink implements \Aazsamir\Libphpsky\Action

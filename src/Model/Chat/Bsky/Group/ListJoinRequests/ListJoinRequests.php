@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ListJoinRequests;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Lists a page of request to join a group (via join link) the user owns. Shows the data from the owner's point of view.
+ * Lists a page of request to join a group (via join link) the user owns. Shows the data from the owner's point of view.
  * query
  */
 class ListJoinRequests implements \Aazsamir\Libphpsky\Action

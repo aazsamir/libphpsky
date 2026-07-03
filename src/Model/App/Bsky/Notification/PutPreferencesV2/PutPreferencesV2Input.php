@@ -15,6 +15,7 @@ class PutPreferencesV2Input implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'input';
     public const ID = 'app.bsky.notification.putPreferencesV2';
 
+    /** @var ?\Aazsamir\Libphpsky\Model\App\Bsky\Notification\Defs\ChatPreference Deprecated: use chat.bsky.notification preferences instead. Setting this won't stick and the default values will be returned. */
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Notification\Defs\ChatPreference $chat;
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Notification\Defs\FilterablePreference $follow;
     public ?\Aazsamir\Libphpsky\Model\App\Bsky\Notification\Defs\FilterablePreference $like;

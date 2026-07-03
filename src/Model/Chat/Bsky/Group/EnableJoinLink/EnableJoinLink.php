@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EnableJoinLink;
 
 /**
- * [NOTE: This is under active development and should be considered unstable while this note is here]. Re-enables a previously disabled join link for the group convo.
+ * Re-enables a previously disabled join link for the group convo.
  * procedure
  */
 class EnableJoinLink implements \Aazsamir\Libphpsky\Action

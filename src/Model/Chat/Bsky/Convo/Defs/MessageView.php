@@ -27,6 +27,9 @@ class MessageView implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var ?array<\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\ReactionView> Reactions to this message, in ascending order of creation time. */
     public ?array $reactions = [];
+
+    /** @var \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView|\Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\MessageBeforeUserJoinedGroupView|null If set, the message this message is replying to. The full view of the referenced message is embedded so the client can render it inline. Only a single level is embedded: the embedded message will not itself have a populated 'replyTo' field even if it was also a reply. */
+    public mixed $replyTo;
     public ?MessageViewSender $sender;
     public \DateTimeInterface $sentAt;
 
@@ -62,6 +65,7 @@ class MessageView implements \Aazsamir\Libphpsky\ATProtoObject
         ?array $facets = [],
         \Aazsamir\Libphpsky\Model\App\Bsky\Embed\Record\View|\Aazsamir\Libphpsky\Model\Chat\Bsky\Embed\JoinLink\View|null $embed = null,
         ?array $reactions = [],
+        MessageView|DeletedMessageView|MessageBeforeUserJoinedGroupView|null $replyTo = null,
         ?MessageViewSender $sender = null,
     ): self {
         $instance = new self();
@@ -77,6 +81,9 @@ class MessageView implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($reactions !== null) {
             $instance->reactions = $reactions;
+        }
+        if ($replyTo !== null) {
+            $instance->replyTo = $replyTo;
         }
         if ($sender !== null) {
             $instance->sender = $sender;
