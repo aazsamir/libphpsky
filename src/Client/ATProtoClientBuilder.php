@@ -66,8 +66,8 @@ class ATProtoClientBuilder
 
     public function defaultAuthConfig(): AuthConfig
     {
-        $login = $_ENV['ATPROTO_LOGIN'] ?? null;
-        $password = $_ENV['ATPROTO_PASSWORD'] ?? null;
+        $login = $_ENV['ATPROTO_LOGIN'] ?? getenv('ATPROTO_LOGIN') ?: null;
+        $password = $_ENV['ATPROTO_PASSWORD'] ?? getenv('ATPROTO_PASSWORD') ?: null;
 
         if ($login !== null && !\is_string($login)) {
             throw new \RuntimeException('ATPROTO_LOGIN must be a string');
