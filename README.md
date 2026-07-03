@@ -80,7 +80,7 @@ For more examples, check `examples` directory.
 
 -   Comprehensive interaction with the ATProtocol
 -   Statically typed queries, procedures and objects
--   Authorization and automatic session management
+-   Authorization and automatic session management (with experimental OAuth support!)
 -   Query caching
 -   Amphp client support
 -   Subscriptions over WebSockets
