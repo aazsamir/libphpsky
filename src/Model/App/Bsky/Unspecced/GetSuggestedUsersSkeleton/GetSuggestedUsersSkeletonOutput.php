@@ -18,7 +18,10 @@ class GetSuggestedUsersSkeletonOutput implements \Aazsamir\Libphpsky\ATProtoObje
     /** @var array<string> */
     public array $dids = [];
 
-    /** @var ?string DEPRECATED: use recIdStr instead. */
+    /**
+     * @var ?string DEPRECATED: use recIdStr instead.
+     * @deprecated use recidstr instead
+     */
     public ?string $recId;
 
     /** @var ?string Snowflake for this recommendation, use when submitting recommendation events. */

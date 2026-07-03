@@ -18,7 +18,10 @@ class GetSuggestedOnboardingUsersOutput implements \Aazsamir\Libphpsky\ATProtoOb
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView> */
     public array $actors = [];
 
-    /** @var ?string DEPRECATED: use recIdStr instead. */
+    /**
+     * @var ?string DEPRECATED: use recIdStr instead.
+     * @deprecated use recidstr instead
+     */
     public ?string $recId;
 
     /** @var ?string Snowflake for this recommendation, use when submitting recommendation events. */

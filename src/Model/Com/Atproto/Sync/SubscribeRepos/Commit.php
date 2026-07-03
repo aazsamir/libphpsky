@@ -19,10 +19,16 @@ class Commit implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var int The stream sequence number of this message. */
     public int $seq;
 
-    /** @var bool DEPRECATED -- unused */
+    /**
+     * @var bool DEPRECATED -- unused
+     * @deprecated unused
+     */
     public bool $rebase;
 
-    /** @var bool DEPRECATED -- replaced by #sync event and data limits. Indicates that this commit contained too many ops, or data size was too large. Consumers will need to make a separate request to get missing data. */
+    /**
+     * @var bool DEPRECATED -- replaced by #sync event and data limits. Indicates that this commit contained too many ops, or data size was too large. Consumers will need to make a separate request to get missing data.
+     * @deprecated replaced by #sync event and data limits
+     */
     public bool $tooBig;
 
     /** @var string The repo this event comes from. Note that all other message types name this field 'did'. */

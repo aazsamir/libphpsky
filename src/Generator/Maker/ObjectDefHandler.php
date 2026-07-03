@@ -128,6 +128,10 @@ class ObjectDefHandler implements DefHandler
                     'comment' => null,
                 ];
             }
+
+            if ($this->isDeprecated($description)) {
+                $phpProperty->addComment('@deprecated ' . ($this->extractDeprecatedComment($description) ?? ''));
+            }
         }
 
         $nullableMethod = $class->addMethod('nullable');

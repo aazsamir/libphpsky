@@ -18,7 +18,10 @@ class Post implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var string The primary post content. May be an empty string, if there are embeds. */
     public string $text;
 
-    /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Post\Entity> DEPRECATED: replaced by app.bsky.richtext.facet. */
+    /**
+     * @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Feed\Post\Entity> DEPRECATED: replaced by app.bsky.richtext.facet.
+     * @deprecated replaced by app.bsky.richtext.facet
+     */
     public ?array $entities = [];
 
     /** @var ?array<\Aazsamir\Libphpsky\Model\App\Bsky\Richtext\Facet\Facet> Annotations of text (mentions, URLs, hashtags, etc) */

@@ -6,6 +6,7 @@ namespace Aazsamir\Libphpsky\Model\Com\Atproto\Temp\FetchLabels;
 
 /**
  * DEPRECATED: use queryLabels or subscribeLabels instead -- Fetch all labels from a labeler created after a certain date.
+ * @deprecated use querylabels or subscribelabels instead
  * query
  */
 class FetchLabels implements \Aazsamir\Libphpsky\Action

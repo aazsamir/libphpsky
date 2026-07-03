@@ -21,10 +21,16 @@ class GetSuggestedFollowsByActorOutput implements \Aazsamir\Libphpsky\ATProtoObj
     /** @var ?string Snowflake for this recommendation, use when submitting recommendation events. */
     public ?string $recIdStr;
 
-    /** @var ?bool DEPRECATED, unused. Previously: if true, response has fallen-back to generic results, and is not scoped using relativeToDid */
+    /**
+     * @var ?bool DEPRECATED, unused. Previously: if true, response has fallen-back to generic results, and is not scoped using relativeToDid
+     * @deprecated unused
+     */
     public ?bool $isFallback;
 
-    /** @var ?int DEPRECATED: use recIdStr instead. */
+    /**
+     * @var ?int DEPRECATED: use recIdStr instead.
+     * @deprecated use recidstr instead
+     */
     public ?int $recId;
 
     public static function id(): string

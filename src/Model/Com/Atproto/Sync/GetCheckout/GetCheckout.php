@@ -6,6 +6,7 @@ namespace Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetCheckout;
 
 /**
  * DEPRECATED - please use com.atproto.sync.getRepo instead
+ * @deprecated please use com.atproto.sync.getrepo instead
  * query
  */
 class GetCheckout implements \Aazsamir\Libphpsky\Action

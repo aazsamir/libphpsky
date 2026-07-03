@@ -6,6 +6,7 @@ namespace Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetHead;
 
 /**
  * DEPRECATED - please use com.atproto.sync.getLatestCommit instead
+ * @deprecated please use com.atproto.sync.getlatestcommit instead
  * query
  */
 class GetHead implements \Aazsamir\Libphpsky\Action

@@ -23,7 +23,10 @@ class GetSuggestionsSkeletonOutput implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?string DID of the account these suggestions are relative to. If this is returned undefined, suggestions are based on the viewer. */
     public ?string $relativeToDid;
 
-    /** @var ?int DEPRECATED: use recIdStr instead. */
+    /**
+     * @var ?int DEPRECATED: use recIdStr instead.
+     * @deprecated use recidstr instead
+     */
     public ?int $recId;
 
     /** @var ?string Snowflake for this recommendation, use when submitting recommendation events. */

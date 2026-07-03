@@ -20,7 +20,10 @@ class GetSuggestionsOutput implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Actor\Defs\ProfileView> */
     public array $actors = [];
 
-    /** @var ?int DEPRECATED: use recIdStr instead. */
+    /**
+     * @var ?int DEPRECATED: use recIdStr instead.
+     * @deprecated use recidstr instead
+     */
     public ?int $recId;
 
     /** @var ?string Snowflake for this recommendation, use when submitting recommendation events. */

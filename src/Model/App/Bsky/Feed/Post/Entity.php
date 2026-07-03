@@ -6,6 +6,7 @@ namespace Aazsamir\Libphpsky\Model\App\Bsky\Feed\Post;
 
 /**
  * Deprecated: use facets instead.
+ * @deprecated use facets instead
  * object
  */
 class Entity implements \Aazsamir\Libphpsky\ATProtoObject

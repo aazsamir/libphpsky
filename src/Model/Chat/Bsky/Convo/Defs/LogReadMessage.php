@@ -6,6 +6,7 @@ namespace Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs;
 
 /**
  * DEPRECATED: use logReadConvo instead. Event indicating a convo was read up to a certain message.
+ * @deprecated use logreadconvo instead
  * object
  */
 class LogReadMessage implements \Aazsamir\Libphpsky\ATProtoObject
