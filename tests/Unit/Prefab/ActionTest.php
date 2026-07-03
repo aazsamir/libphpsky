@@ -42,6 +42,6 @@ final class ActionTest extends TestCase
         self::assertEquals('GET', $request->getMethod());
         self::assertEquals('https://bsky.social/xrpc/test.fixtures?string=test&int=1', (string) $request->getUri());
         self::assertEquals('application/json', $request->getHeaderLine('Content-Type'));
-        self::assertEquals('{"id":1}', $request->getBody()->getContents());
+        self::assertEquals('{"$type":"test.fixtures#null","id":1}', $request->getBody()->getContents());
     }
 }

@@ -19,13 +19,45 @@ trait ToArray
      */
     public function toArray(): array
     {
+        $type = $this->determineType();
         $result = [];
+
+        if ($type) {
+            $result['$type'] = $type;
+        }
 
         foreach (get_object_vars($this) as $key => $value) {
             $result[$key] = $this->serVar($value);
         }
 
         return $result;
+    }
+
+    private function determineType(): ?string
+    {
+        // this is a bit of a hack, but it works for now
+        // probably will need more thought put into this in the future
+        $id = null;
+        $name = null;
+
+        if (\defined(static::class . '::ID')) {
+            /** @var string */
+            $id = \constant(static::class . '::ID');
+        }
+        if (\defined(static::class . '::NAME')) {
+            /** @var string */
+            $name = \constant(static::class . '::NAME');
+        }
+
+        if ($name === 'main') {
+            return $id;
+        }
+
+        if ($name === 'output' || $name === 'input') {
+            return null;
+        }
+
+        return $id . '#' . $name;
     }
 
     private function serVar(mixed $var): mixed
