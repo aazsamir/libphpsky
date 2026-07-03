@@ -85,9 +85,10 @@ $commitMessage = getCurrentCommitMessage();
 [$postText, $postFacets, $postTags] = buildPostPayload($commitMessage);
 
 $client = ATProtoMetaClient::default();
+$login = $_ENV['ATPROTO_LOGIN'] ?? getenv('ATPROTO_LOGIN');
 $client->comAtprotoRepoCreateRecord()->procedure(
     CreateRecordInput::new(
-        repo: getenv('ATPROTO_LOGIN'),
+        repo: $login,
         collection: Post::ID,
         record: Post::new(
             text: $postText,
