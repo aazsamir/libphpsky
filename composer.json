@@ -57,6 +57,7 @@
         "phpunit": "XDEBUG_MODE=coverage phpunit --coverage-text",
         "rector": "rector --dry-run",
         "integration-tests": "phpunit --testsuite integration",
-        "generate": "php generate.php"
+        "generate": "php generate.php",
+        "hook-post": "php .github/scripts/post.php"
     }
 }

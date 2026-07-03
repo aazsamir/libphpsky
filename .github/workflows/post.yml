@@ -30,7 +30,7 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: Run post hook script
-        run: php .github/scripts/post.php
+        run: composer run-script post-hook
         env:
           ATPROTO_LOGIN: ${{ secrets.ATPROTO_LOGIN }}
           ATPROTO_PASSWORD: ${{ secrets.ATPROTO_PASSWORD }}
