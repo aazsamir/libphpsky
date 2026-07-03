@@ -9,13 +9,13 @@ use Psr\Cache\CacheItemPoolInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class QueryCacheClient implements ATProtoClientInterface
+readonly class QueryCacheClient implements ATProtoClientInterface
 {
     public function __construct(
-        private readonly ATProtoClientInterface $decorated,
-        private readonly CacheItemPoolInterface $cache,
-        private readonly int $ttl = 3600,
-        private readonly string $prefix = 'atproto_query_cache_',
+        private ATProtoClientInterface $decorated,
+        private CacheItemPoolInterface $cache,
+        private int $ttl = 3600,
+        private string $prefix = 'atproto_query_cache_',
     ) {}
 
     public function sendRequest(RequestInterface $request): ResponseInterface

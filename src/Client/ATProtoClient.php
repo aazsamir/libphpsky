@@ -8,11 +8,11 @@ use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class ATProtoClient implements ATProtoClientInterface
+readonly class ATProtoClient implements ATProtoClientInterface
 {
     public function __construct(
-        private readonly ClientInterface $client,
-        private readonly string $userAgent = ATProtoClientInterface::USER_AGENT,
+        private ClientInterface $client,
+        private string $userAgent = ATProtoClientInterface::USER_AGENT,
     ) {}
 
     public function sendRequest(RequestInterface $request): ResponseInterface

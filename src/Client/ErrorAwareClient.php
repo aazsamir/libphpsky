@@ -9,10 +9,10 @@ use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class ErrorAwareClient implements ATProtoClientInterface
+readonly class ErrorAwareClient implements ATProtoClientInterface
 {
     public function __construct(
-        private readonly ClientInterface $decorated,
+        private ClientInterface $decorated,
     ) {}
 
     public function sendRequest(RequestInterface $request): ResponseInterface

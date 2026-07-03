@@ -7,12 +7,12 @@ namespace Aazsamir\Libphpsky\Client\Session;
 use Aazsamir\Libphpsky\Client\AuthConfig;
 use Psr\Cache\CacheItemPoolInterface;
 
-class PsrCacheSessionStore implements SessionStore
+readonly class PsrCacheSessionStore implements SessionStore
 {
     public function __construct(
-        private readonly CacheItemPoolInterface $cache,
-        private readonly string $prefix = 'atproto_session_',
-        private readonly int $ttl = 600,
+        private CacheItemPoolInterface $cache,
+        private string $prefix = 'atproto_session_',
+        private int $ttl = 600,
     ) {}
 
     public function store(AuthConfig $authConfig, Session $session): void

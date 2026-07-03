@@ -16,10 +16,10 @@ use Aazsamir\Libphpsky\Jetstream\Model\Kind;
 use Aazsamir\Libphpsky\Jetstream\Model\Operation;
 use WebSocket\Message\Message;
 
-class MessageAdapter implements MessageAdapterInterface
+readonly class MessageAdapter implements MessageAdapterInterface
 {
     public function __construct(
-        private readonly TypeResolver $typeResolver,
+        private TypeResolver $typeResolver,
     ) {}
 
     public static function default(): self

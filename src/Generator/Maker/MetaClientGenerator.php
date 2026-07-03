@@ -17,11 +17,11 @@ use Nette\PhpGenerator\Property;
 /**
  * @internal
  */
-class MetaClientGenerator
+readonly class MetaClientGenerator
 {
     public function __construct(
-        private readonly SaveClass $saveClass,
-        private readonly ClassResolver $classResolver,
+        private SaveClass $saveClass,
+        private ClassResolver $classResolver,
     ) {}
 
     public function generate(Lexicons $lexicons): void

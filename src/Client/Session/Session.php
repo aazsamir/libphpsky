@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Client\Session;
 
-class Session
+readonly class Session
 {
     public function __construct(
-        private readonly string $accessToken,
-        private readonly string $refreshToken,
+        private string $accessToken,
+        private string $refreshToken,
     ) {}
 
     public function getAccessToken(): string

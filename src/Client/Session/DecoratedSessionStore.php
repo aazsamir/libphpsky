@@ -6,11 +6,11 @@ namespace Aazsamir\Libphpsky\Client\Session;
 
 use Aazsamir\Libphpsky\Client\AuthConfig;
 
-class DecoratedSessionStore implements SessionStore
+readonly class DecoratedSessionStore implements SessionStore
 {
     public function __construct(
-        private readonly SessionStore $decorated,
-        private readonly SessionStore $actual,
+        private SessionStore $decorated,
+        private SessionStore $actual,
     ) {}
 
     public function store(AuthConfig $authConfig, Session $session): void

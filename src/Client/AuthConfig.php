@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Client;
 
-class AuthConfig
+readonly class AuthConfig
 {
     public function __construct(
-        private readonly ?string $login = null,
-        private readonly ?string $password = null,
+        private ?string $login = null,
+        private ?string $password = null,
     ) {}
 
     public function login(): ?string

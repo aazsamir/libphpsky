@@ -11,11 +11,11 @@ use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class AmphpClientAdapter implements ATProtoClientInterface
+readonly class AmphpClientAdapter implements ATProtoClientInterface
 {
     public function __construct(
-        private readonly DelegateHttpClient $client,
-        private readonly string $userAgent = ATProtoClientInterface::USER_AGENT,
+        private DelegateHttpClient $client,
+        private string $userAgent = ATProtoClientInterface::USER_AGENT,
     ) {}
 
     public function sendRequest(RequestInterface $request): ResponseInterface
