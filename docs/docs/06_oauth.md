@@ -52,11 +52,12 @@ After callback is handled, the session will be stored (cached) for future reques
 ```php
 <?php
 try {
-    $client = ATProtoClientBuilder::default()
+    $builder = ATProtoClientBuilder::default();
+    $client = $builder
         ->useOAuth(true)
         ->oauthMetadata($metadata)
         ->build();
-    $oauthClient = $client->getOAuthClient();
+    $oauthClient = $builder->getOAuthClient();
     $pdsUrl = ATProtoFacade::default()
         ->getPdsUrlByHandle('foo.bsky.social');
     $metaClient->appBskyActorGetProfile()

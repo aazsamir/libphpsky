@@ -58,7 +58,6 @@ readonly class OAuthAwareClient implements ATProtoClientInterface
             $session,
             $oauthClient,
         );
-        // @todo: this is probably wrong with caching, and should be updated only on dpopNonce bounce?
         $dpopNonce = $oauthClient->extractDpopNonce($response);
 
         if ($dpopNonce !== null) {

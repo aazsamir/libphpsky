@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Aazsamir\Libphpsky\Client;
 
+use GuzzleHttp\Exception\BadResponseException;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -22,7 +23,11 @@ class ErrorAwareClient implements ATProtoClientInterface
             $query = false;
         }
 
-        $response = $this->decorated->sendRequest($request);
+        try {
+            $response = $this->decorated->sendRequest($request);
+        } catch (BadResponseException $e) {
+            $response = $e->getResponse();
+        }
 
         if ($response->getStatusCode() >= 400) {
             $body = json_decode($response->getBody()->getContents(), true);

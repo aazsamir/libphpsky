@@ -10,6 +10,7 @@ use Aazsamir\Libphpsky\Client\Session\DecoratedSessionStore;
 use Aazsamir\Libphpsky\Client\Session\MemorySessionStore;
 use Aazsamir\Libphpsky\Client\Session\PsrCacheSessionStore;
 use Aazsamir\Libphpsky\Client\Session\SessionStore;
+use Aazsamir\Libphpsky\OAuth\ATProtoOAuthClient;
 use Aazsamir\Libphpsky\OAuth\ATProtoOAuthClientBuilder;
 use Aazsamir\Libphpsky\OAuth\ClientMetadata;
 use Aazsamir\Libphpsky\OAuth\CryptoKey;
@@ -18,6 +19,7 @@ use Amp\Http\Client\HttpClient;
 use Amp\Http\Client\HttpClientBuilder;
 use GuzzleHttp\Client;
 use Psr\Cache\CacheItemPoolInterface;
+use Psr\Http\Client\ClientInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 class ATProtoClientBuilder
@@ -27,12 +29,14 @@ class ATProtoClientBuilder
     private static ATProtoClientInterface $default;
     private CacheItemPoolInterface $cache;
     private bool $useQueryCache = true;
+    private ClientInterface $psrClient;
     private bool $useAsync = false;
     private HttpClient $amphpClient;
     private int $cacheTtl = 3600;
     private bool $useOAuth = false;
     private HandleProvider $oauthHandleProvider;
     private ATProtoOAuthClientBuilder $oauthClientBuilder;
+    private ATProtoOAuthClient $oauthClient;
 
     public static function getDefault(): ATProtoClientInterface
     {
@@ -172,6 +176,13 @@ class ATProtoClientBuilder
         return $this->oauthClientBuilder;
     }
 
+    private function psrClient(ClientInterface $psrClient): self
+    {
+        $this->psrClient = $psrClient;
+
+        return $this;
+    }
+
     public function amphpClient(HttpClient $amphpClient): self
     {
         $this->amphpClient = $amphpClient;
@@ -222,13 +233,14 @@ class ATProtoClientBuilder
         return $this;
     }
 
+    public function getOAuthClient(): ATProtoOAuthClient
+    {
+        return $this->oauthClient;
+    }
+
     public function build(): ATProtoClientInterface
     {
-        if ($this->useAsync === false) {
-            $client = new ATProtoClient(
-                new Client(),
-            );
-        } else {
+        if ($this->useAsync) {
             if (!isset($this->amphpClient)) {
                 $this->amphpClient($this->defaultAmphpClient());
             }
@@ -236,13 +248,13 @@ class ATProtoClientBuilder
             $client = new AmphpClientAdapter(
                 $this->amphpClient,
             );
-        }
+        } else {
+            if (!isset($this->psrClient)) {
+                $this->psrClient(new Client());
+            }
 
-        if ($this->useQueryCache) {
-            $client = new QueryCacheClient(
-                decorated: $client,
-                cache: $this->cache,
-                ttl: $this->cacheTtl,
+            $client = new ATProtoClient(
+                $this->psrClient,
             );
         }
 
@@ -255,18 +267,30 @@ class ATProtoClientBuilder
                 $this->oauthHandleProvider($this->defaultOAuthHandleProvider());
             }
 
-            return new OAuthAwareClient(
+            $this->oauthClient = $this->oauthClientBuilder->client($client)->build();
+
+            $client = new OAuthAwareClient(
                 decorated: $client,
-                oauthClient: $this->oauthClientBuilder->build(),
+                oauthClient: $this->oauthClient,
                 handleProvider: $this->oauthHandleProvider,
                 sessionTtl: $this->oauthClientBuilder->getSessionTtl(),
             );
+        } else {
+            $client = new AuthAwareClient(
+                decorated: $client,
+                authConfig: $this->authConfig,
+                sessionStore: $this->sessionStore,
+            );
         }
 
-        return new AuthAwareClient(
-            decorated: $client,
-            authConfig: $this->authConfig,
-            sessionStore: $this->sessionStore,
-        );
+        if ($this->useQueryCache) {
+            $client = new QueryCacheClient(
+                decorated: $client,
+                cache: $this->cache,
+                ttl: $this->cacheTtl,
+            );
+        }
+
+        return $client;
     }
 }

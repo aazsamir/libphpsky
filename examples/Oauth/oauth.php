@@ -5,7 +5,6 @@ declare(strict_types=1);
 use Aazsamir\Libphpsky\Client\ATProtoClientBuilder;
 use Aazsamir\Libphpsky\Client\Facade\ATProtoFacade;
 use Aazsamir\Libphpsky\Client\OAuth\OAuthCallbackNeeded;
-use Aazsamir\Libphpsky\Client\OAuthAwareClient;
 use Aazsamir\Libphpsky\Model\Meta\ATProtoMetaClient;
 use Aazsamir\Libphpsky\OAuth\ClientMetadata;
 use Aazsamir\Libphpsky\OAuth\Session\FileSessionManager;
@@ -43,9 +42,8 @@ if ($handle === null) {
 }
 
 $client = $builder->build();
-assert($client instanceof OAuthAwareClient);
 // grab the underlying OAuth client to handle the callback
-$oauthClient = $client->getOAuthClient();
+$oauthClient = $builder->getOAuthClient();
 $metaClient = new ATProtoMetaClient($client);
 $facade = ATProtoFacade::default($client);
 
