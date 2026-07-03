@@ -1,0 +1,36 @@
+name: Post
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    environment: main
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Run post hook script
+        run: php .github/scripts/post.php
+        env:
+          ATPROTO_LOGIN: ${{ secrets.ATPROTO_LOGIN }}
+          ATPROTO_PASSWORD: ${{ secrets.ATPROTO_PASSWORD }}
