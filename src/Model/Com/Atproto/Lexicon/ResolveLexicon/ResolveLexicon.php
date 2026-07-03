@@ -28,9 +28,9 @@ class ResolveLexicon implements \Aazsamir\Libphpsky\Action
     /**
      * @param string $nsid The lexicon NSID to resolve.
      */
-    public function query(string $nsid): Output
+    public function query(string $nsid): ResolveLexiconOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Lexicon\ResolveLexicon\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Lexicon\ResolveLexicon\ResolveLexiconOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

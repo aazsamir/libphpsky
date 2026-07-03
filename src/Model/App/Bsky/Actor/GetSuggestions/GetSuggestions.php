@@ -25,9 +25,9 @@ class GetSuggestions implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?int $limit = null, ?string $cursor = null): Output
+    public function query(?int $limit = null, ?string $cursor = null): GetSuggestionsOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetSuggestions\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetSuggestions\GetSuggestionsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

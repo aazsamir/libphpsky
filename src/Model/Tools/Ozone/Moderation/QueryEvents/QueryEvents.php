@@ -70,8 +70,8 @@ class QueryEvents implements \Aazsamir\Libphpsky\Action
         ?string $ageAssuranceState = null,
         ?bool $withStrike = null,
         ?string $cursor = null,
-    ): Output {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryEvents\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    ): QueryEventsOutput {
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryEvents\QueryEventsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

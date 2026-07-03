@@ -25,8 +25,8 @@ class UpdateAllRead implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(UpdateAllReadInput $input): UpdateAllReadOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UpdateAllRead\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UpdateAllRead\UpdateAllReadOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

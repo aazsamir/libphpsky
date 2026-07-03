@@ -25,8 +25,9 @@ class InitAgeAssurance implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\Defs\AgeAssuranceState
-    {
+    public function procedure(
+        InitAgeAssuranceInput $input,
+    ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\Defs\AgeAssuranceState {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\Defs\AgeAssuranceState::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

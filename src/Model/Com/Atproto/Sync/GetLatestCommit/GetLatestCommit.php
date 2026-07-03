@@ -28,9 +28,9 @@ class GetLatestCommit implements \Aazsamir\Libphpsky\Action
     /**
      * @param string $did The DID of the repo.
      */
-    public function query(string $did): Output
+    public function query(string $did): GetLatestCommitOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetLatestCommit\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetLatestCommit\GetLatestCommitOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

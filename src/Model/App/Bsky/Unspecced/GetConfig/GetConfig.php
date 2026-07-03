@@ -25,9 +25,9 @@ class GetConfig implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(): Output
+    public function query(): GetConfigOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetConfig\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetConfig\GetConfigOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

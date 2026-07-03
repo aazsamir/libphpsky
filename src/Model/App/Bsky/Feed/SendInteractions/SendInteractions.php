@@ -25,8 +25,8 @@ class SendInteractions implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(SendInteractionsInput $input): SendInteractionsOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\SendInteractions\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\SendInteractions\SendInteractionsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

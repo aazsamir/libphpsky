@@ -25,8 +25,8 @@ class EditJoinLink implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(EditJoinLinkInput $input): EditJoinLinkOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EditJoinLink\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EditJoinLink\EditJoinLinkOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

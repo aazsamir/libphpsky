@@ -25,8 +25,8 @@ class UpdateJoinRequestsRead implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(UpdateJoinRequestsReadInput $input): UpdateJoinRequestsReadOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\UpdateJoinRequestsRead\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\UpdateJoinRequestsRead\UpdateJoinRequestsReadOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

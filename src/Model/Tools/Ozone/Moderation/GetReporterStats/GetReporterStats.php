@@ -28,9 +28,9 @@ class GetReporterStats implements \Aazsamir\Libphpsky\Action
     /**
      * @param array<string> $dids
      */
-    public function query(array $dids): Output
+    public function query(array $dids): GetReporterStatsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetReporterStats\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetReporterStats\GetReporterStatsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

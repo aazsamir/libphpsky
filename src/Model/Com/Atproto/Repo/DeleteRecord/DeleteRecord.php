@@ -25,8 +25,8 @@ class DeleteRecord implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(DeleteRecordInput $input): DeleteRecordOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\DeleteRecord\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\DeleteRecord\DeleteRecordOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

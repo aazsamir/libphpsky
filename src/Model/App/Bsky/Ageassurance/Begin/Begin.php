@@ -25,7 +25,7 @@ class Begin implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): \Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Defs\State
+    public function procedure(BeginInput $input): \Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Defs\State
     {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\Defs\State::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

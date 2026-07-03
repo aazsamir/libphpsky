@@ -25,7 +25,7 @@ class AddMember implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\Defs\Member
+    public function procedure(AddMemberInput $input): \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\Defs\Member
     {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\Defs\Member::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

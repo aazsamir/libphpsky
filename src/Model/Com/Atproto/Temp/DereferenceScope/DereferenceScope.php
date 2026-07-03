@@ -28,9 +28,9 @@ class DereferenceScope implements \Aazsamir\Libphpsky\Action
     /**
      * @param string $scope The scope reference (starts with 'ref:')
      */
-    public function query(string $scope): Output
+    public function query(string $scope): DereferenceScopeOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\DereferenceScope\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\DereferenceScope\DereferenceScopeOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

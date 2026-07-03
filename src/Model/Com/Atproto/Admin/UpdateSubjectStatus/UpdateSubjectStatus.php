@@ -25,8 +25,8 @@ class UpdateSubjectStatus implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(UpdateSubjectStatusInput $input): UpdateSubjectStatusOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateSubjectStatus\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\UpdateSubjectStatus\UpdateSubjectStatusOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

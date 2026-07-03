@@ -25,8 +25,8 @@ class PutActivitySubscription implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(PutActivitySubscriptionInput $input): PutActivitySubscriptionOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutActivitySubscription\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutActivitySubscription\PutActivitySubscriptionOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

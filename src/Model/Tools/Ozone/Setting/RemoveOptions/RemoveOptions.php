@@ -25,8 +25,8 @@ class RemoveOptions implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(RemoveOptionsInput $input): RemoveOptionsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Setting\RemoveOptions\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Setting\RemoveOptions\RemoveOptionsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

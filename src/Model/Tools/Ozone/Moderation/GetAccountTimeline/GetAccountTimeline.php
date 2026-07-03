@@ -25,9 +25,9 @@ class GetAccountTimeline implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(string $did): Output
+    public function query(string $did): GetAccountTimelineOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetAccountTimeline\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetAccountTimeline\GetAccountTimelineOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

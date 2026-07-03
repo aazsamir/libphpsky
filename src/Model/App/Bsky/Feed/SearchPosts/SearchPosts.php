@@ -51,8 +51,8 @@ class SearchPosts implements \Aazsamir\Libphpsky\Action
         ?array $tag = null,
         ?int $limit = null,
         ?string $cursor = null,
-    ): Output {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\SearchPosts\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    ): SearchPostsOutput {
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\SearchPosts\SearchPostsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

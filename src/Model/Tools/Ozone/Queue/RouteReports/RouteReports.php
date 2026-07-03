@@ -25,8 +25,8 @@ class RouteReports implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(RouteReportsInput $input): RouteReportsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\RouteReports\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\RouteReports\RouteReportsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

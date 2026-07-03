@@ -25,8 +25,8 @@ class ImportContacts implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(ImportContactsInput $input): ImportContactsOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Contact\ImportContacts\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Contact\ImportContacts\ImportContactsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

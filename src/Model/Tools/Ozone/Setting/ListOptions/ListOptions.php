@@ -35,8 +35,8 @@ class ListOptions implements \Aazsamir\Libphpsky\Action
         ?string $scope = null,
         ?string $prefix = null,
         ?array $keys = null,
-    ): Output {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Setting\ListOptions\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    ): ListOptionsOutput {
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Setting\ListOptions\ListOptionsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

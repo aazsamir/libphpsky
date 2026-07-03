@@ -25,9 +25,9 @@ class GetValues implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(string $name, ?int $limit = null, ?string $cursor = null): Output
+    public function query(string $name, ?int $limit = null, ?string $cursor = null): GetValuesOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\GetValues\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\GetValues\GetValuesOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

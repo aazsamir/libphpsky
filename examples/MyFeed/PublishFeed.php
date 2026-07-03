@@ -7,8 +7,8 @@ namespace Examples\MyFeed;
 use Aazsamir\Libphpsky\Client\ATProtoClientBuilder;
 use Aazsamir\Libphpsky\Client\AuthConfig;
 use Aazsamir\Libphpsky\Model\App\Bsky\Feed\Generator\Generator;
-use Aazsamir\Libphpsky\Model\Com\Atproto\Repo\DeleteRecord;
-use Aazsamir\Libphpsky\Model\Com\Atproto\Repo\PutRecord;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Repo\DeleteRecord\DeleteRecordInput;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Repo\PutRecord\PutRecordInput;
 use Aazsamir\Libphpsky\Model\Meta\ATProtoMetaClient;
 
 /**
@@ -47,7 +47,7 @@ final class PublishFeed
             createdAt: new \DateTimeImmutable(),
         );
 
-        $input = PutRecord\Input::new(
+        $input = PutRecordInput::new(
             repo: $myself->did,
             collection: Generator::ID,
             rkey: 'libphpsky-feed',
@@ -68,7 +68,7 @@ final class PublishFeed
 
         $myself = $this->metaClient->comAtprotoIdentityResolveHandle()->query($this->authConfig->login());
 
-        $input = DeleteRecord\Input::new(
+        $input = DeleteRecordInput::new(
             repo: $myself->did,
             collection: Generator::ID,
             rkey: 'libphpsky-feed',

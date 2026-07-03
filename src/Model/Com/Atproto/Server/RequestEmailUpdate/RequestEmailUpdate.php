@@ -25,8 +25,8 @@ class RequestEmailUpdate implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(): Output
+    public function procedure(): RequestEmailUpdateOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RequestEmailUpdate\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RequestEmailUpdate\RequestEmailUpdateOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

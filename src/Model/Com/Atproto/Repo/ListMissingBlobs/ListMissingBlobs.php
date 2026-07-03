@@ -25,9 +25,9 @@ class ListMissingBlobs implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?int $limit = null, ?string $cursor = null): Output
+    public function query(?int $limit = null, ?string $cursor = null): ListMissingBlobsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ListMissingBlobs\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ListMissingBlobs\ListMissingBlobsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

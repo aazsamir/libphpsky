@@ -28,9 +28,9 @@ class GetPosts implements \Aazsamir\Libphpsky\Action
     /**
      * @param array<string> $uris  List of post AT-URIs to return hydrated views for.
      */
-    public function query(array $uris): Output
+    public function query(array $uris): GetPostsOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetPosts\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetPosts\GetPostsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

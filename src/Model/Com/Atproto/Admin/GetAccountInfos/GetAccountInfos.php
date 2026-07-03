@@ -28,9 +28,9 @@ class GetAccountInfos implements \Aazsamir\Libphpsky\Action
     /**
      * @param array<string> $dids
      */
-    public function query(array $dids): Output
+    public function query(array $dids): GetAccountInfosOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetAccountInfos\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetAccountInfos\GetAccountInfosOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

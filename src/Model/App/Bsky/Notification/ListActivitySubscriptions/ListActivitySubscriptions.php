@@ -25,9 +25,9 @@ class ListActivitySubscriptions implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?int $limit = null, ?string $cursor = null): Output
+    public function query(?int $limit = null, ?string $cursor = null): ListActivitySubscriptionsOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListActivitySubscriptions\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Notification\ListActivitySubscriptions\ListActivitySubscriptionsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

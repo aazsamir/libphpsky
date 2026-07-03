@@ -90,6 +90,8 @@ class ClassResolver
 
         return match ($classname) {
             'List' => 'ListDef',
+            'Output' => ucfirst($last) . 'Output',
+            'Input' => ucfirst($last) . 'Input',
             default => $classname,
         };
     }

@@ -28,9 +28,9 @@ class GetSuggestedFeedsSkeleton implements \Aazsamir\Libphpsky\Action
     /**
      * @param ?string $viewer DID of the account making the request (not included for public/unauthenticated queries).
      */
-    public function query(?string $viewer = null, ?int $limit = null): Output
+    public function query(?string $viewer = null, ?int $limit = null): GetSuggestedFeedsSkeletonOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedFeedsSkeleton\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedFeedsSkeleton\GetSuggestedFeedsSkeletonOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

@@ -25,8 +25,8 @@ class SendNotification implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(SendNotificationInput $input): SendNotificationOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Contact\SendNotification\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Contact\SendNotification\SendNotificationOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

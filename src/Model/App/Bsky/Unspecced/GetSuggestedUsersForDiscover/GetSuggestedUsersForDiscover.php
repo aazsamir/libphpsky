@@ -25,9 +25,9 @@ class GetSuggestedUsersForDiscover implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?int $limit = null): Output
+    public function query(?int $limit = null): GetSuggestedUsersForDiscoverOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersForDiscover\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersForDiscover\GetSuggestedUsersForDiscoverOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

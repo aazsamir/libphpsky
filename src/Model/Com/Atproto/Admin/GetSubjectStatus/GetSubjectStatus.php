@@ -25,9 +25,9 @@ class GetSubjectStatus implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?string $did = null, ?string $uri = null, ?string $blob = null): Output
+    public function query(?string $did = null, ?string $uri = null, ?string $blob = null): GetSubjectStatusOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetSubjectStatus\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetSubjectStatus\GetSubjectStatusOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

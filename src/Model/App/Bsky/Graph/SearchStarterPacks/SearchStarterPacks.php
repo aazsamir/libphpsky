@@ -28,9 +28,9 @@ class SearchStarterPacks implements \Aazsamir\Libphpsky\Action
     /**
      * @param string $q Search query string. Syntax, phrase, boolean, and faceting is unspecified, but Lucene query syntax is recommended.
      */
-    public function query(string $q, ?int $limit = null, ?string $cursor = null): Output
+    public function query(string $q, ?int $limit = null, ?string $cursor = null): SearchStarterPacksOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\SearchStarterPacks\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\SearchStarterPacks\SearchStarterPacksOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

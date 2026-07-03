@@ -30,9 +30,12 @@ class GetLiveStats implements \Aazsamir\Libphpsky\Action
      * @param ?string $moderatorDid Filter stats by moderator DID.
      * @param ?array<string> $reportTypes  Filter stats by report types.
      */
-    public function query(?int $queueId = null, ?string $moderatorDid = null, ?array $reportTypes = null): Output
-    {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetLiveStats\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    public function query(
+        ?int $queueId = null,
+        ?string $moderatorDid = null,
+        ?array $reportTypes = null,
+    ): GetLiveStatsOutput {
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetLiveStats\GetLiveStatsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

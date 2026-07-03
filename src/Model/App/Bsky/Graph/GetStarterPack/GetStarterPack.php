@@ -28,9 +28,9 @@ class GetStarterPack implements \Aazsamir\Libphpsky\Action
     /**
      * @param string $starterPack Reference (AT-URI) of the starter pack record.
      */
-    public function query(string $starterPack): Output
+    public function query(string $starterPack): GetStarterPackOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPack\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPack\GetStarterPackOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

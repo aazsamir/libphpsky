@@ -66,12 +66,13 @@ If you want to handle authorization by yourself, you need to obtain a JWT token 
 
 ```php
 <?php
-use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\CreateSession;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\CreateSessionInput;
 use Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfile\GetProfile;
 use Aazsamir\Libphpsky\Model\Meta\ATProtoMetaClient;
 
-$createSession = CreateSession\CreateSession::default();
-$input = CreateSession\Input::new(
+$createSession = CreateSession::default();
+$input = CreateSessionInput::new(
     login: 'yourlogin.bsky.social',
     password: 'yourpassword',
 )

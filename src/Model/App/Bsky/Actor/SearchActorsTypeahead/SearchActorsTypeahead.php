@@ -29,9 +29,9 @@ class SearchActorsTypeahead implements \Aazsamir\Libphpsky\Action
      * @param ?string $term DEPRECATED: use 'q' instead.
      * @param ?string $q Search query prefix; not a full query string.
      */
-    public function query(?string $term = null, ?string $q = null, ?int $limit = null): Output
+    public function query(?string $term = null, ?string $q = null, ?int $limit = null): SearchActorsTypeaheadOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\SearchActorsTypeahead\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\SearchActorsTypeahead\SearchActorsTypeaheadOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

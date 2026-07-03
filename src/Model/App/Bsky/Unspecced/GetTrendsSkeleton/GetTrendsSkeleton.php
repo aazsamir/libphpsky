@@ -28,9 +28,9 @@ class GetTrendsSkeleton implements \Aazsamir\Libphpsky\Action
     /**
      * @param ?string $viewer DID of the account making the request (not included for public/unauthenticated queries).
      */
-    public function query(?string $viewer = null, ?int $limit = null): Output
+    public function query(?string $viewer = null, ?int $limit = null): GetTrendsSkeletonOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrendsSkeleton\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrendsSkeleton\GetTrendsSkeletonOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

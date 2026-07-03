@@ -8,6 +8,7 @@ use Aazsamir\Libphpsky\Client\Session\Session;
 use Aazsamir\Libphpsky\Client\Session\SessionStore;
 use Aazsamir\Libphpsky\Generator\Prefab\TypeResolver;
 use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\CreateSession;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\CreateSessionInput;
 use Aazsamir\Libphpsky\Model\Com\Atproto\Server\RefreshSession\RefreshSession;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
@@ -55,7 +56,7 @@ class AuthAwareClient implements ATProtoClientInterface
         $session = $this->sessionStore->retrieve($this->authConfig);
 
         if ($session === null) {
-            $input = \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\Input::new(
+            $input = CreateSessionInput::new(
                 identifier: $this->authConfig->login(),
                 password: $this->authConfig->password(),
                 authFactorToken: $this->authConfig->authFactorToken(),

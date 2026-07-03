@@ -8,8 +8,10 @@ use Aazsamir\Libphpsky\Client\AuthAwareClient;
 use Aazsamir\Libphpsky\Client\AuthConfig;
 use Aazsamir\Libphpsky\Client\Session\MemorySessionStore;
 use Aazsamir\Libphpsky\Client\Session\Session;
-use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession;
-use Aazsamir\Libphpsky\Model\Com\Atproto\Server\RefreshSession;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\CreateSession;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\CreateSessionOutput;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Server\RefreshSession\RefreshSession;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Server\RefreshSession\RefreshSessionOutput;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\MockObject\MockObject;
 use Tests\Unit\Client\Stub\ClientStub;
@@ -24,16 +26,16 @@ final class AuthAwareClientTest extends TestCase
 
     private ClientStub $mocked;
     private MemorySessionStore $sessionStore;
-    private CreateSession\CreateSession&MockObject $createSession;
-    private RefreshSession\RefreshSession&MockObject $refreshSession;
+    private CreateSession&MockObject $createSession;
+    private RefreshSession&MockObject $refreshSession;
     private AuthConfig $authConfig;
 
     protected function setUp(): void
     {
         $this->mocked = new ClientStub();
         $this->sessionStore = new MemorySessionStore();
-        $this->createSession = $this->createMock(CreateSession\CreateSession::class);
-        $this->refreshSession = $this->createMock(RefreshSession\RefreshSession::class);
+        $this->createSession = $this->createMock(CreateSession::class);
+        $this->refreshSession = $this->createMock(RefreshSession::class);
         $this->refreshSession->method('withAuth')->willReturnSelf();
         $this->authConfig = new AuthConfig(
             login: 'login',
@@ -67,7 +69,7 @@ final class AuthAwareClientTest extends TestCase
             $this->refreshSession,
         );
 
-        $this->createSession->expects(self::once())->method('procedure')->willReturn(CreateSession\Output::new(
+        $this->createSession->expects(self::once())->method('procedure')->willReturn(CreateSessionOutput::new(
             accessJwt: 'newaccess',
             refreshJwt: 'newrefresh',
             handle: 'handle',
@@ -111,7 +113,7 @@ final class AuthAwareClientTest extends TestCase
         $this->sessionStore->store($this->authConfig, new Session('sesaccess', 'sesrefresh'));
 
         $this->createSession->expects(self::never())->method('procedure');
-        $this->refreshSession->expects(self::once())->method('procedure')->willReturn(RefreshSession\Output::new(
+        $this->refreshSession->expects(self::once())->method('procedure')->willReturn(RefreshSessionOutput::new(
             accessJwt: 'refreshedaccess',
             refreshJwt: 'refreshedrefresh',
             handle: 'handle',

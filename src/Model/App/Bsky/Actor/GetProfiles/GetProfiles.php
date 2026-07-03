@@ -28,9 +28,9 @@ class GetProfiles implements \Aazsamir\Libphpsky\Action
     /**
      * @param array<string> $actors
      */
-    public function query(array $actors): Output
+    public function query(array $actors): GetProfilesOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfiles\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfiles\GetProfilesOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

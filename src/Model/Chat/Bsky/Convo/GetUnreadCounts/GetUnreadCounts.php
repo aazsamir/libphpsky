@@ -28,9 +28,9 @@ class GetUnreadCounts implements \Aazsamir\Libphpsky\Action
     /**
      * @param ?bool $includeGroupChats When false, group convos are excluded from the counts.
      */
-    public function query(?bool $includeGroupChats = null): Output
+    public function query(?bool $includeGroupChats = null): GetUnreadCountsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetUnreadCounts\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetUnreadCounts\GetUnreadCountsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

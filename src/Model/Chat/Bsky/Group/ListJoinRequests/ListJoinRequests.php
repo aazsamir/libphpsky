@@ -25,9 +25,9 @@ class ListJoinRequests implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(string $convoId, ?int $limit = null, ?string $cursor = null): Output
+    public function query(string $convoId, ?int $limit = null, ?string $cursor = null): ListJoinRequestsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ListJoinRequests\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ListJoinRequests\ListJoinRequestsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

@@ -25,9 +25,9 @@ class GetActorStarterPacks implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(string $actor, ?int $limit = null, ?string $cursor = null): Output
+    public function query(string $actor, ?int $limit = null, ?string $cursor = null): GetActorStarterPacksOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetActorStarterPacks\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetActorStarterPacks\GetActorStarterPacksOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

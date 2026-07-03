@@ -25,8 +25,8 @@ class DeleteQueue implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(DeleteQueueInput $input): DeleteQueueOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\DeleteQueue\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\DeleteQueue\DeleteQueueOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

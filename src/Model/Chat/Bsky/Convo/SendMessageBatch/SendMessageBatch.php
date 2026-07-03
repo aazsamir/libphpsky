@@ -25,8 +25,8 @@ class SendMessageBatch implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(SendMessageBatchInput $input): SendMessageBatchOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\SendMessageBatch\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\SendMessageBatch\SendMessageBatchOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

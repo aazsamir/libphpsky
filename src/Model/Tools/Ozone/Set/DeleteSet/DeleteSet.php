@@ -25,8 +25,8 @@ class DeleteSet implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(DeleteSetInput $input): DeleteSetOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\DeleteSet\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\DeleteSet\DeleteSetOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

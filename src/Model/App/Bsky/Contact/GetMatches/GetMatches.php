@@ -25,9 +25,9 @@ class GetMatches implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?int $limit = null, ?string $cursor = null): Output
+    public function query(?int $limit = null, ?string $cursor = null): GetMatchesOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Contact\GetMatches\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Contact\GetMatches\GetMatchesOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

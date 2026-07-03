@@ -25,8 +25,8 @@ class DismissMatch implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(DismissMatchInput $input): DismissMatchOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Contact\DismissMatch\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Contact\DismissMatch\DismissMatchOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

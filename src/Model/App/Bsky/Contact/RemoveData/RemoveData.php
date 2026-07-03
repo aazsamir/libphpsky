@@ -25,8 +25,8 @@ class RemoveData implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(RemoveDataInput $input): RemoveDataOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Contact\RemoveData\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Contact\RemoveData\RemoveDataOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

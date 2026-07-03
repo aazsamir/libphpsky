@@ -28,9 +28,9 @@ class ResolveDid implements \Aazsamir\Libphpsky\Action
     /**
      * @param string $did DID to resolve.
      */
-    public function query(string $did): Output
+    public function query(string $did): ResolveDidOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveDid\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveDid\ResolveDidOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

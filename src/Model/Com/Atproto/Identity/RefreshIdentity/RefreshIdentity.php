@@ -25,8 +25,9 @@ class RefreshIdentity implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\Defs\IdentityInfo
-    {
+    public function procedure(
+        RefreshIdentityInput $input,
+    ): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\Defs\IdentityInfo {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\Defs\IdentityInfo::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

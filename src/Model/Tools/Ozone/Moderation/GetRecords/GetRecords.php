@@ -28,9 +28,9 @@ class GetRecords implements \Aazsamir\Libphpsky\Action
     /**
      * @param array<string> $uris
      */
-    public function query(array $uris): Output
+    public function query(array $uris): GetRecordsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRecords\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRecords\GetRecordsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

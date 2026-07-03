@@ -28,9 +28,9 @@ class GetFeedGenerator implements \Aazsamir\Libphpsky\Action
     /**
      * @param string $feed AT-URI of the feed generator record.
      */
-    public function query(string $feed): Output
+    public function query(string $feed): GetFeedGeneratorOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedGenerator\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedGenerator\GetFeedGeneratorOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

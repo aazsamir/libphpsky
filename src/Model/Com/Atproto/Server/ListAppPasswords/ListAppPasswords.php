@@ -25,9 +25,9 @@ class ListAppPasswords implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(): Output
+    public function query(): ListAppPasswordsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ListAppPasswords\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\ListAppPasswords\ListAppPasswordsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

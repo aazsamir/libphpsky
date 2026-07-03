@@ -25,8 +25,8 @@ class WithdrawJoinRequest implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(WithdrawJoinRequestInput $input): WithdrawJoinRequestOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\WithdrawJoinRequest\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\WithdrawJoinRequest\WithdrawJoinRequestOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

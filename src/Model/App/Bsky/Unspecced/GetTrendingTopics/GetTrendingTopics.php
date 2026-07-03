@@ -28,9 +28,9 @@ class GetTrendingTopics implements \Aazsamir\Libphpsky\Action
     /**
      * @param ?string $viewer DID of the account making the request (not included for public/unauthenticated queries). Used to boost followed accounts in ranking.
      */
-    public function query(?string $viewer = null, ?int $limit = null): Output
+    public function query(?string $viewer = null, ?int $limit = null): GetTrendingTopicsOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrendingTopics\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrendingTopics\GetTrendingTopicsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

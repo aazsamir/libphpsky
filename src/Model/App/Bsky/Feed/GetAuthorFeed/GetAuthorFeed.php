@@ -34,8 +34,8 @@ class GetAuthorFeed implements \Aazsamir\Libphpsky\Action
         ?string $cursor = null,
         ?string $filter = null,
         ?bool $includePins = null,
-    ): Output {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetAuthorFeed\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    ): GetAuthorFeedOutput {
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetAuthorFeed\GetAuthorFeedOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

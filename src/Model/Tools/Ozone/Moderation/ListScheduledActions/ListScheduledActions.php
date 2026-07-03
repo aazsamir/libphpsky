@@ -25,8 +25,8 @@ class ListScheduledActions implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(ListScheduledActionsInput $input): ListScheduledActionsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\ListScheduledActions\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\ListScheduledActions\ListScheduledActionsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

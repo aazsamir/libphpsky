@@ -29,9 +29,13 @@ class GetListsWithMembership implements \Aazsamir\Libphpsky\Action
      * @param string $actor The account (actor) to check for membership.
      * @param ?array<string> $purposes  Optional filter by list purpose. If not specified, all supported types are returned.
      */
-    public function query(string $actor, ?int $limit = null, ?string $cursor = null, ?array $purposes = null): Output
-    {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetListsWithMembership\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    public function query(
+        string $actor,
+        ?int $limit = null,
+        ?string $cursor = null,
+        ?array $purposes = null,
+    ): GetListsWithMembershipOutput {
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetListsWithMembership\GetListsWithMembershipOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

@@ -25,8 +25,8 @@ class EditGroup implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(EditGroupInput $input): EditGroupOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EditGroup\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EditGroup\EditGroupOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

@@ -28,9 +28,9 @@ class GetSubjects implements \Aazsamir\Libphpsky\Action
     /**
      * @param array<string> $subjects
      */
-    public function query(array $subjects): Output
+    public function query(array $subjects): GetSubjectsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetSubjects\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetSubjects\GetSubjectsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

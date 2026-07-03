@@ -25,8 +25,8 @@ class CreateSession implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(CreateSessionInput $input): CreateSessionOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\CreateSessionOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

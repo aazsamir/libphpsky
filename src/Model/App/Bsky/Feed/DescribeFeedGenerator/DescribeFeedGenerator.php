@@ -25,9 +25,9 @@ class DescribeFeedGenerator implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(): Output
+    public function query(): DescribeFeedGeneratorOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\DescribeFeedGenerator\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\DescribeFeedGenerator\DescribeFeedGeneratorOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

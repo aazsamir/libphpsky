@@ -25,8 +25,8 @@ class VerifyPhone implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(VerifyPhoneInput $input): VerifyPhoneOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Contact\VerifyPhone\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Contact\VerifyPhone\VerifyPhoneOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

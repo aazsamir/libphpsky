@@ -25,8 +25,8 @@ class UnmuteConvo implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(UnmuteConvoInput $input): UnmuteConvoOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UnmuteConvo\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UnmuteConvo\UnmuteConvoOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

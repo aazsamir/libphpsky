@@ -28,9 +28,9 @@ class GetHostStatus implements \Aazsamir\Libphpsky\Action
     /**
      * @param string $hostname Hostname of the host (eg, PDS or relay) being queried.
      */
-    public function query(string $hostname): Output
+    public function query(string $hostname): GetHostStatusOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetHostStatus\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetHostStatus\GetHostStatusOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

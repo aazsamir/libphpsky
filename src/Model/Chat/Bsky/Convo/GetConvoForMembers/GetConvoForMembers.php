@@ -28,9 +28,9 @@ class GetConvoForMembers implements \Aazsamir\Libphpsky\Action
     /**
      * @param array<string> $members
      */
-    public function query(array $members): Output
+    public function query(array $members): GetConvoForMembersOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoForMembers\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoForMembers\GetConvoForMembersOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

@@ -25,8 +25,8 @@ class RevokeVerifications implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(RevokeVerificationsInput $input): RevokeVerificationsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\RevokeVerifications\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\RevokeVerifications\RevokeVerificationsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

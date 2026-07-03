@@ -25,9 +25,9 @@ class GetConvo implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(string $convoId): Output
+    public function query(string $convoId): GetConvoOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvo\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvo\GetConvoOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

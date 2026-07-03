@@ -25,8 +25,8 @@ class LeaveConvo implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(LeaveConvoInput $input): LeaveConvoOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\LeaveConvo\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\LeaveConvo\LeaveConvoOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

@@ -25,8 +25,8 @@ class RejectJoinRequest implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(RejectJoinRequestInput $input): RejectJoinRequestOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RejectJoinRequest\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RejectJoinRequest\RejectJoinRequestOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

@@ -25,9 +25,9 @@ class GetBookmarks implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?int $limit = null, ?string $cursor = null): Output
+    public function query(?int $limit = null, ?string $cursor = null): GetBookmarksOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Bookmark\GetBookmarks\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Bookmark\GetBookmarks\GetBookmarksOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

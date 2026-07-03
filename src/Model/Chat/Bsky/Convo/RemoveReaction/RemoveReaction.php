@@ -25,8 +25,8 @@ class RemoveReaction implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(RemoveReactionInput $input): RemoveReactionOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\RemoveReaction\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\RemoveReaction\RemoveReactionOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

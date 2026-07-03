@@ -25,9 +25,9 @@ class GetJoinLinkPreview implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(string $code): Output
+    public function query(string $code): GetJoinLinkPreviewOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\GetJoinLinkPreview\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\GetJoinLinkPreview\GetJoinLinkPreviewOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

@@ -28,9 +28,9 @@ class GetHead implements \Aazsamir\Libphpsky\Action
     /**
      * @param string $did The DID of the repo.
      */
-    public function query(string $did): Output
+    public function query(string $did): GetHeadOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetHead\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetHead\GetHeadOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

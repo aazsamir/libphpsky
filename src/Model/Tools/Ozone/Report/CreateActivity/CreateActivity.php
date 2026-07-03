@@ -25,8 +25,8 @@ class CreateActivity implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(CreateActivityInput $input): CreateActivityOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\CreateActivity\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\CreateActivity\CreateActivityOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

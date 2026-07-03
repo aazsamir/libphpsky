@@ -24,8 +24,8 @@ class DeleteAccount implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(): Output
+    public function procedure(): DeleteAccountOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\DeleteAccount\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\DeleteAccount\DeleteAccountOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

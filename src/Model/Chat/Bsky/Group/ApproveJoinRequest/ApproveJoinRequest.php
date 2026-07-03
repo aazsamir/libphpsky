@@ -25,8 +25,8 @@ class ApproveJoinRequest implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(ApproveJoinRequestInput $input): ApproveJoinRequestOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ApproveJoinRequest\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ApproveJoinRequest\ApproveJoinRequestOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

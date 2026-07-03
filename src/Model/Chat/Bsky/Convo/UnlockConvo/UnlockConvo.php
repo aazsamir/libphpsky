@@ -25,8 +25,8 @@ class UnlockConvo implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(UnlockConvoInput $input): UnlockConvoOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UnlockConvo\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\UnlockConvo\UnlockConvoOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

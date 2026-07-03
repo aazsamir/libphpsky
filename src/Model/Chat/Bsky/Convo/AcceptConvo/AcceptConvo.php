@@ -25,8 +25,8 @@ class AcceptConvo implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(AcceptConvoInput $input): AcceptConvoOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\AcceptConvo\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\AcceptConvo\AcceptConvoOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

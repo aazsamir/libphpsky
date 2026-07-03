@@ -25,9 +25,9 @@ class GetUnreadCount implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?bool $priority = null, ?\DateTimeInterface $seenAt = null): Output
+    public function query(?bool $priority = null, ?\DateTimeInterface $seenAt = null): GetUnreadCountOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Notification\GetUnreadCount\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Notification\GetUnreadCount\GetUnreadCountOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

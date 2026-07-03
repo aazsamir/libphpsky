@@ -28,9 +28,9 @@ class GetConvos implements \Aazsamir\Libphpsky\Action
     /**
      * @param array<string> $convoIds
      */
-    public function query(array $convoIds): Output
+    public function query(array $convoIds): GetConvosOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetConvos\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetConvos\GetConvosOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

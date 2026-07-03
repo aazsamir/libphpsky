@@ -25,8 +25,8 @@ class RequestJoin implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(RequestJoinInput $input): RequestJoinOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RequestJoin\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RequestJoin\RequestJoinOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

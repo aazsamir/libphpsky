@@ -25,7 +25,7 @@ class CancelScheduledActions implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): CancellationResults
+    public function procedure(CancelScheduledActionsInput $input): CancellationResults
     {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\CancelScheduledActions\CancellationResults::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

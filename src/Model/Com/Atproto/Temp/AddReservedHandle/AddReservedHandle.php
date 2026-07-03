@@ -25,8 +25,8 @@ class AddReservedHandle implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(AddReservedHandleInput $input): AddReservedHandleOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\AddReservedHandle\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\AddReservedHandle\AddReservedHandleOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

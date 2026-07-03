@@ -28,9 +28,9 @@ class GetFeedGenerators implements \Aazsamir\Libphpsky\Action
     /**
      * @param array<string> $feeds
      */
-    public function query(array $feeds): Output
+    public function query(array $feeds): GetFeedGeneratorsOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedGenerators\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedGenerators\GetFeedGeneratorsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

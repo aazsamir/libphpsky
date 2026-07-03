@@ -25,9 +25,9 @@ class GetInviteCodes implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?string $sort = null, ?int $limit = null, ?string $cursor = null): Output
+    public function query(?string $sort = null, ?int $limit = null, ?string $cursor = null): GetInviteCodesOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetInviteCodes\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\GetInviteCodes\GetInviteCodesOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

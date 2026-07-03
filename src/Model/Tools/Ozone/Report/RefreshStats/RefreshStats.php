@@ -25,8 +25,8 @@ class RefreshStats implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(RefreshStatsInput $input): RefreshStatsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\RefreshStats\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\RefreshStats\RefreshStatsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

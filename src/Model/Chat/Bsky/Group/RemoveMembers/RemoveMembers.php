@@ -25,8 +25,8 @@ class RemoveMembers implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(RemoveMembersInput $input): RemoveMembersOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RemoveMembers\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RemoveMembers\RemoveMembersOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

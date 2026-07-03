@@ -25,9 +25,9 @@ class GetSuggestedFollowsByActor implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(string $actor): Output
+    public function query(string $actor): GetSuggestedFollowsByActorOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetSuggestedFollowsByActor\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetSuggestedFollowsByActor\GetSuggestedFollowsByActorOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

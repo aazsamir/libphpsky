@@ -25,8 +25,8 @@ class RefreshSession implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(): Output
+    public function procedure(): RefreshSessionOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RefreshSession\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\RefreshSession\RefreshSessionOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

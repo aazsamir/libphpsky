@@ -29,9 +29,13 @@ class GetQuotes implements \Aazsamir\Libphpsky\Action
      * @param string $uri Reference (AT-URI) of post record
      * @param ?string $cid If supplied, filters to quotes of specific version (by CID) of the post record.
      */
-    public function query(string $uri, ?string $cid = null, ?int $limit = null, ?string $cursor = null): Output
-    {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetQuotes\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    public function query(
+        string $uri,
+        ?string $cid = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): GetQuotesOutput {
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetQuotes\GetQuotesOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

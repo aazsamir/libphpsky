@@ -25,8 +25,8 @@ class CreateDraft implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(CreateDraftInput $input): CreateDraftOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Draft\CreateDraft\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Draft\CreateDraft\CreateDraftOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

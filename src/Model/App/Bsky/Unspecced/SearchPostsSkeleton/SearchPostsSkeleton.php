@@ -53,8 +53,8 @@ class SearchPostsSkeleton implements \Aazsamir\Libphpsky\Action
         ?string $viewer = null,
         ?int $limit = null,
         ?string $cursor = null,
-    ): Output {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchPostsSkeleton\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    ): SearchPostsSkeletonOutput {
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\SearchPostsSkeleton\SearchPostsSkeletonOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

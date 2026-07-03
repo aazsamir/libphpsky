@@ -24,9 +24,9 @@ class GetLog implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?string $cursor = null): Output
+    public function query(?string $cursor = null): GetLogOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetLog\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetLog\GetLogOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

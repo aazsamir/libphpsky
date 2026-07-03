@@ -25,8 +25,8 @@ class AddMembers implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(AddMembersInput $input): AddMembersOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\AddMembers\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\AddMembers\AddMembersOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

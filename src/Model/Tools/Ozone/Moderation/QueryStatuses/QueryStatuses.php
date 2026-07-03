@@ -96,8 +96,8 @@ class QueryStatuses implements \Aazsamir\Libphpsky\Action
         ?int $minPriorityScore = null,
         ?int $minStrikeCount = null,
         ?string $ageAssuranceState = null,
-    ): Output {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryStatuses\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    ): QueryStatusesOutput {
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\QueryStatuses\QueryStatusesOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

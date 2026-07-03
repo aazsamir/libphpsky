@@ -25,7 +25,7 @@ class ScheduleAction implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): ScheduledActionResults
+    public function procedure(ScheduleActionInput $input): ScheduledActionResults
     {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\ScheduleAction\ScheduledActionResults::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

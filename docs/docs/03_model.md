@@ -69,9 +69,9 @@ class ResolveHandle implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(string $handle): Output
+    public function query(string $handle): ResolveHandleOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\ResolveHandleOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }
 ```
@@ -86,7 +86,7 @@ It is of type `query`, so generated class has a `query` method.
 
 It has a single property `handle`, so the `query` method has a single parameter `$handle` with type `string`.
 
-The output is an object with a single property `did`, so the `query` method returns an object called `Output` with a single property `$did`.
+The output is an object with a single property `did`, so the `query` method returns an object called `ResolveHandleOutput` with a single property `$did`.
 
 ## Meta client
 
@@ -99,14 +99,14 @@ Given previous example of `com.atproto.identity.resolveHandle`, the `ATProtoMeta
 
 namespace Aazsamir\Libphpsky\Model\Meta;
 
-use Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\ResolveHandleOutput;
 
 class ATProtoMetaClient
 {
     /**
      * Resolves a handle (domain name) to a DID.
      */
-    public function comAtprotoIdentityResolveHandle(): ResolveHandle\Output
+    public function comAtprotoIdentityResolveHandle(): ResolveHandleOutput
     {
         return new ResolveHandle\ResolveHandle(
           $this->client,

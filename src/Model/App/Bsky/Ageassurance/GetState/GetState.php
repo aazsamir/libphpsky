@@ -25,9 +25,9 @@ class GetState implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(string $countryCode, ?string $regionCode = null): Output
+    public function query(string $countryCode, ?string $regionCode = null): GetStateOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\GetState\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Ageassurance\GetState\GetStateOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

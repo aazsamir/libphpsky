@@ -30,9 +30,9 @@ class GetProfiles implements \Aazsamir\Libphpsky\Action
      * @param ?string $viewer DID of the account on whose behalf the request is made (not included for public/unauthenticated requests). Used for viewer-relative state, including social proof.
      * @param ?array<string> $socialProof  DIDs to hydrate social proof (known followers) for. DIDs not also present in `dids` are ignored.
      */
-    public function query(array $dids, ?string $viewer = null, ?array $socialProof = null): Output
+    public function query(array $dids, ?string $viewer = null, ?array $socialProof = null): GetProfilesOutput
     {
-        return \Aazsamir\Libphpsky\Model\Internal\Bsky\Actor\GetProfiles\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Internal\Bsky\Actor\GetProfiles\GetProfilesOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

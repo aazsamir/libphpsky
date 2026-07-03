@@ -25,9 +25,9 @@ class GetKnownFollowers implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(string $actor, ?int $limit = null, ?string $cursor = null): Output
+    public function query(string $actor, ?int $limit = null, ?string $cursor = null): GetKnownFollowersOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetKnownFollowers\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetKnownFollowers\GetKnownFollowersOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

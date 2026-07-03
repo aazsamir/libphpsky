@@ -25,9 +25,12 @@ class GetPopularFeedGenerators implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?int $limit = null, ?string $cursor = null, ?string $query = null): Output
-    {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPopularFeedGenerators\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    public function query(
+        ?int $limit = null,
+        ?string $cursor = null,
+        ?string $query = null,
+    ): GetPopularFeedGeneratorsOutput {
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPopularFeedGenerators\GetPopularFeedGeneratorsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

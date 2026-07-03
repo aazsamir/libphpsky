@@ -28,9 +28,9 @@ class FindCorrelation implements \Aazsamir\Libphpsky\Action
     /**
      * @param array<string> $dids
      */
-    public function query(array $dids): Output
+    public function query(array $dids): FindCorrelationOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\FindCorrelation\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\FindCorrelation\FindCorrelationOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

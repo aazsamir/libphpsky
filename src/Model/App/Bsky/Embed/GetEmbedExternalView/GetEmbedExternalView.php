@@ -29,9 +29,9 @@ class GetEmbedExternalView implements \Aazsamir\Libphpsky\Action
      * @param string $url The canonical web URL the embed represents (typically the URL the user pasted into the composer). Used as the returned view's `uri`. May be used for validation in the future.
      * @param array<string> $uris  AT-URIs of any Atmosphere records that can be resolved and used to construct #externalView views. Example: a site.standard.document and optionally its associated site.standard.publication.
      */
-    public function query(string $url, array $uris): Output
+    public function query(string $url, array $uris): GetEmbedExternalViewOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Embed\GetEmbedExternalView\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Embed\GetEmbedExternalView\GetEmbedExternalViewOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

@@ -28,9 +28,9 @@ class GetList implements \Aazsamir\Libphpsky\Action
     /**
      * @param string $list Reference (AT-URI) of the list record to hydrate.
      */
-    public function query(string $list, ?int $limit = null, ?string $cursor = null): Output
+    public function query(string $list, ?int $limit = null, ?string $cursor = null): GetListOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetList\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetList\GetListOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

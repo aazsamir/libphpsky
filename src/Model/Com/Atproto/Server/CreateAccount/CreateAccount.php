@@ -25,8 +25,8 @@ class CreateAccount implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(CreateAccountInput $input): CreateAccountOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateAccount\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateAccount\CreateAccountOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

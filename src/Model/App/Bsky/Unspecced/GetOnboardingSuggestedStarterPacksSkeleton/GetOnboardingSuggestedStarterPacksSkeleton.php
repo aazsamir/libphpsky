@@ -28,9 +28,11 @@ class GetOnboardingSuggestedStarterPacksSkeleton implements \Aazsamir\Libphpsky\
     /**
      * @param ?string $viewer DID of the account making the request (not included for public/unauthenticated queries).
      */
-    public function query(?string $viewer = null, ?int $limit = null): Output
-    {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetOnboardingSuggestedStarterPacksSkeleton\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    public function query(
+        ?string $viewer = null,
+        ?int $limit = null,
+    ): GetOnboardingSuggestedStarterPacksSkeletonOutput {
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetOnboardingSuggestedStarterPacksSkeleton\GetOnboardingSuggestedStarterPacksSkeletonOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

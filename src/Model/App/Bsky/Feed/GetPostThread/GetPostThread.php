@@ -30,9 +30,9 @@ class GetPostThread implements \Aazsamir\Libphpsky\Action
      * @param ?int $depth How many levels of reply depth should be included in response.
      * @param ?int $parentHeight How many levels of parent (and grandparent, etc) post to include.
      */
-    public function query(string $uri, ?int $depth = null, ?int $parentHeight = null): Output
+    public function query(string $uri, ?int $depth = null, ?int $parentHeight = null): GetPostThreadOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetPostThread\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetPostThread\GetPostThreadOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

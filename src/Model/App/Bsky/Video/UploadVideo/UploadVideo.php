@@ -25,8 +25,8 @@ class UploadVideo implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(): Output
+    public function procedure(): UploadVideoOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Video\UploadVideo\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Video\UploadVideo\UploadVideoOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

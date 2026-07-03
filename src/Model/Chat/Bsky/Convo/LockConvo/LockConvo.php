@@ -25,8 +25,8 @@ class LockConvo implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(LockConvoInput $input): LockConvoOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\LockConvo\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\LockConvo\LockConvoOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

@@ -25,7 +25,7 @@ class AddRule implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\Defs\Event
+    public function procedure(AddRuleInput $input): \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\Defs\Event
     {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\Defs\Event::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

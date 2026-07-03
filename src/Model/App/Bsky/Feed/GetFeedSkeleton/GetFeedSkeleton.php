@@ -28,9 +28,9 @@ class GetFeedSkeleton implements \Aazsamir\Libphpsky\Action
     /**
      * @param string $feed Reference to feed generator record describing the specific feed being requested.
      */
-    public function query(string $feed, ?int $limit = null, ?string $cursor = null): Output
+    public function query(string $feed, ?int $limit = null, ?string $cursor = null): GetFeedSkeletonOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedSkeleton\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedSkeleton\GetFeedSkeletonOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

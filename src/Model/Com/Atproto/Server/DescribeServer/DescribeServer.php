@@ -25,9 +25,9 @@ class DescribeServer implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(): Output
+    public function query(): DescribeServerOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\DescribeServer\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\DescribeServer\DescribeServerOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

@@ -25,9 +25,9 @@ class GetUploadLimits implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(): Output
+    public function query(): GetUploadLimitsOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Video\GetUploadLimits\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Video\GetUploadLimits\GetUploadLimitsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

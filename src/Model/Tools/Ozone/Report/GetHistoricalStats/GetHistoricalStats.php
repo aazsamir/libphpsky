@@ -42,8 +42,8 @@ class GetHistoricalStats implements \Aazsamir\Libphpsky\Action
         ?\DateTimeInterface $endDate = null,
         ?int $limit = null,
         ?string $cursor = null,
-    ): Output {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetHistoricalStats\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    ): GetHistoricalStatsOutput {
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetHistoricalStats\GetHistoricalStatsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

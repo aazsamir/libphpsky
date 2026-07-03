@@ -25,8 +25,8 @@ class ApplyWrites implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(ApplyWritesInput $input): ApplyWritesOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ApplyWrites\ApplyWritesOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

@@ -25,9 +25,9 @@ class GetListBlocks implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?int $limit = null, ?string $cursor = null): Output
+    public function query(?int $limit = null, ?string $cursor = null): GetListBlocksOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetListBlocks\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetListBlocks\GetListBlocksOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

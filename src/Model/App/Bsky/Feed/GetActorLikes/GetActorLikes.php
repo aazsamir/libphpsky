@@ -25,9 +25,9 @@ class GetActorLikes implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(string $actor, ?int $limit = null, ?string $cursor = null): Output
+    public function query(string $actor, ?int $limit = null, ?string $cursor = null): GetActorLikesOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetActorLikes\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetActorLikes\GetActorLikesOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

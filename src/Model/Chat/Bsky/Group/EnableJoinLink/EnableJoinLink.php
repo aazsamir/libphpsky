@@ -25,8 +25,8 @@ class EnableJoinLink implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(EnableJoinLinkInput $input): EnableJoinLinkOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EnableJoinLink\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\EnableJoinLink\EnableJoinLinkOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

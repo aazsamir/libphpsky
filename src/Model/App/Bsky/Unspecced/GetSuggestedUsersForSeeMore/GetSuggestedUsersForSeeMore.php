@@ -28,9 +28,9 @@ class GetSuggestedUsersForSeeMore implements \Aazsamir\Libphpsky\Action
     /**
      * @param ?string $category Category of users to get suggestions for.
      */
-    public function query(?string $category = null, ?int $limit = null): Output
+    public function query(?string $category = null, ?int $limit = null): GetSuggestedUsersForSeeMoreOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersForSeeMore\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedUsersForSeeMore\GetSuggestedUsersForSeeMoreOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

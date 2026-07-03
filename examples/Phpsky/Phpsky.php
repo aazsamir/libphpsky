@@ -9,7 +9,7 @@ use Aazsamir\Libphpsky\Client\QueryException;
 use Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfile\GetProfile;
 use Aazsamir\Libphpsky\Model\Com\Atproto\Identity\ResolveHandle\ResolveHandle;
 use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\CreateSession;
-use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\Input;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\CreateSessionInput;
 
 /**
  * @internal
@@ -76,7 +76,7 @@ final class Phpsky
     private function login(string $username, string $password): void
     {
         $createSession = CreateSession::default();
-        $createSessionInput = Input::new(
+        $createSessionInput = CreateSessionInput::new(
             identifier: $username,
             password: $password,
             authFactorToken: 'testing',

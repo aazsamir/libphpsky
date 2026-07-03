@@ -28,9 +28,9 @@ class ListActivities implements \Aazsamir\Libphpsky\Action
     /**
      * @param int $reportId ID of the report whose activities to list
      */
-    public function query(int $reportId, ?int $limit = null, ?string $cursor = null): Output
+    public function query(int $reportId, ?int $limit = null, ?string $cursor = null): ListActivitiesOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\ListActivities\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\ListActivities\ListActivitiesOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

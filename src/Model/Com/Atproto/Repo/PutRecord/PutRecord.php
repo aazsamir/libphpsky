@@ -25,8 +25,8 @@ class PutRecord implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(PutRecordInput $input): PutRecordOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\PutRecord\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\PutRecord\PutRecordOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

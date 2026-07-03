@@ -25,8 +25,9 @@ class CreateTemplate implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\Defs\TemplateView
-    {
+    public function procedure(
+        CreateTemplateInput $input,
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\Defs\TemplateView {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\Defs\TemplateView::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

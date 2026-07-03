@@ -25,8 +25,8 @@ class DisableJoinLink implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(DisableJoinLinkInput $input): DisableJoinLinkOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\DisableJoinLink\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\DisableJoinLink\DisableJoinLinkOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

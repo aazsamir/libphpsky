@@ -28,9 +28,12 @@ class GetStarterPacksWithMembership implements \Aazsamir\Libphpsky\Action
     /**
      * @param string $actor The account (actor) to check for membership.
      */
-    public function query(string $actor, ?int $limit = null, ?string $cursor = null): Output
-    {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPacksWithMembership\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    public function query(
+        string $actor,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): GetStarterPacksWithMembershipOutput {
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Graph\GetStarterPacksWithMembership\GetStarterPacksWithMembershipOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

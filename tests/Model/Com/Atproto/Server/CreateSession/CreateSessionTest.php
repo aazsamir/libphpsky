@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Model\Com\Atproto\Server\CreateSession;
 
-use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\Input;
+use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\CreateSessionInput;
 use Tests\Model\TestCase;
 
 class CreateSessionTest extends TestCase
@@ -14,7 +14,7 @@ class CreateSessionTest extends TestCase
         $this->mockResponse($this->jsonres($this->valid()));
 
         $response = $this->client->comAtprotoServerCreateSession()->procedure(
-            Input::new(
+            CreateSessionInput::new(
                 identifier: 'samorollo.bsky.social',
                 password: 'password',
             ),

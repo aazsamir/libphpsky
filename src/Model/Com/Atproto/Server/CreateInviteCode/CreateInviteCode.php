@@ -25,8 +25,8 @@ class CreateInviteCode implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(CreateInviteCodeInput $input): CreateInviteCodeOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateInviteCode\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateInviteCode\CreateInviteCodeOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

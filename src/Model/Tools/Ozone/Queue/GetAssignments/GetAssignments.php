@@ -36,8 +36,8 @@ class GetAssignments implements \Aazsamir\Libphpsky\Action
         ?array $dids = null,
         ?int $limit = null,
         ?string $cursor = null,
-    ): Output {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\GetAssignments\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    ): GetAssignmentsOutput {
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\GetAssignments\GetAssignmentsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

@@ -1,0 +1,79 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestionsSkeleton;
+
+/**
+ * object
+ */
+class GetSuggestionsSkeletonOutput implements \Aazsamir\Libphpsky\ATProtoObject
+{
+    use \Aazsamir\Libphpsky\Generator\Prefab\FromArray;
+    use \Aazsamir\Libphpsky\Generator\Prefab\ToArray;
+
+    public const NAME = 'output';
+    public const ID = 'app.bsky.unspecced.getSuggestionsSkeleton';
+
+    public ?string $cursor;
+
+    /** @var array<\Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\Defs\SkeletonSearchActor> */
+    public array $actors = [];
+
+    /** @var ?string DID of the account these suggestions are relative to. If this is returned undefined, suggestions are based on the viewer. */
+    public ?string $relativeToDid;
+
+    /** @var ?int DEPRECATED: use recIdStr instead. */
+    public ?int $recId;
+
+    /** @var ?string Snowflake for this recommendation, use when submitting recommendation events. */
+    public ?string $recIdStr;
+
+    public static function id(): string
+    {
+        return self::ID;
+    }
+
+    public static function name(): string
+    {
+        return self::NAME;
+    }
+
+    public static function nullable(): array
+    {
+        return [];
+    }
+
+    public static function required(): array
+    {
+        return ['actors'];
+    }
+
+    /**
+     * @param array<\Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\Defs\SkeletonSearchActor> $actors
+     */
+    public static function new(
+        array $actors,
+        ?string $cursor = null,
+        ?string $relativeToDid = null,
+        ?int $recId = null,
+        ?string $recIdStr = null,
+    ): self {
+        $instance = new self();
+        $instance->actors = $actors;
+        if ($cursor !== null) {
+            $instance->cursor = $cursor;
+        }
+        if ($relativeToDid !== null) {
+            $instance->relativeToDid = $relativeToDid;
+        }
+        if ($recId !== null) {
+            $instance->recId = $recId;
+        }
+        if ($recIdStr !== null) {
+            $instance->recIdStr = $recIdStr;
+        }
+
+        return $instance;
+    }
+}

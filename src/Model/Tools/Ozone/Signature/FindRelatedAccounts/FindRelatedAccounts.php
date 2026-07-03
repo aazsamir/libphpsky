@@ -25,9 +25,9 @@ class FindRelatedAccounts implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(string $did, ?string $cursor = null, ?int $limit = null): Output
+    public function query(string $did, ?string $cursor = null, ?int $limit = null): FindRelatedAccountsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\FindRelatedAccounts\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\FindRelatedAccounts\FindRelatedAccountsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

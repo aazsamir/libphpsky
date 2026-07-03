@@ -25,7 +25,7 @@ class DeleteValues implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): void
+    public function procedure(DeleteValuesInput $input): void
     {
         $this->request($this->argsWithKeys(func_get_args()));
     }

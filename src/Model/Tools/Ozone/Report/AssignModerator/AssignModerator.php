@@ -25,8 +25,9 @@ class AssignModerator implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\Defs\AssignmentView
-    {
+    public function procedure(
+        AssignModeratorInput $input,
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\Defs\AssignmentView {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\Defs\AssignmentView::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

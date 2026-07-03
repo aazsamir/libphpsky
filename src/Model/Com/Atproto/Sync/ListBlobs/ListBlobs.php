@@ -29,9 +29,13 @@ class ListBlobs implements \Aazsamir\Libphpsky\Action
      * @param string $did The DID of the repo.
      * @param ?string $since Optional revision of the repo to list blobs since.
      */
-    public function query(string $did, ?string $since = null, ?int $limit = null, ?string $cursor = null): Output
-    {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListBlobs\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    public function query(
+        string $did,
+        ?string $since = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): ListBlobsOutput {
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\ListBlobs\ListBlobsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

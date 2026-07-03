@@ -25,8 +25,8 @@ class UploadBlob implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(): Output
+    public function procedure(): UploadBlobOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\UploadBlob\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\UploadBlob\UploadBlobOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

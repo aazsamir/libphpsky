@@ -36,8 +36,8 @@ class GetMessageContext implements \Aazsamir\Libphpsky\Action
         ?int $before = null,
         ?int $after = null,
         ?int $maxInterleavedSystemMessages = null,
-    ): Output {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetMessageContext\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    ): GetMessageContextOutput {
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetMessageContext\GetMessageContextOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

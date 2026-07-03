@@ -25,8 +25,8 @@ class SendEmail implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(SendEmailInput $input): SendEmailOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\SendEmail\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\SendEmail\SendEmailOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

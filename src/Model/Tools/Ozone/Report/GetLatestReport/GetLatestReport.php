@@ -25,9 +25,9 @@ class GetLatestReport implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(): Output
+    public function query(): GetLatestReportOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetLatestReport\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetLatestReport\GetLatestReportOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

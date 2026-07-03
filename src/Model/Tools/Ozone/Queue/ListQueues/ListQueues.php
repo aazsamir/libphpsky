@@ -38,8 +38,8 @@ class ListQueues implements \Aazsamir\Libphpsky\Action
         ?array $reportTypes = null,
         ?int $limit = null,
         ?string $cursor = null,
-    ): Output {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\ListQueues\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    ): ListQueuesOutput {
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\ListQueues\ListQueuesOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

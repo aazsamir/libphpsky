@@ -8,8 +8,9 @@ use Aazsamir\Libphpsky\Client\ATProtoClientBuilder;
 use Aazsamir\Libphpsky\Client\AuthConfig;
 use Aazsamir\Libphpsky\Model\App\Bsky\Feed\Defs\SkeletonFeedPost;
 use Aazsamir\Libphpsky\Model\App\Bsky\Feed\DescribeFeedGenerator;
+use Aazsamir\Libphpsky\Model\App\Bsky\Feed\DescribeFeedGenerator\DescribeFeedGeneratorOutput;
 use Aazsamir\Libphpsky\Model\App\Bsky\Feed\Generator\Generator;
-use Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedSkeleton;
+use Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetFeedSkeleton\GetFeedSkeletonOutput;
 use Aazsamir\Libphpsky\Model\Meta\ATProtoMetaClient;
 use Aazsamir\Libphpsky\Type\ATUri;
 
@@ -72,7 +73,7 @@ final class FeedGeneration
 
         $myself = $this->metaClient->comAtprotoIdentityResolveHandle()->query($this->authConfig->login());
 
-        $generator = DescribeFeedGenerator\Output::new(
+        $generator = DescribeFeedGeneratorOutput::new(
             did: ATUri::new(
                 did: 'did:web:' . $this->hostname,
             )->toString(),
@@ -93,7 +94,7 @@ final class FeedGeneration
 
     private function getLibphpskyFeed(): void
     {
-        $feed = GetFeedSkeleton\Output::new(
+        $feed = GetFeedSkeletonOutput::new(
             cursor: '1',
             feed: [
                 SkeletonFeedPost::new(

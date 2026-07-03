@@ -28,9 +28,9 @@ class GetPostThreadOtherV2 implements \Aazsamir\Libphpsky\Action
     /**
      * @param string $anchor Reference (AT-URI) to post record. This is the anchor post.
      */
-    public function query(string $anchor): Output
+    public function query(string $anchor): GetPostThreadOtherV2Output
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadOtherV2\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetPostThreadOtherV2\GetPostThreadOtherV2Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

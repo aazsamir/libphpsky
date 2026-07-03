@@ -25,9 +25,9 @@ class GetSyncStatus implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(): Output
+    public function query(): GetSyncStatusOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Contact\GetSyncStatus\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Contact\GetSyncStatus\GetSyncStatusOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

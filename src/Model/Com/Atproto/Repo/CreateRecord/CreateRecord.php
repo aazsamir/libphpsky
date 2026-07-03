@@ -25,8 +25,8 @@ class CreateRecord implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(CreateRecordInput $input): CreateRecordOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\CreateRecord\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\CreateRecord\CreateRecordOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

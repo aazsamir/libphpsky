@@ -30,9 +30,12 @@ class CheckHandleAvailability implements \Aazsamir\Libphpsky\Action
      * @param ?string $email User-provided email. Might be used to build handle suggestions.
      * @param ?\DateTimeInterface $birthDate User-provided birth date. Might be used to build handle suggestions.
      */
-    public function query(string $handle, ?string $email = null, ?\DateTimeInterface $birthDate = null): Output
-    {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\CheckHandleAvailability\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    public function query(
+        string $handle,
+        ?string $email = null,
+        ?\DateTimeInterface $birthDate = null,
+    ): CheckHandleAvailabilityOutput {
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\CheckHandleAvailability\CheckHandleAvailabilityOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

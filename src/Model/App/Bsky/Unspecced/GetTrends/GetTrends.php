@@ -25,9 +25,9 @@ class GetTrends implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?int $limit = null): Output
+    public function query(?int $limit = null): GetTrendsOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrends\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetTrends\GetTrendsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

@@ -87,7 +87,7 @@ final class GraphGenerate
             ));
         }
 
-        /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetLikes\Output[] $likes */
+        /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Feed\GetLikes\GetLikesOutput[] $likes */
         [$errors, $likes] = \Amp\Future\awaitAll($futures);
 
         if ($errors) {
@@ -123,7 +123,7 @@ final class GraphGenerate
             ));
         }
 
-        /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ListRecords\Output[] $records[] */
+        /** @var \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\ListRecords\ListRecordsOutput[] $records[] */
         [$errors, $records] = \Amp\Future\awaitAll($futures);
 
         if ($errors) {
@@ -146,7 +146,7 @@ final class GraphGenerate
     /**
      * @param string[] $dids
      *
-     * @return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfiles\Output[]
+     * @return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfiles\GetProfilesOutput[]
      */
     private function getProfiles(array $dids): array
     {
@@ -156,7 +156,7 @@ final class GraphGenerate
             $futures[] = \Amp\async(fn () => $this->getProfiles->query($chunk));
         }
 
-        /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfiles\Output[] $profiles[] */
+        /** @var \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfiles\GetProfilesOutput[] $profiles[] */
         [$errors, $profiles] = \Amp\Future\awaitAll($futures);
 
         if ($errors) {
@@ -169,7 +169,7 @@ final class GraphGenerate
     /**
      * @param ProfileView[] $myLikers
      * @param string[][] $otherLiked
-     * @param \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfiles\Output[] $profiles
+     * @param \Aazsamir\Libphpsky\Model\App\Bsky\Actor\GetProfiles\GetProfilesOutput[] $profiles
      */
     private function createGraph(
         ProfileViewDetailed $myself,

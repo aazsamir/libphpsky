@@ -25,9 +25,9 @@ class GetStatus implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(): Output
+    public function query(): GetStatusOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\GetStatus\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Actor\GetStatus\GetStatusOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

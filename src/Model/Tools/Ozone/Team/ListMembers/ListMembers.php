@@ -34,8 +34,8 @@ class ListMembers implements \Aazsamir\Libphpsky\Action
         ?array $roles = null,
         ?int $limit = null,
         ?string $cursor = null,
-    ): Output {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\ListMembers\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    ): ListMembersOutput {
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\ListMembers\ListMembersOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

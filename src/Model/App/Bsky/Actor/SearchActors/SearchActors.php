@@ -29,9 +29,13 @@ class SearchActors implements \Aazsamir\Libphpsky\Action
      * @param ?string $term DEPRECATED: use 'q' instead.
      * @param ?string $q Search query string. Syntax, phrase, boolean, and faceting is unspecified, but Lucene query syntax is recommended.
      */
-    public function query(?string $term = null, ?string $q = null, ?int $limit = null, ?string $cursor = null): Output
-    {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\SearchActors\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    public function query(
+        ?string $term = null,
+        ?string $q = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): SearchActorsOutput {
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Actor\SearchActors\SearchActorsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

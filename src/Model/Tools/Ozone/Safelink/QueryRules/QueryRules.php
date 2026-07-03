@@ -25,8 +25,8 @@ class QueryRules implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(QueryRulesInput $input): QueryRulesOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\QueryRules\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\QueryRules\QueryRulesOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

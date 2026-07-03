@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Integration;
 
 use Aazsamir\Libphpsky\Model\App\Bsky\Notification\Defs\FilterablePreference;
-use Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutPreferencesV2;
+use Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutPreferencesV2\PutPreferencesV2Input;
 
 /**
  * @internal
@@ -15,7 +15,7 @@ class PutPreferencesTest extends TestCase
     public function testItUpdatesPreferences(): void
     {
         $output = $this->client->appBskyNotificationPutPreferencesV2()->procedure(
-            PutPreferencesV2\Input::new(
+            PutPreferencesV2Input::new(
                 like: FilterablePreference::new(
                     include: 'all',
                     list: true,

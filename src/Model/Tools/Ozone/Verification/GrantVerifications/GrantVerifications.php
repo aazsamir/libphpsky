@@ -25,8 +25,8 @@ class GrantVerifications implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(GrantVerificationsInput $input): GrantVerificationsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\GrantVerifications\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Verification\GrantVerifications\GrantVerificationsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

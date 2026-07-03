@@ -25,9 +25,9 @@ class ListMutualGroups implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(string $subject, ?int $limit = null, ?string $cursor = null): Output
+    public function query(string $subject, ?int $limit = null, ?string $cursor = null): ListMutualGroupsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ListMutualGroups\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\ListMutualGroups\ListMutualGroupsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

@@ -25,9 +25,9 @@ class GetJobStatus implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(string $jobId): Output
+    public function query(string $jobId): GetJobStatusOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Video\GetJobStatus\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Video\GetJobStatus\GetJobStatusOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

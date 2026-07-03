@@ -54,8 +54,8 @@ class QueryReports implements \Aazsamir\Libphpsky\Action
         ?string $sortDirection = null,
         ?int $limit = null,
         ?string $cursor = null,
-    ): Output {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\QueryReports\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    ): QueryReportsOutput {
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\QueryReports\QueryReportsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

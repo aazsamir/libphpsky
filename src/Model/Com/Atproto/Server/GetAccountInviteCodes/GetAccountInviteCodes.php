@@ -28,9 +28,9 @@ class GetAccountInviteCodes implements \Aazsamir\Libphpsky\Action
     /**
      * @param ?bool $createAvailable Controls whether any new 'earned' but not 'created' invites should be created.
      */
-    public function query(?bool $includeUsed = null, ?bool $createAvailable = null): Output
+    public function query(?bool $includeUsed = null, ?bool $createAvailable = null): GetAccountInviteCodesOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\GetAccountInviteCodes\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\GetAccountInviteCodes\GetAccountInviteCodesOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

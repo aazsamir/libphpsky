@@ -28,9 +28,9 @@ class GetConvoAvailability implements \Aazsamir\Libphpsky\Action
     /**
      * @param array<string> $members
      */
-    public function query(array $members): Output
+    public function query(array $members): GetConvoAvailabilityOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoAvailability\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\GetConvoAvailability\GetConvoAvailabilityOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

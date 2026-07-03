@@ -25,8 +25,9 @@ class DeleteMessageForSelf implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView
-    {
+    public function procedure(
+        DeleteMessageForSelfInput $input,
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView {
         return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

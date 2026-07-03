@@ -28,9 +28,9 @@ class SearchAccounts implements \Aazsamir\Libphpsky\Action
     /**
      * @param array<string> $values
      */
-    public function query(array $values, ?string $cursor = null, ?int $limit = null): Output
+    public function query(array $values, ?string $cursor = null, ?int $limit = null): SearchAccountsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\SearchAccounts\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Signature\SearchAccounts\SearchAccountsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

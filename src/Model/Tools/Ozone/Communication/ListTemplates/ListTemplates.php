@@ -25,9 +25,9 @@ class ListTemplates implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(): Output
+    public function query(): ListTemplatesOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\ListTemplates\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\ListTemplates\ListTemplatesOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

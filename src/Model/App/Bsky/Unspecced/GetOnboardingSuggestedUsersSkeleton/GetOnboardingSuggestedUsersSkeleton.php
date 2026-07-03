@@ -29,9 +29,12 @@ class GetOnboardingSuggestedUsersSkeleton implements \Aazsamir\Libphpsky\Action
      * @param ?string $viewer DID of the account making the request (not included for public/unauthenticated queries).
      * @param ?string $category Category of users to get suggestions for.
      */
-    public function query(?string $viewer = null, ?string $category = null, ?int $limit = null): Output
-    {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetOnboardingSuggestedUsersSkeleton\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    public function query(
+        ?string $viewer = null,
+        ?string $category = null,
+        ?int $limit = null,
+    ): GetOnboardingSuggestedUsersSkeletonOutput {
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetOnboardingSuggestedUsersSkeleton\GetOnboardingSuggestedUsersSkeletonOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

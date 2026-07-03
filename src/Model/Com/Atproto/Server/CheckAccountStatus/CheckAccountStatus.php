@@ -25,9 +25,9 @@ class CheckAccountStatus implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(): Output
+    public function query(): CheckAccountStatusOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CheckAccountStatus\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CheckAccountStatus\CheckAccountStatusOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

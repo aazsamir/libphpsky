@@ -25,9 +25,9 @@ class GetSuggestedFeeds implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?int $limit = null): Output
+    public function query(?int $limit = null): GetSuggestedFeedsOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedFeeds\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedFeeds\GetSuggestedFeedsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

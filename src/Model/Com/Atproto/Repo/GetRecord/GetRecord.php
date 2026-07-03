@@ -31,9 +31,9 @@ class GetRecord implements \Aazsamir\Libphpsky\Action
      * @param string $rkey The Record Key.
      * @param ?string $cid The CID of the version of the record. If not specified, then return the most recent version.
      */
-    public function query(string $repo, string $collection, string $rkey, ?string $cid = null): Output
+    public function query(string $repo, string $collection, string $rkey, ?string $cid = null): GetRecordOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\GetRecord\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\GetRecord\GetRecordOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

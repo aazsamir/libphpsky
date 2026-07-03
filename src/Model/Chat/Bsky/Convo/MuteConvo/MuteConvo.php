@@ -25,8 +25,8 @@ class MuteConvo implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(MuteConvoInput $input): MuteConvoOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\MuteConvo\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\MuteConvo\MuteConvoOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

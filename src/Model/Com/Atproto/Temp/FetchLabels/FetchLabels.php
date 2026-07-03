@@ -25,9 +25,9 @@ class FetchLabels implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?int $since = null, ?int $limit = null): Output
+    public function query(?int $since = null, ?int $limit = null): FetchLabelsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\FetchLabels\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Temp\FetchLabels\FetchLabelsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

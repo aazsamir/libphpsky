@@ -25,8 +25,8 @@ class PutPreferencesV2 implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(PutPreferencesV2Input $input): PutPreferencesV2Output
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutPreferencesV2\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Notification\PutPreferencesV2\PutPreferencesV2Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

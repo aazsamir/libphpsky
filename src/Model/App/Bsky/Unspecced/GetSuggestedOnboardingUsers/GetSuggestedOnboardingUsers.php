@@ -28,9 +28,9 @@ class GetSuggestedOnboardingUsers implements \Aazsamir\Libphpsky\Action
     /**
      * @param ?string $category Category of users to get suggestions for.
      */
-    public function query(?string $category = null, ?int $limit = null): Output
+    public function query(?string $category = null, ?int $limit = null): GetSuggestedOnboardingUsersOutput
     {
-        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedOnboardingUsers\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\GetSuggestedOnboardingUsers\GetSuggestedOnboardingUsersOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

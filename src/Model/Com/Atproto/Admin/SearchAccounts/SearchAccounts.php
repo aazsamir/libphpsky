@@ -25,9 +25,9 @@ class SearchAccounts implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function query(?string $email = null, ?string $cursor = null, ?int $limit = null): Output
+    public function query(?string $email = null, ?string $cursor = null, ?int $limit = null): SearchAccountsOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\SearchAccounts\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Admin\SearchAccounts\SearchAccountsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

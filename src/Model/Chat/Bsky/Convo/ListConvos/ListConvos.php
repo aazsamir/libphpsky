@@ -37,8 +37,8 @@ class ListConvos implements \Aazsamir\Libphpsky\Action
         ?string $status = null,
         ?string $kind = null,
         ?string $lockStatus = null,
-    ): Output {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\ListConvos\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    ): ListConvosOutput {
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\ListConvos\ListConvosOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

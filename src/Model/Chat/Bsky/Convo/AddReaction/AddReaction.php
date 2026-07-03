@@ -25,8 +25,8 @@ class AddReaction implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(AddReactionInput $input): AddReactionOutput
     {
-        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\AddReaction\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\AddReaction\AddReactionOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

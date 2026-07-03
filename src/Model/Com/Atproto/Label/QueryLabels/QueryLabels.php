@@ -34,8 +34,8 @@ class QueryLabels implements \Aazsamir\Libphpsky\Action
         ?array $sources = null,
         ?int $limit = null,
         ?string $cursor = null,
-    ): Output {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Label\QueryLabels\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+    ): QueryLabelsOutput {
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Label\QueryLabels\QueryLabelsOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

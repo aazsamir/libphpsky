@@ -25,7 +25,7 @@ class CreateAppPassword implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): AppPassword
+    public function procedure(CreateAppPasswordInput $input): AppPassword
     {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateAppPassword\AppPassword::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }

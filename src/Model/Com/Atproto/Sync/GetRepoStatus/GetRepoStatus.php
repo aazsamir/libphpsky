@@ -28,9 +28,9 @@ class GetRepoStatus implements \Aazsamir\Libphpsky\Action
     /**
      * @param string $did The DID of the repo.
      */
-    public function query(string $did): Output
+    public function query(string $did): GetRepoStatusOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetRepoStatus\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetRepoStatus\GetRepoStatusOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**

@@ -25,8 +25,8 @@ class SignPlcOperation implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(SignPlcOperationInput $input): SignPlcOperationOutput
     {
-        return \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\SignPlcOperation\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\SignPlcOperation\SignPlcOperationOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

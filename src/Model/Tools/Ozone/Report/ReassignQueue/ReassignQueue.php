@@ -25,8 +25,8 @@ class ReassignQueue implements \Aazsamir\Libphpsky\Action
         return self::NAME;
     }
 
-    public function procedure(Input $input): Output
+    public function procedure(ReassignQueueInput $input): ReassignQueueOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\ReassignQueue\Output::fromArray($this->request($this->argsWithKeys(func_get_args())));
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\ReassignQueue\ReassignQueueOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
 }

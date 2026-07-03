@@ -28,9 +28,9 @@ class GetRepos implements \Aazsamir\Libphpsky\Action
     /**
      * @param array<string> $dids
      */
-    public function query(array $dids): Output
+    public function query(array $dids): GetReposOutput
     {
-        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRepos\Output::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
+        return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\GetRepos\GetReposOutput::fromArray($this->request($this->argsWithKeys(func_get_args())), $this->typeResolver);
     }
 
     /**
