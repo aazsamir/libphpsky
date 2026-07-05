@@ -44,7 +44,7 @@ if ($handle === null) {
 $client = $builder->build();
 // grab the underlying OAuth client to handle the callback
 $oauthClient = $builder->getOAuthClient();
-$metaClient = new ATProtoMetaClient($client);
+$metaClient = ATProtoMetaClient::default($client);
 $facade = ATProtoFacade::default($client);
 
 try {

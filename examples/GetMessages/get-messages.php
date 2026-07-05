@@ -8,7 +8,7 @@ use Aazsamir\Libphpsky\Model\Meta\ATProtoMetaClient;
 require dirname(__DIR__, 2) . '/vendor/autoload.php';
 
 // build client
-$client = new ATProtoMetaClient(
+$client = ATProtoMetaClient::default(
     ATProtoClientBuilder::default()
         ->useQueryCache(false) // disable query cache to always get fresh data
         ->build()

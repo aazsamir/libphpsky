@@ -29,7 +29,7 @@ $resolveHandle = new ResolveHandle($client);
 // or use withClient method
 $resolveHandle = (new ResolveHandle())->withClient($client);
 // if you prefer meta client
-$metaClient = new ATProtoMetaClient($client);
+$metaClient = ATProtoMetaClient::default($client);
 ```
 
 ## Custom client

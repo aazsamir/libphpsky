@@ -53,7 +53,7 @@ foreach ($eventsStream as $i => $event) {
 
 $client = ATProtoClientBuilder::default()->build();
 // @phpstan-ignore-next-line
-$client = new ATProtoMetaClient(
+$client = ATProtoMetaClient::default(
     $client,
     $typeResolver,
 );

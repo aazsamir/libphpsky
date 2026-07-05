@@ -20,7 +20,7 @@ abstract class TestCase extends FrameworkTestCase
     protected function setUp(): void
     {
         $this->stub = new ATProtoClientStub();
-        $this->client = new ATProtoMetaClient($this->stub);
+        $this->client = ATProtoMetaClient::default($this->stub);
     }
 
     protected function mockResponse(array $response): void

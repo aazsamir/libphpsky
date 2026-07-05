@@ -51,7 +51,7 @@ $response = $getProfile->query($did);
 On top of that, there is a meta client, which can be used to handle all possible endpoints.
 
 ```php
-$client = new ATProtoMetaClient();
+$client = ATProtoMetaClient::default();
 $resolved = $client->comAtprotoIdentityResolveHandle()->query('bsky.app');
 ```
 

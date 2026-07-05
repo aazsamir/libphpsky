@@ -30,9 +30,9 @@ Get list of posts from a `bsky.app` user:
 <?php
 use Aazsamir\Libphpsky\Model\Meta\ATProtoMetaClient;
 
-$client = new ATProtoMetaClient();
+$client = ATProtoMetaClient::default();
 $resolved = $client->comAtprotoIdentityResolveHandle()->query('bsky.app');
-$posts = $client->appBskyFeedGetAuthorFeed()->query($resolve->did);
+$posts = $client->appBskyFeedGetAuthorFeed()->query($resolved->did);
 
 var_dump($posts);
 ```
@@ -83,7 +83,15 @@ $getProfile = GetProfile::default();
 $profile = $getProfile->withAuth($session->accessJwt)->query('bsky.app');
 
 // or directly to meta client
-$client = new ATProtoMetaClient(token: $session->accessJwt);
+$client = ATProtoMetaClient::default(token: $session->accessJwt);
 ```
 
 > You can also provide your own client implementation, to handle authorization on a different layer. See the [Client](02_client.md) section for more details.
+
+### OAuth
+
+Libphpsky also supports OAuth authentication. See the [OAuth](06_oauth.md) section for more details.
+
+## Examples
+
+You can find working examples in the repository in the [examples](https://github.com/aazsamir/libphpsky/tree/main/examples) directory.

@@ -1,7 +1,58 @@
 site_name: 'libphpsky'
 site_url: 'https://github.com/aazsamir/libphpsky'
+repo_name: 'aazsamir/libphpsky'
+repo_url: 'https://github.com/aazsamir/libphpsky'
+
 theme:
   name: 'material'
+  language: 'en'
+  icon:
+    logo: material/cloud
+  font:
+    text: 'Space Grotesk'
+    code: 'JetBrains Mono'
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tracking
+    - navigation.top
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    - scheme: slate
+      primary: cyan
+      accent: lime
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+    - scheme: default
+      primary: cyan
+      accent: lime
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
 markdown_extensions:
-  - pymdownx.highlight
+  - pymdownx.highlight:
+      use_pygments: true
+      pygments_lang_class: true
+      guess_lang: false
+      line_spans: __span
+      anchor_linenums: true
   - pymdownx.superfences
+  - toc:
+      permalink: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+
+plugins:
+  - search
+
+extra_css:
+  - stylesheets/extra.css

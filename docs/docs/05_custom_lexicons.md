@@ -47,7 +47,7 @@ $config = MakeConfig::default()->with(
 
 $typeResolver = new TypeResolver($config);
 
-$client = new ATProtoMetaClient(
+$client = ATProtoMetaClient::default(
     typeResolver: $typeResolver,
 );
 

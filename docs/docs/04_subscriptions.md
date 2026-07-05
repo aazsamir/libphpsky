@@ -2,11 +2,17 @@
 
 Libphpsky supports subscriptions over WebSockets, thanks to [`phrity/websocket`](https://github.com/sirn-se/websocket-php) and [Jetstream](https://github.com/bluesky-social/jetstream).
 
-## Usage
+There are two ways to interact with subscriptions:
+
+- using native atproto subscriptions (`com.atproto.sync.subscribeRepos`)
+- using Jetstream subscriptions
+
+If you only want to subscribe and listen to events, or you don't know what to choose - Jetstream is the way to go. It is a higher-level abstraction over the native subscriptions, and it is easier to use.
+
+## Jetstream
 
 ```php
 <?php
-
 use Aazsamir\Libphpsky\Jetstream\WebSocketClientFactory;
 use Aazsamir\Libphpsky\Jetstream\WssClient;
 use Aazsamir\Libphpsky\Model\App\Bsky\Feed\Like\Like;
@@ -31,14 +37,11 @@ foreach ($eventsStream as $i => $event) {
 }
 ```
 
-So how does it work?
+WssClient will connect to the Jetstream server and return a stream of events, in form of a generator.
 
-`WssClient` demands a `\Websocket\Client` instance, which is created by `WebSocketClientFactory`. The factory is responsible for creating a WebSocket client with the correct configuration.
+The stream can be stopped during the iteration by calling the `stop` method.
 
-It returns a `\Generator<int, Aazsamir\Libphpsky\Jetstream\Model\Event>` that can be iterated over to receive events.
-The client can be stopped during by calling the `stop` method.
-
-## Events
+### Events
 
 Right now, Jetstream supports the following events:
 
@@ -52,3 +55,31 @@ Right now, Jetstream supports the following events:
 Check the [Jetstream repository](https://github.com/bluesky-social/jetstream) for more information on the events.
 
 You can find the working example in the [examples/Subscriptions](https://github.com/aazsamir/libphpsky/tree/main/examples/LikesSubscribe) directory.
+
+
+## Native subscriptions
+
+```php
+<?php
+$subscription = SubscribeRepos::default()
+    ->subscription();
+
+$max = 100;
+
+foreach ($subscription->next() as $message) {
+    dump($message);
+
+    if ($i > $max) {
+        $subscription->stop();
+    }
+}
+```
+
+Atproto subscriptions are lower-level than Jetstream, and they usually require CARv1 decoding of events.
+
+```php
+<?php
+assert($message instanceof Commit);
+$deserializer = CarDeserializer::default();
+dump($deserializer->decodeString($message->blocks));
+```

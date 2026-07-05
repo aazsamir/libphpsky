@@ -23,7 +23,7 @@ final class PublishFeed
     public function __construct()
     {
         $this->authConfig = (new ATProtoClientBuilder())->defaultAuthConfig();
-        $this->metaClient = new ATProtoMetaClient();
+        $this->metaClient = ATProtoMetaClient::default();
 
         if (!isset($_ENV['FEED_HOSTNAME']) || !\is_string($_ENV['FEED_HOSTNAME'])) {
             throw new \RuntimeException('FEED_HOSTNAME is required');

@@ -21,10 +21,10 @@ abstract class TestCase extends FrameworkTestCase
         $_ENV['ATPROTO_PASSWORD'] ??= getenv('ATPROTO_PASSWORD');
 
         $client = ATProtoClientBuilder::default()->useQueryCache(false)->build();
-        $this->client = new ATProtoMetaClient($client);
+        $this->client = ATProtoMetaClient::default($client);
 
         $client = ATProtoClientBuilder::default()->useQueryCache(false)->useAsync(true)->build();
-        $this->asyncClient = new ATProtoMetaClient($client);
+        $this->asyncClient = ATProtoMetaClient::default($client);
 
         $this->wssClient = WssClient::default();
     }
