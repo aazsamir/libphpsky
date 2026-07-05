@@ -139,11 +139,7 @@ readonly class MessageAdapter implements MessageAdapterInterface
                     throw new JetstreamException('Invalid identity');
                 }
 
-                $handle = null;
-
-                if (isset($message['identity']['handle']) && \is_string($message['identity']['handle'])) {
-                    $handle = $message['identity']['handle'];
-                }
+                $handle = $message['identity']['handle'] ?? null;
 
                 return new IdentityEvent(
                     did: $did,

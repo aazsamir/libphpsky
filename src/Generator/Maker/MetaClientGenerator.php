@@ -40,10 +40,10 @@ readonly class MetaClientGenerator
                 $metaClient = $metaClients[$lexicon->configEntry()->namespace];
             } else {
                 $metaClient = new ClassType('ATProtoMetaClient');
-                $metaClient->addMember((new Property('client'))->setPrivate()->setType(ATProtoClientInterface::class));
-                $metaClient->addMember((new Property('wssClientFactory'))->setPrivate()->setType(WebSocketClientFactoryInterface::class));
-                $metaClient->addMember((new Property('typeResolver'))->setPrivate()->setType(TypeResolver::class));
-                $metaClient->addMember((new Property('token'))->setPrivate()->setType('string')->setNullable());
+                $metaClient->addMember(new Property('client')->setPrivate()->setType(ATProtoClientInterface::class));
+                $metaClient->addMember(new Property('wssClientFactory')->setPrivate()->setType(WebSocketClientFactoryInterface::class));
+                $metaClient->addMember(new Property('typeResolver')->setPrivate()->setType(TypeResolver::class));
+                $metaClient->addMember(new Property('token')->setPrivate()->setType('string')->setNullable());
                 $this->addConstructor($metaClient);
                 $this->addDefaultMethod($metaClient);
                 $this->addGetClientMethod($metaClient);
@@ -57,7 +57,7 @@ readonly class MetaClientGenerator
 
                 $methodname = $def->lexicon()->id();
                 $methodname = explode('.', $methodname);
-                $methodname = array_map(static fn ($part): string => ucfirst($part), $methodname);
+                $methodname = array_map(ucfirst(...), $methodname);
                 $methodname = implode('', $methodname);
                 $methodname = lcfirst($methodname);
 
@@ -82,15 +82,7 @@ readonly class MetaClientGenerator
         }
 
         foreach ($metaClients as $namespace => $metaClient) {
-            $lexicon = null;
-
-            foreach ($lexicons->toArray() as $lx) {
-                if ($lx->configEntry()->namespace === $namespace) {
-                    $lexicon = $lx;
-
-                    break;
-                }
-            }
+            $lexicon = array_find($lexicons->toArray(), static fn ($lx): bool => $lx->configEntry()->namespace === $namespace);
 
             if ($lexicon === null) {
                 // this should be unreachable

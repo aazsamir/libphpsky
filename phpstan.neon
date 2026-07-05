@@ -5,3 +5,4 @@ parameters:
         - examples
     excludePaths:
         - src/Model/Meta
+    reportIgnoresWithoutComments: false

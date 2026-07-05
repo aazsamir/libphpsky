@@ -31,6 +31,7 @@ class WebSocketClientStub extends Client
         return $this->messages[$this->last++];
     }
 
+    #[\Override]
     public function close(int $status = 1000, string $message = 'ttfn'): Close
     {
         $this->closed = true;

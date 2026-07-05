@@ -51,7 +51,7 @@ class CacheItemStub implements CacheItemInterface
     public function expiresAfter(int|\DateInterval|null $time): static
     {
         if ($time instanceof \DateInterval) {
-            $time = (new \DateTimeImmutable())->add($time)->getTimestamp() - (new \DateTimeImmutable())->getTimestamp();
+            $time = new \DateTimeImmutable()->add($time)->getTimestamp() - new \DateTimeImmutable()->getTimestamp();
         }
 
         $this->time = $time;

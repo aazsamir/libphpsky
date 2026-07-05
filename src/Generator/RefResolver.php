@@ -62,7 +62,7 @@ class RefResolver implements RefResolverInterface
                 return;
         }
 
-        if (!($def instanceof RefDef)) {
+        if (!$def instanceof RefDef) {
             return;
         }
 

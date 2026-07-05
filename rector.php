@@ -14,7 +14,7 @@ return RectorConfig::configure()
         __DIR__ . '/src/Model',
     )
     ->withPhpSets(
-        php83: true,
+        php84: true,
     )
     ->withSkip([
         RestoreDefaultNullToNullableTypePropertyRector::class,

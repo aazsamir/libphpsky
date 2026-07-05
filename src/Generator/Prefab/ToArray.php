@@ -27,7 +27,7 @@ trait ToArray
         }
 
         foreach (get_object_vars($this) as $key => $value) {
-            $result[$key] = $this->serVar($value);
+            $result[(string) $key] = $this->serVar($value);
         }
 
         return $result;

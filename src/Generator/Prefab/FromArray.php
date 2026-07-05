@@ -107,17 +107,16 @@ trait FromArray
             return;
         }
 
-        // TODO: I'm not sure why phpstan is complaining here that it will always be false
-        // @phpstan-ignore-next-line
         if (self::isUnknownDef($propertyType, $value)) {
+            /** @var array{ '$type': string, 'ref': array{ '$link': string } } $value */
             self::handleUnknownDef($instance, $key, $value, $typeResolver);
 
             return;
         }
 
         if ($propertyType->isBuiltin()) {
-            // @phpstan-ignore-next-line
             if (self::isBlobDef($propertyType, $value)) {
+                /** @var array{ '$type': 'blob'} $value */
                 self::handleBlobDef($instance, $key, $value);
 
                 return;
@@ -201,7 +200,7 @@ trait FromArray
                 continue;
             }
 
-            /** @phpstan-ignore-next-line */
+            // @phpstan-ignore-next-line
             $classname = $type::ID . '#' . $type::NAME;
 
             if ($classname === $value['$type']) {
@@ -292,9 +291,6 @@ trait FromArray
         }
     }
 
-    /**
-     * @phpstan-assert-if-true array{ '$type': string } $value
-     */
     private static function isUnknownDef(
         \ReflectionNamedType $propertyType,
         mixed $value,
@@ -336,9 +332,6 @@ trait FromArray
         }
     }
 
-    /**
-     * @phpstan-assert-if-true array{ '$type': 'blob', 'ref': array{ '$link': string } } $value
-     */
     private static function isBlobDef(
         \ReflectionNamedType $propertyType,
         mixed $value,

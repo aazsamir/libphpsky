@@ -108,7 +108,7 @@ final class Lexicon
 
         // shallow search did not find the def, so we go into nested defs
         foreach ($this->defs->toArray() as $def) {
-            if (!($def instanceof DefContainer)) {
+            if (!$def instanceof DefContainer) {
                 continue;
             }
 

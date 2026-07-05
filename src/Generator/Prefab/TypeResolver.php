@@ -49,7 +49,7 @@ final class TypeResolver
         }
 
         $namespace = explode('.', $namespace);
-        $namespace = array_map(static fn ($part): string => ucfirst($part), $namespace);
+        $namespace = array_map(ucfirst(...), $namespace);
         $namespace = implode('\\', $namespace);
         $class = ucfirst($class);
 
