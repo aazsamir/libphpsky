@@ -8,8 +8,7 @@ use Aazsamir\Libphpsky\Model\Com\Atproto\Sync\SubscribeRepos\SubscribeRepos;
 
 require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
-$subscribeRepos = SubscribeRepos::default();
-$subscription = $subscribeRepos
+$subscription = SubscribeRepos::default()
     ->subscription();
 
 $deserializer = CarDeserializer::default();
