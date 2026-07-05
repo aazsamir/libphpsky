@@ -123,6 +123,18 @@ trait FromArray
                 return;
             }
 
+            if ($propertyType->getName() === 'int' && is_numeric($value)) {
+                $instance->{$key} = (int) $value;
+
+                return;
+            }
+
+            if ($propertyType->getName() === 'float' && is_numeric($value)) {
+                $instance->{$key} = (float) $value;
+
+                return;
+            }
+
             $instance->{$key} = $value;
 
             return;
@@ -347,35 +359,39 @@ trait FromArray
             return false;
         }
 
-        if (!isset($value['ref'])) {
-            return false;
-        }
-
-        if (!\is_array($value['ref'])) {
-            return false;
-        }
-
-        if (!isset($value['ref']['$link'])) {
-            return false;
-        }
-
-        if (!\is_string($value['ref']['$link'])) {
-            return false;
-        }
-
         return true;
     }
 
     /**
-     * @param array{ '$type': 'blob', 'ref': array{ '$link': string } } $value
+     * @param array<mixed> $value
      */
     private static function handleBlobDef(
         self $instance,
         string|int $key,
         array $value,
     ): void {
-        $link = $value['ref']['$link'];
-        $instance->{$key} = $link;
+        // TODO: blob shouldn't be a string, but some Blob object
+        // for now, messy hack to get it at least partially-working, but this should be fixed in the future
+        if (
+            isset($value['ref'])
+            && \is_array($value['ref'])
+            && isset($value['ref']['$link'])
+            && \is_string($value['ref']['$link'])
+        ) {
+            $link = $value['ref']['$link'];
+            $instance->{$key} = $link;
+
+            return;
+        }
+
+        if (
+            isset($value['ref'])
+            && \is_string($value['ref'])
+        ) {
+            $instance->{$key} = $value['ref'];
+
+            return;
+        }
     }
 
     /**

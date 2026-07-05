@@ -28,7 +28,8 @@
         "amphp/amp": ">=3.0 <4.0",
         "amphp/http-client": ">=5.2 <6.0",
         "phrity/websocket": "^3.2",
-        "firebase/php-jwt": "^7.1"
+        "firebase/php-jwt": "^7.1",
+        "aazsamir/php-car": "^1.0"
     },
     "minimum-stability": "stable",
     "require-dev": {

@@ -84,6 +84,7 @@ For more examples, check `examples` directory.
 -   Query caching
 -   Amphp client support
 -   Subscriptions over WebSockets
+-   CARv1 format decoder
 -   Custom lexicons support
 
 ## Contributing
