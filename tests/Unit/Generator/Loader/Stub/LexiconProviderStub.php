@@ -7,6 +7,9 @@ namespace Tests\Unit\Generator\Loader\Stub;
 use Aazsamir\Libphpsky\Generator\Loader\LexiconProvider;
 use Aazsamir\Libphpsky\Generator\Maker\MakeConfig;
 
+/**
+ * @internal
+ */
 class LexiconProviderStub implements LexiconProvider
 {
     public function __construct(public array $data) {}

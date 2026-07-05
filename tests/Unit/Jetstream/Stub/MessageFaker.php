@@ -7,6 +7,9 @@ namespace Tests\Unit\Jetstream\Stub;
 use WebSocket\Message\Ping;
 use WebSocket\Message\Text;
 
+/**
+ * @internal
+ */
 class MessageFaker
 {
     public static function commit(): Text

@@ -8,6 +8,9 @@ use WebSocket\Client;
 use WebSocket\Message\Close;
 use WebSocket\Message\Message;
 
+/**
+ * @internal
+ */
 class WebSocketClientStub extends Client
 {
     private int $last = 0;

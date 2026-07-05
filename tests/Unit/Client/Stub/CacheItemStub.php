@@ -6,6 +6,9 @@ namespace Tests\Unit\Client\Stub;
 
 use Psr\Cache\CacheItemInterface;
 
+/**
+ * @internal
+ */
 class CacheItemStub implements CacheItemInterface
 {
     public function __construct(

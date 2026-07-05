@@ -7,6 +7,9 @@ namespace Tests\Model\Com\Atproto\Server\CreateSession;
 use Aazsamir\Libphpsky\Model\Com\Atproto\Server\CreateSession\CreateSessionInput;
 use Tests\Model\TestCase;
 
+/**
+ * @internal
+ */
 class CreateSessionTest extends TestCase
 {
     public function testProcedure(): void

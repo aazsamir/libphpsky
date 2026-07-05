@@ -149,7 +149,7 @@ class ATProtoOAuthClientBuilder
             $this->key = self::defaultKey();
         }
 
-        return new ATProtoOAuthClient(
+        return new GenericATProtoOAuthClient(
             facade: $this->facade,
             sessionManager: $this->sessionManager,
             client: $this->client,

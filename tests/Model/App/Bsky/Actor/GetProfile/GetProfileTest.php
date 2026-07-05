@@ -6,6 +6,9 @@ namespace Tests\Model\App\Bsky\Actor\GetProfile;
 
 use Tests\Model\TestCase;
 
+/**
+ * @internal
+ */
 class GetProfileTest extends TestCase
 {
     public function testQuery(): void

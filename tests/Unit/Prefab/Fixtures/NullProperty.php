@@ -7,6 +7,9 @@ namespace Tests\Unit\Prefab\Fixtures;
 use Aazsamir\Libphpsky\Generator\Prefab\FromArray;
 use Aazsamir\Libphpsky\Generator\Prefab\ToArray;
 
+/**
+ * @internal
+ */
 class NullProperty
 {
     use FromArray;

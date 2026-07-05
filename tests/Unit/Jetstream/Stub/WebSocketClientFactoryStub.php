@@ -7,6 +7,9 @@ namespace Tests\Unit\Jetstream\Stub;
 use Aazsamir\Libphpsky\Jetstream\WebSocketClientFactoryInterface;
 use WebSocket\Client;
 
+/**
+ * @internal
+ */
 class WebSocketClientFactoryStub implements WebSocketClientFactoryInterface
 {
     public array $args;

@@ -6,6 +6,9 @@ namespace Tests\Unit\Prefab\Fixtures;
 
 use Aazsamir\Libphpsky\Generator\Prefab\FromArray;
 
+/**
+ * @internal
+ */
 class UnknownProperty
 {
     use FromArray;

@@ -7,6 +7,9 @@ namespace Tests\Unit\Client\Stub;
 use Psr\Cache\CacheItemInterface;
 use Psr\Cache\CacheItemPoolInterface;
 
+/**
+ * @internal
+ */
 class CachePoolStub implements CacheItemPoolInterface
 {
     /** @var CacheItemStub[] */

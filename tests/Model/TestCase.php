@@ -7,8 +7,11 @@ namespace Tests\Model;
 use Aazsamir\Libphpsky\Model\Meta\ATProtoMetaClient;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase as FrameworkTestCase;
-use Tests\Model\Stub\ATProtoClientStub;
+use Tests\Stub\ATProtoClientStub;
 
+/**
+ * @internal
+ */
 abstract class TestCase extends FrameworkTestCase
 {
     protected ATProtoMetaClient $client;

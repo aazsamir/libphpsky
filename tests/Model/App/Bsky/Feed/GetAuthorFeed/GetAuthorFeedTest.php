@@ -6,6 +6,9 @@ namespace Tests\Model\App\Bsky\Feed\GetAuthorFeed;
 
 use Tests\Model\TestCase;
 
+/**
+ * @internal
+ */
 class GetAuthorFeedTest extends TestCase
 {
     public function testQuery(): void

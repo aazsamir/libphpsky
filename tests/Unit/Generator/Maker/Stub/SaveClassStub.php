@@ -9,6 +9,9 @@ use Aazsamir\Libphpsky\Generator\Maker\SaveClass;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\PhpNamespace;
 
+/**
+ * @internal
+ */
 class SaveClassStub implements SaveClass
 {
     /** @var ClassType[] */

@@ -6,6 +6,9 @@ namespace Tests\Model\Com\Atproto\Identity\ResolveHandle;
 
 use Tests\Model\TestCase;
 
+/**
+ * @internal
+ */
 class ResolveHandleTest extends TestCase
 {
     public function testQuery(): void

@@ -6,6 +6,9 @@ namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase as FrameworkTestCase;
 
+/**
+ * @internal
+ */
 abstract class TestCase extends FrameworkTestCase
 {
     protected function getPrivateProperty(object $object, string $propertyName): mixed

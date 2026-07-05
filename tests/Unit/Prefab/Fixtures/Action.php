@@ -6,6 +6,9 @@ namespace Tests\Unit\Prefab\Fixtures;
 
 use Aazsamir\Libphpsky\Generator\Prefab\IsAction;
 
+/**
+ * @internal
+ */
 class Action
 {
     use IsAction;
