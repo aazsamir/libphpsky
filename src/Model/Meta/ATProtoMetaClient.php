@@ -7,15 +7,17 @@ namespace Aazsamir\Libphpsky\Model\Meta;
 class ATProtoMetaClient
 {
     private \Aazsamir\Libphpsky\Client\ATProtoClientInterface $client;
+    private \Aazsamir\Libphpsky\Jetstream\WebSocketClientFactoryInterface $wssClientFactory;
     private \Aazsamir\Libphpsky\Generator\Prefab\TypeResolver $typeResolver;
     private ?string $token;
 
     public function __construct(
         ?\Aazsamir\Libphpsky\Client\ATProtoClientInterface $client = null,
+        ?\Aazsamir\Libphpsky\Jetstream\WebSocketClientFactoryInterface $wssClientFactory = null,
         ?\Aazsamir\Libphpsky\Generator\Prefab\TypeResolver $typeResolver = null,
         ?string $token = null,
     ) {
-        if ($client === null || $typeResolver === null) {
+        if ($client === null || $typeResolver === null || $wssClientFactory === null) {
             \trigger_deprecation(
                 'aazsamir/libphpsky',
                 '0.10.0',
@@ -25,27 +27,36 @@ class ATProtoMetaClient
         if ($client === null) {
             $client = \Aazsamir\Libphpsky\Client\ATProtoClientBuilder::getDefault();
         }
+        if ($wssClientFactory === null) {
+            $wssClientFactory = new \Aazsamir\Libphpsky\Jetstream\WebSocketClientFactory();
+        }
         if ($typeResolver === null) {
             $typeResolver = \Aazsamir\Libphpsky\Generator\Prefab\TypeResolver::getDefault();
         }
         $this->client = $client;
+        $this->wssClientFactory = $wssClientFactory;
         $this->typeResolver = $typeResolver;
         $this->token = $token;
     }
 
     public static function default(
         ?\Aazsamir\Libphpsky\Client\ATProtoClientInterface $client = null,
+        ?\Aazsamir\Libphpsky\Jetstream\WebSocketClientFactoryInterface $wssClientFactory = null,
         ?\Aazsamir\Libphpsky\Generator\Prefab\TypeResolver $typeResolver = null,
         ?string $token = null,
     ): self {
         if ($client === null) {
             $client = \Aazsamir\Libphpsky\Client\ATProtoClientBuilder::getDefault();
         }
+        if ($wssClientFactory === null) {
+            $wssClientFactory = new \Aazsamir\Libphpsky\Jetstream\WebSocketClientFactory();
+        }
         if ($typeResolver === null) {
             $typeResolver = \Aazsamir\Libphpsky\Generator\Prefab\TypeResolver::getDefault();
         }
         return new ATProtoMetaClient(
             $client,
+            $wssClientFactory,
             $typeResolver,
             $token,
         );
@@ -70,6 +81,14 @@ class ATProtoMetaClient
     public function chatBskyModerationGetConvoMembers(
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetConvoMembers\GetConvoMembers {
         return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\GetConvoMembers\GetConvoMembers($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Subscribe to stream of chat events targeted to moderation. Private endpoint.
+     */
+    public function chatBskyModerationSubscribeModEvents(
+    ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\SubscribeModEvents\SubscribeModEvents {
+        return new \Aazsamir\Libphpsky\Model\Chat\Bsky\Moderation\SubscribeModEvents\SubscribeModEvents($this->wssClientFactory, $this->typeResolver, $this->token);
     }
 
     public function chatBskyModerationUpdateActorAccess(
@@ -671,6 +690,14 @@ class ATProtoMetaClient
     }
 
     /**
+     * Repository event stream, aka Firehose endpoint. Outputs repo commits with diff data, and identity update events, for all repositories on the current server. See the atproto specifications for details around stream sequencing, repo versioning, CAR diff format, and more. Public and does not require auth; implemented by PDS and Relay.
+     */
+    public function comAtprotoSyncSubscribeRepos(
+    ): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\SubscribeRepos\SubscribeRepos {
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\SubscribeRepos\SubscribeRepos($this->wssClientFactory, $this->typeResolver, $this->token);
+    }
+
+    /**
      * DEPRECATED - please use com.atproto.sync.getRepo instead
      */
     public function comAtprotoSyncGetCheckout(): \Aazsamir\Libphpsky\Model\Com\Atproto\Sync\GetCheckout\GetCheckout
@@ -908,6 +935,14 @@ class ATProtoMetaClient
     public function comAtprotoRepoUploadBlob(): \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\UploadBlob\UploadBlob
     {
         return new \Aazsamir\Libphpsky\Model\Com\Atproto\Repo\UploadBlob\UploadBlob($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Subscribe to stream of labels (and negations). Public endpoint implemented by mod services. Uses same sequencing scheme as repo event stream.
+     */
+    public function comAtprotoLabelSubscribeLabels(
+    ): \Aazsamir\Libphpsky\Model\Com\Atproto\Label\SubscribeLabels\SubscribeLabels {
+        return new \Aazsamir\Libphpsky\Model\Com\Atproto\Label\SubscribeLabels\SubscribeLabels($this->wssClientFactory, $this->typeResolver, $this->token);
     }
 
     /**
