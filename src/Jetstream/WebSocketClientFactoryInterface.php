@@ -8,6 +8,7 @@ interface WebSocketClientFactoryInterface
 {
     /**
      * @param array<string, mixed> $args
+     * @param array<string, string> $headers
      */
-    public function create(array $args): \WebSocket\Client;
+    public function create(array $args, ?string $host = null, array $headers = []): \WebSocket\Client;
 }

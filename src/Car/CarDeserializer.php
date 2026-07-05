@@ -7,18 +7,31 @@ namespace Aazsamir\Libphpsky\Car;
 use Aazsamir\Libphpsky\Generator\Prefab\TypeResolver;
 use Aazsamir\PhpCar\Car\CarDecoder as CarCarDecoder;
 
-readonly class CarDeserializer
+class CarDeserializer
 {
+    private static ?self $instance = null;
+
     public function __construct(
-        private TypeResolver $typeResolver,
-        private CarCarDecoder $carDecoder,
+        private readonly TypeResolver $typeResolver,
+        private readonly CarCarDecoder $carDecoder,
     ) {}
 
-    public static function default(): self
+    public static function getDefault(): self
     {
+        if (self::$instance === null) {
+            self::$instance = self::default();
+        }
+
+        return self::$instance;
+    }
+
+    public static function default(
+        ?TypeResolver $typeResolver = null,
+        ?CarCarDecoder $carDecoder = null,
+    ): self {
         return new self(
-            typeResolver: TypeResolver::default(),
-            carDecoder: CarCarDecoder::new(),
+            typeResolver: $typeResolver ?? TypeResolver::default(),
+            carDecoder: $carDecoder ?? CarCarDecoder::new(),
         );
     }
 

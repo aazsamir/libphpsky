@@ -16,7 +16,7 @@ trait IsAction
     private TypeResolver $typeResolver;
     private ?string $token = null;
     private ?string $tokenType = 'Bearer';
-    private ?string $endpoint = 'https://bsky.social/xrpc/';
+    private string $endpoint = 'https://bsky.social/xrpc/';
     /**
      * @var array<string, string>
      */

@@ -20,6 +20,7 @@ use Aazsamir\Libphpsky\Generator\Maker\MetaClientGenerator;
 use Aazsamir\Libphpsky\Generator\Maker\ObjectDefHandler;
 use Aazsamir\Libphpsky\Generator\Maker\ProcedureDefHandler;
 use Aazsamir\Libphpsky\Generator\Maker\QueryDefHandler;
+use Aazsamir\Libphpsky\Generator\Maker\SubscriptionDefHandler;
 use PHPUnit\Framework\MockObject\MockObject;
 use Tests\Unit\TestCase;
 
@@ -32,6 +33,7 @@ final class MakerTest extends TestCase
     private QueryDefHandler&MockObject $queryDefHandler;
     private ProcedureDefHandler&MockObject $procedureDefHandler;
     private ObjectDefHandler&MockObject $objectDefHandler;
+    private SubscriptionDefHandler&MockObject $subscriptionDefHandler;
     private MetaClientGenerator&MockObject $metaClientGenerator;
     private Maker $maker;
     private Lexicon $lexicon;
@@ -56,6 +58,7 @@ final class MakerTest extends TestCase
         $this->queryDefHandler = $this->createMock(QueryDefHandler::class);
         $this->procedureDefHandler = $this->createMock(ProcedureDefHandler::class);
         $this->objectDefHandler = $this->createMock(ObjectDefHandler::class);
+        $this->subscriptionDefHandler = $this->createMock(SubscriptionDefHandler::class);
         $this->metaClientGenerator = $this->createMock(MetaClientGenerator::class);
 
         $this->maker = new Maker(
@@ -63,6 +66,7 @@ final class MakerTest extends TestCase
             $this->queryDefHandler,
             $this->objectDefHandler,
             $this->procedureDefHandler,
+            $this->subscriptionDefHandler,
             $this->metaClientGenerator,
         );
     }
@@ -103,6 +107,10 @@ final class MakerTest extends TestCase
         $this->objectDefHandler->expects(self::once())
             ->method('handle')
             ->with(self::isInstanceOf(ObjectDef::class));
+
+        $this->subscriptionDefHandler->expects(self::once())
+            ->method('handle')
+            ->with(self::isInstanceOf(SubscriptionDef::class));
 
         $this->maker->make($lexicons);
     }

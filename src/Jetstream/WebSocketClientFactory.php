@@ -19,10 +19,16 @@ readonly class WebSocketClientFactory implements WebSocketClientFactoryInterface
         private string $userAgent = ATProtoClientInterface::USER_AGENT,
     ) {}
 
-    public function create(array $args): \WebSocket\Client
-    {
-        /** @var string $host */
-        $host = $this->hosts[array_rand($this->hosts)];
+    public function create(
+        array $args,
+        ?string $host = null,
+        array $headers = [],
+    ): \WebSocket\Client {
+        if ($host === null) {
+            /** @var string $host */
+            $host = $this->hosts[array_rand($this->hosts)];
+        }
+
         $query = http_build_query($args);
         // arg[0]=a&arg[1]=b => arg=a&arg=b
         $query = preg_replace('/%5B\d+%5D=/', '=', $query);
@@ -35,6 +41,10 @@ readonly class WebSocketClientFactory implements WebSocketClientFactoryInterface
         $client
             ->addMiddleware(new \WebSocket\Middleware\CloseHandler())
             ->addHeader('User-Agent', $this->userAgent);
+
+        foreach ($headers as $name => $value) {
+            $client->addHeader($name, $value);
+        }
 
         return $client;
     }

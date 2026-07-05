@@ -15,7 +15,7 @@ class WebSocketClientFactoryStub implements WebSocketClientFactoryInterface
         public Client $client,
     ) {}
 
-    public function create(array $args): Client
+    public function create(array $args, ?string $host = null, array $headers = []): Client
     {
         $this->args = $args;
 

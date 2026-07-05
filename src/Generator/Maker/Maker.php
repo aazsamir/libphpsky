@@ -9,6 +9,7 @@ use Aazsamir\Libphpsky\Generator\Lexicon\Def\DefContainer;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\ObjectDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\ProcedureDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Def\QueryDef;
+use Aazsamir\Libphpsky\Generator\Lexicon\Def\SubscriptionDef;
 use Aazsamir\Libphpsky\Generator\Lexicon\Lexicons;
 
 /**
@@ -28,18 +29,16 @@ class Maker implements MakerInterface
         private QueryDefHandler $queryDefHandler,
         private ObjectDefHandler $objectDefHandler,
         private ProcedureDefHandler $procedureDefHandler,
+        private SubscriptionDefHandler $subscriptionDefHandler,
         private MetaClientGenerator $metaClientGenerator,
-    ) {
-        $this->classResolver = $classResolver;
-        $this->queryDefHandler = $queryDefHandler;
-        $this->procedureDefHandler = $procedureDefHandler;
-    }
+    ) {}
 
     public static function default(
         ?ClassResolver $classResolver = null,
         ?QueryDefHandler $queryDefHandler = null,
         ?ObjectDefHandler $objectDefHandler = null,
         ?ProcedureDefHandler $procedureDefHandler = null,
+        ?SubscriptionDefHandler $subscriptionDefHandler = null,
         ?MetaClientGenerator $metaClientGenerator = null,
         ?SaveClass $saver = null,
     ): self {
@@ -50,6 +49,10 @@ class Maker implements MakerInterface
             $saver,
         );
         $procedureDefHandler ??= new ProcedureDefHandler(
+            $classResolver,
+            $saver,
+        );
+        $subscriptionDefHandler ??= new SubscriptionDefHandler(
             $classResolver,
             $saver,
         );
@@ -67,6 +70,7 @@ class Maker implements MakerInterface
             $queryDefHandler,
             $objectDefHandler,
             $procedureDefHandler,
+            $subscriptionDefHandler,
             $metaClientGenerator,
         );
     }
@@ -105,6 +109,7 @@ class Maker implements MakerInterface
             $def instanceof QueryDef => $this->queryDefHandler->handle($def),
             $def instanceof ProcedureDef => $this->procedureDefHandler->handle($def),
             $def instanceof ObjectDef => $this->objectDefHandler->handle($def),
+            $def instanceof SubscriptionDef => $this->subscriptionDefHandler->handle($def),
             default => null,
         };
 

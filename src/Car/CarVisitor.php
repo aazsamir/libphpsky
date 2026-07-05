@@ -28,7 +28,7 @@ class CarVisitor
         $this->roots[$cid] = $root;
         $item = $this->getBlock($root->data);
 
-        if ($this->isMstNode($item)) {
+        if ($item !== null && $this->isMstNode($item)) {
             $node = MstNode::fromArray($item);
             $this->decoded[$root->data] = $node;
             $this->visitMstNode($node);
@@ -44,7 +44,7 @@ class CarVisitor
         if ($node->left !== null) {
             $item = $this->getBlock($node->left);
 
-            if ($this->isMstNode($item)) {
+            if ($item !== null && $this->isMstNode($item)) {
                 $leftNode = MstNode::fromArray($item);
                 $this->decoded[$node->left] = $leftNode;
                 $this->visitMstNode($leftNode);
@@ -57,7 +57,7 @@ class CarVisitor
         if ($entry->tree !== null) {
             $item = $this->getBlock($entry->tree);
 
-            if ($this->isMstNode($item)) {
+            if ($item !== null && $this->isMstNode($item)) {
                 $node = MstNode::fromArray($item);
                 $this->decoded[$entry->tree] = $node;
                 $this->visitMstNode($node);
@@ -65,6 +65,11 @@ class CarVisitor
         }
 
         $item = $this->getBlock($entry->value);
+
+        if ($item === null) {
+            return;
+        }
+
         $this->visitMstLeaf($item, $entry->value);
     }
 
@@ -100,10 +105,14 @@ class CarVisitor
     }
 
     /**
-     * @return array<mixed>
+     * @return array<mixed>|null
      */
-    private function getBlock(string $cid): array
+    private function getBlock(string $cid): ?array
     {
+        if (!\array_key_exists($cid, $this->carData->blocks->items)) {
+            return null;
+        }
+
         $item = $this->carData->blocks->items[$cid]->toArray();
         \assert(\is_array($item));
 

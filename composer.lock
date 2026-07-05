@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9cf7c025a66348135383f47ee0d9cdbf",
+    "content-hash": "233d0eb69c6f692fcb19711b5e65759d",
     "packages": [
         {
             "name": "aazsamir/php-car",
-            "version": "v1.0",
+            "version": "v1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aazsamir/php-car.git",
-                "reference": "14f0713d715464dec099fd406b356022a9cd4aab"
+                "reference": "0925d2562a50d1288c6e76370ccbfb9981ae56c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aazsamir/php-car/zipball/14f0713d715464dec099fd406b356022a9cd4aab",
-                "reference": "14f0713d715464dec099fd406b356022a9cd4aab",
+                "url": "https://api.github.com/repos/aazsamir/php-car/zipball/0925d2562a50d1288c6e76370ccbfb9981ae56c7",
+                "reference": "0925d2562a50d1288c6e76370ccbfb9981ae56c7",
                 "shasum": ""
             },
             "require": {
@@ -47,9 +47,9 @@
             ],
             "support": {
                 "issues": "https://github.com/aazsamir/php-car/issues",
-                "source": "https://github.com/aazsamir/php-car/tree/v1.0"
+                "source": "https://github.com/aazsamir/php-car/tree/v1.1"
             },
-            "time": "2026-07-04T18:29:18+00:00"
+            "time": "2026-07-05T13:12:31+00:00"
         },
         {
             "name": "amphp/amp",
