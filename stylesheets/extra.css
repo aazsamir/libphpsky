@@ -1,0 +1,52 @@
+.md-typeset pre > code {
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.md-typeset .highlight pre {
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
+}
+
+.md-typeset .highlighttable {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+[data-md-color-scheme="slate"] .language-php .k,
+[data-md-color-scheme="slate"] .language-php .kd,
+[data-md-color-scheme="slate"] .language-php .kn,
+[data-md-color-scheme="slate"] .language-php .kr {
+  color: #79e6ff;
+}
+
+[data-md-color-scheme="slate"] .language-php .nv,
+[data-md-color-scheme="slate"] .language-php .vc,
+[data-md-color-scheme="slate"] .language-php .vi {
+  color: #b4ff9f;
+}
+
+[data-md-color-scheme="slate"] .language-php .s,
+[data-md-color-scheme="slate"] .language-php .s1,
+[data-md-color-scheme="slate"] .language-php .s2 {
+  color: #ffd784;
+}
+
+[data-md-color-scheme="default"] .language-php .k,
+[data-md-color-scheme="default"] .language-php .kd,
+[data-md-color-scheme="default"] .language-php .kn,
+[data-md-color-scheme="default"] .language-php .kr {
+  color: #005a78;
+}
+
+[data-md-color-scheme="default"] .language-php .nv,
+[data-md-color-scheme="default"] .language-php .vc,
+[data-md-color-scheme="default"] .language-php .vi {
+  color: #266f00;
+}
+
+[data-md-color-scheme="default"] .language-php .s,
+[data-md-color-scheme="default"] .language-php .s1,
+[data-md-color-scheme="default"] .language-php .s2 {
+  color: #8b5b00;
+}
