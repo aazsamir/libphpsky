@@ -10,7 +10,6 @@ require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
 $subscribeRepos = SubscribeRepos::default();
 $subscription = $subscribeRepos
-    ->withEndpoint('https://bsky.network')
     ->subscription();
 
 $deserializer = CarDeserializer::default();

@@ -24,6 +24,7 @@ trait IsSubscription
     ) {
         $this->typeResolver = $typeResolver;
         $this->token = $accessToken;
+        $this->endpoint = 'https://bsky.network/';
     }
 
     public static function default(
