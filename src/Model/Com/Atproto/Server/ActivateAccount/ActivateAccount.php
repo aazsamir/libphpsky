@@ -29,4 +29,9 @@ class ActivateAccount implements \Aazsamir\Libphpsky\Action
     {
         $this->request($this->argsWithKeys(func_get_args()));
     }
+
+    public function rawProcedure(): mixed
+    {
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

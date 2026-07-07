@@ -29,4 +29,13 @@ class RejectJoinRequest implements \Aazsamir\Libphpsky\Action
     {
         return \Aazsamir\Libphpsky\Model\Chat\Bsky\Group\RejectJoinRequest\RejectJoinRequestOutput::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rawProcedure(RejectJoinRequestInput $input): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

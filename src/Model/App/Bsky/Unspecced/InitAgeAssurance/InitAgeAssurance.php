@@ -30,4 +30,13 @@ class InitAgeAssurance implements \Aazsamir\Libphpsky\Action
     ): \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\Defs\AgeAssuranceState {
         return \Aazsamir\Libphpsky\Model\App\Bsky\Unspecced\Defs\AgeAssuranceState::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rawProcedure(InitAgeAssuranceInput $input): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

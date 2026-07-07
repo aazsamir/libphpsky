@@ -29,4 +29,9 @@ class UpdateHandle implements \Aazsamir\Libphpsky\Action
     {
         $this->request($this->argsWithKeys(func_get_args()));
     }
+
+    public function rawProcedure(UpdateHandleInput $input): mixed
+    {
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

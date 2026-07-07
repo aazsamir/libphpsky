@@ -29,4 +29,9 @@ class SubmitPlcOperation implements \Aazsamir\Libphpsky\Action
     {
         $this->request($this->argsWithKeys(func_get_args()));
     }
+
+    public function rawProcedure(SubmitPlcOperationInput $input): mixed
+    {
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

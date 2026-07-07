@@ -30,4 +30,13 @@ class CreateTemplate implements \Aazsamir\Libphpsky\Action
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\Defs\TemplateView {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Communication\Defs\TemplateView::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rawProcedure(CreateTemplateInput $input): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

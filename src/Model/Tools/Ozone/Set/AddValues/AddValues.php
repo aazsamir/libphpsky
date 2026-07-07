@@ -29,4 +29,9 @@ class AddValues implements \Aazsamir\Libphpsky\Action
     {
         $this->request($this->argsWithKeys(func_get_args()));
     }
+
+    public function rawProcedure(AddValuesInput $input): mixed
+    {
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

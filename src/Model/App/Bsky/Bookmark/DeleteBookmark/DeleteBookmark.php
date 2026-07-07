@@ -29,4 +29,9 @@ class DeleteBookmark implements \Aazsamir\Libphpsky\Action
     {
         $this->request($this->argsWithKeys(func_get_args()));
     }
+
+    public function rawProcedure(DeleteBookmarkInput $input): mixed
+    {
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

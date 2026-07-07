@@ -29,4 +29,9 @@ class DisableAccountInvites implements \Aazsamir\Libphpsky\Action
     {
         $this->request($this->argsWithKeys(func_get_args()));
     }
+
+    public function rawProcedure(DisableAccountInvitesInput $input): mixed
+    {
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

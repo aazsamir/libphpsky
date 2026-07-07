@@ -30,4 +30,13 @@ class UpsertSet implements \Aazsamir\Libphpsky\Action
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\Defs\SetView {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\Defs\SetView::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rawProcedure(\Aazsamir\Libphpsky\Model\Tools\Ozone\Set\Defs\Set $input): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

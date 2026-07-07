@@ -30,4 +30,13 @@ class RefreshIdentity implements \Aazsamir\Libphpsky\Action
     ): \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\Defs\IdentityInfo {
         return \Aazsamir\Libphpsky\Model\Com\Atproto\Identity\Defs\IdentityInfo::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rawProcedure(RefreshIdentityInput $input): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

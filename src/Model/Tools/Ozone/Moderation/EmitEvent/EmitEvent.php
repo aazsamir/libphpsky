@@ -30,4 +30,13 @@ class EmitEvent implements \Aazsamir\Libphpsky\Action
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventView {
         return \Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventView::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rawProcedure(EmitEventInput $input): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }

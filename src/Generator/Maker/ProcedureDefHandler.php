@@ -31,20 +31,30 @@ class ProcedureDefHandler implements DefHandler
         }
 
         [$class, $phpNamespace] = $this->createClass($def);
+        $class->addTrait(\Aazsamir\Libphpsky\Generator\Prefab\IsProcedure::class);
+        $class->addImplement(Action::class);
         $this->createProcedure($class, $def);
+        $this->createRawProcedure($class, $def);
 
         $this->saveClass->save($class, $phpNamespace, $def->lexicon()->configEntry());
     }
 
     public function createProcedure(ClassType $class, ProcedureDef $def): void
     {
-        $class->addTrait(\Aazsamir\Libphpsky\Generator\Prefab\IsProcedure::class);
-        $class->addImplement(Action::class);
         $method = $class->addMethod('procedure');
         $method->setPublic();
 
         $this->addProcedureParameters($method, $def);
         $this->addProcedureReturnType($method, $def);
+    }
+
+    public function createRawProcedure(ClassType $class, ProcedureDef $def): void
+    {
+        $method = $class->addMethod('rawProcedure');
+        $method->setPublic();
+
+        $this->addProcedureParameters($method, $def);
+        $this->addRawProcedureReturnType($method, $def);
     }
 
     public function addProcedureParameters(Method $method, ProcedureDef $def): void
@@ -77,6 +87,20 @@ class ProcedureDefHandler implements DefHandler
         $method->addBody($body);
 
         return false;
+    }
+
+    public function addRawProcedureReturnType(Method $method, ProcedureDef $def): void
+    {
+        if ($def->output() && $def->output()->schema()) {
+            $method->addComment('@return array<string, mixed>');
+            $method->setReturnType('array');
+            $method->addBody('// @phpstan-ignore-next-line');
+        } else {
+            $method->setReturnType('mixed');
+        }
+
+        $body = 'return $this->request($this->argsWithKeys(func_get_args()));';
+        $method->addBody($body);
     }
 
     private function classResolver(): ClassResolver

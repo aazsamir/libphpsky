@@ -30,4 +30,13 @@ class DeleteMessageForSelf implements \Aazsamir\Libphpsky\Action
     ): \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView {
         return \Aazsamir\Libphpsky\Model\Chat\Bsky\Convo\Defs\DeletedMessageView::fromArray($this->request($this->argsWithKeys(func_get_args())));
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rawProcedure(DeleteMessageForSelfInput $input): array
+    {
+        // @phpstan-ignore-next-line
+        return $this->request($this->argsWithKeys(func_get_args()));
+    }
 }
