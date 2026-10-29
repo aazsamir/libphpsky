@@ -30,6 +30,21 @@ class ReportView implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?string Type of report */
     public ?string $reportType;
 
+    /** @var ?string Priority level assigned to the report. */
+    public ?string $priorityLevel;
+
+    /** @var ?int Report priority score. Higher scores have higher priority. */
+    public ?int $priorityScore;
+
+    /** @var ?int Target resolution duration in minutes. */
+    public ?int $priorityTargetMinutes;
+
+    /** @var ?int Time from report creation to its last closure. */
+    public ?int $resolutionTimeSec;
+
+    /** @var ?bool Whether the current closure occurred within the report's snapshotted target. */
+    public ?bool $priorityTargetMet;
+
     /** @var string DID of the user who made the report */
     public string $reportedBy;
 
@@ -48,7 +63,7 @@ class ReportView implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?\DateTimeInterface When the report was assigned to its current queue */
     public ?\DateTimeInterface $queuedAt;
 
-    /** @var ?array<int> Array of moderation event IDs representing actions taken on this report (sorted DESC, most recent first) */
+    /** @var ?array<int> Array of moderation event IDs representing actions taken on this report, in append order (most recently linked event last) */
     public ?array $actionEventIds = [];
 
     /** @var ?array<\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\ModEventView> Optional: expanded action events */
@@ -107,6 +122,11 @@ class ReportView implements \Aazsamir\Libphpsky\ATProtoObject
         \DateTimeInterface $createdAt,
         ?\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\SubjectView $subject = null,
         ?string $reportType = null,
+        ?string $priorityLevel = null,
+        ?int $priorityScore = null,
+        ?int $priorityTargetMinutes = null,
+        ?int $resolutionTimeSec = null,
+        ?bool $priorityTargetMet = null,
         ?\Aazsamir\Libphpsky\Model\Tools\Ozone\Moderation\Defs\SubjectView $reporter = null,
         ?string $comment = null,
         ?\DateTimeInterface $updatedAt = null,
@@ -132,6 +152,21 @@ class ReportView implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($reportType !== null) {
             $instance->reportType = $reportType;
+        }
+        if ($priorityLevel !== null) {
+            $instance->priorityLevel = $priorityLevel;
+        }
+        if ($priorityScore !== null) {
+            $instance->priorityScore = $priorityScore;
+        }
+        if ($priorityTargetMinutes !== null) {
+            $instance->priorityTargetMinutes = $priorityTargetMinutes;
+        }
+        if ($resolutionTimeSec !== null) {
+            $instance->resolutionTimeSec = $resolutionTimeSec;
+        }
+        if ($priorityTargetMet !== null) {
+            $instance->priorityTargetMet = $priorityTargetMet;
         }
         if ($reporter !== null) {
             $instance->reporter = $reporter;

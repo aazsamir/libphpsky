@@ -19,14 +19,17 @@ class ReportAction implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?array<int> Target specific report IDs */
     public ?array $ids = [];
 
-    /** @var ?array<string> Target reports matching these report types on the subject (fully qualified NSIDs) */
+    /** @var ?array<string> Target reports matching these report types on the subject (fully qualified NSIDs). Excludes assigned and escalated reports. */
     public ?array $types = [];
 
-    /** @var ?bool Target ALL reports on the subject */
+    /** @var ?bool Target ALL reports on the subject. Excludes assigned and escalated reports. */
     public ?bool $all;
 
     /** @var ?string Note to send to reporter(s) when actioning their report */
     public ?string $note;
+
+    /** @var ?bool Set true when the report activities are created by an automated process. */
+    public ?bool $isAutomated;
 
     public static function id(): string
     {
@@ -52,8 +55,13 @@ class ReportAction implements \Aazsamir\Libphpsky\ATProtoObject
      * @param array<int> $ids
      * @param array<string> $types
      */
-    public static function new(?array $ids = [], ?array $types = [], ?bool $all = null, ?string $note = null): self
-    {
+    public static function new(
+        ?array $ids = [],
+        ?array $types = [],
+        ?bool $all = null,
+        ?string $note = null,
+        ?bool $isAutomated = null,
+    ): self {
         $instance = new self();
         if ($ids !== null) {
             $instance->ids = $ids;
@@ -66,6 +74,9 @@ class ReportAction implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($note !== null) {
             $instance->note = $note;
+        }
+        if ($isAutomated !== null) {
+            $instance->isAutomated = $isAutomated;
         }
 
         return $instance;

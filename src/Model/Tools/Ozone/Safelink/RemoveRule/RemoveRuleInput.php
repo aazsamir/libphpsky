@@ -19,6 +19,9 @@ class RemoveRuleInput implements \Aazsamir\Libphpsky\ATProtoObject
     public string $url;
     public ?string $pattern;
 
+    /** @var ?string Source of the rule to remove */
+    public ?string $source;
+
     /** @var ?string Optional comment about why the rule is being removed */
     public ?string $comment;
 
@@ -48,6 +51,7 @@ class RemoveRuleInput implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         string $url,
         ?string $pattern = null,
+        ?string $source = null,
         ?string $comment = null,
         ?string $createdBy = null,
     ): self {
@@ -55,6 +59,9 @@ class RemoveRuleInput implements \Aazsamir\Libphpsky\ATProtoObject
         $instance->url = $url;
         if ($pattern !== null) {
             $instance->pattern = $pattern;
+        }
+        if ($source !== null) {
+            $instance->source = $source;
         }
         if ($comment !== null) {
             $instance->comment = $comment;

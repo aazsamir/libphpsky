@@ -30,6 +30,12 @@ class UpdateQueueInput implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?array<string> Policy keys to recommend when actioning reports in this queue */
     public ?array $recommendedPolicies = [];
 
+    /** @var ?array<string> Labels to recommend for this queue and use as fallback appeal routing mappings */
+    public ?array $recommendedLabels = [];
+
+    /** @var ?bool Admins can always list this queue and browse its reports. Other roles require an active queue assignment. Individual report and moderation event access is unchanged. */
+    public ?bool $strictAccess;
+
     public static function id(): string
     {
         return self::ID;
@@ -52,6 +58,7 @@ class UpdateQueueInput implements \Aazsamir\Libphpsky\ATProtoObject
 
     /**
      * @param array<string> $recommendedPolicies
+     * @param array<string> $recommendedLabels
      */
     public static function new(
         int $queueId,
@@ -59,6 +66,8 @@ class UpdateQueueInput implements \Aazsamir\Libphpsky\ATProtoObject
         ?bool $enabled = null,
         ?string $description = null,
         ?array $recommendedPolicies = [],
+        ?array $recommendedLabels = [],
+        ?bool $strictAccess = null,
     ): self {
         $instance = new self();
         $instance->queueId = $queueId;
@@ -73,6 +82,12 @@ class UpdateQueueInput implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($recommendedPolicies !== null) {
             $instance->recommendedPolicies = $recommendedPolicies;
+        }
+        if ($recommendedLabels !== null) {
+            $instance->recommendedLabels = $recommendedLabels;
+        }
+        if ($strictAccess !== null) {
+            $instance->strictAccess = $strictAccess;
         }
 
         return $instance;

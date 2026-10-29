@@ -2350,7 +2350,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * Create a new moderation queue. A queue can have optional matching criteria that ozone's queue router will use to match reports. A queue with no criteria must have reports assigned to it manually via (1) `modTool.meta.queueId` in `tools.ozone.moderation.emitEvent` or (2) `tools.ozone.report.reassignQueue`.
+     * Create a new moderation queue. A queue with omitted or empty subjectTypes or reportTypes must have reports assigned to it manually via (1) `modTool.meta.queueId` in `tools.ozone.moderation.emitEvent` or (2) `tools.ozone.report.reassignQueue`.
      */
     public function toolsOzoneQueueCreateQueue(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Queue\CreateQueue\CreateQueue
     {
@@ -2390,6 +2390,14 @@ class ATProtoMetaClient
     }
 
     /**
+     * List recent active team members, ordered by latest activity.
+     */
+    public function toolsOzoneTeamListOnlineMembers(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\ListOnlineMembers\ListOnlineMembers {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\ListOnlineMembers\ListOnlineMembers($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
      * Delete a member from ozone team. Requires admin role.
      */
     public function toolsOzoneTeamDeleteMember(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\DeleteMember\DeleteMember
@@ -2413,6 +2421,85 @@ class ATProtoMetaClient
         return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Team\UpdateMember\UpdateMember($this->client, $this->typeResolver, $this->token);
     }
 
+    public function toolsOzoneInboxUpdateSeen(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\UpdateSeen\UpdateSeen
+    {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\UpdateSeen\UpdateSeen($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Get a moderation report submitted by the authenticated account to this moderation service.
+     */
+    public function toolsOzoneInboxGetReport(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\GetReport\GetReport
+    {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\GetReport\GetReport($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Update the authenticated account's moderation push notification preferences. Only provided categories are updated; omitted categories retain their values. At least one category must be provided. Returns all three preferences. These preferences do not hide in-app inbox activity.
+     */
+    public function toolsOzoneInboxPutNotificationPreferences(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\PutNotificationPreferences\PutNotificationPreferences {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\PutNotificationPreferences\PutNotificationPreferences($this->client, $this->typeResolver, $this->token);
+    }
+
+    public function toolsOzoneInboxListNotifications(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\ListNotifications\ListNotifications {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\ListNotifications\ListNotifications($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Get moderation push notification preferences for report outcomes, account actions, and labeling. Returns all three categories, defaulting to enabled for an account without saved preferences.
+     */
+    public function toolsOzoneInboxGetNotificationPreferences(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\GetNotificationPreferences\GetNotificationPreferences {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\GetNotificationPreferences\GetNotificationPreferences($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Get a subject belonging to the authenticated account, including its moderation action history from this moderation service.
+     */
+    public function toolsOzoneInboxGetActionedSubject(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\GetActionedSubject\GetActionedSubject {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\GetActionedSubject\GetActionedSubject($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * List subjects belonging to the authenticated account that have moderation actions from this moderation service.
+     */
+    public function toolsOzoneInboxListActionedSubjects(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\ListActionedSubjects\ListActionedSubjects {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\ListActionedSubjects\ListActionedSubjects($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Get the authenticated account's current standing with this moderation service.
+     */
+    public function toolsOzoneInboxGetAccountStatus(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\GetAccountStatus\GetAccountStatus {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\GetAccountStatus\GetAccountStatus($this->client, $this->typeResolver, $this->token);
+    }
+
+    public function toolsOzoneInboxGetUnreadCount(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\GetUnreadCount\GetUnreadCount {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\GetUnreadCount\GetUnreadCount($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * List moderation reports submitted by the authenticated account to this moderation service.
+     */
+    public function toolsOzoneInboxListReports(): \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\ListReports\ListReports
+    {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\ListReports\ListReports($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Appeal a moderation action affecting the user's account or content.
+     */
+    public function toolsOzoneInboxAppealActionedSubject(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\AppealActionedSubject\AppealActionedSubject {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Inbox\AppealActionedSubject\AppealActionedSubject($this->client, $this->typeResolver, $this->token);
+    }
+
     /**
      * Remove an existing URL safety rule
      */
@@ -2427,6 +2514,14 @@ class ATProtoMetaClient
     public function toolsOzoneSafelinkUpdateRule(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\UpdateRule\UpdateRule {
         return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\UpdateRule\UpdateRule($this->client, $this->typeResolver, $this->token);
+    }
+
+    /**
+     * Replace stored rules for one source from a complete snapshot. Existing rules owned by another source remain unchanged.
+     */
+    public function toolsOzoneSafelinkSyncSource(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\SyncSource\SyncSource {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Safelink\SyncSource\SyncSource($this->client, $this->typeResolver, $this->token);
     }
 
     /**
@@ -2501,6 +2596,11 @@ class ATProtoMetaClient
         return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Set\DeleteValues\DeleteValues($this->client, $this->typeResolver, $this->token);
     }
 
+    public function toolsOzoneServerGetCapabilities(
+    ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Server\GetCapabilities\GetCapabilities {
+        return new \Aazsamir\Libphpsky\Model\Tools\Ozone\Server\GetCapabilities\GetCapabilities($this->client, $this->typeResolver, $this->token);
+    }
+
     /**
      * Get details about ozone's server configuration.
      */
@@ -2518,7 +2618,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * Close all reports on a subject matching the given criteria. Reports whose current status does not permit a transition to closed are skipped silently. Intended for automated flows that resolve reports without taking action on the subject.
+     * Close eligible reports on a subject matching the given criteria. Assigned and escalated reports are excluded. Reports whose current status does not permit a transition to closed are skipped silently. Intended for automated flows that resolve reports without taking action on the subject.
      */
     public function toolsOzoneReportCloseReports(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\CloseReports\CloseReports {
@@ -2574,7 +2674,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * Get live report statistics from the past 24 hours. Filter by queue, moderator, or report type. Omit all parameters for aggregate stats.
+     * Get live report statistics for the current UTC calendar day. Filter by queue, moderator, or report type. Omit all parameters for aggregate stats.
      */
     public function toolsOzoneReportGetLiveStats(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetLiveStats\GetLiveStats {
@@ -2582,7 +2682,7 @@ class ATProtoMetaClient
     }
 
     /**
-     * Recompute report statistics for a date range. Useful for backfilling after failures or data corrections.
+     * Recompute report statistics for a date range.
      */
     public function toolsOzoneReportRefreshStats(
     ): \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\RefreshStats\RefreshStats {

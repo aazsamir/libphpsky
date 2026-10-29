@@ -26,6 +26,9 @@ class Event implements \Aazsamir\Libphpsky\ATProtoObject
     public ?string $action;
     public ?string $reason;
 
+    /** @var ?string Source of the decision */
+    public ?string $source;
+
     /** @var string DID of the user who created this rule */
     public string $createdBy;
     public \DateTimeInterface $createdAt;
@@ -62,6 +65,7 @@ class Event implements \Aazsamir\Libphpsky\ATProtoObject
         ?string $pattern = null,
         ?string $action = null,
         ?string $reason = null,
+        ?string $source = null,
         ?string $comment = null,
     ): self {
         $instance = new self();
@@ -78,6 +82,9 @@ class Event implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($reason !== null) {
             $instance->reason = $reason;
+        }
+        if ($source !== null) {
+            $instance->source = $source;
         }
         if ($comment !== null) {
             $instance->comment = $comment;

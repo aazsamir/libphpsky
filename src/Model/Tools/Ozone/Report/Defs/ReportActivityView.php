@@ -22,7 +22,7 @@ class ReportActivityView implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var int ID of the report this activity belongs to */
     public int $reportId;
 
-    /** @var \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\Defs\QueueActivity|\Aazsamir\Libphpsky\Model\Tools\Ozone\Report\Defs\AssignmentActivity|\Aazsamir\Libphpsky\Model\Tools\Ozone\Report\Defs\EscalationActivity|\Aazsamir\Libphpsky\Model\Tools\Ozone\Report\Defs\CloseActivity|\Aazsamir\Libphpsky\Model\Tools\Ozone\Report\Defs\ReopenActivity|\Aazsamir\Libphpsky\Model\Tools\Ozone\Report\Defs\NoteActivity The typed activity object describing what occurred. */
+    /** @var \Aazsamir\Libphpsky\Model\Tools\Ozone\Report\Defs\QueueActivity|\Aazsamir\Libphpsky\Model\Tools\Ozone\Report\Defs\AssignmentActivity|\Aazsamir\Libphpsky\Model\Tools\Ozone\Report\Defs\UnassignmentActivity|\Aazsamir\Libphpsky\Model\Tools\Ozone\Report\Defs\EscalationActivity|\Aazsamir\Libphpsky\Model\Tools\Ozone\Report\Defs\CloseActivity|\Aazsamir\Libphpsky\Model\Tools\Ozone\Report\Defs\ReopenActivity|\Aazsamir\Libphpsky\Model\Tools\Ozone\Report\Defs\NoteActivity The typed activity object describing what occurred. */
     public mixed $activity;
 
     /** @var ?string Optional moderator-only note. Not visible to reporters. */
@@ -70,7 +70,7 @@ class ReportActivityView implements \Aazsamir\Libphpsky\ATProtoObject
     public static function new(
         int $id,
         int $reportId,
-        QueueActivity|AssignmentActivity|EscalationActivity|CloseActivity|ReopenActivity|NoteActivity $activity,
+        QueueActivity|AssignmentActivity|UnassignmentActivity|EscalationActivity|CloseActivity|ReopenActivity|NoteActivity $activity,
         bool $isAutomated,
         string $createdBy,
         \DateTimeInterface $createdAt,

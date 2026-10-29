@@ -32,6 +32,7 @@ class CreateActivityInput implements \Aazsamir\Libphpsky\ATProtoObject
 
     /** @var ?bool Set true when this activity is triggered by an automated process. Defaults to false. */
     public ?bool $isAutomated;
+    public mixed $meta;
 
     public static function id(): string
     {
@@ -60,6 +61,7 @@ class CreateActivityInput implements \Aazsamir\Libphpsky\ATProtoObject
         ?string $internalNote = null,
         ?string $publicNote = null,
         ?bool $isAutomated = null,
+        mixed $meta = null,
     ): self {
         $instance = new self();
         $instance->activity = $activity;
@@ -77,6 +79,9 @@ class CreateActivityInput implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($isAutomated !== null) {
             $instance->isAutomated = $isAutomated;
+        }
+        if ($meta !== null) {
+            $instance->meta = $meta;
         }
 
         return $instance;

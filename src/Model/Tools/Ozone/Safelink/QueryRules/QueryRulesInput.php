@@ -33,6 +33,9 @@ class QueryRulesInput implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?string Filter by reason type */
     public ?string $reason;
 
+    /** @var ?string Filter by exact rule source. Omit to include all sources. */
+    public ?string $source;
+
     /** @var ?string Filter by rule creator */
     public ?string $createdBy;
 
@@ -70,6 +73,7 @@ class QueryRulesInput implements \Aazsamir\Libphpsky\ATProtoObject
         ?string $patternType = null,
         ?array $actions = [],
         ?string $reason = null,
+        ?string $source = null,
         ?string $createdBy = null,
         ?string $sortDirection = null,
     ): self {
@@ -91,6 +95,9 @@ class QueryRulesInput implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($reason !== null) {
             $instance->reason = $reason;
+        }
+        if ($source !== null) {
+            $instance->source = $source;
         }
         if ($createdBy !== null) {
             $instance->createdBy = $createdBy;

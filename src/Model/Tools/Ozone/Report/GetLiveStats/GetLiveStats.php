@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Report\GetLiveStats;
 
 /**
- * Get live report statistics from the past 24 hours. Filter by queue, moderator, or report type. Omit all parameters for aggregate stats.
+ * Get live report statistics for the current UTC calendar day. Filter by queue, moderator, or report type. Omit all parameters for aggregate stats.
  * query
  */
 class GetLiveStats implements \Aazsamir\Libphpsky\Action

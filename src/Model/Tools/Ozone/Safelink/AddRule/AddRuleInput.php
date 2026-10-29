@@ -21,6 +21,9 @@ class AddRuleInput implements \Aazsamir\Libphpsky\ATProtoObject
     public ?string $action;
     public ?string $reason;
 
+    /** @var ?string Source of the rule */
+    public ?string $source;
+
     /** @var ?string Optional comment about the decision */
     public ?string $comment;
 
@@ -52,6 +55,7 @@ class AddRuleInput implements \Aazsamir\Libphpsky\ATProtoObject
         ?string $pattern = null,
         ?string $action = null,
         ?string $reason = null,
+        ?string $source = null,
         ?string $comment = null,
         ?string $createdBy = null,
     ): self {
@@ -65,6 +69,9 @@ class AddRuleInput implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($reason !== null) {
             $instance->reason = $reason;
+        }
+        if ($source !== null) {
+            $instance->source = $source;
         }
         if ($comment !== null) {
             $instance->comment = $comment;

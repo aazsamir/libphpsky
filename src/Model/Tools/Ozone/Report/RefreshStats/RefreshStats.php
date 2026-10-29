@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aazsamir\Libphpsky\Model\Tools\Ozone\Report\RefreshStats;
 
 /**
- * Recompute report statistics for a date range. Useful for backfilling after failures or data corrections.
+ * Recompute report statistics for a date range.
  * procedure
  */
 class RefreshStats implements \Aazsamir\Libphpsky\Action

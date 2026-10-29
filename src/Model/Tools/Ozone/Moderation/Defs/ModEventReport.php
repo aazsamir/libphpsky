@@ -16,6 +16,13 @@ class ModEventReport implements \Aazsamir\Libphpsky\ATProtoObject
     public const NAME = 'modEventReport';
     public const ID = 'tools.ozone.moderation.defs';
 
+    /** @var ?string Moderator who submitted this appeal on behalf of the affected account. Returned by moderator event APIs. */
+    public ?string $appealSubmittedBy;
+
+    /** @var ?string Action reference type recorded when this appeal was submitted. */
+    public ?string $appealActionType;
+    public ?int $appealActionId;
+    public ?string $appealLabel;
     public ?string $comment;
 
     /** @var ?bool Set to true if the reporter was muted from reporting at the time of the event. These reports won't impact the reviewState of the subject. */
@@ -43,11 +50,27 @@ class ModEventReport implements \Aazsamir\Libphpsky\ATProtoObject
     }
 
     public static function new(
+        ?string $appealSubmittedBy = null,
+        ?string $appealActionType = null,
+        ?int $appealActionId = null,
+        ?string $appealLabel = null,
         ?string $comment = null,
         ?bool $isReporterMuted = null,
         ?string $reportType = null,
     ): self {
         $instance = new self();
+        if ($appealSubmittedBy !== null) {
+            $instance->appealSubmittedBy = $appealSubmittedBy;
+        }
+        if ($appealActionType !== null) {
+            $instance->appealActionType = $appealActionType;
+        }
+        if ($appealActionId !== null) {
+            $instance->appealActionId = $appealActionId;
+        }
+        if ($appealLabel !== null) {
+            $instance->appealLabel = $appealLabel;
+        }
         if ($comment !== null) {
             $instance->comment = $comment;
         }

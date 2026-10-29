@@ -28,6 +28,9 @@ class ModEventReverseTakedown implements \Aazsamir\Libphpsky\ATProtoObject
     /** @var ?int Number of strikes to subtract from the user's strike count. Usually set from the last policy infraction's severity. */
     public ?int $strikeCount;
 
+    /** @var ?\DateTimeInterface When the strike should expire. If not provided, the strike never expires. */
+    public ?\DateTimeInterface $strikeExpiresAt;
+
     public static function id(): string
     {
         return self::ID;
@@ -56,6 +59,7 @@ class ModEventReverseTakedown implements \Aazsamir\Libphpsky\ATProtoObject
         ?array $policies = [],
         ?string $severityLevel = null,
         ?int $strikeCount = null,
+        ?\DateTimeInterface $strikeExpiresAt = null,
     ): self {
         $instance = new self();
         if ($comment !== null) {
@@ -69,6 +73,9 @@ class ModEventReverseTakedown implements \Aazsamir\Libphpsky\ATProtoObject
         }
         if ($strikeCount !== null) {
             $instance->strikeCount = $strikeCount;
+        }
+        if ($strikeExpiresAt !== null) {
+            $instance->strikeExpiresAt = $strikeExpiresAt;
         }
 
         return $instance;
